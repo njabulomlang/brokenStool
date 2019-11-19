@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-input placeholder="Email" [(ngModel)]="email" type="email"></ion-input>
+  <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
+  <ion-button expand="full" (click)="createAccount()">Sign up</ion-button> 
+
+</ion-content>
