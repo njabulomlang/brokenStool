@@ -5,11 +5,19 @@
 </ion-header>
 
 <ion-content>
-  
-  <ion-input placeholder="Email" [(ngModel)]="email" type="email"></ion-input>
-  <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
-  <ion-button expand="full" (click)="login()">Sign in</ion-button> 
+  <div>
+    <div>
+     <ion-input placeholder="number" [(ngModel)]="number" type="text"></ion-input>
+    <!-- <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input> -->
+    <ion-button expand="full" id="sign-in-button" (click)="addUser()" >Phone</ion-button>  
+    <ion-button expand="full" id="sign-in-button" (click)="googleSignin()" >Google</ion-button>
+    <ion-button expand="full" id="sign-in-button" (click)="Facebook()" >Facebook</ion-button>
+    <ion-button expand="full" id="sign-in-button" (click)="twitter()" >Twitter</ion-button>
+    <ion-button expand="full" id="sign-in-button" (click)="Github()" >Github</ion-button>
+    </div>
+    <div id="recaptcha-container"></div>
+  </div>
 
+ 
 
-  <ion-button (click)="goSignUp()">Sign up</ion-button>
 </ion-content>

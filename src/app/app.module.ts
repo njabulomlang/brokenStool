@@ -18,6 +18,7 @@ import { AuthGuard } from './guards/auth.guard'
     StatusBar,
     SplashScreen,
     AuthGuard,
+   
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

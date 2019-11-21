@@ -12,4 +12,5 @@ export class HomePage {
   logout() {
     this.authService.logoutUser()
   }
+  
 }
