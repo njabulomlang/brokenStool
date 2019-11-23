@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './guards/auth.guard'
-
+import { Facebook } from '@ionic-native/facebook/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,7 +18,7 @@ import { AuthGuard } from './guards/auth.guard'
     StatusBar,
     SplashScreen,
     AuthGuard,
-   
+    Facebook, 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

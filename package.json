@@ -83,8 +83,11 @@
       "cordova-plugin-buildinfo": {},
       "cordova-universal-links-plugin": {},
       "cordova-plugin-browsertab": {},
-      "cordova-plugin-inappbrowser": {}
-  
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-facebook4": {
+        "APP_ID": "966084663760258",
+        "APP_NAME": "BrokenStool"
+      }
     },
     "platforms": [
       "android"

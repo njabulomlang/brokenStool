@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { IonSlides, AlertController } from '@ionic/angular';
-
+import { IonSlides, AlertController, Platform } from '@ionic/angular';
+import { Facebook } from '@ionic-native/facebook/ngx';
 declare var window;
 @Component({
   selector: 'app-login',
@@ -18,7 +18,8 @@ export class LoginPage implements OnInit {
   number: string;
   verification = "";
   confirmationResult='';
-  constructor(private router: Router, private alertController: AlertController, private authService: AuthService) {
+  constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
+    public platform: Platform, public facebook: Facebook) {
 
   }
 
@@ -48,14 +49,7 @@ export class LoginPage implements OnInit {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     console.log(window.recaptchaVerifier);
     let appVerifier = window.recaptchaVerifier
-    return this.authService.requestLogin(this.number, appVerifier).then(result => {
-      if(result.success === true){
-        console.log(result);
-        this.confirmationResult = result.result
-        console.log(this.confirmationResult);
-        //this.presentAlert();
-      }
-    })
+    return this.authService.requestLogin(this.number, appVerifier)
   }
   login(code){
     if(this.confirmationResult !== ''){
@@ -67,21 +61,6 @@ export class LoginPage implements OnInit {
   }
 ​
   addUser(){
-    //this.number = this.registrationForm.get('number').value
-    console.log(this.number);
-    let array = this.number.split('')
-    console.log(array);
-    
-   /*  if(array[0] === 0){
-      console.log(array);
-      array.pop[0]
-      console.log(array);
-    } */
-    // let recaptchaParameters: {
-    //   type: 'image', // another option is 'audio'
-    //   size: 'invisible', // other options are 'normal' or 'compact'
-    //   badge: 'bottomleft' // 'bottomright' or 'inline' applies to invisible.
-    // }
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
       size: 'invisible',
       callback: (response) => {
@@ -93,14 +72,7 @@ export class LoginPage implements OnInit {
     });
     console.log(window.recaptchaVerifier);
     let appVerifier = window.recaptchaVerifier
-    return this.authService.requestLogin(this.number, appVerifier).then(result => {
-      if(result.success === true){
-        console.log(result);
-        this.confirmationResult = result.result
-        console.log(this.confirmationResult);
-        this.alert()
-      }
-    })
+    return this.authService.requestLogin(this.number, appVerifier)
     // window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaParameters, result => {
     //   console.log(result);
 ​
@@ -131,49 +103,55 @@ export class LoginPage implements OnInit {
       // ...
     });
   }
-   Facebook() {
-//     var provider = new firebase.auth.GoogleAuthProvider();
-//     this.fb.login(['public_profile', 'email'])
-//   .then((response: FacebookLoginResponse) => {
-//     //this.onLoginSuccess(response);
-//     console.log('Logged into Facebook!', response.authResponse)
-//     const credential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-//     console.log("Cred.. ",credential);
-//     firebase.auth().signInWithCredential(credential).then((res)=>{
-//       console.log("User.. ",res);
-//     })
-//  /*    let credential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-//     firebase.auth().signInWithCredential(credential).then((info)=>{
-//       console.log("User details", info);
-//     })
-//     console.log('Logged into Facebook!', res.authResponse.accessToken) */
-//   })
-//   .catch(e => console.log('Error logging into Facebook', e));
-
-
-// this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
-    var provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithRedirect(provider).then((result)=> {
-     /*  firebase.auth().getRedirectResult().then((res)=>{
-        window.alert(JSON.stringify(res))
-      }) */
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result;
-      // The signed-in user info.
-      var user = result;
-      console.log(result);
-      
-      // ...
-    }).catch((error)=> {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
+  async logInWithFaceBook(){
+    if (this.platform.is('cordova')) {
+      return this.facebook.login(['email', 'public_profile']).then(async res => {
+        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+         await firebase.auth().signInWithCredential(facebookCredential).then(async (authdata)=>{
+          var user = authdata.user;
+              var res =authdata.user.displayName
+              console.log(user.displayName );
+              console.log(user.email);
+              console.log(user);
+              
+              //this.uid =  firebase.auth().currentUser.uid;
+           /*    firebase.database().ref("user/" + this.uid).set({
+                username: user.displayName,
+                email: user.email,
+                number: user.phoneNumber,
+                profilepicture:user.photoURL
+              }); */
+              /* let loader = this.loadingCtrl.create({
+                spinner: 'bubbles',
+                content: 'Logging Please wait...',
+              }); */
+        /*       loader.present();
+              this.navCtrl.setRoot(HomePage); */
+              // const alert = this.alertCtrl.create({
+              //   title: 'Welcome',
+              //   subTitle: `Hi ${user.displayName}`,
+              //   buttons: ['OK']
+              // });
+              // alert.present();
+             // loader.dismiss()
+         })
+      })
+    }
+    else {
+      return firebase.auth()
+        .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then(res =>{
+          console.log(res)
+     /*         const alert = this.alertCtrl.create({
+                 title: 'Error!',
+                 subTitle: res,
+                 buttons: ['OK']
+               });
+               alert.present();
+        }); */
+        
+      })
+   }
   }
 
   twitter() {
