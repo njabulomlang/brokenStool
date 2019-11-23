@@ -48,8 +48,8 @@ export class AuthService {
     return this.user
   }
   requestLogin(number, appVerifier) {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      .then(()=> {
+    // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      // .then(()=> {
         return firebase.auth().signInWithPhoneNumber(number, appVerifier).then(confirmationResult => {
           window.confirmationResult = confirmationResult;
           this.confirm = confirmationResult;
@@ -60,12 +60,12 @@ export class AuthService {
           let result = { success: false, result: error }
           return result
         });
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-      });
+      // })
+      // .catch(function (error) {
+      //   // Handle Errors here.
+      //   var errorCode = error.code;
+      //   var errorMessage = error.message;
+      // });
    
   }
   async alert(){
