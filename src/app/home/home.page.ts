@@ -5,7 +5,7 @@ import { CartService } from '../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -94,8 +94,8 @@ export class HomePage implements OnInit{
     modal.present();
   }
 
-  list() {
-    this.router.navigateByUrl("/list")
+  categories() {
+    this.router.navigateByUrl("/categories")
   }
   
 }
