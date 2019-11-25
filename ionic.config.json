@@ -1,5 +1,7 @@
 {
   "name": "brokenStool",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -29,7 +29,7 @@ export class AppComponent {
         console.log("User..", res.email);
         
       } else {
-        this.router.navigateByUrl('login')
+        this.router.navigateByUrl('welcome')
       }
       
     })
