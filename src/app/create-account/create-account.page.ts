@@ -16,7 +16,9 @@ export class CreateAccountPage implements OnInit {
   name;
   surname;
   email;
-  constructor(public router: Router, public alertCtrl: AlertController) { }
+  constructor(public router: Router, public alertCtrl: AlertController) {
+    
+   }
 
   ngOnInit() {
   }

@@ -14,11 +14,11 @@ export class WelcomePage implements OnInit {
   }
 
   login() {
-    this.router.navigateByUrl("/login")
+    this.router.navigateByUrl("login")
   }
 
   explore() {
-    this.router.navigateByUrl("/home")
+    this.router.navigateByUrl("home")
   }
 
 }

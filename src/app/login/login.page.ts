@@ -78,8 +78,6 @@ export class LoginPage implements OnInit {
     //   console.log(result);
 
     // })
-
-
   }
   googleSignin() {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -105,41 +103,41 @@ export class LoginPage implements OnInit {
     });
   }
   Facebook() {
-  //  if (this.platform.is('cordova')) {
-      return this.fb.login(['email', 'public_profile']).then(async res => {
-        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-         await firebase.auth().signInWithCredential(facebookCredential).then(async (authdata)=>{
-          var user = authdata.user;
-              var res =authdata.user.displayName
-              console.log(user.displayName );
-              console.log(user.email);
-              console.log(user);
-              
-             // this.uid =  firebase.auth().currentUser.uid;
-              // firebase.database().ref("user/" + this.uid).set({
-              //   username: user.displayName,
-              //   email: user.email,
-              //   number: user.phoneNumber,
-              //   profilepicture:user.photoURL
-              // });
-            /*   let loader = this.loadingCtrl.create({
-                spinner: 'bubbles',
-                content: 'Logging Please wait...',
-              });
-              loader.present(); */
-             // this.navCtrl.setRoot(HomePage);
-              // const alert = this.alertCtrl.create({
-              //   title: 'Welcome',
-              //   subTitle: `Hi ${user.displayName}`,
-              //   buttons: ['OK']
-              // });
-              // alert.present();
-             // loader.dismiss()
-         })
-      }).catch((err)=>{
-        console.log("Error logging into facebook ", err.message);
+    //  if (this.platform.is('cordova')) {
+    return this.fb.login(['email', 'public_profile']).then(async res => {
+      const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+      await firebase.auth().signInWithCredential(facebookCredential).then(async (authdata) => {
+        var user = authdata.user;
+        var res = authdata.user.displayName
+        console.log(user.displayName);
+        console.log(user.email);
+        console.log(user);
+
+        // this.uid =  firebase.auth().currentUser.uid;
+        // firebase.database().ref("user/" + this.uid).set({
+        //   username: user.displayName,
+        //   email: user.email,
+        //   number: user.phoneNumber,
+        //   profilepicture:user.photoURL
+        // });
+        /*   let loader = this.loadingCtrl.create({
+            spinner: 'bubbles',
+            content: 'Logging Please wait...',
+          });
+          loader.present(); */
+        // this.navCtrl.setRoot(HomePage);
+        // const alert = this.alertCtrl.create({
+        //   title: 'Welcome',
+        //   subTitle: `Hi ${user.displayName}`,
+        //   buttons: ['OK']
+        // });
+        // alert.present();
+        // loader.dismiss()
       })
-  //
+    }).catch((err) => {
+      console.log("Error logging into facebook ", err.message);
+    })
+    //
     // this.fb.login(['public_profile', 'email'])
     //   .then((response: FacebookLoginResponse) => {
     //     //this.onLoginSuccess(response);
@@ -153,7 +151,7 @@ export class LoginPage implements OnInit {
     //   .catch(e => console.log('Error logging into Facebook', e));
 
 
-   // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+    // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
     // var provider = new firebase.auth.FacebookAuthProvider();
     // firebase.auth().signInWithRedirect(provider).then((result)=> {
     //  /*  firebase.auth().getRedirectResult().then((res)=>{
@@ -178,8 +176,12 @@ export class LoginPage implements OnInit {
     // });
   }
 
-  twitter() {
-
+  async loginAnon(): Promise<firebase.auth.UserCredential> {
+    try {
+      return await firebase.auth().signInAnonymously()
+    } catch (err) {
+      console.log("Error...", err);
+    }
   }
   Github() {
 

@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate  {
-  dbUser = firebase.firestore().collection("Users");
+
   constructor(private _authService: AuthService,
     private _router: Router) {}
     canActivate():boolean {

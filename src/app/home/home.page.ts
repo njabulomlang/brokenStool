@@ -16,27 +16,46 @@ export class HomePage implements OnInit{
   products = [];
   cart = []; 
   cartItemCount: BehaviorSubject<number>;
+  uid;
   dbProfile = firebase.firestore().collection("userProfile");
-  uid = firebase.auth().currentUser.uid;
-  constructor(private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController, public router: Router) {}
+  //uid = firebase.auth().currentUser.uid;
+  constructor(private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController, public router: Router) {
+    //this.uid = firebase.auth().currentUser.uid
+  }
 
   ngOnInit() {
-    this.dbProfile.doc(this.uid).get().then((doc)=>{
+   /*  this.dbProfile.doc(this.uid).get().then((doc)=>{
       console.log("This is my profile");
     }).catch((err)=>{
       this.router.navigateByUrl('create-account');
-    })
+    }) */
     this.products = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
-  }
+  } 
   logout() {
     this.authService.logoutUser()
   }
   addToCart(product) {
+    
+    //this.uid = firebase.auth().currentUser.uid;
+  /*   if(!this.uid) {
+      console.log('Cannot read uid');
+    } else {
+      console.log('Uid found..');
+      
+    } */
     this.cartService.addProduct(product);
     this.animateCSS('tada', true);
+   /*  if(this.uid==null || this.uid==undefined) {
+      this.router.navigateByUrl('login')
+    } else {
+      this.cartService.addProduct(product);
+    this.animateCSS('tada', true);
+    }
+     */
   }
+
   animateCSS(animationName, keepAnimated = false) {
     const node = this.fab.nativeElement;
     node.classList.add('animated', animationName)
