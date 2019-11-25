@@ -33,7 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
   },
   {
-    path: 'list',
+    path: 'list/:key',
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
   {

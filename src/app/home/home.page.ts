@@ -5,6 +5,7 @@ import { CartService } from '../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,7 @@ export class HomePage implements OnInit{
       if(doc.exists) {
         this.name = doc.data().name;
         this.surname = doc.data().surname;
-        console.log("This is my profile", doc.data());
+       // console.log("This is my profile", doc.data());
       } else {
         this.router.navigateByUrl('create-account');
       }

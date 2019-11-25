@@ -13,8 +13,9 @@ export class CategoriesPage implements OnInit {
   ngOnInit() {
   }
 
-  list() {
-    this.router.navigateByUrl("/list")
+  list(data) {
+    this.router.navigate(['list', data])
+  // console.log(data);
   }
 
 }
