@@ -14,14 +14,14 @@ ion-toolbar {
   }
 
   .cards {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     height: 80vh;
     overflow-y: auto;
 
     .card {
-      width: 44%;
+      width: 45%;
       height: 45vh;
       margin: 5px;
       border-radius: 10px;
@@ -36,6 +36,7 @@ ion-toolbar {
 
       .itemdetails {
         position: relative;
+        bottom: 20px;
         display: flex;
         flex-flow: row;
         justify-content: space-between;

@@ -35,5 +35,8 @@ export class ListPage implements OnInit {
  /*  async productCategory() {
 
   } */
+  viewitem(){
+    this.router.navigateByUrl("/view")
+  }
 
 }
