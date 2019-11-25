@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomePage implements OnInit{
   products = [];
   cart = []; 
   cartItemCount: BehaviorSubject<number>;
-  constructor(private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController) {}
+  constructor(private router: Router, private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController) {}
 
   ngOnInit() {
     this.products = this.cartService.getProducts();
@@ -54,6 +55,10 @@ export class HomePage implements OnInit{
       this.animateCSS('bounceInLeft');
     });
     modal.present();
+  }
+
+  list() {
+    this.router.navigateByUrl("/list")
   }
   
 }

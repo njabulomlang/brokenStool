@@ -1,0 +1,52 @@
+ion-toolbar {
+  --background: transparent;
+  position: absolute;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.295)), url("../../assets/yellow.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .logo {
+    position: absolute;
+    top: 20%;
+    img {
+      width: 40vw;
+      height: 30vw;
+    }
+  }
+
+  .desc {
+    margin: 10px;
+    p {
+      color: white;
+      text-align: center;
+      font-size: 1em;
+    }
+  }
+
+  .login {
+    position: absolute;
+    top: 65%;
+    text-align: center;
+    ion-button {
+      width: 60vw;
+      border-radius: 30px;
+      background: white;
+      color: black;
+      font-size: 1em;
+      font-weight: lighter;
+      ion-icon{
+          color:black;
+      }
+    }
+  }
+}

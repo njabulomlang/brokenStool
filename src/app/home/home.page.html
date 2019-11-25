@@ -1,47 +1,229 @@
-<ion-header>
-  <ion-toolbar color="primary">
-      <ion-button (click)="logout()"  slot="end">Logout</ion-button> 
+<ion-header no-border>
+
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button id="icon">
+        <ion-icon slot="icon-only" name="search" ></ion-icon>
+      </ion-button>
+      <ion-button id="icon">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button  id="icon">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>DankieJesu</ion-title>
+  </ion-toolbar>
+  <!-- <ion-toolbar color="primary">
+    <ion-button (click)="logout()" slot="end">Logout</ion-button>
     <ion-title>
       Broken Stool
     </ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
+<p style="margin: 10px">welcome Zanele Nkosi</p>
+
 <ion-content>
-    <ion-fab vertical="top" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="openCart()" #cart>
-          <div class="cart-length">{{ cartItemCount | async }}</div>
-          <ion-icon name="cart" class="cart-icon"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-     <!--  <ion-fab vertical="top" horizontal="end" slot="fixed">
+  <div class="container" no-padding>
+    <div class="sales">
+      <ion-item>
+        <label>Sales & Specials</label>
+        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+      </ion-item>
+
+      <div class="saleitems">
+
+        <div class="image">
+          <img src="../../assets/back.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="../../assets/back.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="../../assets/back.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="../../assets/back.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="../../assets/back.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttonz">
+      <ion-button expand="full" color="transparent" (click)="onClick()">
+        Summer Gear <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+      <ion-button expand="full" color="transparent" style="border-top: none !important;" (click)="list()">
+          Winter Gear <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+    </div>
+
+    <div class="Kwanga">
+        <ion-item>
+          <label>kwanga Apparel</label>
+          <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        </ion-item>
+  
+        <div class="apparel">
+  
+          <div class="image">
+            <img src="../../assets/back.jpg">
+  
+            <div class="itemname">
+              <p>Smart Casual</p>
+            </div>
+          </div>
+  
+          <div class="image">
+            <img src="../../assets/back.jpg">
+  
+          
+            <div class="itemname">
+              <p>Formal</p>
+            </div>
+          </div>
+  
+          <div class="image">
+            <img src="../../assets/back.jpg">
+  
+        
+            <div class="itemname">
+              <p>Traditional</p>
+            </div>
+          </div>
+  
+          <div class="image">
+            <img src="../../assets/back.jpg">
+  
+            <div class="itemname">
+              <p>sport</p>
+            </div>
+          </div>
+  
+          <div class="image">
+            <img src="../../assets/back.jpg">
+  
+           
+            <div class="itemname">
+              <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()" #cart>
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-card *ngFor="let p of products">
+      <ion-card-header>
+        <ion-card-title>{{ p.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="8">
+            <ion-label color="secondary">
+              <b>{{ p.price | currency:'R' }}</b>
+            </ion-label>
+          </ion-col>
+          <ion-col size="4" class="ion-text-right">
+            <ion-button fill="clear" (click)="addToCart(p)">
+              <ion-icon name="cart"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear">
+              <ion-icon name="heart"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list> -->
+
+<!--  <ion-fab vertical="top" horizontal="end" slot="fixed">
           <ion-fab-button (click)="openCart()" #cart>
             <div class="cart-length">{{ cartItemCount | async }}</div>
             <ion-icon name="cart" class="cart-icon"></ion-icon>
           </ion-fab-button>
         </ion-fab> -->
-      <ion-list>
-        <ion-card *ngFor="let p of products">
-          <ion-card-header>
-            <ion-card-title>{{ p.name }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-row class="ion-align-items-center">
-              <ion-col size="8">
-                <ion-label color="secondary">
-                  <b>{{ p.price | currency:'R' }}</b>
-                </ion-label>
-              </ion-col>
-              <ion-col size="4" class="ion-text-right">
-                <ion-button fill="clear" (click)="addToCart(p)">
-                  <ion-icon name="cart"></ion-icon>
-                </ion-button>
-                <ion-button fill="clear">
-                    <ion-icon name="heart"></ion-icon>
-                  </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-list>
-</ion-content>
