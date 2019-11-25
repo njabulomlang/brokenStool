@@ -1,35 +1,47 @@
-<!-- <ion-content>
-  <div class="content-container">
-    <div class="navigator">
-      <div>
-        <ion-icon name="person"></ion-icon>
-      </div>
-      <div>
-      </div>
-      <div>
-        <ion-icon name="search"></ion-icon>
-      </div>
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <p id="number">5</p>
-      </div>
-    </div>
-    <div class="app-body">
-      <div class="welcome-message">
-        Welcome John Doe
-      </div>
-      <div class="app-content">
-        <div class="slide-top">
-          <div class="all-tab">
-            <div>Sales and Specials</div>
-            <div>All 
-              <ion-icon name="arrow-forward"></ion-icon>
-            </div>
-          </div>
-        </div>
-      </div>
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-button (click)="logout()"  slot="end">Logout</ion-button> 
+    <ion-title>
+      Broken Stool
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    </div>
-  </div>
-  <ion-button (click)="logout()" id="logout-btn">Logout</ion-button> 
-</ion-content> -->
+<ion-content>
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="openCart()" #cart>
+          <div class="cart-length">{{ cartItemCount | async }}</div>
+          <ion-icon name="cart" class="cart-icon"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+     <!--  <ion-fab vertical="top" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="openCart()" #cart>
+            <div class="cart-length">{{ cartItemCount | async }}</div>
+            <ion-icon name="cart" class="cart-icon"></ion-icon>
+          </ion-fab-button>
+        </ion-fab> -->
+      <ion-list>
+        <ion-card *ngFor="let p of products">
+          <ion-card-header>
+            <ion-card-title>{{ p.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row class="ion-align-items-center">
+              <ion-col size="8">
+                <ion-label color="secondary">
+                  <b>{{ p.price | currency:'R' }}</b>
+                </ion-label>
+              </ion-col>
+              <ion-col size="4" class="ion-text-right">
+                <ion-button fill="clear" (click)="addToCart(p)">
+                  <ion-icon name="cart"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear">
+                    <ion-icon name="heart"></ion-icon>
+                  </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+</ion-content>
