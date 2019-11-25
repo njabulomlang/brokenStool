@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-// import * as firebase from 'firebase';
+ import * as firebase from 'firebase';
 import { CartService } from '../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,9 +16,16 @@ export class HomePage implements OnInit{
   products = [];
   cart = []; 
   cartItemCount: BehaviorSubject<number>;
-  constructor(private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController) {}
+  dbProfile = firebase.firestore().collection("userProfile");
+  uid = firebase.auth().currentUser.uid;
+  constructor(private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController, public router: Router) {}
 
   ngOnInit() {
+    this.dbProfile.doc(this.uid).get().then((doc)=>{
+      console.log("This is my profile");
+    }).catch((err)=>{
+      this.router.navigateByUrl('create-account');
+    })
     this.products = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
