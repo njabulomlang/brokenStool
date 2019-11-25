@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './guards/auth.guard'
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { CartModalPageModule } from './cart-modal/cart-modal.module';
+import { Camera } from '@ionic-native/camera/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,7 +21,8 @@ import { CartModalPageModule } from './cart-modal/cart-modal.module';
     StatusBar,
     SplashScreen,
     AuthGuard,
-    Facebook, 
+    Facebook,
+    Camera, 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
