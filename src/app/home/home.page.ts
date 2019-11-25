@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router } from '@angular/router';
 @Component({
@@ -81,6 +82,10 @@ export class HomePage implements OnInit{
       this.animateCSS('bounceInLeft');
     });
     modal.present();
+  }
+
+  list() {
+    this.router.navigateByUrl("/list")
   }
   
 }

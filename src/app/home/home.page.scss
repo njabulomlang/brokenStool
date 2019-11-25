@@ -1,19 +1,165 @@
 ion-fab-button {
-    height: 70px;
-    width: 70px;
+  height: 70px;
+  width: 70px;
+}
+
+.cart-icon {
+  font-size: 50px;
+}
+
+.cart-length {
+  color: var(--ion-color-primary);
+  position: absolute;
+  top: 18px;
+  left: 25px;
+  font-weight: 600;
+  min-width: 25px;
+  z-index: 10;
+}
+
+ion-toolbar {
+  --background: transparent;
+  #icon{
+    color: maroon;
   }
-   
-  .cart-icon {
-    font-size: 50px;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  .sales {
+    display: flex;
+    flex-flow: column;
+    position: relative;
+
+    .saleitems {
+      width: 100%;
+      display: flex;
+      overflow-x: auto;
+      .image {
+        margin: 8px;
+        min-width: 55vw;
+        height: 30vh;
+        border-radius: 5px;
+        position: relative;
+
+        box-shadow: 2px 2px 10px grey;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+
+        .percentage {
+          position: absolute;
+          top: 0%;
+          right: 10px;
+          z-index: 5;
+          color: white;
+          p {
+            font-size: 0.7em;
+            text-shadow: 2px 2px 5px black;
+          }
+        }
+
+        .itemname {
+          position: absolute;
+          bottom: 0;
+          right: 5px;
+          color: white;
+          p {
+            font-size: 0.7em;
+            text-align: right;
+            text-shadow: 2px 2px 5px black;
+            span {
+              font-size: 0.5em;
+            }
+          }
+        }
+      }
+    }
   }
-   
-  .cart-length {
-    color: var(--ion-color-primary);
-    position: absolute;
-    top: 18px;
-    left: 25px;
-    font-weight: 600;
-    font-size: 1em;
-    min-width: 25px;
-    z-index: 10;
+
+  .buttonz {
+    display: flex;
+    flex-flow: column;
+    width: 100vw;
+    margin: 5px 0px;
+    ion-button {
+      margin: 0;
+      padding: 0;
+      height: 7vh;
+      border-radius: 0 !important;
+      text-align: left;
+      border-bottom: 0.1px solid rgb(212, 212, 212);
+      border-top: 0.1px solid rgb(212, 212, 212);
+      background: #f2f2f2;
+      color: black;
+      font-weight: lighter;
+    }
   }
+
+  .Kwanga {
+    display: flex;
+    flex-flow: column;
+    position: relative;
+
+    .apparel {
+      width: 100%;
+      display: flex;
+      overflow-x: auto;
+      .image {
+        margin: 8px;
+        min-width: 55vw;
+        height: 30vh;
+        border-radius: 5px;
+        position: relative;
+
+        box-shadow: 2px 2px 10px grey;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+
+        .percentage {
+          position: absolute;
+          top: 0%;
+          right: 10px;
+          z-index: 5;
+          color: white;
+          p {
+            font-size: 0.7em;
+            text-shadow: 2px 2px 5px black;
+          }
+        }
+
+        .itemname {
+          position: absolute;
+          bottom: 0;
+          right: 5px;
+          color: white;
+          p {
+            font-size: 0.7em;
+            text-align: right;
+            text-shadow: 2px 2px 5px black;
+            span {
+              font-size: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+div.item-native {
+  padding: 0px !important;
+}
