@@ -26,6 +26,8 @@ ion-toolbar {
             border-radius: 30px;
             background: white;
             color: black;
+            font-family: 'Raleway';
+            letter-spacing: 3px;
         }
     }
 
@@ -35,8 +37,12 @@ ion-toolbar {
         top: 30%;
         p{
             color: white;
+            font-family: 'Raleway';
+            letter-spacing: 2px;
+            font-weight: lighter;
             span{
                 font-size: 10vw;
+                letter-spacing: 3px;
             }
         }
     }

@@ -13,8 +13,8 @@ export class ListPage implements OnInit {
   ngOnInit() {
   }
 
-  list() {
-    this.router.navigateByUrl("/list")
+  viewitem(){
+    this.router.navigateByUrl("/view")
   }
 
 }

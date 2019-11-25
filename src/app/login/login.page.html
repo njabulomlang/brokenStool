@@ -15,12 +15,12 @@
       </p>
     </div>
     <div class="login">
-      <ion-input placeholder="number" [(ngModel)]="number" type="text"></ion-input>
+      <ion-input placeholder="Phone Number" [(ngModel)]="number" type="text"></ion-input>
       <!-- <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input> -->
     
-      <ion-button  id="sign-in-button" color="transparent" (click)="addUser()"> <ion-icon slot="end" name="call"></ion-icon> sign-in with Phone</ion-button>
-      <ion-button  id="sign-in-button" color="transparent" (click)="googleSignin()"> <ion-icon slot="end" name="logo-google"></ion-icon> sign-in with Google</ion-button>
-      <ion-button  id="sign-in-button" color="transparent" (click)="Facebook()"><ion-icon slot="end" name="logo-facebook"></ion-icon>sign-in with Facebook</ion-button>
+      <ion-button  id="sign-in-button" color="transparent" (click)="addUser()"> <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone</ion-button>
+      <ion-button  id="sign-in-button" color="transparent" (click)="googleSignin()" > <ion-icon slot="end" name="logo-google"></ion-icon> Sign-in with Google</ion-button>
+      <ion-button  id="sign-in-button" color="transparent" (click)="Facebook()" ><ion-icon slot="end" name="logo-facebook"></ion-icon>Sign-in with Facebook</ion-button>
       <!-- <ion-button expand="full" id="sign-in-button" (click)="twitter()" >Twitter</ion-button> -->
       <!-- <ion-button expand="full" id="sign-in-button" (click)="Github()" >Github</ion-button> -->
     </div>
