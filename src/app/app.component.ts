@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  // dbUser = firebase.firestore().collection("userProfile");
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -24,14 +25,13 @@ export class AppComponent {
   }
   checkUser() {
     //firebase.auth().settings.appVerificationDisabledForTesting = true;
-    firebase.auth().onAuthStateChanged((res)=>{
+    firebase.auth().onAuthStateChanged((res) => {
       if (res) {
         this.router.navigateByUrl('list')
         console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')
       }
-      
     })
   }
   initializeApp() {
