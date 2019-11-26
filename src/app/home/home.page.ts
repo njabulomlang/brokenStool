@@ -95,8 +95,9 @@ export class HomePage implements OnInit{
     modal.present();
   }
 
-  categories() {
-    this.router.navigateByUrl("/categories")
+  categories(data) {
+    console.log(data);
+    this.router.navigate(['categories', data])
   }
   
 }

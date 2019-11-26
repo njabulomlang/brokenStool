@@ -1,9 +1,75 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Wishlist</ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="secondary">
+          <ion-button>
+            <ion-icon slot="icon-only" id="icon" name="arrow-back"></ion-icon>
+          </ion-button>
+          </ion-buttons>
+    
+      </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+  <div class="container">
+    <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
+      <h1>Wishlist (2)</h1>
+    </div>
+
+<p style="font-family: 'Raleway'; margin: 5px;">This is your wishlist. Save all your favourites here</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+        </div>
+        <div class="details">
+          <div class="left">
+            <div class="itemz">
+              <p id="item">Yellow Hoody</p>
+            <p id="price">R350</p>
+            </div>
+            <div class="close"></div>
+            <p><ion-icon  name="trash"></ion-icon></p>
+          </div>
+
+          <div class="right">
+            
+            <ion-button (click)="onClick()" color="transparent">
+              <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
+            </ion-button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+          </div>
+          <div class="details">
+            <div class="left">
+              <div class="itemz">
+                <p id="item">Yellow Hoody</p>
+              <p id="price">R350</p>
+              </div>
+              <div class="close"></div>
+              <p><ion-icon  name="trash"></ion-icon></p>
+            </div>
+  
+            <div class="right">
+              
+              <ion-button (click)="onClick()" color="transparent">
+                <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
+              </ion-button>
+            </div>
+  
+          </div>
+        </div>
+    </div>
+
+  </div>
+
 
 </ion-content>
