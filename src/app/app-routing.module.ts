@@ -37,7 +37,7 @@ const routes: Routes = [
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
   {
-    path: 'categories',
+    path: 'categories/:data',
     loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
   },
   {
@@ -64,7 +64,7 @@ const routes: Routes = [
     loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
   {
-    path: 'view',
+    path: 'view/:view_id',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
   },
 

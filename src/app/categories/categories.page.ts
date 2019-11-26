@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-categories',
@@ -7,15 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage implements OnInit {
-
-  constructor(public router: Router) { }
+  category : string;
+  constructor(public router: Router, public route: ActivatedRoute) {
+    console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
+    this.category = this.route.snapshot.paramMap.get('data').toUpperCase();
+   }
 
   ngOnInit() {
+  
   }
 
   list(data) {
     this.router.navigate(['list', data])
-  // console.log(data);
   }
 
 }

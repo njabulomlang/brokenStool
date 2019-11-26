@@ -5,5 +5,20 @@
 </ion-header>
 
 <ion-content>
-
+  <div class="container">
+    <div class="cards">
+      <div class="card" *ngFor="let p of unitProduct">
+        <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+        <div class="itemdetails">
+          <div class="name">
+             <p>{{p.name}} <br> <span>{{p.price | currency:'R'}}</span></p>
+         <!-- <ion-button (click)="addToCart(p.id, p.info)">Add to cart</ion-button>  -->
+          </div>
+          <div id="icon">
+            <ion-icon slot="end" name="heart-empty"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
