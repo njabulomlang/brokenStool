@@ -1,9 +1,96 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>Basket</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back" id="icon"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" name="heart" id="icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+
+  <div class="container">
+    <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
+      <h1>BASKET (2)</h1>
+    </div>
+
+    <p style="font-family: 'Raleway'; margin: 5px; font-size: 3.5vw">Please note that delivery to your door is R100</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+        </div>
+        <div class="details">
+          <div class="left">
+            <p id="item">Yellow Hoody</p>
+            <p>Size: XS</p>
+            <p>12 November 2019</p>
+            <p style="font-size: 4vw; margin: 5px; display: flex; flex-flow: row; align-items: flex-start;">
+              <ion-icon name="remove-circle-outline"></ion-icon>&nbsp; 1 &nbsp;<ion-icon name="add-circle-outline">
+              </ion-icon>
+            </p>
+          </div>
+
+          <div class="right">
+            <p>R300</p>
+            <P>
+              <ion-icon name="trash"></ion-icon>
+            </P>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg">
+        </div>
+        <div class="details">
+          <div class="left">
+            <p id="item">Dankie Jesu Sweater</p>
+            <p>Size: XS</p>
+            <p>12 November 2019</p>
+            <p style="font-size: 4vw; margin: 5px; display: flex; flex-flow: row; align-items: flex-start;">
+              <ion-icon name="remove-circle-outline"></ion-icon>&nbsp; 2 &nbsp;<ion-icon name="add-circle-outline">
+              </ion-icon>
+            </p>
+          </div>
+
+          <div class="right">
+            <p>R350</p>
+            <P>
+              <ion-icon name="trash"></ion-icon>
+            </P>
+          </div>
+
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div class="total">
+      <div class="carttotal">
+        <p>TOTAL</p>
+        <p>R300</p>
+      </div>
+
+      <div class="btn">
+        <ion-button (click)="onClick()" color="transparent">
+          PLACE ORDER
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
 
 </ion-content>

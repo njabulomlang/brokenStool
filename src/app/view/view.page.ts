@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.page.html',
@@ -114,5 +115,8 @@ export class ViewPage implements OnInit {
     //     })*/
     //   } 
     // }) 
+  }
+  viewitem() {
+    this.router.navigateByUrl("/basket")
   }
 }

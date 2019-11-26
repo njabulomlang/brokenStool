@@ -1,24 +1,166 @@
 <ion-header no-border>
-  <ion-toolbar>
-    <ion-title>view</ion-title>
+  <ion-toolbar >
+    <ion-buttons slot="secondary">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button id="rate">
+        <ion-icon slot="start" name="star"></ion-icon> Rate This Product
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <div class="container">
-    <div class="cards">
-      <div class="card" *ngFor="let p of unitProduct">
-        <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
-        <div class="itemdetails">
-          <div class="name">
-             <p>{{p.name}} <br> <span>{{p.price | currency:'R'}}</span></p>
-         <!-- <ion-button (click)="addToCart(p.id, p.info)">Add to cart</ion-button>  -->
+    <div class="image">
+      <img src="https://i.pinimg.com/564x/59/e2/11/59e211cb4bdc56c35c8a5d4dcbdf7305.jpg">
+
+      <div class="iteminfo">
+        <div class="itemname">
+          <div class="stars">
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
           </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
+
+          <div class="appname">
+            <p><b> HOODY</b> <br> By Dankie Jesu</p>
           </div>
         </div>
+
+        <div class="price">
+          <p>R300</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="productinfo">
+      <div class="add">
+        <ion-fab-button color="transparent">
+          <ion-icon name="basket"></ion-icon>
+  
+        </ion-fab-button>
+      </div>
+      <div class="about">
+        <p>About Product</p>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking
+          at its layout. The point of using Lorem Ipsum is that </p>
+      </div>
+      <div class="sizes">
+        <p>Available sizes</p>
+        <ion-button (click)="onClick()" color="transparent">
+          XS
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          S
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          M
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          L
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          XL
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          XXL
+        </ion-button>
+      </div>
+      <div class="colours">
+        <p>colours</p>
+
+        <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
+        </ion-button>
+        <ion-button (click)="onClick()"  color="transparent" style="background: green; border-radius: 6px;">
+        </ion-button>
+        <ion-button (click)="onClick()"  color="transparent" style="background: red; border-radius: 6px;">
+        </ion-button>
+      </div>
+      <div class="quantity">
+        <p>Quantity</p>
+        <ion-button (click)="onClick()" color="transparent" 
+        style="background: rgb(212, 212, 212);
+         color: maroon;
+         border-top-left-radius: 7px;
+         border-bottom-left-radius: 7px;">
+          <ion-icon name="remove"></ion-icon>
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent" style="background: rgb(212, 250, 255);" >
+          1
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent" 
+        style="background: rgb(212, 212, 212); 
+        color: maroon;
+         border-top-right-radius: 7px;
+         border-bottom-right-radius: 7px;">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="shipping">
+        <p>Shipping Information</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
+      </div>
+      <div class="delivery">
+        <p>Delivery Information</p>
+        <p>Items are available for pick up at the following Address</p>
+        <p>123 Orlando East<br>
+          SOWETO<br>
+          1804
+        </p>
+      </div>
+      
+      <div class="buttonz">
+        <ion-button (click)="viewitem()" color="transparent">
+          <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book" style="color: maroon; font-size: 8vw;position: relative; bottom: 13px;"></ion-icon> R300
+        </ion-button>
       </div>
     </div>
   </div>
+
 </ion-content>
+
+
+<!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()" #cart>
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-card *ngFor="let p of products">
+      <ion-card-header>
+        <ion-card-title>{{ p.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="8">
+            <ion-label color="secondary">
+              <b>{{ p.price | currency:'R' }}</b>
+            </ion-label>
+          </ion-col>
+          <ion-col size="4" class="ion-text-right">
+            <ion-button fill="clear" (click)="addToCart(p)">
+              <ion-icon name="cart"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear">
+              <ion-icon name="heart"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list> -->
+
+<!--  <ion-fab vertical="top" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="openCart()" #cart>
+            <div class="cart-length">{{ cartItemCount | async }}</div>
+            <ion-icon name="cart" class="cart-icon"></ion-icon>
+          </ion-fab-button>
+        </ion-fab> -->
