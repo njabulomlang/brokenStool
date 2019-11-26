@@ -1,9 +1,28 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-title>Payment</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div class="container">
+
+    <div class="pagename">
+      <h1>PAYMENT</h1>
+    </div>
+
+    <div class="btnz">
+        <ion-segment (ionChange)="segmentChanged($event)" value="delivery">
+            <ion-segment-button value="delivery">
+              <ion-label>Delivery</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="pickup">
+              <ion-label>Pickup</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          
+    </div>
+  </div>
 
 </ion-content>

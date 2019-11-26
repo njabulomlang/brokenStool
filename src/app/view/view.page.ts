@@ -14,6 +14,6 @@ export class ViewPage implements OnInit {
   }
 
 viewitem(){
-    this.router.navigateByUrl("/cart-modal")
+    this.router.navigateByUrl("/basket")
   }
 }
