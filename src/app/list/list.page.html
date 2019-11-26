@@ -8,7 +8,7 @@
     </ion-buttons>
     <ion-buttons slot="secondary">
       <ion-button id="icon">
-        <ion-icon slot="icon-only" name="arrow-back">1</ion-icon>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
 
@@ -25,11 +25,11 @@
 
   <div class="container">
     <div class="pagename">
-      <h1>HOODIES</h1>
+      <h1>{{collectionName}}</h1>
     </div>
     <div class="itemcount">
       <div class="items">
-        <p>20items</p>
+        <p>{{myProduct.length}} items</p>
       </div>
 
       <div class="filter">
@@ -44,20 +44,19 @@
     </div>
 
     <div class="cards">
-      <div class="card" (click)="viewitem()">
+      <div class="card"  *ngFor="let p of myProduct">
         <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
         <div class="itemdetails">
           <div class="name">
-            <p>Yellow Hoody <br> <span>R200</span></p>
+            <p>{{p.desc}} <br> <span>{{p.price | currency:'R'}}</span></p>
           </div>
           <div id="icon">
             <ion-icon slot="end" name="heart-empty"></ion-icon>
           </div>
 
         </div>
-
       </div>
-      <div class="card">
+      <!-- <div class="card">
         <img src="https://i.pinimg.com/564x/9b/e5/3b/9be53bb25b9c82c8b8c823fb1eb336f4.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -69,8 +68,8 @@
 
         </div>
 
-      </div>
-      <div class="card">
+      </div> -->
+      <!-- <div class="card">
         <img src="https://i.pinimg.com/564x/e6/65/8b/e6658b090015019c0256cb006438f030.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -82,8 +81,8 @@
 
         </div>
 
-      </div>
-      <div class="card">
+      </div> -->
+      <!-- <div class="card">
         <img src="https://i.pinimg.com/564x/59/e2/11/59e211cb4bdc56c35c8a5d4dcbdf7305.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -95,8 +94,8 @@
 
         </div>
 
-      </div>
-      <div class="card">
+      </div> -->
+     <!--  <div class="card">
         <img src="https://i.pinimg.com/564x/16/66/c6/1666c6e5e4f6da8576d3245119cf6c8d.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -108,8 +107,8 @@
 
         </div>
 
-      </div>
-      <div class="card">
+      </div> -->
+     <!--  <div class="card">
         <img src="https://i.pinimg.com/564x/65/16/1b/65161b0b494cbab70ec86dc3e6f20818.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -121,7 +120,7 @@
 
         </div>
 
-      </div>
+      </div> -->
 
     </div>
   </div>

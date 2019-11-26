@@ -5,5 +5,12 @@
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="account">
+  <ion-button (click)="selectImage()">Profile pic</ion-button>
+  <ion-input placeholder="Name" formControlName="name"></ion-input>
+  <ion-input placeholder="Surname" formControlName="surname"></ion-input>
+  <ion-input placeholder="Email" formControlName="email"></ion-input>
+  <ion-button (click)="createAccount()" [disabled]="!account.valid">Save</ion-button>
+</form>
+  
 </ion-content>

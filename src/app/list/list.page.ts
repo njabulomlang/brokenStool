@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-list',
@@ -7,12 +8,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
-
-  constructor(public router: Router) { }
-
-  ngOnInit() {
+  dbWishlist = firebase.firestore().collection("Wishlist");
+  dbProduct = firebase.firestore().collection("Products");
+  myProduct = [];
+  collectionName : string = "";
+  constructor(public router: Router, public route: ActivatedRoute) { 
+    this.collectionName = this.route.snapshot.paramMap.get('key')
   }
 
+  ngOnInit() {
+  //  console.log(); 
+  setTimeout(() => {
+    this.dbProduct.doc("DJ").collection(this.collectionName).onSnapshot((res)=>{
+      res.forEach((doc)=>{
+        this.myProduct.push(doc.data());
+        console.log('These products ', this.myProduct); 
+      })
+    })
+  }, 1000);
+    
+  }
+
+  /* list() {
+    this.router.navigateByUrl("/list")
+  } */
+ /*  async productCategory() {
+
+  } */
   viewitem(){
     this.router.navigateByUrl("/view")
   }

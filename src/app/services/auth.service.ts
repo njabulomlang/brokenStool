@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController } from '@ionic/angular';
+import { CartService } from './cart.service';
+import { Router } from '@angular/router';
 declare var window
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,13 @@ export class AuthService {
   user;
   uid;
   confirm;
-  constructor(public alertController: AlertController) { }
+  myuid="";
+  constructor(public alertController: AlertController, public cartService: CartService,
+    public router: Router) { 
+      
+    }
 
-  registerUser(email, password) {
+registerUser(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then((res) => {
       console.log("User details", res.user);
       this.uid = res.user.uid
@@ -22,9 +28,10 @@ export class AuthService {
   loginUser(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password).then((res) => {
       console.log("User details", res.user);
-
+      //this.myuid = res.user.uid;
     })
   }
+  
   loginPhone() {
     firebase.auth().settings.appVerificationDisabledForTesting = true;
     var phone = "+27769020059";
@@ -85,7 +92,9 @@ export class AuthService {
         handler: (result) => {
           console.log(result.code);
           return this.confirm.confirm(result.code).then((result) => {
-            var user = result.user; console.log(user);
+            var user = result.user; 
+            console.log(user);
+            this.myuid = result.user.uid;
             return user
           }).catch( (error) => {
             console.log(error);
@@ -97,6 +106,7 @@ export class AuthService {
 ​
     await alert.present();
   }
+  
   login(code, confirmationResult) {
     return confirmationResult.confirm(code).then((result) => {
       var user = result.user; console.log(user);

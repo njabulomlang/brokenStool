@@ -11,17 +11,17 @@ export class CartModalPage implements OnInit {
  
   cart: Product[] = [];
  
-  constructor(private cartService: CartService, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
+  constructor() { }
  
   ngOnInit() {
-    this.cart = this.cartService.getCart();
+    //this.cart = this.cartService.getCart();
   }
  
-  decreaseCartItem(product) {
+ /*  decreaseCartItem(product) {
     this.cartService.decreaseProduct(product);
-  }
+  } */
  
-  increaseCartItem(product) {
+/*   increaseCartItem(product) {
     this.cartService.addProduct(product);
   }
  
@@ -42,11 +42,11 @@ export class CartModalPage implements OnInit {
  
     let alert = await this.alertCtrl.create({
       header: 'Thanks for your Order!',
-      message: 'We will deliver your food as soon as possible',
+      message: 'We will deliver your order as soon as possible',
       buttons: ['OK']
     });
     alert.present().then(() => {
       this.modalCtrl.dismiss();
     });
-  }
+  } */
 }
