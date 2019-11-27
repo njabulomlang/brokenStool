@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController } from '@ionic/angular';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-basket',
@@ -16,6 +17,7 @@ export class BasketPage implements OnInit {
   prodCart = [];
   totalCost: number = 0;
   prodCount:number = 0;
+  doc_id:string = ''
   constructor(public alertCtrl: AlertController) { }
 
   ngOnInit() {
@@ -70,18 +72,39 @@ export class BasketPage implements OnInit {
     console.log('My doc is ', doc);
   }
   removeProd(id) {
-    console.log('Doc id ', id);
+    //console.log('Doc id ', id);
     this.dbCart.doc(id).delete().then((res)=>{
-      
     })
   }
   placeOrder() {
     
   }
+  async presentAlertConfirm(id) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Do you want to remove this product?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        }, {
+          text: 'Okay',
+          handler: () => {
+            //console.log('Id is ', id);
+            this.removeProd(id)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  
   plus(prod ,index) {
     let num = index.data.product[0].quantity++
    index.data.product[0].cost = index.data.product[0].cost
     let id = index.id
+    
   //console.log('Prod ', prod);
     let product = [prod]
     // product.push[prod]
@@ -106,7 +129,8 @@ export class BasketPage implements OnInit {
     // product.push[prod]
   // this.dbCart.doc(id).onSnapshot((res)=>{
     if (index.data.product[0].quantity===1) {
-      console.log('You are about to delete your product');
+      // console.log('You are about to delete your product');
+      this.presentAlertConfirm(index.id);
     } else {
       let num = index.data.product[0].quantity--
       index.data.product[0].cost = index.data.product[0].cost
@@ -122,4 +146,5 @@ export class BasketPage implements OnInit {
     // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
     //console.log('Quan decr ', quan);
   }
+  
 }

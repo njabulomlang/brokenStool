@@ -84,12 +84,16 @@ export class ViewPage implements OnInit {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
     return toast.present();
   }
+  toBusket() {
+    this.router.navigateByUrl('basket');
+  }
   addToCart(id, details) {
     if (this.my_size === "") {
       this.toastController('Please select your size');
     } else {
       this.dbCart.add({ customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{ product_name: details.name, size: this.my_size, quantity: this.quantity, cost: details.price, unitCost: details.price}] }).then(() => {
-        this.router.navigateByUrl('basket');
+        this.toastController('Added to busket')
+        //this.router.navigateByUrl('basket');
       })
     }
 
