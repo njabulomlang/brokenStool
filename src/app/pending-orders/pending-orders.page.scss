@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-flow: column; 
+
+    .cards{
+        display: flex;
+        flex-flow: column;
+
+        .card{
+            display: flex;
+            flex-flow: column;
+
+            .top{
+                display: flex;
+                flex-flow: row;
+                .image{
+                    width: 30vw;
+                }
+            }
+        }
+    }
+}

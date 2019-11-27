@@ -66,7 +66,15 @@ const routes: Routes = [
   {
     path: 'view/:view_id',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
+  },  {
+    path: 'pending-orders',
+    loadChildren: () => import('./pending-orders/pending-orders.module').then( m => m.PendingOrdersPageModule)
   },
+  {
+    path: 'order-history',
+    loadChildren: () => import('./order-history/order-history.module').then( m => m.OrderHistoryPageModule)
+  },
+
 
 
 ];

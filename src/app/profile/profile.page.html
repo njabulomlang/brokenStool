@@ -1,9 +1,96 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>Profile</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-icon slot="start" name="arrow-back" id="icon"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
+<ion-content fullscreen>
+
+  <div class="container">
+
+    <div class="image">
+      <img src="https://i.pinimg.com/564x/cb/89/40/cb89404551d9a111eb03ec9dcedd921a.jpg">
+      <div class="name">
+
+        <p>Jonathan M'Baku <br><span>johnmbaku@gmail.com</span></p>
+
+      </div>
+    </div>
+
+    <div class="btnz">
+      <ion-button (click)="showEdit()" color="transparent">
+        <span>Account Details <ion-icon slot="end" name="add"></ion-icon></span>
+      </ion-button>
+
+      <div class="edit" *ngIf="editprofile">
+        <div class="inputs">
+          
+            <ion-input placeholder="Name"></ion-input>
+
+            <ion-input placeholder="Surname"></ion-input>
+
+            <ion-input placeholder="Email"></ion-input>
+          
+        </div>
+        <div class="buttonz">
+          <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
+            CANCEL
+          </ion-button>
+          <ion-button (click)="onClick()" color="transparent" id="update">
+            UPDATE
+          </ion-button>
+        </div>
+      </div>
+      <ion-button (click)="pendingOrders()" color="transparent">
+        <span>Pending Orders <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+      </ion-button>
+
+      <ion-button (click)="orderhistory()" color="transparent">
+        <span>Order History <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+      </ion-button>
+    </div>
+
+
+    <div class="files">
+      <div class="backdrop"></div>
+      <div class="wishlist" (click)="basket()">
+        <div class="backdrop"></div>
+        <img src="https://i.pinimg.com/564x/d6/91/5b/d6915bda9b337db69c69cbd217c3b307.jpg">
+
+        <div class="right">
+          <div class="heart">
+            <ion-icon slot="start" name="heart"></ion-icon>
+          </div>
+
+          <div class="clock">
+            <p>2 items</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="basket" (click)="wishlist()">
+        <div class="backdrop"></div>
+        <img src="https://i.pinimg.com/564x/91/2b/7c/912b7c0f897888c8ae8d24dce149da34.jpg">
+
+        <div class="right">
+          <div class="heart">
+            <ion-icon slot="start" name="basket"></ion-icon>
+          </div>
+
+          <div class="clock">
+            <p>2 items</p>
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
 </ion-content>
