@@ -38,10 +38,10 @@ export class ListPage implements OnInit {
  /*  async productCategory() {
 
   } */
-  viewitem(id){
+  viewitem(id, data){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-          doc_id: id,
+          data: data,
           col: this.collectionName,
           //currency: JSON.stringify(currency),
          // refresh: refresh
