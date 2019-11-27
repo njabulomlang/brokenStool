@@ -41,7 +41,7 @@
 
     <div class="productinfo" *ngFor="let prod of unitProduct">
       <div class="add">
-        <ion-fab-button color="transparent">
+        <ion-fab-button color="transparent" (click)="toBusket()">
           <ion-icon name="basket"></ion-icon>
   
         </ion-fab-button>
