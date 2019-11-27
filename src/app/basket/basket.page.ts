@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-basket',
@@ -15,7 +16,7 @@ export class BasketPage implements OnInit {
   prodCart = [];
   totalCost: number = 0;
   prodCount:number = 0;
-  constructor() { }
+  constructor(public alertCtrl: AlertController) { }
 
   ngOnInit() {
     this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
@@ -30,11 +31,11 @@ export class BasketPage implements OnInit {
       info.forEach((doc) => {
         this.prodCart.push({data:doc.data(), id:doc.id});
         //this.addProduct(doc.id)
-        for (let car of this.prodCart) {
+       /*  for (let car of this.prodCart) {
           car.data.product.forEach((item)=>{
-          this.totalCost =  Number(this.totalCost + item.cost);
+           this.totalCost +=  Number(item.cost*item.quantity);
           })
-         }
+         } */
       })
       //let sum:number = 0;
      
@@ -46,9 +47,25 @@ export class BasketPage implements OnInit {
         })*/
       //   } 
     })
-
+    setTimeout(() => {
+      this.getTotal();
+    }, 1000);
+    
   }
-
+  getTotal() {
+    let total = 0;
+    for(let i = 0; i < this.prodCart.length; i++){
+        let product = this.prodCart[i].data.product;
+       // console.log(product);
+         product.forEach((item)=>{
+           total += (item.cost * item.quantity);
+        }) 
+       //
+    }
+    //console.log('My tot ', total);
+    
+    return total;
+}
   addProduct(doc) {
     console.log('My doc is ', doc);
   }
@@ -63,22 +80,44 @@ export class BasketPage implements OnInit {
   }
   plus(prod ,index) {
     let num = index.data.product[0].quantity++
+   index.data.product[0].cost = index.data.product[0].cost
     let id = index.id
-  // console.log('Prod ', prod, ' index', index );
+  //console.log('Prod ', prod);
     let product = [prod]
     // product.push[prod]
   
+    //calculate new cost
+    // 
+    //
+    //
+    //
   
   // this.dbCart.doc(id).onSnapshot((res)=>{
      this.dbCart.doc(id).update({product:product}).then(res => {
-       console.log('updated');
+      // console.log('updated');
        
      })
   // })
     //
     //console.log('Quan incre ', quan);
   }
-  minus(id ,quantity) {
+  minus(prod ,index) {
+  
+    // product.push[prod]
+  // this.dbCart.doc(id).onSnapshot((res)=>{
+    if (index.data.product[0].quantity===1) {
+      console.log('You are about to delete your product');
+    } else {
+      let num = index.data.product[0].quantity--
+      index.data.product[0].cost = index.data.product[0].cost
+      let id = index.id
+    // console.log('Prod ', prod, ' index', index );
+      let product = [prod]
+      this.dbCart.doc(id).update({product:product}).then(res => {
+        //   console.log('updated');
+         })
+    }
+     
     // this.prodCount = quantity+1
     // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
     //console.log('Quan decr ', quan);
