@@ -10,11 +10,11 @@
 
   <div class="container">
 
-    <div class="image">
-      <img src="https://i.pinimg.com/564x/cb/89/40/cb89404551d9a111eb03ec9dcedd921a.jpg">
+    <div class="image" *ngFor="let p of profile">
+      <img src="{{p.profilePic}}">
       <div class="name">
 
-        <p>Jonathan M'Baku <br><span>johnmbaku@gmail.com</span></p>
+        <p>{{p.name }} &nbsp; {{ p.surname}} <br><span>{{p.email}}</span></p>
 
       </div>
     </div>
@@ -25,20 +25,19 @@
       </ion-button>
 
       <div class="edit" *ngIf="editprofile">
-        <div class="inputs">
+        <div class="inputs" *ngFor="let p of profile">
           
-            <ion-input placeholder="Name"></ion-input>
+            <ion-input [(ngModel)]="p.name" placeholder="Name"></ion-input>
 
-            <ion-input placeholder="Surname"></ion-input>
+            <ion-input [(ngModel)]="p.surname" placeholder="Surname"></ion-input>
 
-            <ion-input placeholder="Email"></ion-input>
-          
+            <ion-input [(ngModel)]="p.email" placeholder="Email"></ion-input>
         </div>
-        <div class="buttonz">
+        <div class="buttonz" *ngFor="let p of profile">
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
             CANCEL
           </ion-button>
-          <ion-button (click)="onClick()" color="transparent" id="update">
+          <ion-button (click)="updateProfile(p)" color="transparent" id="update">
             UPDATE
           </ion-button>
         </div>
@@ -65,7 +64,7 @@
           </div>
 
           <div class="clock">
-            <p>2 items</p>
+            <p>{{myWish}} items</p>
           </div>
 
         </div>
@@ -81,7 +80,7 @@
           </div>
 
           <div class="clock">
-            <p>2 items</p>
+            <p>{{myCart}} items</p>
           </div>
 
         </div>

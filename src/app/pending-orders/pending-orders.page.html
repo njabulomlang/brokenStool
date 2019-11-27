@@ -8,17 +8,17 @@
 
   <div class="container">
     <div class="cards">
-      <div class="card">
-        <div class="top">
+      <div class="card" *ngFor="let o of myOrder">
+        <div class="top" *ngFor="let p of o.info.product">
           <div class="image">
             <img src="https://i.pinimg.com/564x/02/15/af/0215af48f423c587849d4ea7cb30068f.jpg">
           </div>
           <div class="info">
-            <h4>Kwanga Navy Sweater</h4>
-            <h4>QTY. 1</h4>
-            <p>R540.00</p>
-            <p>11 January 2020</p>
-            <p>NHD2126546515</p>
+            <h4>{{p.product_name}}</h4>
+            <h4>{{p.quantity}}</h4>
+            <p>{{p.cost * p.quantity | currency:'R'}}</p>
+            <p>{{p.timestamp | date:'medium'}}</p>
+            <p>{{o.id}}</p>
           </div>
         </div>
 
