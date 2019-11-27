@@ -5,12 +5,43 @@
 </ion-header> -->
 
 <ion-content>
-  <form [formGroup]="account">
-  <ion-button (click)="selectImage()">Profile pic</ion-button>
-  <ion-input placeholder="Name" formControlName="name"></ion-input>
-  <ion-input placeholder="Surname" formControlName="surname"></ion-input>
-  <ion-input placeholder="Email" formControlName="email"></ion-input>
-  <ion-button (click)="createAccount()" [disabled]="!account.valid">Save</ion-button>
-</form>
-  
+
+  <div class="container">
+    <div class="blur">
+      <img src="../../assets/back.jpg" alt="Your Profile Image">
+    </div>
+    <div class="everything">
+      <div class="title">
+        <p>CREATE <br> ACCOUNT</p>
+      </div>
+      <div class="image">
+        <img src="{{profilePic}}">
+        <ion-button (click)="selectImage()" color="transparent">SELECT IMAGE</ion-button>
+      </div>
+
+
+      <div class="form">
+        <form [formGroup]="account">
+          <ion-item color="transparent">
+            <ion-input placeholder="Name" formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-item color="transparent">
+            <ion-input placeholder="Surname" formControlName="surname"></ion-input>
+          </ion-item>
+
+          <ion-item color="transparent">
+            <ion-input placeholder="Email" formControlName="email"></ion-input>
+          </ion-item>
+
+          <br>
+          <ion-button (click)="createAccount()" [disabled]="!account.valid" color="transparent">DONE
+          </ion-button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
 </ion-content>

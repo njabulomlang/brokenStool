@@ -1,28 +1,87 @@
-<ion-header no-border>
+<!-- <ion-header no-border>
   <ion-toolbar>
     <ion-title>Payment</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<ion-content fullscreen>
 
   <div class="container">
 
     <div class="pagename">
-      <h1>PAYMENT</h1>
+      <h1 style="font-family: 'Raleway';">PAYMENT</h1>
+    </div>
+
+    <div class="btn">
+      <div class="deliver">
+        <p>DELIVERY</p>
+        <div class="line"></div>
+      </div>
+      <div class="pickup"><p>PICK-UP</p></div>
+    </div>
+
+    <div class="details">
+      <div class="title">
+        <h2 style="font-family: 'Raleway';">Your Cart</h2>
+      </div>
+
+      <div class="list">
+        <table>
+          <tr>
+            <td>Hoody</td>
+            <td>R300</td>
+          </tr>
+          <tr>
+            <td>Hoody</td>
+            <td>R300</td>
+          </tr>
+
+          <tr>
+            <td>Hoody</td>
+            <td>R300</td>
+          </tr>
+          <tr>
+            <td>Delivery Fee</td>
+            <td>R100</td>
+          </tr>
+          <!-- Cart Total- -->
+          <tr>
+            <th>TOTAL</th>
+            <th>R1200</th>
+          </tr>
+
+
+
+        </table>
+
+      </div>
+
+    </div>
+    <div class="text">
+      <div class="reference">
+        <p>Your reference for this transaction is ZN09876. Please use it to deposit the amount due.</p>
+      </div>
+
+      <div class="depositto">
+        <p><b>Deposit amount to </b><br>
+          Account Holder Name: Lunga <br>
+          Account Number: 1234567890<br>
+          Branch Name: Dube <br>
+          Branch Number: 47100
+        </p>
+      </div>
+
+      <div class="note">
+        <p>Please Note, Delivery to your door is R100 and to your nearest post office is R90</p>
+      </div>
     </div>
 
     <div class="btnz">
-        <ion-segment (ionChange)="segmentChanged($event)" value="delivery">
-            <ion-segment-button value="delivery">
-              <ion-label>Delivery</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="pickup">
-              <ion-label>Pickup</ion-label>
-            </ion-segment-button>
-          </ion-segment>
-          
+      <ion-button (click)="onClick()" color="transparent">
+       DONE
+      </ion-button>
     </div>
+
   </div>
 
 </ion-content>
