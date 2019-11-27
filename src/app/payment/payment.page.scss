@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+.container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  table {
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    font-family: "Poppins";
+    width: 70%;
+    padding: 20px;
+
+    td {
+      // border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      font-family: "Raleway";
+    }
+
+    td:nth-child(1) {
+      text-align: left;
+    }
+
+    td:nth-child(2) {
+      text-align: right;
+    }
+
+    th {
+      border-top: 0.5px solid black;
+
+      text-align: center;
+      padding: 8px;
+    }
+
+    th:nth-child(1) {
+      text-align: left;
+    }
+
+    th:nth-child(2) {
+      text-align: right;
+    }
+  }
+
+
+
+  .text {
+    position: absolute;
+    top: 60%;
+    margin: 15px;
+    font-family: "Poppins";
+    font-size: 0.8em;
+  }
+
+  .btnz {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+    ion-button {
+      width: 95%;
+      color: white;
+      background: rgb(0, 0, 36);
+      font-family: "Poppins";
+      letter-spacing: 2px;
+    }
+  }
+  .details {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+
+    .title {
+      font-family: "Poppins";
+      font-weight: lighter;
+      margin: 10px;
+    }
+  }
+
+  .pagename {
+    margin: 10px;
+    font-family: "Poppins";
+  }
+
+  .btn {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    .line {
+        width: 20vw;
+        height: 1.5px;
+        background: grey;
+      }
+    p{
+        cursor: pointer;
+    }
+  }
+}
