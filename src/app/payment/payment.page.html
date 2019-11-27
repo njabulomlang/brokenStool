@@ -26,12 +26,12 @@
       </div>
 
       <div class="list">
-        <table>
-          <tr>
-            <td>Hoody</td>
-            <td>R300</td>
+        <table *ngFor="let o of myOrder">
+          <tr *ngFor="let b of o.product">
+            <td>{{b.product_name}}</td>
+            <td>{{b.cost*b.quantity | currency:'R'}}</td>
           </tr>
-          <tr>
+         <!--  <tr>
             <td>Hoody</td>
             <td>R300</td>
           </tr>
@@ -39,15 +39,15 @@
           <tr>
             <td>Hoody</td>
             <td>R300</td>
-          </tr>
+          </tr> -->
           <tr>
             <td>Delivery Fee</td>
-            <td>R100</td>
+            <td>{{100|currency:'R'}}</td>
           </tr>
           <!-- Cart Total- -->
           <tr>
             <th>TOTAL</th>
-            <th>R1200</th>
+            <th>{{getTotal() | currency:'R'}}</th>
           </tr>
 
 
@@ -59,7 +59,7 @@
     </div>
     <div class="text">
       <div class="reference">
-        <p>Your reference for this transaction is ZN09876. Please use it to deposit the amount due.</p>
+        <p>Your reference for this transaction is {{refNo}}. Please use it to deposit the amount due.</p>
       </div>
 
       <div class="depositto">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="btnz">
-      <ion-button (click)="onClick()" color="transparent">
+      <ion-button (click)="goHome()" color="transparent">
        DONE
       </ion-button>
     </div>

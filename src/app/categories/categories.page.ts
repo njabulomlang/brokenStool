@@ -21,5 +21,7 @@ export class CategoriesPage implements OnInit {
   list(data) {
     this.router.navigate(['list', data])
   }
-
+  wishlist() {
+    this.router.navigateByUrl('wishlist');
+  }
 }

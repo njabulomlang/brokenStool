@@ -70,6 +70,9 @@ export class HomePage implements OnInit{
   busket() {
     this.router.navigateByUrl('basket');
   }
+  wishlist() {
+    this.router.navigateByUrl('wishlist');
+  }
   animateCSS(animationName, keepAnimated = false) {
     const node = this.fab.nativeElement;
     node.classList.add('animated', animationName)

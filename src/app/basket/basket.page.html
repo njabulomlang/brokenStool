@@ -7,7 +7,7 @@
 
     </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-button color="secondary">
+      <ion-button color="secondary" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart" id="icon"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -78,14 +78,14 @@
       
     </div>
 
-    <div class="total">
+    <div class="total" >
       <div class="carttotal">
         <p>TOTAL</p>
         <p>{{getTotal() | currency:'R'}}</p>
       </div>
 
       <div class="btn">
-        <ion-button (click)="placeOrder()" color="transparent">
+        <ion-button (click)="placeOrder(prodCart)" color="transparent">
           PLACE ORDER
         </ion-button>
       </div>

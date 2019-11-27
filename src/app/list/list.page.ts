@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-list',
@@ -11,10 +11,9 @@ import { NavigationExtras } from '@angular/router';
 export class ListPage implements OnInit {
   dbWishlist = firebase.firestore().collection("Wishlist");
   dbProduct = firebase.firestore().collection("Products");
-  
   myProduct = [];
   collectionName : string = "";
-  constructor(public router: Router, public route: ActivatedRoute, public navCtrl: NavController) { 
+  constructor(public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
     this.collectionName = this.route.snapshot.paramMap.get('key')
   }
 
@@ -50,5 +49,18 @@ export class ListPage implements OnInit {
   this.navCtrl.navigateForward(['view', id], navigationExtras);
    // this.router.navigate(['view', id])
   }
-
+  wishList(id, data) {
+    console.log('My info ', id, data);
+    this.dbWishlist.add({customerUID: firebase.auth().currentUser.uid,price: data.price,name: data.name, id:id, category: this.collectionName}).then(() => {
+      this.toastController('Added to wishlist..');
+      //this.router.navigateByUrl('basket');
+    }) 
+  }
+  wishlist() {
+    this.router.navigateByUrl('wishlist');
+  }
+  async toastController(message) {
+    let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
+    return toast.present();
+  }
 }
