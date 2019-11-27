@@ -19,5 +19,7 @@ export class PendingOrdersPage implements OnInit {
       })
     })
   }
-
+  orderTrack(id,data) {
+    
+  }
 }
