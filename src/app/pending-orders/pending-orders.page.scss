@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+
+ion-toolbar {
+  --background: transparent;
+  font-family: "Poppins";
+  #icon {
+    color: maroon;
+  }
+}
+
 .container {
   display: flex;
   flex-flow: column;
@@ -5,12 +15,11 @@
   .cards {
     display: flex;
     flex-flow: column;
- height: auto;
+    height: auto;
     align-items: center;
-    box-shadow: 2px 2px 20px rgb(206, 206, 206);
+
     border-radius: 5px;
     margin: 6px;
-    // padding: 0px 10px 10px 5px;
     position: relative;
     .card {
       display: flex;
@@ -19,12 +28,17 @@
       top: 10px;
       padding: 5px;
       width: 95vw;
-     
+      min-height: fit-content;
+      margin: 10px;
+      box-shadow: 2px 2px 20px rgb(192, 192, 192);
+      border-radius: 10px;
+
       .top {
         display: flex;
         flex-flow: row;
-        // height: 30vw;
+        height: 60%;
         width: 90vw;
+        margin: 5px;
         .image {
           width: 30vw;
           height: 30vw;
@@ -35,15 +49,27 @@
             height: 100%;
             object-fit: cover;
             border-radius: 5px;
-            
           }
           .info {
-            height: 30vw;
+            // height: 30vw;
             width: 55vw;
             padding: 10px;
-            margin: 10px;
-            p {
+            margin: 15px;
+            display: grid;
+            align-items: center;
+
+            #name {
+              font-family: "Poppins";
+              span {
+                font-weight: bold;
+              }
+            }
+
+            #costs {
+              font-size: 0.8em;
               line-height: 0.2px;
+            }
+            p {
               font-family: "Poppins";
               span {
                 font-weight: bold;
@@ -52,20 +78,23 @@
           }
         }
       }
- 
     }
 
     .butt {
-        width: 100%;
-        margin: 10px;
-        ion-button {
-          color: white;
-          background: rgb(0, 0, 26);
-          width: 80%;
-          position: absolute;
-          left: 10%;
-          font-size: 0.8em;
-        }
+      width: 100%;
+      height: 30%;
+      margin: 18px 0px 20px 0px;
+      ion-button {
+        font-family: "Poppins";
+        letter-spacing: 1px;
+        color: white;
+        background: rgb(0, 0, 26);
+        width: 80%;
+        position: absolute;
+        left: 10%;
+        bottom: 2px;
+        font-size: 0.8em;
       }
+    }
   }
 }
