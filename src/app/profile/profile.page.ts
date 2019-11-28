@@ -31,7 +31,7 @@ export class ProfilePage implements OnInit {
     this.email=doc.data().email;
     //this.profile.push(doc.data());
   })
-    this.presentLoading();
+    //this.presentLoading();
     this.dbCart.where('customerUID', '==',this.uid).onSnapshot((res)=>{
       this.myCart = res.size;
     })

@@ -14,7 +14,7 @@
 
   <div class="container">
     <div class="cards">
-      <div class="card">
+      <div class="card" *ngFor="let order of productOrder">
        
           <div class="image">
             <img src="https://i.pinimg.com/564x/81/0e/0e/810e0e4002f62a4b5563489386d84b72.jpg" alt="">
@@ -22,11 +22,11 @@
 
         <div class="right">
           <div class="title">
-            <p>Formal White</p>
+            <p>{{order.product_name}}</p>
           </div>
 
           <div class="costs">
-            <p><i>QTY. 1</i> <br> R1200 <br> Size: XS <br><br> SDE098765</p>
+            <p><i>QTY. {{order.quantity}}</i> <br> {{order.cost | currency:'R'}} <br> Size: {{order.size}} <br><br> {{doc_id}}</p>
           </div>
 
           <div class="status">
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="card">
+   <!--    <div class="card">
        
           <div class="image">
             <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
@@ -56,14 +56,14 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="tracking">
 
       <div class="total">
         <p id="tot">TOTAL</p>
-        <p id="price">R1200</p>
+        <p id="price">{{getTotal() | currency:'R'}}</p>
       </div>
 
       <div class="date">
@@ -75,13 +75,21 @@
       </div>
 
       <div class="tracks">
-        <ul class="progressbar">
-          <li class="active">Order <br> Received</li>
+        <!-- <ul class="progressbar">
+          <li >Order <br> Received</li>
           <li >Order is <br> being processed</li>
           <li > Order ready <br> for delivery </li>
           <li>Order <br> Collected</li>
-        </ul>
-
+        </ul> -->
+        <div class="circles-container">
+            <div id="one" >1</div>
+            <div id="line1"></div>
+            <div id="two" >2</div>
+            <div id="line2"></div>
+            <div id="three" >3</div>
+            <div id="line3"></div>
+            <div id="four" >4</div>
+          </div>
       </div>
     </div>
 
