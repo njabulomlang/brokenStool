@@ -1,0 +1,55 @@
+ion-toolbar {
+  --background: transparent;
+  font-family: "Poppins";
+  #icon {
+    color: maroon;
+  }
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+
+  .cards {
+    display: flex;
+    flex-flow: column;
+    .card {
+      display: flex;
+      flex-flow: row;
+      width: 95vw;
+      margin: 10px;
+      box-shadow: 5px 5px 10px rgb(190, 190, 190);
+      border-radius: 5px;
+      .image{
+          width: 30vw;
+          height: 30vw;
+          border-radius: 5px;
+          margin: 10px;
+          img{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+          }
+      }
+
+      .right{
+          margin: 5px;
+          .itemname{
+              margin-top: -10px;
+              p{
+                  font-weight: bold;
+                  font-family: 'Poppins';
+                  font-size: 4vw;
+              }
+          }
+
+          .costs{
+              p{
+                  font-size: 3.5vw;
+              }
+          }
+      }
+    }
+  }
+}
