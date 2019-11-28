@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -14,19 +14,24 @@ export class ProfilePage implements OnInit {
   dbCart = firebase.firestore().collection('Cart');
   dbWish = firebase.firestore().collection('Wishlist');
   uid = firebase.auth().currentUser.uid;
-  profile = [];
+  profilePic;
   name; 
   surname;
   email;
   myCart:number;
   myWish:number;
-  constructor(private router: Router, public toastCtrl: ToastController) { }
+  constructor(private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController) { }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
-      //console.log("My profile ", doc.data());
-      this.profile.push(doc.data());
-    })
+    //console.log("My profile ", doc.data());
+    this.profilePic=doc.data().profilePic;
+    this.name=doc.data().name;
+    this.surname=doc.data().surname;
+    this.email=doc.data().email;
+    //this.profile.push(doc.data());
+  })
+    this.presentLoading();
     this.dbCart.where('customerUID', '==',this.uid).onSnapshot((res)=>{
       this.myCart = res.size;
     })
@@ -34,7 +39,13 @@ export class ProfilePage implements OnInit {
       this.myWish = res1.size;
     })
   }
-
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading..',
+      duration:3000
+    });
+    await loading.present();
+  }
   basket() {
     this.router.navigateByUrl("basket")
   }
@@ -54,11 +65,7 @@ export class ProfilePage implements OnInit {
   showEdit(){
     this.editprofile=!this.editprofile
   }
-  updateProfile(p) {
-    this.name = p.name;
-    this.surname = p.surname;
-    this.email = p.email;
-    this.profile = [];
+  updateProfile() {
     this.dbProfile.doc(this.uid).update({name: this.name, surname: this.surname, email: this.email}).then(()=>{
       this.editprofile=!this.editprofile;
       this.toastController();
