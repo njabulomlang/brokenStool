@@ -10,11 +10,11 @@
 
   <div class="container">
 
-    <div class="image" *ngFor="let p of profile">
-      <img src="{{p.profilePic}}">
+    <div class="image" >
+      <img src="{{profilePic}}">
       <div class="name">
-
-        <p>{{p.name }} &nbsp; {{ p.surname}} <br><span>{{p.email}}</span></p>
+        <!-- <ion-progress-bar type="indeterminate"></ion-progress-bar> -->
+        <p>{{name }} &nbsp; {{ surname}} <br><span>{{email}}</span></p>
 
       </div>
     </div>
@@ -25,19 +25,19 @@
       </ion-button>
 
       <div class="edit" *ngIf="editprofile">
-        <div class="inputs" *ngFor="let p of profile">
+        <div class="inputs" >
           
-            <ion-input [(ngModel)]="p.name" placeholder="Name"></ion-input>
+            <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
 
-            <ion-input [(ngModel)]="p.surname" placeholder="Surname"></ion-input>
+            <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
 
-            <ion-input [(ngModel)]="p.email" placeholder="Email"></ion-input>
+            <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
         </div>
-        <div class="buttonz" *ngFor="let p of profile">
+        <div class="buttonz" >
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
             CANCEL
           </ion-button>
-          <ion-button (click)="updateProfile(p)" color="transparent" id="update">
+          <ion-button (click)="updateProfile()" color="transparent" id="update">
             UPDATE
           </ion-button>
         </div>
