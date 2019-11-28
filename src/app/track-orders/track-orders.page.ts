@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
+=======
+import { Router } from '@angular/router';
+>>>>>>> e5426a6d9ccecf08b1bcc57f14382eedcf8a00b1
 
 @Component({
   selector: 'app-track-orders',
@@ -8,6 +12,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./track-orders.page.scss'],
 })
 export class TrackOrdersPage implements OnInit {
+<<<<<<< HEAD
   doc_id:string;
   dbOrder = firebase.firestore().collection('Order');
   productOrder = [];
@@ -20,10 +25,15 @@ export class TrackOrdersPage implements OnInit {
      // this.col = params["col"];
     });
   }
+=======
+
+  constructor(private router: Router) { }
+>>>>>>> e5426a6d9ccecf08b1bcc57f14382eedcf8a00b1
 
   ngOnInit() {
     this.getOrder()
   }
+<<<<<<< HEAD
   getOrder() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res)=>{
       //this.userDetails(res.data().userID);
@@ -42,4 +52,11 @@ export class TrackOrdersPage implements OnInit {
       console.log('My name ', this.name, 'Cell no ',this.cellno);
     }) 
   } */
+=======
+
+  done() {
+    this.router.navigateByUrl("pending-orders")
+  }
+
+>>>>>>> e5426a6d9ccecf08b1bcc57f14382eedcf8a00b1
 }
