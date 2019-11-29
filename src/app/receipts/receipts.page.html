@@ -1,0 +1,125 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back" id="icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Order History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <div class="cards">
+      <div class="card">
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
+        </div>
+
+        <div class="right">
+          <div class="title">
+            <p>Formal White</p>
+          </div>
+
+          <div class="costs">
+            <p><i>QTY. 1</i> <br> R1200 <br> Size: XS <br><br> SDE098765</p>
+          </div>
+
+          <div class="status">
+            <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- <div class="card">
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
+          </div>
+  
+          <div class="right">
+            <div class="title">
+              <p>Formal White</p>
+            </div>
+  
+            <div class="costs">
+              <p><i>QTY. 1</i> <br> R1200 <br> Size: XS <br><br> SDE098765</p>
+            </div>
+  
+            <div class="status">
+              <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
+  
+            </div>
+  
+          </div>
+  
+        </div> -->
+
+      <div class="line"></div>
+
+      <div class="receipt">
+        <h1>Your Receipt</h1>
+      </div>
+
+      <div class="name">
+        <p>John Doe <br> <span>0869887654</span></p>
+      </div>
+
+      <div class="ref">
+        <p>REF <span><i>JGD678986</i></span></p>
+      </div>
+
+      <div class="cart">
+        <p><b>Date of Puchase </b><i>20 November 2019</i> <br>
+          <b>Items</b></p>
+      </div>
+
+      <div class="table">
+        <div class="list">
+          <p>Crop Top</p>
+          <p>1</p>
+        </div>
+      
+        <br>
+        <div class="total">
+          <p><b>Total Quantity</b></p>
+          <p>1</p>
+        </div>
+      </div>
+
+      <div class="grand">
+        <p>Grand Total</p>
+        <p>R600</p>
+      </div>
+      <div class="ordertype">
+        <p>Order Type</p>
+        <p id="del"><i>Delivery</i></p>
+      </div>
+
+      <div class="address">
+        <p>Order Address <br> <span>1234 Orlando East, Soweto, 1804</span></p>
+    
+      </div>
+
+      <div class="status">
+        <p>Order Status: &nbsp; <i>Delivered</i></p>
+      </div>
+      <div class="buttonz">
+        <ion-button (click)="onClick()" color="transparent">
+          DOWNLOAD COPY
+        </ion-button>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

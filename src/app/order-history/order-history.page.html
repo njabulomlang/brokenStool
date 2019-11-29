@@ -1,9 +1,97 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>order-history</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back" id="icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Order History</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="container">
+    <div class="cards">
+      <div class="card" (click)="viewReceipt()">
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
+        </div>
+
+        <div class="right">
+          <div class="itemname">
+            <p>Dankie Jesu Crop Top</p>
+          </div>
+
+          <div class="costs">
+            <p><i>QTY. 1</i>  <br> R100 <br> 11 November 2019 <br> HGD6776767</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/75/b0/05/75b005516c56bbc8f42cfbfb7ced4a16.jpg" alt="">
+          </div>
+  
+          <div class="right">
+            <div class="itemname">
+              <p>Dankie Jesu Back Pack</p>
+            </div>
+  
+            <div class="costs">
+              <p><i>QTY. 1</i>  <br> R400 <br> 11 November 2019 <br> HGD6776767</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+            <div class="image">
+              <img src="https://i.pinimg.com/564x/b0/39/12/b0391249ddaa2bae196e10772c3699d1.jpg" alt="">
+            </div>
+    
+            <div class="right">
+              <div class="itemname">
+                <p>Kwanga Apparel Side Bag</p>
+              </div>
+    
+              <div class="costs">
+                <p><i>QTY. 1</i>  <br> R200 <br> 11 November 2019 <br> HGD6776767</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+              <div class="image">
+                <img src="https://i.pinimg.com/564x/f9/a6/38/f9a638881000222dd444f8ad529de477.jpg" alt="">
+              </div>
+      
+              <div class="right">
+                <div class="itemname">
+                  <p>Dankie Jesu Sweater</p>
+                </div>
+      
+                <div class="costs">
+                  <p><i>QTY. 1</i>  <br> R500 <br> 11 November 2019 <br> HGD6776767</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+                <div class="image">
+                  <img src="https://i.pinimg.com/564x/e2/cd/76/e2cd765cf79938a57bc47e989797d3c3.jpg" alt="">
+                </div>
+        
+                <div class="right">
+                  <div class="itemname">
+                    <p>Kwanga Apparel Track Suit</p>
+                  </div>
+        
+                  <div class="costs">
+                    <p><i>QTY. 1</i>  <br> R800 <br> 11 November 2019 <br> HGD6776767</p>
+                  </div>
+                </div>
+              </div>
+    </div>
+  </div>
 
 </ion-content>

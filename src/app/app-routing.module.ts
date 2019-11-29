@@ -77,6 +77,10 @@ const routes: Routes = [
     path: 'track-orders/:id',
     loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
   },
+  {
+    path: 'receipts',
+    loadChildren: () => import('./receipts/receipts.module').then( m => m.ReceiptsPageModule)
+  },
 
 ];
 @NgModule({
