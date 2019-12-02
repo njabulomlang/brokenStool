@@ -3,7 +3,7 @@
   <ion-toolbar>
     <ion-buttons slot="primary">
       <ion-button id="icon" (click)="busket()">
-        <ion-icon slot="icon-only" name="basket" ></ion-icon>
+        <ion-icon slot="icon-only" name="search" ></ion-icon>
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
@@ -156,6 +156,12 @@
       </div>
   </div>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" >
+    <ion-fab-button (click)="busket()" #cart color="transparent">
+      <!-- <div class="cart-length">{{ cartItemCount | async }}</div> -->
+      <ion-icon name="basket" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 
