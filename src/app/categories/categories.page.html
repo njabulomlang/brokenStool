@@ -21,7 +21,8 @@
   <div class="container">
 
     <div class="pagename">
-      <h1>{{category}} GEAR</h1>
+      <h1 *ngIf="category==='KWANGA'">{{category}} APPAREL</h1>
+      <h1 *ngIf="category!=='KWANGA'">{{category}} GEAR</h1>
     </div>
     <div class="itemcount">
       <div class="items">
@@ -85,6 +86,30 @@
         </div>
 
       </div>
+
+      <div class="cards" *ngIf="category==='KWANGA'">
+          <div class="card" (click)="list('Traditional')">
+            <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
+            <div class="category">Traditional</div>
+          </div>
+          <div class="card" (click)="list('Formal')">
+              <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg">
+              <div class="category">Formal</div>
+          </div>
+          <div class="card" (click)="list('Casual')">
+              <img src="https://i.pinimg.com/564x/ba/a6/bb/baa6bb4a97859357928cd6b5a6dda6c5.jpg">
+              <div class="category">Casual</div>
+          </div>
+          <div class="card" (click)="list('Sport')">
+              <img src="https://i.pinimg.com/564x/96/97/0c/96970c6ee2cb886eb19289a90b6bb35e.jpg">
+              <div class="category">Sport</div>
+          </div>
+          <div class="card">
+              <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg">
+              <div class="category">Many more</div>
+          </div>
+  
+        </div>
   </div>
 
 

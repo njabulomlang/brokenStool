@@ -29,7 +29,7 @@ export class AppComponent {
     firebase.auth().onAuthStateChanged((res) => {
       if (res) {
         this.router.navigateByUrl('home')
-        console.log("User..", res.phoneNumber);
+       // console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')
       }
