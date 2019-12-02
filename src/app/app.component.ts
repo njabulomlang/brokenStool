@@ -28,7 +28,7 @@ export class AppComponent {
     //firebase.auth().settings.appVerificationDisabledForTesting = true;
     firebase.auth().onAuthStateChanged((res) => {
       if (res) {
-        this.router.navigateByUrl('home')
+        this.router.navigateByUrl('search')
        // console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')

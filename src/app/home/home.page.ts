@@ -45,6 +45,10 @@ export class HomePage implements OnInit{
   profile() {
     this.router.navigateByUrl('profile');
   }
+
+  search() {
+    this.router.navigateByUrl('search');
+  }
   logout() {
     this.authService.logoutUser()
   }
