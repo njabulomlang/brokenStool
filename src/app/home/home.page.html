@@ -103,23 +103,23 @@
     </div>
 
     <div class="Kwanga">
-        <ion-item>
+        <ion-item (click)="categories('kwanga')">
           <label>kwanga Apparel</label>
-          <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+          <label slot="end">All <ion-icon slot="start" name="arrow-forward" ></ion-icon></label>
         </ion-item>
   
         <div class="apparel">
   
-          <div class="image">
-            <img src="../../assets/back.jpg">
+          <div class="image" >
+            <img src="../../assets/back.jpg" (click)="list('Casual')">
   
             <div class="itemname">
               <p>Smart Casual</p>
             </div>
           </div>
   
-          <div class="image">
-            <img src="../../assets/back.jpg">
+          <div class="image" >
+            <img src="../../assets/back.jpg" (click)="list('Formal')">
   
           
             <div class="itemname">
@@ -128,32 +128,33 @@
           </div>
   
           <div class="image">
-            <img src="../../assets/back.jpg">
+            <img src="../../assets/back.jpg" (click)="list('Traditional')">
   
         
-            <div class="itemname">
+            <div class="itemname" >
               <p>Traditional</p>
             </div>
           </div>
   
-          <div class="image">
-            <img src="../../assets/back.jpg">
+          <div class="image" >
+            <img src="../../assets/back.jpg" (click)="list('Sport')">
   
             <div class="itemname">
-              <p>sport</p>
+              <p>Sport</p>
             </div>
           </div>
   
-          <div class="image">
+          <!-- <div class="image">
             <img src="../../assets/back.jpg">
   
            
             <div class="itemname">
               <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
+      
   </div>
 
 

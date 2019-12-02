@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
  import * as firebase from 'firebase';
 import { CartService } from '../services/cart.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,7 @@ export class HomePage implements OnInit{
   surname;
   dbProfile = firebase.firestore().collection("userProfile");
   uid = firebase.auth().currentUser.uid;
-  constructor(private authService: AuthService, private cartService: CartService, private modalCtrl: ModalController, public router: Router) {
+  constructor(private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl:NavController) {
 // this.uid = firebase.auth().currentUser.uid
   }
 
@@ -101,8 +101,20 @@ export class HomePage implements OnInit{
   }
 
   categories(data) {
-    console.log(data);
+   // console.log(data);
     this.router.navigate(['categories', data])
+  }
+  list(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          data: data,
+          col: 'Kwanga',
+          //currency: JSON.stringify(currency),
+         // refresh: refresh
+      }
+  };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
   
 }

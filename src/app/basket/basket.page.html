@@ -35,7 +35,7 @@
             <p>{{prod.size}}</p>
             <p>{{cp.data.timestamp | date: "mediumTime"}}</p>
             <p style="font-size: 4vw; margin: 5px; display: flex; flex-flow: row; align-items: flex-start;">
-              <ion-icon name="add-circle-outline" (click)="plus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="remove-circle-outline" (click)="minus(prod, i)">
+              <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="add-circle-outline" (click)="plus(prod, i)">
               </ion-icon>
             </p>
           </div>

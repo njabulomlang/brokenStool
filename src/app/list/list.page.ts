@@ -13,14 +13,20 @@ export class ListPage implements OnInit {
   dbProduct = firebase.firestore().collection("Products");
   myProduct = [];
   collectionName : string = "";
+  doc_data: string;
+  col: string;
   constructor(public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
-    this.collectionName = this.route.snapshot.paramMap.get('key')
+    this.collectionName = this.route.snapshot.paramMap.get('key');
+    this.route.queryParams.subscribe(params => {
+      this.doc_data = params["data"];
+      this.col = params["col"];
+    });
   }
 
   ngOnInit() {
   //  console.log(); 
   setTimeout(() => {
-    this.dbProduct.doc("Dankie Jesu").collection(this.collectionName).onSnapshot((res)=>{
+    this.dbProduct.doc(this.col).collection(this.collectionName).onSnapshot((res)=>{
       this.myProduct = [];
       res.forEach((doc)=>{
         this.myProduct.push({info:doc.data(), id : doc.id});
