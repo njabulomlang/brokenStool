@@ -80,7 +80,11 @@ const routes: Routes = [
   {
     path: 'receipts',
     loadChildren: () => import('./receipts/receipts.module').then( m => m.ReceiptsPageModule)
+  },  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
+
 
 ];
 @NgModule({

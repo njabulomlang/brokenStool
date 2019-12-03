@@ -2,8 +2,8 @@
 
   <ion-toolbar>
     <ion-buttons slot="primary">
-      <ion-button id="icon" (click)="busket()">
-        <ion-icon slot="icon-only" name="basket" ></ion-icon>
+      <ion-button id="icon" (click)="search()">
+        <ion-icon slot="icon-only" name="search" ></ion-icon>
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
@@ -24,7 +24,7 @@
   </ion-toolbar> -->
 </ion-header>
 
-<p style="margin: 10px ; font-family: 'Raleway'">welcome {{name}} {{surname}}</p>
+<p style="margin: 10px ; font-family: 'Raleway'">Welcome {{name}} {{surname}}</p>
 
 <ion-content>
   <div class="container" no-padding>
@@ -157,6 +157,12 @@
       
   </div>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" >
+    <ion-fab-button (click)="busket()" #cart color="transparent">
+      <!-- <div class="cart-length">{{ cartItemCount | async }}</div> -->
+      <ion-icon name="basket" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 
