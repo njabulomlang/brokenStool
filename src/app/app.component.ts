@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -22,15 +21,14 @@ export class AppComponent {
     this.initializeApp();
     firebase.initializeApp(firebaseConfig);
     this.checkUser();
-   // console.log("UID ", firebase.auth().currentUser.uid);
-    
+   // console.log("UID ", firebase.auth().currentUser.uid)
   }
   checkUser() {
     //firebase.auth().settings.appVerificationDisabledForTesting = true;
     firebase.auth().onAuthStateChanged((res) => {
       if (res) {
-        this.router.navigateByUrl('home')
-        console.log("User..", res.phoneNumber);
+        this.router.navigateByUrl('search')
+       // console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')
       }

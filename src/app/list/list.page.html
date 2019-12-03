@@ -2,7 +2,7 @@
 
   <ion-toolbar>
     <ion-buttons slot="primary">
-      <ion-button id="icon">
+      <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -44,14 +44,14 @@
     </div>
 
     <div class="cards">
-      <div class="card"  *ngFor="let p of myProduct" (click)="viewitem(p.id, p.info)">
-        <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+      <div class="card"  *ngFor="let p of myProduct">
+        <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg" (click)="viewitem(p.id, p.info)">
         <div class="itemdetails">
           <div class="name">
             <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
+            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)"></ion-icon>
           </div>
 
         </div>

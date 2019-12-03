@@ -25,18 +25,16 @@ export class ViewPage implements OnInit {
   my_size: string = '';
 
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController) {
-    // this.docID = this.route.snapshot.paramMap.get('id');
-    //this.col = this.route.snapshot.paramMap.get('id');
-    //console.log('My collection ', this.route.snapshot.paramMap.get('key'));
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
       this.col = params["col"];
     });
-
   }
 
   ngOnInit() {
+   // console.log('my collection ', this.col, 'my data', this.doc_data, 'my docid');
+    
     //console.log('doc id ', this.doc_id, 'Collection ref ', this.col);
     this.dbProduct.doc("Dankie Jesu").collection(this.col).doc(this.doc_id).onSnapshot((doc) => {
       //console.log('My product ', doc.data());

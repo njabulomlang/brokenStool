@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
@@ -13,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./basket/basket.module').then( m => m.BasketPageModule)
   },
   {
-    path: 'payment',
+    path: 'payment/:docname',
     loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   },
   {
@@ -44,7 +43,6 @@ const routes: Routes = [
     path: 'kwanga-apparel',
     loadChildren: () => import('./kwanga-apparel/kwanga-apparel.module').then( m => m.KwangaApparelPageModule)
   },
-
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
@@ -67,10 +65,28 @@ const routes: Routes = [
     path: 'view/:view_id',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
   },
+  {
+    path: 'pending-orders',
+    loadChildren: () => import('./pending-orders/pending-orders.module').then( m => m.PendingOrdersPageModule)
+  },
+  {
+    path: 'order-history',
+    loadChildren: () => import('./order-history/order-history.module').then( m => m.OrderHistoryPageModule)
+  },
+  {
+    path: 'track-orders/:id',
+    loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
+  },
+  {
+    path: 'receipts',
+    loadChildren: () => import('./receipts/receipts.module').then( m => m.ReceiptsPageModule)
+  },  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
 
 
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

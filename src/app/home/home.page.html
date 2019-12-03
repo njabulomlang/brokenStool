@@ -2,10 +2,10 @@
 
   <ion-toolbar>
     <ion-buttons slot="primary">
-      <ion-button id="icon" (click)="busket()">
-        <ion-icon slot="icon-only" name="basket" ></ion-icon>
+      <ion-button id="icon" (click)="search()">
+        <ion-icon slot="icon-only" name="search" ></ion-icon>
       </ion-button>
-      <ion-button id="icon">
+      <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -24,7 +24,7 @@
   </ion-toolbar> -->
 </ion-header>
 
-<p style="margin: 10px ; font-family: 'Raleway'">welcome {{name}} {{surname}}</p>
+<p style="margin: 10px ; font-family: 'Raleway'">Welcome {{name}} {{surname}}</p>
 
 <ion-content>
   <div class="container" no-padding>
@@ -103,23 +103,23 @@
     </div>
 
     <div class="Kwanga">
-        <ion-item>
+        <ion-item (click)="categories('kwanga')">
           <label>kwanga Apparel</label>
-          <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+          <label slot="end">All <ion-icon slot="start" name="arrow-forward" ></ion-icon></label>
         </ion-item>
   
         <div class="apparel">
   
-          <div class="image">
-            <img src="../../assets/back.jpg">
+          <div class="image" >
+            <img src="../../assets/back.jpg" (click)="list('Casual')">
   
             <div class="itemname">
               <p>Smart Casual</p>
             </div>
           </div>
   
-          <div class="image">
-            <img src="../../assets/back.jpg">
+          <div class="image" >
+            <img src="../../assets/back.jpg" (click)="list('Formal')">
   
           
             <div class="itemname">
@@ -128,34 +128,41 @@
           </div>
   
           <div class="image">
-            <img src="../../assets/back.jpg">
+            <img src="../../assets/back.jpg" (click)="list('Traditional')">
   
         
-            <div class="itemname">
+            <div class="itemname" >
               <p>Traditional</p>
             </div>
           </div>
   
-          <div class="image">
-            <img src="../../assets/back.jpg">
+          <div class="image" >
+            <img src="../../assets/back.jpg" (click)="list('Sport')">
   
             <div class="itemname">
-              <p>sport</p>
+              <p>Sport</p>
             </div>
           </div>
   
-          <div class="image">
+          <!-- <div class="image">
             <img src="../../assets/back.jpg">
   
            
             <div class="itemname">
               <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
+      
   </div>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" >
+    <ion-fab-button (click)="busket()" #cart color="transparent">
+      <!-- <div class="cart-length">{{ cartItemCount | async }}</div> -->
+      <ion-icon name="basket" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 

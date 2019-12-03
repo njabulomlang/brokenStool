@@ -14,53 +14,29 @@
 
   <div class="container">
     <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
-      <h1>Wishlist (2)</h1>
+      <h1>Wishlist ({{myWish.length}})</h1>
     </div>
 
 <p style="font-family: 'Raleway'; margin: 5px;">This is your wishlist. Save all your favourites here</p>
 
     <div class="cards">
-      <div class="card">
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
-        </div>
-        <div class="details">
-          <div class="left">
-            <div class="itemz">
-              <p id="item">Yellow Hoody</p>
-            <p id="price">R350</p>
-            </div>
-            <div class="close"></div>
-            <p><ion-icon  name="trash"></ion-icon></p>
-          </div>
-
-          <div class="right">
-            
-            <ion-button (click)="onClick()" color="transparent">
-              <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
-            </ion-button>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="card">
+      <div class="card" *ngFor="let w of myWish">
           <div class="image">
             <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
           </div>
           <div class="details">
             <div class="left">
               <div class="itemz">
-                <p id="item">Yellow Hoody</p>
-              <p id="price">R350</p>
+                <p id="item">{{w.info.name}}</p>
+              <p id="price">{{w.info.price | currency:'R'}}</p>
               </div>
               <div class="close"></div>
-              <p><ion-icon  name="trash"></ion-icon></p>
+              <p><ion-icon  name="trash" (click)="delete(w.id)"></ion-icon></p>
             </div>
   
             <div class="right">
               
-              <ion-button (click)="onClick()" color="transparent">
+              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
                 <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
               </ion-button>
             </div>

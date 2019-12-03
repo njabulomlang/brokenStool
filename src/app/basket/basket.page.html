@@ -7,7 +7,7 @@
 
     </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-button color="secondary">
+      <ion-button color="secondary" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart" id="icon"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -35,7 +35,7 @@
             <p>{{prod.size}}</p>
             <p>{{cp.data.timestamp | date: "mediumTime"}}</p>
             <p style="font-size: 4vw; margin: 5px; display: flex; flex-flow: row; align-items: flex-start;">
-              <ion-icon name="add-circle-outline" (click)="plus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="remove-circle-outline" (click)="minus(prod, i)">
+              <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="add-circle-outline" (click)="plus(prod, i)">
               </ion-icon>
             </p>
           </div>
@@ -78,14 +78,14 @@
       
     </div>
 
-    <div class="total">
+    <div class="total" >
       <div class="carttotal">
         <p>TOTAL</p>
         <p>{{getTotal() | currency:'R'}}</p>
       </div>
 
       <div class="btn">
-        <ion-button (click)="placeOrder()" color="transparent">
+        <ion-button (click)="placeOrder(prodCart)" color="transparent">
           PLACE ORDER
         </ion-button>
       </div>
