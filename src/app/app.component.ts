@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase';
 import { firebaseConfig } from './firebaseConfig';
 import { Router } from '@angular/router';
+//import { File, File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent {
     //firebase.auth().settings.appVerificationDisabledForTesting = true;
     firebase.auth().onAuthStateChanged((res) => {
       if (res) {
-        this.router.navigateByUrl('search')
+        this.router.navigateByUrl('home')
        // console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')
