@@ -103,7 +103,7 @@ export class PendingOrdersPage implements OnInit {
       }
     }
     this.pdfObj = pdfMake.createPdf(docDefinition);
-    this.downloadPdf();
+    
   }
   downloadPdf() {
     if (this.plt.is('cordova')) {
@@ -117,6 +117,7 @@ export class PendingOrdersPage implements OnInit {
             // this.pdfDoc = url;
             //this.quotes.pdfLink = url;
             this.reciept = url;
+           // this.getReciept(url);
             // console.log('download url ',url);
 
             // this.saveData();
@@ -154,27 +155,34 @@ export class PendingOrdersPage implements OnInit {
       })
     })
   }
-  removeOrder() {
+ /*   removeOrder() {
     this.myOrder.forEach((i) => {
       // this.getOrder(i.id);
       this.dbHistory.doc(i.id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
         this.dbOrder.doc(i.id).delete();
       })
     })
+  }  */
+  async getReciept(rec) {
+    return await rec;
   }
   getOrder(id) {
+    //console.log('My reciept ',this.reciept);
     this.downloadPdf();
-    this.dbOrder.doc(id).onSnapshot((res) => {
-      if (res.data().status === 'ready') {
-        //console.log('Collect');
-        this.removeOrder();
-        this.dbHistory.doc(id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
-          this.dbOrder.doc(id).delete();
-        })
-      } else {
-        console.log('Wait until it is');
-      }
-    })
+    setTimeout(() => {
+      console.log('My reciept ',this.reciept);
+    }, 1000);
+    //  this.dbOrder.doc(id).onSnapshot((res) => {
+    //     if (res.data().status === 'ready') {
+    //       //console.log('Collect');
+    //       this.dbHistory.doc(id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
+    //         this.dbOrder.doc(id).delete();
+    //       })
+    //     } else {
+    //       console.log('Wait until it is');
+    //     }
+    // }) 
   }
+
 
 }
