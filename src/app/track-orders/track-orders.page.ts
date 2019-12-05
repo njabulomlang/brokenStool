@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+import { File } from '@ionic-native/file/ngx';
 @Component({
   selector: 'app-track-orders',
   templateUrl: './track-orders.page.html',
@@ -11,12 +17,21 @@ import { Router } from '@angular/router';
 export class TrackOrdersPage implements OnInit {
   doc_id: string;
   dbOrder = firebase.firestore().collection('Order');
+  dbHistory = firebase.firestore().collection('orderHistory');
+  dbUserProfile = firebase.firestore().collection('userProfile');
   productOrder = [];
   name;
   cellno;
-  
+  pdfObj=null;
+  reciept=null;
+  letterObj = {
+    to: '',
+    from: '',
+    text: ''
+  }
+  uid:string=firebase.auth().currentUser.uid;
   //dbProfile = firebase.firestore().collection('userProfile');
-  constructor(public route: ActivatedRoute, public router: Router) {
+  constructor(public route: ActivatedRoute, public router: Router,private plt: Platform, private file: File, private fileOpener: FileOpener) {
     this.route.queryParams.subscribe(params => {
       this.doc_id = params["id"];
       // this.col = params["col"];
@@ -26,6 +41,130 @@ export class TrackOrdersPage implements OnInit {
   ngOnInit() {
     this.getOrder();
     //console.log(this.elementRef.nativeElement.children[1].children[0].children[1].children[3].children[0].children);
+  }
+  orderReady() {
+    this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
+      if (res.data().status === 'ready') {
+        //console.log('Collect');
+        this.dbHistory.doc(this.doc_id).set({ date: new Date().getTime(), reciept: null }).then(() => {
+          this.dbOrder.doc(this.doc_id).delete();
+        })
+      } else {
+        console.log('Wait until it is');
+      }
+    })
+  }
+  userProfile() {
+    this.dbUserProfile.doc(this.uid).onSnapshot((res) => {
+      this.letterObj.from = res.data().name + ' ' + res.data().surname;
+    })
+    this.letterObj.to = 'Broken stool';
+  }
+  createPdf() {
+    var docDefinition = {
+      content: [
+        { text: 'Reciept', style: 'header' },
+        { text: new Date().toTimeString(), alignment: 'right' },
+
+        { text: 'From', style: 'subheader' },
+        { text: this.letterObj.from },
+
+        { text: 'To', style: 'subheader' },
+        this.letterObj.to,
+
+        { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
+
+        {
+          columns: [
+            {
+              ul: [
+                'Items',
+                'dasdwddwdws',
+              ]
+            },
+            {
+              ul: [
+                'Quantity',
+                '1',
+              ]
+            },
+            {
+              ul: [
+                'Unit price',
+                'R4.50',
+              ]
+            }
+          ]
+          // table:[]
+          /*  ul: [
+             'Bacon',
+             'Rips',
+             'BBQ',
+           ] */
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 15, 0, 0]
+        },
+        story: {
+          italic: true,
+          alignment: 'center',
+          width: '50%',
+        }
+      }
+    }
+    this.pdfObj = pdfMake.createPdf(docDefinition);
+
+  }
+  downloadPdf() {
+    this.createPdf();
+    if (this.plt.is('cordova')) { 
+      this.pdfObj.getBuffer((buffer) => {
+        var blob = new Blob([buffer], { type: 'application/pdf' });
+        firebase.storage().ref('Reciepts/').child(new Date().getTime() + '.pdf').put(blob).then((results) => {
+          //console.log('results url: ', results);
+          // results.downloadURL
+          firebase.storage().ref('Reciepts/').child(results.metadata.name).getDownloadURL().then((url) => {
+            // console.log(results);
+            // this.pdfDoc = url;
+            //this.quotes.pdfLink = url;
+            this.reciept = url;
+            // this.getReciept(url);
+             console.log('download url ',url);
+             this.saveData();
+            //console.log('pdf link from storage............:', this.pdfDoc);
+          })
+        })
+        // Save the PDF to the data Directory of our App
+        this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
+          // Open the PDf with the correct OS tools
+         // this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+        })
+      });
+    } else {
+      // On a browser simply use download!
+      this.pdfObj.download();
+    }
+  }
+  saveData() {
+    this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
+      if (res.data().status === 'ready') {
+        //console.log('Collect');
+        this.dbHistory.doc(this.doc_id).set({ date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid:this.uid, 
+          refNo: this.doc_id, timeStamp: new Date().getTime()}).then(() => {
+          this.dbOrder.doc(this.doc_id).delete();
+        })
+      } else {
+        console.log('Wait until it is');
+      }
+    })
   }
   getOrder() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
@@ -37,6 +176,9 @@ export class TrackOrdersPage implements OnInit {
         this.toggleTwo();
       } else if (res.data().status === 'ready') {
         this.toggleThree()
+        setTimeout(() => {
+          this.downloadPdf();
+        }, 1000);
       } else if (res.data().status === 'collected') {
         this.toggleFour()
       }
@@ -61,20 +203,9 @@ export class TrackOrdersPage implements OnInit {
 
     return total;
   }
-  /*   userDetails(uid) {
-      this.dbProfile.doc(uid).onSnapshot((res)=>{
-        this.name = res.data().name + ' ' + res.data().surname;
-        this.cellno = res.data().cellPhone; 
-        console.log('My name ', this.name, 'Cell no ',this.cellno);
-      }) 
-    } */
-
   done() {
     this.router.navigateByUrl("pending-orders")
   }
-
-
-
   toggleOne() {
     var circleOne = document.getElementById("one").style.border = "2px solid red";
     var lineOne = document.getElementById("line1").style.border = "2px solid grey";

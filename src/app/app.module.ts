@@ -14,6 +14,11 @@ import { AuthGuard } from './guards/auth.guard'
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { CartModalPageModule } from './cart-modal/cart-modal.module';
 import { Camera } from '@ionic-native/camera/ngx';
+
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { Downloader } from '@ionic-native/downloader/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,6 +30,9 @@ import { Camera } from '@ionic-native/camera/ngx';
     AuthGuard,
     Facebook,
     Camera, 
+    File,
+    FileOpener,
+    Downloader,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -14,25 +14,24 @@
 
   <div class="container">
 
-    <div class="cards">
+    <div class="cards" *ngFor="let order of myOrder">
       <div class="card">
 
         <div class="image">
           <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
         </div>
 
-        <div class="right">
+        <div class="right" *ngFor="let o of order.orders">
           <div class="title">
-            <p>Formal White</p>
+            <p>{{o.product_name}}</p>
           </div>
 
           <div class="costs">
-            <p><i>QTY. 1</i> <br> R1200 <br> Size: XS <br><br> SDE098765</p>
+            <p><i>{{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> {{order.refNo}}</p>
           </div>
 
           <div class="status">
             <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
-
           </div>
 
         </div>
@@ -113,7 +112,7 @@
         <p>Order Status: &nbsp; <i>Delivered</i></p>
       </div>
       <div class="buttonz">
-        <ion-button (click)="onClick()" color="transparent">
+        <ion-button (click)=" downloadPDF(order.reciept)" color="transparent">
           DOWNLOAD COPY
         </ion-button>
       </div>
