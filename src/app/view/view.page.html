@@ -1,11 +1,11 @@
 <ion-header no-border>
-  <ion-toolbar >
-    <ion-buttons slot="secondary">
-      <ion-icon slot="start" name="arrow-back"></ion-icon>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon slot="start" id="icon" name="arrow-back"></ion-icon>
     </ion-buttons>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="end">
       <ion-button id="rate">
-        <ion-icon slot="start" name="star"></ion-icon> Rate This Product
+        <ion-icon slot="start" id="icon" name="star"></ion-icon> Rate This Product
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -26,7 +26,7 @@
             <ion-icon name="star-outline"></ion-icon>
           </div>
 
-          <div class="appname">
+          <div class="appname" style="line-height: 20px; font-weight: normal;">
             <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
           </div>
         </div>
@@ -43,58 +43,43 @@
       <div class="add">
         <ion-fab-button color="transparent" (click)="toBusket()">
           <ion-icon name="basket"></ion-icon>
-  
+
         </ion-fab-button>
       </div>
       <div class="about">
         <p>About Product</p>
         <p>{{prod.data.description}}</p>
       </div>
-      <div class="sizes" *ngFor="let size of prod.data.size">
+      <div class="sizes">
         <p>Available sizes</p>
-        <ion-button (click)="sizeChosen(size)" color="transparent">
+
+        <ion-button *ngFor="let size of prod.data.size" (click)="sizeChosen(size)" color="transparent">
           {{size}}
         </ion-button>
-      <!--   <ion-button (click)="onClick()" color="transparent">
-          S
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent">
-          M
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent">
-          L
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent">
-          XL
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent">
-          XXL
-        </ion-button> -->
+
       </div>
       <div class="colours">
         <p>colours</p>
 
         <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
         </ion-button>
-        <ion-button (click)="onClick()"  color="transparent" style="background: green; border-radius: 6px;">
+        <ion-button (click)="onClick()" color="transparent" style="background: green; border-radius: 6px;">
         </ion-button>
-        <ion-button (click)="onClick()"  color="transparent" style="background: red; border-radius: 6px;">
+        <ion-button (click)="onClick()" color="transparent" style="background: red; border-radius: 6px;">
         </ion-button>
       </div>
       <div class="quantity">
         <p>Quantity</p>
-        <ion-button (click)="minus(quantity)" color="transparent" 
-        style="background: rgb(212, 212, 212);
+        <ion-button (click)="minus(quantity)" color="transparent" style="background: rgb(212, 212, 212);
          color: maroon;
          border-top-left-radius: 7px;
          border-bottom-left-radius: 7px;">
           <ion-icon name="remove"></ion-icon>
         </ion-button>
-        <ion-button color="transparent" style="background: rgb(212, 250, 255);" >
+        <ion-button color="transparent" style="background: rgb(212, 250, 255);">
           {{quantity}}
         </ion-button>
-        <ion-button (click)="plus(quantity)" color="transparent" 
-        style="background: rgb(212, 212, 212); 
+        <ion-button (click)="plus(quantity)" color="transparent" style="background: rgb(212, 212, 212); 
         color: maroon;
          border-top-right-radius: 7px;
          border-bottom-right-radius: 7px;">
@@ -103,7 +88,8 @@
       </div>
       <div class="shipping">
         <p>Shipping Information</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown</p>
       </div>
       <div class="delivery">
         <p>Delivery Information</p>
@@ -113,10 +99,12 @@
           1804
         </p>
       </div>
-      
+
       <div class="buttonz">
         <ion-button (click)="addToCart(prod.id, prod.data)" color="transparent">
-          <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book" style="color: maroon; font-size: 8vw;position: relative; bottom: 13px;"></ion-icon> {{prod.data.price * quantity | currency:'R'  }} 
+          <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
+            style="color: maroon; font-size: 8vw;position: relative; bottom: 13px;"></ion-icon>
+          {{prod.data.price * quantity | currency:'R'  }}
         </ion-button>
       </div>
     </div>

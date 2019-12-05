@@ -207,40 +207,40 @@ export class TrackOrdersPage implements OnInit {
     this.router.navigateByUrl("pending-orders")
   }
   toggleOne() {
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid grey";
-    var circleTwo = document.getElementById("two").style.border = "2px solid grey";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid grey";
-    var circleThree = document.getElementById("three").style.border = "2px solid grey";
-    var lineThree = document.getElementById("line3").style.border = "2px solid grey";
-    var circleFour = document.getElementById("four").style.border = "2px solid grey";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid grey";
+    var circleTwo = document.getElementById("two").style.border = "1px solid grey";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid grey";
+    var circleThree = document.getElementById("three").style.border = "1px solid grey";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
   }
   toggleTwo() {
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid red";
-    var circleTwo = document.getElementById("two").style.border = "2px solid red";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid grey";
-    var circleThree = document.getElementById("three").style.border = "2px solid grey";
-    var lineThree = document.getElementById("line3").style.border = "2px solid grey";
-    var circleFour = document.getElementById("four").style.border = "2px solid grey";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid red";
+    var circleTwo = document.getElementById("two").style.border = "1px solid red";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid grey";
+    var circleThree = document.getElementById("three").style.border = "1px solid grey";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
   }
   toggleThree() {
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid red";
-    var circleTwo = document.getElementById("two").style.border = "2px solid red";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid red";
-    var circleThree = document.getElementById("three").style.border = "2px solid red";
-    var lineThree = document.getElementById("line3").style.border = "2px solid grey";
-    var circleFour = document.getElementById("four").style.border = "2px solid grey";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid red";
+    var circleTwo = document.getElementById("two").style.border = "1px solid red";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid red";
+    var circleThree = document.getElementById("three").style.border = "1px solid red";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
   }
   toggleFour() {
 
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid red";
-    var circleTwo = document.getElementById("two").style.border = "2px solid red";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid red";
-    var circleThree = document.getElementById("three").style.border = "2px solid red";
-    var lineThree = document.getElementById("line3").style.border = "2px solid red";
-    var circleFour = document.getElementById("four").style.border = "2px solid red";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid red";
+    var circleTwo = document.getElementById("two").style.border = "1px solid red";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid red";
+    var circleThree = document.getElementById("three").style.border = "1px solid red";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid red";
+    var circleFour = document.getElementById("four").style.border = "1px solid red";
   }
 }
