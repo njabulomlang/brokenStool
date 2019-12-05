@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { ViewPageRoutingModule } from './view-routing.module';
 
 import { ViewPage } from './view.page';
+import { PopoverComponent } from '../popover/popover.component';
+import { StarRatingModule } from 'ionic4-star-rating';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewPageRoutingModule
+    ViewPageRoutingModule,
+    StarRatingModule
   ],
-  declarations: [ViewPage]
+  entryComponents : [PopoverComponent],
+  declarations: [ViewPage,PopoverComponent]
 })
 export class ViewPageModule {}

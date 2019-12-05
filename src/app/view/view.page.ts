@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../popover/popover.component';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class ViewPage implements OnInit {
   unitProduct = [];
   my_size: string = '';
 
-  constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController) {
+  constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -42,6 +43,7 @@ export class ViewPage implements OnInit {
       console.log('My product ', this.unitProduct);
 
     })
+    
     // setTimeout(() => {
     //let data = [] ; 
     /* this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((snap) => {
@@ -62,6 +64,19 @@ export class ViewPage implements OnInit {
 
     // }, 1000);
 
+  }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: ev,
+      translucent: true,
+      componentProps: {
+        col: this.col,
+        doc: this.doc_id
+      }
+    });
+    return await popover.present();
   }
   sizeChosen(data) {
     this.my_size = data;
@@ -94,65 +109,6 @@ export class ViewPage implements OnInit {
         //this.router.navigateByUrl('basket');
       })
     }
-
-    /*   this.dbCart.doc(id).onSnapshot((res)=>{
-         // this.dbCart.add({ customerUID: this.customerUID, product: [{product_id: this.doc_id, quantity: this.quantity}]}) 
-      }) */
-    // console.log('Doc id ', id, 'Quantity ', quantity);
-    console.log('Product ', details, id);
-
-    /*   details.product.forEach(item => {
-        // console.log('Each product ', item);
-        this.dbCart.doc(id).update({ product: { quantity: item.quantity + 1, product_id: this.doc_id } })
-      }); */
-    //this.dbCart.doc(id).update({quantity: quantity + 1})
-    //   if (info.size==0) {
-    /*   this.dbCart.add({ customerUID: this.customerUID, product: [{product_id: this.doc_id, quantity: 1}]}).then((res) => {
-      //this.cartDoc = res.id;
-      console.log(res.id);
-     }) */
-    //   } else {
-    //     this.dbCart.doc(id).onSnapshot((mySnap)=>{
-    //      /*  mySnap.forEach((doc)=>{
-    //         this.quantity += doc.data().quantity;
-    //         this.dbCart.doc(doc.id).update({quantity: this.quantity})
-    //       }) */
-    //     })
-    //  //console.log('My doc ', this.cartDoc, 'My product ', this.doc_id);
-    //   //  let cartD = this.cartDoc;
-    //  /*    info.forEach((doc)=>{
-    //       let quantity = doc.data().quantity;
-    //       this.dbCart.doc(cartD).update({quantity: quantity + 1})
-    //       console.log('Product already exists, must increment only');
-    //     }) */
-    //    /*  info.forEach((doc)=>{
-    //       if (this.doc_id) {
-
-    //       }
-    //       this.addProduct(doc.id)
-    //     }) */
-    //    // let added = false;
-    //    /*  for (let i=0; i<info.docs.length, i++;) {
-    //       if (info.docs[i].data().product_id === this.doc_id) {
-    //         //p.amount += 1;
-    //         let quantity = info.docs[i].data().quantity;
-    //         this.dbCart.doc(this.cartDoc).update({quantity: quantity + 1})
-    //         console.log('Product already exists, must increment only');
-    //         //added = true;
-    //         break;
-    //       }
-    //     } */
-    //     /* if (!added) {
-
-    //     } */
-    //     //this.cartItemCount.next(this.cartItemCount.value + 1);
-
-    //   /*   if (info.size==0) {
-    //       this.dbCart.add({ customerUID: this.customerUID }).then((res) => {
-    //       this.cartDoc = res.id;
-    //     })*/
-    //   } 
-    // }) 
   }
   viewitem() {
     this.router.navigateByUrl("/basket")

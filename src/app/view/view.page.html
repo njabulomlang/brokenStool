@@ -4,7 +4,7 @@
       <ion-icon slot="start" name="arrow-back"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-button id="rate">
+      <ion-button id="rate" (click)="presentPopover($event)">
         <ion-icon slot="start" name="star"></ion-icon> Rate This Product
       </ion-button>
     </ion-buttons>

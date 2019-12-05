@@ -18,11 +18,15 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Downloader } from '@ionic-native/downloader/ngx';
+import { PopoverComponent } from './popover/popover.component';
+import { StarRatingModule } from 'ionic4-star-rating';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,FormsModule, IonicModule.forRoot(), AppRoutingModule, CartModalPageModule],
+  imports: [BrowserModule,FormsModule, IonicModule.forRoot(), AppRoutingModule,
+   
+     CartModalPageModule],
   providers: [
     StatusBar,
     ScreenOrientation,
