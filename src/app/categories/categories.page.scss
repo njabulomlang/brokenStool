@@ -48,6 +48,7 @@ ion-toolbar {
   display: flex;
   flex-flow: column;
   align-items: center;
+
   .itemcount {
     display: flex;
     flex-flow: row;
@@ -55,15 +56,28 @@ ion-toolbar {
     font-family: "Poppins";
     width: 100%;
     padding: 10px;
+    position: relative;
+    bottom: 40px;
     align-items: baseline;
+    .items {
+      p {
+        font-size: 3.5vw;
+      }
+    }
   }
 
   .pagename {
     font-family: "Poppins";
+    font-weight: normal;
     letter-spacing: 2px;
     width: 100%;
     text-align: left;
     padding: 10px;
+    // position: relative;
+    // bottom: 30px;
+    h1 {
+      font-size: 4vw;
+    }
   }
   .cards {
     display: flex;
@@ -74,6 +88,8 @@ ion-toolbar {
     // border: 1px solid red;
     justify-content: space-evenly;
     justify-items: center;
+    position: relative;
+    bottom: 50px;
 
     .card {
       margin: 6px;

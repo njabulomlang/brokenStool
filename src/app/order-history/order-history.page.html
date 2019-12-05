@@ -28,6 +28,11 @@
         </div>
       </div>
 
+      <div class="card" id="msg" *ngIf="orderHistory.length==0">
+          <p> No History Yet</p>
+          <img src="../../assets/sad_smile.svg">
+      </div>
+
       <!-- <div class="card">
           <div class="image">
             <img src="https://i.pinimg.com/564x/75/b0/05/75b005516c56bbc8f42cfbfb7ced4a16.jpg" alt="">
