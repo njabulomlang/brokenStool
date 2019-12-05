@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController, PopoverController } from '@ionic/angular';
+import { ToastController, PopoverController, NavController } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 
 
@@ -25,7 +25,7 @@ export class ViewPage implements OnInit {
   unitProduct = [];
   my_size: string = '';
 
-  constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController) {
+  constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -109,6 +109,16 @@ export class ViewPage implements OnInit {
         //this.router.navigateByUrl('basket');
       })
     }
+
+    /*   this.dbCart.doc(id).onSnapshot((res)=>{
+         // this.dbCart.add({ customerUID: this.customerUID, product: [{product_id: this.doc_id, quantity: this.quantity}]}) 
+      }) */
+    // console.log('Doc id ', id, 'Quantity ', quantity);
+    console.log('Product ', details, id);
+  }
+
+  goBack(){
+    this.NavCtrl.pop()
   }
   viewitem() {
     this.router.navigateByUrl("/basket")

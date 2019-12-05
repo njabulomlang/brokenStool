@@ -29,7 +29,7 @@ ion-toolbar {
 
     .name {
       width: 80vw;
-      height: 8vh;
+      height: 15vw;
       background: white;
       text-align: center;
       color: grey;
@@ -59,11 +59,13 @@ ion-toolbar {
       bottom: 0;
       right: 10px;
       z-index: 15;
-
-      ion-button {
-        border-radius: 50%;
+      border-radius: 50%;
+      ion-fab-button{
         background: maroon;
+        border-radius: 50%;
+        color: white;
       }
+
     }
   }
 

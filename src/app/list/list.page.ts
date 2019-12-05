@@ -15,7 +15,7 @@ export class ListPage implements OnInit {
   collectionName : string = "";
   doc_data: string;
   col: string;
-  constructor(public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
+  constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -68,5 +68,9 @@ export class ListPage implements OnInit {
   async toastController(message) {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
     return toast.present();
+  }
+
+  goBack(){
+    this.navCtrl.pop()
   }
 }

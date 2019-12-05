@@ -41,4 +41,8 @@ export class SearchPage implements OnInit {
     this.navCtrl.navigateForward(['view', id], navigationExtras);
     // this.router.navigate(['view', id])
   }
+
+  goBack(){
+    this.navCtrl.pop()
+  }
 }

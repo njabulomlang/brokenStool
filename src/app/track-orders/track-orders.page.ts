@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -31,7 +31,7 @@ export class TrackOrdersPage implements OnInit {
   }
   uid:string=firebase.auth().currentUser.uid;
   //dbProfile = firebase.firestore().collection('userProfile');
-  constructor(public route: ActivatedRoute, public router: Router,private plt: Platform, private file: File, private fileOpener: FileOpener) {
+  constructor(public NavCtrl: NavController, public route: ActivatedRoute, public router: Router,private plt: Platform, private file: File, private fileOpener: FileOpener) {
     this.route.queryParams.subscribe(params => {
       this.doc_id = params["id"];
       // this.col = params["col"];
@@ -207,40 +207,44 @@ export class TrackOrdersPage implements OnInit {
     this.router.navigateByUrl("pending-orders")
   }
   toggleOne() {
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid grey";
-    var circleTwo = document.getElementById("two").style.border = "2px solid grey";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid grey";
-    var circleThree = document.getElementById("three").style.border = "2px solid grey";
-    var lineThree = document.getElementById("line3").style.border = "2px solid grey";
-    var circleFour = document.getElementById("four").style.border = "2px solid grey";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid grey";
+    var circleTwo = document.getElementById("two").style.border = "1px solid grey";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid grey";
+    var circleThree = document.getElementById("three").style.border = "1px solid grey";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
   }
   toggleTwo() {
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid red";
-    var circleTwo = document.getElementById("two").style.border = "2px solid red";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid grey";
-    var circleThree = document.getElementById("three").style.border = "2px solid grey";
-    var lineThree = document.getElementById("line3").style.border = "2px solid grey";
-    var circleFour = document.getElementById("four").style.border = "2px solid grey";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid red";
+    var circleTwo = document.getElementById("two").style.border = "1px solid red";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid grey";
+    var circleThree = document.getElementById("three").style.border = "1px solid grey";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
   }
   toggleThree() {
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid red";
-    var circleTwo = document.getElementById("two").style.border = "2px solid red";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid red";
-    var circleThree = document.getElementById("three").style.border = "2px solid red";
-    var lineThree = document.getElementById("line3").style.border = "2px solid grey";
-    var circleFour = document.getElementById("four").style.border = "2px solid grey";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid red";
+    var circleTwo = document.getElementById("two").style.border = "1px solid red";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid red";
+    var circleThree = document.getElementById("three").style.border = "1px solid red";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
   }
   toggleFour() {
 
-    var circleOne = document.getElementById("one").style.border = "2px solid red";
-    var lineOne = document.getElementById("line1").style.border = "2px solid red";
-    var circleTwo = document.getElementById("two").style.border = "2px solid red";
-    var lineTwo = document.getElementById("line2").style.border = "2px solid red";
-    var circleThree = document.getElementById("three").style.border = "2px solid red";
-    var lineThree = document.getElementById("line3").style.border = "2px solid red";
-    var circleFour = document.getElementById("four").style.border = "2px solid red";
+    var circleOne = document.getElementById("one").style.border = "1px solid red";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid red";
+    var circleTwo = document.getElementById("two").style.border = "1px solid red";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid red";
+    var circleThree = document.getElementById("three").style.border = "1px solid red";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid red";
+    var circleFour = document.getElementById("four").style.border = "1px solid red";
+  }
+
+  goBack(){
+    this.NavCtrl.pop()
   }
 }

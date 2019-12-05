@@ -195,6 +195,11 @@ ion-toolbar {
       line-height: 10px;
       margin-right: 3px;
     }
+
+    .bankingDets{
+      line-height: 20px;
+      font-size: 3vw;
+    }
 }
 
 .buttz{
@@ -221,7 +226,7 @@ ion-toolbar {
   margin: 0 auto;
   // border: 1px solid red;
   display: flex;
-  text-align: center;;
+  text-align: center;
 }
 .circles-container > #one{
   cursor: pointer;
@@ -232,6 +237,8 @@ ion-toolbar {
   line-height: 20px;
   transition: 700ms;
   font-size: 0.8em;
+  font-weight: lighter;
+ 
 }
 .circles-container > #two{
   cursor: pointer;
@@ -242,16 +249,18 @@ ion-toolbar {
   line-height: 20px;
   transition: 700ms;
   font-size: 0.8em;
+  font-weight: lighter;
 }
 .circles-container > #three{
   cursor: pointer;
   width: 5vw;
   height: 5vw;
   border-radius: 50px;
-  border: 1px solid grey;
+  border: 0.5px solid grey;
   line-height: 20px;
   transition: 700ms;
   font-size: 0.8em;
+  font-weight: lighter;
 }
 .circles-container > #four{
   cursor: pointer;
@@ -261,6 +270,7 @@ ion-toolbar {
   border: 1px solid grey;
   line-height: 20px;
   transition: 700ms;
+  font-weight: lighter;
   font-size: 0.8em;
 }
 #line1, #line2, #line3{
@@ -268,6 +278,7 @@ ion-toolbar {
   height: 0;
   margin-top:7.5px;
   transition: 700ms;
+  font-size: 0.8em;
 }
 #line1{
   border: 0.5px solid grey
