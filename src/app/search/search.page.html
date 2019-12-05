@@ -17,30 +17,30 @@
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </div>
       <div class="bar">
-        <ion-searchbar placeholder="Search Items" color="transparent"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="txtSearch" placeholder="Search Items" color="transparent" (ionChange)="inputChange($event)"></ion-searchbar>
       </div>
     </div>
 
     <div class="quantity">
-      <p><i>Found (5)</i></p>
+      <p><i>Found ({{mySearch.length}})</i></p>
     </div>
     <div class="line"></div>
 
 
-    <div class="cards">
-    <div class="list">
+    <div class="cards" >
+    <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.data)">
       <div class="image">
         <img src="https://i.pinimg.com/564x/7a/6e/1a/7a6e1a774679f1e530512f3782a791af.jpg" alt="">
       </div>
       <div class="itemname">
-        <p>Maroon t-shirt</p>
+        <p>{{s.info.name}}</p>
       </div>
       <div class="amount">
-        <p>R200.90</p>
+        <p>{{s.info.price | currency:'R'}}</p>
       </div>
     </div>
 
-    <div class="list">
+    <!-- <div class="list">
       <div class="image">
         <img src="https://i.pinimg.com/564x/28/5e/64/285e64b6b2b01c6169cdb824220c2f58.jpg" alt="">
       </div>
@@ -62,8 +62,8 @@
       <div class="amount">
         <p>R200.90</p>
       </div>
-    </div>
-  </div>
+    </div>-->
+  </div> 
 
   </div>
 </div>
