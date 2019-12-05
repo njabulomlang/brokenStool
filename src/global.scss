@@ -26,3 +26,11 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+
+*{
+    font-family: 'Poppins';
+}
+
+ion-button{
+    overflow: hidden;
+}

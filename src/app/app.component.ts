@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase';
 import { firebaseConfig } from './firebaseConfig';
@@ -15,6 +16,7 @@ export class AppComponent {
   // dbUser = firebase.firestore().collection("userProfile");
   constructor(
     private platform: Platform,
+    private screenOrientation: ScreenOrientation,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar, private router: Router
   ) {
@@ -28,7 +30,7 @@ export class AppComponent {
     //firebase.auth().settings.appVerificationDisabledForTesting = true;
     firebase.auth().onAuthStateChanged((res) => {
       if (res) {
-        this.router.navigateByUrl('search')
+        this.router.navigateByUrl('home')
        // console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')
@@ -37,7 +39,9 @@ export class AppComponent {
   }
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      this.statusBar.backgroundColorByHexString('#000324');
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
   }

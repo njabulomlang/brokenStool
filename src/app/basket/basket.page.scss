@@ -15,13 +15,16 @@ ion-toolbar {
   .cards {
     display: flex;
     flex-flow: column;
-    height: 70vh;
+    height: fit-content;
+    overflow-y: auto;
+    height: 85vh;
     overflow-y: auto;
     .card {
       display: flex;
       flex-flow: row;
       box-shadow: 5px 5px 10px rgb(211, 211, 211);
       margin: 5px;
+
       .image {
         width: 50vw;
         height: 28vw;
@@ -43,6 +46,7 @@ ion-toolbar {
 
         .left {
           margin: 10px;
+          // text-align: left;
           p {
             font-size: 0.7em;
             align-items: baseline;
@@ -62,7 +66,7 @@ ion-toolbar {
 
         .right {
           margin: 5px;
-
+          text-align: right;
           display: flex;
           flex-flow: column;
           justify-content: space-between;
@@ -70,6 +74,7 @@ ion-toolbar {
             font-size: 0.9em;
 
             ion-icon {
+              font-weight: lighter;
               font-size: 6vw;
               color: maroon;
             }
@@ -77,12 +82,33 @@ ion-toolbar {
         }
       }
     }
+
+    #msg {
+      display: flex;
+      flex-flow: column;
+      position: absolute;
+      align-items: center;
+      justify-content: space-evenly;
+      top: 30%;
+      width: 95vw;
+      margin: 10px;
+      font-family: "Poppins";
+      box-shadow: none !important;
+      img {
+        width: 50vw;
+        height: 50vw;
+      }
+      p {
+        color: #c6cbdb;
+        font-size: 5vw;
+      }
+    }
   }
 
   .total {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-
+    background: white;
     display: flex;
     flex-flow: column;
 
@@ -94,6 +120,7 @@ ion-toolbar {
       justify-content: space-between;
       p {
         font-family: "Raleway";
+        font-size: 3.5vw;
       }
     }
 
@@ -105,6 +132,7 @@ ion-toolbar {
         padding: 5px;
         font-family: "Raleway";
         letter-spacing: 2px;
+        font-size: 3vw;
       }
     }
   }

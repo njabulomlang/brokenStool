@@ -1,60 +1,85 @@
 ion-toolbar {
-    --background: transparent;
-    #icon {
-      color: maroon;
-    }
+  --background: transparent;
+  #icon {
+    color: maroon;
   }
-  
-  .card:nth-child(1) {
-    width: 57vw;
-    height: 30vh;
+}
+
+.card:nth-child(1) {
+  width: 57vw;
+  height: 30vh;
+}
+
+.card:nth-child(2) {
+  width: 30vw;
+  height: 30vh;
+}
+
+.card:nth-child(3) {
+  width: 30vw;
+  height: 30vh;
+}
+
+.card:nth-child(4) {
+  width: 57vw;
+  height: 30vh;
+}
+.card:nth-child(5) {
+  width: 90vw;
+  height: 25vh;
+}
+
+.card:nth-child(6) {
+  width: 30vw;
+  height: 25vh;
+}
+
+.card:nth-child(7) {
+  width: 57vw;
+  height: 25vh;
+}
+
+.card:nth-child(8) {
+  width: 89vw;
+  height: 25vh;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .itemcount {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-family: "Poppins";
+    width: 100%;
+    padding: 10px;
+    align-items: baseline;
   }
-  
-  .card:nth-child(2) {
-    width: 30vw;
-    height: 30vh;
+
+  .pagename {
+    font-family: "Poppins";
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
   }
-  
-  .card:nth-child(3) {
-    width: 30vw;
-    height: 30vh;
-  }
-  
-  .card:nth-child(4) {
-    width: 57vw;
-    height: 30vh;
-  }
-  .card:nth-child(5) {
-    width: 90vw;
-    height: 25vh;
-  }
-  
-  .card:nth-child(6) {
-    width: 30vw;
-    height: 25vh;
-  }
-  
-  .card:nth-child(7) {
-    width: 57vw;
-    height: 25vh;
-  }
-  
-  .card:nth-child(8) {
-    width: 89vw;
-    height: 25vh;
-  }
-  
   .cards {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     overflow-y: auto;
+    // border: 1px solid red;
+    justify-content: space-evenly;
+    justify-items: center;
+
     .card {
-      margin: 5px;
+      margin: 6px;
       border-radius: 5px;
       position: relative;
+      // border: 1px solid green;
       box-shadow: 5px 5px 10px lightslategrey;
       img {
         height: 100%;
@@ -62,21 +87,14 @@ ion-toolbar {
         object-fit: cover;
         border-radius: 5px;
       }
-  
+
       .category {
         position: absolute;
         bottom: 10px;
         right: 10px;
-        color: white;
+        color: rgb(133, 133, 133);
+        font-family: "Poppins";
       }
     }
   }
-  
-  .container {
-    .itemcount {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-    }
-  }
-  
+}

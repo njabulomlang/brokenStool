@@ -17,11 +17,17 @@
         <p>{{name }} &nbsp; {{ surname}} <br><span>{{email}}</span></p>
 
       </div>
+      <div class="camera">
+    <ion-button (click)="onClick()" color="transparent">
+      <ion-icon slot="icon-only" name="camera" size="small"></ion-icon>
+    </ion-button>
+      </div>
     </div>
 
     <div class="btnz">
       <ion-button (click)="showEdit()" color="transparent">
-        <span>Account Details <ion-icon slot="end" name="add"></ion-icon></span>
+        <span *ngIf="!editprofile">Account Details <ion-icon slot="end" name="add"></ion-icon></span>
+        <span *ngIf="editprofile">Account Details <ion-icon slot="end" name="remove" ></ion-icon></span>
       </ion-button>
 
       <div class="edit" *ngIf="editprofile">

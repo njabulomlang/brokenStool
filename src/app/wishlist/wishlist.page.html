@@ -19,7 +19,7 @@
 
 <p style="font-family: 'Raleway'; margin: 5px;">This is your wishlist. Save all your favourites here</p>
 
-    <div class="cards">
+    <div class="cards" >
       <div class="card" *ngFor="let w of myWish">
           <div class="image">
             <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
@@ -42,6 +42,12 @@
             </div>
   
           </div>
+        </div>
+
+        <div class="card" id="msg" *ngIf="myWish.length==0">
+          <p> Oh no! Your Wishlist is empty</p>
+          <img src="../../assets/sad_smile.svg">
+      
         </div>
     </div>
 

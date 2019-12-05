@@ -1,53 +1,56 @@
-@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+@import url("https://fonts.googleapis.c om/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 .container {
   display: flex;
   flex-flow: column;
   height: 100%;
+  // align-items: center;
+  // justify-content: space-evenly;
+  // justify-content: space-evenly;
 
-  table {
+  .list {
     position: absolute;
     left: 15%;
     right: 15%;
-    font-family: "Poppins";
-    width: 70%;
-    padding: 20px;
+    table {
+      font-family: "Poppins";
+      width: 70%;
+      padding: 20px;
 
-    td {
-      // border: 1px solid #dddddd;
-      text-align: center;
-      padding: 8px;
-      font-family: "Raleway";
-    }
+      td {
+        // border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        font-family: "Raleway";
+      }
 
-    td:nth-child(1) {
-      text-align: left;
-    }
+      td:nth-child(1) {
+        text-align: left;
+      }
 
-    td:nth-child(2) {
-      text-align: right;
-    }
+      td:nth-child(2) {
+        text-align: right;
+      }
 
-    th {
-      border-top: 0.5px solid black;
+      th {
+        border-top: 0.5px solid black;
 
-      text-align: center;
-      padding: 8px;
-    }
+        text-align: center;
+        padding: 8px;
+      }
 
-    th:nth-child(1) {
-      text-align: left;
-    }
+      th:nth-child(1) {
+        text-align: left;
+      }
 
-    th:nth-child(2) {
-      text-align: right;
+      th:nth-child(2) {
+        text-align: right;
+      }
     }
   }
 
-
-
   .text {
-    position: absolute;
-    top: 60%;
+    // position: absolute;
+    // top: 60%;
     margin: 15px;
     font-family: "Poppins";
     font-size: 0.8em;
@@ -91,12 +94,12 @@
     flex-flow: row;
     justify-content: space-evenly;
     .line {
-        width: 20vw;
-        height: 1.5px;
-        background: grey;
-      }
-    p{
-        cursor: pointer;
+      width: 20vw;
+      height: 1.5px;
+      background: grey;
+    }
+    p {
+      cursor: pointer;
     }
   }
 }

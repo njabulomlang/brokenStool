@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FormsModule } from '@angular/forms'
 
@@ -19,6 +20,7 @@ import { Camera } from '@ionic-native/camera/ngx';
   imports: [BrowserModule,FormsModule, IonicModule.forRoot(), AppRoutingModule, CartModalPageModule],
   providers: [
     StatusBar,
+    ScreenOrientation,
     SplashScreen,
     AuthGuard,
     Facebook,

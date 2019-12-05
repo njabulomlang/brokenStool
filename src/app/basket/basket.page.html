@@ -1,12 +1,12 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-buttons slot="secondary">
+    <ion-buttons slot="start">
       <ion-button>
         <ion-icon slot="icon-only" name="arrow-back" id="icon"></ion-icon>
       </ion-button>
 
     </ion-buttons>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="end">
       <ion-button color="secondary" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart" id="icon"></ion-icon>
       </ion-button>
@@ -24,7 +24,7 @@
 
     <p style="font-family: 'Raleway'; margin: 5px; font-size: 3.5vw">Please note that delivery to your door is R100</p>
 
-    <div class="cards">
+    <div class="cards" >
       <div class="card" *ngFor="let cp of prodCart; let i of index">
         <div class="image">
           <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
@@ -32,9 +32,9 @@
         <div class="details" *ngFor="let prod of cp.data.product">
           <div class="left">
             <p id="item">{{prod.product_name}}</p>
-            <p>{{prod.size}}</p>
-            <p>{{cp.data.timestamp | date: "mediumTime"}}</p>
-            <p style="font-size: 4vw; margin: 5px; display: flex; flex-flow: row; align-items: flex-start;">
+            <p>Size: {{prod.size}}</p>
+            <p>{{cp.data.timestamp | date: "mediumDate"}}</p>
+            <p style="font-size: 1em; margin: 5px; display: flex; flex-flow: row; align-items: baseline;">
               <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="add-circle-outline" (click)="plus(prod, i)">
               </ion-icon>
             </p>
@@ -49,6 +49,13 @@
 
         </div>
       </div>
+
+
+      <div class="card" id="msg" *ngIf="prodCart.length==0">
+          <p> Oh no! Your Basket is empty</p>
+          <img src="../../assets/empty-cart.svg">
+      
+        </div>
 
      <!--  <div class="card">
         <div class="image">
@@ -74,7 +81,6 @@
 
         </div>
       </div> -->
-
       
     </div>
 

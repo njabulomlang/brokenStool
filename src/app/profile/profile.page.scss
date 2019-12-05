@@ -53,6 +53,18 @@ ion-toolbar {
         }
       }
     }
+
+    .camera {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      z-index: 15;
+
+      ion-button {
+        border-radius: 50%;
+        background: maroon;
+      }
+    }
   }
 
   .btnz {
@@ -83,7 +95,7 @@ ion-toolbar {
     }
 
     .edit {
-        width: 100%;
+      width: 100%;
       padding: 5px;
       ion-input {
         width: 93vw;
@@ -116,7 +128,7 @@ ion-toolbar {
           height: 10vw;
           border-radius: 10px;
           color: white;
-          font-family: 'Poppins';
+          font-family: "Poppins";
           letter-spacing: 2px;
         }
       }
@@ -127,6 +139,8 @@ ion-toolbar {
     width: 100%;
     padding: 5px;
     position: relative;
+    justify-content: space-evenly;
+    justify-items: center;
     display: flex;
     flex-flow: row;
 

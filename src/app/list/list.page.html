@@ -1,12 +1,12 @@
 <ion-header no-border>
 
   <ion-toolbar>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="end">
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="secondary">
+    <ion-buttons slot="start">
       <ion-button id="icon">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
@@ -21,27 +21,30 @@
     </ion-toolbar> -->
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
 
   <div class="container">
+    <div class="top">
     <div class="pagename">
-      <h1>{{collectionName}}</h1>
+      <h1 style="text-transform: uppercase;">{{collectionName}}</h1>
     </div>
     <div class="itemcount">
       <div class="items">
-        <p>{{myProduct.length}} items</p>
+        <p>{{myProduct.length}} item(s)</p>
       </div>
 
       <div class="filter">
-
-        <ion-select placeholder="Filter">
-          <ion-select-option value="c">Colour</ion-select-option>
-          <ion-select-option value="p">Product Type</ion-select-option>
-          <ion-select-option value="s">Size</ion-select-option>
-
-        </ion-select>
+        
+          <ion-select placeholder="Filter">
+              <ion-select-option value="c">Colour</ion-select-option>
+              <ion-select-option value="p">Product Type</ion-select-option>
+              <ion-select-option value="s">Size</ion-select-option>
+           
+            </ion-select>
       </div>
     </div>
+  </div>
 
     <div class="cards">
       <div class="card"  *ngFor="let p of myProduct">
@@ -56,20 +59,8 @@
 
         </div>
       </div>
-      <!-- <div class="card">
-        <img src="https://i.pinimg.com/564x/9b/e5/3b/9be53bb25b9c82c8b8c823fb1eb336f4.jpg">
-        <div class="itemdetails">
-          <div class="name">
-            <p>Green Hoody <br> <span>R200</span></p>
-          </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
-          </div>
-
-        </div>
-
-      </div> -->
-      <!-- <div class="card">
+     
+      <div class="card">
         <img src="https://i.pinimg.com/564x/e6/65/8b/e6658b090015019c0256cb006438f030.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -81,8 +72,8 @@
 
         </div>
 
-      </div> -->
-      <!-- <div class="card">
+      </div>
+      <div class="card">
         <img src="https://i.pinimg.com/564x/59/e2/11/59e211cb4bdc56c35c8a5d4dcbdf7305.jpg">
         <div class="itemdetails">
           <div class="name">
@@ -94,33 +85,23 @@
 
         </div>
 
-      </div> -->
-     <!--  <div class="card">
-        <img src="https://i.pinimg.com/564x/16/66/c6/1666c6e5e4f6da8576d3245119cf6c8d.jpg">
-        <div class="itemdetails">
-          <div class="name">
-            <p>Striped White Hoody <br> <span>R200</span></p>
-          </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
-          </div>
+      </div>
 
+      <div class="card">
+          <img src="https://i.pinimg.com/564x/59/e2/11/59e211cb4bdc56c35c8a5d4dcbdf7305.jpg">
+          <div class="itemdetails">
+            <div class="name">
+              <p>Striped Grey Hoody <br> <span>R200</span></p>
+            </div>
+            <div id="icon">
+              <ion-icon slot="end" name="heart-empty"></ion-icon>
+            </div>
+  
+          </div>
+  
         </div>
+    
 
-      </div> -->
-     <!--  <div class="card">
-        <img src="https://i.pinimg.com/564x/65/16/1b/65161b0b494cbab70ec86dc3e6f20818.jpg">
-        <div class="itemdetails">
-          <div class="name">
-            <p>Black Hoody <br> <span>R200</span></p>
-          </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
-          </div>
-
-        </div>
-
-      </div> -->
 
     </div>
   </div>
