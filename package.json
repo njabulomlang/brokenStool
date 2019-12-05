@@ -21,6 +21,7 @@
     "@angular/router": "~8.1.2",
     "@ionic-native/camera": "^5.17.0",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/downloader": "^5.17.1",
     "@ionic-native/facebook": "^5.17.0",
     "@ionic-native/file": "^5.17.1",
     "@ionic-native/file-opener": "^5.17.1",
@@ -43,6 +44,7 @@
     "cordova-universal-links-plugin-fix": "1.2.1",
     "core-js": "^2.5.4",
     "firebase": "^7.4.0",
+    "integrator-cordova-plugin-downloader": "1.1.0",
     "pdfmake": "^0.1.62",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
@@ -107,7 +109,8 @@
       "cordova-plugin-file-opener2": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
-      "cordova-plugin-file": {}
+      "cordova-plugin-file": {},
+      "integrator-cordova-plugin-downloader": {}
     },
     "platforms": [
       "android",

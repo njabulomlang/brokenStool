@@ -13,23 +13,22 @@
 <ion-content>
   <div class="container">
     <div class="cards">
-      <div class="card" (click)="viewReceipt()">
+      <div class="card" *ngFor="let o of orderHistory">
         <div class="image">
           <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
         </div>
 
-        <div class="right">
+        <div class="right" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
           <div class="itemname">
-            <p>Dankie Jesu Crop Top</p>
+            <p>{{b.product_name}}</p>
           </div>
-
           <div class="costs">
-            <p><i>QTY. 1</i>  <br> R100 <br> 11 November 2019 <br> HGD6776767</p>
+            <p><i>{{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.timeStamp | date:'mediumDate'}} <br> {{o.refNo}}</p>
           </div>
         </div>
       </div>
 
-      <div class="card">
+      <!-- <div class="card">
           <div class="image">
             <img src="https://i.pinimg.com/564x/75/b0/05/75b005516c56bbc8f42cfbfb7ced4a16.jpg" alt="">
           </div>
@@ -90,7 +89,7 @@
                     <p><i>QTY. 1</i>  <br> R800 <br> 11 November 2019 <br> HGD6776767</p>
                   </div>
                 </div>
-              </div>
+              </div> -->
     </div>
   </div>
 

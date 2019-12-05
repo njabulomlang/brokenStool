@@ -78,9 +78,10 @@ const routes: Routes = [
     loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
   },
   {
-    path: 'receipts',
+    path: 'receipts/:id',
     loadChildren: () => import('./receipts/receipts.module').then( m => m.ReceiptsPageModule)
-  },  {
+  },
+  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },

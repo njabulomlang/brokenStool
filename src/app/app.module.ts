@@ -16,7 +16,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-
+import { Downloader } from '@ionic-native/downloader/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +30,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
     Camera, 
     File,
     FileOpener,
+    Downloader,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

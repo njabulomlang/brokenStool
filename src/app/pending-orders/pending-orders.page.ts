@@ -2,12 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { NavController, Platform } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-import { File } from '@ionic-native/file/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 @Component({
   selector: 'app-pending-orders',
@@ -16,130 +10,25 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 })
 export class PendingOrdersPage implements OnInit {
   dbOrder = firebase.firestore().collection('Order');
-  dbHistory = firebase.firestore().collection('History');
   dbUserProfile = firebase.firestore().collection('userProfile');
   uid = firebase.auth().currentUser.uid;
   myOrder = [];
-  letterObj = {
-    to: '',
-    from: '',
-    text: ''
-  }
+ 
   storageRef = firebase.storage().ref();
   pdfObj = null;
   reciept = null;
-  constructor(public navCtrl: NavController, private plt: Platform, private file: File, private fileOpener: FileOpener) { }
+  constructor(public navCtrl: NavController, ) { }
 
   ngOnInit() {
     this.getAllOrders();
-    // this.createPdf();
-    this.userProfile();
-  }
-  userProfile() {
-    this.dbUserProfile.doc(this.uid).onSnapshot((res) => {
-      this.letterObj.from = res.data().name + ' ' + res.data().surname;
-    })
-    this.letterObj.to = 'Broken stool';
   }
 
-  createPdf() {
-    var docDefinition = {
-      content: [
-        { text: 'Reciept', style: 'header' },
-        { text: new Date().toTimeString(), alignment: 'right' },
-
-        { text: 'From', style: 'subheader' },
-        { text: this.letterObj.from },
-
-        { text: 'To', style: 'subheader' },
-        this.letterObj.to,
-
-        { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
-
-        {
-          columns: [
-            {
-              ul: [
-                'Items',
-                'dasdwddwdws',
-              ]
-            },
-            {
-              ul: [
-                'Quantity',
-                '1',
-              ]
-            },
-            {
-              ul: [
-                'Unit price',
-                'R4.50',
-              ]
-            }
-          ]
-          // table:[]
-          /*  ul: [
-             'Bacon',
-             'Rips',
-             'BBQ',
-           ] */
-        }
-      ],
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-        },
-        subheader: {
-          fontSize: 14,
-          bold: true,
-          margin: [0, 15, 0, 0]
-        },
-        story: {
-          italic: true,
-          alignment: 'center',
-          width: '50%',
-        }
-      }
-    }
-    this.pdfObj = pdfMake.createPdf(docDefinition);
-    
-  }
-  downloadPdf() {
-    if (this.plt.is('cordova')) {
-      this.pdfObj.getBuffer((buffer) => {
-        var blob = new Blob([buffer], { type: 'application/pdf' });
-        firebase.storage().ref('Reciepts/').child(Math.floor(1000) + '.pdf').put(blob).then((results) => {
-          console.log('results url: ', results);
-          // results.downloadURL
-          firebase.storage().ref('Reciepts/').child(results.metadata.name).getDownloadURL().then((url) => {
-            // console.log(results);
-            // this.pdfDoc = url;
-            //this.quotes.pdfLink = url;
-            this.reciept = url;
-           // this.getReciept(url);
-            // console.log('download url ',url);
-
-            // this.saveData();
-            //console.log('pdf link from storage............:', this.pdfDoc);
-          })
-        })
-        // Save the PDF to the data Directory of our App
-        this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
-          // Open the PDf with the correct OS tools
-          this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
-        })
-      });
-    } else {
-      // On a browser simply use download!
-      this.pdfObj.download();
-    }
-  }
   orderTrack(id, data) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         id: id,
         data: data,
+        reciept: this.reciept
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }
@@ -155,33 +44,17 @@ export class PendingOrdersPage implements OnInit {
       })
     })
   }
- /*   removeOrder() {
-    this.myOrder.forEach((i) => {
-      // this.getOrder(i.id);
-      this.dbHistory.doc(i.id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
-        this.dbOrder.doc(i.id).delete();
-      })
-    })
-  }  */
-  async getReciept(rec) {
-    return await rec;
-  }
+  /*   removeOrder() {
+     this.myOrder.forEach((i) => {
+       // this.getOrder(i.id);
+       this.dbHistory.doc(i.id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
+         this.dbOrder.doc(i.id).delete();
+       })
+     })
+   }  */
+  
   getOrder(id) {
-    //console.log('My reciept ',this.reciept);
-    this.downloadPdf();
-    setTimeout(() => {
-      console.log('My reciept ',this.reciept);
-    }, 1000);
-    //  this.dbOrder.doc(id).onSnapshot((res) => {
-    //     if (res.data().status === 'ready') {
-    //       //console.log('Collect');
-    //       this.dbHistory.doc(id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
-    //         this.dbOrder.doc(id).delete();
-    //       })
-    //     } else {
-    //       console.log('Wait until it is');
-    //     }
-    // }) 
+ 
   }
 
 
