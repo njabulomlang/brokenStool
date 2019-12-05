@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -20,7 +20,7 @@ export class ProfilePage implements OnInit {
   email;
   myCart:number;
   myWish:number;
-  constructor(private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController) { }
+  constructor(public navCtrl: NavController, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController) { }
 
   ngOnInit() { 
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
@@ -65,6 +65,11 @@ export class ProfilePage implements OnInit {
   showEdit(){
     this.editprofile=!this.editprofile
   }
+
+  goBack(){
+    this.navCtrl.pop()
+  }
+  
   updateProfile() {
     this.dbProfile.doc(this.uid).update({name: this.name, surname: this.surname, email: this.email}).then(()=>{
       this.editprofile=!this.editprofile;

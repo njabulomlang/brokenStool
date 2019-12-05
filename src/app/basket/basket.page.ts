@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, NavController } from '@ionic/angular';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class BasketPage implements OnInit {
   totalCost: number = 0;
   prodCount: number = 0;
   doc_id: string = ''
-  constructor(public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController) { }
+  constructor(public NavCtrl: NavController, public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController) { }
 
   ngOnInit() {
     this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
@@ -179,4 +179,7 @@ export class BasketPage implements OnInit {
     //console.log('Quan decr ', quan);
   }
 
+  goback(){
+    this.NavCtrl.pop();
+  }
 }

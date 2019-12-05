@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-buttons slot="secondary">
-      <ion-button>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="arrow-back" id="icon"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -65,6 +65,15 @@
       <div class="total">
         <p id="tot">TOTAL</p>
         <p id="price">{{getTotal() | currency:'R'}}</p>
+      </div>
+      <div class="bankingDets">
+        <p>
+          <b>Banking Details:</b><br>
+          Account Holder Name: Lunga <br>
+          Account Number: 1234567890<br>
+          Branch Name: Dube <br>
+          Branch Number: 47100<br>
+          Reference No.: XYZ12345</p>
       </div>
 
       <div class="date">

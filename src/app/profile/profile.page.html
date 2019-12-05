@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="goBack()">
       <ion-icon slot="start" name="arrow-back" id="icon"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -18,9 +18,9 @@
 
       </div>
       <div class="camera">
-    <ion-button (click)="onClick()" color="transparent">
-      <ion-icon slot="icon-only" name="camera" size="small"></ion-icon>
-    </ion-button>
+        <ion-fab-button color="transparent">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
       </div>
     </div>
 

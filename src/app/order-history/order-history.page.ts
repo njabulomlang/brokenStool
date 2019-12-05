@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-order-history',
@@ -11,7 +12,7 @@ export class OrderHistoryPage implements OnInit {
   dbHistory = firebase.firestore().collection('orderHistory');
   uid = firebase.auth().currentUser.uid;
   orderHistory=[];
-  constructor(private router: Router) { }
+  constructor(public NavCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
     this.getAll();
@@ -29,5 +30,9 @@ export class OrderHistoryPage implements OnInit {
         this.orderHistory.push(doc.data());
       })
     })
+  }
+
+  goBack(){
+    this.NavCtrl.pop()
   }
 }

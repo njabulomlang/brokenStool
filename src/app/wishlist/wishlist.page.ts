@@ -43,4 +43,8 @@ export class WishlistPage implements OnInit {
   showItems() {
     this.items = !this.items
   }
+
+  goBack(){
+    this.navCtrl.pop();
+  }
 }

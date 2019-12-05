@@ -11,7 +11,7 @@ import { NavController } from '@ionic/angular';
 export class CategoriesPage implements OnInit {
   category : string;
   colDef : string;
-  constructor(public router: Router, public route: ActivatedRoute, public navCtrl : NavController) {
+  constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl : NavController) {
 
    // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
     this.category = this.route.snapshot.paramMap.get('data').toUpperCase();
@@ -44,5 +44,9 @@ export class CategoriesPage implements OnInit {
   }
   wishlist() {
     this.router.navigateByUrl('wishlist');
+  }
+
+  goBack(){
+    this.navCtrl.pop()
   }
 }

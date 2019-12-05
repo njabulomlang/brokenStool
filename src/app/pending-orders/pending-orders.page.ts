@@ -57,5 +57,9 @@ export class PendingOrdersPage implements OnInit {
  
   }
 
+  goBack(){
+    this.navCtrl.pop()
+  }
+
 
 }
