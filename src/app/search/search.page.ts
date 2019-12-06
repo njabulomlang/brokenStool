@@ -33,7 +33,7 @@ export class SearchPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: this.txtSearch.charAt(0).toUpperCase() + this.txtSearch.substring(1).toLowerCase(),
+        col: this.txtSearch.charAt(0).toUpperCase()+this.txtSearch.substring(1).toLowerCase(),
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }
