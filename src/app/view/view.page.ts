@@ -118,7 +118,7 @@ export class ViewPage implements OnInit {
   }
 
   goBack(){
-    this.NavCtrl.pop()
+    this.navCtrl.pop()
   }
   viewitem() {
     this.router.navigateByUrl("/basket")
