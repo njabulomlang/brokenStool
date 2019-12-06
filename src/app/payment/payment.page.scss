@@ -102,8 +102,10 @@
       height: 1.5px;
       background: grey;
     }
-    p {
-      cursor: pointer;
-    }
+   ion-button{
+     color: black;
+     width: 30vw;
+     border-bottom: 2px solid black;
+   }
   }
 }

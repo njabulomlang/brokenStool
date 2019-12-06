@@ -14,10 +14,16 @@
 
     <div class="btn">
       <div class="deliver">
-        <p>DELIVERY</p>
-        <div class="line"></div>
+       <ion-button (click)="onClick()" color="transparent">
+         DELIVERY
+       </ion-button>
+        <!-- <div class="line"></div> -->
       </div>
-      <div class="pickup"><p>PICK-UP</p></div>
+      <div class="pickup">
+        <ion-button (click)="onClick()" color="transparent">
+         COLLECTION
+        </ion-button>
+       </div>
     </div>
 
     <div class="details">
