@@ -73,7 +73,7 @@ export class TrackOrdersPage implements OnInit {
     });
     var docDefinition = {
       content: [
-        { text: 'Reciept', style: 'header' },
+        { text: 'Your Receipt', style: 'header' },
         { text: new Date().toTimeString(), alignment: 'right' },
  
         { text: 'From', style: 'subheader' },
@@ -90,7 +90,8 @@ export class TrackOrdersPage implements OnInit {
           ul: [
             items
           ]
-        }
+        },
+        
       ],
       styles: {
         header: {

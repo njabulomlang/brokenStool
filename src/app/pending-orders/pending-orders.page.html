@@ -23,10 +23,12 @@
             <p id="name" style="font-family: 'Poppins'; font-size: 3vw; "><span style="letter-spacing: 1.2px; text-transform: uppercase;"><b>{{p.product_name}}</b></span> <br> <i>QTY. {{p.quantity}}</i></p>
             <p id="costs" style="font-size: 2.5vw;">
               {{p.cost * p.quantity | currency:'R'}} <br>
-             
+             <span style="line-height: 10px;">
                 {{p.timestamp | date:'medium'}} <br>
               {{o.id}}
            
+             </span>
+               
             </p>
           </div>
         </div>
