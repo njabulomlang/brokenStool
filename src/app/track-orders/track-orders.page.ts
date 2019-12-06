@@ -145,7 +145,7 @@ export class TrackOrdersPage implements OnInit {
   }
   saveData() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
-      if (res.data().status === 'ready') {
+      if (res.data().status === 'collected') {
         //console.log('Collect');
         this.dbHistory.doc(this.doc_id).set({ date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid:this.uid, 
           refNo: this.doc_id, timeStamp: new Date().getTime()}).then(() => {
@@ -170,11 +170,11 @@ export class TrackOrdersPage implements OnInit {
       } else if (res.data().status === 'ready') {
         this.toggleThree()
       } else if (res.data().status === 'collected') {
-        this.toggleFour()
         setTimeout(() => {
           this.downloadPdf();
+          console.log('Deleting PDF');
         }, 1000);
-          
+        this.toggleFour()  
       }
       this.productOrder = []
       res.data().product.forEach(item => {
