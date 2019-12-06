@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -27,10 +27,26 @@
 
 @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 
-*{
-    font-family: 'Poppins';
+* {
+  font-family: "Poppins";
 }
 
-ion-button{
-    overflow: hidden;
+ion-button {
+  overflow: hidden;
+}
+
+ion-popover {
+ 
+  div.popover-content {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    --ion-backdrop-color: rgba(0, 0, 0, 0.76);
+    --min-height: 30vh;
+    --max-height: 30vh;
+    --min-width: 70vw;
+    --max-width: 70vw;
+
+  }
+ 
 }

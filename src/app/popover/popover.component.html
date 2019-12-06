@@ -1,10 +1,23 @@
-<ionic4-star-rating #rating
-        activeIcon = "ios-star"
-        defaultIcon = "ios-star-outline"
-        activeColor = "#ff0000"
-        defaultColor = "#aaaaaa"
-        readonly = "false"
-        rating = "2"
-        fontSize = "32px"
-        (ratingChanged)="logRatingChange($event)">
-    </ionic4-star-rating>
+<ion-content>
+    <div class="container">
+        <pre>
+        </pre>
+        <div class="text">
+            <p>RATE THIS PRODUCT</p>
+        </div>
+        <div class="ratings">
+            <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
+                defaultColor="#aaaaaa" readonly="false" rating="2" fontSize="7vw"
+                (ratingChanged)="logRatingChange($event)">
+            </ionic4-star-rating>
+        </div>
+<br>
+        <div class="buttonz">
+            <ion-button (click)="onClick()" color="transparent">
+                DONE
+            </ion-button>
+        </div>
+    </div>
+
+
+</ion-content>
