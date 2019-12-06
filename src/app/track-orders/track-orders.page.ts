@@ -168,11 +168,9 @@ export class TrackOrdersPage implements OnInit {
         this.toggleTwo();
       } else if (res.data().status === 'ready') {
         this.toggleThree()
-        setTimeout(() => {
-          this.downloadPdf();
-        }, 1000);
       } else if (res.data().status === 'collected') {
         this.toggleFour()
+          this.downloadPdf();
       }
       this.productOrder = []
       res.data().product.forEach(item => {
