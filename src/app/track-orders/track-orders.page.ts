@@ -20,6 +20,7 @@ export class TrackOrdersPage implements OnInit {
   dbHistory = firebase.firestore().collection('orderHistory');
   dbUserProfile = firebase.firestore().collection('userProfile');
   productOrder = [];
+  myArr = [];
   name;
   cellno;
   pdfObj=null;
@@ -40,6 +41,7 @@ export class TrackOrdersPage implements OnInit {
 
   ngOnInit() {
     this.getOrder();
+    this.userProfile();
     //console.log(this.elementRef.nativeElement.children[1].children[0].children[1].children[3].children[0].children);
   }
   orderReady() {
@@ -56,51 +58,38 @@ export class TrackOrdersPage implements OnInit {
   }
   userProfile() {
     this.dbUserProfile.doc(this.uid).onSnapshot((res) => {
-      this.letterObj.from = res.data().name + ' ' + res.data().surname;
+      this.letterObj.to = res.data().name + ' ' + res.data().surname;
     })
-    this.letterObj.to = 'Broken stool';
+    this.letterObj.from = 'Broken stool';
   }
   createPdf() {
+    let items = this.myArr.map((item) => {
+      //console.log('Extras in table...', item);
+      if (this.myArr.length>=0) {
+        return [item.product_name , item.quantity, 'R' + item.cost + '.00'];
+      } else {
+        return ['*********', 0, 'R0.00']
+      }
+    });
     var docDefinition = {
       content: [
         { text: 'Reciept', style: 'header' },
         { text: new Date().toTimeString(), alignment: 'right' },
-
+ 
         { text: 'From', style: 'subheader' },
         { text: this.letterObj.from },
-
+ 
         { text: 'To', style: 'subheader' },
         this.letterObj.to,
-
+ 
         { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
-
+        { text: 'Reference number: ', style: 'subheader' },
+        { text: this.doc_id },
+ 
         {
-          columns: [
-            {
-              ul: [
-                'Items',
-                'dasdwddwdws',
-              ]
-            },
-            {
-              ul: [
-                'Quantity',
-                '1',
-              ]
-            },
-            {
-              ul: [
-                'Unit price',
-                'R4.50',
-              ]
-            }
+          ul: [
+            items
           ]
-          // table:[]
-          /*  ul: [
-             'Bacon',
-             'Rips',
-             'BBQ',
-           ] */
         }
       ],
       styles: {
@@ -168,6 +157,9 @@ export class TrackOrdersPage implements OnInit {
   }
   getOrder() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
+      res.data().product.forEach((item)=>{
+        this.myArr.push(item)
+      })
       //this.userDetails(res.data().userID);
       // console.log('My order', res.data());
       if (res.data().status === 'recieved') {
