@@ -23,7 +23,7 @@ export class ProfilePage implements OnInit {
   myCart:number;
   myWish:number;
   constructor(private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
-    private actionSheetCtrl: ActionSheetController, public navCtrl:NavController) { }
+    private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
 
   ngOnInit() { 
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
