@@ -148,7 +148,7 @@ export class TrackOrdersPage implements OnInit {
       if (res.data().status === 'collected') {
         //console.log('Collect');
         this.dbHistory.doc(this.doc_id).set({ date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid:this.uid, 
-          refNo: this.doc_id, timeStamp: new Date().getTime()}).then(() => {
+          refNo: this.doc_id}).then(() => {
           this.dbOrder.doc(this.doc_id).delete();
         })
       } else {

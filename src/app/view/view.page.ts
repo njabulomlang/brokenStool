@@ -24,7 +24,7 @@ export class ViewPage implements OnInit {
   data = [];
   unitProduct = [];
   my_size: string = '';
-
+  color:string = '';
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
@@ -82,6 +82,9 @@ export class ViewPage implements OnInit {
     this.my_size = data;
     //console.log('My size ', this.my_size);
   }
+  colorChosen(color) {
+    this.color = color;
+  }
   plus() {
     //console.log('Quantity ', quantity); 
     this.quantity += 1
@@ -104,7 +107,8 @@ export class ViewPage implements OnInit {
     if (this.my_size === "") {
       this.toastController('Please select your size');
     } else {
-      this.dbCart.add({ customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{ product_name: details.name, size: this.my_size, quantity: this.quantity, cost: details.price, unitCost: details.price}] }).then(() => {
+      this.dbCart.add({ customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{ product_name: details.name, size: this.my_size, quantity: this.quantity, cost: details.price, unitCost: details.price,
+      color: this.color}] }).then(() => {
         this.toastController('Added to busket')
         //this.router.navigateByUrl('basket');
       })

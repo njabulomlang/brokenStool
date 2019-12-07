@@ -56,7 +56,7 @@ export class ListPage implements OnInit {
    // this.router.navigate(['view', id])
   }
   wishList(id, data) {
-    console.log('My info ', id, data);
+    //console.log('My info ', id, data);
     this.dbWishlist.add({customerUID: firebase.auth().currentUser.uid,price: data.price,name: data.name, id:id, category: this.collectionName}).then(() => {
       this.toastController('Added to wishlist..');
       //this.router.navigateByUrl('basket');

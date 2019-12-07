@@ -23,7 +23,7 @@
             <p>{{b.product_name}}</p>
           </div>
           <div class="costs">
-            <p><i>{{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.timeStamp | date:'mediumDate'}} <br> {{o.refNo}}</p>
+            <p><i>{{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} <br> {{o.refNo}}</p>
           </div>
         </div>
       </div>

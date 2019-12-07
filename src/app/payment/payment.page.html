@@ -14,13 +14,13 @@
 
     <div class="btn">
       <div class="deliver">
-       <ion-button (click)="onClick()" color="transparent">
+       <ion-button (click)="Delivery()" color="transparent">
          DELIVERY
        </ion-button>
         <!-- <div class="line"></div> -->
       </div>
       <div class="pickup">
-        <ion-button (click)="onClick()" color="transparent">
+        <ion-button (click)="notDelivery()" color="transparent">
          COLLECTION
         </ion-button>
        </div>
@@ -48,7 +48,7 @@
           </tr> -->
           <tr>
             <td>Delivery Fee</td>
-            <td>{{100|currency:'R'}}</td>
+            <td>{{delCost|currency:'R'}}</td>
           </tr>
           <!-- Cart Total- -->
           <tr>
