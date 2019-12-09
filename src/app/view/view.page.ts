@@ -27,6 +27,8 @@ export class ViewPage implements OnInit {
   sizeIndex = null;
   colorIndex = null;
   color:string = '';
+  myRate:number=0;
+  dbRate = firebase.firestore().collection('productRate');
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
@@ -38,7 +40,12 @@ export class ViewPage implements OnInit {
 
   ngOnInit() {
    // console.log('my collection ', this.col, 'my data', this.doc_data, 'my docid');
-    
+   this.dbRate.where('product', '==', this.doc_id).onSnapshot((res) => {
+    // this.myRatings = [];
+     res.forEach((doc)=>{
+       this.myRate = doc.data().rating/res.size;
+     })
+    })
     //console.log('doc id ', this.doc_id, 'Collection ref ', this.col);
     this.dbProduct.doc("Dankie Jesu").collection(this.col).doc(this.doc_id).onSnapshot((doc) => {
       //console.log('My product ', doc.data());

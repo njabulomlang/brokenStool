@@ -13,8 +13,16 @@ import { ToastController } from '@ionic/angular';
 })
 export class ReceiptsPage implements OnInit {
   dbHistory = firebase.firestore().collection('orderHistory');
+  dbProfile = firebase.firestore().collection('userProfile');
+  uid = firebase.auth().currentUser.uid;
+  userProfile = {
+    name:'',
+    surname:'',
+    cellno:0
+  }
   myOrder = [];
   doc_id: string;
+  quantity:number=0;
   constructor(public route: ActivatedRoute, private file: File, private fileOpener: FileOpener, public downloader: Downloader,
     public toastController: ToastController) {
     this.doc_id = this.route.snapshot.paramMap.get('id');
@@ -26,10 +34,18 @@ export class ReceiptsPage implements OnInit {
 
   ngOnInit() {
     this.getOrder();
+    this.getProfile();
   }
   getOrder() {
     this.dbHistory.doc(this.doc_id).onSnapshot((res) => {
       this.myOrder.push(res.data())
+    })
+  }
+  getProfile() {
+    this.dbProfile.doc(this.uid).onSnapshot((res)=>{
+    this.userProfile.name = res.data().name;
+    this.userProfile.surname = res.data().surname;
+    this.userProfile.cellno = res.data().cellPhone;
     })
   }
 
@@ -81,5 +97,34 @@ export class ReceiptsPage implements OnInit {
     });
     toast.present();
   }
-
+  getTotal() {
+    let total = 0;
+    //let quantity = 0;
+    for (let i = 0; i < this.myOrder.length; i++) {
+      let product = this.myOrder[i].orders;
+      //  console.log(this.myOrder[i]);
+     product.forEach((item) => {
+      //quantity=item.quantity+item.quantity;
+      total += item.cost * item.quantity;
+      })
+     // console.log('My tot ', quantity);
+    }
+  /// console.log('My tot ', total);
+   return total;
+  }
+  getQuantity() {
+    let total = 0;
+    //let quantity = 0;
+    for (let i = 0; i < this.myOrder.length; i++) {
+      let product = this.myOrder[i].orders;
+      //  console.log(this.myOrder[i]);
+     product.forEach((item) => {
+      //quantity=item.quantity+item.quantity;
+      total += item.quantity;
+      })
+     // console.log('My tot ', quantity);
+    }
+  /// console.log('My tot ', total);
+   return total;
+  }
 }

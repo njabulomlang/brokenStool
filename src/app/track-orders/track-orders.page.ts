@@ -30,7 +30,9 @@ export class TrackOrdersPage implements OnInit {
     from: '',
     text: ''
   }
+  delType:string = '';
   delCost:number = 0;
+  status:string = '';
   uid:string=firebase.auth().currentUser.uid;
   //dbProfile = firebase.firestore().collection('userProfile');
   constructor(public NavCtrl: NavController, public route: ActivatedRoute, public router: Router,private plt: Platform, private file: File, private fileOpener: FileOpener) {
@@ -156,7 +158,7 @@ export class TrackOrdersPage implements OnInit {
       if (res.data().status === 'collected') {
         //console.log('Collect');
         this.dbHistory.doc(this.doc_id).set({ date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid:this.uid, 
-          refNo: this.doc_id}).then(() => {
+          refNo: this.doc_id, delType:this.delType, status: this.status}).then(() => {
           this.dbOrder.doc(this.doc_id).delete();
         })
       } else {
@@ -171,7 +173,7 @@ export class TrackOrdersPage implements OnInit {
       })
       //this.userDetails(res.data().userID);
       // console.log('My order', res.data());
-      if (res.data().status === 'recieved') {
+      if (res.data().status === 'received') {
         this.toggleOne();
       } else if (res.data().status === 'processed') {
         this.toggleTwo();
@@ -186,6 +188,8 @@ export class TrackOrdersPage implements OnInit {
       }
       this.productOrder = [];
       this.delCost = res.data().deliveryCost;
+      this.delType = res.data().deliveryType;
+      this.status = res.data().status;
       res.data().product.forEach(item => {
         this.productOrder.push(item);
       });

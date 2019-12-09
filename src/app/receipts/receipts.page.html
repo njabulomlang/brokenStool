@@ -18,7 +18,7 @@
       <div class="card" *ngFor="let o of order.orders">
 
         <div class="image">
-          <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
+          <img src="{{o.picture}}" alt="">
         </div>
 
         <div class="right">
@@ -66,54 +66,56 @@
         </div> -->
 
       <div class="line"></div>
-
-      <div class="receipt">
-        <h1>Your Receipt</h1>
-      </div>
-
-      <div class="name">
-        <p>John Doe <br> <span>0869887654</span></p>
-      </div>
-
-      <div class="ref">
-        <p>REF <span><i>JGD678986</i></span></p>
-      </div>
-
-      <div class="cart">
-        <p><b>Date of Puchase </b><i>20 November 2019</i> <br>
-          <b>Items</b></p>
-      </div>
-
-      <div class="table">
-        <div class="list">
-          <p>Crop Top</p>
-          <p>1</p>
+      <!-- <div *ngFor="let o of order.orders"> -->
+        <div class="receipt">
+          <h1>Your Receipt</h1>
         </div>
 
-        <br>
-        <div class="total">
-          <p><b>Total Quantity</b></p>
-          <p>1</p>
+        <div class="name">
+          <p>{{userProfile.name}} {{userProfile.surname}} <br> <span>{{userProfile.cellno}}</span></p>
         </div>
-      </div>
 
-      <div class="grand">
-        <p>Grand Total</p>
-        <p>R600</p>
-      </div>
-      <div class="ordertype">
-        <p>Order Type</p>
-        <p id="del"><i>Delivery</i></p>
-      </div>
+        <div class="ref">
+          <p>REF <span><i>{{order.refNo}}</i></span></p>
+        </div>
 
-      <div class="address">
-        <p>Order Address <br> <span>1234 Orlando East, Soweto, 1804</span></p>
+        <div class="cart">
+          <p><b>Date of Puchase </b><i>{{order.timestamp | date:"mediumDate"}}</i> <br>
+            <b>Items</b></p>
+        </div>
 
-      </div>
+        <div class="table">
+          <div class="list" *ngFor="let o of order.orders">
+            <p>{{o.product_name}}</p>
+            <p>{{o.quantity}}</p>
+          </div>
 
-      <div class="status">
-        <p>Order Status: &nbsp; <i>Delivered</i></p>
-      </div>
+          <br>
+          <div class="total">
+            <p><b>Total Quantity</b></p>
+            <p>{{getQuantity()}}</p>
+          </div>
+        </div>
+
+        <div class="grand">
+          <p>Grand Total</p>
+          <p>{{getTotal() | currency:'R'}}</p>
+        </div>
+        <div class="ordertype">
+          <p>Order Type</p>
+          <p id="del"><i>{{order.delType}}</i></p>
+        </div>
+
+        <div class="address">
+          <p>Order Address <br> <span>1234 Orlando East, Soweto, 1804</span></p>
+
+        </div>
+
+        <div class="status">
+          <p>Order Status: &nbsp; <i>{{order.status}}</i></p>
+        </div>
+      <!-- </div> -->
+
       <div class="buttonz">
         <ion-button (click)=" downloadPDF(order.reciept)" color="transparent">
           DOWNLOAD COPY

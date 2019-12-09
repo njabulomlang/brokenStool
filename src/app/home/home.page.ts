@@ -137,6 +137,15 @@ export class HomePage implements OnInit{
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
   goList(data) {
-
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          data: data,
+          col: 'Specials',
+          //currency: JSON.stringify(currency),
+         // refresh: refresh
+      }
+  };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras); 
   }
 }

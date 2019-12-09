@@ -18,13 +18,9 @@
 
       <div class="iteminfo">
         <div class="itemname">
-          <div class="stars">
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star-outline"></ion-icon>
-          </div>
+            <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
+            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}"  fontSize="7vw">
+        </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
             <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
