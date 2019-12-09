@@ -55,7 +55,8 @@
             <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>
+            
+            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)" ></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 

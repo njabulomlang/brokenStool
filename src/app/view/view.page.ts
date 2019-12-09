@@ -25,6 +25,7 @@ export class ViewPage implements OnInit {
   unitProduct = [];
   my_size: string = '';
   sizeIndex = null;
+  colorIndex = null;
   color:string = '';
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
@@ -86,8 +87,11 @@ export class ViewPage implements OnInit {
     this.my_size = data;
     //console.log('My size ', this.my_size);
   }
-  colorChosen(color) {
+
+  colorChosen(color, index) {
     this.color = color;
+    this.colorIndex = index
+    console.log("color",index);
   }
   plus() {
     //console.log('Quantity ', quantity); 
