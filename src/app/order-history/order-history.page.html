@@ -11,14 +11,20 @@
 </ion-header>
 
 <ion-content fullscreen>
-    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-        <div class="maploader">
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-        </div>
-       <!--  <div class="loading-text">
+  <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+    <div class="maploader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+    </div>
+    <!--  <div class="loading-text">
           <p>Loading Map</p>
         </div> -->
-      </div>
+  </div>
   <div class="container">
     <div class="cards" *ngFor="let o of orderHistory;">
       <!-- <div class="card" *ngFor="let o of orderHistory;">
@@ -44,28 +50,28 @@
       </div> -->
 
       <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
-          <p style="font-weight: bold; text-align: left;">{{o.refNo[0]}}</p>
-          <div class="image">
-            <img src="{{b.picture}}" alt="">
-          </div>
-  
-          <div class="right">
-            <div class="itemname">
-              <p>{{b.product_name}}</p>
-            </div>
-  
-            <div class="costs">
-              <p><i>QTY. {{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} <br> {{o.refNo}}</p>
-            </div>
-          </div>
+        <!-- <p style=" text-align: right;">{{o.refNo[0]}}</p> -->
+        <div class="image">
+          <img src="{{b.picture}}" alt="">
         </div>
 
-        <div class="card" id="msg" *ngIf="orderHistory.length==0">
-            <p> No History Yet</p>
-            <img src="../../assets/sad_smile.svg">
-        </div>
+        <div class="right">
+          <div class="itemname">
+            <p>{{b.product_name}}</p>
+          </div>
 
-        <!-- <div class="card">
+          <div class="costs">
+            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="msg" *ngIf="orderHistory.length==0">
+        <p> No History Yet</p>
+        <img src="../../assets/sad_smile.svg">
+      </div>
+
+      <!-- <div class="card">
             <div class="image">
               <img src="https://i.pinimg.com/564x/b0/39/12/b0391249ddaa2bae196e10772c3699d1.jpg" alt="">
             </div>

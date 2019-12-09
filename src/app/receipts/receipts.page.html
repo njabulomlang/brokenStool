@@ -14,14 +14,14 @@
 
   <div class="container">
 
-    <div class="cards" >
-      <div class="card" *ngFor="let order of myOrder">
+    <div class="cards" *ngFor="let order of myOrder">
+      <div class="card" *ngFor="let o of order.orders">
 
         <div class="image">
           <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
         </div>
 
-        <div class="right" *ngFor="let o of order.orders">
+        <div class="right" >
           <div class="title">
             <p>{{o.product_name}}</p>
           </div>
