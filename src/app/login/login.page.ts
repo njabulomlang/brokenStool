@@ -19,6 +19,8 @@ export class LoginPage implements OnInit {
   number: string;
   verification = "";
   confirmationResult = '';
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean;
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
     public fb: Facebook) {
 
@@ -62,6 +64,10 @@ export class LoginPage implements OnInit {
   }
 
   addUser() {
+    this.loaderAnimate = true;
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
       size: 'invisible',
       callback: (response) => {

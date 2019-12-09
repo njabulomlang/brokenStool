@@ -51,7 +51,9 @@ export class HomePage implements OnInit{
   profile() {
     this.router.navigateByUrl('profile');
   }
-
+  getPromo() {
+    
+  }
   search() {
     this.router.navigateByUrl('search');
   }
@@ -126,5 +128,7 @@ export class HomePage implements OnInit{
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
-  
+  goList(data) {
+
+  }
 }
