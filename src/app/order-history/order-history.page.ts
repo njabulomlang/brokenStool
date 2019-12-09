@@ -12,9 +12,14 @@ export class OrderHistoryPage implements OnInit {
   dbHistory = firebase.firestore().collection('orderHistory');
   uid = firebase.auth().currentUser.uid;
   orderHistory=[];
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   constructor(public NavCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
     this.getAll();
   }
 

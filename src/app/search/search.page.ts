@@ -20,7 +20,8 @@ export class SearchPage implements OnInit {
   mySearch = [];
   ports: Port[];
   port: Port;
-
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean;
   constructor(public navCtrl: NavController) { 
     this.ports = [
       { id: 1, name: 'Bucket Hats' },
@@ -35,6 +36,10 @@ export class SearchPage implements OnInit {
     //this.searchByName();
   }
   searchByName(name) {
+    this.loaderAnimate = true;
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
     // String(name).toLowerCase();
     this.dbProducts.doc('Dankie Jesu').collection(name).onSnapshot((res) => {
       this.mySearch = [];
