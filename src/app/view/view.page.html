@@ -59,14 +59,16 @@
 
       </div>
       <div class="colours">
-        <p>colours</p>
-
-        <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
+        <p>Colours</p>
+        <ion-button *ngFor="let c of prod.data.color" style="background: whitesmoke; border-radius: 6px;" (click)="colorChosen(c)" color="transparent">
+           <p style="color: black;">{{c}}</p> 
+          </ion-button>
+        <!-- <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
         </ion-button>
         <ion-button (click)="onClick()" color="transparent" style="background: green; border-radius: 6px;">
         </ion-button>
         <ion-button (click)="onClick()" color="transparent" style="background: red; border-radius: 6px;">
-        </ion-button>
+        </ion-button> -->
       </div>
       <div class="quantity">
         <p>Quantity</p>

@@ -33,6 +33,7 @@
           <div class="left">
             <p id="item">{{prod.product_name}}</p>
             <p>Size: {{prod.size}}</p>
+            <p>Color: {{prod.color}}</p>
             <p>{{cp.data.timestamp | date: "mediumDate"}}</p>
             <p style="font-size: 1em; margin: 5px; display: flex; flex-flow: row; align-items: baseline;">
               <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="add-circle-outline" (click)="plus(prod, i)">
@@ -91,7 +92,7 @@
       </div>
 
       <div class="btn">
-        <ion-button (click)="placeOrder(prodCart)" color="transparent">
+        <ion-button [disabled]="prodCart.length==0" (click)="placeOrder(prodCart)" color="transparent">
           PLACE ORDER
         </ion-button>
       </div>

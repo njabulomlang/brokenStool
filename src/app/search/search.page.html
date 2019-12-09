@@ -17,7 +17,18 @@
         <ion-icon slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
       </div>
       <div class="bar">
-        <ion-searchbar [(ngModel)]="txtSearch" placeholder="Search Items" color="transparent" (ionChange)="inputChange($event)"></ion-searchbar>
+          <ion-item>
+              <ion-label>Category</ion-label>
+              <ionic-selectable
+                [(ngModel)]="port"
+                [items]="ports"
+                itemValueField="id"
+                itemTextField="name"
+                [canSearch]="true"
+                (onChange)="portChange($event)">
+              </ionic-selectable>
+            </ion-item>
+        <!-- <ion-searchbar [(ngModel)]="txtSearch" placeholder="Search Items" color="transparent" (ionInput)="inputChange($event)"></ion-searchbar> -->
       </div>
     </div>
 
