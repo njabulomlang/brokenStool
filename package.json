@@ -119,7 +119,6 @@
       "integrator-cordova-plugin-downloader": {}
     },
     "platforms": [
-      "android",
       "browser"
     ]
   }

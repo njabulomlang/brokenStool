@@ -43,11 +43,10 @@
 
         <div class="filter">
 
-          <ion-select placeholder="Filter">
-            <ion-select-option value="c">Colour</ion-select-option>
-            <ion-select-option value="p">Product Type</ion-select-option>
-            <ion-select-option value="s">Size</ion-select-option>
-
+          <ion-select placeholder="Filter ASC" [(ngModel)]="sortVal" (ionChange)="orderBy()">
+            <ion-select-option value="name">Name</ion-select-option>
+            <ion-select-option value="dateAdded">Date Added</ion-select-option>
+            <ion-select-option value="price">Price</ion-select-option>
           </ion-select>
         </div>
       </div>
@@ -55,7 +54,7 @@
 
     <div class="cards">
       <div class="card" *ngFor="let p of myProduct, let i=index">
-        <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg"
+        <img src="{{p.info.pictureLink}}"
           (click)="viewitem(p.id, p.info)">
         <div class="itemdetails">
           <div class="name">

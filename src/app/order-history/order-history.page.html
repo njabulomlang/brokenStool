@@ -20,11 +20,10 @@
         </div> -->
       </div>
   <div class="container">
-    <div class="cards">
-      
-      <div class="card" *ngFor="let o of orderHistory">
-        <div class="image" >
-          <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
+    <div class="cards" *ngFor="let o of orderHistory;">
+      <!-- <div class="card" *ngFor="let o of orderHistory;">
+        <div class="image" *ngFor="let b of o.orders">
+          <img src="{{b.picture}}" alt="">
         </div>
 
         <div class="right" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
@@ -42,25 +41,31 @@
       <div class="card" id="msg" *ngIf="orderHistory.length==0">
           <p> No History Yet</p>
           <img src="../../assets/sad_smile.svg">
-      </div>
+      </div> -->
 
-      <!-- <div class="card">
+      <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
+          <p style="font-weight: bold; text-align: left;">{{o.refNo[0]}}</p>
           <div class="image">
-            <img src="https://i.pinimg.com/564x/75/b0/05/75b005516c56bbc8f42cfbfb7ced4a16.jpg" alt="">
+            <img src="{{b.picture}}" alt="">
           </div>
   
           <div class="right">
             <div class="itemname">
-              <p>Dankie Jesu Back Pack</p>
+              <p>{{b.product_name}}</p>
             </div>
   
             <div class="costs">
-              <p><i>QTY. 1</i>  <br> R400 <br> 11 November 2019 <br> HGD6776767</p>
+              <p><i>QTY. {{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} <br> {{o.refNo}}</p>
             </div>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="msg" *ngIf="orderHistory.length==0">
+            <p> No History Yet</p>
+            <img src="../../assets/sad_smile.svg">
+        </div>
+
+        <!-- <div class="card">
             <div class="image">
               <img src="https://i.pinimg.com/564x/b0/39/12/b0391249ddaa2bae196e10772c3699d1.jpg" alt="">
             </div>
