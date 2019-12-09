@@ -46,17 +46,17 @@
 
       <div class="saleitems">
 
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/d3/30/dd/d330dd747a591fca780af2d02ddcb31e.jpg">
+        <div class="image" *ngFor="let s of sales">
+          <img src="{{s.pictureLink}}">
 
           <div class="percentage">
-            <p>30% OFF</p>
+            <p>{{s.discount}}% OFF</p>
           </div>
           <div class="itemname">
-            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+            <p>{{s.name}}<br> <span>by {{s.brand}}</span></p>
           </div>
         </div>
-
+<!-- 
         <div class="image">
           <img src="https://i.pinimg.com/564x/20/08/5a/20085af4f605e613c1537fde27598362.jpg">
 
@@ -99,7 +99,7 @@
           <div class="itemname">
             <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 

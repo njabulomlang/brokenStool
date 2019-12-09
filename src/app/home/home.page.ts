@@ -21,9 +21,11 @@ export class HomePage implements OnInit{
   name;
   surname;
   dbProfile = firebase.firestore().collection("userProfile");
+  dbSales = firebase.firestore().collection("Specials");
   uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate:boolean = true;
+  sales = [];
   constructor(private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl:NavController) {
 // this.uid = firebase.auth().currentUser.uid
   }
@@ -33,6 +35,7 @@ export class HomePage implements OnInit{
     setTimeout(() => {
       this.loaderAnimate = false
     }, 2000); 
+    this.getPromo();
      this.dbProfile.doc(this.uid).get().then((doc)=>{
       if(doc.exists) {
         this.name = doc.data().name;
@@ -52,7 +55,12 @@ export class HomePage implements OnInit{
     this.router.navigateByUrl('profile');
   }
   getPromo() {
-    
+    this.dbSales.onSnapshot((res)=>{
+      this.sales = [];
+      res.forEach((doc)=>{
+        this.sales.push(doc.data());
+      })
+    })
   }
   search() {
     this.router.navigateByUrl('search');
