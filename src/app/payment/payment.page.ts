@@ -78,10 +78,12 @@ notDelivery(){
   switchView (state) {
     switch (state) {
       case 'd':
-        this.buttonActive = true
+        this.buttonActive = true;
+        this.Delivery();
         break;
         case 'c':
-          this.buttonActive = false
+          this.buttonActive = false;
+          this.notDelivery();
         break;
     }
   }
