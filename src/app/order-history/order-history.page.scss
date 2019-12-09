@@ -13,10 +13,17 @@ ion-toolbar {
   .cards {
     display: flex;
     flex-flow: column;
+    height: auto;
+    align-items: center;
+    border-radius: 5px;
+    margin: 6px;
+    position: relative;
     .card {
       display: flex;
       flex-flow: row;
+      position: relative;
       width: 95vw;
+      min-height: fit-content;
       margin: 10px;
       box-shadow: 5px 5px 10px rgb(190, 190, 190);
       border-radius: 5px;

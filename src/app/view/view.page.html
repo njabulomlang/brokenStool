@@ -61,7 +61,7 @@
       <div class="colours">
         <p>Colours</p>
         <ion-button *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;" (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
-           <p style="color: black;">{{c}}</p> 
+           <p style="color: rgb(146, 146, 146);">{{c}}</p> 
           </ion-button>
         <!-- <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
         </ion-button>

@@ -10,56 +10,61 @@
 </ion-header> -->
 
 <ion-content>
-    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-        <div class="maploader">
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-        </div>
-       <!--  <div class="loading-text">
+  <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+    <div class="maploader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+    </div>
+    <!--  <div class="loading-text">
           <p>Loading Map</p>
         </div> -->
-      </div>
+  </div>
   <div class="container">
-<div class="container2" slot="fixed">
-    <div class="search">
-      <div class="back">
-        <ion-icon slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
-      </div>
-      <div class="bar">
+    <div class="container2" slot="fixed">
+      <div class="search">
+        <div class="back">
+          <ion-icon slot="start" name="arrow-back" (click)="goBack()"></ion-icon>
+        </div>
+        <div class="bar">
           <ion-item>
-              <ion-label>Category</ion-label>
-              <ionic-selectable
-                [(ngModel)]="port"
-                [items]="ports"
-                itemValueField="id"
-                itemTextField="name"
-                [canSearch]="true"
-                (onChange)="portChange($event)">
-              </ionic-selectable>
-            </ion-item>
-        <!-- <ion-searchbar [(ngModel)]="txtSearch" placeholder="Search Items" color="transparent" (ionInput)="inputChange($event)"></ion-searchbar> -->
+            <ion-label>Category</ion-label>
+            <ionic-selectable [(ngModel)]="port" [items]="ports" itemValueField="id" itemTextField="name"
+              [canSearch]="true" (onChange)="portChange($event)">
+            </ionic-selectable>
+          </ion-item>
+          <!-- <ion-searchbar [(ngModel)]="txtSearch" placeholder="Search Items" color="transparent" (ionInput)="inputChange($event)"></ion-searchbar> -->
+        </div>
       </div>
-    </div>
 
-    <div class="quantity">
-      <p><i>Found ({{mySearch.length}})</i></p>
-    </div>
-    <div class="line"></div>
+      <div class="quantity">
+        <p><i>Found ({{mySearch.length}})</i></p>
+      </div>
+      <div class="line"></div>
 
 
-    <div class="cards" >
-    <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.data)">
-      <div class="image">
-        <img src="https://i.pinimg.com/564x/7a/6e/1a/7a6e1a774679f1e530512f3782a791af.jpg" alt="">
-      </div>
-      <div class="itemname">
-        <p>{{s.info.name}}</p>
-      </div>
-      <div class="amount">
-        <p>{{s.info.price | currency:'R'}}</p>
-      </div>
-    </div>
+      <div class="cards">
+        <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.data)">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/7a/6e/1a/7a6e1a774679f1e530512f3782a791af.jpg" alt="">
+          </div>
+          <div class="itemname">
+            <p>{{s.info.name}}</p>
+          </div>
+          <div class="amount">
+            <p>{{s.info.price | currency:'R'}}</p>
+          </div>
+        </div>
 
-    <!-- <div class="list">
+        <div class="list"  *ngIf="mySearch.length==0" style="border: none; background: none; text-align: center;">
+          <p>No items found</p>
+        </div>
+
+        <!-- <div class="list">
       <div class="image">
         <img src="https://i.pinimg.com/564x/28/5e/64/285e64b6b2b01c6169cdb824220c2f58.jpg" alt="">
       </div>
@@ -82,9 +87,9 @@
         <p>R200.90</p>
       </div>
     </div>-->
-  </div> 
+      </div>
 
+    </div>
   </div>
-</div>
 
 </ion-content>

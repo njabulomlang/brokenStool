@@ -1,7 +1,10 @@
 .sizeStyle {
-  background: rgba(141, 141, 141, 0.712);
+  background: rgba(175, 175, 175, 0.712);
   border: 2px solid rgb(146, 146, 146);
   color: white;
+  ion-button{
+    color: white;
+}
 }
 
 .colorStyle {
@@ -120,7 +123,7 @@ ion-toolbar {
         color: black;
         margin: 0 !important;
         padding: 0 !important;
-        border: 0.5px solid black;
+        border: 0.5px solid rgb(173, 173, 173);
       }
     }
 
