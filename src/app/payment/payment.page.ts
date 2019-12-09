@@ -13,6 +13,7 @@ export class PaymentPage implements OnInit {
   myOrder = [];
   doc_id:string;
   refNo:string;
+  buttonActive: boolean = true
   constructor(public route: ActivatedRoute, public router: Router, public navCtrl: NavController) { 
    this.doc_id = this.route.snapshot.paramMap.get('docname');
    console.log('My doc_id ',this.doc_id);
@@ -46,5 +47,15 @@ export class PaymentPage implements OnInit {
   goHome() {
    // this.router.navigateByUrl('home');
    this.navCtrl.navigateRoot('home');
+  }
+  switchView (state) {
+    switch (state) {
+      case 'd':
+        this.buttonActive = true
+        break;
+        case 'c':
+          this.buttonActive = false
+        break;
+    }
   }
 }

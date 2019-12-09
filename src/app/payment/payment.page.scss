@@ -105,7 +105,73 @@
    ion-button{
      color: black;
      width: 30vw;
-     border-bottom: 2px solid black;
+     
    }
+  }
+
+
+  .delivery{
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    overflow: hidden;
+    background: rgb(184, 184, 184);
+    ion-button {
+      border-bottom: 2px solid black;
+    }
+  }
+  .delivery-inactive{
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0.5;
+    background: rgb(250, 250, 250);
+    ion-button {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      font-family: "Poiret One";
+      font-weight: bold;
+      letter-spacing: 3px;
+      background: #bf967e;
+      color: white;
+      border: none;
+    }
+  }
+  .collection {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    background: rgb(184, 184, 184);
+    ion-button {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      font-family: "Poiret One";
+      font-weight: bold;
+      letter-spacing: 3px;
+      background: #bf967e;
+      color: white;
+      border: none;
+    }
+  }
+  .collection-inactive {
+    background: rgb(250, 250, 250);
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.5;
+    ion-button {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      font-family: "Poiret One";
+      font-weight: bold;
+      letter-spacing: 3px;
+      background: #bf967e;
+      color: white;
+      border: none;
+    }
   }
 }

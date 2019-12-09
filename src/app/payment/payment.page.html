@@ -14,16 +14,16 @@
 
     <div class="btn">
       <div class="deliver">
-       <ion-button (click)="onClick()" color="transparent">
-         DELIVERY
-       </ion-button>
+        <ion-button  color="transparent" (click)="switchView('d')" [ngClass]="{'delivery':buttonActive, 'delivery-inactive': !buttonActive}">
+          DELIVERY
+        </ion-button>
         <!-- <div class="line"></div> -->
       </div>
       <div class="pickup">
-        <ion-button (click)="onClick()" color="transparent">
-         COLLECTION
+        <ion-button color="transparent" (click)="switchView('c')" [ngClass]="{'collection': !buttonActive, 'collection-inactive': buttonActive}">
+          COLLECTION
         </ion-button>
-       </div>
+      </div>
     </div>
 
     <div class="details">
@@ -37,7 +37,7 @@
             <td>{{b.product_name}}</td>
             <td>{{b.cost*b.quantity | currency:'R'}}</td>
           </tr>
-         <!--  <tr>
+          <!--  <tr>
             <td>Hoody</td>
             <td>R300</td>
           </tr>
@@ -84,7 +84,7 @@
 
     <div class="btnz">
       <ion-button (click)="goHome()" color="transparent">
-       DONE
+        DONE
       </ion-button>
     </div>
 
