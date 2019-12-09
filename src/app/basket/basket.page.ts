@@ -19,10 +19,15 @@ export class BasketPage implements OnInit {
   prodCart = [];
   totalCost: number = 0;
   prodCount: number = 0;
-  doc_id: string = ''
+  doc_id: string = '';
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   constructor(public NavCtrl: NavController, public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
     this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
       this.cartCount = info.size;
       /*  if (info.size==0) {

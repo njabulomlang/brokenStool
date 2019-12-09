@@ -22,11 +22,17 @@ export class HomePage implements OnInit{
   surname;
   dbProfile = firebase.firestore().collection("userProfile");
   uid = firebase.auth().currentUser.uid;
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   constructor(private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl:NavController) {
 // this.uid = firebase.auth().currentUser.uid
   }
 
   ngOnInit() {
+    
+    setTimeout(() => {
+      this.loaderAnimate = false
+    }, 2000); 
      this.dbProfile.doc(this.uid).get().then((doc)=>{
       if(doc.exists) {
         this.name = doc.data().name;

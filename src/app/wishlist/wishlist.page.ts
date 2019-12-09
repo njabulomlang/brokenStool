@@ -12,10 +12,15 @@ export class WishlistPage implements OnInit {
   dbWishlist = firebase.firestore().collection('Wishlist');
   uid = firebase.auth().currentUser.uid;
   myWish = [];
-  items = false
+  items = false;
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   constructor(public router: Router, public navCtrl: NavController) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
     this.dbWishlist.where('customerUID', '==', this.uid).onSnapshot((res) => {
       this.myWish = [];
       res.forEach((doc) => {

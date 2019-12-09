@@ -13,13 +13,17 @@ export class PendingOrdersPage implements OnInit {
   dbUserProfile = firebase.firestore().collection('userProfile');
   uid = firebase.auth().currentUser.uid;
   myOrder = [];
- 
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   storageRef = firebase.storage().ref();
   pdfObj = null;
   reciept = null;
   constructor(public navCtrl: NavController, ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
     this.getAllOrders();
   }
 

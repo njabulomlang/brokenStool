@@ -10,7 +10,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   editprofile = false;
   dbProfile = firebase.firestore().collection("userProfile");
   dbCart = firebase.firestore().collection('Cart');
@@ -27,6 +28,9 @@ export class ProfilePage implements OnInit {
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
 
   ngOnInit() { 
+    setTimeout(() => {
+      this.loaderAnimate = false
+    }, 2000); 
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
     //console.log("My profile ", doc.data());
     this.profilePic=doc.data().profilePic;

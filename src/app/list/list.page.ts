@@ -16,6 +16,8 @@ export class ListPage implements OnInit {
   doc_data: string;
   col: string;
   heartIndex = null;
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -25,6 +27,9 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
   //  console.log(); 
   setTimeout(() => {
     this.dbProduct.doc(this.col).collection(this.collectionName).onSnapshot((res)=>{
