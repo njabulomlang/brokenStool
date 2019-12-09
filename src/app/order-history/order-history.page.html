@@ -43,7 +43,8 @@
           <img src="../../assets/sad_smile.svg">
       </div> -->
 
-      <div class="card" *ngFor="let b of o.orders">
+      <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
+          <p style="font-weight: bold; text-align: left;">{{o.refNo[0]}}</p>
           <div class="image">
             <img src="{{b.picture}}" alt="">
           </div>
@@ -57,6 +58,11 @@
               <p><i>QTY. {{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} <br> {{o.refNo}}</p>
             </div>
           </div>
+        </div>
+
+        <div class="card" id="msg" *ngIf="orderHistory.length==0">
+            <p> No History Yet</p>
+            <img src="../../assets/sad_smile.svg">
         </div>
 
         <!-- <div class="card">
