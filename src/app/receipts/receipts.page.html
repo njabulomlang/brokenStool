@@ -14,14 +14,14 @@
 
   <div class="container">
 
-    <div class="cards" >
-      <div class="card" *ngFor="let order of myOrder">
+    <div class="cards" *ngFor="let order of myOrder">
+      <div class="card" *ngFor="let o of order.orders">
 
         <div class="image">
           <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
         </div>
 
-        <div class="right" *ngFor="let o of order.orders">
+        <div class="right">
           <div class="title">
             <p>{{o.product_name}}</p>
           </div>
@@ -31,10 +31,10 @@
           </div>
 
           <div class="status">
-              <!-- <p>DELIVERY STATUS <br> <span><i>Order Delivered</i></span></p> -->
+            <!-- <p>DELIVERY STATUS <br> <span><i>Order Delivered</i></span></p> -->
             <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
             <!-- <p>DELIVERY STATUS <br> <span><i>Order awaiting collection</i></span></p> -->
-               <!-- <p>DELIVERY STATUS <br> <span><i>Order Coolected</i></span></p> -->
+            <!-- <p>DELIVERY STATUS <br> <span><i>Order Coolected</i></span></p> -->
           </div>
 
         </div>
@@ -89,7 +89,7 @@
           <p>Crop Top</p>
           <p>1</p>
         </div>
-      
+
         <br>
         <div class="total">
           <p><b>Total Quantity</b></p>
@@ -108,7 +108,7 @@
 
       <div class="address">
         <p>Order Address <br> <span>1234 Orlando East, Soweto, 1804</span></p>
-    
+
       </div>
 
       <div class="status">
