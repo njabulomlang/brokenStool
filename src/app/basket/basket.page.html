@@ -33,8 +33,8 @@
 
     <div class="cards" >
       <div class="card" *ngFor="let cp of prodCart; let i of index">
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+        <div class="image" *ngFor="let prod of cp.data.product">
+          <img src="{{prod.picture}}">
         </div>
         <div class="details" *ngFor="let prod of cp.data.product">
           <div class="left">

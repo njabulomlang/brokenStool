@@ -18,6 +18,7 @@ export class ListPage implements OnInit {
   heartIndex = null;
   loaderMessages = 'Loading...';
   loaderAnimate:boolean = true;
+  sortVal;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -31,24 +32,28 @@ export class ListPage implements OnInit {
       this.loaderAnimate = false;
     }, 2000);
   //  console.log(); 
-  setTimeout(() => {
-    this.dbProduct.doc(this.col).collection(this.collectionName).onSnapshot((res)=>{
-      this.myProduct = [];
-      res.forEach((doc)=>{
-        this.myProduct.push({info:doc.data(), id : doc.id});
-       // console.log('These products ', this.myProduct); 
-      })
-    })
-  }, 1000);
+    this.getAllProduct("name");
     
   }
-
+  
   /* list() {
     this.router.navigateByUrl("/list")
   } */
  /*  async productCategory() {
 
   } */
+  getAllProduct(order) {
+    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order,'asc').onSnapshot((res)=>{
+      this.myProduct = [];
+      res.forEach((doc)=>{
+        this.myProduct.push({info:doc.data(), id : doc.id});
+       // console.log('These products ', this.myProduct); 
+      })
+    })
+  }
+  orderBy() {
+    this.getAllProduct(this.sortVal)
+  }
   viewitem(id, data){
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -61,6 +66,7 @@ export class ListPage implements OnInit {
   this.navCtrl.navigateForward(['view', id], navigationExtras);
    // this.router.navigate(['view', id])
   }
+ 
   wishList(id, data, index) {
     console.log('My info ', id, data);
     this.heartIndex = index
@@ -78,6 +84,6 @@ export class ListPage implements OnInit {
   }
 
   goBack(){
-    this.navCtrl.pop()
+    this.navCtrl.pop();
   }
 }

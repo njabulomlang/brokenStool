@@ -111,7 +111,8 @@ export class ViewPage implements OnInit {
     if (this.my_size === "") {
       this.toastController('Please select your size');
     } else {
-      this.dbCart.add({ customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{ product_name: details.name, size: this.my_size, quantity: this.quantity, cost: details.price, unitCost: details.price,
+      this.dbCart.add({ customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{ product_name: details.name, size: this.my_size, 
+        quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
       color: this.color}] }).then(() => {
         this.toastController('Added to busket')
         //this.router.navigateByUrl('basket');
