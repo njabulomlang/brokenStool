@@ -65,7 +65,7 @@
       <div class="total">
         <p id="tot">TOTAL</p>
         <p id="price" *ngIf="delCost===0"> {{getTotal() | currency:'R'}}</p>
-        <p id="price" *ngIf="delCost===100">incl delivery {{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===100"><span style="font-size: 0.8em; font-weight: lighter;"><i>incl delivery</i></span> {{getTotal() | currency:'R'}}</p>
       </div>
       <div class="bankingDets">
         <p>
@@ -74,7 +74,7 @@
           Account Number: 1234567890<br>
           Branch Name: Dube <br>
           Branch Number: 47100<br>
-          Reference No.: XYZ12345</p>
+          Reference No.: {{doc_id}}</p>
       </div>
 
       <div class="date">

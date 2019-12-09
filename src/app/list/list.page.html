@@ -34,7 +34,7 @@
   <div class="container">
     <div class="top">
       <div class="pagename">
-        <h1 style="text-transform: uppercase;">{{collectionName}}</h1>
+        <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
       </div>
       <div class="itemcount">
         <div class="items">
@@ -61,7 +61,8 @@
             <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>
+            
+            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)" ></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 

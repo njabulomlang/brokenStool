@@ -96,6 +96,10 @@ ion-toolbar {
           position: relative;
           bottom: 15px;
           right: 10px;
+          ion-icon{
+            font-size: 4.5vw;
+          cursor: pointer;
+          }
         }
       }
     }

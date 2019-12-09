@@ -86,10 +86,23 @@ export class TrackOrdersPage implements OnInit {
         { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
         { text: 'Reference number: ', style: 'subheader' },
         { text: this.doc_id },
+
+        { text: 'Date Of Purchase ', style: 'story' },
+        { text: 'T-shirt ', style: 'story' },
+        { text: 'Cap ', style: 'story' },
+        { text: 'Bucket Hat ', style: 'story' },
+        { text: 'Track Suits ', style: 'story' },
+        { text: 'Vest ', style: 'story' },
+        { text: 'Beanie ', style: 'story' },
  
         {
           ul: [
-            items
+            'T-shirt',
+            'beanie',
+            'Vest',
+            'Track Suit',
+            'Sweater'
+          
           ]
         },
         

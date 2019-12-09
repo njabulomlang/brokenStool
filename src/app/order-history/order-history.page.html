@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
@@ -35,6 +35,8 @@
           </div>
         </div>
       </div>
+
+
 
       <div class="card" id="msg" *ngIf="orderHistory.length==0">
           <p> No History Yet</p>
