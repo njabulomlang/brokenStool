@@ -15,6 +15,7 @@ export class ListPage implements OnInit {
   collectionName : string = "";
   doc_data: string;
   col: string;
+  heartIndex = null;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -55,8 +56,9 @@ export class ListPage implements OnInit {
   this.navCtrl.navigateForward(['view', id], navigationExtras);
    // this.router.navigate(['view', id])
   }
-  wishList(id, data) {
-    //console.log('My info ', id, data);
+  wishList(id, data, index) {
+    console.log('My info ', id, data);
+    this.heartIndex = index
     this.dbWishlist.add({customerUID: firebase.auth().currentUser.uid,price: data.price,name: data.name, id:id, category: this.collectionName}).then(() => {
       this.toastController('Added to wishlist..');
       //this.router.navigateByUrl('basket');

@@ -14,6 +14,7 @@ export class PaymentPage implements OnInit {
   doc_id:string;
   refNo:string;
   delCost:number;
+  buttonActive: boolean = true
   constructor(public route: ActivatedRoute, public router: Router, public navCtrl: NavController, public alertController:AlertController) { 
    this.doc_id = this.route.snapshot.paramMap.get('docname');
    console.log('My doc_id ',this.doc_id);
@@ -73,5 +74,15 @@ notDelivery(){
       buttons: ['OK']
     });
     await alert.present();
+  }
+  switchView (state) {
+    switch (state) {
+      case 'd':
+        this.buttonActive = true
+        break;
+        case 'c':
+          this.buttonActive = false
+        break;
+    }
   }
 }

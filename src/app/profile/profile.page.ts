@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { ToastController, LoadingController, ActionSheetController, NavController } from '@ionic/angular';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -22,7 +23,7 @@ export class ProfilePage implements OnInit {
   email;
   myCart:number;
   myWish:number;
-  constructor(private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
+  constructor(private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
 
   ngOnInit() { 
@@ -71,6 +72,10 @@ export class ProfilePage implements OnInit {
 
   goBack(){
     this.navCtrl.pop()
+  }
+
+  logout() {
+    this.authService.logoutUser()
   }
   
   updateProfile() {

@@ -53,7 +53,7 @@
       <div class="sizes">
         <p>Available sizes</p>
 
-        <ion-button *ngFor="let size of prod.data.size" (click)="sizeChosen(size)" color="transparent">
+        <ion-button *ngFor="let size of prod.data.size;let i=index" (click)="sizeChosen(size, i)" color="transparent" [ngClass]="{'sizeStyle':sizeIndex==i}">
           {{size}}
         </ion-button>
 

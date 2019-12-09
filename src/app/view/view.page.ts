@@ -24,7 +24,9 @@ export class ViewPage implements OnInit {
   data = [];
   unitProduct = [];
   my_size: string = '';
+  sizeIndex = null;
   color:string = '';
+  // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
@@ -78,7 +80,9 @@ export class ViewPage implements OnInit {
     });
     return await popover.present();
   }
-  sizeChosen(data) {
+  sizeChosen(data, index) {
+    console.log(index);
+    this.sizeIndex = index
     this.my_size = data;
     //console.log('My size ', this.my_size);
   }
