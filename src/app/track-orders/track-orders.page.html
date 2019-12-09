@@ -64,7 +64,8 @@
 
       <div class="total">
         <p id="tot">TOTAL</p>
-        <p id="price">{{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===0"> {{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===100">incl delivery {{getTotal() | currency:'R'}}</p>
       </div>
       <div class="bankingDets">
         <p>

@@ -30,6 +30,7 @@ export class TrackOrdersPage implements OnInit {
     from: '',
     text: ''
   }
+  delCost:number = 0;
   uid:string=firebase.auth().currentUser.uid;
   //dbProfile = firebase.firestore().collection('userProfile');
   constructor(public NavCtrl: NavController, public route: ActivatedRoute, public router: Router,private plt: Platform, private file: File, private fileOpener: FileOpener) {
@@ -176,7 +177,8 @@ export class TrackOrdersPage implements OnInit {
         }, 1000);
         this.toggleFour()  
       }
-      this.productOrder = []
+      this.productOrder = [];
+      this.delCost = res.data().deliveryCost;
       res.data().product.forEach(item => {
         this.productOrder.push(item);
       });
@@ -189,7 +191,7 @@ export class TrackOrdersPage implements OnInit {
       //let product = this.productOrder[i].data.product;
       // console.log(product);
       /// product.forEach((item) => {
-      total += this.productOrder[i].cost * this.productOrder[i].quantity;
+      total += (this.productOrder[i].cost * this.productOrder[i].quantity) + this.delCost;
       // })
       //
     }
