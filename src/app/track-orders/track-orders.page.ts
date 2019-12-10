@@ -32,9 +32,9 @@ export class TrackOrdersPage implements OnInit {
     from: '',
     text: ''
   }
-
-
+  delType: string = '';
   delCost: number = 0;
+  status: string = '';
   uid: string = firebase.auth().currentUser.uid;
   //dbProfile = firebase.firestore().collection('userProfile');
   constructor(public NavCtrl: NavController, public route: ActivatedRoute, public router: Router, private plt: Platform, private file: File, private fileOpener: FileOpener) {
@@ -92,23 +92,23 @@ export class TrackOrdersPage implements OnInit {
 
 
         { text: 'Your Receipt', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', },
-        { text: 'Dankie Jesu', style: 'header', alignment: 'right', color: 'gray', fontSize: 20,},
+        // { text: 'Dankie Jesu', style: 'header', alignment: 'right', color: 'gray', fontSize: 20, },
         // { text: new Date().toTimeString(), alignment: 'right' },
 
         { text: 'From', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', },
         { text: this.letterObj.from, color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
 
-        { text: 'To', style: 'subheader', color: "gray", italic: true},
+        { text: 'To', style: 'subheader', color: "gray", italic: true },
         { text: this.letterObj.to, color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
 
-        { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
+        // { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
         { text: 'Reference number: ', style: 'subheader', color: "gray", italic: true },
-        { text: this.doc_id , color: "gray", italic: true},
+        { text: this.doc_id, color: "gray", italic: true },
 
 
         { text: 'Date Of Purchase: ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
-        
-        
+
+
         {
 
           layout: 'lightHorizontalLines',
@@ -117,23 +117,26 @@ export class TrackOrdersPage implements OnInit {
             widths: ['auto', 'auto', '20%'],
 
             body: [
-       
+
 
               [name, quantity, cost,],
-              [ { text: 'TOTAL', bold: true, color: 'gray'},'R', cost, ]
+              [{text: this.status, color: 'gray'}, '', {text: '100', color: 'gray', Border: false} ],
+              [{ text: 'TOTAL', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
+              { text: 'R', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
+              { text:  this.getTotal(), bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },]
             ]
           }
 
         },
 
 
-        { text: 'Order Type: Delivery', style: 'story', margin: [5, 2],color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+        { text: 'Order Type: Delivery', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
 
         { text: 'Order Address: ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
-        { text: ' 123 Meadowlands, Zone 9 ', style: 'story',margin: [5, 2],  color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 8, },
-      
-      
-        { text: 'Order Status: Delivered' , style: 'story',margin: [5, 2],  color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 14, },
+        { text: ' 123 Meadowlands, Zone 9 ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 10, },
+
+
+        { text: 'Order Status: Delivered', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
       ],
 
 
@@ -151,7 +154,7 @@ export class TrackOrdersPage implements OnInit {
           italic: true,
           alignment: 'center',
           width: '50%',
-      
+          lineHeight: 1.5,
         },
 
 
@@ -201,7 +204,7 @@ export class TrackOrdersPage implements OnInit {
         //console.log('Collect');
         this.dbHistory.doc(this.doc_id).set({
           date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid: this.uid,
-          refNo: this.doc_id
+          refNo: this.doc_id, delType: this.delType, status: this.status
         }).then(() => {
           this.dbOrder.doc(this.doc_id).delete();
         })
@@ -217,7 +220,7 @@ export class TrackOrdersPage implements OnInit {
       })
       //this.userDetails(res.data().userID);
       // console.log('My order', res.data());
-      if (res.data().status === 'recieved') {
+      if (res.data().status === 'received') {
         this.toggleOne();
       } else if (res.data().status === 'processed') {
         this.toggleTwo();
@@ -232,6 +235,8 @@ export class TrackOrdersPage implements OnInit {
       }
       this.productOrder = [];
       this.delCost = res.data().deliveryCost;
+      this.delType = res.data().deliveryType;
+      this.status = res.data().status;
       res.data().product.forEach(item => {
         this.productOrder.push(item);
       });

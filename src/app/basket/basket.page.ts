@@ -104,7 +104,7 @@ export class BasketPage implements OnInit {
       this.toastController('You cannot place order with empty basket');
     } else {
       let docname = 'ZXY' + Math.floor(Math.random() * 10000000);
-      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), status: 'recieved', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal() }).then(() => {
+      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), status: 'received', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal() }).then(() => {
         doc.forEach((id) => {
           this.dbCart.doc(id).delete();
         })

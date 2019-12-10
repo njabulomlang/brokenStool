@@ -11,6 +11,7 @@ import { NavigationExtras } from '@angular/router';
 export class ListPage implements OnInit {
   dbWishlist = firebase.firestore().collection("Wishlist");
   dbProduct = firebase.firestore().collection("Products");
+  dbPromo = firebase.firestore().collection("Specials");
   myProduct = [];
   collectionName : string = "";
   doc_data: string;
@@ -43,13 +44,25 @@ export class ListPage implements OnInit {
 
   } */
   getAllProduct(order) {
-    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order,'asc').onSnapshot((res)=>{
+    console.log(this.collectionName);
+    if (this.collectionName==='sales') {
+      this.dbPromo.orderBy(order,'asc').onSnapshot((res)=>{
+        this.myProduct = [];
+        res.forEach((doc)=>{
+          this.myProduct.push({info:doc.data(), id : doc.id});
+        })
+      })
+    } else {
+      this.myProduct = [];
+      this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order,'asc').onSnapshot((res)=>{
       this.myProduct = [];
       res.forEach((doc)=>{
         this.myProduct.push({info:doc.data(), id : doc.id});
        // console.log('These products ', this.myProduct); 
       })
     })
+    }
+    
   }
   orderBy() {
     this.getAllProduct(this.sortVal)

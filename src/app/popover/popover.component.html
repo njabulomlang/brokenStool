@@ -7,13 +7,18 @@
         </div>
         <div class="ratings">
             <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-                defaultColor="#aaaaaa" readonly="false" rating="2" fontSize="7vw"
+                defaultColor="#aaaaaa" readonly="{{rateNow}}" rating="{{myRate}}"  fontSize="7vw"
                 (ratingChanged)="logRatingChange($event)">
             </ionic4-star-rating>
+
+            <!-- <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
+            defaultColor="#aaaaaa" readonly="false" rating="2" fontSize="7vw"
+            (ratingChanged)="logRatingChange($event)">
+        </ionic4-star-rating> -->
         </div>
 <br>
         <div class="buttonz">
-            <ion-button (click)="onClick()" color="transparent">
+            <ion-button (click)="dismissPopover()" color="transparent">
                 DONE
             </ion-button>
         </div>
