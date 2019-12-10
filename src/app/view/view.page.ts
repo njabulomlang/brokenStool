@@ -113,7 +113,7 @@ export class ViewPage implements OnInit {
     return await popover.present();
   }
   sizeChosen(data, index) {
-    console.log(index);
+    // console.log(index);
     this.sizeIndex = index
     this.my_size = data;
     //console.log('My size ', this.my_size);
@@ -122,7 +122,7 @@ export class ViewPage implements OnInit {
   colorChosen(color, index) {
     this.color = color;
     this.colorIndex = index
-    console.log("color", index);
+    // console.log("color", index);
   }
   plus() {
     //console.log('Quantity ', quantity); 

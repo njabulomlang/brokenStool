@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
  import * as firebase from 'firebase';
-import { CartService } from '../services/cart.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
+import { FcmService } from '../fcm.service';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +32,7 @@ export class HomePage implements OnInit{
 
   ngOnInit() {
    // let num = 24.35435453243;
-   
+   // this.fcmService.getPermission();
     //console.log('Round off ', String(num).substr(0,5));
     this.getPromo();
      this.dbProfile.doc(this.uid).get().then((doc)=>{
