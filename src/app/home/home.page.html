@@ -38,8 +38,8 @@
       </div>
   
   <div class="container" no-padding>
-    <div class="sales" (click)="goList('sales')">
-      <ion-item>
+    <div class="sales" >
+      <ion-item (click)="goList('sales')">
         <label>Sales & Specials</label>
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
@@ -47,13 +47,13 @@
       <div class="saleitems">
 
         <div class="image" *ngFor="let s of sales">
-          <img src="{{s.pictureLink}}">
+          <img src="{{s.data.pictureLink}}" (click)="viewitem(s.id,s.data)">
 
           <div class="percentage">
-            <p>{{s.discount}}% OFF</p>
+            <p>{{s.data.discount}}% OFF</p>
           </div>
           <div class="itemname">
-            <p>{{s.name}}<br> <span>by {{s.brand}}</span></p>
+            <p>{{s.data.name}}<br> <span>by {{s.data.brand}}</span></p>
           </div>
         </div>
 <!-- 

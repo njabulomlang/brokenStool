@@ -37,16 +37,27 @@
         <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
       </div>
       <div class="itemcount">
-        <div class="items">
+        <div class="items" *ngIf="collectionName!=='sales'">
           <p>{{myProduct.length}} item(s)</p>
         </div>
-
-        <div class="filter">
+        <div class="items" *ngIf="collectionName==='sales'">
+          <p>{{promo.length}} item(s)</p>
+        </div>
+        <div class="filter" *ngIf="collectionName!=='sales'">
 
           <ion-select placeholder="Filter ASC" [(ngModel)]="sortVal" (ionChange)="orderBy()">
             <ion-select-option value="name">Name</ion-select-option>
             <ion-select-option value="dateAdded">Date Added</ion-select-option>
             <ion-select-option value="price">Price</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="filter" *ngIf="collectionName==='sales'">
+
+          <ion-select placeholder="Filter ASC" [(ngModel)]="sortSale" (ionChange)="sortSales()">
+            <ion-select-option value="name">Name</ion-select-option>
+            <ion-select-option value="discount">Discount</ion-select-option>
+            <ion-select-option value="saleprice">Price</ion-select-option>
           </ion-select>
         </div>
       </div>
@@ -70,16 +81,16 @@
   
       </div>
     <div class="cards" *ngIf="collectionName==='sales'">
-      <div class="card" >
-        <img src="../../assets/shapes.svg"
-          (click)="viewitem(p.id, p.info)">
+      <div class="card" *ngFor="let s of promo">
+        <img src="{{s.info.pictureLink}}"
+          (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
-            <p>prod nam <br> <span>pice</span></p>
+            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
           </div>
           <div id="icon">
             
-            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)" ></ion-icon>
+            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info)" ></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 

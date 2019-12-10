@@ -31,6 +31,9 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit() {
+   // let num = 24.35435453243;
+   
+    //console.log('Round off ', String(num).substr(0,5));
     
     setTimeout(() => {
       this.loaderAnimate = false
@@ -58,7 +61,7 @@ export class HomePage implements OnInit{
     this.dbSales.onSnapshot((res)=>{
       this.sales = [];
       res.forEach((doc)=>{
-        this.sales.push(doc.data());
+        this.sales.push({data:doc.data(),id:doc.id});
       })
     })
   }
@@ -136,6 +139,19 @@ export class HomePage implements OnInit{
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
+  viewitem(id, data){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          data: data,
+          col: 'sales',
+          //currency: JSON.stringify(currency),
+         // refresh: refresh
+      }
+  };
+  this.navCtrl.navigateForward(['view', id], navigationExtras);
+   // this.router.navigate(['view', id])
+  }
+ 
   goList(data) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
