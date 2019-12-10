@@ -37,12 +37,11 @@ export class SearchPage implements OnInit {
   }
   searchByName(name) {
     this.loaderAnimate = true;
-    setTimeout(() => {
-      this.loaderAnimate = false;
-    }, 3000);
-    // String(name).toLowerCase();
     this.dbProducts.doc('Dankie Jesu').collection(name).onSnapshot((res) => {
       this.mySearch = [];
+      setTimeout(() => {
+        this.loaderAnimate = false;
+      }, 2000);
       res.forEach((doc) => {
         //console.log('My res ', doc.data());
         this.mySearch.push({info:doc.data(), id: doc.id});
