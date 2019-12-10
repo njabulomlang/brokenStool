@@ -44,14 +44,13 @@ export class SearchPage implements OnInit {
     this.dbProducts.doc('Dankie Jesu').collection(name).onSnapshot((res) => {
       this.mySearch = [];
       res.forEach((doc) => {
-        console.log('My res ', doc.data());
+        //console.log('My res ', doc.data());
         this.mySearch.push({info:doc.data(), id: doc.id});
       })
     })
   }
   inputChange(itemname) {
-    console.log(itemname);
-    
+    //console.log(itemname);
     // console.log(this.txtSearch.charAt(0).toUpperCase()+this.txtSearch.substring(1).toLowerCase());
    // this.searchByName(this.txtSearch.charAt(0).toUpperCase() + this.txtSearch.substring(1).toLowerCase())
   }
@@ -59,6 +58,7 @@ export class SearchPage implements OnInit {
     component: IonicSelectableComponent,
     value: any
   }) {
+    this.txtSearch = event.value.name;
     this.searchByName(event.value.name)
   //  console.log('port:', event.value.name);
   }
@@ -66,7 +66,7 @@ export class SearchPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: this.txtSearch.charAt(0).toUpperCase() + this.txtSearch.substring(1).toLowerCase(),
+        col: this.txtSearch,
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }
