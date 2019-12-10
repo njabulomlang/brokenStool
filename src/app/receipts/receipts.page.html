@@ -27,12 +27,12 @@
           </div>
 
           <div class="costs">
-            <p><i>{{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> {{order.refNo}}</p>
+            <p><i>QTY {{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> {{order.refNo}}</p>
           </div>
 
           <div class="status">
             <!-- <p>DELIVERY STATUS <br> <span><i>Order Delivered</i></span></p> -->
-            <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
+            <p>DELIVERY STATUS <br> <span><i>{{order.status}}</i></span></p>
             <!-- <p>DELIVERY STATUS <br> <span><i>Order awaiting collection</i></span></p> -->
             <!-- <p>DELIVERY STATUS <br> <span><i>Order Coolected</i></span></p> -->
           </div>

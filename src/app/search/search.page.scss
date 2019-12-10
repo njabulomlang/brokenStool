@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column;
   background: rgb(226, 225, 225);
+
   height: 100%;
   width: 100%;
 }
@@ -82,7 +83,9 @@
   display: flex;
   flex-flow: row;
   width: 95%;
-  height: 8vh;
+  // display: grid;
+  // align-items: center;
+  // height: 8vh;
   margin: 1px 10px;
 
   border-radius: 5px;
@@ -92,36 +95,40 @@
   .image {
     width: 20vw;
     height: 8vh;
+    border-radius: 5px;
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 5px;
     }
   }
 
   .itemname {
     width: 60vw;
-    height: 8vh;
+  
     margin-left: 5px;
+    margin-top: 8px;
     display: grid;
     align-items: center;
     p {
       font-family: "Poppins";
       font-weight: lighter;
-      font-size: 0.8em;
+      font-size: 3vw;
     }
   }
 
   .amount {
     width: 20vw;
-    height: 8vh;
+
+    margin-top: 8px;
     margin-right: 5px;
     display: grid;
     align-items: center;
     p {
       font-family: "Poppins";
       font-weight: lighter;
-      font-size: 0.8em;
+      font-size: 3vw;
     }
   }
 }
