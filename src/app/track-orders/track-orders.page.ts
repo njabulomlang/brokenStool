@@ -30,7 +30,8 @@ export class TrackOrdersPage implements OnInit {
   letterObj = {
     to: '',
     from: '',
-    text: ''
+    text: '',
+    address:''
   }
   delType: string = '';
   delCost: number = 0;
@@ -64,6 +65,7 @@ export class TrackOrdersPage implements OnInit {
   userProfile() {
     this.dbUserProfile.doc(this.uid).onSnapshot((res) => {
       this.letterObj.to = res.data().name + ' ' + res.data().surname;
+      this.letterObj.address = res.data().address;
     })
     this.letterObj.from = 'Broken stool';
   }
@@ -137,7 +139,7 @@ export class TrackOrdersPage implements OnInit {
         { text: 'Order Type: Delivery', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
 
         { text: 'Order Address: ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
-        { text: ' 123 Meadowlands, Zone 9 ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 10, },
+        { text: this.letterObj.address, style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 10, },
 
 
         { text: 'Order Status: Delivered', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },

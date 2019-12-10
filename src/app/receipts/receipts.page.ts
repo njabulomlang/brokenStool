@@ -18,7 +18,8 @@ export class ReceiptsPage implements OnInit {
   userProfile = {
     name:'',
     surname:'',
-    cellno:0
+    cellno:0,
+    address:''
   }
   myOrder = [];
   doc_id: string;
@@ -46,6 +47,7 @@ export class ReceiptsPage implements OnInit {
     this.userProfile.name = res.data().name;
     this.userProfile.surname = res.data().surname;
     this.userProfile.cellno = res.data().cellPhone;
+    this.userProfile.address = res.data().address;
     })
   }
 

@@ -19,7 +19,8 @@ export class CreateAccountPage implements OnInit {
   name: string;
   surname: string;
   email: string;
-  profilePic:string="";
+  address: string;
+  profilePic: string = "";
   uploadprogress: number;
   isuploading: boolean;
   account: FormGroup
@@ -28,6 +29,7 @@ export class CreateAccountPage implements OnInit {
     this.account = formBuilder.group({
       name: [this.name, Validators.compose([Validators.required, Validators.maxLength(250)])],
       surname: [this.surname, Validators.compose([Validators.required, Validators.maxLength(250)])],
+      address: [this.surname, Validators.compose([Validators.required, Validators.maxLength(250)])],
       email: [this.email, Validators.compose([Validators.required, Validators.pattern(this.emailPattern)])],
     });
   }
@@ -45,10 +47,10 @@ export class CreateAccountPage implements OnInit {
       this.name = this.account.get('name').value;
       this.surname = this.account.get('surname').value;
       this.email = this.account.get('email').value;
-
+      this.address = this.account.get('address').value;
       this.dbProfile.doc(this.uid).set({
         name: this.name, surname: this.surname, cellPhone: firebase.auth().currentUser.phoneNumber,
-        email: this.email, profilePic: this.profilePic
+        email: this.email, profilePic: this.profilePic,address: this.address
       }).then((res) => {
         this.router.navigateByUrl('home');
       }).catch((err) => {

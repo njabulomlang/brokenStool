@@ -22,6 +22,7 @@ export class ProfilePage implements OnInit {
   name; 
   surname;
   email;
+  address;
   myCart:number;
   myWish:number;
   constructor(private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
@@ -37,6 +38,7 @@ export class ProfilePage implements OnInit {
     this.name=doc.data().name;
     this.surname=doc.data().surname;
     this.email=doc.data().email;
+    this.address=doc.data().address;
     //this.profile.push(doc.data());
   })
     //this.presentLoading();
@@ -83,7 +85,7 @@ export class ProfilePage implements OnInit {
   }
   
   updateProfile() {
-    this.dbProfile.doc(this.uid).update({name: this.name, surname: this.surname, email: this.email}).then(()=>{
+    this.dbProfile.doc(this.uid).update({name: this.name, surname: this.surname, email: this.email, address: this.address}).then(()=>{
       this.editprofile=!this.editprofile;
       this.toastController();
     })
