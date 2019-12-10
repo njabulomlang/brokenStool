@@ -42,7 +42,7 @@ export class AppComponent {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.statusBar.backgroundColorByHexString('#000324');
       this.statusBar.styleLightContent();
-      this.splashScreen.hide();
+      // this.splashScreen.hide();
     });
   }
 }

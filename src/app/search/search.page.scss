@@ -40,11 +40,13 @@
     margin: 0 !important;
     padding: 0 !important;
     background: rgb(255, 255, 255);
-    ion-searchbar {
+    ion-item {
       position: absolute;
       width: 100%;
       height: 90%;
       object-fit: cover;
+      display: grid;
+      align-items: center;
       margin: 0 !important;
       padding: 0 !important;
       border-radius: 0 !important;
@@ -134,7 +136,7 @@
   align-items: center;
   justify-content: center;
   align-content: center;
-  background:rgba(32, 57, 89, 0.637);
+  background:rgb(0, 27, 63);
   background-repeat: repeat-x;
   transform: scale(1);
   overflow: hidden;

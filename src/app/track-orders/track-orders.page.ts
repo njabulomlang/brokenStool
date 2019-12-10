@@ -9,6 +9,8 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import { File } from '@ionic-native/file/ngx';
+// import { normalizeGenFileSuffix } from '@angular/compiler/src/aot/util';
+// import { read } from 'fs';
 @Component({
   selector: 'app-track-orders',
   templateUrl: './track-orders.page.html',
@@ -23,19 +25,19 @@ export class TrackOrdersPage implements OnInit {
   myArr = [];
   name;
   cellno;
-  pdfObj=null;
-  reciept=null;
+  pdfObj = null;
+  reciept = null;
   letterObj = {
     to: '',
     from: '',
     text: ''
   }
-  delType:string = '';
-  delCost:number = 0;
-  status:string = '';
-  uid:string=firebase.auth().currentUser.uid;
+  delType: string = '';
+  delCost: number = 0;
+  status: string = '';
+  uid: string = firebase.auth().currentUser.uid;
   //dbProfile = firebase.firestore().collection('userProfile');
-  constructor(public NavCtrl: NavController, public route: ActivatedRoute, public router: Router,private plt: Platform, private file: File, private fileOpener: FileOpener) {
+  constructor(public NavCtrl: NavController, public route: ActivatedRoute, public router: Router, private plt: Platform, private file: File, private fileOpener: FileOpener) {
     this.route.queryParams.subscribe(params => {
       this.doc_id = params["id"];
       // this.col = params["col"];
@@ -66,43 +68,78 @@ export class TrackOrdersPage implements OnInit {
     this.letterObj.from = 'Broken stool';
   }
   createPdf() {
+    let name = [];
+    let quantity = [];
+    let cost = [];
     let items = this.myArr.map((item) => {
       //console.log('Extras in table...', item);
-      if (this.myArr.length>=0) {
-        return [item.product_name , item.quantity, 'R' + item.cost + '.00'];
+      if (this.myArr.length >= 0) {
+
+        return [item.product_name, item.quantity, 'R' + item.cost + '.00'];
       } else {
         return ['*********', 0, 'R0.00']
       }
     });
+    this.myArr.forEach((item) => {
+      name.push(item.product_name);
+      cost.push(item.cost);
+      quantity.push(item.quantity)
+    })
     var docDefinition = {
       content: [
-        { text: 'Your Receipt', style: 'header' },
-        { text: new Date().toTimeString(), alignment: 'right' },
- 
-        { text: 'From', style: 'subheader' },
-        { text: this.letterObj.from },
- 
-        { text: 'To', style: 'subheader' },
-        this.letterObj.to,
- 
-        { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
-        { text: 'Reference number: ', style: 'subheader' },
-        { text: this.doc_id },
 
 
-        { text: 'Date Of Purchase: ', style: 'subheader' },
+
+
+        { text: 'Your Receipt', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', },
+        // { text: 'Dankie Jesu', style: 'header', alignment: 'right', color: 'gray', fontSize: 20, },
+        // { text: new Date().toTimeString(), alignment: 'right' },
+
+        { text: 'From', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', },
+        { text: this.letterObj.from, color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+
+        { text: 'To', style: 'subheader', color: "gray", italic: true },
+        { text: this.letterObj.to, color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+
+        // { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
+        { text: 'Reference number: ', style: 'subheader', color: "gray", italic: true },
+        { text: this.doc_id, color: "gray", italic: true },
+
+
+        { text: 'Date Of Purchase: ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
+
+
         {
-          ul: [
-            'T-shirt' +             '1',
-            'beanie',
-            'Vest',
-            'Track Suit',
-            'Sweater'
-          
-          ]
+
+          layout: 'lightHorizontalLines',
+          table: {
+
+            widths: ['auto', 'auto', '20%'],
+
+            body: [
+
+
+              [name, quantity, cost,],
+              [{text: this.status, color: 'gray'}, '', {text: '100', color: 'gray', Border: false} ],
+              [{ text: 'TOTAL', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
+              { text: 'R', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
+              { text:  this.getTotal(), bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },]
+            ]
+          }
+
         },
-        
+
+
+        { text: 'Order Type: Delivery', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+
+        { text: 'Order Address: ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+        { text: ' 123 Meadowlands, Zone 9 ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 10, },
+
+
+        { text: 'Order Status: Delivered', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
       ],
+
+
       styles: {
         header: {
           fontSize: 18,
@@ -117,15 +154,23 @@ export class TrackOrdersPage implements OnInit {
           italic: true,
           alignment: 'center',
           width: '50%',
-        }
-      }
-    }
+          lineHeight: 1.5,
+        },
+
+
+
+      },
+
+      pageSize: 'A4',
+      pageOrientation: 'portrait'
+
+    };
     this.pdfObj = pdfMake.createPdf(docDefinition);
 
   }
   downloadPdf() {
     this.createPdf();
-    if (this.plt.is('cordova')) { 
+    if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
         firebase.storage().ref('Reciepts/').child(new Date().getTime() + '.pdf').put(blob).then((results) => {
@@ -137,15 +182,15 @@ export class TrackOrdersPage implements OnInit {
             //this.quotes.pdfLink = url;
             this.reciept = url;
             // this.getReciept(url);
-             console.log('download url ',url);
-             this.saveData();
+            console.log('download url ', url);
+            this.saveData();
             //console.log('pdf link from storage............:', this.pdfDoc);
           })
         })
         // Save the PDF to the data Directory of our App
         this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
-         // this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+          // this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
         })
       });
     } else {
@@ -157,8 +202,10 @@ export class TrackOrdersPage implements OnInit {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
       if (res.data().status === 'collected') {
         //console.log('Collect');
-        this.dbHistory.doc(this.doc_id).set({ date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid:this.uid, 
-          refNo: this.doc_id, delType:this.delType, status: this.status}).then(() => {
+        this.dbHistory.doc(this.doc_id).set({
+          date: new Date().getTime(), reciept: this.reciept, orders: this.productOrder, uid: this.uid,
+          refNo: this.doc_id, delType: this.delType, status: this.status
+        }).then(() => {
           this.dbOrder.doc(this.doc_id).delete();
         })
       } else {
@@ -168,7 +215,7 @@ export class TrackOrdersPage implements OnInit {
   }
   getOrder() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
-      res.data().product.forEach((item)=>{
+      res.data().product.forEach((item) => {
         this.myArr.push(item)
       })
       //this.userDetails(res.data().userID);
@@ -184,7 +231,7 @@ export class TrackOrdersPage implements OnInit {
           this.downloadPdf();
           console.log('Deleting PDF');
         }, 1000);
-        this.toggleFour()  
+        this.toggleFour()
       }
       this.productOrder = [];
       this.delCost = res.data().deliveryCost;
@@ -251,7 +298,7 @@ export class TrackOrdersPage implements OnInit {
     var circleFour = document.getElementById("four").style.border = "1px solid red";
   }
 
-  goBack(){
+  goBack() {
     this.NavCtrl.pop()
   }
 }
