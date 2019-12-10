@@ -21,9 +21,6 @@ export class PendingOrdersPage implements OnInit {
   constructor(public navCtrl: NavController, ) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loaderAnimate = false;
-    }, 2000);
     this.getAllOrders();
   }
 
@@ -43,6 +40,9 @@ export class PendingOrdersPage implements OnInit {
   getAllOrders() {
     this.dbOrder.where('userID', '==', this.uid).onSnapshot((res) => {
       this.myOrder = [];
+      setTimeout(() => {
+        this.loaderAnimate = false;
+      }, 2000);
       res.forEach((doc) => {
         this.myOrder.push({ info: doc.data(), id: doc.id });
       })

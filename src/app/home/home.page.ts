@@ -34,10 +34,6 @@ export class HomePage implements OnInit{
    // let num = 24.35435453243;
    
     //console.log('Round off ', String(num).substr(0,5));
-    
-    setTimeout(() => {
-      this.loaderAnimate = false
-    }, 2000); 
     this.getPromo();
      this.dbProfile.doc(this.uid).get().then((doc)=>{
       if(doc.exists) {
@@ -60,6 +56,9 @@ export class HomePage implements OnInit{
   getPromo() {
     this.dbSales.onSnapshot((res)=>{
       this.sales = [];
+      setTimeout(() => {
+        this.loaderAnimate = false
+      }, 2000); 
       res.forEach((doc)=>{
         this.sales.push({data:doc.data(),id:doc.id});
       })

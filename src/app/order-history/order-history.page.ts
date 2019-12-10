@@ -17,9 +17,7 @@ export class OrderHistoryPage implements OnInit {
   constructor(public NavCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loaderAnimate = false;
-    }, 2000);
+  
     this.getAll();
   }
 
@@ -31,6 +29,9 @@ export class OrderHistoryPage implements OnInit {
   getAll() {
     this.dbHistory.where('uid','==',this.uid).onSnapshot((res)=>{
       this.orderHistory =[];
+      setTimeout(() => {
+        this.loaderAnimate = false;
+      }, 2000);
       res.forEach((doc)=>{
         this.orderHistory.push(doc.data());
       })
