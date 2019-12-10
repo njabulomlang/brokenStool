@@ -18,8 +18,6 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Downloader } from '@ionic-native/downloader/ngx';
-import { PopoverComponent } from './popover/popover.component';
-import { StarRatingModule } from 'ionic4-star-rating';
 import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({

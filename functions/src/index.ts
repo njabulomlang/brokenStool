@@ -34,17 +34,34 @@ export const unsubscribeFromTopic = functions.https.onCall(
 export const sendOnFirestoreCreate = functions.firestore
   .document('discounts/{discountId}')
   .onCreate(async snapshot => {
-    //const discount = snapshot.data();
+    const discount = snapshot.data();
 
     const notification: admin.messaging.Notification = {
       title: 'New Discount Available!',
-      body: 'This is nice...'
+      body: discount.headline
     };
 
     const payload: admin.messaging.Message = {
       notification,
+      webpush: {
+        notification: {
+          vibrate: [200, 100, 200],
+          icon: 'https://angularfirebase.com/images/logo.png',
+          actions: [
+            {
+              action: 'like',
+              title: '👍 Yaaay!'
+            },
+            {
+              action: 'dislike',
+              title: 'Boooo!'
+            }
+          ]
+        }
+      },
       topic: 'discounts'
     };
 
     return admin.messaging().send(payload);
   });
+  
