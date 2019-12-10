@@ -111,7 +111,7 @@ export class TrackOrdersPage implements OnInit {
 
         {
 
-          layout: 'lightHorizontalLines',
+          layout: 'noBorder',
           table: {
 
             widths: ['auto', 'auto', '20%'],
