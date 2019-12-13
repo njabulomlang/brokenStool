@@ -22,6 +22,9 @@ export class ListPage implements OnInit {
   loaderAnimate:boolean = true;
   sortVal;
   sortSale;
+  uid = firebase.auth().currentUser.uid;
+  dbWish = firebase.firestore().collection('Wishlist');
+  myWish:number;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) { 
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -38,6 +41,10 @@ export class ListPage implements OnInit {
   //  console.log(); 
     this.getAllProduct("name");
     this.getSales("name");
+
+    this.dbWish.where('customerUID', '==',this.uid).onSnapshot((res1)=>{
+      this.myWish = res1.size;
+    })
   }
   
   /* list() {

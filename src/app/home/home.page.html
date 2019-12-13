@@ -7,11 +7,13 @@
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-button (click)="profile()" id="icon">
         <ion-icon slot="icon-only" name="person"></ion-icon>
+        
       </ion-button>
     </ion-buttons>
     <ion-title>DankieJesu</ion-title>
@@ -26,7 +28,7 @@
 
 
 <ion-content fullscreen>
-    <p style="margin: 5px ; font-family: 'Raleway'">Welcome {{name}} {{surname}}</p>
+    <p style="margin: 5px ; font-family: 'Raleway'">Welcome <i>{{name}} {{surname}}</i></p>
 
     <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
         <div class="maploader">

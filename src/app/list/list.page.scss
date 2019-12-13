@@ -3,6 +3,12 @@ ion-toolbar {
   #icon {
     color: maroon;
   }
+  #number {
+    font-size: 0.8em;
+    position: relative;
+    top: 8px;
+    right: 5px;
+  }
 }
 
 .sizeStyle {
@@ -96,6 +102,7 @@ ion-toolbar {
           position: relative;
           bottom: 15px;
           right: 10px;
+          
           ion-icon{
             font-size: 4.5vw;
           cursor: pointer;

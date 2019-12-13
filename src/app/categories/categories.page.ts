@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
-
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-categories',
@@ -11,6 +11,9 @@ import { NavController } from '@ionic/angular';
 export class CategoriesPage implements OnInit {
   category : string;
   colDef : string;
+  uid = firebase.auth().currentUser.uid;
+  dbWish = firebase.firestore().collection('Wishlist');
+  myWish:number;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl : NavController) {
 
    // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
@@ -28,6 +31,10 @@ export class CategoriesPage implements OnInit {
       //console.log('Sales my man...');
       this.colDef = 'Sales';
     }
+
+    this.dbWish.where('customerUID', '==',this.uid).onSnapshot((res1)=>{
+      this.myWish = res1.size;
+    })
   }
 
   list(data) {

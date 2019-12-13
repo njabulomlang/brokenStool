@@ -28,6 +28,13 @@ ion-toolbar {
   }
   font-family: "Raleway";
   letter-spacing: 2px;
+
+  #number {
+    font-size: 0.8em;
+    position: relative;
+    top: 8px;
+    right: 5px;
+  }
 }
 
 .container {
@@ -128,7 +135,7 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     position: relative;
-    
+
     .apparel {
       width: 100%;
       // height: 65vw;
@@ -178,7 +185,7 @@ ion-toolbar {
     }
   }
   //Loader starts here
-/* 
+  /* 
    .loader {
     position: absolute;
     top: 0;
@@ -318,7 +325,6 @@ ion-toolbar {
     }
    }
    */
-
 }
 .loader {
   position: absolute;
@@ -331,7 +337,7 @@ ion-toolbar {
   align-items: center;
   justify-content: center;
   align-content: center;
-  background:rgb(0, 27, 63);
+  background: rgb(0, 27, 63);
   background-repeat: repeat-x;
   transform: scale(1);
   overflow: hidden;
@@ -395,8 +401,8 @@ ion-toolbar {
       }
     }
   }
- }
- .loading-text {
+}
+.loading-text {
   // color: yellow;
   position: absolute;
   bottom: 50vh;
@@ -407,8 +413,8 @@ ion-toolbar {
   height: 50vh;
   //z-index: 90;
   margin: auto;
- }
- .loader-hide {
+}
+.loader-hide {
   position: absolute;
   top: 0;
   left: 0;
@@ -477,8 +483,8 @@ ion-toolbar {
       }
     }
   }
- }
- @keyframes maploader {
+}
+@keyframes maploader {
   0% {
     // transform: rotate(0deg);
     border-color: rgb(182, 70, 95);
@@ -494,6 +500,4 @@ ion-toolbar {
     // background: rgb(255, 167, 167);
     // transform: rotate(360deg);
   }
- }
-
-
+}
