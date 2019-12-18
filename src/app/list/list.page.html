@@ -4,6 +4,7 @@
     <ion-buttons slot="end">
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
@@ -21,87 +22,81 @@
     </ion-toolbar> -->
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+        <div class="maploader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
+        </div>
+       <!--  <div class="loading-text">
+          <p>Loading Map</p>
+        </div> -->
+      </div>
 
   <div class="container">
     <div class="top">
-    <div class="pagename">
-      <h1 style="text-transform: uppercase;">{{collectionName}}</h1>
+      <div class="pagename">
+        <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
+      </div>
+      <div class="itemcount">
+        <div class="items" *ngIf="collectionName!=='sales'">
+          <p>{{myProduct.length}} item(s)</p>
+        </div>
+        <div class="items" *ngIf="collectionName==='sales'">
+          <p>{{promo.length}} item(s)</p>
+        </div>
+        <div class="filter" *ngIf="collectionName!=='sales'">
+
+          <ion-select placeholder="Filter ASC" [(ngModel)]="sortVal" (ionChange)="orderBy()">
+            <ion-select-option value="name">Name</ion-select-option>
+            <ion-select-option value="dateAdded">Date Added</ion-select-option>
+            <ion-select-option value="price">Price</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="filter" *ngIf="collectionName==='sales'">
+
+          <ion-select placeholder="Filter ASC" [(ngModel)]="sortSale" (ionChange)="sortSales()">
+            <ion-select-option value="name">Name</ion-select-option>
+            <ion-select-option value="discount">Discount</ion-select-option>
+            <ion-select-option value="saleprice">Price</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
     </div>
-    <div class="itemcount">
-      <div class="items">
-        <p>{{myProduct.length}} item(s)</p>
-      </div>
-
-      <div class="filter">
-        
-          <ion-select placeholder="Filter">
-              <ion-select-option value="c">Colour</ion-select-option>
-              <ion-select-option value="p">Product Type</ion-select-option>
-              <ion-select-option value="s">Size</ion-select-option>
-           
-            </ion-select>
-      </div>
-    </div>
-  </div>
-
-    <div class="cards">
-      <div class="card"  *ngFor="let p of myProduct">
-        <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg" (click)="viewitem(p.id, p.info)">
-        <div class="itemdetails">
-          <div class="name">
-            <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
-          </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)"></ion-icon>
-          </div>
-
-        </div>
-      </div>
-     
-      <div class="card">
-        <img src="https://i.pinimg.com/564x/e6/65/8b/e6658b090015019c0256cb006438f030.jpg">
-        <div class="itemdetails">
-          <div class="name">
-            <p>Pink Hoody <br> <span>R200</span></p>
-          </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="card">
-        <img src="https://i.pinimg.com/564x/59/e2/11/59e211cb4bdc56c35c8a5d4dcbdf7305.jpg">
-        <div class="itemdetails">
-          <div class="name">
-            <p>Striped Grey Hoody <br> <span>R200</span></p>
-          </div>
-          <div id="icon">
-            <ion-icon slot="end" name="heart-empty"></ion-icon>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="card">
-          <img src="https://i.pinimg.com/564x/59/e2/11/59e211cb4bdc56c35c8a5d4dcbdf7305.jpg">
+    <div class="cards" *ngIf="collectionName!=='sales'">
+        <div class="card" *ngFor="let p of myProduct, let i=index">
+          <img src="{{p.info.pictureLink}}"
+            (click)="viewitem(p.id, p.info)">
           <div class="itemdetails">
             <div class="name">
-              <p>Striped Grey Hoody <br> <span>R200</span></p>
+              <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
             </div>
             <div id="icon">
-              <ion-icon slot="end" name="heart-empty"></ion-icon>
+              
+              <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)" ></ion-icon>
             </div>
+            <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
   
           </div>
-  
         </div>
-    
+  
+      </div>
+    <div class="cards" *ngIf="collectionName==='sales'">
+      <div class="card" *ngFor="let s of promo">
+        <img src="{{s.info.pictureLink}}"
+          (click)="viewitem(s.id, s.info)">
+        <div class="itemdetails">
+          <div class="name">
+            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
+          </div>
+          <div id="icon">
+            
+            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info)" ></ion-icon>
+          </div>
+          <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
+        </div>
+      </div>
 
     </div>
   </div>

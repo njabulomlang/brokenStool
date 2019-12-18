@@ -3,6 +3,13 @@ ion-toolbar {
   #icon {
     color: maroon;
   }
+
+  #number {
+    font-size: 0.8em;
+    position: relative;
+    top: 8px;
+    right: 5px;
+  }
 }
 
 .card:nth-child(1) {
@@ -83,7 +90,7 @@ ion-toolbar {
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
-    height: 85vh;
+    height: 90vh;
     overflow-y: auto;
     // border: 1px solid red;
     justify-content: space-evenly;

@@ -16,7 +16,14 @@
 </ion-header>
 
 <ion-content fullscreen>
-
+    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+        <div class="maploader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
+        </div>
+       <!--  <div class="loading-text">
+          <p>Loading Map</p>
+        </div> -->
+      </div>
   <div class="container">
     <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
       <h1>BASKET ({{cartCount}})</h1>
@@ -24,18 +31,20 @@
 
     <p style="font-family: 'Raleway'; margin: 5px; font-size: 3.5vw">Please note that delivery to your door is R100</p>
 
-    <div class="cards" >
+    <div class="cards">
       <div class="card" *ngFor="let cp of prodCart; let i of index">
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/b8/5c/b4/b85cb489b8ff0c57acfe77b110dec4c7.jpg">
+        <div class="image" *ngFor="let prod of cp.data.product">
+          <img src="{{prod.picture}}">
         </div>
         <div class="details" *ngFor="let prod of cp.data.product">
           <div class="left">
             <p id="item">{{prod.product_name}}</p>
             <p>Size: {{prod.size}}</p>
+            <p>Color: {{prod.color}}</p>
             <p>{{cp.data.timestamp | date: "mediumDate"}}</p>
             <p style="font-size: 1em; margin: 5px; display: flex; flex-flow: row; align-items: baseline;">
-              <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;<ion-icon name="add-circle-outline" (click)="plus(prod, i)">
+              <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;
+              <ion-icon name="add-circle-outline" (click)="plus(prod, i)">
               </ion-icon>
             </p>
           </div>
@@ -52,12 +61,12 @@
 
 
       <div class="card" id="msg" *ngIf="prodCart.length==0">
-          <p> Oh no! Your Basket is empty</p>
-          <img src="../../assets/empty-cart.svg">
-      
-        </div>
+        <p> Oh no! Your Basket is empty</p>
+        <img src="../../assets/empty-cart.svg">
 
-     <!--  <div class="card">
+      </div>
+
+      <!--  <div class="card">
         <div class="image">
           <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg">
         </div>
@@ -81,17 +90,17 @@
 
         </div>
       </div> -->
-      
+
     </div>
 
-    <div class="total" >
+    <div class="total">
       <div class="carttotal">
         <p>TOTAL</p>
         <p>{{getTotal() | currency:'R'}}</p>
       </div>
 
       <div class="btn">
-        <ion-button (click)="placeOrder(prodCart)" color="transparent">
+        <ion-button [disabled]="prodCart.length==0" (click)="placeOrder(prodCart)" color="transparent">
           PLACE ORDER
         </ion-button>
       </div>

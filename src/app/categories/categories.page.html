@@ -4,6 +4,7 @@
     <ion-buttons slot="end">
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
@@ -28,16 +29,15 @@
       <div class="items">
         <p>200 Items</p>
       </div>
-
+<!-- 
       <div class="filter">
 
         <ion-select placeholder="Filter">
           <ion-select-option value="c">Colour</ion-select-option>
           <ion-select-option value="p">Product Type</ion-select-option>
           <ion-select-option value="s">Size</ion-select-option>
-
         </ion-select>
-      </div>
+      </div> -->
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
 

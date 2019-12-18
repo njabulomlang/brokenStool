@@ -7,11 +7,13 @@
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-button (click)="profile()" id="icon">
         <ion-icon slot="icon-only" name="person"></ion-icon>
+        
       </ion-button>
     </ion-buttons>
     <ion-title>DankieJesu</ion-title>
@@ -24,29 +26,39 @@
   </ion-toolbar> -->
 </ion-header>
 
-<p style="margin: 5px ; font-family: 'Raleway'">Welcome {{name}} {{surname}}</p>
 
-<ion-content>
+<ion-content fullscreen>
+    <p style="margin: 5px ; font-family: 'Raleway'">Welcome <i>{{name}} {{surname}}</i></p>
+
+    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+        <div class="maploader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
+        </div>
+       <!--  <div class="loading-text">
+          <p>Loading Map</p>
+        </div> -->
+      </div>
+  
   <div class="container" no-padding>
-    <div class="sales">
-      <ion-item>
+    <div class="sales" >
+      <ion-item (click)="goList('sales')">
         <label>Sales & Specials</label>
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
       <div class="saleitems">
 
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/d3/30/dd/d330dd747a591fca780af2d02ddcb31e.jpg">
+        <div class="image" *ngFor="let s of sales">
+          <img src="{{s.data.pictureLink}}" (click)="viewitem(s.id,s.data)">
 
           <div class="percentage">
-            <p>30% OFF</p>
+            <p>{{s.data.discount}}% OFF</p>
           </div>
           <div class="itemname">
-            <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+            <p>{{s.data.name}}<br> <span>by {{s.data.brand}}</span></p>
           </div>
         </div>
-
+<!-- 
         <div class="image">
           <img src="https://i.pinimg.com/564x/20/08/5a/20085af4f605e613c1537fde27598362.jpg">
 
@@ -89,7 +101,7 @@
           <div class="itemname">
             <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 

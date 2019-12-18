@@ -31,6 +31,7 @@ export class AppComponent {
     firebase.auth().onAuthStateChanged((res) => {
       if (res) {
         this.router.navigateByUrl('home')
+        // this.splashScreen.hide();
        // console.log("User..", res.phoneNumber);
       } else {
         this.router.navigateByUrl('login')
@@ -42,7 +43,7 @@ export class AppComponent {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.statusBar.backgroundColorByHexString('#000324');
       this.statusBar.styleLightContent();
-      this.splashScreen.hide();
+     
     });
   }
 }

@@ -19,37 +19,23 @@ export class BasketPage implements OnInit {
   prodCart = [];
   totalCost: number = 0;
   prodCount: number = 0;
-  doc_id: string = ''
+  doc_id: string = '';
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   constructor(public NavCtrl: NavController, public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController) { }
 
   ngOnInit() {
+  
     this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
       this.cartCount = info.size;
-      /*  if (info.size==0) {
-         this.dbCart.add({ customerUID: this.customerUID, product: []}).then((res) => {
-         this.cartDoc = res.id;
-       })
-       } else { */
       this.prodCart = [];
       this.totalCost = 0;
+      setTimeout(() => {
+        this.loaderAnimate = false;
+      }, 2000);
       info.forEach((doc) => {
         this.prodCart.push({ data: doc.data(), id: doc.id });
-        //this.addProduct(doc.id)
-        /*  for (let car of this.prodCart) {
-           car.data.product.forEach((item)=>{
-            this.totalCost +=  Number(item.cost*item.quantity);
-           })
-          } */
       })
-      //let sum:number = 0;
-
-      //console.log('My numbers ', this.totalCost);
-      // console.log('My sum..',this.totalCost)
-      /*   if (info.size==0) {
-          this.dbCart.add({ customerUID: this.customerUID }).then((res) => {
-          this.cartDoc = res.id;
-        })*/
-      //   } 
     })
     setTimeout(() => {
       this.getTotal();
@@ -99,7 +85,7 @@ export class BasketPage implements OnInit {
       this.toastController('You cannot place order with empty basket');
     } else {
       let docname = 'ZXY' + Math.floor(Math.random() * 10000000);
-      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), status: 'recieved', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal() }).then(() => {
+      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), status: 'received', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal() }).then(() => {
         doc.forEach((id) => {
           this.dbCart.doc(id).delete();
         })

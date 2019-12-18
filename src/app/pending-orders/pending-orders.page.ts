@@ -13,7 +13,8 @@ export class PendingOrdersPage implements OnInit {
   dbUserProfile = firebase.firestore().collection('userProfile');
   uid = firebase.auth().currentUser.uid;
   myOrder = [];
- 
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   storageRef = firebase.storage().ref();
   pdfObj = null;
   reciept = null;
@@ -39,6 +40,9 @@ export class PendingOrdersPage implements OnInit {
   getAllOrders() {
     this.dbOrder.where('userID', '==', this.uid).onSnapshot((res) => {
       this.myOrder = [];
+      setTimeout(() => {
+        this.loaderAnimate = false;
+      }, 2000);
       res.forEach((doc) => {
         this.myOrder.push({ info: doc.data(), id: doc.id });
       })

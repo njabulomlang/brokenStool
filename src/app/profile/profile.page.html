@@ -3,10 +3,23 @@
     <ion-buttons slot="start" (click)="goBack()">
       <ion-icon slot="start" name="arrow-back" id="icon"></ion-icon>
     </ion-buttons>
+
+    <ion-buttons slot="end" (click)="logout()">
+        <ion-icon slot="start" name="exit" id="icon"></ion-icon>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
+    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+        <div class="maploader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
+        </div>
+       <!--  <div class="loading-text">
+          <p>Loading Map</p>
+        </div> -->
+      </div>
+  
 
   <div class="container">
 
@@ -38,6 +51,8 @@
             <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
 
             <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+
+            <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
         </div>
         <div class="buttonz" >
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">

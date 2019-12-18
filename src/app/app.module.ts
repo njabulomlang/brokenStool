@@ -21,11 +21,12 @@ import { Downloader } from '@ionic-native/downloader/ngx';
 import { PopoverComponent } from './popover/popover.component';
 import { StarRatingModule } from 'ionic4-star-rating';
 import { ProductPipe } from './pipes/product.pipe';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [AppComponent, ProductPipe],
   entryComponents: [],
-  imports: [BrowserModule,FormsModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [BrowserModule,FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
    
      CartModalPageModule],
   providers: [

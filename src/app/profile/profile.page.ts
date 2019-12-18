@@ -3,13 +3,15 @@ import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { ToastController, LoadingController, ActionSheetController, NavController } from '@ionic/angular';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  loaderMessages = 'Loading...';
+  loaderAnimate:boolean = true;
   editprofile = false;
   dbProfile = firebase.firestore().collection("userProfile");
   dbCart = firebase.firestore().collection('Cart');
@@ -20,18 +22,23 @@ export class ProfilePage implements OnInit {
   name; 
   surname;
   email;
+  address;
   myCart:number;
   myWish:number;
-  constructor(private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
+  constructor(private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
 
   ngOnInit() { 
+    setTimeout(() => {
+      this.loaderAnimate = false
+    }, 2000); 
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
     //console.log("My profile ", doc.data());
     this.profilePic=doc.data().profilePic;
     this.name=doc.data().name;
     this.surname=doc.data().surname;
     this.email=doc.data().email;
+    this.address=doc.data().address;
     //this.profile.push(doc.data());
   })
     //this.presentLoading();
@@ -72,9 +79,13 @@ export class ProfilePage implements OnInit {
   goBack(){
     this.navCtrl.pop()
   }
+
+  logout() {
+    this.authService.logoutUser()
+  }
   
   updateProfile() {
-    this.dbProfile.doc(this.uid).update({name: this.name, surname: this.surname, email: this.email}).then(()=>{
+    this.dbProfile.doc(this.uid).update({name: this.name, surname: this.surname, email: this.email, address: this.address}).then(()=>{
       this.editprofile=!this.editprofile;
       this.toastController();
     })

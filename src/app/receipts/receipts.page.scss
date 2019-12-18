@@ -21,7 +21,7 @@ ion-toolbar {
     display: flex;
     flex-flow: row;
     width: 95vw;
-    margin: 10px;
+    margin: 5px;
     // box-shadow: 5px 5px 10px rgb(190, 190, 190);
     border-radius: 5px;
     .image {
@@ -136,6 +136,7 @@ ion-toolbar {
     display: flex;
     flex-flow: row;
     width: 40vw;
+    line-height: 2px;
     justify-content: space-between;
     p {
       font-family: "Poppins";

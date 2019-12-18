@@ -17,7 +17,7 @@
       <div class="card" *ngFor="let order of productOrder">
 
         <div class="image">
-          <img src="https://i.pinimg.com/564x/81/0e/0e/810e0e4002f62a4b5563489386d84b72.jpg" alt="">
+          <img src="{{order.picture}}" alt="">
         </div>
 
         <div class="right">
@@ -31,7 +31,7 @@
           </div>
 
           <div class="status">
-            <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
+            <p>DELIVERY STATUS <br> <span><i>Order {{status}}</i></span></p>
 
           </div>
         </div>
@@ -64,7 +64,8 @@
 
       <div class="total">
         <p id="tot">TOTAL</p>
-        <p id="price">{{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===0"> {{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===100"><span style="font-size: 0.8em; font-weight: lighter;"><i>incl delivery</i></span> {{getTotal() | currency:'R'}}</p>
       </div>
       <div class="bankingDets">
         <p>
@@ -73,7 +74,7 @@
           Account Number: 1234567890<br>
           Branch Name: Dube <br>
           Branch Number: 47100<br>
-          Reference No.: XYZ12345</p>
+          Reference No.: {{doc_id}}</p>
       </div>
 
       <div class="date">
@@ -81,7 +82,7 @@
       </div>
 
       <div class="orderstatus">
-        <p><span>Order Status</span> <br> <i>Your order is being prepared</i></p>
+        <p><span>Order Status</span> <br> <i>Your order is {{status}}</i></p>
       </div>
 
       <div class="tracks">
