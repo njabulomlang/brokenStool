@@ -1,24 +1,25 @@
 .container {
   display: flex;
   flex-flow: column;
-  justify-content: space-evenly;
+  //   justify-content: space-evenly;
   align-items: center;
-  background: white;
+  //   background: white;
+  height: 25vh;
 
-  .text{
-      p{
-          font-family: 'Poppins';
-          font-size: 3vw;
-          font-weight: bold;
-          letter-spacing: 2px;
-      }
+  .text {
+    p {
+      font-family: "Poppins";
+      font-size: 3vw;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
   }
 
-  .buttonz{
-      ion-button{
-          background: rgb(0, 0, 36);
-          width: 50vw;
-          font-size: 0.8em;
-      }
+  .buttonz {
+    ion-button {
+      background: rgb(0, 0, 36);
+      width: 50vw;
+      font-size: 3vw;
+    }
   }
 }
