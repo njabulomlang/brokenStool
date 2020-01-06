@@ -175,6 +175,7 @@ export class TrackOrdersPage implements OnInit {
 
   }
   downloadPdf() {
+   // firebase.firestore().collection('').doc('').
     this.createPdf();
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
@@ -218,7 +219,7 @@ export class TrackOrdersPage implements OnInit {
         console.log('Wait until it is');
       }
     })
-  }
+  }    
   getOrder() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
       res.data().product.forEach((item) => {
