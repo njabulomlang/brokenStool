@@ -5,7 +5,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
-import { FcmService } from '../fcm.service';
+//import { FcmService } from '../fcm.service';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({

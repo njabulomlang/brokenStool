@@ -20,7 +20,6 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Downloader } from '@ionic-native/downloader/ngx';
 import { PopoverComponent } from './popover/popover.component';
 import { StarRatingModule } from 'ionic4-star-rating';
-//import { ProductPipe } from './pipes/product.pipe';
 import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({

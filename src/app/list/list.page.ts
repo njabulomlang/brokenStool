@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
 import { NavController, ToastController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-list',
   templateUrl: './list.page.html',
@@ -44,7 +45,7 @@ export class ListPage implements OnInit {
     this.getAllProduct("name");
     this.getSales("name");
 
-    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
+    this.dbWishlist.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
   }
@@ -95,22 +96,33 @@ export class ListPage implements OnInit {
   }
 
   wishList(id, data, index) {
-    console.log('My info ', id, data);
-    this.heartIndex = index
-    this.dbWishlist.add({ customerUID: firebase.auth().currentUser.uid, price: data.price, image: data.pictureLink, name: data.name, id: id, category: this.collectionName }).then(() => {
-      this.toastController('Added to wishlist..');
-      //this.router.navigateByUrl('basket');
+    //console.log('My info ', id, data);
+    this.heartIndex = index;
+    this.dbWishlist.doc(id).get().then((res) => {
+      if (res.exists == true) {
+        this.toastController('Product already in wishlist..');
+      } else {
+        this.dbWishlist.doc(res.id).set({ customerUID: firebase.auth().currentUser.uid, price: data.price, image: data.pictureLink, name: data.name, id: id, category: this.collectionName }).then(() => {
+          this.toastController('Added to wishlist..');
+        })
+      }
     })
   }
   wishListSale(id, data, index) {
-    console.log('My info ', id, data);
+    // console.log('My info ', id, data);
     this.heartIndex = index
-    this.dbWishlist.add({
-      customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
-      image: data.pictureLink, id: id, category: this.collectionName
-    }).then(() => {
-      this.toastController('Added to wishlist..');
-      //this.router.navigateByUrl('basket');
+    this.dbWishlist.doc(id).get().then((res) => {
+      if (res.exists == true) {
+        this.toastController('Product already in wishlist..');
+      } else {
+        this.dbWishlist.doc(res.id).set({
+          customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
+          image: data.pictureLink, id: id, category: this.collectionName
+        }).then(() => {
+          this.toastController('Added to wishlist..');
+          //this.router.navigateByUrl('basket');
+        })
+      }
     })
   }
   wishlist() {

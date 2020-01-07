@@ -9,7 +9,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 })
 export class CartModalPage implements OnInit {
  
-//  cart: Product[] = [];
+ // cart: Product[] = [];
  
   constructor() { }
  
