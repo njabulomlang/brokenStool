@@ -99,6 +99,59 @@
       </div>
 
     </div>
+
+
+
+    <div [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
+
+      <div class="heading">
+        <p>Filter Items By:</p>
+       <h1 (click)="reviewed()">X</h1>
+        
+      </div>
+      <div class="line"></div>
+  
+       <div class="filtering">
+         <ul>
+           <li (click)="filtered()">Colour
+
+            <ul *ngIf="viewFilter">
+              <li>Red</li>
+              <li>Blue</li>
+              <li>Orange</li>
+              <li>Green</li>
+              <li>Purple</li>
+            </ul>
+           </li>
+           <li (click)="filtered()">Price
+
+            <ul *ngIf="viewFilter">
+              <li>0 - R199</li>
+              <li>R200 - R499</li>
+              <li>R500 - R799</li>
+              <li>R800 - R999</li>
+    
+            </ul>
+           </li>
+           <li (click)="filtered()">Item Type
+            <ul *ngIf="viewFilter">
+              <li>Hoodies</li>
+              <li>Crop-Tops</li>
+              <li>Sweaters</li>
+              <li>Beanies</li>
+              <li>Tracksuits</li>
+            </ul>
+           </li>
+         </ul>
+       </div>
+  
+       
+        </div>
+
+      <ion-button (click)="reviewed()">
+       view
+      </ion-button>
+  
   </div>
 
 

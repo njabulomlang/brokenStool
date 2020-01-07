@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController } from '@ionic/angular';
-import { CartService } from './cart.service';
+//import { CartService } from './cart.service';
 import { Router } from '@angular/router';
 declare var window
 @Injectable({
@@ -14,7 +14,7 @@ export class AuthService {
   uid;
   confirm;
   myuid="";
-  constructor(public alertController: AlertController, public cartService: CartService,
+  constructor(public alertController: AlertController,
     public router: Router) { 
       
     }
