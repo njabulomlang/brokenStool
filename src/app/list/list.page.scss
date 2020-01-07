@@ -20,20 +20,21 @@ ion-toolbar {
   flex-flow: column;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+ height: 100%;
+ bottom: 0;
+
 
   .top {
     width: 100%;
     padding: 10px;
+    height: 21vw;
     .pagename {
       font-family: "Poppins";
       font-weight: normal;
       letter-spacing: 2px;
       width: 100%;
       text-align: left;
-      padding: 8px;
-      // position: relative;
-      // bottom: 30px;
+
       h1 {
         font-size: 4vw;
       }
@@ -61,17 +62,16 @@ ion-toolbar {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: fit-content;
+    object-fit: cover;
+    overflow-y: auto;
     padding: 16px;
-    // border: 1px solid green;
     justify-content: space-evenly;
     justify-items: center;
     position: relative;
-    bottom: 50px;
+
 
     .card {
       width: 47%;
-      // border: 1px solid red;
       height: fit-content;
       display: flex;
       flex-flow: column;
@@ -90,7 +90,7 @@ ion-toolbar {
         justify-content: space-between;
         align-items: baseline;
         align-items: flex-end;
-        font-size: 0.8em;
+        font-size: 3vw;
         p {
           font-weight: bold;
           span {
@@ -104,7 +104,7 @@ ion-toolbar {
           right: 10px;
 
           ion-icon {
-            font-size: 4.5vw;
+            font-size: 3vw;
             cursor: pointer;
           }
         }
@@ -112,43 +112,7 @@ ion-toolbar {
     }
   }
 
-  // .cards {
-  //   width: 100%;
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   height: 80vh;
-  //   overflow-y: auto;
-  //   padding: 10px;
 
-  //   .card {
-  //     width: 45%;
-  //     height: 45vh;
-  //     margin: 5px;
-  //     border-radius: 10px;
-
-  //     img {
-  //       width: 100%;
-  //       height: 75%;
-  //       object-fit: cover;
-  //       border-radius: 10px;
-  //     }
-
-  //     .itemdetails {
-  //       position: relative;
-  //       bottom: 20px;
-  //       display: flex;
-  //       flex-flow: row;
-  //       justify-content: space-between;
-  //       align-items: baseline;
-
-  //       #icon {
-  //         position: absolute;
-  //         bottom: 15px;
-  //         right: 10px;
-  //       }
-  //     }
-  //   }
-  // }
 }
 .loader {
   position: absolute;
@@ -334,7 +298,7 @@ ion-toolbar {
   border-bottom-left-radius: 20px;
   box-shadow: 5px 5px 10px rgb(185, 185, 185);
   width: 60vw;
-  height: 100vh;
+  height: 90%;
   top: 10%;
   bottom: 40%;
   right: 0;
@@ -349,30 +313,30 @@ ion-toolbar {
     justify-content: space-between;
     width: 100%;
     text-align: center;
-    padding: 5px;
+    margin: 5px;
 
     ion-icon {
       color: white;
       position: relative;
-      right: 5vw;
+      right: 2vw;
       top: 2.2vh;
-      font-size: 6vw;
+      font-size: 5vw;
       background: black;
       border-radius: 50%;
     }
 
-    h2 {
-      font-family: "Poiret One";
-      letter-spacing: 5px;
-      margin: 10px 5px;
+    p {
+      letter-spacing: 1px;
+      margin: 15px 5px;
       position: relative;
-      left: 7vw;
+      left: 2vw;
+      font-size: 4vw;
     }
   }
 
   .filtering {
     margin: 0;
-    padding: 10px; 
+    padding: 10px;
     ul {
       margin: 0;
       padding: 0;
@@ -380,30 +344,30 @@ ion-toolbar {
     }
 
     ul li {
-     float: left;
+      float: left;
       width: 50vw;
       height: 5vh;
-
+      font-size: 3.5vw;
     }
 
- 
-
-    ul li  ul li{
+    ul li ul li {
       display: none;
-  
-    }
-
-
-    ul li:hover ul li{
-      display: block;
-      z-index: 5; 
    
     }
 
-    ul li:hover {
-      // background: maroon;
-      opacity: 0.5;
+    ul li ul li:hover {
+      display: none;
     }
+
+    ul li:hover ul li {
+      display: block;
+      opacity: 0.5;
+      background: white;
+    }
+
+
+
+
   }
 
   .crds {
