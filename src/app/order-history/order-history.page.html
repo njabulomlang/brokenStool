@@ -61,7 +61,7 @@
           </div>
 
           <div class="costs">
-            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} </p>
+            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br>  </p>
           </div>
         </div>
       </div>
@@ -117,6 +117,7 @@
                   </div>
                 </div>
               </div> -->
+              <p style="font-style: italic;">{{o.date | date:"medium"}}</p>
     </div>
   </div>
 
