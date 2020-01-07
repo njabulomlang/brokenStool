@@ -66,18 +66,19 @@
         </div>
       </div>
 
-      <div class="card" id="msg" *ngIf="orderHistory.length==0">
-        <p> No History Yet</p>
-        <img src="../../assets/sad_smile.svg">
-      </div>
-
       
-                <div class="costs">
+      
+                <!-- <div class="costs">
                   <p><i>QTY. 1</i>  <br> R500 <br> 11 November 2019 <br> HGD6776767</p>
-                </div>
+                </div> -->
+                <p style="font-style: italic;">{{o.timestamp | date:"medium"}}</p>
+              </div>
+              <div class="card" id="msg" *ngIf="orderHistory.length==0">
+                <p> No History Yet</p>
+                <img src="../../assets/sad_smile.svg">
               </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <div class="image">
                   <img src="https://i.pinimg.com/564x/e2/cd/76/e2cd765cf79938a57bc47e989797d3c3.jpg" alt="">
                 </div>
@@ -92,8 +93,8 @@
                   </div>
                 </div>
               </div> -->
-              <p style="font-style: italic;">{{o.timestamp | date:"medium"}}</p>
-    </div>
-  </div>
+              
+    <!-- </div>
+  </div> -->
 
 </ion-content>

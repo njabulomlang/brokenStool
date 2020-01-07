@@ -18,6 +18,7 @@ export class ListPage implements OnInit {
   collectionName: string = "";
   doc_data: string;
   col: string;
+  price:number=0;
   heartIndex = null;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -136,15 +137,48 @@ export class ListPage implements OnInit {
   goBack() {
     this.navCtrl.pop();
   }
-
-
   reviewed() {
+    this.getAllProduct('name')
     this.viewReviews = !this.viewReviews
   }
-
+  rev() {
+    this.viewReviews = !this.viewReviews
+  }
   filtered() {
+    //console.log(val);
     this.viewFilter = !this.viewFilter
   }
-
-
+  colorOpt(info) {
+    //console.log(info.path[0].innerHTML);
+    //this.myProduct.sort(info.path[0].innerHTML);
+   // this.myProduct = [];
+     this.dbProduct.doc(this.col).collection(this.collectionName).where('color','array-contains',info.path[0].innerHTML).onSnapshot((res) => {
+      this.myProduct = [];
+      res.forEach((doc) => {
+        this.myProduct.push({ info: doc.data(), id: doc.id });
+        // console.log('These products ', this.myProduct); 
+      })
+      this.rev();
+    })
+  }
+  setPriceRange(param) {
+    this.price = param;
+     //console.log("Price range = "+ this.price);
+    if (this.price >= 0) {
+      this.myProduct = [];
+      this.dbProduct.doc(this.col).collection(this.collectionName).where('price', '>=', param)
+        .onSnapshot((res) => {
+           //console.log(res.docs);
+          res.forEach((doc) => {
+            // this.db.collection('builderProfile').get().then(snapshot => {
+            //   snapshot.forEach(doc => {
+              this.myProduct.push({ info: doc.data(), id: doc.id });
+            // this.bUID = doc.id;
+            //   });
+            //   console.log('Builders: ', this.builder);
+            // });
+          })
+        })
+    }
+  }
 }
