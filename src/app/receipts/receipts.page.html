@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="goBack()">
       <ion-button>
         <ion-icon slot="icon-only" name="arrow-back" id="icon"></ion-icon>
       </ion-button>
@@ -27,20 +27,19 @@
           </div>
 
           <div class="costs">
-            <p><i>QTY {{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> {{order.refNo}}</p>
+            <p><i>QTY {{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> </p>
           </div>
 
           <div class="status">
             <!-- <p>DELIVERY STATUS <br> <span><i>Order Delivered</i></span></p> -->
-            <p>ORDER STATUS <br> <span><i>{{order.status}}</i></span></p>
+            
             <!-- <p>DELIVERY STATUS <br> <span><i>Order awaiting collection</i></span></p> -->
             <!-- <p>DELIVERY STATUS <br> <span><i>Order Coolected</i></span></p> -->
           </div>
-
         </div>
-
       </div>
-
+    <!--   <p>{{order.refNo}}</p>
+      <p>ORDER STATUS <br> <span><i>{{order.status}}</i></span></p> -->
       <!-- <div class="card">
 
           <div class="image">
@@ -76,11 +75,11 @@
         </div>
 
         <div class="ref">
-          <p>REF <span><i>{{order.refNo}}</i></span></p>
+          <p>REF NO: <span><i>{{order.refNo}}</i></span></p>
         </div>
 
         <div class="cart">
-          <p><b>Date of Puchase </b><i>{{order.timestamp | date:"mediumDate"}}</i> <br>
+          <p><b>Date of Puchase: </b><i>{{order.timestamp | date:"medium"}}</i> <br>
             <b>Items</b></p>
         </div>
 
@@ -103,7 +102,7 @@
         </div>
         <div class="ordertype">
           <p>Order Type</p>
-          <p id="del"><i>{{order.delType}}</i></p>
+          <p id="del"><i>{{order.deliveryType}}</i></p>
         </div>
 
         <div class="address">

@@ -62,7 +62,7 @@ export class HomePage implements OnInit {
   }
 
   profile() {
-    this.router.navigateByUrl('profile');
+    this.navCtrl.navigateForward('profile');
   }
   getPromo() {
     this.dbSales.onSnapshot((res) => {
@@ -76,7 +76,8 @@ export class HomePage implements OnInit {
     })
   }
   search() {
-    this.router.navigateByUrl('search');
+    this.navCtrl.navigateForward('search');
+    //this.router.navigateByUrl('search');
   }
   logout() {
     this.authService.logoutUser()
@@ -101,10 +102,10 @@ export class HomePage implements OnInit {
       */
   }
   busket() {
-    this.router.navigateByUrl('basket');
+    this.navCtrl.navigateForward('basket');
   }
   wishlist() {
-    this.router.navigateByUrl('wishlist');
+    this.navCtrl.navigateForward('wishlist');
   }
   animateCSS(animationName, keepAnimated = false) {
     const node = this.fab.nativeElement;
