@@ -39,7 +39,7 @@ export class AppComponent {
     })
   }
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then(() => { 
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.statusBar.backgroundColorByHexString('#000324');
       this.statusBar.styleLightContent();

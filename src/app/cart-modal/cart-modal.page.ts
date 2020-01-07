@@ -1,4 +1,4 @@
-import { Product, CartService } from './../services/cart.service';
+//import { Product, CartService } from './../services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
  
@@ -9,7 +9,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 })
 export class CartModalPage implements OnInit {
  
-  cart: Product[] = [];
+ // cart: Product[] = [];
  
   constructor() { }
  
