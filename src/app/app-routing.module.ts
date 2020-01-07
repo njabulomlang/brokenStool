@@ -57,10 +57,10 @@ const routes: Routes = [
     path: 'create-account',
     loadChildren: () => import('./create-account/create-account.module').then( m => m.CreateAccountPageModule)
   },
-  {
+ /*  {
     path: 'cart-modal',
     loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
-  },
+  }, */
   {
     path: 'view/:view_id',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
