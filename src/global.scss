@@ -36,17 +36,17 @@ ion-button {
 }
 
 ion-popover {
- 
+  align-items: center;
   div.popover-content {
-    top: 30% !important;
-    left: 25% !important;
-    transform: translate(-50%, -50%) !important;
-    --ion-backdrop-color: rgba(0, 0, 0, 0.76);
-    --min-height: 30vh;
-    --max-height: 30vh;
+    // top: 30% !important;
+    // left: 30%;
+    // right: 15%;
+    //transform: translate(-50%, -50%) !important;
+    // --ion-backdrop-color: rgba(0, 0, 0, 0.76);
+    --min-height: 20vh;
+  
+    --max-height: 25vh;
     --min-width: 70vw;
     --max-width: 70vw;
-
   }
- 
 }
