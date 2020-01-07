@@ -24,8 +24,10 @@ export class ListPage implements OnInit {
   sortVal;
   sortSale;
   uid = firebase.auth().currentUser.uid;
-  // dbWish = firebase.firestore().collection('Wishlist');
+  dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
+  viewFilter = false;
+  viewReviews = false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -133,5 +135,14 @@ export class ListPage implements OnInit {
 
   goBack() {
     this.navCtrl.pop();
+  }
+
+
+  reviewed() {
+    this.viewReviews = !this.viewReviews
+  }
+
+  filtered() {
+    this.viewFilter = !this.viewFilter
   }
 }

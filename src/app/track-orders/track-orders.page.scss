@@ -233,7 +233,7 @@ ion-toolbar {
   width: 5vw;
   height: 5vw;
   border-radius: 50px;
-  border: 1px solid red;
+  border: 1px solid grey;
   line-height: 20px;
   transition: 700ms;
   font-size: 0.8em;
@@ -288,4 +288,9 @@ ion-toolbar {
 }
 #line3{
   border: 0.5px solid grey
+}
+
+#one, #two, #three, #four{
+ display: grid;
+ align-items: center;
 }

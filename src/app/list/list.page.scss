@@ -1,5 +1,5 @@
 ion-toolbar {
-  --background: transparent;
+  --background: white;
   #icon {
     color: maroon;
   }
@@ -102,10 +102,10 @@ ion-toolbar {
           position: relative;
           bottom: 15px;
           right: 10px;
-          
-          ion-icon{
+
+          ion-icon {
             font-size: 4.5vw;
-          cursor: pointer;
+            cursor: pointer;
           }
         }
       }
@@ -161,7 +161,7 @@ ion-toolbar {
   align-items: center;
   justify-content: center;
   align-content: center;
-  background:rgb(0, 27, 63);
+  background: rgb(0, 27, 63);
   background-repeat: repeat-x;
   transform: scale(1);
   overflow: hidden;
@@ -225,8 +225,8 @@ ion-toolbar {
       }
     }
   }
- }
- .loading-text {
+}
+.loading-text {
   // color: yellow;
   position: absolute;
   bottom: 50vh;
@@ -237,8 +237,8 @@ ion-toolbar {
   height: 50vh;
   //z-index: 90;
   margin: auto;
- }
- .loader-hide {
+}
+.loader-hide {
   position: absolute;
   top: 0;
   left: 0;
@@ -307,8 +307,8 @@ ion-toolbar {
       }
     }
   }
- }
- @keyframes maploader {
+}
+@keyframes maploader {
   0% {
     // transform: rotate(0deg);
     border-color: rgb(182, 70, 95);
@@ -324,4 +324,221 @@ ion-toolbar {
     // background: rgb(255, 167, 167);
     // transform: rotate(360deg);
   }
- }
+}
+
+.viewreviews {
+  position: absolute;
+  z-index: 150;
+  background: white;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 5px 5px 10px rgb(185, 185, 185);
+  width: 60vw;
+  height: 100vh;
+  top: 10%;
+  bottom: 40%;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+
+  .heading {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+
+    ion-icon {
+      color: white;
+      position: relative;
+      right: 5vw;
+      top: 2.2vh;
+      font-size: 6vw;
+      background: black;
+      border-radius: 50%;
+    }
+
+    h2 {
+      font-family: "Poiret One";
+      letter-spacing: 5px;
+      margin: 10px 5px;
+      position: relative;
+      left: 7vw;
+    }
+  }
+
+  .filtering {
+    margin: 0;
+    padding: 10px; 
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul li {
+     float: left;
+      width: 50vw;
+      height: 5vh;
+
+    }
+
+ 
+
+    ul li  ul li{
+      display: none;
+  
+    }
+
+
+    ul li:hover ul li{
+      display: block;
+      z-index: 5; 
+   
+    }
+
+    ul li:hover {
+      // background: maroon;
+      opacity: 0.5;
+    }
+  }
+
+  .crds {
+    height: 70vh;
+    overflow-y: auto;
+
+    .crd {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 90vw;
+      height: 20vh;
+      margin: 5px;
+
+      .profimage {
+        width: 20%;
+        height: 9vh;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 10px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+
+      .reviewdets {
+        width: 60vw;
+
+        h4 {
+          font-family: "Poiret One";
+          font-weight: bold;
+        }
+
+        p {
+          font-family: "Raleway";
+          font-size: 3vw;
+        }
+      }
+    }
+  }
+}
+
+.closereviews {
+  position: absolute;
+  z-index: 150;
+  background: rgba(255, 255, 255, 0.774);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 0vw;
+  height: 85vh;
+  top: 10%;
+  bottom: 40%;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+
+  .line {
+    width: 80vw;
+    height: 2px;
+    background: grey;
+  }
+
+  .heading {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+
+    ion-button {
+      border: none !important;
+      box-shadow: none !important;
+      margin: 5px;
+      ion-icon {
+        color: black;
+        position: relative;
+        // left: 5vw;
+      }
+    }
+
+    h2 {
+      font-family: "Poiret One";
+      letter-spacing: 5px;
+      margin: 10px 5px;
+      position: relative;
+      left: 6vw;
+    }
+  }
+
+  .crds {
+    height: 70vh;
+    overflow-y: auto;
+
+    .crd {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 90vw;
+      height: 20vh;
+      margin: 10px;
+
+      .profimage {
+        width: 20%;
+        height: 9vh;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 10px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+
+      .reviewdets {
+        width: 60vw;
+
+        h4 {
+          font-family: "Poiret One";
+          font-weight: bold;
+        }
+
+        p {
+          font-family: "Raleway";
+          font-size: 3vw;
+        }
+      }
+    }
+  }
+}
