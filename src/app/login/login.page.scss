@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ');
+@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 
 ion-toolbar {
   --background: transparent;
@@ -11,9 +11,10 @@ ion-toolbar {
   justify-content: center;
   align-items: center;
   min-height: 100%;
- max-height:  100%;
+  max-height: 100%;
   width: 100%;
-  background: linear-gradient(rgba(77, 77, 77, 0.295)), url("../../assets/back.jpg");
+  position: absolute;
+  background-image: url("../../assets/back.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -33,7 +34,7 @@ ion-toolbar {
       color: white;
       text-align: center;
       font-size: 0.8em;
-      font-family: 'Poppins';
+      font-family: "Poppins";
     }
   }
 
@@ -49,13 +50,13 @@ ion-toolbar {
       color: black;
       font-size: 0.8em;
       font-weight: lighter;
-      font-family: 'Poppins';
-      ion-icon{
-          color:black;
+      font-family: "Poppins";
+      ion-icon {
+        color: black;
       }
     }
 
-    ion-input{
+    ion-input {
       color: white;
     }
   }
@@ -71,7 +72,7 @@ ion-toolbar {
   align-items: center;
   justify-content: center;
   align-content: center;
-  background:rgb(0, 27, 63);
+  background: rgb(0, 27, 63);
   background-repeat: repeat-x;
   transform: scale(1);
   overflow: hidden;
@@ -135,8 +136,8 @@ ion-toolbar {
       }
     }
   }
- }
- .loading-text {
+}
+.loading-text {
   // color: yellow;
   position: absolute;
   bottom: 50vh;
@@ -147,8 +148,8 @@ ion-toolbar {
   height: 50vh;
   //z-index: 90;
   margin: auto;
- }
- .loader-hide {
+}
+.loader-hide {
   position: absolute;
   top: 0;
   left: 0;
@@ -217,8 +218,8 @@ ion-toolbar {
       }
     }
   }
- }
- @keyframes maploader {
+}
+@keyframes maploader {
   0% {
     // transform: rotate(0deg);
     border-color: rgb(182, 70, 95);
@@ -234,4 +235,4 @@ ion-toolbar {
     // background: rgb(255, 167, 167);
     // transform: rotate(360deg);
   }
- }
+}
