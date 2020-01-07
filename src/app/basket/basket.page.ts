@@ -70,8 +70,6 @@ export class BasketPage implements OnInit {
   placeOrder(info) {
     let myArr = [];
     let doc = [];
-
-
     for (let i = 0; i < info.length; i++) {
       // const element = info[i].data;
       /* myArr = info[i].data.product */

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Downloader, DownloadRequest, NotificationVisibility } from '@ionic-native/downloader/ngx';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-receipts',
@@ -24,7 +24,7 @@ export class ReceiptsPage implements OnInit {
   myOrder = [];
   doc_id: string;
   quantity:number=0;
-  constructor(public route: ActivatedRoute, private file: File, private fileOpener: FileOpener, public downloader: Downloader,
+  constructor(public route: ActivatedRoute, private file: File, private fileOpener: FileOpener, public downloader: Downloader, public navCtrl: NavController,
     public toastController: ToastController) {
     this.doc_id = this.route.snapshot.paramMap.get('id');
     // this.route.queryParams.subscribe(params => {
@@ -50,7 +50,9 @@ export class ReceiptsPage implements OnInit {
     this.userProfile.address = res.data().address;
     })
   }
-
+  goBack() {
+    this.navCtrl.pop();
+  }
   downloadPDF(pdf) {
     /*     this.loader.create({
           content: "Downloading...",

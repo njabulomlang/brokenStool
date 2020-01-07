@@ -116,7 +116,7 @@
         <ul>
           <li (click)="filtered()" class="type">Colour
 
-            <ul *ngIf="viewFilter">
+            <ul *ngIf="viewFilter" (click)="colorOpt($event)">
               <li>Red</li>
               <li>Blue</li>
               <li>Orange</li>
@@ -125,16 +125,24 @@
             </ul>
           </li>
           <li (click)="filtered()" class="type">Price
-
             <ul *ngIf="viewFilter">
+              <ion-item >
+              <ion-range pin="true" min="0" max="1000" step="10" color="secondary" [(ngModel)]="price" (ionChange)="setPriceRange(price)">
+                <ion-label slot="start">{{price | currency:'R'}}</ion-label>
+                <ion-label slot="end">{{1000 | currency:'R'}}</ion-label>
+              </ion-range>
+            </ion-item>
+            </ul>
+            
+           <!--  <ul  >
               <li>0 - R199</li>
               <li>R200 - R499</li>
               <li>R500 - R799</li>
               <li>R800 - R999</li>
 
-            </ul>
+            </ul> -->
           </li>
-          <li (click)="filtered()" class="type">Item Type
+         <!--  <li (click)="filtered()" class="type">Item Type
             <ul *ngIf="viewFilter">
               <li>Hoodies</li>
               <li>Crop-Tops</li>
@@ -142,14 +150,14 @@
               <li>Beanies</li>
               <li>Tracksuits</li>
             </ul>
-          </li>
-          <li (click)="filtered()" class="type">Gender
+          </li> -->
+          <!-- <li (click)="filtered()" class="type">Gender
             <ul *ngIf="viewFilter">
               <li>Male</li>
               <li>Female</li>
            
             </ul>
-          </li>
+          </li> -->
         </ul>
       </div>
 
