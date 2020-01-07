@@ -145,4 +145,6 @@ export class ListPage implements OnInit {
   filtered() {
     this.viewFilter = !this.viewFilter
   }
+
+
 }
