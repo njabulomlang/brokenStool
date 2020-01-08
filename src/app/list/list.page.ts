@@ -18,7 +18,7 @@ export class ListPage implements OnInit {
   collectionName: string = "";
   doc_data: string;
   col: string;
-  price:number=0;
+  price: number = 0;
   heartIndex = null;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -31,6 +31,8 @@ export class ListPage implements OnInit {
   viewReviews = false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
+    //  console.log(this.collectionName);
+
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
       this.col = params["col"];
@@ -88,6 +90,7 @@ export class ListPage implements OnInit {
       queryParams: {
         data: data,
         col: this.collectionName,
+        category: this.col
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }
@@ -151,8 +154,8 @@ export class ListPage implements OnInit {
   colorOpt(info) {
     //console.log(info.path[0].innerHTML);
     //this.myProduct.sort(info.path[0].innerHTML);
-   // this.myProduct = [];
-     this.dbProduct.doc(this.col).collection(this.collectionName).where('color','array-contains',info.path[0].innerHTML).onSnapshot((res) => {
+    // this.myProduct = [];
+    this.dbProduct.doc(this.col).collection(this.collectionName).where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
         this.myProduct.push({ info: doc.data(), id: doc.id });
@@ -163,16 +166,16 @@ export class ListPage implements OnInit {
   }
   setPriceRange(param) {
     this.price = param;
-     //console.log("Price range = "+ this.price);
+    //console.log("Price range = "+ this.price);
     if (this.price >= 0) {
       this.myProduct = [];
       this.dbProduct.doc(this.col).collection(this.collectionName).where('price', '>=', param)
         .onSnapshot((res) => {
-           //console.log(res.docs);
+          //console.log(res.docs);
           res.forEach((doc) => {
             // this.db.collection('builderProfile').get().then(snapshot => {
             //   snapshot.forEach(doc => {
-              this.myProduct.push({ info: doc.data(), id: doc.id });
+            this.myProduct.push({ info: doc.data(), id: doc.id });
             // this.bUID = doc.id;
             //   });
             //   console.log('Builders: ', this.builder);
