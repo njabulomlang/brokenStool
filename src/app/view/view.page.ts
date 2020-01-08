@@ -31,34 +31,36 @@ export class ViewPage implements OnInit {
   dbRate = firebase.firestore().collection('productRate');
   dbSales = firebase.firestore().collection('Specials');
   mySale = [];
+  category: string = '';
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
       this.col = params["col"];
+      this.category = params["category"];
     });
   }
 
   ngOnInit() {
-   // console.log(this.doc_data);
-    
+    // console.log(this.doc_data);
+
     // console.log('my collection ', this.col, 'my data', this.doc_data, 'my docid');
     this.dbRate.where('product', '==', this.doc_id).onSnapshot((res) => {
       // this.myRatings = [];
-      if (res.size===0) {
+      if (res.size === 0) {
         this.myRate = 0
       } else {
         res.forEach((doc) => {
-        this.myRate = doc.data().rating / res.size;
-      })
+          this.myRate = doc.data().rating / res.size;
+        })
       }
-      
-     // console.log('my rate ', this.myRate);
-      
+
+      // console.log('my rate ', this.myRate);
+
     })
     //console.log('doc id ', this.doc_id, 'Collection ref ', this.col);
-    console.log(this.col);
+    // console.log(this.col);
     if (this.col === 'sales') {
       this.getSpecial();
     } else {
@@ -87,17 +89,17 @@ export class ViewPage implements OnInit {
 
   }
   getProduct() {
-    this.dbProduct.doc("Dankie Jesu").collection(this.col).doc(this.doc_id).onSnapshot((doc) => {
+    this.dbProduct.doc(this.category).collection(this.col).doc(this.doc_id).onSnapshot((doc) => {
       //console.log('My product ', doc.data());
       this.unitProduct.push({ data: doc.data(), id: doc.id });
-      console.log('My product ', this.unitProduct);
+      // console.log('My product ', this.unitProduct);
 
     })
   }
   getSpecial() {
     this.dbSales.doc(this.doc_id).onSnapshot((res) => {
       this.mySale.push({ data: res.data(), id: res.id });
-      console.log('My product ', this.mySale);
+      // console.log('My product ', this.mySale);
     })
   }
   async presentPopover(ev: any) {
@@ -143,7 +145,7 @@ export class ViewPage implements OnInit {
     this.router.navigateByUrl('basket');
   }
   addToCart(id, details) {
-    if (this.my_size === "" || this.color==="") {
+    if (this.my_size === "" || this.color === "") {
       this.toastController('Please select your size');
     } else {
       this.dbCart.add({
@@ -162,7 +164,7 @@ export class ViewPage implements OnInit {
          // this.dbCart.add({ customerUID: this.customerUID, product: [{product_id: this.doc_id, quantity: this.quantity}]}) 
       }) */
     // console.log('Doc id ', id, 'Quantity ', quantity);
-    console.log('Product ', details, id);
+    // console.log('Product ', details, id);
   }
   addSaleToCart(id, details) {
     if (this.my_size === "") {

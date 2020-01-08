@@ -9,30 +9,30 @@ import * as firebase from 'firebase';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage implements OnInit {
-  category : string;
-  colDef : string;
+  category: string;
+  colDef: string;
   uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
-  myWish:number;
-  constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl : NavController) {
-
-   // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
+  myWish: number;
+  constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController) {
+    // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
     this.category = this.route.snapshot.paramMap.get('data').toUpperCase();
-   }
+  }
 
   ngOnInit() {
-    if(this.category==='SUMMER' || this.category==='WINTER') {
-     // console.log('This is dankie jesu brand');
-     this.colDef = 'Dankie Jesu';
-    } else if(this.category==='KWANGA'){
-     // console.log('It is kwanga you sh!t');
-     this.colDef = 'Kwanga';
+    if (this.category === 'SUMMER' || this.category === 'WINTER') {
+      // console.log('This is dankie jesu brand');
+      this.colDef = 'Dankie Jesu';
+    } else if (this.category === 'KWANGA') {
+      // console.log('It is kwanga you sh!t');
+      this.colDef = 'Kwanga';
     } else {
       //console.log('Sales my man...');
       this.colDef = 'Sales';
     }
+    // console.log(this.colDef);
 
-    this.dbWish.where('customerUID', '==',this.uid).onSnapshot((res1)=>{
+    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
   }
@@ -40,12 +40,13 @@ export class CategoriesPage implements OnInit {
   list(data) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
-          data: data,
-          col: this.colDef,
-          //currency: JSON.stringify(currency),
-         // refresh: refresh
+        data: data,
+        col: this.colDef,
+        // category: this.category
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
       }
-  };
+    };
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
@@ -53,7 +54,7 @@ export class CategoriesPage implements OnInit {
     this.router.navigateByUrl('wishlist');
   }
 
-  goBack(){
+  goBack() {
     this.navCtrl.pop()
   }
 }
