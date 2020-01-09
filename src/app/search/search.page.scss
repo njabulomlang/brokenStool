@@ -1,3 +1,6 @@
+ion-content{
+  background: rgb(226, 225, 225);
+}
 .container {
   display: flex;
   flex-flow: column;
@@ -11,10 +14,9 @@
 .container2 {
   position: relative;
   top: 20px;
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
+  background: rgb(226, 225, 225);
 }
 
 .search {
@@ -80,7 +82,7 @@
   flex-flow: column;
   position: relative;
   top: 20px;
-  height: 85%;
+  height: 85vh;
   overflow-y: auto;
 }
 
@@ -90,7 +92,7 @@
   width: 95%;
   // display: grid;
   // align-items: center;
-  // height: 8vh;
+  min-height: 8.3vh;
   margin: 1px 10px;
 
   border-radius: 5px;
@@ -99,7 +101,8 @@
   //   box-shadow: 5px 5px 10px rgb(190, 190, 190);
   .image {
     width: 20vw;
-    height: 8vh;
+    min-height: 8vh;
+    max-height: 8vh;
     border-radius: 5px;
     img {
       width: 100%;

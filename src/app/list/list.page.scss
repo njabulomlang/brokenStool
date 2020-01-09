@@ -15,6 +15,27 @@ ion-toolbar {
   background: rgba(128, 0, 0, 0.712);
 }
 
+#msg{
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  align-items: center;
+  justify-content: space-evenly;
+  top: 25vh;
+  width: 95vw;
+  margin: 10px;
+  font-family: "Poppins";
+  box-shadow: none !important;
+  img {
+    width: 80vw;
+    height: 50vw;
+  }
+  p {
+    color: #b2b2b2;
+    font-size: 5vw;
+  }
+}
+
 .container {
   display: flex;
   flex-flow: column;
