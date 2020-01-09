@@ -55,14 +55,14 @@
           <p (click)="reviewed()" style="opacity: 0.5;">Filter</p>
         </div>
 
-        <div class="filter" *ngIf="collectionName==='sales'">
+        <!-- <div class="filter" *ngIf="collectionName==='sales'">
 
           <ion-select placeholder="Filter ASC" [(ngModel)]="sortSale" (ionChange)="sortSales()">
             <ion-select-option value="name">Name</ion-select-option>
             <ion-select-option value="discount">Discount</ion-select-option>
             <ion-select-option value="saleprice">Price</ion-select-option>
           </ion-select>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="cards" *ngIf="collectionName!=='sales'">
@@ -97,10 +97,7 @@
 
         </div>
       </div>
-
     </div>
-
-
 
     <div [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
 
@@ -113,27 +110,31 @@
       <div class="line"></div>
 
       <div class="filtering">
-        <ul>
-          <li (click)="filtered()" class="type">Colour
 
-            <ul *ngIf="viewFilter" (click)="colorOpt($event)">
-              <li>Red</li>
-              <li>Blue</li>
-              <li>Orange</li>
-              <li>Green</li>
-              <li>Purple</li>
-            </ul>
-          </li>
-          <li (click)="filtered()" class="type">Price
-              <ion-item *ngIf="viewFilter">
-              <ion-range pin="true" min="0" max="1000" step="10" color="secondary" [(ngModel)]="price" (ionChange)="setPriceRange(price)">
-                <ion-label slot="start">{{price | currency:'R'}}</ion-label>
-                <ion-label slot="end">{{1000 | currency:'R'}}</ion-label>
-              </ion-range>
-            </ion-item>
-          </li>
- 
-        </ul>
+        <div class="color" (click)="filtered()">
+          <h4>Colour</h4>
+        </div>
+        <div class="colors" *ngIf="viewFilter" (click)="colorOpt($event)">
+          <p>Red</p>
+          <p>Blue</p>
+          <p>Orange</p>
+          <p>Green</p>
+          <p>Purple</p>
+        </div>
+
+        <div class="price" (click)="priced()">
+          <h4>Price</h4>
+        </div>
+        <div class="prices" >
+          <ion-item *ngIf="viewPrice">
+            <ion-range style="width: 50%" pin="true" min="0" max="1000" step="10" color="secondary" [(ngModel)]="price"
+              (ionChange)="setPriceRange(price)">
+              <ion-label slot="start">{{price | currency:'R'}}</ion-label>
+              <ion-label slot="end">{{1000 | currency:'R'}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </div>
+
       </div>
 
 

@@ -20,9 +20,8 @@ ion-toolbar {
   flex-flow: column;
   align-items: center;
   width: 100vw;
- height: 100%;
- bottom: 0;
-
+  height: 100%;
+  bottom: 0;
 
   .top {
     width: 100%;
@@ -69,7 +68,6 @@ ion-toolbar {
     justify-items: center;
     position: relative;
 
-
     .card {
       width: 47%;
       height: fit-content;
@@ -111,8 +109,6 @@ ion-toolbar {
       }
     }
   }
-
-
 }
 .loader {
   position: absolute;
@@ -335,39 +331,36 @@ ion-toolbar {
   }
 
   .filtering {
-    margin: 0;
+    display: flex;
+    flex-flow: column;
+    text-align: left;
     padding: 10px;
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    width: 100%;
+    .color {
+      h4 {
+        font-size: 4.5vw;
+        color: grey;
+      }
     }
 
-    ul li {
-      float: left;
-      width: 50vw;
-      height: 5vh;
-      font-size: 3.5vw;
+    .colors {
+      p {
+        font-size: 3.5vw;
+      }
     }
 
-    ul li ul li {
-      display: none;
-   
+    .price {
+      h4 {
+        font-size: 4.5vw;
+        color: grey;
+      }
     }
 
-    ul li ul li:hover {
-      display: none;
+    .prices {
+      ion-item {
+        font-size: 3.5vw;
+      }
     }
-
-    ul li:hover ul li {
-      display: block;
-      opacity: 0.5;
-      background: white;
-    }
-
-
-
-
   }
 
   .crds {

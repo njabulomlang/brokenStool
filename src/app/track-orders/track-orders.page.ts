@@ -312,7 +312,7 @@ export class TrackOrdersPage implements OnInit {
     var circleOne = document.getElementById("three").style.color = "whitesmoke";
     var lineThree = document.getElementById("line3").style.border = "0.5px solid maroon";
     var circleFour = document.getElementById("four").style.background = " maroon";
-    var circleOne = document.getElementById("one").style.color = "whitesmoke";
+    var circleOne = document.getElementById("four").style.color = "whitesmoke";
   }
 
   goBack() {
