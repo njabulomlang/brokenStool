@@ -27,7 +27,7 @@ export class ListPage implements OnInit {
   uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
-  viewFilter = false;
+  viewFilter = "all";
   viewReviews = false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
@@ -147,9 +147,9 @@ export class ListPage implements OnInit {
   rev() {
     this.viewReviews = !this.viewReviews
   }
-  filtered() {
+  filtered(c) {
     //console.log(val);
-    this.viewFilter = !this.viewFilter
+    this.viewFilter = c
   }
   colorOpt(info) {
     //console.log(info.path[0].innerHTML);
