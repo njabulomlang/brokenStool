@@ -16,7 +16,7 @@ ion-toolbar {
   .cards {
     display: flex;
     flex-flow: column;
-    height: 70vh;
+    height: 90vh;
     overflow-y: auto;
     .card {
       display: flex;
@@ -62,11 +62,11 @@ ion-toolbar {
 
           #item {
             letter-spacing: 1px;
-            font-size: 1em;
+            font-size: 4vw;
           }
 
           #price {
-            font-size: 4vw;
+            font-size: 3.5vw;
           }
         }
 

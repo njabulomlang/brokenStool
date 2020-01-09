@@ -27,27 +27,6 @@
   </div>
   <div class="container">
     <div class="cards" *ngFor="let o of orderHistory;">
-      <!-- <div class="card" *ngFor="let o of orderHistory;">
-        <div class="image" *ngFor="let b of o.orders">
-          <img src="{{b.picture}}" alt="">
-        </div>
-
-        <div class="right" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
-          <div class="itemname">
-            <p>{{b.product_name}}</p>
-          </div>
-          <div class="costs">
-            <p><i>{{b.quantity}}</i>  <br> {{b.cost | currency:'R'}} <br> {{o.date | date:"mediumDate"}} <br> {{o.refNo}}</p>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="card" id="msg" *ngIf="orderHistory.length==0">
-          <p> No History Yet</p>
-          <img src="../../assets/sad_smile.svg">
-      </div> -->
 
       <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
         <!-- <p style=" text-align: right;">{{o.refNo[0]}}</p> -->
@@ -61,40 +40,18 @@
           </div>
 
           <div class="costs">
-            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br>  </p>
+            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> </p>
           </div>
         </div>
       </div>
 
-      
-      
-                <!-- <div class="costs">
-                  <p><i>QTY. 1</i>  <br> R500 <br> 11 November 2019 <br> HGD6776767</p>
-                </div> -->
-                <p style="font-style: italic;">{{o.timestamp | date:"medium"}}</p>
-              </div>
-              <div class="card" id="msg" *ngIf="orderHistory.length==0">
-                <p> No History Yet</p>
-                <img src="../../assets/sad_smile.svg">
-              </div>
-            </div>
-            <!-- <div class="card">
-                <div class="image">
-                  <img src="https://i.pinimg.com/564x/e2/cd/76/e2cd765cf79938a57bc47e989797d3c3.jpg" alt="">
-                </div>
-        
-                <div class="right">
-                  <div class="itemname">
-                    <p>Kwanga Apparel Track Suit</p>
-                  </div>
-        
-                  <div class="costs">
-                    <p><i>QTY. 1</i>  <br> R800 <br> 11 November 2019 <br> HGD6776767</p>
-                  </div>
-                </div>
-              </div> -->
-              
-    <!-- </div>
-  </div> -->
+      <p style="font-style: italic;">{{o.timestamp | date:"medium"}}</p>
+    </div>
+    <div class="card" id="msg" *ngIf="orderHistory.length==0">
+      <p> No History Yet</p>
+      <img src="../../assets/sad_smile.svg">
+    </div>
+  </div>
+
 
 </ion-content>
