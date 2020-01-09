@@ -45,7 +45,7 @@ export class ListPage implements OnInit {
       this.loaderAnimate = false;
     }, 2000);
     //  console.log(); 
-    this.getAllProduct("name");
+    this.getAllProduct();
     this.getSales("name");
 
     this.dbWishlist.where('customerUID', '==', this.uid).onSnapshot((res1) => {
@@ -69,8 +69,8 @@ export class ListPage implements OnInit {
 
     })
   }
-  getAllProduct(order) {
-    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order, 'asc').onSnapshot((res) => {
+  getAllProduct() {
+    this.dbProduct.doc(this.col).collection(this.collectionName).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
         this.myProduct.push({ info: doc.data(), id: doc.id });
@@ -78,10 +78,10 @@ export class ListPage implements OnInit {
       })
     })
   }
-  orderBy() {
+  /* orderBy() {
     this.getAllProduct(this.sortVal);
     // this.getSales(this.sortVal);
-  }
+  } */
   sortSales() {
     this.getSales(this.sortSale);
   }
@@ -106,7 +106,9 @@ export class ListPage implements OnInit {
       if (res.exists == true) {
         this.toastController('Product already in wishlist..');
       } else {
-        this.dbWishlist.doc(res.id).set({ customerUID: firebase.auth().currentUser.uid, price: data.price, image: data.pictureLink, name: data.name, id: id, category: this.collectionName }).then(() => {
+        this.dbWishlist.doc(res.id).set({ 
+          customerUID: firebase.auth().currentUser.uid, price: data.price,
+           image: data.pictureLink, name: data.name, id: id, category: this.collectionName }).then(() => {
           this.toastController('Added to wishlist..');
         })
       }
@@ -141,7 +143,7 @@ export class ListPage implements OnInit {
     this.navCtrl.pop();
   }
   reviewed() {
-    this.getAllProduct('name')
+   // this.getAllProduct()
     this.viewReviews = !this.viewReviews
   }
   rev() {

@@ -75,8 +75,8 @@ export class HomePage implements OnInit {
       })
     })
   }
-  search() {
-    this.navCtrl.navigateForward('search');
+  search(id) {
+    this.navCtrl.navigateForward(['search']);
     //this.router.navigateByUrl('search');
   }
   logout() {

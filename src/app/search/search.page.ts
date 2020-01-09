@@ -66,6 +66,7 @@ export class SearchPage implements OnInit {
       queryParams: {
         data: data,
         col: this.txtSearch,
+        category:'Dankie Jesu'
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }
