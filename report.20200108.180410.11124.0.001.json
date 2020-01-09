@@ -1,0 +1,312 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200108.180410.11124.0.001.json",
+    "dumpEventTime": "2020-01-08T18:04:10Z",
+    "dumpEventTimeStamp": "1578499450654",
+    "processId": 11124,
+    "cwd": "C:\\Users\\NMlangeni\\brokenStool",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\NMlangeni\\brokenStool\\node_modules\\jest-worker\\build\\workers\\processChild.js"
+    ],
+    "nodejsVersion": "v12.2.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.2.0",
+      "v8": "7.4.288.21-node.17",
+      "uv": "1.28.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.38.0",
+      "napi": "4",
+      "llhttp": "1.1.3",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.2.0/node-v12.2.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.2.0/node-v12.2.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.2.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18362",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "host": "DESKTOP-QBT5ONE"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff7b57c4e09",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+9161"
+    },
+    {
+      "pc": "0x00007ff7b57c8764",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+23844"
+    },
+    {
+      "pc": "0x00007ff7b57c7785",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+19781"
+    },
+    {
+      "pc": "0x00007ff7b58af9ab",
+      "symbol": "uv_loop_fork+47931"
+    },
+    {
+      "pc": "0x00007ff7b5be71fe",
+      "symbol": "v8::internal::Parser::ReportMessageAt+206"
+    },
+    {
+      "pc": "0x00007ff7b5bbb27a",
+      "symbol": "v8::internal::wasm::StreamingDecoder::NotifyCompilationEnded+666"
+    },
+    {
+      "pc": "0x00007ff7b5c516bc",
+      "symbol": "v8::internal::Heap::CreateFillerObjectAt+2972"
+    },
+    {
+      "pc": "0x00007ff7b5c5942f",
+      "symbol": "v8::internal::LocalEmbedderHeapTracer::NotifyV8MarkingWorklistWasEmpty+5375"
+    },
+    {
+      "pc": "0x00007ff7b5c4faa3",
+      "symbol": "v8::internal::Heap::CollectGarbage+1235"
+    },
+    {
+      "pc": "0x00007ff7b5c4e1a4",
+      "symbol": "v8::internal::GCTracer::AddScopeSample+1316"
+    },
+    {
+      "pc": "0x00007ff7b5c8edd3",
+      "symbol": "v8::internal::Factory::NewFillerObject+67"
+    },
+    {
+      "pc": "0x00007ff7b5fb57d6",
+      "symbol": "v8::internal::OptimizingCompileDispatcher::Unblock+116966"
+    },
+    {
+      "pc": "0x00007ff7b6450366",
+      "symbol": "v8::internal::NativesCollection<0>::GetScriptsSource+660214"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2148376576,
+    "totalCommittedMemory": 2148376576,
+    "usedMemory": 2111500432,
+    "availableMemory": 54661592,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 524288,
+        "capacity": 523976,
+        "used": 31712,
+        "available": 492264
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 4194304,
+        "capacity": 2095904,
+        "used": 189272,
+        "available": 1906632
+      },
+      "old_space": {
+        "memorySize": 2009194496,
+        "committedMemory": 2009194496,
+        "capacity": 1978544840,
+        "used": 1977816768,
+        "available": 728072
+      },
+      "code_space": {
+        "memorySize": 1736704,
+        "committedMemory": 1736704,
+        "capacity": 1452768,
+        "used": 1452768,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 1576960,
+        "committedMemory": 1576960,
+        "capacity": 1008080,
+        "used": 1008080,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 131100672,
+        "committedMemory": 131100672,
+        "capacity": 130998376,
+        "used": 130998376,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3456,
+        "used": 3456,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 2095904,
+        "used": 0,
+        "available": 2095904
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 126.328,
+    "kernelCpuSeconds": 2.578,
+    "cpuConsumptionPercent": 222.252,
+    "maxRss": 2261106688,
+    "pageFaults": {
+      "IORequired": 1172729,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 893,
+      "writes": 110
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "aclocal_path": "C:\\Program Files\\Git\\mingw64\\share\\aclocal;C:\\Program Files\\Git\\usr\\share\\aclocal",
+    "allusersprofile": "C:\\ProgramData",
+    "appdata": "C:\\Users\\NMlangeni\\AppData\\Roaming",
+    "chocolateyinstall": "C:\\ProgramData\\chocolatey",
+    "commonprogramfiles": "C:\\Program Files\\Common Files",
+    "commonprogramfiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "commonprogramw6432": "C:\\Program Files\\Common Files",
+    "computername": "DESKTOP-QBT5ONE",
+    "comspec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "config_site": "C:/Program Files/Git/mingw64/etc/config.site",
+    "display": "needs-to-be-defined",
+    "driverdata": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "exepath": "C:\\Program Files\\Git",
+    "force_color": "0",
+    "fps_browser_app_profile_string": "Internet Explorer",
+    "fps_browser_user_profile_string": "Default",
+    "home": "C:\\Users\\NMlangeni",
+    "homedrive": "C:",
+    "homepath": "\\Users\\NMlangeni",
+    "hostname": "DESKTOP-QBT5ONE",
+    "infopath": "C:\\Program Files\\Git\\usr\\local\\info;C:\\Program Files\\Git\\usr\\share\\info;C:\\Program Files\\Git\\usr\\info;C:\\Program Files\\Git\\share\\info",
+    "ionic_cli_bin": "C:\\Users\\NMlangeni\\AppData\\nvm\\v12.2.0\\node_modules\\ionic\\bin\\ionic",
+    "ionic_cli_lib": "C:\\Users\\NMlangeni\\AppData\\nvm\\v12.2.0\\node_modules\\ionic",
+    "ionic_cli_local_error": "LOCAL_CLI_NOT_FOUND",
+    "JEST_WORKER_ID": "1",
+    "lang": "en_US.UTF-8",
+    "localappdata": "C:\\Users\\NMlangeni\\AppData\\Local",
+    "logonserver": "\\\\DESKTOP-QBT5ONE",
+    "manpath": "C:\\Program Files\\Git\\mingw64\\local\\man;C:\\Program Files\\Git\\mingw64\\share\\man;C:\\Program Files\\Git\\usr\\local\\man;C:\\Program Files\\Git\\usr\\share\\man;C:\\Program Files\\Git\\usr\\man;C:\\Program Files\\Git\\share\\man",
+    "mingw_chost": "x86_64-w64-mingw32",
+    "mingw_package_prefix": "mingw-w64-x86_64",
+    "mingw_prefix": "C:/Program Files/Git/mingw64",
+    "msystem": "MINGW64",
+    "msystem_carch": "x86_64",
+    "msystem_chost": "x86_64-w64-mingw32",
+    "msystem_prefix": "C:/Program Files/Git/mingw64",
+    "number_of_processors": "8",
+    "nvm_home": "C:\\Users\\NMlangeni\\AppData\\nvm",
+    "nvm_symlink": "C:\\Program Files\\nodejs",
+    "onedrive": "C:\\Users\\NMlangeni\\OneDrive",
+    "original_path": "C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\NMlangeni\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Python27;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Users\\NMlangeni\\AppData\\nvm;C:\\Program Files\\nodejs;C:\\Program Files\\Git\\cmd;C:\\Users\\NMlangeni;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn;C:\\OpenSSL\\bin;C:\\Users\\NMlangeni\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\NMlangeni\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\NMlangeni\\AppData\\Roaming\\npm;C:\\Users\\NMlangeni\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\NMlangeni\\AppData\\Local\\Microsoft\\WindowsApps;C:\\flutter\\bin",
+    "original_temp": "C:/Users/NMLANG~1/AppData/Local/Temp",
+    "original_tmp": "C:/Users/NMLANG~1/AppData/Local/Temp",
+    "os": "Windows_NT",
+    "path": "C:\\Users\\NMlangeni\\brokenStool\\node_modules\\.bin;C:\\Users\\NMlangeni\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\local\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\NMlangeni\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Python27;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Users\\NMlangeni\\AppData\\nvm;C:\\Program Files\\nodejs;C:\\Program Files\\Git\\cmd;C:\\Users\\NMlangeni;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn;C:\\OpenSSL\\bin;C:\\Users\\NMlangeni\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\NMlangeni\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\NMlangeni\\AppData\\Roaming\\npm;C:\\Users\\NMlangeni\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\NMlangeni\\AppData\\Local\\Microsoft\\WindowsApps;C:\\flutter\\bin;C:\\Program Files\\Git\\usr\\bin\\vendor_perl;C:\\Program Files\\Git\\usr\\bin\\core_perl",
+    "pathext": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "pkg_config_path": "C:\\Program Files\\Git\\mingw64\\lib\\pkgconfig;C:\\Program Files\\Git\\mingw64\\share\\pkgconfig",
+    "plink_protocol": "ssh",
+    "processor_architecture": "AMD64",
+    "processor_identifier": "Intel64 Family 6 Model 60 Stepping 3, GenuineIntel",
+    "processor_level": "6",
+    "processor_revision": "3c03",
+    "programdata": "C:\\ProgramData",
+    "programfiles": "C:\\Program Files",
+    "programfiles(x86)": "C:\\Program Files (x86)",
+    "programw6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "psmodulepath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "public": "C:\\Users\\Public",
+    "pwd": "C:/Users/NMlangeni/brokenStool",
+    "sessionname": "Console",
+    "shell": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+    "shlvl": "2",
+    "ssh_askpass": "C:/Program Files/Git/mingw64/libexec/git-core/git-gui--askpass",
+    "systemdrive": "C:",
+    "systemroot": "C:\\WINDOWS",
+    "temp": "C:\\Users\\NMLANG~1\\AppData\\Local\\Temp",
+    "term": "xterm",
+    "tmp": "C:\\Users\\NMLANG~1\\AppData\\Local\\Temp",
+    "tmpdir": "C:\\Users\\NMLANG~1\\AppData\\Local\\Temp",
+    "userdomain": "DESKTOP-QBT5ONE",
+    "userdomain_roamingprofile": "DESKTOP-QBT5ONE",
+    "username": "NMlangeni",
+    "userprofile": "C:\\Users\\NMlangeni",
+    "WEBPACK_DEV_SERVER": "true",
+    "windir": "C:\\WINDOWS",
+    "_": "C:/Users/NMlangeni/AppData/nvm/v12.2.0/node"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll"
+  ]
+}
