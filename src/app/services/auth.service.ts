@@ -57,7 +57,7 @@ registerUser(email, password) {
   requestLogin(number, appVerifier) {
     // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       // .then(()=> {
-        return firebase.auth().signInWithPhoneNumber(number, appVerifier).then(confirmationResult => {
+        return firebase.auth().signInWithPhoneNumber('+27'+number, appVerifier).then(confirmationResult => {
           window.confirmationResult = confirmationResult;
           this.confirm = confirmationResult;
           let result = { success: true, result: confirmationResult }
