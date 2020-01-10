@@ -59,7 +59,7 @@ ion-toolbar {
       .image {
         margin: 8px;
         margin-bottom: 10px;
-        min-width: 52vw;
+        min-width: 50vw;
         height: 35vh;
         border-radius: 5px;
         position: relative;
@@ -379,11 +379,11 @@ ion-toolbar {
   }
 }
 
-@media only screen and (max-width: 2000px) {
+/* @media only screen and (max-width: 2000px) {
 
 .container{
   min-width: 1200px;
   margin: auto;
 }
 
-}
+} */

@@ -101,12 +101,12 @@ export class LoginPage implements OnInit {
   }
   googleSignin() {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then((result) => {
+    firebase.auth().signInWithRedirect(provider).then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result;
       // The signed-in user info.
       var user = result;
-      console.log(result);
+      console.log('My results ',result);
 
       // ...
     }).catch((error) => {
