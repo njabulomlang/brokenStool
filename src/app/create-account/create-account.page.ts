@@ -38,6 +38,14 @@ export class CreateAccountPage implements OnInit {
 
   }
 
+  check(val) {
+    if (val=='close') {
+      document.getElementById('image').style.display = 'none';
+    } else {
+      document.getElementById('image').style.display = 'flex';
+    }
+  }
+
 
   createAccount() {
     // let email = this.account.get('name')
