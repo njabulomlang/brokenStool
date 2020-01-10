@@ -14,8 +14,9 @@
 
   <div class="container">
     <div class="cards">
+      <!-- {{doc_id}} -->
       <div class="card" *ngFor="let order of productOrder">
-
+        
         <div class="image">
           <img src="{{order.picture}}" alt="">
         </div>
@@ -27,13 +28,10 @@
 
           <div class="costs">
             <p><i>QTY. {{order.quantity}}</i> <br> {{order.cost | currency:'R'}} <br> Size: {{order.size}} <br><br>
-              {{doc_id}}</p>
+              </p>
           </div>
 
-          <div class="status">
-            <p>DELIVERY STATUS <br> <span><i>Order {{status}}</i></span></p>
-
-          </div>
+         
         </div>
       </div>
 
@@ -61,6 +59,11 @@
     </div>
 
     <div class="tracking">
+
+       <!-- <div class="status">
+            <p>DELIVERY STATUS <br> <span><i>Order {{status}}</i></span></p>
+
+          </div> -->
 
       <div class="total">
         <p id="tot">TOTAL</p>
