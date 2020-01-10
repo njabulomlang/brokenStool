@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './guards/auth.guard'
-import { Facebook } from '@ionic-native/facebook/ngx';
+///import { Facebook } from '@ionic-native/facebook/ngx';
 import { CartModalPageModule } from './cart-modal/cart-modal.module';
 import { Camera } from '@ionic-native/camera/ngx';
 
@@ -33,7 +33,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     ScreenOrientation,
     SplashScreen,
     AuthGuard,
-    Facebook,
+   // Facebook,
     Camera, 
     File,
     FileOpener,

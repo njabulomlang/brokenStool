@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
 import { IonSlides, AlertController } from '@ionic/angular';
-import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
+//import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
 
 declare var window;
 @Component({
@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
   loaderMessages = 'Loading...';
   loaderAnimate:boolean;
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
-    public fb: Facebook) {
+    // public fb: Facebook
+    ) {
 
   }
 
@@ -108,79 +109,79 @@ export class LoginPage implements OnInit {
       // ...
     });
   }
-  Facebook() {
-    //  if (this.platform.is('cordova')) {
-    return this.fb.login(['email', 'public_profile']).then(async res => {
-      const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-      await firebase.auth().signInWithCredential(facebookCredential).then(async (authdata) => {
-        var user = authdata.user;
-        var res = authdata.user.displayName
-        console.log(user.displayName);
-        console.log(user.email);
-        console.log(user);
+  // Facebook() {
+  //   //  if (this.platform.is('cordova')) {
+  //   return this.fb.login(['email', 'public_profile']).then(async res => {
+  //     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+  //     await firebase.auth().signInWithCredential(facebookCredential).then(async (authdata) => {
+  //       var user = authdata.user;
+  //       var res = authdata.user.displayName
+  //       console.log(user.displayName);
+  //       console.log(user.email);
+  //       console.log(user);
 
-        // this.uid =  firebase.auth().currentUser.uid;
-        // firebase.database().ref("user/" + this.uid).set({
-        //   username: user.displayName,
-        //   email: user.email,
-        //   number: user.phoneNumber,
-        //   profilepicture:user.photoURL
-        // });
-        /*   let loader = this.loadingCtrl.create({
-            spinner: 'bubbles',
-            content: 'Logging Please wait...',
-          });
-          loader.present(); */
-        // this.navCtrl.setRoot(HomePage);
-        // const alert = this.alertCtrl.create({
-        //   title: 'Welcome',
-        //   subTitle: `Hi ${user.displayName}`,
-        //   buttons: ['OK']
-        // });
-        // alert.present();
-        // loader.dismiss()
-      })
-    }).catch((err) => {
-      console.log("Error logging into facebook ", err.message);
-    })
-    //
-    // this.fb.login(['public_profile', 'email'])
-    //   .then((response: FacebookLoginResponse) => {
-    //     //this.onLoginSuccess(response);
-    //     console.log('Logged into Facebook!', response)
-    //     /*    let credential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-    //        firebase.auth().signInWithCredential(credential).then((info)=>{
-    //          console.log("User details", info);
-    //        })
-    //        console.log('Logged into Facebook!', res.authResponse.accessToken) */
-    //   })
-    //   .catch(e => console.log('Error logging into Facebook', e));
+  //       // this.uid =  firebase.auth().currentUser.uid;
+  //       // firebase.database().ref("user/" + this.uid).set({
+  //       //   username: user.displayName,
+  //       //   email: user.email,
+  //       //   number: user.phoneNumber,
+  //       //   profilepicture:user.photoURL
+  //       // });
+  //       /*   let loader = this.loadingCtrl.create({
+  //           spinner: 'bubbles',
+  //           content: 'Logging Please wait...',
+  //         });
+  //         loader.present(); */
+  //       // this.navCtrl.setRoot(HomePage);
+  //       // const alert = this.alertCtrl.create({
+  //       //   title: 'Welcome',
+  //       //   subTitle: `Hi ${user.displayName}`,
+  //       //   buttons: ['OK']
+  //       // });
+  //       // alert.present();
+  //       // loader.dismiss()
+  //     })
+  //   }).catch((err) => {
+  //     console.log("Error logging into facebook ", err.message);
+  //   })
+  //   //
+  //   // this.fb.login(['public_profile', 'email'])
+  //   //   .then((response: FacebookLoginResponse) => {
+  //   //     //this.onLoginSuccess(response);
+  //   //     console.log('Logged into Facebook!', response)
+  //   //     /*    let credential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+  //   //        firebase.auth().signInWithCredential(credential).then((info)=>{
+  //   //          console.log("User details", info);
+  //   //        })
+  //   //        console.log('Logged into Facebook!', res.authResponse.accessToken) */
+  //   //   })
+  //   //   .catch(e => console.log('Error logging into Facebook', e));
 
 
-    // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
-    // var provider = new firebase.auth.FacebookAuthProvider();
-    // firebase.auth().signInWithRedirect(provider).then((result)=> {
-    //  /*  firebase.auth().getRedirectResult().then((res)=>{
-    //     window.alert(JSON.stringify(res))
-    //   }) */
-    //   // This gives you a Google Access Token. You can use it to access the Google API.
-    //   var token = result;
-    //   // The signed-in user info.
-    //   var user = result;
-    //   console.log(result);
+  //   // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+  //   // var provider = new firebase.auth.FacebookAuthProvider();
+  //   // firebase.auth().signInWithRedirect(provider).then((result)=> {
+  //   //  /*  firebase.auth().getRedirectResult().then((res)=>{
+  //   //     window.alert(JSON.stringify(res))
+  //   //   }) */
+  //   //   // This gives you a Google Access Token. You can use it to access the Google API.
+  //   //   var token = result;
+  //   //   // The signed-in user info.
+  //   //   var user = result;
+  //   //   console.log(result);
 
-    //   // ...
-    // }).catch((error)=> {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // The email of the user's account used.
-    //   var email = error.email;
-    //   // The firebase.auth.AuthCredential type that was used.
-    //   var credential = error.credential;
-    //   // ...
-    // });
-  }
+  //   //   // ...
+  //   // }).catch((error)=> {
+  //   //   // Handle Errors here.
+  //   //   var errorCode = error.code;
+  //   //   var errorMessage = error.message;
+  //   //   // The email of the user's account used.
+  //   //   var email = error.email;
+  //   //   // The firebase.auth.AuthCredential type that was used.
+  //   //   var credential = error.credential;
+  //   //   // ...
+  //   // });
+  // }
 
   async loginAnon(): Promise<firebase.auth.UserCredential> {
     try {
