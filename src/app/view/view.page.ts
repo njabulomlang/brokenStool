@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController, PopoverController, NavController } from '@ionic/angular';
@@ -32,8 +32,11 @@ export class ViewPage implements OnInit {
   dbSales = firebase.firestore().collection('Specials');
   mySale = [];
   category: string = '';
+  starRating = document.getElementsByClassName('ionic4-star-rating')
+  
   // colorIndex = null;
-  constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController) {
+  constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
+    public render: Renderer2) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -44,7 +47,16 @@ export class ViewPage implements OnInit {
 
   ngOnInit() {
     // console.log(this.doc_data);
-
+    setTimeout(()=>{
+      //console.log(this.starRating);
+      
+      let starButtons =  this.starRating[0].children
+      for (let i = 0; i < starButtons.length; i++) {
+        //console.log(this.starRating[0].children[i]);
+        this.render.setStyle(this.starRating[0].children[i], 'outline', 'none');
+      }
+      
+    }, 500)
     // console.log('my collection ', this.col, 'my data', this.doc_data, 'my docid');
     this.dbRate.where('product', '==', this.doc_id).onSnapshot((res) => {
       // this.myRatings = [];
@@ -114,6 +126,7 @@ export class ViewPage implements OnInit {
     });
     return await popover.present();
   }
+
   sizeChosen(data, index) {
     // console.log(index);
     this.sizeIndex = index
@@ -174,7 +187,7 @@ export class ViewPage implements OnInit {
       descr = "color"
     }
     if (this.my_size === "" || this.color === "") {
-      this.toastController('Missing selection of '+descr);
+      this.toastController('Missing selection of ' + descr);
     } else {
       this.dbCart.add({
         customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{

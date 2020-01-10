@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { IonSlides, AlertController } from '@ionic/angular';
+import { IonSlides, AlertController, ToastController } from '@ionic/angular';
 //import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
 
 declare var window;
@@ -20,10 +20,11 @@ export class LoginPage implements OnInit {
   verification = "";
   confirmationResult = '';
   loaderMessages = 'Loading...';
-  loaderAnimate:boolean;
+  loaderAnimate: boolean;
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
+    public toastCtrl: ToastController
     // public fb: Facebook
-    ) {
+  ) {
 
   }
 
@@ -31,6 +32,7 @@ export class LoginPage implements OnInit {
     /*     setTimeout(() => {
           this.slides.lockSwipes(true);  
         }, 1000); */
+
   }
   goSignUp() {
     this.router.navigateByUrl("/signup")
@@ -65,31 +67,40 @@ export class LoginPage implements OnInit {
   }
 
   addUser() {
-    this.loaderAnimate = true;
-    setTimeout(() => {
-      this.loaderAnimate = false;
-    }, 2000);
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-      size: 'invisible',
-      callback: (response) => {
-        console.log('yeah yeah yeah');
-      },
-      'expired-callback': function () {
+    if (this.number.length !== 9) {
+      this.toast();
+    } else {
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        size: 'invisible',
+        callback: (response) => {
+          this.loaderAnimate = true;
+          // console.log('yeah yeah yeah');
+        },
+        'expired-callback': function () {
+        }
+      });
+      // console.log(window.recaptchaVerifier);
+      setTimeout(() => {
+        this.loaderAnimate = false;
+      }, 2000);
+      let appVerifier = window.recaptchaVerifier
+      return this.authService.requestLogin(this.number, appVerifier)
+    }
 
-      }
-    });
-    console.log(window.recaptchaVerifier);
-    let appVerifier = window.recaptchaVerifier
-    return this.authService.requestLogin(this.number, appVerifier)
     // window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaParameters, result => {
     //   console.log(result);
 
     // })
   }
+
+  async toast() {
+    (await this.toastCtrl.create({
+      message: 'Please confirm your cellphone digits..',
+      duration: 2000
+    })).present();
+  }
   googleSignin() {
     var provider = new firebase.auth.GoogleAuthProvider();
-
-
     firebase.auth().signInWithPopup(provider).then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result;
@@ -195,7 +206,7 @@ export class LoginPage implements OnInit {
   }
   async alert() {
     const alert = await this.alertController.create({
-      header: 'Verfification code',
+      header: 'Verification code',
       subHeader: 'Enter verification code',
       inputs: [
         {

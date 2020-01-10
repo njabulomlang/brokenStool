@@ -3,12 +3,6 @@
     <name>Broken</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <universal-links>
-        <host name="https://jesu.page.link" scheme="https" />
-        <host name="fir-crud-11c1f.firebaseapp.com" scheme="https">
-            <path url="/__/auth/callback" />
-        </host>
-    </universal-links>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NavParams, PopoverController } from '@ionic/angular';
 import * as firebase from 'firebase';
 
@@ -12,9 +12,16 @@ export class PopoverComponent implements OnInit {
   rateNow: boolean;
  // myRatings = [];
   myRate:number=0;
-  constructor(private navParams: NavParams, public popCtrl: PopoverController) { }
+  starRating = document.getElementsByClassName('ionic4-star-rating')
+  constructor(private navParams: NavParams, public popCtrl: PopoverController, public render: Renderer2) { }
 
   ngOnInit() {
+ setTimeout(()=>{
+      let starButtons =  this.starRating[1].children
+      for (let i = 0; i < starButtons.length; i++) {
+        this.render.setStyle(this.starRating[1].children[i], 'outline', 'none');
+      }
+    }, 500)
      this.dbRate.where('product', '==', this.navParams.get('doc')).onSnapshot((res) => {
      // this.myRatings = [];
       res.forEach((doc)=>{
@@ -38,6 +45,16 @@ export class PopoverComponent implements OnInit {
     let arr = [5, 3, 5, 1, 4];
     let avg = 0;
     //let total = 0;
+    //console.log(rating);
+    
+    /* setTimeout(()=>{
+      //console.log(this.starRating);
+      let starButtons =  this.starRating[0].children
+      for (let i = 0; i < starButtons.length; i++) {
+        console.log(this.starRating[0].children[i]);
+        this.render.setStyle(this.starRating[0].children[i], 'outline', 'none');
+      }
+    }, 1500) */
     this.dbRate.add({ rating: rating, uid: firebase.auth().currentUser.uid, product: this.navParams.get('doc'), category: this.navParams.get('col') }).then((res) => {
       // console.log("my data");
     })
