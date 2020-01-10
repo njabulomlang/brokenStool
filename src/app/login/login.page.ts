@@ -101,24 +101,39 @@ export class LoginPage implements OnInit {
   }
   googleSignin() {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result;
-      // The signed-in user info.
-      var user = result;
-      console.log(result);
+    firebase.auth().getRedirectResult().then( (result) => {
+      if (!result.user) {
+        // User not logged in, start login.
+        firebase.auth().signInWithRedirect(provider);
+      } else {
+        this.router.navigateByUrl('home');
+        // user logged in, go to home page.
+       // $state.go('home');
+      }
+  }).catch(function (error) {
+    // Handle Errors here.
+    console.log(error)
+    // ...
+  });
+    // firebase.auth().signInWithPopup(provider).then((result) => {
 
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
+    //   // This gives you a Google Access Token. You can use it to access the Google API.
+    //   var token = result;
+    //   // The signed-in user info.
+    //   var user = result;
+    //   console.log(result);
+
+    //   // ...
+    // }).catch((error) => {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // The email of the user's account used.
+    //   var email = error.email;
+    //   // The firebase.auth.AuthCredential type that was used.
+    //   var credential = error.credential;
+    //   // ...
+    // });
   }
   // Facebook() {
   //   //  if (this.platform.is('cordova')) {
