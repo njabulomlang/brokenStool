@@ -99,6 +99,11 @@
       </div>
     </div>
 
+    <div class="cards" id="msg" *ngIf= "myProduct.length === 0 && collectionName!=='sales'">
+      <p>No Items</p>
+      <img src="../../assets/empty-cart.svg">
+    </div>
+
     <div [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
 
       <div class="heading">

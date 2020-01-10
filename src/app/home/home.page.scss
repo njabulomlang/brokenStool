@@ -100,6 +100,24 @@ ion-toolbar {
           }
         }
       }
+
+   
+    }
+
+    #defSale{
+      .itemname {
+        position: absolute;
+        bottom:40%;
+
+        right: 60px;
+        color: white;
+        p {
+          font-size: 5vw;
+          text-align: center;
+          text-shadow: 2px 2px 5px black;
+      
+        }
+      }
     }
   }
 
