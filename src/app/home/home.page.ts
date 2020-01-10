@@ -37,18 +37,8 @@ export class HomePage implements OnInit {
     // let num = 24.35435453243;
     // this.fcmService.getPermission();
     //console.log('Round off ', String(num).substr(0,5));
+    this.getProfile();
     this.getPromo();
-    this.dbProfile.doc(this.uid).get().then((doc) => {
-      if (doc.exists) {
-        this.name = doc.data().name;
-        this.surname = doc.data().surname;
-        // console.log("This is my profile", doc.data());
-      } else {
-        this.router.navigateByUrl('create-account');
-      }
-    }).catch((err) => {
-      console.log("Error ", err);
-    })
     /*     this.products = this.cartService.getProducts();
         this.cart = this.cartService.getCart();
         this.cartItemCount = this.cartService.getCartItemCount(); */
@@ -60,7 +50,17 @@ export class HomePage implements OnInit {
       this.splashScreen.hide();
     }, 3000);
   }
-
+  getProfile() {
+    this.dbProfile.doc(this.uid).onSnapshot((doc) => {
+      if (doc.exists) {
+        this.name = doc.data().name;
+        this.surname = doc.data().surname;
+        // console.log("This is my profile", doc.data());
+      } else {
+        this.router.navigateByUrl('create-account');
+      }
+    })
+  }
   profile() {
     this.navCtrl.navigateForward('profile');
   }

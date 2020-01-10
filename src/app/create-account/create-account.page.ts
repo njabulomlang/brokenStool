@@ -15,7 +15,7 @@ export class CreateAccountPage implements OnInit {
   dbProfile = firebase.firestore().collection("userProfile");
   storage = firebase.storage().ref();
   uid = firebase.auth().currentUser.uid;
-  emailPattern: string = "[a-zA-Z0-9-_.+#$!=%^&*/?]+[@][a-zA-Z0-9-]+[.][a-zA-Z0-9]+[.][a-zA-Z0-9]"
+  emailPattern: string = "[a-zA-Z0-9-_.+#$!=%^&*/?]+[@][a-zA-Z0-9-]+[.][a-zA-Z0-9]"
   name: string;
   surname: string;
   email: string;
