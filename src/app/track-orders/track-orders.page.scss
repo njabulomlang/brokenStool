@@ -121,17 +121,7 @@ ion-toolbar {
         }
       }
 
-      .status {
-        p {
-          font-family: "Poppins";
-          font-size: 4vw;
-          font-weight: bold;
-          span {
-            font-size: 3vw;
-            font-weight: normal;
-          }
-        }
-      }
+ 
     }
   }
 }
@@ -200,6 +190,18 @@ ion-toolbar {
       line-height: 20px;
       font-size: 3vw;
     }
+
+    // .status {
+    //   p {
+    //     font-family: "Poppins";
+    //     font-size: 4vw;
+    //     font-weight: bold;
+    //     span {
+    //       font-size: 3vw;
+    //       font-weight: normal;
+    //     }
+    //   }
+    // }
 }
 
 .buttz{
