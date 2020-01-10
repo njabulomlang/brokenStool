@@ -167,8 +167,14 @@ export class ViewPage implements OnInit {
     // console.log('Product ', details, id);
   }
   addSaleToCart(id, details) {
+    let descr = "";
     if (this.my_size === "") {
-      this.toastController('Please select your size');
+      descr = "size"
+    } else if (this.color === "") {
+      descr = "color"
+    }
+    if (this.my_size === "" || this.color === "") {
+      this.toastController('Missing selection of '+descr);
     } else {
       this.dbCart.add({
         customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{
