@@ -61,7 +61,7 @@ export class PaymentPage implements OnInit {
         //this.navCtrl.navigateForward('')
         this.presentAlertConfirm();
       } else {
-        this.dbOrder.doc(this.doc_id).update({ deliveryType: "Collection", deliveryCost: this.delCost })
+        this.dbOrder.doc(this.doc_id).update({ deliveryType: "Delivery", deliveryCost: this.delCost })
       }
     })
   }

@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:704929489176:android:af688b90e9eb2ce18a3e6d",
+        "mobilesdk_app_id": "1:704929489176:android:443bca2bb3a2463d8a3e6d",
         "android_client_info": {
           "package_name": "com.dankie.jesu"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "704929489176-1hqf89fidijt4m9vrnlurunsi3ftt2gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dankie.jesu",
+            "certificate_hash": "6e01b98ce8a95af360ae4e2cee124682f1cb2bfa"
+          }
+        },
         {
           "client_id": "704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com",
           "client_type": 3
