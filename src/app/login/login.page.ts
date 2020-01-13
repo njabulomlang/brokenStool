@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
   }
 
   addUser() {
-    if (this.number.length !== 9) {
+    if (this.number.length < 9) {
       this.toast();
     } else {
       window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {

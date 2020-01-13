@@ -23,7 +23,7 @@
       </p>
     </div>
     <div class="login">
-      <ion-input placeholder="Enter Your Phone Number" [(ngModel)]="number" type="number" maxLength="9" style="text-align: center; border: 2px solid green; width: 50vw"><ion-label>+27</ion-label></ion-input>
+      <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" maxLength="9">+27</ion-input>
       <!-- <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input> -->
     
       <ion-button  id="sign-in-button" color="transparent" (click)="addUser()"> <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone</ion-button>

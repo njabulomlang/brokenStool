@@ -43,7 +43,7 @@
     "cordova-universal-links-plugin-fix": "1.2.1",
     "core-js": "^2.5.4",
     "es6-promise-plugin": "4.2.2",
-    "firebase": "^7.4.0",
+    "firebase": "^7.6.2",
     "integrator-cordova-plugin-downloader": "1.1.0",
     "ionic-selectable": "^4.5.0",
     "ionic4-star-rating": "^1.1.1",

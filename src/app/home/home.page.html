@@ -3,17 +3,17 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button id="icon" (click)="search('Dankie Jesu')">
-        <ion-icon slot="icon-only" name="search" ></ion-icon>
+        <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
-        <ion-icon slot="icon-only" name="heart" ></ion-icon>
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-button (click)="profile()" id="icon">
-        <ion-icon slot="icon-only" name="person" ></ion-icon>
-        
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+
       </ion-button>
     </ion-buttons>
     <ion-title>DankieJesu</ion-title>
@@ -28,21 +28,27 @@
 
 
 <ion-content fullscreen>
-    <p style="margin: 5px ; font-family: 'Raleway'">Welcome <i>{{name}} {{surname}}</i></p>
+  <p style="margin: 10px ; font-family: 'Raleway'">Welcome <i>{{name}} {{surname}}</i></p>
 
-    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-        <div class="maploader">
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-        </div>
-       <!--  <div class="loading-text">
+  <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+    <div class="maploader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+    </div>
+    <!--  <div class="loading-text">
           <p>Loading Map</p>
         </div> -->
-      </div>
-  
+  </div>
+
   <div class="container" no-padding>
-    <div class="sales" >
+    <div class="sales">
       <ion-item (click)="goList('sales')">
-        <label>Sales & Specials</label>
+        <label style="margin: 5px">Sales & Specials</label>
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
@@ -61,12 +67,12 @@
 
       </div>
 
-      <div class="saleitems" id="defSale" *ngIf= "sales.length === 0">
+      <div class="saleitems" id="defSale" *ngIf="sales.length === 0">
 
         <div class="image">
-          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg" >
+          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
 
-      
+
           <div class="itemname">
             <p>SALES AND PROMOTIONS</p>
           </div>
@@ -74,7 +80,7 @@
 
       </div>
 
-   
+
     </div>
 
     <div class="buttonz">
@@ -82,61 +88,63 @@
         <span>Summer Gear <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
       </ion-button>
       <ion-button expand="full" color="transparent" style="border-top: none !important;" (click)="categories('winter')">
-          <span>Winter Gear <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
-        </ion-button>
+        <span>Winter Gear <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+      </ion-button>
     </div>
 
     <div class="Kwanga">
-        <ion-item (click)="categories('kwanga')">
-          <label>kwanga Apparel</label>
-          <label slot="end">All <ion-icon slot="start" name="arrow-forward" ></ion-icon></label>
-        </ion-item>
-  
-        <div class="apparel">
-  
-          <div class="image" >
-            <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg" (click)="list('Casual')">
-  
-            <div class="itemname">
-              <p>Smart Casual</p>
-            </div>
-          </div>
-  
-          <div class="image" >
-            <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
-  
-          
-            <div class="itemname">
-              <p>Formal</p>
-            </div>
-          </div>
-  
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/81/a4/8d/81a48d6a1278797de519513e4c3f7fad.jpg" (click)="list('Traditional')">
-  
-        
-            <div class="itemname" >
-              <p>Traditional</p>
-            </div>
-          </div>
-  
-          <div class="image" >
-            <img src="https://i.pinimg.com/564x/db/ea/43/dbea433b162d79fe176700e61778fd4f.jpg" (click)="list('Sport')">
-  
-            <div class="itemname">
-              <p>Sport</p>
-            </div>
-          </div>
+      <ion-item (click)="categories('kwanga')">
+        <label style="margin: 5px">kwanga Apparel</label>
+        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+      </ion-item>
 
-          <div class="image" >
-              <img src="https://i.pinimg.com/564x/a6/6d/34/a66d341ea420cb87b030d4dff25993f7.jpg" (click)="list('Accessories')">
-    
-              <div class="itemname">
-                <p>Accessories</p>
-              </div>
-            </div>
-  
-          <!-- <div class="image">
+      <div class="apparel">
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg" (click)="list('Casual')">
+
+          <div class="itemname">
+            <p>Smart Casual</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
+
+
+          <div class="itemname">
+            <p>Formal</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/81/a4/8d/81a48d6a1278797de519513e4c3f7fad.jpg"
+            (click)="list('Traditional')">
+
+
+          <div class="itemname">
+            <p>Traditional</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/db/ea/43/dbea433b162d79fe176700e61778fd4f.jpg" (click)="list('Sport')">
+
+          <div class="itemname">
+            <p>Sport</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/a6/6d/34/a66d341ea420cb87b030d4dff25993f7.jpg"
+            (click)="list('Accessories')">
+
+          <div class="itemname">
+            <p>Accessories</p>
+          </div>
+        </div>
+
+        <!-- <div class="image">
             <img src="../../assets/back.jpg">
   
            
@@ -144,17 +152,250 @@
               <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
             </div>
           </div> -->
-        </div>
       </div>
-      
+    </div>
+
   </div>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" >
+  <div class="web_view">
+    <div class="sales">
+      <ion-item (click)="goList('sales')">
+        <label>Sales & Specials</label>
+        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+      </ion-item>
+
+      <div class="saleitems">
+
+        <div class="image" *ngFor="let s of sales">
+          <img src="{{s.data.pictureLink}}" (click)="viewitem(s.id,s.data)">
+
+          <div class="percentage">
+            <p>{{s.data.discount}}% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>{{s.data.name}}<br> <span>by {{s.data.brand}}</span></p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/originals/d9/90/b9/d990b9193c2dbb2b602d4a1b60d50e39.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>Clothes</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/b5/55/c6/b555c6917495f7e1d0a74b993bfdb77e.jpg">
+
+          <div class="percentage">
+            <p>30% OFF</p>
+          </div>
+          <div class="itemname">
+            <p>Clothes</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="saleitems" id="defSale" *ngIf="sales.length === 0">
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
+
+
+          <div class="itemname">
+            <p>SALES AND PROMOTIONS</p>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="buttonz">
+      <div class="summer_gear">
+        <ion-item (click)="categories('summer')">
+          <label>Summer Gear</label>
+          <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        </ion-item>
+
+        <div class="all_summer">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/46/71/e9/4671e912bfa5bea8fd52d872d0e03b3e.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Vests</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/d5/d1/0e/d5d10ee01446a128edb6c5e49d716997.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Buckets Hats</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/c6/9c/60/c69c6023851a3aa9560ac006d24b88ea.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>T-shirts</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/18/50/2d/18502da8476e0dc0253464a3f103dd55.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Crop Tops</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/15/55/83/155583188fcc9072c0f22b7478bd9453.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Shorts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="winter_gear">
+        <ion-item (click)="categories('winter')">
+          <label>Winter Gear</label>
+          <label slot="end" (click)="categories('summer')">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        </ion-item>
+
+        <div class="all_winter">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Hoodies</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Sweaters</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/7e/82/1a/7e821a6ab104dfc0d6cfe83104bbf51e.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Beanies</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/6f/85/3e/6f853e216ad9a18302338c5c2d596ff9.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Track suits</p>
+            </div>
+          </div>
+
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/9f/3d/79/9f3d79a894b214724748a155809adb5d.jpg" (click)="list('Casual')">
+
+            <div class="itemname">
+              <p>Accessories</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <ion-button expand="full" color="transparent" (click)="categories('summer')">
+        <span>Summer Gear <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+      </ion-button>
+      <ion-button expand="full" color="transparent" style="border-top: none !important;" (click)="categories('winter')">
+        <span>Winter Gear <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+      </ion-button> -->
+    </div>
+
+    <div class="Kwanga">
+      <ion-item (click)="categories('kwanga')">
+        <label>kwanga Apparel</label>
+        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+      </ion-item>
+
+      <div class="apparel">
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg" (click)="list('Casual')">
+
+          <div class="itemname">
+            <p>Smart Casual</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
+
+
+          <div class="itemname">
+            <p>Formal</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/81/a4/8d/81a48d6a1278797de519513e4c3f7fad.jpg"
+            (click)="list('Traditional')">
+
+
+          <div class="itemname">
+            <p>Traditional</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/db/ea/43/dbea433b162d79fe176700e61778fd4f.jpg" (click)="list('Sport')">
+
+          <div class="itemname">
+            <p>Sport</p>
+          </div>
+        </div>
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/a6/6d/34/a66d341ea420cb87b030d4dff25993f7.jpg"
+            (click)="list('Accessories')">
+
+          <div class="itemname">
+            <p>Accessories</p>
+          </div>
+        </div>
+
+        <!-- <div class="image">
+            <img src="../../assets/back.jpg">
+  
+           
+            <div class="itemname">
+              <p>New York SOHO Ts<br> <span>by Dankie Jesu</span></p>
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small">
     <ion-fab-button (click)="busket()" #cart color="transparent">
       <!-- <div class="cart-length">{{ cartItemCount | async }}</div> -->
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
+
 
 </ion-content>
 
@@ -226,7 +467,7 @@
             <ion-icon name="cart" class="cart-icon"></ion-icon>
           </ion-fab-button>
         </ion-fab> -->
-     <!--  <ion-list>
+<!--  <ion-list>
         <ion-card *ngFor="let p of products">
           <ion-card-header>
             <ion-card-title>{{ p.name }}</ion-card-title>

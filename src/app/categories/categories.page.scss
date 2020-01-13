@@ -121,3 +121,98 @@ ion-toolbar {
     }
   }
 }
+
+@media only screen and (min-width: 1330px) {
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+
+    .cards{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      overflow-y: auto;
+      border: 1px solid red;
+      position: relative;
+    }
+
+    .card:nth-child(1) {
+      width:23vw;
+      height: 40vh;
+    }
+    
+    .card:nth-child(2) {
+      width: 23vw;
+      height: 40vh;
+    }
+    
+    .card:nth-child(3) {
+      width: 23vw;
+      height: 40vh;
+   
+    }
+    
+    .card:nth-child(4) {
+      width: 26vw;
+      height: 42vh;
+    }
+    .card:nth-child(5) {
+      width: 43.5vw;
+      height: 42vh;
+    }
+    
+    .card:nth-child(6) {
+      width: 30vw;
+      height: 25vh;
+    }
+    
+    .card:nth-child(7) {
+      width: 57vw;
+      height: 25vh;
+    }
+    
+    .card:nth-child(8) {
+      width: 89vw;
+      height: 25vh;
+    }
+
+    .card {
+      margin: 5px;
+      border-radius: 5px;
+      position: relative;
+      // border: 1px solid green;
+      box-shadow: 5px 5px 10px lightslategrey;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .category {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color: rgb(255, 255, 255);
+        text-shadow: 5px 5px 5px black;
+        font-family: "Poppins";
+      }
+    }
+
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .web_view {
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+}

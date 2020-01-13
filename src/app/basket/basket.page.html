@@ -106,5 +106,65 @@
     </div>
   </div>
 
+  <div class="web_view">
+    <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
+      <h1>BASKET ({{cartCount}})</h1>
+    </div>
+
+    <p style="font-family: 'Raleway'; margin: 5px;">Please note that delivery to your door is R100</p>
+
+    <div class="cards">
+      <div class="card" *ngFor="let cp of prodCart; let i of index">
+        <div class="image" *ngFor="let prod of cp.data.product">
+          <img src="{{prod.picture}}">
+        </div>
+        <div class="details" *ngFor="let prod of cp.data.product">
+          <div class="left">
+            <p id="item">{{prod.product_name}}</p>
+            <p>Size: {{prod.size}} &nbsp; Color: {{prod.color}}</p>
+            <p>{{cp.data.timestamp | date: "mediumDate"}}</p>
+            <p style=" margin: 5px; display: flex; flex-flow: row; align-items: baseline;">
+              <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;
+              <ion-icon name="add-circle-outline" (click)="plus(prod, i)">
+              </ion-icon>
+            </p>
+          </div>
+
+          <div class="right">
+            <p>{{prod.cost*prod.quantity | currency:'R'}}</p>
+            <P (click)="removeProd(cp.id)">
+              <ion-icon name="trash"></ion-icon>
+            </P>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="card" id="msg" *ngIf="prodCart.length==0">
+        <p> Oh no! Your Basket is empty</p>
+        <img src="../../assets/empty-cart.svg">
+
+      </div>
+
+
+    </div>
+
+    <div class="total">
+      <div class="carttotal">
+        <p>TOTAL</p>
+        <p>{{getTotal() | currency:'R'}}</p>
+      </div>
+
+      <div class="btn">
+        <ion-button [disabled]="prodCart.length==0" (click)="placeOrder(prodCart)" color="transparent">
+          PLACE ORDER
+        </ion-button>
+      </div>
+    </div>
+  </div>
+    
+
+
 
 </ion-content>
