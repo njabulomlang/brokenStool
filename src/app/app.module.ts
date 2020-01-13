@@ -21,6 +21,7 @@ import { Downloader } from '@ionic-native/downloader/ngx';
 import { PopoverComponent } from './popover/popover.component';
 import { StarRatingModule } from 'ionic4-star-rating';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     ScreenOrientation,
     SplashScreen,
     AuthGuard,
+    GooglePlus,
    // Facebook,
     Camera, 
     File,

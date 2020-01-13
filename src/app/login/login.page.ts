@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { IonSlides, AlertController, ToastController } from '@ionic/angular';
+import { IonSlides, AlertController, ToastController, Platform } from '@ionic/angular';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { async } from '@angular/core/testing';
 //import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
 
 declare var window;
@@ -21,36 +23,72 @@ export class LoginPage implements OnInit {
   confirmationResult = '';
   loaderMessages = 'Loading...';
   loaderAnimate: boolean;
+  cred: any;
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus
     // public fb: Facebook
   ) {
 
   }
 
   ngOnInit() {
-    /*     setTimeout(() => {
-          this.slides.lockSwipes(true);  
-        }, 1000); */
-
+ 
   }
   goSignUp() {
     this.router.navigateByUrl("/signup")
   }
-  /* login() {
-    // this.number = this.registrationForm.get('number').value
-    //this.password = this.registrationForm.get('password').value
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-      'size': 'invisible',
-      'callback':  (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        this.onSignInSubmit();
-      }
 
-    });
-    console.log(window.recaptchaVerifier);
+  async nativeGoogleLogin() {
+    //let credential = '';
+    try {
+      const gplusUser = await this.gplus.login({
+         'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
+        'offline': true,
+        'scopes': 'profile email'
+      })
+      //console.log('my details ',gplusUser);
+      
+       await firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)).then((i)=>{
+         return i.user
+       })
+      // this.gplus.login({})
+      // .then(async (res)=> 
+      //  this.cred = await firebase.auth.GoogleAuthProvider.credential(res.userId))
+      // .catch(err => console.error(err))
+      // console.log('My cred ', this.cred);
+      
+      //  await firebase.auth().signInWithCredential(this.cred)
+    /*   const gplusUser = await this.gplus.login({
+        'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
+        'offline': true,
+        'scopes': 'profile email'
+      })
+      console.log('Google user details ', gplusUser);
+      
+      return await firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)).then((res)=>{
+        console.log('User ',res.user);   
+      }) */
+    } catch(err) {
+      console.log('Error ',err)
+    }
+  }
 
-  } */
+  async webGoogleLogin() : Promise<void>  {
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const credential = await firebase.auth().signInWithPopup(provider);
+    } catch(err) {
+      console.log(err)
+    }
+  
+  }
+  googleLogin() {
+    if (this.plt.is('cordova')) {
+      this.nativeGoogleLogin();
+    } else {
+      this.webGoogleLogin();
+    }
+  }
   requestCode() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     console.log(window.recaptchaVerifier);
@@ -99,115 +137,15 @@ export class LoginPage implements OnInit {
       duration: 2000
     })).present();
   }
-  googleSignin() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().getRedirectResult().then( (result) => {
-      if (!result.user) {
-        // User not logged in, start login.
-        firebase.auth().signInWithRedirect(provider);
-      } else {
-        this.router.navigateByUrl('home');
-        // user logged in, go to home page.
-       // $state.go('home');
-      }
-  }).catch(function (error) {
-    // Handle Errors here.
-    console.log(error)
-    // ...
-  });
-    // firebase.auth().signInWithPopup(provider).then((result) => {
-
-    //   // This gives you a Google Access Token. You can use it to access the Google API.
-    //   var token = result;
-    //   // The signed-in user info.
-    //   var user = result;
-    //   console.log(result);
-
-    //   // ...
-    // }).catch((error) => {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // The email of the user's account used.
-    //   var email = error.email;
-    //   // The firebase.auth.AuthCredential type that was used.
-    //   var credential = error.credential;
-    //   // ...
-    // });
+  async googleSignin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const credential = await firebase.auth().signInWithPopup(provider).then((user)=>{
+      console.log('User details ', user);
+    }).catch(err=> {
+      console.log(err);
+    })
+  
   }
-  // Facebook() {
-  //   //  if (this.platform.is('cordova')) {
-  //   return this.fb.login(['email', 'public_profile']).then(async res => {
-  //     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-  //     await firebase.auth().signInWithCredential(facebookCredential).then(async (authdata) => {
-  //       var user = authdata.user;
-  //       var res = authdata.user.displayName
-  //       console.log(user.displayName);
-  //       console.log(user.email);
-  //       console.log(user);
-
-  //       // this.uid =  firebase.auth().currentUser.uid;
-  //       // firebase.database().ref("user/" + this.uid).set({
-  //       //   username: user.displayName,
-  //       //   email: user.email,
-  //       //   number: user.phoneNumber,
-  //       //   profilepicture:user.photoURL
-  //       // });
-  //       /*   let loader = this.loadingCtrl.create({
-  //           spinner: 'bubbles',
-  //           content: 'Logging Please wait...',
-  //         });
-  //         loader.present(); */
-  //       // this.navCtrl.setRoot(HomePage);
-  //       // const alert = this.alertCtrl.create({
-  //       //   title: 'Welcome',
-  //       //   subTitle: `Hi ${user.displayName}`,
-  //       //   buttons: ['OK']
-  //       // });
-  //       // alert.present();
-  //       // loader.dismiss()
-  //     })
-  //   }).catch((err) => {
-  //     console.log("Error logging into facebook ", err.message);
-  //   })
-  //   //
-  //   // this.fb.login(['public_profile', 'email'])
-  //   //   .then((response: FacebookLoginResponse) => {
-  //   //     //this.onLoginSuccess(response);
-  //   //     console.log('Logged into Facebook!', response)
-  //   //     /*    let credential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-  //   //        firebase.auth().signInWithCredential(credential).then((info)=>{
-  //   //          console.log("User details", info);
-  //   //        })
-  //   //        console.log('Logged into Facebook!', res.authResponse.accessToken) */
-  //   //   })
-  //   //   .catch(e => console.log('Error logging into Facebook', e));
-
-
-  //   // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
-  //   // var provider = new firebase.auth.FacebookAuthProvider();
-  //   // firebase.auth().signInWithRedirect(provider).then((result)=> {
-  //   //  /*  firebase.auth().getRedirectResult().then((res)=>{
-  //   //     window.alert(JSON.stringify(res))
-  //   //   }) */
-  //   //   // This gives you a Google Access Token. You can use it to access the Google API.
-  //   //   var token = result;
-  //   //   // The signed-in user info.
-  //   //   var user = result;
-  //   //   console.log(result);
-
-  //   //   // ...
-  //   // }).catch((error)=> {
-  //   //   // Handle Errors here.
-  //   //   var errorCode = error.code;
-  //   //   var errorMessage = error.message;
-  //   //   // The email of the user's account used.
-  //   //   var email = error.email;
-  //   //   // The firebase.auth.AuthCredential type that was used.
-  //   //   var credential = error.credential;
-  //   //   // ...
-  //   // });
-  // }
 
   async loginAnon(): Promise<firebase.auth.UserCredential> {
     try {

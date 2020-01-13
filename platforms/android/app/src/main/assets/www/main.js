@@ -950,6 +950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_file_opener_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/file-opener/ngx */ "./node_modules/@ionic-native/file-opener/ngx/index.js");
 /* harmony import */ var _ionic_native_downloader_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/downloader/ngx */ "./node_modules/@ionic-native/downloader/ngx/index.js");
 /* harmony import */ var ionic_selectable__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ionic-selectable */ "./node_modules/ionic-selectable/esm5/ionic-selectable.min.js");
+/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
 
 
 
@@ -983,6 +984,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_6__["ScreenOrientation"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"],
+                _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_18__["GooglePlus"],
                 // Facebook,
                 _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"],
                 _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_14__["File"],
@@ -1575,7 +1577,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\zanel\Documents\brokenStool\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\NMlangeni\Documents\GitHub\brokenStool\src\main.ts */"./src/main.ts");
 
 
 /***/ })
