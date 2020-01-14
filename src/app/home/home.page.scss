@@ -50,7 +50,7 @@ ion-toolbar {
     position: relative;
 
     .saleitems {
-      width: 100%;
+      width: 100vw;
       // height: 65vw;
       display: flex;
       overflow-x: auto;
@@ -150,7 +150,7 @@ ion-toolbar {
     flex-flow: column;
     position: relative;
     .apparel {
-      width: 100%;
+      width: 100vw;
       // height: 65vw;
       display: flex;
       overflow-x: auto;

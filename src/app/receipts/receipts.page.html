@@ -30,42 +30,12 @@
             <p><i>QTY {{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> </p>
           </div>
 
-          <div class="status">
-            <!-- <p>DELIVERY STATUS <br> <span><i>Order Delivered</i></span></p> -->
-            
-            <!-- <p>DELIVERY STATUS <br> <span><i>Order awaiting collection</i></span></p> -->
-            <!-- <p>DELIVERY STATUS <br> <span><i>Order Coolected</i></span></p> -->
-          </div>
+
         </div>
       </div>
-    <!--   <p>{{order.refNo}}</p>
-      <p>ORDER STATUS <br> <span><i>{{order.status}}</i></span></p> -->
-      <!-- <div class="card">
-
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
-          </div>
-  
-          <div class="right">
-            <div class="title">
-              <p>Formal White</p>
-            </div>
-  
-            <div class="costs">
-              <p><i>QTY. 1</i> <br> R1200 <br> Size: XS <br><br> SDE098765</p>
-            </div>
-  
-            <div class="status">
-              <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
-  
-            </div>
-  
-          </div>
-  
-        </div> -->
 
       <div class="line"></div>
-      <!-- <div *ngFor="let o of order.orders"> -->
+      
         <div class="receipt">
           <h1>Your Receipt</h1>
         </div>
@@ -124,6 +94,88 @@
 
     </div>
 
+  </div>
+
+  <div class="web_view">
+    
+    <div class="cards" *ngFor="let order of myOrder">
+      <div class="card" *ngFor="let o of order.orders">
+
+        <div class="image">
+          <img src="{{o.picture}}" alt="">
+        </div>
+
+        <div class="right">
+          <div class="title">
+            <p>{{o.product_name}}</p>
+          </div>
+
+          <div class="costs">
+            <p><i>QTY {{o.quantity}}</i> <br> {{o.cost | currency:'R'}} <br> Size: {{o.size}} <br><br> </p>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="line"></div>
+      
+        <div class="receipt">
+          <h1>Your Receipt</h1>
+        </div>
+
+        <div class="name">
+          <p>{{userProfile.name}} {{userProfile.surname}} <br> <span>{{userProfile.cellno}}</span></p>
+        </div>
+
+        <div class="ref">
+          <p>REF NO: <span><i>{{order.refNo}}</i></span></p>
+        </div>
+
+        <div class="cart">
+          <p><b>Date of Puchase: </b><i>{{order.timestamp | date:"medium"}}</i> <br>
+            <b>Items</b></p>
+        </div>
+
+        <div class="table">
+          <div class="list" *ngFor="let o of order.orders">
+            <p style="width: 40vw">{{o.product_name}}</p>
+            <p>{{o.quantity}}</p>
+          </div>
+
+
+          <br>
+          <div class="total">
+            <p style="width: 40vw"><b>Total Quantity</b></p>
+            <p>{{getQuantity()}}</p>
+          </div>
+        </div>
+
+        <div class="grand">
+          <p>Grand Total</p>
+          <p>{{getTotal() | currency:'R'}}</p>
+        </div>
+        <div class="ordertype">
+          <p>Order Type</p>
+          <p id="del"><i>{{order.deliveryType}}</i></p>
+        </div>
+
+        <div class="address">
+          <p>Order Address <br> <span>{{userProfile.address}}</span></p>
+
+        </div>
+
+        <div class="status">
+          <p>Order Status: &nbsp; <i>{{order.status}}</i></p>
+        </div>
+      <!-- </div> -->
+
+        <ion-button (click)=" downloadPDF(order.reciept)" color="transparent">
+          DOWNLOAD COPY
+        </ion-button>
+    
+
+    </div>
   </div>
 
 </ion-content>

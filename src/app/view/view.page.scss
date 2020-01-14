@@ -218,6 +218,8 @@ ion-toolbar {
     display: flex;
     flex-flow: row;
     margin-top: 100px;
+    box-shadow: 5px 5px 10px rgb(190, 190, 190);
+    padding: 10px;
 
     .buttonz {
       width: 100%;
