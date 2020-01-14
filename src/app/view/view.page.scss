@@ -2,9 +2,9 @@
   background: rgba(175, 175, 175, 0.712);
   border: 2px solid rgb(146, 146, 146);
   color: white;
-  ion-button{
+  ion-button {
     color: white;
-}
+  }
 }
 
 .colorStyle {
@@ -191,6 +191,109 @@ ion-toolbar {
             color: maroon;
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .web_view {
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+}
+
+@media only screen and (min-width: 1330px) {
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-flow: row;
+    margin-top: 100px;
+
+    .buttonz {
+      width: 100%;
+      text-align: right;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+      ion-button {
+        width: 20vw;
+        color: white;
+        background: rgb(1, 1, 54);
+        border-radius: 20px;
+        font-family: "Raleway";
+        ion-icon {
+          color: white;
+          #book {
+            color: maroon;
+          }
+        }
+      }
+    }
+
+    .shipping {
+      margin: 5px;
+    }
+
+    .delivery {
+      position: relative;
+      bottom: 40px;
+      margin: 5px;
+    }
+
+    .add {
+   
+      ion-fab-button {
+        background: maroon;
+        border-radius: 50%;
+        ion-icon {
+          color: white;
+        }
+      }
+    }
+
+    .about {
+      margin: 5px;
+    }
+
+    .sizes {
+      margin: 5px;
+      ion-button {
+        color: black;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0.5px solid rgb(173, 173, 173);
+      }
+    }
+
+    .colours {
+      // position: relative;
+      // bottom: 20px;
+      margin: 5px;
+      ion-button {
+        margin: 2px;
+
+        // height: 8vw;
+      }
+    }
+
+    .quantity {
+      margin: 5px;
+      align-items: baseline;
+      ion-button {
+        color: black;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0.5px solid black;
       }
     }
   }

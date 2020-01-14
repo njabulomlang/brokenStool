@@ -148,5 +148,113 @@
 
   </div>
 
+
+  <div class="web_view">
+    <div class="top">
+      <div class="pagename">
+        <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
+      </div>
+      <div class="itemcount">
+        <div class="items" *ngIf="collectionName!=='sales'">
+          <p>{{myProduct.length}} item(s)</p>
+        </div>
+        <div class="items" *ngIf="collectionName==='sales'">
+          <p>{{promo.length}} item(s)</p>
+        </div>
+        <div class="filter">
+
+          <p (click)="reviewed()" style="opacity: 0.5;">Filter</p>
+        </div>
+
+        <!-- <div class="filter" *ngIf="collectionName==='sales'">
+
+          <ion-select placeholder="Filter ASC" [(ngModel)]="sortSale" (ionChange)="sortSales()">
+            <ion-select-option value="name">Name</ion-select-option>
+            <ion-select-option value="discount">Discount</ion-select-option>
+            <ion-select-option value="saleprice">Price</ion-select-option>
+          </ion-select>
+        </div> -->
+      </div>
+    </div>
+    <div class="cards" *ngIf="collectionName!=='sales'">
+      <div class="card" *ngFor="let p of myProduct, let i=index">
+        <img src="{{p.info.pictureLink}}" (click)="viewitem(p.id, p.info)">
+        <div class="itemdetails">
+          <div class="name">
+            <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
+          </div>
+          <div id="icon">
+
+            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)"></ion-icon>
+          </div>
+          <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
+
+        </div>
+      </div>
+
+    </div>
+    <div class="cards" *ngIf="collectionName==='sales'">
+      <div class="card" *ngFor="let s of promo">
+        <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
+        <div class="itemdetails">
+          <div class="name">
+            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
+          </div>
+          <div id="icon">
+
+            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info)"></ion-icon>
+          </div>
+          <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="cards" id="msg" *ngIf= "myProduct.length === 0 && collectionName!=='sales'">
+      <p>No Items</p>
+      <img src="../../assets/empty-cart.svg">
+    </div>
+
+    <div [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
+
+      <div class="heading">
+        <p>Filter Items By:</p>
+
+        <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
+
+      </div>
+      <div class="line"></div>
+
+      <div class="filtering">
+
+        <div class="color" (click)="filtered()">
+          <h4>Colour</h4>
+        </div>
+        <div class="colors" *ngIf="viewFilter" (click)="colorOpt($event)">
+          <p>Red</p>
+          <p>Blue</p>
+          <p>Orange</p>
+          <p>Green</p>
+          <p>Purple</p>
+        </div>
+
+        <div class="price" (click)="priced()">
+          <h4>Price</h4>
+        </div>
+        <div class="prices" >
+          <ion-item *ngIf="viewPrice">
+            <ion-range style="width: 50%" pin="true" min="0" max="1000" step="10" color="secondary" [(ngModel)]="price"
+              (ionChange)="setPriceRange(price)">
+              <ion-label slot="start">{{price | currency:'R'}}</ion-label>
+              <ion-label slot="end">{{1000 | currency:'R'}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
   <!-- *ngIf="viewFilter=='all'||viewFilter=='color'"  -->
 </ion-content>

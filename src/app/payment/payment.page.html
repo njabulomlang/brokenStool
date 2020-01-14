@@ -37,6 +37,82 @@
             <td>{{b.product_name}}</td>
             <td>{{b.cost*b.quantity | currency:'R'}}</td>
           </tr>
+  
+          <tr>
+            <td>Delivery Fee</td>
+            <td>{{delCost|currency:'R'}}</td>
+          </tr>
+          <!-- Cart Total- -->
+          <tr>
+            <th>TOTAL</th>
+            <th>{{getTotal() | currency:'R'}}</th>
+          </tr>
+
+
+
+        </table>
+
+      </div>
+
+    </div>
+    <div class="text">
+      <div class="reference">
+        <p>Your reference for this transaction is {{refNo}}. Please use it to deposit the amount due.</p>
+      </div>
+
+      <div class="depositto">
+        <p><b>Deposit amount to </b><br>
+          Account Holder Name: Lunga <br>
+          Account Number: 1234567890<br>
+          Branch Name: Dube <br>
+          Branch Number: 47100
+        </p>
+      </div>
+
+      <div class="note">
+        <p>Please Note, Delivery to your door is R100 and to your nearest post office is R90</p>
+      </div>
+    </div>
+
+    <div class="btnz">
+      <ion-button (click)="goHome()" color="transparent">
+        DONE
+      </ion-button>
+    </div>
+
+  </div>
+
+  <div class="web_view">
+
+    <div class="pagename">
+      <h1 style="font-family: 'Raleway';">PAYMENT</h1>
+    </div>
+
+    <div class="btn">
+      <div class="deliver">
+        <ion-button  color="transparent" (click)="switchView('d')" [ngClass]="{'delivery':buttonActive, 'delivery-inactive': !buttonActive}">
+          DELIVERY
+        </ion-button>
+        <!-- <div class="line"></div> -->
+      </div>
+      <div class="pickup">
+        <ion-button color="transparent" (click)="switchView('c')" [ngClass]="{'collection': !buttonActive, 'collection-inactive': buttonActive}">
+          COLLECTION
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="title">
+        <h2 style="font-family: 'Raleway';">Your Cart</h2>
+      </div>
+
+      <div class="list">
+        <table *ngFor="let o of myOrder">
+          <tr *ngFor="let b of o.product">
+            <td>{{b.product_name}}</td>
+            <td>{{b.cost*b.quantity | currency:'R'}}</td>
+          </tr>
           <!--  <tr>
             <td>Hoody</td>
             <td>R300</td>
