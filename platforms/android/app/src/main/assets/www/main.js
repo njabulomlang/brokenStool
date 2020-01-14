@@ -963,7 +963,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-///import { Facebook } from '@ionic-native/facebook/ngx';
+
 
 
 
@@ -985,7 +985,6 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"],
                 _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_18__["GooglePlus"],
-                // Facebook,
                 _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"],
                 _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_14__["File"],
                 _ionic_native_file_opener_ngx__WEBPACK_IMPORTED_MODULE_15__["FileOpener"],
