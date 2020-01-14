@@ -40,6 +40,33 @@
           </div>
 
           <div class="costs">
+            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}}</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-style: italic; margin-bottom: 10px">{{o.timestamp | date:"medium"}}</p>
+    </div>
+    <div class="card" id="msg" *ngIf="orderHistory.length==0">
+      <p> No History Yet</p>
+      <img src="../../assets/sad_smile.svg">
+    </div>
+  </div>
+
+  <div class="web_view">
+    <div class="cards" *ngFor="let o of orderHistory;">
+
+      <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
+        <div class="image">
+          <img src="{{b.picture}}" alt="">
+        </div>
+
+        <div class="right">
+          <div class="itemname">
+            <p>{{b.product_name}}</p>
+          </div>
+
+          <div class="costs">
             <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> </p>
           </div>
         </div>

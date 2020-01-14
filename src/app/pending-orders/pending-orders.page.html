@@ -61,7 +61,45 @@
         <img src="../../assets/no-data.png">
       </div>
 
+    </div>
+  </div>
 
+  <div class="web_view">
+
+    <div class="cards">
+      <div class="card" *ngFor="let o of myOrder">
+        <div class="top" *ngFor="let p of o.info.product">
+          <div class="image">
+            <img src="{{p.picture}}" (click)="getOrder(o.id)">
+          </div>
+          <div class="info">
+            <p id="name" style="font-family: 'Poppins';"><span
+                style="letter-spacing: 1.2px; text-transform: uppercase;"><b>{{p.product_name}}</b></span> <br> <i>QTY.
+                {{p.quantity}}</i></p>
+            <p id="costs">
+              {{p.cost * p.quantity | currency:'R'}} <br>
+              <span style="line-height: 10px;">
+                {{p.timestamp | date:'medium'}} <br>
+                {{o.id}}
+
+              </span>
+
+            </p>
+          </div>
+        </div>
+
+        <div class="butt">
+          <ion-button (click)="orderTrack(o.id,o.info)" color="transparent">
+            Track My Order({{o.info.product.length}})
+          </ion-button>
+        </div>
+
+      </div>
+
+      <div class="card" id="msg" *ngIf="myOrder.length==0">
+        <p> You have no pending orders</p>
+        <img src="../../assets/no-data.png">
+      </div>
     </div>
   </div>
 

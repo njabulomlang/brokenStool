@@ -120,109 +120,103 @@ ion-toolbar {
           margin-top: -10px;
         }
       }
-
- 
     }
   }
 }
 
-.tracking{
-    margin: 10px;
+.tracking {
+  margin: 10px;
+  display: flex;
+  flex-flow: column;
+  line-height: 8px;
+  .total {
     display: flex;
-    flex-flow: column;
-    line-height: 8px;
-    .total{
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        width: 100%;
-
-        #tot{
-            font-weight: bold;
-            font-family: 'Poppins';
-            letter-spacing: 2px;
-            font-size: 5vw;
-        }
-
-        #price{
-            font-weight: bold;
-            font-family: 'Poppins';
-        }
-    }
-
-    .date{
-        p{
-            font-family: 'Poppins';
-            font-size: 3.5vw;
-            span{
-                font-size: 4vw;
-            }
-        }
-    }
-
-    .orderstatus{
-        p{
-            line-height: 20px;
-            font-family: 'Poppins';
-            font-size: 3.5vw;
-            span{
-                font-weight: bold;
-                font-family: 'Poppins';
-                font-size: 4vw;
-            }
-        }
-    }
-
-    .text{
-      position: relative;
-      top: 10px;
-      display: flex;
-      flex-flow: row;
-      justify-content: space-evenly;
-      font-size: 3vw;
-      font-weight: lighter;
-      text-align: center;
-      line-height: 10px;
-      margin-right: 3px;
-    }
-
-    .bankingDets{
-      line-height: 20px;
-      font-size: 3vw;
-    }
-
-    // .status {
-    //   p {
-    //     font-family: "Poppins";
-    //     font-size: 4vw;
-    //     font-weight: bold;
-    //     span {
-    //       font-size: 3vw;
-    //       font-weight: normal;
-    //     }
-    //   }
-    // }
-}
-
-.buttz{
+    flex-flow: row;
+    justify-content: space-between;
     width: 100%;
-   margin-top: 20px;
- 
-    ion-button{
-         background: rgb(0, 0, 54);
-         width:40vw;
-         font-size: 0.8em;
-         float: right;
-         font-family: 'Poppins';
-         letter-spacing: 2px;
+
+    #tot {
+      font-weight: bold;
+      font-family: "Poppins";
+      letter-spacing: 2px;
+      font-size: 5vw;
     }
-   
+
+    #price {
+      font-weight: bold;
+      font-family: "Poppins";
+    }
+  }
+
+  .date {
+    p {
+      font-family: "Poppins";
+      font-size: 3.5vw;
+      span {
+        font-size: 4vw;
+      }
+    }
+  }
+
+  .orderstatus {
+    p {
+      line-height: 20px;
+      font-family: "Poppins";
+      font-size: 3.5vw;
+      span {
+        font-weight: bold;
+        font-family: "Poppins";
+        font-size: 4vw;
+      }
+    }
+  }
+
+  .text {
+    position: relative;
+    top: 10px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    font-size: 3vw;
+    font-weight: lighter;
+    text-align: center;
+    line-height: 10px;
+    margin-right: 3px;
+  }
+
+  .bankingDets {
+    line-height: 20px;
+    font-size: 3vw;
+  }
+
+  // .status {
+  //   p {
+  //     font-family: "Poppins";
+  //     font-size: 4vw;
+  //     font-weight: bold;
+  //     span {
+  //       font-size: 3vw;
+  //       font-weight: normal;
+  //     }
+  //   }
+  // }
 }
 
+.buttz {
+  width: 100%;
+  margin-top: 20px;
 
+  ion-button {
+    background: rgb(0, 0, 54);
+    width: 40vw;
+    font-size: 0.8em;
+    float: right;
+    font-family: "Poppins";
+    letter-spacing: 2px;
+  }
+}
 
-
-.circles-container{
+.circles-container {
   width: 85%;
   // height: 28px;
   margin: 0 auto;
@@ -230,19 +224,7 @@ ion-toolbar {
   display: flex;
   text-align: center;
 }
-.circles-container > #one{
-  cursor: pointer;
-  width: 5vw;
-  height: 5vw;
-  border-radius: 50px;
-  border: 1px solid grey;
-  line-height: 20px;
-  transition: 700ms;
-  font-size: 0.8em;
-  font-weight: lighter;
- 
-}
-.circles-container > #two{
+.circles-container > #one {
   cursor: pointer;
   width: 5vw;
   height: 5vw;
@@ -253,7 +235,18 @@ ion-toolbar {
   font-size: 0.8em;
   font-weight: lighter;
 }
-.circles-container > #three{
+.circles-container > #two {
+  cursor: pointer;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50px;
+  border: 1px solid grey;
+  line-height: 20px;
+  transition: 700ms;
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+.circles-container > #three {
   cursor: pointer;
   width: 5vw;
   height: 5vw;
@@ -264,7 +257,7 @@ ion-toolbar {
   font-size: 0.8em;
   font-weight: lighter;
 }
-.circles-container > #four{
+.circles-container > #four {
   cursor: pointer;
   width: 5vw;
   height: 5vw;
@@ -275,24 +268,337 @@ ion-toolbar {
   font-weight: lighter;
   font-size: 0.8em;
 }
-#line1, #line2, #line3{
+#line1,
+#line2,
+#line3 {
   width: calc(33.33333333% - 28px);
   height: 0;
-  margin-top:7.5px;
+  margin-top: 7.5px;
   transition: 700ms;
   font-size: 0.8em;
 }
-#line1{
-  border: 0.5px solid grey
+#line1 {
+  border: 0.5px solid grey;
 }
-#line2{
-  border: 0.5px solid grey
+#line2 {
+  border: 0.5px solid grey;
 }
-#line3{
-  border: 0.5px solid grey
+#line3 {
+  border: 0.5px solid grey;
 }
 
-#one, #two, #three, #four{
- display: grid;
- align-items: center;
+#one,
+#two,
+#three,
+#four {
+  display: grid;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .web_view {
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+}
+
+@media only screen and (min-width: 1330px) {
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-flow: row;
+    box-shadow: 5px 5px 10px rgb(190, 190, 190);
+    height: 800px;
+
+    .progressbar {
+      counter-reset: step;
+      counter-increment: step 0;
+      margin-top: 20px;
+      padding: 0;
+      font-size: 0.5em;
+      background: none;
+      li {
+        list-style-type: none;
+        float: left;
+        width: 25%;
+        position: relative;
+        text-align: center;
+        letter-spacing: 2px;
+
+        &:before {
+          content: counter(step);
+          counter-increment: step;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          border: 2px solid rgb(136, 136, 136);
+          display: block;
+          text-align: center;
+          margin: 0 auto 10px auto;
+          border-radius: 50%;
+          letter-spacing: 0;
+          background: rgb(255, 255, 255);
+          z-index: 5;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 75.5%;
+          height: 1px;
+          background-color: rgb(112, 112, 112);
+          top: 12px;
+          left: -38%;
+          z-index: 4;
+        }
+
+        &:first-child:after {
+          content: none;
+        }
+        &.active {
+          color: maroon;
+          &:before {
+            border-color: maroon;
+          }
+        }
+
+        &.active + li:after {
+          background-color: maroon;
+        }
+      }
+    }
+
+    .progressbar li.active + li:after {
+      background: maroon;
+    }
+
+    .cards {
+      display: flex;
+      flex-flow: column;
+      width: 35vw;
+      margin: 10px;
+      height: 85vh;
+      overflow-y: auto;
+
+      .card {
+        display: flex;
+        flex-flow: row;
+        width: 95%;
+        margin: 10px;
+        box-shadow: 5px 5px 10px rgb(190, 190, 190);
+        border-radius: 5px;
+        .image {
+          width: 8vw;
+          height: 8vw;
+          margin: 10px;
+          border-radius: 8px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+          }
+        }
+
+        .right {
+          width: 100%;
+
+          .title {
+            margin-top: -10px;
+            p {
+              font-family: "Poppins";
+              font-weight: bold;
+            }
+          }
+
+          .costs {
+            p {
+              margin-top: -10px;
+            }
+          }
+        }
+      }
+    }
+
+    .tracking {
+      margin: 15px 20px;
+      display: flex;
+      flex-flow: column;
+      line-height: 8px;
+      width: 50vw;
+      .total {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 100%;
+
+        #tot {
+          font-weight: bold;
+          font-family: "Poppins";
+          letter-spacing: 2px;
+          font-size: 1em;
+        }
+
+        #price {
+          font-weight: bold;
+          font-family: "Poppins";
+        }
+      }
+
+      .date {
+        p {
+          font-family: "Poppins";
+          font-size: 1em;
+          span {
+            font-size: 1em;
+            font-weight: bold;
+            font-family: "Poppins";
+          }
+        }
+      }
+
+      .orderstatus {
+        p {
+          font-family: "Poppins";
+          font-size: 1em;
+          span {
+            font-weight: bold;
+            font-family: "Poppins";
+            font-size: 1em;
+          }
+        }
+      }
+
+      .text {
+        position: relative;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        font-weight: lighter;
+        text-align: center;
+        margin: 5px;
+        line-height: 20px;
+        font-size: 1em;
+      }
+
+      .bankingDets {
+        line-height: 25px;
+        font-size: 1em;
+      }
+
+      // .status {
+      //   p {
+      //     font-family: "Poppins";
+      //     font-size: 4vw;
+      //     font-weight: bold;
+      //     span {
+      //       font-size: 3vw;
+      //       font-weight: normal;
+      //     }
+      //   }
+      // }
+    }
+
+    .buttz {
+      width: 100%;
+      margin-top: 20px;
+
+      ion-button {
+        background: rgb(0, 0, 54);
+        width: 40vw;
+        float: right;
+        font-family: "Poppins";
+        letter-spacing: 2px;
+        font-size: 1em;
+      }
+    }
+
+    .circles-container {
+      width: 85%;
+      // height: 28px;
+      margin: 0 auto;
+      // border: 1px solid red;
+      display: flex;
+      text-align: center;
+    }
+    .circles-container > #one {
+      cursor: pointer;
+      width: 2vw;
+      height: 2vw;
+      border-radius: 50px;
+      border: 1px solid grey;
+      transition: 700ms;
+      font-weight: lighter;
+      font-size: 1em;
+    }
+    .circles-container > #two {
+      cursor: pointer;
+      width: 2vw;
+      height: 2vw;
+      border-radius: 50px;
+      border: 1px solid grey;
+      font-size: 1em;
+      transition: 700ms;
+
+      font-weight: lighter;
+    }
+    .circles-container > #three {
+      cursor: pointer;
+      width: 2vw;
+      height: 2vw;
+      border-radius: 50px;
+      border: 0.5px solid grey;
+      transition: 700ms;
+      font-size: 1em;
+      font-weight: lighter;
+    }
+    .circles-container > #four {
+      cursor: pointer;
+      width: 2vw;
+      height: 2vw;
+      border-radius: 50px;
+      border: 1px solid grey;
+      font-size: 1em;
+      transition: 700ms;
+      font-weight: lighter;
+    }
+    #line1,
+    #line2,
+    #line3 {
+      width: calc(33.33333333% - 28px);
+      height: 0;
+      margin-top: 13px;
+      transition: 700ms;
+      font-size: 0.8em;
+    }
+    #line1 {
+      border: 0.5px solid grey;
+    }
+    #line2 {
+      border: 0.5px solid grey;
+    }
+    #line3 {
+      border: 0.5px solid grey;
+    }
+
+    #one,
+    #two,
+    #three,
+    #four {
+      display: grid;
+      align-items: center;
+    }
+  }
 }

@@ -50,7 +50,7 @@ ion-toolbar {
     position: relative;
 
     .saleitems {
-      width: 100%;
+      width: 100vw;
       // height: 65vw;
       display: flex;
       overflow-x: auto;
@@ -150,7 +150,7 @@ ion-toolbar {
     flex-flow: column;
     position: relative;
     .apparel {
-      width: 100%;
+      width: 100vw;
       // height: 65vw;
       display: flex;
       overflow-x: auto;
@@ -381,7 +381,21 @@ ion-toolbar {
     height: 0 !important;
   }
 
+ion-toolbar {
+  --background: white;
+  #icon {
+    color: maroon;
+  }
+  font-family: "Raleway";
+  letter-spacing: 2px;
 
+  #number {
+    font-size: 0.8em;
+    position: relative;
+    top: 8px;
+    right: 5px;
+  }
+}
 
   .web_view {
     min-width: 800px;
@@ -392,14 +406,14 @@ ion-toolbar {
       flex-flow: row;
       width: 100%;
       overflow-x: auto;
-      height: 40vh;
+      height: 43vh;
       margin: 10px;
       .image {
         display: flex;
         flex-flow: column;
         position: relative;
         min-width: 30vw;
-        height: 37vh;
+        height: 38vh;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgb(177, 177, 177);
         margin: 10px;

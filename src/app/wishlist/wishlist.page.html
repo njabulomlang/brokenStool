@@ -59,5 +59,46 @@
 
   </div>
 
+  <div class="web_view">
+    <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
+      <h1>Wishlist ({{myWish.length}})</h1>
+    </div>
+
+<p style="font-family: 'Raleway'; margin: 8px;">This is your wishlist. Save all your favourites here</p>
+
+    <div class="cards" >
+      <div class="card" *ngFor="let w of myWish">
+          <div class="image">
+            <img src="{{w.info.image}}">
+          </div>
+          <div class="details">
+            <div class="left">
+              <div class="itemz">
+                <p id="item">{{w.info.name}}</p>
+              <p id="price">{{w.info.price | currency:'R'}}</p>
+              </div>
+              <div class="close"></div>
+              <p><ion-icon  name="trash" (click)="delete(w.id)"></ion-icon></p>
+            </div>
+  
+            <div class="right">
+              
+              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+                <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
+              </ion-button>
+            </div>
+  
+          </div>
+        </div>
+
+        <div class="card" id="msg" *ngIf="myWish.length==0">
+          <p> Oh no! Your Wishlist is empty</p>
+          <img src="../../assets/sad_smile.svg">
+      
+        </div>
+    </div>
+
+  </div>
+
 
 </ion-content>

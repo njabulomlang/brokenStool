@@ -35,27 +35,6 @@
         </div>
       </div>
 
-      <!--    <div class="card">
-       
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/07/45/93/074593d46c161650bf2bc30d7922f15c.jpg" alt="">
-          </div>
-
-        <div class="right">
-          <div class="title">
-            <p>Formal White</p>
-          </div>
-
-          <div class="costs">
-            <p><i>QTY. 1</i> <br> R1200 <br> Size: XS <br><br> SDE098765</p>
-          </div>
-
-          <div class="status">
-            <p>DELIVERY STATUS <br> <span><i>Order awaiting delivery</i></span></p>
-
-          </div>
-        </div>
-      </div> -->
     </div>
 
     <div class="tracking">
@@ -123,6 +102,104 @@
         DONE
       </ion-button>
     </div>
+  </div>
+
+
+  
+  <div class="web_view">
+    <div class="cards">
+      <!-- {{doc_id}} -->
+      <div class="card" *ngFor="let order of productOrder">
+        
+        <div class="image">
+          <img src="{{order.picture}}" alt="">
+        </div>
+
+        <div class="right">
+          <div class="title">
+            <p>{{order.product_name}}</p>
+          </div>
+
+          <div class="costs">
+            <p><i>QTY. {{order.quantity}}</i> <br> {{order.cost | currency:'R'}} <br> Size: {{order.size}} <br><br>
+              </p>
+          </div>
+
+         
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tracking">
+
+       <!-- <div class="status">
+            <p>DELIVERY STATUS <br> <span><i>Order {{status}}</i></span></p>
+
+          </div> -->
+
+      <div class="total">
+        <p id="tot">TOTAL</p>
+        <p id="price" *ngIf="delCost===0"> {{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===100"><span><i>incl delivery</i></span> {{getTotal() | currency:'R'}}</p>
+      </div>
+      <div class="bankingDets">
+        <p>
+          <b>Banking Details:</b><br>
+          Account Holder Name: Lunga <br>
+          Account Number: 1234567890<br>
+          Branch Name: Dube <br>
+          Branch Number: 47100<br>
+          Reference No.: {{doc_id}}</p>
+      </div>
+
+      <div class="date">
+        <p><span><i>Scheduled Collection Date</i></span> &nbsp; 15 December 2019</p>
+      </div>
+
+      <div class="orderstatus">
+        <p><span>Order Status</span> <br> <i>Your order is {{status}}</i></p>
+      </div>
+      <pre>
+
+      </pre>
+      <div class="tracks">
+        <!-- <ul class="progressbar">
+          <li >Order <br> Received</li>
+          <li >Order is <br> being processed</li>
+          <li > Order ready <br> for delivery </li>
+          <li>Order <br> Collected</li>
+        </ul> -->
+        <div class="circles-container">
+          <div id="one">1</div>
+          <div id="line1"></div>
+          <div id="two">2</div>
+          <div id="line2"></div>
+          <div id="three">3</div>
+          <div id="line3"></div>
+          <div id="four">4</div>
+        </div>
+
+        <div class="text">
+          <div id="txt">Order <br> Received</div>
+          <div id="txt">Order is <br> being processed</div>
+          <div id="txt">Order ready <br> for delivery</div>
+          <div id="txt">Order <br> Collected</div>
+
+        </div>
+      </div>
+
+      <pre>
+
+      </pre>
+      <div class="buttz" slot="end">
+        <ion-button (click)="done()" color="transparent">
+          DONE
+        </ion-button>
+      </div>
+    </div>
+
+  
   </div>
 
 </ion-content>
