@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, ActionSheetController } from '@ionic/angular';
 import { mergeAnalyzedFiles } from '@angular/compiler';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
@@ -15,31 +15,51 @@ export class CreateAccountPage implements OnInit {
   dbProfile = firebase.firestore().collection("userProfile");
   storage = firebase.storage().ref();
   uid = firebase.auth().currentUser.uid;
-  emailPattern: string = "[a-zA-Z0-9-_.+#$!=%^&*/?]+[@][a-zA-Z0-9-]+[.][a-zA-Z0-9]"
-  name: string;
-  surname: string;
-  email: string;
-  address: string;
-  profilePic: string = "";
+  emailPattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  name: string 
+  surname: string 
+  email: string 
+  address: string = '';
+  profilePic: string = '';
   uploadprogress: number;
   isuploading: boolean;
-  account: FormGroup
-  constructor(public router: Router, public alertCtrl: AlertController, private actionSheetCtrl: ActionSheetController,
+  account: FormGroup;
+  
+  constructor(public router: Router, public alertCtrl: AlertController, private actionSheetCtrl: ActionSheetController, public route: ActivatedRoute,
     public camera: Camera, public formBuilder: FormBuilder) {
     this.account = formBuilder.group({
       name: [this.name, Validators.compose([Validators.required, Validators.maxLength(250)])],
       surname: [this.surname, Validators.compose([Validators.required, Validators.maxLength(250)])],
-      address: [this.surname, Validators.compose([Validators.required, Validators.maxLength(250)])],
+      address: [this.address, Validators.compose([Validators.required, Validators.maxLength(250)])],
       email: [this.email, Validators.compose([Validators.required, Validators.pattern(this.emailPattern)])],
     });
+    if (firebase.auth().currentUser.email!==null) {
+      this.name = firebase.auth().currentUser.displayName.substr(0, firebase.auth().currentUser.displayName.indexOf(' '));
+      this.surname = firebase.auth().currentUser.displayName.substr(firebase.auth().currentUser.displayName.indexOf(' ') + 1);
+      this.email =  firebase.auth().currentUser.email;
+      this.profilePic = firebase.auth().currentUser.photoURL;
+    } else {
+      this.name = '';
+      this.surname = '';
+      this.profilePic = ''
+    }
   }
 
   ngOnInit() {
-
+    console.log('my email',this.email);
+    
+    // this.name = 
+    //this.surname 
+    //this.email = firebase.auth().currentUser.email;
+    this.profilePic = firebase.auth().currentUser.photoURL;
+    /* this.name = firebase.auth().currentUser.displayName.substr(0,firebase.auth().currentUser.displayName.indexOf(' '));
+    this.surname = firebase.auth().currentUser.displayName.substr(firebase.auth().currentUser.displayName.indexOf(' ')+1);
+    this.email = firebase.auth().currentUser.email;
+    this.profilePic = firebase.auth().currentUser.photoURL; */
   }
 
   check(val) {
-    if (val=='close') {
+    if (val == 'close') {
       document.getElementById('image').style.display = 'none';
     } else {
       document.getElementById('image').style.display = 'flex';
@@ -58,7 +78,7 @@ export class CreateAccountPage implements OnInit {
       this.address = this.account.get('address').value;
       this.dbProfile.doc(this.uid).set({
         name: this.name, surname: this.surname, cellPhone: firebase.auth().currentUser.phoneNumber,
-        email: this.email, profilePic: this.profilePic,address: this.address
+        email: this.email, profilePic: this.profilePic, address: this.address
       }).then((res) => {
         this.router.navigateByUrl('home');
       }).catch((err) => {

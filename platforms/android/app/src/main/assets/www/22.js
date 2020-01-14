@@ -160,12 +160,17 @@ var ProfilePage = /** @class */ (function () {
             _this.loaderAnimate = false;
         }, 2000);
         this.dbProfile.doc(this.uid).onSnapshot(function (doc) {
+            if (doc.exists) {
+                _this.profilePic = doc.data().profilePic;
+                _this.name = doc.data().name;
+                _this.surname = doc.data().surname;
+                _this.email = doc.data().email;
+                _this.address = doc.data().address;
+            }
+            else {
+                _this.navCtrl.navigateForward('create-account');
+            }
             //console.log("My profile ", doc.data());
-            _this.profilePic = doc.data().profilePic;
-            _this.name = doc.data().name;
-            _this.surname = doc.data().surname;
-            _this.email = doc.data().email;
-            _this.address = doc.data().address;
             //this.profile.push(doc.data());
         });
         //this.presentLoading();

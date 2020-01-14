@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>createAccount</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n  <div class=\"container\" slot= \"fixed\">\r\n    <div class=\"blur\">\r\n      <img src=\"https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80i\" alt=\"Your Profile Image\">\r\n    </div>\r\n    <div class=\"everything\">\r\n      <div class=\"title\">\r\n        <p>CREATE <br> ACCOUNT</p>\r\n      </div>\r\n      <div class=\"image\" id=\"image\">\r\n        <img src=\"{{profilePic}}\" style=\"overflow: hidden;\">\r\n        <ion-button (click)=\"selectImage()\" color=\"transparent\">SELECT IMAGE</ion-button>\r\n      </div>\r\n\r\n\r\n      <div class=\"form\">\r\n        <form [formGroup]=\"account\">\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Name\" formControlName=\"name\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Surname\" formControlName=\"surname\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Email\" formControlName=\"email\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Address\" formControlName=\"address\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <br>\r\n          <ion-button (click)=\"createAccount()\" [disabled]=\"!account.valid\" color=\"transparent\">DONE\r\n          </ion-button>\r\n        </form>\r\n\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>createAccount</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n  <div class=\"container\" slot= \"fixed\">\r\n    <div class=\"blur\">\r\n      <img src=\"https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80i\" alt=\"Your Profile Image\">\r\n    </div>\r\n    <div class=\"everything\">\r\n      <div class=\"title\">\r\n        <p>CREATE <br> ACCOUNT</p>\r\n      </div>\r\n      <div class=\"image\" id=\"image\" *ngIf=\"profilePic\">\r\n        <img src=\"{{profilePic}}\" style=\"overflow: hidden;\">\r\n        <ion-button (click)=\"selectImage()\" color=\"transparent\">SELECT IMAGE</ion-button>\r\n      </div>\r\n      <div class=\"image\" id=\"image\" *ngIf=\"!profilePic\">\r\n        <img src=\"../../assets/user-icon-image-placeholder-300-grey.jpg\" style=\"overflow: hidden;\">\r\n        <ion-button (click)=\"selectImage()\" color=\"transparent\">SELECT IMAGE</ion-button>\r\n      </div>\r\n\r\n      <div class=\"form\">\r\n        <form [formGroup]=\"account\">\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Name\" formControlName=\"name\" [(ngModel)]=\"name\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Surname\" formControlName=\"surname\" [(ngModel)]=\"surname\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Email\" formControlName=\"email\" [(ngModel)]=\"email\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <ion-item color=\"transparent\">\r\n            <ion-input placeholder=\"Address\" formControlName=\"address\" [(ngModel)]=\"address\" (ionBlur)=\"check('open')\" (ionFocus)=\"check('close')\"></ion-input>\r\n          </ion-item>\r\n\r\n          <br>\r\n          <ion-button (click)=\"createAccount()\" [disabled]=\"!account.valid\" color=\"transparent\">DONE\r\n          </ion-button>\r\n        </form>\r\n\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -138,25 +138,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CreateAccountPage = /** @class */ (function () {
-    function CreateAccountPage(router, alertCtrl, actionSheetCtrl, camera, formBuilder) {
+    function CreateAccountPage(router, alertCtrl, actionSheetCtrl, route, camera, formBuilder) {
         this.router = router;
         this.alertCtrl = alertCtrl;
         this.actionSheetCtrl = actionSheetCtrl;
+        this.route = route;
         this.camera = camera;
         this.formBuilder = formBuilder;
         this.dbProfile = firebase__WEBPACK_IMPORTED_MODULE_2__["firestore"]().collection("userProfile");
         this.storage = firebase__WEBPACK_IMPORTED_MODULE_2__["storage"]().ref();
         this.uid = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.uid;
-        this.emailPattern = "[a-zA-Z0-9-_.+#$!=%^&*/?]+[@][a-zA-Z0-9-]+[.][a-zA-Z0-9]";
-        this.profilePic = "";
+        this.emailPattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        this.address = '';
+        this.profilePic = '';
         this.account = formBuilder.group({
             name: [this.name, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(250)])],
             surname: [this.surname, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(250)])],
-            address: [this.surname, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(250)])],
+            address: [this.address, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(250)])],
             email: [this.email, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(this.emailPattern)])],
         });
+        if (firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.email !== null) {
+            this.name = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.displayName.substr(0, firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.displayName.indexOf(' '));
+            this.surname = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.displayName.substr(firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.displayName.indexOf(' ') + 1);
+            this.email = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.email;
+            this.profilePic = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.photoURL;
+        }
+        else {
+            this.name = '';
+            this.surname = '';
+            this.profilePic = '';
+        }
     }
     CreateAccountPage.prototype.ngOnInit = function () {
+        console.log('my email', this.email);
+        // this.name = 
+        //this.surname 
+        //this.email = firebase.auth().currentUser.email;
+        this.profilePic = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.photoURL;
+        /* this.name = firebase.auth().currentUser.displayName.substr(0,firebase.auth().currentUser.displayName.indexOf(' '));
+        this.surname = firebase.auth().currentUser.displayName.substr(firebase.auth().currentUser.displayName.indexOf(' ')+1);
+        this.email = firebase.auth().currentUser.email;
+        this.profilePic = firebase.auth().currentUser.photoURL; */
     };
     CreateAccountPage.prototype.check = function (val) {
         if (val == 'close') {
@@ -304,6 +326,7 @@ var CreateAccountPage = /** @class */ (function () {
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"] },
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"] }
     ]; };
@@ -313,7 +336,7 @@ var CreateAccountPage = /** @class */ (function () {
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./create-account.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/create-account/create-account.page.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./create-account.page.scss */ "./src/app/create-account/create-account.page.scss")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"]])
     ], CreateAccountPage);
     return CreateAccountPage;
