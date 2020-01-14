@@ -24,8 +24,9 @@ export class LoginPage implements OnInit {
   loaderMessages = 'Loading...';
   loaderAnimate: boolean;
   cred: any;
+  userProfile = firebase.firestore().collection('userProfile');
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
-    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus
+    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus,
     // public fb: Facebook
   ) {
 
@@ -34,10 +35,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
  
   }
-  goSignUp() {
+/*   goSignUp() {
     this.router.navigateByUrl("/signup")
   }
-
+ */
   async nativeGoogleLogin() {
     //let credential = '';
     try {
@@ -46,28 +47,10 @@ export class LoginPage implements OnInit {
         'offline': true,
         'scopes': 'profile email'
       })
-      //console.log('my details ',gplusUser);
-      
        await firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)).then((i)=>{
-         return i.user
+        //this.userProfile.doc(i.user.uid).set
+        this.router.navigateByUrl('create-account')
        })
-      // this.gplus.login({})
-      // .then(async (res)=> 
-      //  this.cred = await firebase.auth.GoogleAuthProvider.credential(res.userId))
-      // .catch(err => console.error(err))
-      // console.log('My cred ', this.cred);
-      
-      //  await firebase.auth().signInWithCredential(this.cred)
-    /*   const gplusUser = await this.gplus.login({
-        'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
-        'offline': true,
-        'scopes': 'profile email'
-      })
-      console.log('Google user details ', gplusUser);
-      
-      return await firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)).then((res)=>{
-        console.log('User ',res.user);   
-      }) */
     } catch(err) {
       console.log('Error ',err)
     }
@@ -76,7 +59,11 @@ export class LoginPage implements OnInit {
   async webGoogleLogin() : Promise<void>  {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
-      const credential = await firebase.auth().signInWithPopup(provider);
+      const credential = await firebase.auth().signInWithPopup(provider).then((i)=>{
+        console.log(i.user);
+        
+        this.router.navigateByUrl('create-account');
+      });
     } catch(err) {
       console.log(err)
     }
@@ -105,7 +92,7 @@ export class LoginPage implements OnInit {
   }
 
   addUser() {
-    if (this.number.length !== 9) {
+    if (this.number.length < 9) {
       this.toast();
     } else {
       window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
@@ -122,7 +109,8 @@ export class LoginPage implements OnInit {
         this.loaderAnimate = false;
       }, 2000);
       let appVerifier = window.recaptchaVerifier
-      return this.authService.requestLogin(this.number, appVerifier)
+      return this.authService.requestLogin(this.number, appVerifier).then(()=>{
+      })
     }
 
     // window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaParameters, result => {

@@ -67,12 +67,7 @@ registerUser(email, password) {
           let result = { success: false, result: error }
           return result
         });
-      // })
-      // .catch(function (error) {
-      //   // Handle Errors here.
-      //   var errorCode = error.code;
-      //   var errorMessage = error.message;
-      // });
+
    
   }
   async alert(){

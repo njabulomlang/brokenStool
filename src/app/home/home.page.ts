@@ -19,8 +19,8 @@ export class HomePage implements OnInit {
   cart = [];
   cartItemCount: BehaviorSubject<number>;
   //uid;
-  name;
-  surname;
+  name: string = '';
+  surname:string = '';
   dbProfile = firebase.firestore().collection("userProfile");
   dbSales = firebase.firestore().collection("Specials");
   uid = firebase.auth().currentUser.uid;
@@ -30,19 +30,12 @@ export class HomePage implements OnInit {
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController) {
-    // this.uid = firebase.auth().currentUser.uid
   }
 
   ngOnInit() {
-    // let num = 24.35435453243;
-    // this.fcmService.getPermission();
-    //console.log('Round off ', String(num).substr(0,5));
+   
     this.getProfile();
     this.getPromo();
-    /*     this.products = this.cartService.getProducts();
-        this.cart = this.cartService.getCart();
-        this.cartItemCount = this.cartService.getCartItemCount(); */
-
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
@@ -61,6 +54,7 @@ export class HomePage implements OnInit {
       }
     })
   }
+  
   profile() {
     this.navCtrl.navigateForward('profile');
   }

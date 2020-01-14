@@ -14,28 +14,31 @@
       <div class="title">
         <p>CREATE <br> ACCOUNT</p>
       </div>
-      <div class="image" id="image">
+      <div class="image" id="image" *ngIf="profilePic">
         <img src="{{profilePic}}" style="overflow: hidden;">
         <ion-button (click)="selectImage()" color="transparent">SELECT IMAGE</ion-button>
       </div>
-
+      <div class="image" id="image" *ngIf="!profilePic">
+        <img src="../../assets/user-icon-image-placeholder-300-grey.jpg" style="overflow: hidden;">
+        <ion-button (click)="selectImage()" color="transparent">SELECT IMAGE</ion-button>
+      </div>
 
       <div class="form">
         <form [formGroup]="account">
           <ion-item color="transparent">
-            <ion-input placeholder="Name" formControlName="name" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+            <ion-input placeholder="Name" formControlName="name" [(ngModel)]="name" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
           </ion-item>
 
           <ion-item color="transparent">
-            <ion-input placeholder="Surname" formControlName="surname" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+            <ion-input placeholder="Surname" formControlName="surname" [(ngModel)]="surname" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
           </ion-item>
 
           <ion-item color="transparent">
-            <ion-input placeholder="Email" formControlName="email" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+            <ion-input placeholder="Email" formControlName="email" [(ngModel)]="email" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
           </ion-item>
 
           <ion-item color="transparent">
-            <ion-input placeholder="Address" formControlName="address" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+            <ion-input placeholder="Address" formControlName="address" [(ngModel)]="address" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
           </ion-item>
 
           <br>

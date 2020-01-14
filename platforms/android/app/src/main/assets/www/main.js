@@ -1300,12 +1300,6 @@ var AuthService = /** @class */ (function () {
             var result = { success: false, result: error };
             return result;
         });
-        // })
-        // .catch(function (error) {
-        //   // Handle Errors here.
-        //   var errorCode = error.code;
-        //   var errorMessage = error.message;
-        // });
     };
     AuthService.prototype.alert = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {

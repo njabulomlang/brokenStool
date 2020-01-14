@@ -113,6 +113,9 @@ var HomePage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.products = [];
         this.cart = [];
+        //uid;
+        this.name = '';
+        this.surname = '';
         this.dbProfile = firebase__WEBPACK_IMPORTED_MODULE_3__["firestore"]().collection("userProfile");
         this.dbSales = firebase__WEBPACK_IMPORTED_MODULE_3__["firestore"]().collection("Specials");
         this.uid = firebase__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser.uid;
@@ -120,18 +123,11 @@ var HomePage = /** @class */ (function () {
         this.loaderAnimate = true;
         this.sales = [];
         this.dbWish = firebase__WEBPACK_IMPORTED_MODULE_3__["firestore"]().collection('Wishlist');
-        // this.uid = firebase.auth().currentUser.uid
     }
     HomePage.prototype.ngOnInit = function () {
         var _this = this;
-        // let num = 24.35435453243;
-        // this.fcmService.getPermission();
-        //console.log('Round off ', String(num).substr(0,5));
         this.getProfile();
         this.getPromo();
-        /*     this.products = this.cartService.getProducts();
-            this.cart = this.cartService.getCart();
-            this.cartItemCount = this.cartService.getCartItemCount(); */
         this.dbWish.where('customerUID', '==', this.uid).onSnapshot(function (res1) {
             _this.myWish = res1.size;
         });

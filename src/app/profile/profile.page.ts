@@ -33,12 +33,17 @@ export class ProfilePage implements OnInit {
       this.loaderAnimate = false
     }, 2000); 
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
-    //console.log("My profile ", doc.data());
-    this.profilePic=doc.data().profilePic;
+      if (doc.exists) {
+          this.profilePic=doc.data().profilePic;
     this.name=doc.data().name;
     this.surname=doc.data().surname;
     this.email=doc.data().email;
     this.address=doc.data().address;
+      } else {
+        this.navCtrl.navigateForward('create-account')
+      }
+    //console.log("My profile ", doc.data());
+  
     //this.profile.push(doc.data());
   })
     //this.presentLoading();
