@@ -50,3 +50,14 @@ ion-popover {
     --max-width: 70vw;
   }
 }
+@media only screen and (min-width: 1330px) {
+  ion-popover {
+    align-items: center;
+    div.popover-content {
+      --min-height: 30vh;
+      --max-height: 30vh;
+      --min-width: 20vw;
+      --max-width: 20vw;
+    }
+  }
+}

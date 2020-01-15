@@ -381,21 +381,29 @@ ion-toolbar {
     height: 0 !important;
   }
 
-ion-toolbar {
-  --background: white;
-  #icon {
-    color: maroon;
+  #welcome {
+    font-size: 20px;
   }
-  font-family: "Raleway";
-  letter-spacing: 2px;
 
-  #number {
-    font-size: 0.8em;
-    position: relative;
-    top: 8px;
-    right: 5px;
+  ion-toolbar {
+    --background: rgb(0, 4, 39);
+    height: 70px;
+    display: grid;
+    align-items: center;
+    z-index: 20000000000000000000000000;
+    #icon {
+      color: white;
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: white;
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
   }
-}
 
   .web_view {
     min-width: 800px;
@@ -446,7 +454,7 @@ ion-toolbar {
     }
 
     .Kwanga {
-      ion-item{
+      ion-item {
         color: black !important;
       }
       .apparel {
@@ -495,7 +503,7 @@ ion-toolbar {
           display: flex;
           flex-flow: column;
           position: relative;
-          min-width: 10vw;
+          width: 15vw;
           height: 25vh;
           border-radius: 10px;
           box-shadow: 5px 5px 10px rgb(177, 177, 177);
@@ -529,7 +537,7 @@ ion-toolbar {
           display: flex;
           flex-flow: column;
           position: relative;
-          min-width: 10vw;
+          width: 15vw;
           height: 25vh;
           border-radius: 10px;
           box-shadow: 5px 5px 10px rgb(177, 177, 177);
@@ -566,7 +574,7 @@ ion-toolbar {
 
   .container {
     width: 100% !important;
-    height: 100% !important; 
+    height: 100% !important;
     ion-fab-button {
       background: maroon;
       border-radius: 50%;
@@ -620,7 +628,7 @@ ion-toolbar {
           .image {
             margin: 8px;
             margin-bottom: 10px;
-            min-width: 50vw;
+            min-width: 45vw;
             height: 35vh;
             border-radius: 5px;
             position: relative;

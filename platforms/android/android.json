@@ -29,7 +29,7 @@
           "/manifest": [
             {
               "xml": "<uses-permission android:name=\"android.permission.REQUEST_INSTALL_PACKAGES\" />",
-              "count": 46
+              "count": 48
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",

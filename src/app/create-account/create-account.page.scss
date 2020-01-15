@@ -1,116 +1,254 @@
-@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 .container {
-  display: flex;
-  flex-flow: column;
   width: 100%;
-  height: 100vh;
-  align-items: center;
-  position: absolute;
+  height: 100%;
+  background: linear-gradient(to left, w hite, rgba(0, 0, 0, 0.363));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.inner-container {
+  width: 60%;
+  height: 70%;
+  transition: 300ms;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  min-height: 300px;
+}
+.inner-container > div {
+  transition: 300ms;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#prompt {
+  color: grey;
+  font-style: italic;
+  font-size: 12px;
+}
+#password-forgotten {
+  color: blue;
+  cursor: pointer;
+  font-size: 14px;
+}
+.cont {
+  margin: 0 auto;
+  width: 95%;
+  // height: 95%;
+  background: white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.logo-container-right {
+  text-align: center;
+  width: 100%;
+  //   border: 2px solid red;
+  display: none;
+  filter: invert(100%);
+}
+.logo-container-left {
+  text-align: center;
+  color: white;
+}
+#logo {
+  width: 100px;
+  transition: 300ms;
+}
+#logo-left {
+  width: 200px;
+}
+.inner-container > div:nth-child(1) {
   background: url("https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80i");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+.inner-container > div:nth-child(2) {
+  background: white;
+}
+ion-button {
+  text-transform: capitalize;
+}
 
-  .blur {
-    width: 100vw;
-    height: 101vh;
-    object-fit: cover;
-    overflow: hidden;
-    position: absolute;
-    -webkit-transform: translate3d(0, 0, 0);
-    left: -15vw;
-    border: 3px solid rgba(204, 204, 204, 0.199);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin: -5px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: blur(15px);
-      -webkit-filter: blur(15px);
-      -moz-filter: blur(15px);
-      -o-filter: blur(15px);
-      -ms-filter: blur(15px);
-      margin: -5px -10px -10px -5px;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      transform: scale(1.06);
-    }
-  }
-
-  .everything {
-    position: absolute;
-    bottom: 20px;
-    left: 10%;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
+.image{
+  width:15vw;
+  height: 15vw;
+  margin: auto;
+  img{
+    width: 100%;
     height: 100%;
-
-    .title {
-      position: relative;
-      left: -10%;
-      font-family: "Poppins";
-      letter-spacing: 3px;
-      color: white;
-      font-size: 8vw;
-    }
-
-    .image {
-      width: 70vw;
-      height: 60vw;
-    //   background: grey;
-      display: flex;
-      flex-flow: column;
-      position: relative;
-      left: -5%;
-overflow: hidden;
-      img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        overflow: hidden;
-        border: none;
-        box-shadow: 5px 5px 10px rgb(204, 204, 204);
-      }
-
-      ion-button {
-        font-family: "Poppins";
-        letter-spacing: 3px;
-        position: absolute;
-        bottom: 20px;
-        width: 60vw;
-        left: 5%;
-        outline: none !important;
-      }
-    }
-
-    .form {
-      width: 100%;
-      padding: 10px;
-      position: relative;
-      left: -15%;
-
-      ion-item {
-        color: white;
-      }
-
-      ion-button {
-        width: 60vw;
-        position: absolute;
-        // bottom: 10px;
-        left: 20%;
-        font-size: 0.8em;
-        font-family: "Poppins";
-        letter-spacing: 3px;
-        color: black;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.795);
-        overflow: hidden;
-        box-shadow: 5px 5px 10px grey;
-      }
-    }
+    object-fit:  cover;
   }
 }
+
+.form{
+  font-family: 'Poppins';
+  ion-button{
+    width: 100%;
+    background: rgb(0, 0, 36);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #logo {
+    width: 200px;
+  }
+  .logo-container-right {
+    text-align: center;
+    display: block;
+  }
+  .inner-container {
+    width: 60%;
+    height: 70%;
+  }
+  .inner-container > div {
+    width: 100%;
+    height: 100%;
+  }
+  .inner-container > div:nth-child(1) {
+    display: none;
+  }
+}
+@media screen and (max-width: 512px) {
+  #logo {
+    width: 150px;
+  }
+  .inner-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .inner-container > div {
+    width: 100%;
+    height: 100%;
+  }
+  .inner-container > div:nth-child(1) {
+    display: none;
+  }
+}
+@media screen and (max-height: 435px) {
+  .inner-container {
+    height: 100%;
+    overflow: scroll;
+  }
+}
+
+// @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+// .container {
+//   display: flex;
+//   flex-flow: column;
+//   width: 100%;
+//   height: 100vh;
+//   align-items: center;
+//   position: absolute;
+//   background: url("https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80i");
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+
+//   .blur {
+//     width: 100vw;
+//     height: 101vh;
+//     object-fit: cover;
+//     overflow: hidden;
+//     position: absolute;
+//     -webkit-transform: translate3d(0, 0, 0);
+//     left: -15vw;
+//     border: 3px solid rgba(204, 204, 204, 0.199);
+//     border-top-right-radius: 20px;
+//     border-bottom-right-radius: 20px;
+//     margin: -5px;
+
+//     img {
+//       width: 100%;
+//       height: 100%;
+//       object-fit: cover;
+//       filter: blur(15px);
+//       -webkit-filter: blur(15px);
+//       -moz-filter: blur(15px);
+//       -o-filter: blur(15px);
+//       -ms-filter: blur(15px);
+//       margin: -5px -10px -10px -5px;
+//       border-top-right-radius: 20px;
+//       border-bottom-right-radius: 20px;
+//       transform: scale(1.06);
+//     }
+//   }
+
+//   .everything {
+//     position: absolute;
+//     bottom: 20px;
+//     left: 10%;
+//     display: flex;
+//     flex-flow: column;
+//     justify-content: center;
+//     height: 100%;
+
+//     .title {
+//       position: relative;
+//       left: -10%;
+//       font-family: "Poppins";
+//       letter-spacing: 3px;
+//       color: white;
+//       font-size: 8vw;
+//     }
+
+//     .image {
+//       width: 70vw;
+//       height: 60vw;
+//     //   background: grey;
+//       display: flex;
+//       flex-flow: column;
+//       position: relative;
+//       left: -5%;
+// overflow: hidden;
+//       img{
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         overflow: hidden;
+//         border: none;
+//         box-shadow: 5px 5px 10px rgb(204, 204, 204);
+//       }
+
+//       ion-button {
+//         font-family: "Poppins";
+//         letter-spacing: 3px;
+//         position: absolute;
+//         bottom: 20px;
+//         width: 60vw;
+//         left: 5%;
+//         outline: none !important;
+//       }
+//     }
+
+//     .form {
+//       width: 100%;
+//       padding: 10px;
+//       position: relative;
+//       left: -15%;
+
+//       ion-item {
+//         color: white;
+//       }
+
+//       ion-button {
+//         width: 60vw;
+//         position: absolute;
+//         // bottom: 10px;
+//         left: 20%;
+//         font-size: 0.8em;
+//         font-family: "Poppins";
+//         letter-spacing: 3px;
+//         color: black;
+//         border-radius: 20px;
+//         background: rgba(255, 255, 255, 0.795);
+//         overflow: hidden;
+//         box-shadow: 5px 5px 10px grey;
+//       }
+//     }
+//   }
+// }

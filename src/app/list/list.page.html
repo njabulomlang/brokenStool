@@ -50,9 +50,9 @@
         <div class="items" *ngIf="collectionName==='sales'">
           <p>{{promo.length}} item(s)</p>
         </div>
-        <div class="filter">
+        <div class="filter"  style="cursor: pointer;">
 
-          <p (click)="reviewed()" style="opacity: 0.5;">Filter</p>
+          <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter</p>
         </div>
 
         <!-- <div class="filter" *ngIf="collectionName==='sales'">
@@ -161,9 +161,9 @@
         <div class="items" *ngIf="collectionName==='sales'">
           <p>{{promo.length}} item(s)</p>
         </div>
-        <div class="filter">
+        <div class="filter"  style="cursor: pointer;"> 
 
-          <p (click)="reviewed()" style="opacity: 0.5;">Filter</p>
+          <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter</p>
         </div>
 
         <!-- <div class="filter" *ngIf="collectionName==='sales'">
