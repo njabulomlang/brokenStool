@@ -54,6 +54,16 @@ export class ProfilePage implements OnInit {
       this.myWish = res1.size;
     })
   }
+
+  
+  check(val) {
+    if (val == 'close') {
+      document.getElementById('image').style.display = 'none';
+    } else {
+      document.getElementById('image').style.display = 'flex';
+    }
+  }
+  
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'Loading..',

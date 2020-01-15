@@ -375,6 +375,9 @@ ion-toolbar {
 }
 
 @media only screen and (min-width: 1330px) {
+  ion-content{
+    background: grey;
+  }
   .container {
     display: none;
     width: 0 !important;
@@ -435,7 +438,7 @@ ion-toolbar {
 
         .percentage {
           position: absolute;
-          z-index: 10;
+          // z-index: 10;
           bottom: 10px;
           right: 10px;
           text-shadow: 5px 5px 10px rgb(0, 0, 0);
@@ -444,7 +447,7 @@ ion-toolbar {
 
         .itemname {
           position: absolute;
-          z-index: 10;
+          // z-index: 10;
           top: 10px;
           right: 10px;
           text-shadow: 5px 5px 10px rgb(0, 0, 0);
@@ -483,7 +486,7 @@ ion-toolbar {
 
           .itemname {
             position: absolute;
-            z-index: 10;
+            // z-index: 10;
             top: 10px;
             right: 10px;
             text-shadow: 5px 5px 10px rgb(0, 0, 0);
@@ -519,7 +522,7 @@ ion-toolbar {
 
           .itemname {
             position: absolute;
-            z-index: 10;
+            // z-index: 10;
             top: 10px;
             right: 10px;
             text-shadow: 5px 5px 10px rgb(0, 0, 0);
@@ -553,7 +556,7 @@ ion-toolbar {
 
           .itemname {
             position: absolute;
-            z-index: 10;
+            // z-index: 10;
             top: 10px;
             right: 10px;
             text-shadow: 5px 5px 10px rgb(0, 0, 0);

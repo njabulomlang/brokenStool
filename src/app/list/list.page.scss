@@ -22,6 +22,7 @@ ion-toolbar {
   align-items: center;
   justify-content: space-evenly;
   top: 25vh;
+  // left: 30px;
   width: 95vw;
   margin: 10px;
   font-family: "Poppins";
@@ -634,14 +635,16 @@ ion-toolbar {
         }
       }
     }
+
     #msg {
-      width: 80%;
+      width: 60%;
       display: flex;
       flex-flow: column;
       align-items: center;
       justify-content: space-evenly;
       font-family: "Poppins";
       box-shadow: none !important;
+     
       img {
         width: 20vw;
         height: 20vw;
@@ -651,6 +654,7 @@ ion-toolbar {
         font-size: 1.5vw;
       }
     }
+
   }
 
   .viewreviews {

@@ -129,17 +129,38 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  .pagename{
-    background: maroon;
-    width: 60vw;
-    color: rgb(221, 221, 221);
-    height: 62px;
+  ion-toolbar {
+    --background: rgb(0, 4, 39);
+    height: 70px;
     display: grid;
     align-items: center;
-    h1{
-      margin: 5px;
+    z-index: 20000000000000000000000000;
+    #icon {
+      color: white;
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: white;
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
     }
   }
+
+  // .pagename{
+  //   background: rgb(54, 0, 0);
+  //   width: 60vw;
+  //   color: rgb(221, 221, 221);
+  //   height: 62px;
+  //   display: grid;
+  //   align-items: center;
+  //   margin: 5px;
+  //   h1{
+  //     margin: 5px;
+  //   }
+  // }
 
   .web_view {
     min-width: 800px;
