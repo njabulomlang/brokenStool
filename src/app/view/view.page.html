@@ -50,13 +50,17 @@
         <p>Available sizes</p>
 
         <ion-button *ngFor="let size of prod.data.size;let i=index" (click)="sizeChosen(size, i)" color="transparent"
-          [ngClass]="{'sizeStyle':sizeIndex==i}">
+          [ngClass]="{'sizeStyle':sizeIndex==i}" >
           {{size}}
         </ion-button>
 
       </div>
       <div class="colours">
         <p>Colours</p>
+       <!--  <ion-item *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;">
+          <ion-label>{{c}}</ion-label>
+          <ion-checkbox (ionChange)="onBoolChenged(c,i)"></ion-checkbox>
+        </ion-item> -->
         <ion-button *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;"
           (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
           <p style="color: rgb(146, 146, 146);">{{c}}</p>
@@ -70,7 +74,7 @@
       </div>
       <div class="quantity">
         <p>Quantity</p>
-        <ion-button (click)="minus(quantity)" color="transparent" style="background: rgb(212, 212, 212);
+        <ion-button (click)="minus()" color="transparent" style="background: rgb(212, 212, 212);
          color: maroon;
          border-top-left-radius: 7px;
          border-bottom-left-radius: 7px;">
@@ -79,7 +83,7 @@
         <ion-button color="transparent" style="background: rgb(212, 250, 255);">
           {{quantity}}
         </ion-button>
-        <ion-button (click)="plus(quantity)" color="transparent" style="background: rgb(212, 212, 212); 
+        <ion-button (click)="plus()" color="transparent" style="background: rgb(212, 212, 212); 
         color: maroon;
          border-top-right-radius: 7px;
          border-bottom-right-radius: 7px;">
@@ -171,7 +175,7 @@
       </div>
       <div class="quantity">
         <p>Quantity</p>
-        <ion-button (click)="minus(quantity)" color="transparent" style="background: rgb(212, 212, 212);
+        <ion-button (click)="minus()" color="transparent" style="background: rgb(212, 212, 212);
          color: maroon;
          border-top-left-radius: 7px;
          border-bottom-left-radius: 7px;">
@@ -180,7 +184,7 @@
         <ion-button color="transparent" style="background: rgb(212, 250, 255);">
           {{quantity}}
         </ion-button>
-        <ion-button (click)="plus(quantity)" color="transparent" style="background: rgb(212, 212, 212); 
+        <ion-button (click)="plus()" color="transparent" style="background: rgb(212, 212, 212); 
         color: maroon;
          border-top-right-radius: 7px;
          border-bottom-right-radius: 7px;">
@@ -271,7 +275,7 @@
       </div>
       <div class="quantity">
         <p>Quantity</p>
-        <ion-button (click)="minus(quantity)" color="transparent" style="background: rgb(212, 212, 212);
+        <ion-button (click)="minus()" color="transparent" style="background: rgb(212, 212, 212);
          color: maroon;
          border-top-left-radius: 7px;
          border-bottom-left-radius: 7px;">
@@ -280,7 +284,7 @@
         <ion-button color="transparent" style="background: rgb(212, 250, 255);">
           {{quantity}}
         </ion-button>
-        <ion-button (click)="plus(quantity)" color="transparent" style="background: rgb(212, 212, 212); 
+        <ion-button (click)="plus()" color="transparent" style="background: rgb(212, 212, 212); 
         color: maroon;
          border-top-right-radius: 7px;
          border-bottom-right-radius: 7px;">

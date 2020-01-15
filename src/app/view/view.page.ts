@@ -33,7 +33,7 @@ export class ViewPage implements OnInit {
   mySale = [];
   category: string = '';
   starRating = document.getElementsByClassName('ionic4-star-rating')
-  
+  boolCheck : boolean = false;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2) {
@@ -46,6 +46,7 @@ export class ViewPage implements OnInit {
   }
 
   ngOnInit() {
+   
     // console.log(this.doc_data);
     setTimeout(()=>{
       //console.log(this.starRating);
@@ -99,6 +100,9 @@ export class ViewPage implements OnInit {
 
     // }, 1000);
 
+  }
+  onBoolChenged(c,i) {
+    console.log('Boolean val ', c, 'index ', i);
   }
   getProduct() {
     this.dbProduct.doc(this.category).collection(this.col).doc(this.doc_id).onSnapshot((doc) => {

@@ -17,5 +17,6 @@ export const firebaseConfig = {
   storageBucket: "fir-crud-11c1f.appspot.com",
   messagingSenderId: "704929489176",
   appId: "1:704929489176:web:334d209d3679ed5d8a3e6d",
-  measurementId: "G-BYBG8HFL6W"
+  measurementId: "G-BYBG8HFL6W",
+  vapidKey: "BFHowuxjiDtFztqFIeWXG7LAj3zWBBknnNI3BfpMRf3otq5LgxydLaZBWzTgPgv0bXHegMsgxbACeA3fE6WsEUI"
 };

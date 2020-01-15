@@ -74,7 +74,7 @@
           </div>
           <div id="icon">
 
-            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)"></ion-icon>
+            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
@@ -83,7 +83,7 @@
 
     </div>
     <div class="cards" *ngIf="collectionName==='sales'">
-      <div class="card" *ngFor="let s of promo">
+      <div class="card" *ngFor="let s of promo; let i = index">
         <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
@@ -91,7 +91,7 @@
           </div>
           <div id="icon">
 
-            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info)"></ion-icon>
+            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info,i)"></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
@@ -185,7 +185,7 @@
           </div>
           <div id="icon">
 
-            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info)"></ion-icon>
+            <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info,i)"></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
@@ -194,7 +194,7 @@
 
     </div>
     <div class="cards" *ngIf="collectionName==='sales'">
-      <div class="card" *ngFor="let s of promo">
+      <div class="card" *ngFor="let s of promo;let i = index">
         <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
@@ -202,7 +202,7 @@
           </div>
           <div id="icon">
 
-            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info)"></ion-icon>
+            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info, i)"></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
