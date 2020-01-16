@@ -8,6 +8,7 @@
         <ion-icon slot="start" name="star"></ion-icon> Rate This Product
       </ion-button>
     </ion-buttons>
+    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -347,12 +348,7 @@
     </div>
 
     <div class="productinfo" *ngFor="let prod of mySale">
-      <div class="add">
-        <ion-fab-button color="transparent" (click)="toBusket()">
-          <ion-icon name="basket"></ion-icon>
-
-        </ion-fab-button>
-      </div>
+   
       <div class="about">
         <p><b>About Product</b></p>
         <p>{{prod.data.description}}</p>
@@ -413,6 +409,15 @@
       </div>
 
       <div class="buttonz">
+
+        <div class="add">
+          <ion-fab-button color="transparent" (click)="toBusket()" vertical="bottom" >
+            <ion-icon name="basket"></ion-icon>
+  
+          </ion-fab-button>
+        </div>
+
+        
         <ion-button (click)="addSaleToCart(prod.id, prod.data)" color="transparent">
           <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
             style="color: maroon; font-size: 30px; position: relative; bottom: 13px;"></ion-icon>

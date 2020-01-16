@@ -1,4 +1,20 @@
-<ion-header no-border>
+
+<ion-header no-border id="nav">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button id="icon" (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-header no-border id="mobile">
     <ion-toolbar>
         <ion-buttons slot="start">
           <ion-button (click)="goBack()">
@@ -9,7 +25,7 @@
       </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content fullscreen id="content">
     <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
         <div class="maploader">
             <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>

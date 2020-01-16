@@ -1,4 +1,46 @@
-<ion-header no-border>
+
+<ion-header no-border id="nav">
+
+  <ion-toolbar>
+
+    <ion-buttons slot="end">
+      <div class="icon1">
+        <ion-button id="icon" (click)="wishlist()">
+          Home
+        </ion-button>
+
+        <ion-button id="icon" (click)="wishlist()">
+          FAQs
+        </ion-button>
+
+        <ion-button id="icon" (click)="wishlist()">
+          About Us
+        </ion-button>
+
+        <ion-button id="icon" (click)="wishlist()">
+          Others
+        </ion-button>
+      </div>
+      <ion-button id="icon" (click)="wishlist()">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <p id="number">{{myWish}}</p>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button id="icon" (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-header no-border id="mobile">
 
   <ion-toolbar>
     <ion-buttons slot="end">

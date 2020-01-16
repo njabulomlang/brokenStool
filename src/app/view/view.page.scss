@@ -209,7 +209,7 @@ ion-toolbar {
         color: white;
       }
     }
-    
+
     .colorStyle {
       border: 2px solid rgb(146, 146, 146);
       color: rgb(99, 99, 99);
@@ -217,11 +217,11 @@ ion-toolbar {
     ion-toolbar {
       --background: transparent;
       position: absolute;
-    
+
       #icon {
         color: maroon;
       }
-    
+
       #rate {
         color: white;
         font-size: 0.7em;
@@ -235,12 +235,12 @@ ion-toolbar {
         }
       }
     }
-    
+
     .container {
       display: flex;
       flex-flow: column;
       align-items: center;
-    
+
       .image {
         position: relative;
         display: flex;
@@ -254,7 +254,7 @@ ion-toolbar {
           object-fit: cover;
           opacity: 0.8;
         }
-    
+
         .iteminfo {
           z-index: 5;
           position: absolute;
@@ -275,7 +275,7 @@ ion-toolbar {
               font-size: 6vw;
             }
           }
-    
+
           .price {
             p {
               font-size: 5vw;
@@ -283,7 +283,7 @@ ion-toolbar {
           }
         }
       }
-    
+
       .productinfo {
         display: flex;
         flex-flow: column;
@@ -293,11 +293,11 @@ ion-toolbar {
         z-index: 5;
         position: absolute;
         top: 50%;
-    
+
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;
         box-shadow: 5px 5px 10px rgb(184, 184, 184);
-    
+
         .add {
           position: absolute;
           right: -5px;
@@ -310,12 +310,12 @@ ion-toolbar {
             }
           }
         }
-    
+
         .about {
           margin: 5px;
           font-size: 0.7em;
         }
-    
+
         .sizes {
           margin: 5px;
           font-size: 0.7em;
@@ -328,7 +328,7 @@ ion-toolbar {
             border: 0.5px solid rgb(173, 173, 173);
           }
         }
-    
+
         .colours {
           // position: relative;
           // bottom: 20px;
@@ -341,14 +341,14 @@ ion-toolbar {
             font-size: 1em;
           }
         }
-    
+
         .quantity {
           // position: relative;
           // bottom: 40px;
           margin: 5px;
           font-size: 0.7em;
           align-items: baseline;
-    
+
           ion-button {
             font-size: 1em;
             width: 10vw;
@@ -358,21 +358,21 @@ ion-toolbar {
             border: 0.5px solid black;
           }
         }
-    
+
         .shipping {
           // position: relative;
           // bottom: 40px;
           margin: 5px;
           font-size: 0.7em;
         }
-    
+
         .delivery {
           position: relative;
           bottom: 40px;
           margin: 5px;
           font-size: 0.7em;
         }
-    
+
         .buttonz {
           width: 100%;
           text-align: right;
@@ -384,11 +384,11 @@ ion-toolbar {
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             font-family: "Raleway";
-    
+
             ion-icon {
               font-size: 1em;
               color: white;
-    
+
               #book {
                 color: maroon;
               }
@@ -408,22 +408,23 @@ ion-toolbar {
   }
 
   ion-toolbar {
-    --background: rgb(0, 4, 39);
-    height: 70px;
-    display: grid;
-    align-items: center;
-    z-index: 20000000000000000000000000;
+    --background: rgb(255, 255, 255);
+    width: 100%;
     #icon {
-      color: white;
+      color: rgb(131, 131, 131);
     }
     font-family: "Raleway";
     letter-spacing: 2px;
-    color: white;
+    color: rgb(131, 131, 131);
     #number {
       font-size: 0.8em;
       position: relative;
       top: 8px;
       right: 5px;
+    }
+
+    .icon1 {
+      margin: 0 20vw;
     }
   }
 
@@ -436,6 +437,17 @@ ion-toolbar {
     margin-top: 100px;
     box-shadow: 5px 5px 10px rgb(190, 190, 190);
     padding: 10px;
+
+    .image {
+      width: 40vw;
+      height: 45vh;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
     .buttonz {
       width: 100%;
@@ -460,16 +472,17 @@ ion-toolbar {
 
     .shipping {
       margin: 5px;
+      font-size: 15px;
     }
 
     .delivery {
       position: relative;
       bottom: 40px;
       margin: 5px;
+      font-size: 15px;
     }
 
     .add {
-   
       ion-fab-button {
         background: maroon;
         border-radius: 50%;
@@ -513,6 +526,10 @@ ion-toolbar {
         padding: 0 !important;
         border: 0.5px solid black;
       }
+    }
+
+    .productinfo {
+      margin: 20px;
     }
   }
 }
