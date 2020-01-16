@@ -19,7 +19,7 @@
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}" fontSize="7vw">
+            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}" >
           </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
@@ -222,7 +222,7 @@
 
 
 
-  <div class="web_view">
+  <div class="web_view" *ngIf="col!=='sales'">
     <div class="image" *ngFor="let prod of unitProduct">
       <img src="{{prod.data.pictureLink}}">
 
@@ -318,6 +318,105 @@
           <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
             style="color: maroon; position: relative; bottom: 13px;"></ion-icon>
           {{prod.data.price * quantity | currency:'R'  }}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="web_view" *ngIf="col==='sales'">
+    <div class="image" *ngFor="let prod of mySale">
+      <img src="{{prod.data.pictureLink}}">
+
+      <div class="iteminfo">
+        <div class="itemname">
+          <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
+            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}" >
+        </ionic4-star-rating>
+
+          <div class="appname" style="line-height: 20px; font-weight: normal;">
+            <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
+          </div>
+        </div>
+
+        <div class="price">
+          <p>{{prod.data.saleprice  | currency:'R' }}</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="productinfo" *ngFor="let prod of mySale">
+      <div class="add">
+        <ion-fab-button color="transparent" (click)="toBusket()">
+          <ion-icon name="basket"></ion-icon>
+
+        </ion-fab-button>
+      </div>
+      <div class="about">
+        <p><b>About Product</b></p>
+        <p>{{prod.data.description}}</p>
+      </div>
+      <div class="sizes">
+        <p>Available sizes</p>
+
+        <ion-button *ngFor="let size of prod.data.size;let i=index" (click)="sizeChosen(size, i)" color="transparent"
+          [ngClass]="{'sizeStyle':sizeIndex==i}">
+          {{size}}
+        </ion-button>
+
+      </div>
+      <div class="colours">
+        <p>Colours</p>
+        <ion-button *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;"
+          (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
+          <p style="color: rgb(146, 146, 146);">{{c}}</p>
+        </ion-button>
+        <!-- <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent" style="background: green; border-radius: 6px;">
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent" style="background: red; border-radius: 6px;">
+        </ion-button> -->
+      </div>
+      <div class="quantity">
+        <p>Quantity</p>
+        <ion-button (click)="minus(quantity)" color="transparent" style="background: rgb(212, 212, 212);
+         color: maroon;
+         border-top-left-radius: 7px;
+         border-bottom-left-radius: 7px;">
+          <ion-icon name="remove"></ion-icon>
+        </ion-button>
+        <ion-button color="transparent" style="background: rgb(212, 250, 255);">
+          {{quantity}}
+        </ion-button>
+        <ion-button (click)="plus(quantity)" color="transparent" style="background: rgb(212, 212, 212); 
+        color: maroon;
+         border-top-right-radius: 7px;
+         border-bottom-right-radius: 7px;">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="shipping">
+        <p><b>Shipping Information</b></p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown</p>
+      </div>
+      <br>
+      <div class="delivery">
+        <p><b>Delivery Information</b></p>
+        <p>Items are available for pick up at the following Address</p>
+        <p>123 Orlando East<br>
+          SOWETO<br>
+          1804
+        </p>
+      </div>
+
+      <div class="buttonz">
+        <ion-button (click)="addSaleToCart(prod.id, prod.data)" color="transparent">
+          <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
+            style="color: maroon; font-size: 30px; position: relative; bottom: 13px;"></ion-icon>
+          {{prod.data.saleprice * quantity | currency:'R'  }}
         </ion-button>
       </div>
     </div>

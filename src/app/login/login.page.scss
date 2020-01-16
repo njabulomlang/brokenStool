@@ -1,240 +1,394 @@
-@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
-
-ion-toolbar {
-  --background: transparent;
-  position: absolute;
-}
-
 .container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100%;
-  max-height: 100%;
-  width: 100%;
-  position: absolute;
-  background-image: url("https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  .logo {
-    position: absolute;
-    top: 20%;
-    img {
-      width: 40vw;
-      height: 30vw;
-    }
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, w hite, rgba(0, 0, 0, 0.363));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-
-  .desc {
-    margin: 10px;
-    p {
-      color: white;
-      text-align: center;
-      font-size: 0.8em;
-      font-family: "Poppins";
-    }
+  .inner-container {
+    width: 60%;
+    height: 70%;
+    transition: 300ms;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.281);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    min-height: 300px;
   }
-
-  .login {
-    position: absolute;
-    top: 62%;
+  .inner-container > div {
+    transition: 300ms;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #prompt {
+    color: grey;
+    font-style: italic;
+    font-size: 12px;
+  }
+  #password-forgotten {
+    color: blue;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .cont {
+    margin: 0 auto;
+    width: 95%;
+    // height: 95%;
+    background: white;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .logo-container-right {
     text-align: center;
     width: 100%;
-    ion-button {
-      width: 60vw;
-      border-radius: 30px;
-      background: white;
-      color: black;
-      font-size: 0.8em;
-      font-weight: lighter;
-      font-family: "Poppins";
-      ion-icon {
-        color: black;
-      }
-    }
+    //   border: 2px solid red;
+    display: none;
+    filter: invert(100%);
+  }
+  .logo-container-left {
+    text-align: center;
+    color:white;
+  }
+  #logo {
+    width: 100px;
+    transition: 300ms;
+  }
+  #logo-left {
+    width: 200px;
+  }
+  .inner-container > div:nth-child(1) {
+    background: url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
+    background-size: cover;
+  }
+  .inner-container > div:nth-child(2) {
+    background: white;
+  }
+  ion-button {
+    text-transform: capitalize;
+  }
 
-    ion-input {
-      color: white;
-      width: 60vw;
-      margin-left: 25vw;
+  .login{
+      display: flex;
+      flex-flow: column;
+      ion-button{
+          background: rgb(0, 0, 36);
+
+          margin: auto;
+          margin: 5px;
+      }
+
+      .emails{
+        ion-button{
+            background: rgb(0, 0, 36);
+            margin: auto;
+            margin: 5px;
+            width: 100%;
+        }
+      }
+  }
+  @media screen and (max-width: 1024px) {
+    #logo {
+      width: 200px;
+    }
+    .logo-container-right {
+      text-align: center;
+      display: block;
+    }
+    .inner-container {
+      width: 60%;
+      height: 70%;
+    }
+    .inner-container > div {
+      width: 100%;
+      height: 100%;
+    }
+    .inner-container > div:nth-child(1) {
+      display: none;
     }
   }
-}
-.loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  background: rgb(0, 27, 63);
-  background-repeat: repeat-x;
-  transform: scale(1);
-  overflow: hidden;
-  transition: 0.4s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  animation: backgroundmover 30s linear infinite;
-  .maploader {
-    .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
+  @media screen and (max-width: 512px) {
+    #logo {
+      width: 150px;
     }
-    .lds-ellipsis div {
-      position: absolute;
-      top: 33px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #fff;
-      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    .inner-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
     }
-    .lds-ellipsis div:nth-child(1) {
-      left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
+    .inner-container > div {
+      width: 100%;
+      height: 100%;
     }
-    .lds-ellipsis div:nth-child(2) {
-      left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-      left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-      left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes lds-ellipsis3 {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0);
-      }
-    }
-    @keyframes lds-ellipsis2 {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(24px, 0);
-      }
+    .inner-container > div:nth-child(1) {
+      display: none;
     }
   }
-}
-.loading-text {
-  // color: yellow;
-  position: absolute;
-  bottom: 50vh;
-  left: 0px;
-  width: 100vw;
-  text-align: center;
-  // background: red;
-  height: 50vh;
-  //z-index: 90;
-  margin: auto;
-}
-.loader-hide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 20;
-  background: rgb(255, 255, 255);
-  transform: scale(0);
-  overflow: hidden;
-  transition: 0.4s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  .maploader {
-    .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
-    }
-    .lds-ellipsis div {
-      position: absolute;
-      top: 33px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #fff;
-      animation-timing-function: cubic-bezier(0, 1, 1, 0);
-    }
-    .lds-ellipsis div:nth-child(1) {
-      left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(2) {
-      left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-      left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-      left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes lds-ellipsis3 {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0);
-      }
-    }
-    @keyframes lds-ellipsis2 {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(24px, 0);
-      }
+  @media screen and (max-height: 435px) {
+    .inner-container {
+      height: 100%;
+      overflow: scroll;
     }
   }
-}
-@keyframes maploader {
-  0% {
-    // transform: rotate(0deg);
-    border-color: rgb(182, 70, 95);
-    // background: rgb(255, 192, 192);
-  }
-  50% {
-    // background: rgb(206, 206, 255);
-    // transform: rotate(360deg);
-    border-color: rgb(42, 50, 75);
-  }
-  100% {
-    border-color: rgb(250, 182, 43);
-    // background: rgb(255, 167, 167);
-    // transform: rotate(360deg);
-  }
-}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+
+// ion-toolbar {
+//   --background: transparent;
+//   position: absolute;
+// }
+
+// .container {
+//   display: flex;
+//   flex-flow: column;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100%;
+//   max-height: 100%;
+//   width: 100%;
+//   position: absolute;
+//   background-image: url("https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+
+//   .logo {
+//     position: absolute;
+//     top: 20%;
+//     img {
+//       width: 40vw;
+//       height: 30vw;
+//     }
+//   }
+
+//   .desc {
+//     margin: 10px;
+//     p {
+//       color: white;
+//       text-align: center;
+//       font-size: 0.8em;
+//       font-family: "Poppins";
+//     }
+//   }
+
+//   .login {
+//     position: absolute;
+//     top: 62%;
+//     text-align: center;
+//     width: 100%;
+//     ion-button {
+//       width: 60vw;
+//       border-radius: 30px;
+//       background: white;
+//       color: black;
+//       font-size: 0.8em;
+//       font-weight: lighter;
+//       font-family: "Poppins";
+//       ion-icon {
+//         color: black;
+//       }
+//     }
+
+//     ion-input {
+//       color: white;
+//       width: 60vw;
+//       margin-left: 25vw;
+//     }
+//   }
+// }
+// .loader {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   z-index: 1000;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   align-content: center;
+//   background: rgb(0, 27, 63);
+//   background-repeat: repeat-x;
+//   transform: scale(1);
+//   overflow: hidden;
+//   transition: 0.4s;
+//   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+//   animation: backgroundmover 30s linear infinite;
+//   .maploader {
+//     .lds-ellipsis {
+//       display: inline-block;
+//       position: relative;
+//       width: 80px;
+//       height: 80px;
+//     }
+//     .lds-ellipsis div {
+//       position: absolute;
+//       top: 33px;
+//       width: 13px;
+//       height: 13px;
+//       border-radius: 50%;
+//       background: #fff;
+//       animation-timing-function: cubic-bezier(0, 1, 1, 0);
+//     }
+//     .lds-ellipsis div:nth-child(1) {
+//       left: 8px;
+//       animation: lds-ellipsis1 0.6s infinite;
+//     }
+//     .lds-ellipsis div:nth-child(2) {
+//       left: 8px;
+//       animation: lds-ellipsis2 0.6s infinite;
+//     }
+//     .lds-ellipsis div:nth-child(3) {
+//       left: 32px;
+//       animation: lds-ellipsis2 0.6s infinite;
+//     }
+//     .lds-ellipsis div:nth-child(4) {
+//       left: 56px;
+//       animation: lds-ellipsis3 0.6s infinite;
+//     }
+//     @keyframes lds-ellipsis1 {
+//       0% {
+//         transform: scale(0);
+//       }
+//       100% {
+//         transform: scale(1);
+//       }
+//     }
+//     @keyframes lds-ellipsis3 {
+//       0% {
+//         transform: scale(1);
+//       }
+//       100% {
+//         transform: scale(0);
+//       }
+//     }
+//     @keyframes lds-ellipsis2 {
+//       0% {
+//         transform: translate(0, 0);
+//       }
+//       100% {
+//         transform: translate(24px, 0);
+//       }
+//     }
+//   }
+// }
+// .loading-text {
+//   // color: yellow;
+//   position: absolute;
+//   bottom: 50vh;
+//   left: 0px;
+//   width: 100vw;
+//   text-align: center;
+//   // background: red;
+//   height: 50vh;
+//   //z-index: 90;
+//   margin: auto;
+// }
+// .loader-hide {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   z-index: 20;
+//   background: rgb(255, 255, 255);
+//   transform: scale(0);
+//   overflow: hidden;
+//   transition: 0.4s;
+//   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+//   .maploader {
+//     .lds-ellipsis {
+//       display: inline-block;
+//       position: relative;
+//       width: 80px;
+//       height: 80px;
+//     }
+//     .lds-ellipsis div {
+//       position: absolute;
+//       top: 33px;
+//       width: 13px;
+//       height: 13px;
+//       border-radius: 50%;
+//       background: #fff;
+//       animation-timing-function: cubic-bezier(0, 1, 1, 0);
+//     }
+//     .lds-ellipsis div:nth-child(1) {
+//       left: 8px;
+//       animation: lds-ellipsis1 0.6s infinite;
+//     }
+//     .lds-ellipsis div:nth-child(2) {
+//       left: 8px;
+//       animation: lds-ellipsis2 0.6s infinite;
+//     }
+//     .lds-ellipsis div:nth-child(3) {
+//       left: 32px;
+//       animation: lds-ellipsis2 0.6s infinite;
+//     }
+//     .lds-ellipsis div:nth-child(4) {
+//       left: 56px;
+//       animation: lds-ellipsis3 0.6s infinite;
+//     }
+//     @keyframes lds-ellipsis1 {
+//       0% {
+//         transform: scale(0);
+//       }
+//       100% {
+//         transform: scale(1);
+//       }
+//     }
+//     @keyframes lds-ellipsis3 {
+//       0% {
+//         transform: scale(1);
+//       }
+//       100% {
+//         transform: scale(0);
+//       }
+//     }
+//     @keyframes lds-ellipsis2 {
+//       0% {
+//         transform: translate(0, 0);
+//       }
+//       100% {
+//         transform: translate(24px, 0);
+//       }
+//     }
+//   }
+// }
+// @keyframes maploader {
+//   0% {
+//     // transform: rotate(0deg);
+//     border-color: rgb(182, 70, 95);
+//     // background: rgb(255, 192, 192);
+//   }
+//   50% {
+//     // background: rgb(206, 206, 255);
+//     // transform: rotate(360deg);
+//     border-color: rgb(42, 50, 75);
+//   }
+//   100% {
+//     border-color: rgb(250, 182, 43);
+//     // background: rgb(255, 167, 167);
+//     // transform: rotate(360deg);
+//   }
+// }

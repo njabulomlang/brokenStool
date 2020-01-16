@@ -1,4 +1,58 @@
-<ion-header no-border>
+<ion-content>
+  <div class="container">
+    <div class="inner-container">
+      <div id="left">
+        <div class="logo-container-left">
+          <img src="../../assets/NoPath - Copy.svg" id="logo-left" alt="">
+          <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo porro laborum illo suscipit aperiam culpa molestiae aliquam laboriosam eveniet!
+        </div>
+      </div>
+      <div id="right">
+        <div class="cont">
+          <div class="logo-container-right">
+            <img src="../../assets/NoPath - Copy.svg" id="logo" alt="">
+            <br>
+          </div>
+         <div class="login">
+          <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" maxLength="9">+27</ion-input>
+          <ion-button  id="sign-in-button" color="transparent" (click)="addUser()"> <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone</ion-button>
+          <ion-button  id="sign-in-button" color="transparent" (click)="googleLogin()" > <ion-icon slot="end" name="logo-google"></ion-icon> Sign-in with Google</ion-button>
+          <ion-button  id="sign-in-button" color="transparent" (click)="loginwithemail()" ><ion-icon slot="end" name="mail"></ion-icon>Sign-in with Email</ion-button>
+          <div class="emails" *ngIf="log">
+            <form>
+            <ion-item lines="null">
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <ion-button color="transparent"> Sign-In</ion-button>
+          
+          </form>
+          </div>
+            </div>
+
+            <div id="recaptcha-container"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header no-border>
   <ion-toolbar>
   </ion-toolbar>
 </ion-header>
@@ -8,9 +62,7 @@
         <div class="maploader">
             <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
         </div>
-       <!--  <div class="loading-text">
-          <p>Loading Map</p>
-        </div> -->
+    
       </div>
   <div class="container" slot= "fixed">
     <div class="logo">
@@ -24,17 +76,16 @@
     </div>
     <div class="login">
       <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" maxLength="9">+27</ion-input>
-      <!-- <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input> -->
+
     
       <ion-button  id="sign-in-button" color="transparent" (click)="addUser()"> <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone</ion-button>
       <ion-button  id="sign-in-button" color="transparent" (click)="googleLogin()" > <ion-icon slot="end" name="logo-google"></ion-icon> Sign-in with Google</ion-button>
-      <ion-button  id="sign-in-button" color="transparent" ><ion-icon slot="end" name="logo-facebook"></ion-icon>Sign-in with Email</ion-button>
-      <!-- <ion-button expand="full" id="sign-in-button" (click)="twitter()" >Twitter</ion-button> -->
-      <!-- <ion-button expand="full" id="sign-in-button" (click)="Github()" >Github</ion-button> -->
+      <ion-button  id="sign-in-button" color="transparent" (click)="Facebook()" ><ion-icon slot="end" name="logo-facebook"></ion-icon>Sign-in with Email</ion-button>
+     
     </div>
     <div id="recaptcha-container"></div>
   </div>
 
 
 
-</ion-content>
+</ion-content> -->

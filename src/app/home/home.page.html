@@ -6,7 +6,7 @@
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <ion-icon slot="icon-only" name="heart" ></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
@@ -28,7 +28,7 @@
 
 
 <ion-content fullscreen>
-  <p style="margin: 10px ; font-family: 'Raleway'">Welcome <i>{{name}} {{surname}}</i></p>
+  <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
 
   <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
     <div class="maploader">
@@ -52,7 +52,16 @@
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
-      <div class="saleitems">
+      <div class="saleitems" *ngIf="sales.length >= 1">
+
+        <div class="image">
+          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
+
+
+          <div class="itemname">
+            <p>SALES AND PROMOTIONS</p>
+          </div>
+        </div>
 
         <div class="image" *ngFor="let s of sales">
           <img src="{{s.data.pictureLink}}" (click)="viewitem(s.id,s.data)">
@@ -67,16 +76,9 @@
 
       </div>
 
-      <div class="saleitems" id="defSale" *ngIf="sales.length === 0">
+      <div class="saleitems" id="defSale" *ngIf="sales.length >= 1">
 
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
-
-
-          <div class="itemname">
-            <p>SALES AND PROMOTIONS</p>
-          </div>
-        </div>
+       
 
       </div>
 
@@ -166,6 +168,15 @@
 
       <div class="saleitems">
 
+        <div class="image"  *ngIf="sales.length >= 1"> 
+          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
+
+
+          <div class="itemname">
+            <p>SALES AND PROMOTIONS</p>
+          </div>
+        </div>
+
         <div class="image" *ngFor="let s of sales">
           <img src="{{s.data.pictureLink}}" (click)="viewitem(s.id,s.data)">
 
@@ -176,7 +187,8 @@
             <p>{{s.data.name}}<br> <span>by {{s.data.brand}}</span></p>
           </div>
         </div>
-
+      
+<!-- 
         <div class="image">
           <img src="https://i.pinimg.com/originals/d9/90/b9/d990b9193c2dbb2b602d4a1b60d50e39.jpg">
 
@@ -197,23 +209,9 @@
           <div class="itemname">
             <p>Clothes</p>
           </div>
-        </div>
+        </div> -->
 
       </div>
-
-      <div class="saleitems" id="defSale" *ngIf="sales.length === 0">
-
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
-
-
-          <div class="itemname">
-            <p>SALES AND PROMOTIONS</p>
-          </div>
-        </div>
-
-      </div>
-
 
     </div>
 

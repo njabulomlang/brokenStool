@@ -89,7 +89,7 @@ ion-toolbar {
   .cards {
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
+    width: 100%;
     overflow-y: auto;
     // border: 1px solid red;
     justify-content: space-evenly;
@@ -129,6 +129,39 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  ion-toolbar {
+    --background: rgb(0, 4, 39);
+    height: 70px;
+    display: grid;
+    align-items: center;
+    z-index: 20000000000000000000000000;
+    #icon {
+      color: white;
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: white;
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+  }
+
+  // .pagename{
+  //   background: rgb(54, 0, 0);
+  //   width: 60vw;
+  //   color: rgb(221, 221, 221);
+  //   height: 62px;
+  //   display: grid;
+  //   align-items: center;
+  //   margin: 5px;
+  //   h1{
+  //     margin: 5px;
+  //   }
+  // }
+
   .web_view {
     min-width: 800px;
     max-width: 1200px;
@@ -143,27 +176,27 @@ ion-toolbar {
     }
 
     .card:nth-child(1) {
-      width:23vw;
+      width:31.5%;
       height: 40vh;
     }
     
     .card:nth-child(2) {
-      width: 23vw;
+      width: 31.5%;
       height: 40vh;
     }
     
     .card:nth-child(3) {
-      width: 23vw;
+      width: 31.5%;
       height: 40vh;
    
     }
     
     .card:nth-child(4) {
-      width: 26vw;
+      width: 30%;
       height: 42vh;
     }
     .card:nth-child(5) {
-      width: 43.5vw;
+      width: 65.5%;
       height: 42vh;
     }
     

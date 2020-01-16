@@ -82,6 +82,7 @@
 
         <div class="right">
           <div class="heart">
+          
             <ion-icon slot="start" name="heart"></ion-icon>
           </div>
 
@@ -123,16 +124,16 @@
 
       </div>
       <div class="camera">
-        <ion-fab-button color="transparent" (click)="selectImage()">
+        <ion-fab-button color="transparent" (click)="selectImage()" size="small">
           <ion-icon name="camera"></ion-icon>
         </ion-fab-button>
       </div>
     </div>
 <div class="stuff">
-    <div class="btnz">
-      <ion-button (click)="showEdit()" color="transparent">
-        <span *ngIf="!editprofile">Account Details <ion-icon slot="end" name="add"></ion-icon></span>
-        <span *ngIf="editprofile">Account Details <ion-icon slot="end" name="remove" ></ion-icon></span>
+    <div class="btnz" (ionBlur)="check('open')" (ionFocus)="check('close')">
+      <ion-button (click)="showEdit()" color="transparent" >
+        <span *ngIf="!editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">Account Details <ion-icon slot="end" name="add" ></ion-icon></span>
+        <span *ngIf="editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">Account Details <ion-icon slot="end" name="remove" ></ion-icon></span>
       </ion-button>
 
       <div class="edit" *ngIf="editprofile">
@@ -165,14 +166,15 @@
     </div>
 
 
-    <div class="files">
+    <div class="files" >
       <div class="backdrop"></div>
-      <div class="wishlist" (click)="wishlist()">
+      <div class="wishlist" (click)="wishlist()" >
         <div class="backdrop"></div>
         <img src="https://i.pinimg.com/564x/d6/91/5b/d6915bda9b337db69c69cbd217c3b307.jpg">
 
         <div class="right">
           <div class="heart">
+            Wishlist
             <ion-icon slot="start" name="heart"></ion-icon>
           </div>
 
@@ -183,12 +185,13 @@
         </div>
       </div>
 
-      <div class="basket" (click)="basket()">
+      <div class="basket" (click)="basket()" >
         <div class="backdrop"></div>
         <img src="https://i.pinimg.com/564x/91/2b/7c/912b7c0f897888c8ae8d24dce149da34.jpg">
 
         <div class="right">
           <div class="heart">
+            Basket
             <ion-icon slot="start" name="basket"></ion-icon>
           </div>
 

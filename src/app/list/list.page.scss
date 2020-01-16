@@ -22,6 +22,7 @@ ion-toolbar {
   align-items: center;
   justify-content: space-evenly;
   top: 25vh;
+  // left: 30px;
   width: 95vw;
   margin: 10px;
   font-family: "Poppins";
@@ -528,6 +529,26 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  ion-toolbar {
+    --background: rgb(0, 4, 39);
+    height: 70px;
+    display: grid;
+    align-items: center;
+    z-index: 2000;
+    #icon {
+      color: white;
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: white;
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+  }
+
   .web_view {
     min-width: 800px;
     max-width: 1200px;
@@ -543,6 +564,12 @@ ion-toolbar {
         width: 100%;
         text-align: left;
       }
+
+      
+        ion-item{
+          background: maroon;
+        }
+     
 
       .itemcount {
         margin-top: -10px;
@@ -608,14 +635,16 @@ ion-toolbar {
         }
       }
     }
+
     #msg {
-      width: 80%;
+      width: 60%;
       display: flex;
       flex-flow: column;
       align-items: center;
       justify-content: space-evenly;
       font-family: "Poppins";
       box-shadow: none !important;
+     
       img {
         width: 20vw;
         height: 20vw;
@@ -625,6 +654,7 @@ ion-toolbar {
         font-size: 1.5vw;
       }
     }
+
   }
 
   .viewreviews {
@@ -702,8 +732,7 @@ ion-toolbar {
 
       .prices {
         cursor: pointer;
-        ion-item {
-        }
+     
       }
     }
 

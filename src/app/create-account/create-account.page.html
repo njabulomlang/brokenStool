@@ -1,10 +1,81 @@
+<ion-content>
+  <div class="container">
+    <div class="inner-container">
+      <div id="left">
+        <p>CREATE <br> ACCOUNT</p>
+        <img src="{{profilePic}}" style="overflow: hidden;">
+        <div class="logo-container-left">
+          <img src="../../assets/NoPath - Copy.svg" id="logo-left" alt="">
+          <br> <h1>CREATE ACCOUNT</h1>
+        </div>
+      </div>
+      <div id="right">
+        <div class="cont">
+          <div class="logo-container-right">
+            <img src="../../assets/NoPath - Copy.svg" id="logo" alt="">
+            <br>
+          </div>
+        
+          <div class="everything">
+            <div class="title">
+            
+            </div>
+            <div class="image" id="image" *ngIf="profilePic">
+              <img src="{{profilePic}}" style="overflow: hidden;" (click)="selectImage()">
+        
+            </div>
+            <div class="image" id="image" *ngIf="!profilePic">
+              <img src="../../assets/user-icon-image-placeholder-300-grey.jpg" style="overflow: hidden;" (click)="selectImage()">
+
+            </div>
+      
+            <div class="form">
+              <form [formGroup]="account">
+                <ion-item color="transparent">
+                  <ion-input placeholder="Name" formControlName="name" [(ngModel)]="name" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+      
+                <ion-item color="transparent">
+                  <ion-input placeholder="Surname" formControlName="surname" [(ngModel)]="surname" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+      
+                <ion-item color="transparent">
+                  <ion-input placeholder="Email" formControlName="email" [(ngModel)]="email" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+      
+                <ion-item color="transparent">
+                  <ion-input placeholder="Address" formControlName="address" [(ngModel)]="address" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+      
+                <br>
+                <ion-button (click)="createAccount()" [disabled]="!account.valid" color="transparent" >DONE
+                </ion-button>
+              </form>
+      
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
+
 <!-- <ion-header>
   <ion-toolbar>
     <ion-title>createAccount</ion-title>
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
+<!-- <ion-content>
 
   <div class="container" slot= "fixed">
     <div class="blur">
@@ -51,4 +122,4 @@
     </div>
   </div>
 
-</ion-content>
+</ion-content> -->

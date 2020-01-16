@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
   loaderMessages = 'Loading...';
   loaderAnimate: boolean;
   cred: any;
+  log = false
   userProfile = firebase.firestore().collection('userProfile');
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
     public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus,
@@ -184,6 +185,10 @@ export class LoginPage implements OnInit {
 
         // ...
       });
+  }
+
+  loginwithemail(){
+    this.log = !this.log
   }
 
 }
