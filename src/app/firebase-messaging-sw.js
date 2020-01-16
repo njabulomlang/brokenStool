@@ -1,13 +1,20 @@
-importScripts('https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/5.7.3/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/5.4.2/firebase-messaging.js');
 
 firebase.initializeApp({
-    'messagingSenderId': '704929489176'
+    'messagingSenderId': '743242408134'
 });
 
 const messaging = firebase.messaging();
-  
-messaging.setBackgroundMessageHandler(payload => {
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('../firebase-messaging-sw.js')
+  .then(function(registration) {
+    console.log('Registration successful, scope is:', registration.scope);
+  }).catch(function(err) {
+    console.log('Service worker registration failed, error:', err);
+  });
+}
+/* messaging.setBackgroundMessageHandler(payload => {
     console.log('Received background message ', payload);
     // here you can override some options describing what's in the message; 
     // however, the actual content will come from the Webtask
@@ -22,6 +29,6 @@ messaging.setBackgroundMessageHandler(payload => {
   messaging.onMessage(function(payload) {
     console.log('Message received. ', payload);
   })  
-
+ */
 
   

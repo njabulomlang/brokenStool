@@ -7,6 +7,7 @@ import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
 //import { FcmService } from '../fcm.service';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-home',
@@ -29,11 +30,12 @@ export class HomePage implements OnInit {
   sales = [];
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
-  constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController) {
+  constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
+    public notificationService: NotificationsService) {
   }
 
   ngOnInit() {
-   
+    this.notificationService.requestPermission();
     this.getProfile();
     this.getPromo();
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {

@@ -19,13 +19,17 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Downloader } from '@ionic-native/downloader/ngx';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
    
-     CartModalPageModule],
+     CartModalPageModule,
+   
+     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     ScreenOrientation,

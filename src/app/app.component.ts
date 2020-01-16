@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -14,47 +14,47 @@ import { NotificationsService } from './services/notifications.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   // dbUser = firebase.firestore().collection("userProfile");
   constructor(
     private platform: Platform,
     private screenOrientation: ScreenOrientation,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar, private router: Router, private notificationsService : NotificationsService
+    private statusBar: StatusBar, private router: Router, private notificationsService: NotificationsService
   ) {
     //this.initializeApp();
-    }
-    async ngOnInit() {
-      firebase.initializeApp(firebaseConfig);
-      await this.notificationsService.init();
+  }
+  async ngOnInit() {
+    firebase.initializeApp(firebaseConfig);
+    await this.notificationsService.init();
   }
   ngAfterViewInit() {
     this.platform.ready().then(async () => {
-       await this.notificationsService.requestPermission();
-       this.checkUser();
+      await this.notificationsService.requestPermission();
+      this.checkUser();
     });
-}
-   // console.log("UID ", firebase.auth().currentUser.uid)
-  
+  }
+  // console.log("UID ", firebase.auth().currentUser.uid)
+
   checkUser() {
     setTimeout(() => {
-       firebase.auth().onAuthStateChanged((res) => {
-      if (res) {
-        this.router.navigateByUrl('home')
-        // this.splashScreen.hide();
-       // console.log("User..", res.phoneNumber);
-      } else {
-        this.router.navigateByUrl('login')
-      }
-    })
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.router.navigateByUrl('home')
+          // this.splashScreen.hide();
+          // console.log("User..", res.phoneNumber);
+        } else {
+          this.router.navigateByUrl('login')
+        }
+      })
     }, 0);
-   
+
   }
-/*   initializeApp() {
-    this.platform.ready().then(() => { 
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-      this.statusBar.backgroundColorByHexString('#000324');
-      this.statusBar.styleLightContent();
-    });
-  } */
+  /*   initializeApp() {
+      this.platform.ready().then(() => { 
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.statusBar.backgroundColorByHexString('#000324');
+        this.statusBar.styleLightContent();
+      });
+    } */
 }
