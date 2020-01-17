@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase';
 import { firebaseConfig } from './firebaseConfig';
 import { Router } from '@angular/router';
-import { NotificationsService } from './services/notifications.service';
+//import { NotificationsService } from './services/notifications.service';
 //import { File, File } from '@ionic-native/file/ngx';
 
 @Component({
@@ -20,17 +20,20 @@ export class AppComponent {
     private platform: Platform,
     private screenOrientation: ScreenOrientation,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar, private router: Router, private notificationsService: NotificationsService
+    private statusBar: StatusBar, private router: Router, //private notificationsService: NotificationsService
   ) {
     //this.initializeApp();
   }
   async ngOnInit() {
     firebase.initializeApp(firebaseConfig);
-    await this.notificationsService.init();
+   // await this.notificationsService.init();
   }
   ngAfterViewInit() {
     this.platform.ready().then(async () => {
-      await this.notificationsService.requestPermission();
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.statusBar.backgroundColorByHexString('#000324');
+        this.statusBar.styleLightContent();
+     // await this.notificationsService.requestPermission();
       this.checkUser();
     });
   }
@@ -50,11 +53,11 @@ export class AppComponent {
     }, 0);
 
   }
-  /*   initializeApp() {
-      this.platform.ready().then(() => { 
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.statusBar.backgroundColorByHexString('#000324');
-        this.statusBar.styleLightContent();
-      });
-    } */
+  //  initializeApp() {
+  //     this.platform.ready().then(() => { 
+  //       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  //       this.statusBar.backgroundColorByHexString('#000324');
+  //       this.statusBar.styleLightContent();
+  //     });
+  //   } 
 }

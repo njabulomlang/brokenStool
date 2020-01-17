@@ -58,9 +58,7 @@
 
       </ion-button>
     </ion-buttons>
-    <ion-title id="nav">DankieJesu
-      Home
-      About Us
+    <ion-title>DankieJesu
     </ion-title>
 
 
@@ -97,9 +95,9 @@
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
-      <div class="saleitems" *ngIf="sales.length >= 1">
+      <div class="saleitems" >
 
-        <div class="image">
+        <div class="image" *ngIf="sales.length === 0">
           <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
 
 

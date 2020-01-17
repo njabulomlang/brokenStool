@@ -31,11 +31,12 @@ export class HomePage implements OnInit {
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    public notificationService: NotificationsService) {
+    //public notificationService: NotificationsService
+    ) {
   }
 
   ngOnInit() {
-    this.notificationService.requestPermission();
+   ///this.notificationService.requestPermission();
     this.getProfile();
     this.getPromo();
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
@@ -43,7 +44,7 @@ export class HomePage implements OnInit {
     })
     setTimeout(() => {
       this.splashScreen.hide();
-    }, 3000);
+    }, 4000);
   }
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
