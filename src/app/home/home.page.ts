@@ -146,6 +146,19 @@ export class HomePage implements OnInit {
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
+
+  listDankie(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Dankie Jesu',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
   viewitem(id, data) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -170,5 +183,8 @@ export class HomePage implements OnInit {
     };
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
+  ozowPayment() {
+    
   }
 }

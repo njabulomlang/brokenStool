@@ -6,7 +6,6 @@ import { IonSlides, AlertController, ToastController, Platform } from '@ionic/an
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { async } from '@angular/core/testing';
 //import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
-
 declare var window;
 @Component({
   selector: 'app-login',
