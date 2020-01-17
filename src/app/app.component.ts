@@ -20,17 +20,17 @@ export class AppComponent {
     private platform: Platform,
     private screenOrientation: ScreenOrientation,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar, private router: Router, private notificationsService: NotificationsService
+    private statusBar: StatusBar, private router: Router, //private notificationsService: NotificationsService
   ) {
     //this.initializeApp();
   }
   async ngOnInit() {
     firebase.initializeApp(firebaseConfig);
-    await this.notificationsService.init();
+    //await this.notificationsService.init();
   }
   ngAfterViewInit() {
     this.platform.ready().then(async () => {
-      await this.notificationsService.requestPermission();
+      // await this.notificationsService.requestPermission();
       this.checkUser();
     });
   }
