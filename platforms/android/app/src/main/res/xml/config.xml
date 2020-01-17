@@ -12,6 +12,15 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
@@ -51,6 +60,9 @@
         <param name="android-package" value="hr.integrator.cordova.plugins.downloader.Downloader" />
     </feature>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
     </feature>
@@ -60,8 +72,11 @@
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />
     </feature>
+<<<<<<< HEAD
 =======
 >>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
     <name>Broken</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -100,8 +115,9 @@
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
+    <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
+    <preference name="ScrollEnabled" value="false" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />

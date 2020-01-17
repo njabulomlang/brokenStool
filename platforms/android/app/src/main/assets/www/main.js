@@ -852,7 +852,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _firebaseConfig__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firebaseConfig */ "./src/app/firebaseConfig.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/notifications.service */ "./src/app/services/notifications.service.ts");
 
 
 
@@ -862,25 +861,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+//import { NotificationsService } from './services/notifications.service';
 //import { File, File } from '@ionic-native/file/ngx';
 var AppComponent = /** @class */ (function () {
     // dbUser = firebase.firestore().collection("userProfile");
-    function AppComponent(platform, screenOrientation, splashScreen, statusBar, router, notificationsService) {
+    function AppComponent(platform, screenOrientation, splashScreen, statusBar, router) {
         this.platform = platform;
         this.screenOrientation = screenOrientation;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         this.notificationsService = notificationsService;
 >>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
         //this.initializeApp();
     }
     AppComponent.prototype.ngOnInit = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
                 return [2 /*return*/];
@@ -894,6 +897,10 @@ var AppComponent = /** @class */ (function () {
                         return [2 /*return*/];
                 }
 >>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
+                firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
+                return [2 /*return*/];
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
             });
         });
     };
@@ -901,6 +908,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.platform.ready().then(function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 // await this.notificationsService.requestPermission();
                 this.checkUser();
@@ -914,6 +922,14 @@ var AppComponent = /** @class */ (function () {
                         return [2 /*return*/];
                 }
 >>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
+                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                this.statusBar.backgroundColorByHexString('#000324');
+                this.statusBar.styleLightContent();
+                // await this.notificationsService.requestPermission();
+                this.checkUser();
+                return [2 /*return*/];
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
             });
         }); });
     };
@@ -938,8 +954,7 @@ var AppComponent = /** @class */ (function () {
         { type: _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] },
-        { type: _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__["NotificationsService"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -950,7 +965,7 @@ var AppComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"], _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__["NotificationsService"]])
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -1532,120 +1547,6 @@ var AuthService = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], AuthService);
     return AuthService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/notifications.service.ts":
-/*!***************************************************!*\
-  !*** ./src/app/services/notifications.service.ts ***!
-  \***************************************************/
-/*! exports provided: NotificationsService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsService", function() { return NotificationsService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _firebaseConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../firebaseConfig */ "./src/app/firebaseConfig.ts");
-
-
-// import { fi } from 'firebase/app';
-// import '@firebase/messaging';
-
-
-var NotificationsService = /** @class */ (function () {
-    function NotificationsService() {
-    }
-    NotificationsService.prototype.init = function () {
-        return new Promise(function (resolve, reject) {
-            navigator.serviceWorker.ready.then(function (registration) {
-                // Don't crash an error if messaging not supported
-                if (!firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"].isSupported()) {
-                    resolve();
-                    return;
-                }
-                var messaging = firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"]();
-                // Register the Service Worker
-                messaging.useServiceWorker(registration);
-                // Initialize your VAPI key
-                messaging.usePublicVapidKey(_firebaseConfig__WEBPACK_IMPORTED_MODULE_3__["firebaseConfig"].vapidKey);
-                // Optional and not covered in the article
-                // Listen to messages when your app is in the foreground
-                messaging.onMessage(function (payload) {
-                    console.log(payload);
-                });
-                // Optional and not covered in the article
-                // Handle token refresh
-                messaging.onTokenRefresh(function () {
-                    messaging.getToken().then(function (refreshedToken) {
-                        console.log(refreshedToken);
-                    }).catch(function (err) {
-                        console.error(err);
-                    });
-                });
-                resolve();
-            }, function (err) {
-                reject(err);
-            });
-        });
-    };
-    NotificationsService.prototype.requestPermission = function () {
-        var _this = this;
-        console.log('hello 1');
-        return new Promise(function (resolve) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-            var messaging, token, err_1;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        console.log('hello 2');
-                        if (!Notification) {
-                            console.log('hello 3');
-                            resolve();
-                            return [2 /*return*/];
-                        }
-                        if (!firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"].isSupported()) {
-                            console.log('hello 4');
-                            resolve();
-                            return [2 /*return*/];
-                        }
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 4, , 5]);
-                        console.log('hello 5');
-                        messaging = firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"]();
-                        return [4 /*yield*/, messaging.requestPermission()];
-                    case 2:
-                        _a.sent();
-                        console.log('hello 6');
-                        return [4 /*yield*/, messaging.getToken()];
-                    case 3:
-                        token = _a.sent();
-                        console.log('User notifications token:', token);
-                        return [3 /*break*/, 5];
-                    case 4:
-                        err_1 = _a.sent();
-                        console.log('error 303 ', err_1.message);
-                        return [3 /*break*/, 5];
-                    case 5:
-                        resolve();
-                        return [2 /*return*/];
-                }
-            });
-        }); });
-    };
-    NotificationsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], NotificationsService);
-    return NotificationsService;
 }());
 
 

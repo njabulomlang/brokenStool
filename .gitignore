@@ -75,3 +75,4 @@ platforms/android/app/src/main/assets/www/vendor.js
 platforms/android/app/src/main/assets/www/vendor.js.map
 platforms/android/app/src/main/res/xml/config.xml
 platforms/android/cordova/node_modules/nopt/package.json
+*.js
