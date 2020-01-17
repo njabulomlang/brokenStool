@@ -55,7 +55,7 @@ ion-toolbar {
     .iteminfo {
       z-index: 5;
       position: absolute;
-      top: 53%;
+      top:37vh;
       left: 5vw;
       display: flex;
       flex-flow: row;
@@ -63,14 +63,15 @@ ion-toolbar {
       align-items: flex-end;
       justify-content: space-between;
       width: 70%;
-      margin: 10px;
+      margin: 5px;
+      padding: 5px;
       color: white;
       font-family: "Raleway";
       line-height: 10px;
       .stars {
-        ion-icon {
-          font-size: 6vw;
-        }
+        // ion-icon {
+        //   font-size: 6vw;
+        // }
       }
 
       .price {
@@ -207,6 +208,22 @@ ion-toolbar {
       color: white;
       ion-button {
         color: white;
+      }
+
+      .container{
+        .productinfo{
+          .sizes {
+            margin: 5px;
+      
+            ion-button {
+        
+              color: black;
+              margin: 0 !important;
+              padding: 0 !important;
+              border: 0.5px solid rgb(173, 173, 173);
+            }
+          }
+        }
       }
     }
 
