@@ -8,6 +8,8 @@ ion-toolbar {
   }
 }
 
+
+
 .container {
   display: flex;
   flex-flow: column;
@@ -420,6 +422,12 @@ ion-toolbar {
     width: 0%;
     height: 0%;
   }
+
+  #nav{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
 }
 
 @media only screen and (min-width: 1330px) {
@@ -429,23 +437,29 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #mobile{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
   ion-toolbar {
-    --background: rgb(0, 4, 39);
-    height: 70px;
-    display: grid;
-    align-items: center;
-    z-index: 20000000000000000000000000;
+    --background: rgb(255, 255, 255);
+    width: 100%;
     #icon {
-      color: white;
+      color: rgb(131, 131, 131);
     }
     font-family: "Raleway";
     letter-spacing: 2px;
-    color: white;
+    color: rgb(131, 131, 131);
     #number {
       font-size: 0.8em;
       position: relative;
       top: 8px;
       right: 5px;
+    }
+    .icon1 {
+      margin: 0 20vw;
     }
   }
 

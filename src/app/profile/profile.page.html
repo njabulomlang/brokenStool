@@ -1,4 +1,24 @@
-<ion-header no-border>
+<ion-header no-border id="nav">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button id="icon" (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" (click)="logout()">
+      <ion-icon slot="start" name="exit" id="icon"></ion-icon>
+    </ion-buttons>
+
+    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-header no-border id="mobile">
   <ion-toolbar>
     <ion-buttons slot="start" (click)="goBack()">
       <ion-icon slot="start" name="arrow-back" id="icon"></ion-icon>

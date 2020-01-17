@@ -61,7 +61,7 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('profile');
   }
   getPromo() {
-    this.dbSales.onSnapshot((res) => {
+    this.dbSales.limit(4).onSnapshot((res) => {
       this.sales = [];
       setTimeout(() => {
         this.loaderAnimate = false

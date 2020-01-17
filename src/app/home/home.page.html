@@ -1,4 +1,46 @@
-<ion-header no-border>
+<ion-header no-border id="nav">
+
+  <ion-toolbar>
+
+    <ion-buttons slot="end">
+      <div class="icon1">
+        <ion-button id="icon" (click)="wishlist()">
+          Home
+        </ion-button>
+
+        <ion-button id="icon" (click)="wishlist()">
+          FAQs
+        </ion-button>
+
+        <ion-button id="icon" (click)="wishlist()">
+          About Us
+        </ion-button>
+
+        <ion-button id="icon" (click)="wishlist()">
+          Others
+        </ion-button>
+      </div>
+
+      <ion-button (click)="profile()" id="icon">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+
+      </ion-button>
+
+      <ion-button id="icon" (click)="search('Dankie Jesu')">
+        <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
+      </ion-button>
+      <ion-button id="icon" (click)="wishlist()">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <p id="number">{{myWish}}</p>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-header no-border id="mobile">
 
   <ion-toolbar>
     <ion-buttons slot="end">
@@ -6,7 +48,7 @@
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
       <ion-button id="icon" (click)="wishlist()">
-        <ion-icon slot="icon-only" name="heart" ></ion-icon>
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
@@ -16,18 +58,24 @@
 
       </ion-button>
     </ion-buttons>
-    <ion-title>DankieJesu</ion-title>
-  </ion-toolbar>
-  <!-- <ion-toolbar color="primary">
-    <ion-button (click)="logout()" slot="end">Logout</ion-button>
-    <ion-title>
-      Broken Stool
+    <ion-title id="nav">DankieJesu
+      Home
+      About Us
     </ion-title>
-  </ion-toolbar> -->
+
+
+  </ion-toolbar>
+
+
 </ion-header>
 
 
+
 <ion-content fullscreen>
+
+  <div id="background">
+    <h1>Dankie Jesu <br> <span><i>and Kwanga Apparel</i></span></h1>
+  </div>
   <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
 
   <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
@@ -40,9 +88,6 @@
       </div>
       <p style="color:white; text-align: center;">{{loaderMessages}}</p>
     </div>
-    <!--  <div class="loading-text">
-          <p>Loading Map</p>
-        </div> -->
   </div>
 
   <div class="container" no-padding>
@@ -78,7 +123,7 @@
 
       <div class="saleitems" id="defSale" *ngIf="sales.length >= 1">
 
-       
+
 
       </div>
 
@@ -160,15 +205,26 @@
   </div>
 
   <div class="web_view">
+
     <div class="sales">
       <ion-item (click)="goList('sales')">
-        <label>Sales & Specials</label>
+        <!-- <label>Sales & Specials</label> -->
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
       <div class="saleitems">
 
-        <div class="image"  *ngIf="sales.length >= 1"> 
+        <div class="image1">
+          <div class="message">
+            <h4>SALES AND <br> SPECIALS --</h4><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam,</p><br>
+            <p class="p">By <i>Dankie Jesu & Kwanga Apparel</i></p>
+          </div>
+        </div>
+
+        <div class="image" *ngIf="sales.length <= 1">
           <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
 
 
@@ -181,35 +237,14 @@
           <img src="{{s.data.pictureLink}}" (click)="viewitem(s.id,s.data)">
 
           <div class="percentage">
-            <p>{{s.data.discount}}% OFF</p>
+            <p>{{s.data.discount}}% OFF <br></p>
           </div>
           <div class="itemname">
             <p>{{s.data.name}}<br> <span>by {{s.data.brand}}</span></p>
           </div>
         </div>
-      
-<!-- 
-        <div class="image">
-          <img src="https://i.pinimg.com/originals/d9/90/b9/d990b9193c2dbb2b602d4a1b60d50e39.jpg">
 
-          <div class="percentage">
-            <p>30% OFF</p>
-          </div>
-          <div class="itemname">
-            <p>Clothes</p>
-          </div>
-        </div>
 
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/b5/55/c6/b555c6917495f7e1d0a74b993bfdb77e.jpg">
-
-          <div class="percentage">
-            <p>30% OFF</p>
-          </div>
-          <div class="itemname">
-            <p>Clothes</p>
-          </div>
-        </div> -->
 
       </div>
 
@@ -218,7 +253,7 @@
     <div class="buttonz">
       <div class="summer_gear">
         <ion-item (click)="categories('summer')">
-          <label>Summer Gear</label>
+          <!-- <label>Summer Gear</label> -->
           <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
         </ion-item>
 
@@ -262,16 +297,41 @@
               <p>Shorts</p>
             </div>
           </div>
+
+          <div class="image1">
+            <div class="message">
+              <h4> -- SUMMER GEAR</h4><br>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam,</p><br>
+              <p class="p">By <i>Dankie Jesu</i></p>
+            </div>
+          </div>
         </div>
+        <br>
       </div>
 
       <div class="winter_gear">
         <ion-item (click)="categories('winter')">
-          <label>Winter Gear</label>
-          <label slot="end" (click)="categories('summer')">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+
+          <label slot="end" (click)="categories('summer')">All <ion-icon slot="start" name="arrow-forward"></ion-icon>
+          </label>
         </ion-item>
 
+
+
         <div class="all_winter">
+
+          <div class="image1">
+            <div class="message">
+              <h4> -- WINTER GEAR</h4><br>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam,</p><br>
+              <p class="p">By <i>Dankie Jesu</i></p>
+            </div>
+          </div>
+
           <div class="image">
             <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg" (click)="listDankie('Hoodies')">
 
@@ -385,8 +445,7 @@
     </div>
   </div>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small">
-    <!-- <a href="https://pay.ozow.com&CountryCode=ZA"> <ion-icon name="basket" class="cart-icon"></ion-icon></a> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px;">
     <ion-fab-button (click)="busket()" #cart color="transparent">
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
