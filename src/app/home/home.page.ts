@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
     })
     setTimeout(() => {
       this.splashScreen.hide();
-    }, 3000);
+    }, 4000);
   }
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
