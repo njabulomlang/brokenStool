@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content fullscreen>\r\n\r\n  <div class=\"ion-text-end\">\r\n    <ion-button (click)=\"close()\" fill=\"clear\" color=\"dark\">\r\n      <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n    </ion-button>\r\n  </div>\r\n\r\n  <!-- <div class=\"ion-padding\">\r\n\r\n    <ion-list>\r\n      <ion-item *ngFor=\"let p of cart\" class=\"ion-text-wrap\">\r\n        <ion-grid>\r\n          <ion-row class=\"ion-align-items-center\">\r\n            <ion-col size=\"2\" class=\"ion-align-self-center\">\r\n              <ion-button color=\"medium\" fill=\"clear\" (click)=\"decreaseCartItem(p)\">\r\n                <ion-icon name=\"remove-circle\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-col>\r\n\r\n            <ion-col size=\"1\" class=\"ion-align-self-center\">\r\n              {{ p.amount }}\r\n            </ion-col>\r\n\r\n            <ion-col size=\"2\" class=\"ion-align-self-center\">\r\n              <ion-button color=\"medium\" fill=\"clear\" (click)=\"increaseCartItem(p)\">\r\n                <ion-icon name=\"add-circle\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-col>\r\n\r\n            <ion-col size=\"2\" offset=\"5\">\r\n              <ion-button color=\"medium\" fill=\"clear\" (click)=\"removeCartItem(p)\">\r\n                <ion-icon name=\"close-circle\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-col>\r\n          </ion-row>\r\n          <ion-row>\r\n            <ion-col size=\"9\">\r\n              <b>{{ p.name }}</b>\r\n            </ion-col>\r\n            <ion-col size=\"3\" class=\"ion-text-end\">\r\n              {{ p.amount * p.price | currency:'R' }}\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-grid>\r\n          <ion-row>\r\n            <ion-col size=\"9\">\r\n              Total:\r\n            </ion-col>\r\n            <ion-col size=\"3\" class=\"ion-text-end\">\r\n              {{ getTotal() | currency:'R' }}\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-item>\r\n    </ion-list>\r\n\r\n    <ion-button expand=\"full\" (click)=\"checkout()\">\r\n      Place Order\r\n    </ion-button>\r\n  </div> -->\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content fullscreen>\r\n\r\n  <div class=\"ion-text-end\">\r\n    <ion-button fill=\"clear\" color=\"dark\">\r\n      <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n    </ion-button>\r\n  </div>\r\n\r\n  <!-- <div class=\"ion-padding\">\r\n\r\n    <ion-list>\r\n      <ion-item *ngFor=\"let p of cart\" class=\"ion-text-wrap\">\r\n        <ion-grid>\r\n          <ion-row class=\"ion-align-items-center\">\r\n            <ion-col size=\"2\" class=\"ion-align-self-center\">\r\n              <ion-button color=\"medium\" fill=\"clear\" (click)=\"decreaseCartItem(p)\">\r\n                <ion-icon name=\"remove-circle\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-col>\r\n\r\n            <ion-col size=\"1\" class=\"ion-align-self-center\">\r\n              {{ p.amount }}\r\n            </ion-col>\r\n\r\n            <ion-col size=\"2\" class=\"ion-align-self-center\">\r\n              <ion-button color=\"medium\" fill=\"clear\" (click)=\"increaseCartItem(p)\">\r\n                <ion-icon name=\"add-circle\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-col>\r\n\r\n            <ion-col size=\"2\" offset=\"5\">\r\n              <ion-button color=\"medium\" fill=\"clear\" (click)=\"removeCartItem(p)\">\r\n                <ion-icon name=\"close-circle\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-col>\r\n          </ion-row>\r\n          <ion-row>\r\n            <ion-col size=\"9\">\r\n              <b>{{ p.name }}</b>\r\n            </ion-col>\r\n            <ion-col size=\"3\" class=\"ion-text-end\">\r\n              {{ p.amount * p.price | currency:'R' }}\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-grid>\r\n          <ion-row>\r\n            <ion-col size=\"9\">\r\n              Total:\r\n            </ion-col>\r\n            <ion-col size=\"3\" class=\"ion-text-end\">\r\n              {{ getTotal() | currency:'R' }}\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-item>\r\n    </ion-list>\r\n\r\n    <ion-button expand=\"full\" (click)=\"checkout()\">\r\n      Place Order\r\n    </ion-button>\r\n  </div> -->\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -852,6 +852,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _firebaseConfig__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firebaseConfig */ "./src/app/firebaseConfig.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/notifications.service */ "./src/app/services/notifications.service.ts");
+
 
 
 
@@ -864,45 +866,66 @@ __webpack_require__.r(__webpack_exports__);
 //import { File, File } from '@ionic-native/file/ngx';
 var AppComponent = /** @class */ (function () {
     // dbUser = firebase.firestore().collection("userProfile");
-    function AppComponent(platform, screenOrientation, splashScreen, statusBar, router) {
+    function AppComponent(platform, screenOrientation, splashScreen, statusBar, router, notificationsService) {
         this.platform = platform;
         this.screenOrientation = screenOrientation;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
-        this.initializeApp();
-        firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
-        this.checkUser();
-        // console.log("UID ", firebase.auth().currentUser.uid)
+        this.notificationsService = notificationsService;
+        //this.initializeApp();
     }
-    AppComponent.prototype.checkUser = function () {
-        var _this = this;
-        //firebase.auth().settings.appVerificationDisabledForTesting = true;
-        firebase__WEBPACK_IMPORTED_MODULE_6__["auth"]().onAuthStateChanged(function (res) {
-            if (res) {
-                _this.router.navigateByUrl('home');
-                // this.splashScreen.hide();
-                // console.log("User..", res.phoneNumber);
-            }
-            else {
-                _this.router.navigateByUrl('login');
-            }
+    AppComponent.prototype.ngOnInit = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
+                        return [4 /*yield*/, this.notificationsService.init()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
-    AppComponent.prototype.initializeApp = function () {
+    AppComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.platform.ready().then(function () {
-            _this.screenOrientation.lock(_this.screenOrientation.ORIENTATIONS.PORTRAIT);
-            _this.statusBar.backgroundColorByHexString('#000324');
-            _this.statusBar.styleLightContent();
-        });
+        this.platform.ready().then(function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.notificationsService.requestPermission()];
+                    case 1:
+                        _a.sent();
+                        this.checkUser();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    // console.log("UID ", firebase.auth().currentUser.uid)
+    AppComponent.prototype.checkUser = function () {
+        var _this = this;
+        setTimeout(function () {
+            firebase__WEBPACK_IMPORTED_MODULE_6__["auth"]().onAuthStateChanged(function (res) {
+                if (res) {
+                    _this.router.navigateByUrl('home');
+                    // this.splashScreen.hide();
+                    // console.log("User..", res.phoneNumber);
+                }
+                else {
+                    _this.router.navigateByUrl('login');
+                }
+            });
+        }, 0);
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
         { type: _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] },
+        { type: _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__["NotificationsService"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -913,7 +936,7 @@ var AppComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]])
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"], _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__["NotificationsService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -951,6 +974,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_downloader_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/downloader/ngx */ "./node_modules/@ionic-native/downloader/ngx/index.js");
 /* harmony import */ var ionic_selectable__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ionic-selectable */ "./node_modules/ionic-selectable/esm5/ionic-selectable.min.js");
 /* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/fesm5/service-worker.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
+
 
 
 
@@ -978,7 +1005,8 @@ var AppModule = /** @class */ (function () {
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
             entryComponents: [],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], ionic_selectable__WEBPACK_IMPORTED_MODULE_17__["IonicSelectableModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
-                _cart_modal_cart_modal_module__WEBPACK_IMPORTED_MODULE_12__["CartModalPageModule"]],
+                _cart_modal_cart_modal_module__WEBPACK_IMPORTED_MODULE_12__["CartModalPageModule"],
+                _angular_service_worker__WEBPACK_IMPORTED_MODULE_19__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_20__["environment"].production })],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
                 _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_6__["ScreenOrientation"],
@@ -1149,25 +1177,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 var firebaseConfig = {
-    apiKey: "AIzaSyC9Edgr1Yl4b2VHU98wSlm4xBtj2or51Vg",
-    authDomain: "broken-stool.firebaseapp.com",
-    databaseURL: "https://broken-stool.firebaseio.com",
-    projectId: "broken-stool",
-    storageBucket: "broken-stool.appspot.com",
-    messagingSenderId: "918311615055",
-    appId: "1:918311615055:web:374b3a771e9870a4c8083a",
-    measurementId: "G-YKQ4BTFTS9"
+    apiKey: "AIzaSyDOthq8-7ipC4rQYCh_R8_oC9fL0F0Oz5g",
+    authDomain: "fir-crud-11c1f.firebaseapp.com",
+    databaseURL: "https://fir-crud-11c1f.firebaseio.com",
+    projectId: "fir-crud-11c1f",
+    storageBucket: "fir-crud-11c1f.appspot.com",
+    messagingSenderId: "704929489176",
+    appId: "1:704929489176:web:334d209d3679ed5d8a3e6d",
+    measurementId: "G-BYBG8HFL6W",
+    vapidKey: "BFHowuxjiDtFztqFIeWXG7LAj3zWBBknnNI3BfpMRf3otq5LgxydLaZBWzTgPgv0bXHegMsgxbACeA3fE6WsEUI"
 };
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyDOthq8-7ipC4rQYCh_R8_oC9fL0F0Oz5g",
-//   authDomain: "fir-crud-11c1f.firebaseapp.com",
-//   databaseURL: "https://fir-crud-11c1f.firebaseio.com",
-//   projectId: "fir-crud-11c1f",
-//   storageBucket: "fir-crud-11c1f.appspot.com",
-//   messagingSenderId: "704929489176",
-//   appId: "1:704929489176:web:334d209d3679ed5d8a3e6d",
-//   measurementId: "G-BYBG8HFL6W"
-// };
 
 
 /***/ }),
@@ -1505,6 +1524,120 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/notifications.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/notifications.service.ts ***!
+  \***************************************************/
+/*! exports provided: NotificationsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsService", function() { return NotificationsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _firebaseConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../firebaseConfig */ "./src/app/firebaseConfig.ts");
+
+
+// import { fi } from 'firebase/app';
+// import '@firebase/messaging';
+
+
+var NotificationsService = /** @class */ (function () {
+    function NotificationsService() {
+    }
+    NotificationsService.prototype.init = function () {
+        return new Promise(function (resolve, reject) {
+            navigator.serviceWorker.ready.then(function (registration) {
+                // Don't crash an error if messaging not supported
+                if (!firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"].isSupported()) {
+                    resolve();
+                    return;
+                }
+                var messaging = firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"]();
+                // Register the Service Worker
+                messaging.useServiceWorker(registration);
+                // Initialize your VAPI key
+                messaging.usePublicVapidKey(_firebaseConfig__WEBPACK_IMPORTED_MODULE_3__["firebaseConfig"].vapidKey);
+                // Optional and not covered in the article
+                // Listen to messages when your app is in the foreground
+                messaging.onMessage(function (payload) {
+                    console.log(payload);
+                });
+                // Optional and not covered in the article
+                // Handle token refresh
+                messaging.onTokenRefresh(function () {
+                    messaging.getToken().then(function (refreshedToken) {
+                        console.log(refreshedToken);
+                    }).catch(function (err) {
+                        console.error(err);
+                    });
+                });
+                resolve();
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NotificationsService.prototype.requestPermission = function () {
+        var _this = this;
+        console.log('hello 1');
+        return new Promise(function (resolve) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var messaging, token, err_1;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log('hello 2');
+                        if (!Notification) {
+                            console.log('hello 3');
+                            resolve();
+                            return [2 /*return*/];
+                        }
+                        if (!firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"].isSupported()) {
+                            console.log('hello 4');
+                            resolve();
+                            return [2 /*return*/];
+                        }
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 4, , 5]);
+                        console.log('hello 5');
+                        messaging = firebase_app__WEBPACK_IMPORTED_MODULE_2__["messaging"]();
+                        return [4 /*yield*/, messaging.requestPermission()];
+                    case 2:
+                        _a.sent();
+                        console.log('hello 6');
+                        return [4 /*yield*/, messaging.getToken()];
+                    case 3:
+                        token = _a.sent();
+                        console.log('User notifications token:', token);
+                        return [3 /*break*/, 5];
+                    case 4:
+                        err_1 = _a.sent();
+                        console.log('error 303 ', err_1.message);
+                        return [3 /*break*/, 5];
+                    case 5:
+                        resolve();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    NotificationsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], NotificationsService);
+    return NotificationsService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -1570,7 +1703,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\NMlangeni\Documents\GitHub\brokenStool\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\zanel\Documents\brokenStool\src\main.ts */"./src/main.ts");
 
 
 /***/ })
