@@ -1,4 +1,3 @@
-
 <ion-header no-border id="nav">
 
   <ion-toolbar>
@@ -44,8 +43,6 @@
   </ion-toolbar>
 
 </ion-header>
-
-
 
 <ion-header no-border id="mobile">
 
@@ -204,12 +201,13 @@
         <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
       </div>
       <div class="itemcount">
-        <div class="items" *ngIf="collectionName!=='sales'">
+        <p id="lorem" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <!-- <div class="items" *ngIf="collectionName!=='sales'">
           <p>{{myProduct.length}} item(s)</p>
         </div>
         <div class="items" *ngIf="collectionName==='sales'">
           <p>{{promo.length}} item(s)</p>
-        </div>
+        </div> -->
         <div class="filter"  style="cursor: pointer;"> 
 
           <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter</p>

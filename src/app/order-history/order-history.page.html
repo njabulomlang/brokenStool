@@ -5,7 +5,7 @@
       <ion-button id="icon" (click)="goBack()">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
-    </ion-buttons> 
+    </ion-buttons>
 
     <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">Order History</ion-title>
   </ion-toolbar>
@@ -69,6 +69,10 @@
   </div>
 
   <div class="web_view">
+
+    <p id="lorem" style="font-size: 30px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">Order History</p>
+    <p id="lorem" style="font-size: 15px; width: 100%; text-align: center; color: rgb(196, 196, 196);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+
     <div class="cards" *ngFor="let o of orderHistory;">
 
       <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
@@ -84,6 +88,12 @@
           <div class="costs">
             <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> </p>
           </div>
+        </div>
+        <div class="timeline">
+          <p>Order Received - 20 January 2020<br>
+            Order Processed - 21 January 2020<br>
+            Order Ready for Delivery - 23 January 2020 <br>
+            Order Delivered - 25 January 2020</p>
         </div>
       </div>
 

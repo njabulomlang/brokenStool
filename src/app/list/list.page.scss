@@ -529,7 +529,7 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  #mobile{
+  #mobile {
     display: none;
     width: 0 !important;
     height: 0 !important;
@@ -559,33 +559,40 @@ ion-toolbar {
     min-width: 800px;
     max-width: 1200px;
     margin: auto;
-  
+
     .top {
       width: 100%;
       padding: 10px;
-      .pagename {
-        font-family: "Poppins";
-        font-weight: normal;
-        letter-spacing: 2px;
-        width: 100%;
-        text-align: left;
-      }
 
-      
-        ion-item{
-          background: maroon;
-        }
+      .pagename {
+        width: 100%;
+        color: rgb(221, 221, 221);
+        height: 62px;
+        display: grid;
+        align-items: center;
+        text-align: center;
+        font-family: "Poiret One";
      
 
+        h1 {
+          margin: 5px;
+          font-size: 40px;
+        }
+      }
+
       .itemcount {
-        margin-top: -10px;
-        padding: 5px;
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        align-items: baseline;
-        position: relative;
-        bottom: 25px;
+        text-align: center;
+        width: 100%;
+        font-family: "Poiret One";
+        color: rgb(221, 221, 221);
+        font-size: 20px;
+
+        .filter{
+          position: relative;
+          left: 30vw;
+          bottom: 20px;
+          color: grey;
+        }
       }
     }
 
@@ -650,7 +657,7 @@ ion-toolbar {
       justify-content: space-evenly;
       font-family: "Poppins";
       box-shadow: none !important;
-     
+
       img {
         width: 20vw;
         height: 20vw;
@@ -660,7 +667,6 @@ ion-toolbar {
         font-size: 1.5vw;
       }
     }
-
   }
 
   .viewreviews {
@@ -738,7 +744,6 @@ ion-toolbar {
 
       .prices {
         cursor: pointer;
-     
       }
     }
 
@@ -886,8 +891,21 @@ ion-toolbar {
     height: 0%;
   }
 
-  
-  #nav{
+  #nav {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 512px){
+  .web_view {
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+
+  #nav {
     display: none;
     width: 0 !important;
     height: 0 !important;

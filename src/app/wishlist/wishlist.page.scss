@@ -371,7 +371,7 @@ ion-toolbar {
       right: 5px;
     }
     .icon1 {
-      margin: 0 20vw;
+      margin: 0 20vw 0 10vw;
     }
   }
 
@@ -379,7 +379,8 @@ ion-toolbar {
     min-width: 800px;
     max-width: 1000px;
     margin: auto;
-
+    position: relative;
+    top: 8%;
 
     .cards {
       display: flex;

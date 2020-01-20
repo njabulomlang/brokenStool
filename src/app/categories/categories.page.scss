@@ -161,18 +161,30 @@ ion-toolbar {
     }
   }
 
-  // .pagename{
-  //   background: rgb(54, 0, 0);
-  //   width: 60vw;
-  //   color: rgb(221, 221, 221);
-  //   height: 62px;
-  //   display: grid;
-  //   align-items: center;
-  //   margin: 5px;
-  //   h1{
-  //     margin: 5px;
-  //   }
-  // }
+  .pagename{
+  
+    width: 100%;
+    color: rgb(221, 221, 221);
+    height: 62px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poiret One';
+    margin: 10px;
+    
+    h1{
+      margin: 5px;
+      font-size: 40px;
+    }
+  }
+
+  .itemcount{
+    text-align: center;
+    width: 100%;
+    font-family: 'Poiret One';
+    color: rgb(221, 221, 221);
+    font-size: 20px;
+  }
 
   .web_view {
     min-width: 800px;
