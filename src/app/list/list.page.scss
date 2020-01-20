@@ -911,3 +911,365 @@ ion-toolbar {
     height: 0 !important;
   }
 }
+
+@media only screen and (min-width: 800px){
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  #mobile {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  ion-toolbar {
+    --background: rgb(255, 255, 255);
+    width: 100%;
+    #icon {
+      color: rgb(131, 131, 131);
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: rgb(131, 131, 131);
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+    .icon1 {
+      margin: 0 25vw 0 0;
+    }
+  }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+
+    .top {
+      width: 100%;
+      padding: 10px;
+
+      .pagename {
+        width: 100%;
+        color: rgb(221, 221, 221);
+        height: 62px;
+        display: grid;
+        align-items: center;
+        text-align: center;
+        font-family: "Poiret One";
+     
+
+        h1 {
+          margin: 5px;
+          font-size: 40px;
+        }
+      }
+
+      .itemcount {
+        text-align: center;
+        width: 100%;
+        font-family: "Poiret One";
+        color: rgb(221, 221, 221);
+        font-size: 20px;
+
+        .filter{
+          position: relative;
+          left: 30vw;
+          bottom: 20px;
+          color: grey;
+        }
+      }
+    }
+
+    .cards {
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      object-fit: cover;
+      overflow-y: auto;
+      padding: 16px;
+      justify-content: space-evenly;
+      justify-items: center;
+      position: relative;
+
+      .card {
+        width: 30%;
+        height: fit-content;
+        display: flex;
+        flex-flow: column;
+        margin: 4px 0px;
+
+        img {
+          width: 100%;
+          height: 40vh;
+          border-radius: 5px;
+          box-shadow: 5px 5px 10px rgb(184, 184, 184);
+        }
+
+        .itemdetails {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          align-items: baseline;
+          align-items: flex-end;
+
+          p {
+            font-weight: bold;
+            span {
+              font-weight: normal;
+            }
+          }
+
+          #icon {
+            position: relative;
+            bottom: 15px;
+            right: 10px;
+
+            ion-icon {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    #msg {
+      width: 60%;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: space-evenly;
+      font-family: "Poppins";
+      box-shadow: none !important;
+
+      img {
+        width: 20vw;
+        height: 20vw;
+      }
+      p {
+        color: #c6cbdb;
+        font-size: 1.5vw;
+      }
+    }
+  }
+
+  .viewreviews {
+    position: absolute;
+    z-index: 150;
+    background: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 5px 5px 10px rgb(185, 185, 185);
+    width: 20vw;
+    height: 90%;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      text-align: center;
+      margin: 5px;
+
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 2vw;
+        top: 2.2vh;
+        font-size: 1em;
+        background: black;
+        border-radius: 50%;
+      }
+
+      p {
+        letter-spacing: 1px;
+        margin: 15px 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .filtering {
+      display: flex;
+      flex-flow: column;
+      text-align: left;
+      padding: 10px;
+      width: 100%;
+      .color {
+        cursor: pointer;
+        h4 {
+          color: grey;
+          font-size: 1em;
+        }
+      }
+
+      .colors {
+        cursor: pointer;
+        p {
+          font-size: 1em;
+        }
+      }
+
+      .price {
+        cursor: pointer;
+        h4 {
+          color: grey;
+          font-size: 1em;
+        }
+      }
+
+      .prices {
+        cursor: pointer;
+      }
+    }
+
+    .crds {
+      height: 70vh;
+      overflow-y: auto;
+
+      .crd {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 90vw;
+        height: 20vh;
+        margin: 5px;
+
+        .profimage {
+          width: 20%;
+          height: 9vh;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        .reviewdets {
+          width: 60vw;
+
+          h4 {
+            font-family: "Poiret One";
+            font-weight: bold;
+          }
+
+          p {
+            font-family: "Raleway";
+          }
+        }
+      }
+    }
+  }
+
+  .closereviews {
+    position: absolute;
+    z-index: 150;
+    background: rgba(255, 255, 255, 0.774);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .line {
+      width: 80vw;
+      height: 2px;
+      background: grey;
+    }
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      text-align: center;
+
+      ion-button {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 5px;
+        ion-icon {
+          color: black;
+          position: relative;
+          // left: 5vw;
+        }
+      }
+
+      h2 {
+        font-family: "Poiret One";
+        letter-spacing: 5px;
+        margin: 10px 5px;
+        position: relative;
+        left: 6vw;
+      }
+    }
+
+    .crds {
+      height: 70vh;
+      overflow-y: auto;
+
+      .crd {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 90vw;
+        height: 20vh;
+        margin: 10px;
+
+        .profimage {
+          width: 20%;
+          height: 9vh;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        .reviewdets {
+          width: 60vw;
+
+          h4 {
+            font-family: "Poiret One";
+            font-weight: bold;
+          }
+
+          p {
+            font-family: "Raleway";
+            font-size: 3vw;
+          }
+        }
+      }
+    }
+  }
+}

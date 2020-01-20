@@ -28,11 +28,14 @@
 
 <ion-content>
 
+  <p id="lorem" style="font-size: 30px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">Order Tracking</p>
+  <p id="lorem" style="font-size: 15px; width: 100%; text-align: center; color: rgb(196, 196, 196);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+
   <div class="container">
     <div class="cards">
       <!-- {{doc_id}} -->
       <div class="card" *ngFor="let order of productOrder">
-        
+
         <div class="image">
           <img src="{{order.picture}}" alt="">
         </div>
@@ -44,10 +47,10 @@
 
           <div class="costs">
             <p><i>QTY. {{order.quantity}}</i> <br> {{order.cost | currency:'R'}} <br> Size: {{order.size}} <br><br>
-              </p>
+            </p>
           </div>
 
-         
+
         </div>
       </div>
 
@@ -55,7 +58,7 @@
 
     <div class="tracking">
 
-       <!-- <div class="status">
+      <!-- <div class="status">
             <p>DELIVERY STATUS <br> <span><i>Order {{status}}</i></span></p>
 
           </div> -->
@@ -63,7 +66,8 @@
       <div class="total">
         <p id="tot">TOTAL</p>
         <p id="price" *ngIf="delCost===0"> {{getTotal() | currency:'R'}}</p>
-        <p id="price" *ngIf="delCost===100"><span style="font-size: 0.8em; font-weight: lighter;"><i>incl delivery</i></span> {{getTotal() | currency:'R'}}</p>
+        <p id="price" *ngIf="delCost===100"><span style="font-size: 0.8em; font-weight: lighter;"><i>incl
+              delivery</i></span> {{getTotal() | currency:'R'}}</p>
       </div>
       <div class="bankingDets">
         <p>
@@ -120,13 +124,14 @@
     </div>
   </div>
 
-
-  
   <div class="web_view">
+
+ 
+
     <div class="cards">
       <!-- {{doc_id}} -->
       <div class="card" *ngFor="let order of productOrder">
-        
+
         <div class="image">
           <img src="{{order.picture}}" alt="">
         </div>
@@ -138,10 +143,10 @@
 
           <div class="costs">
             <p><i>QTY. {{order.quantity}}</i> <br> {{order.cost | currency:'R'}} <br> Size: {{order.size}} <br><br>
-              </p>
+            </p>
           </div>
 
-         
+
         </div>
       </div>
 
@@ -149,7 +154,7 @@
 
     <div class="tracking">
 
-       <!-- <div class="status">
+      <!-- <div class="status">
             <p>DELIVERY STATUS <br> <span><i>Order {{status}}</i></span></p>
 
           </div> -->
@@ -169,9 +174,9 @@
           Reference No.: {{doc_id}}</p>
       </div>
 
-      <div class="date">
+      <!-- <div class="date">
         <p><span><i>Scheduled Collection Date</i></span> &nbsp; 15 December 2019</p>
-      </div>
+      </div> -->
 
       <div class="orderstatus">
         <p><span>Order Status</span> <br> <i>Your order is {{status}}</i></p>
@@ -179,14 +184,14 @@
       <pre>
 
       </pre>
-      <div class="tracks">
+      <!-- <div class="tracks"> -->
         <!-- <ul class="progressbar">
           <li >Order <br> Received</li>
           <li >Order is <br> being processed</li>
           <li > Order ready <br> for delivery </li>
           <li>Order <br> Collected</li>
         </ul> -->
-        <div class="circles-container">
+        <div class="circle-container">
           <div id="one">1</div>
           <div id="line1"></div>
           <div id="two">2</div>
@@ -203,7 +208,7 @@
           <div id="txt">Order <br> Collected</div>
 
         </div>
-      </div>
+      <!-- </div> -->
 
       <pre>
 
@@ -215,7 +220,7 @@
       </div>
     </div>
 
-  
+
   </div>
 
 </ion-content>
