@@ -31,12 +31,12 @@ export class HomePage implements OnInit {
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    //public notificationService: NotificationsService
+    // public notificationService: NotificationsService
     ) {
   }
 
   ngOnInit() {
-   ///this.notificationService.requestPermission();
+    // this.notificationService.requestPermission();
     this.getProfile();
     this.getPromo();
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {

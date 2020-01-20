@@ -871,13 +871,36 @@ var AppComponent = /** @class */ (function () {
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        this.notificationsService = notificationsService;
+>>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
         //this.initializeApp();
     }
     AppComponent.prototype.ngOnInit = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+<<<<<<< HEAD
+<<<<<<< HEAD
                 firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
                 return [2 /*return*/];
+=======
+                switch (_a.label) {
+                    case 0:
+                        firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
+                        return [4 /*yield*/, this.notificationsService.init()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+>>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
+                firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
+                return [2 /*return*/];
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
             });
         });
     };
@@ -885,12 +908,28 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.platform.ready().then(function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                // await this.notificationsService.requestPermission();
+                this.checkUser();
+                return [2 /*return*/];
+=======
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.notificationsService.requestPermission()];
+                    case 1:
+                        _a.sent();
+                        this.checkUser();
+                        return [2 /*return*/];
+                }
+>>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
+=======
                 this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
                 this.statusBar.backgroundColorByHexString('#000324');
                 this.statusBar.styleLightContent();
                 // await this.notificationsService.requestPermission();
                 this.checkUser();
                 return [2 /*return*/];
+>>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
             });
         }); });
     };
