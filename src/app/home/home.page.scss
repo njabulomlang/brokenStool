@@ -375,9 +375,7 @@ ion-toolbar {
 }
 
 @media only screen and (min-width: 1330px) {
-  ion-content {
-    background: grey;
-  }
+
 
   #background {
     width: 100%;
@@ -497,7 +495,7 @@ ion-toolbar {
 
         .percentage {
           position: absolute;
-          z-index: 10;
+          // z-index: 10;
           top: 1px;
           right: 1px;
           // margin: 5px;
@@ -876,3 +874,285 @@ ion-toolbar {
     }
   }
 }
+
+@media only screen and (min-width: 800px){
+
+  #background {
+    width: 100%;
+    height: 300px;
+    background: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: grid;
+    align-items: center;
+    h1 {
+      color: rgb(192, 192, 192);
+      text-transform: uppercase;
+      font-size: 50px;
+      font-family: "Poiret One";
+      margin: 20px;
+      font-weight: 500;
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+
+  #welcome {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  #mobile {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  ion-toolbar {
+    --background: rgb(255, 255, 255);
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    #icon {
+      color: rgb(131, 131, 131);
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: rgb(131, 131, 131);
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+
+    .icon1 {
+      margin: 0 15vw;
+    }
+  }
+
+  .welcome {
+    width: 100%;
+    height: 50px;
+    --background: rgb(104, 104, 104);
+    #welcome {
+      font-size: 20px;
+    }
+  }
+
+  .web_view {
+   width: 100%;
+    margin: auto;
+    .saleitems {
+      display: flex;
+      flex-flow: row;
+      width: 100%;
+      height: 43vh;
+      margin: 10px;
+
+      .image1 {
+        min-width: 15vw;
+        h4 {
+          font-weight: bolder;
+          font-family: "Poiret One";
+          letter-spacing: 2px;
+          color: grey;
+        }
+        p {
+          font-weight: lighter;
+          font-size: 14px;
+          color: rgb(148, 147, 147);
+        }
+        .p {
+          font-size: 13px;
+          color: rgb(194, 194, 194);
+        }
+      }
+      .image {
+        display: flex;
+        flex-flow: column;
+        position: relative;
+        width: 30vw;
+        height: 30vh;
+        margin: 10px;
+        img {
+          width: 100%;
+          height: 25vh;
+          object-fit: cover;
+          box-shadow: 5px 5px 10px rgb(177, 177, 177);
+        }
+
+        .percentage {
+          position: absolute;
+          z-index: 10;
+          top: 1px;
+          right: 1px;
+          // margin: 5px;
+          // text-shadow: 5px 5px 10px rgb(0, 0, 0);
+        
+          p{
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            background: maroon;
+            padding: 3px;
+          }
+        }
+
+        .itemname {
+          font-size: 13px;
+          height: 5vh;
+          span {
+            font-size: 11px;
+            color: black;
+          }
+        }
+      }
+    }
+
+    .Kwanga {
+      ion-item {
+        color: black !important;
+      }
+      .apparel {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+        overflow-x: auto;
+
+        .image {
+          display: flex;
+          flex-flow: column;
+          position: relative;
+          min-width: 20vw;
+          height: 35vh;
+          border-radius: 10px;
+          box-shadow: 5px 5px 10px rgb(177, 177, 177);
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(177, 177, 177);
+          }
+
+          .itemname {
+            position: absolute;
+            // z-index: 10;
+            top: 10px;
+            right: 10px;
+            text-shadow: 5px 5px 10px rgb(0, 0, 0);
+            color: white;
+          }
+        }
+      }
+    }
+
+    .buttonz {
+      margin-top: -50px;
+      .all_summer {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+      
+        .image {
+          display: flex;
+          flex-flow: column;
+          position: relative;
+          width: 30vw;
+          height: 30vh;
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 25vh;
+            object-fit: cover;
+            box-shadow: 5px 5px 10px rgb(177, 177, 177);
+          }
+
+          .itemname {
+            height: 5vh;
+            font-size: 13px;
+          }
+        }
+
+        .image1 {
+          min-width: 15vw;
+          text-align: right;
+          h4 {
+            font-weight: bolder;
+            font-family: "Poiret One";
+            letter-spacing: 2px;
+            color: grey;
+          }
+          p {
+            font-weight: lighter;
+            font-size: 14px;
+            color: rgb(148, 147, 147);
+          }
+          .p {
+            font-size: 13px;
+            color: rgb(194, 194, 194);
+          }
+        }
+      }
+
+      .all_winter {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+    
+        .image {
+          display: flex;
+          flex-flow: column;
+          position: relative;
+          width: 30vw;
+          height: 30vh;
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 25vh;
+            object-fit: cover;
+          
+            box-shadow: 5px 5px 10px rgb(177, 177, 177);
+          }
+
+          .itemname {
+           height: 5vh;
+           font-size: 13px;
+          }
+        }
+
+        .image1 {
+          min-width: 15vw;
+          h4 {
+            font-weight: bolder;
+            font-family: "Poiret One";
+            letter-spacing: 2px;
+            color: grey;
+          }
+          p {
+            font-weight: lighter;
+            font-size: 14px;
+            color: rgb(148, 147, 147);
+          }
+          .p {
+            font-size: 13px;
+            color: rgb(194, 194, 194);
+          }
+        }
+      }
+    }
+  }
+}
+

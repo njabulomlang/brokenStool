@@ -40,7 +40,7 @@
         </div>
 
         <div class="right">
-          <div class="title">
+          <div class="title" style="width: 40vw;">
             <p>{{o.product_name}}</p>
           </div>
 
@@ -73,14 +73,14 @@
 
         <div class="table">
           <div class="list" *ngFor="let o of order.orders">
-            <p style="width: 40vw">{{o.product_name}}</p>
+            <p style="width: 70vw">{{o.product_name}}</p>
             <p>{{o.quantity}}</p>
           </div>
 
 
           <br>
           <div class="total">
-            <p style="width: 40vw"><b>Total Quantity</b></p>
+            <p style="width: 70vw"><b>Total Quantity</b></p>
             <p>{{getQuantity()}}</p>
           </div>
         </div>
@@ -101,6 +101,13 @@
 
         <div class="status">
           <p>Order Status: &nbsp; <i>{{order.status}}</i></p>
+        </div>
+
+        <div class="timeline">
+          <p>Order Received - 20 January 2020<br>
+            Order Processed - 21 January 2020<br>
+            Order Ready for Delivery - 23 January 2020 <br>
+            Order Delivered - 25 January 2020</p>
         </div>
       <!-- </div> -->
 

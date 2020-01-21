@@ -175,6 +175,14 @@ ion-toolbar {
   }
 }
 
+.timeline{
+  p {
+    font-family: "Poppins";
+    color: grey;
+    font-size: 0.8em;
+  }
+}
+
 .ordertype {
   margin: 10px;
   margin-top: -35px;
@@ -238,9 +246,9 @@ ion-toolbar {
     display: none;
     width: 0%;
     height: 0%;
-  } 
+  }
 
-  #nav{
+  #nav {
     display: none;
     width: 0 !important;
     height: 0 !important;
@@ -254,8 +262,7 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  
-  #mobile{
+  #mobile {
     display: none;
     width: 0 !important;
     height: 0 !important;
@@ -302,10 +309,10 @@ ion-toolbar {
         border-radius: 5px;
         .image {
           width: 8vw;
-          height: 8vw;  
+          height: 8vw;
           margin: 10px;
           border-radius: 8px;
-    
+
           img {
             width: 100%;
             height: 100%;
@@ -313,10 +320,10 @@ ion-toolbar {
             border-radius: 8px;
           }
         }
-    
+
         .right {
           width: 70vw;
-    
+
           .title {
             margin-top: -10px;
             p {
@@ -324,14 +331,14 @@ ion-toolbar {
               font-weight: bold;
             }
           }
-    
+
           .costs {
             p {
               font-size: 0.8em;
               margin-top: -10px;
             }
           }
-    
+
           .status {
             p {
               font-family: "Poppins";
@@ -345,7 +352,7 @@ ion-toolbar {
           }
         }
       }
-    
+
       .line {
         width: 90%;
         height: 2px;
@@ -354,7 +361,7 @@ ion-toolbar {
         // left: 5%;
       }
     }
-    
+
     .receipt {
       margin: 10px;
       margin-top: -10px;
@@ -363,7 +370,7 @@ ion-toolbar {
         color: grey;
       }
     }
-    
+
     .name {
       margin: 10px;
       margin-top: -15px;
@@ -376,7 +383,7 @@ ion-toolbar {
         }
       }
     }
-    
+
     .ref {
       margin: 10px;
       margin-top: -15px;
@@ -390,7 +397,7 @@ ion-toolbar {
         }
       }
     }
-    
+
     .cart {
       margin: 10px;
       margin-top: -15px;
@@ -400,13 +407,13 @@ ion-toolbar {
         font-size: 0.8em;
       }
     }
-    
+
     .table {
       margin: 10px;
       margin-top: -30px;
       display: flex;
       flex-flow: column;
-    
+
       .list {
         margin: 5px;
         display: flex;
@@ -420,7 +427,7 @@ ion-toolbar {
           font-size: 0.8em;
         }
       }
-    
+
       .total {
         margin-top: -30px;
         display: flex;
@@ -435,7 +442,7 @@ ion-toolbar {
         }
       }
     }
-    
+
     .grand {
       margin: 10px;
       margin-top: -20px;
@@ -450,7 +457,7 @@ ion-toolbar {
         font-weight: bold;
       }
     }
-    
+
     .ordertype {
       margin: 10px;
       margin-top: -35px;
@@ -458,7 +465,7 @@ ion-toolbar {
       flex-flow: row;
       width: 50vw;
       justify-content: space-between;
-    
+
       #del {
         font-weight: normal;
       }
@@ -469,7 +476,7 @@ ion-toolbar {
         font-weight: bold;
       }
     }
-    
+
     .address {
       margin: 10px;
       margin-top: -10px;
@@ -485,7 +492,7 @@ ion-toolbar {
         }
       }
     }
-    
+
     .status {
       margin: 10px;
       margin-top: -10px;
@@ -495,16 +502,16 @@ ion-toolbar {
         font-size: 0.9em;
       }
     }
-    
-      ion-button {
-        background: rgb(0, 0, 48);
-        width: 92%;
-       object-fit: cover;
-       margin: 30px;
-        position: relative;
-        left: 9px;
-        font-family: "Poppins";
-        letter-spacing: 1px;
-      }
+
+    ion-button {
+      background: rgb(0, 0, 48);
+      width: 92%;
+      object-fit: cover;
+      margin: 30px;
+      position: relative;
+      left: 9px;
+      font-family: "Poppins";
+      letter-spacing: 1px;
+    }
   }
 }

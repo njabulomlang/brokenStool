@@ -335,132 +335,260 @@ ion-toolbar {
     max-width: 1000px;
     margin: auto;
 
-    
-      .cards {
+    .cards {
+      display: flex;
+      flex-flow: column;
+      height: fit-content;
+      overflow-y: auto;
+      height: 70vh;
+      overflow-y: auto;
+      // border: 1px solid green;
+      .card {
         display: flex;
-        flex-flow: column;
-        height: fit-content;
-        overflow-y: auto;
-        height: 70vh;
-        overflow-y: auto;
-        // border: 1px solid green;
-        .card {
-          display: flex;
-          flex-flow: row;
-          box-shadow: 5px 5px 10px rgb(211, 211, 211);
-          margin: 5px;
-          min-height: 20vh;
-          .image {
-            width:15vw;
-            min-height: 15vh;
-            max-height: 19vh;
-            margin: 10px;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-          }
-    
-          .details {
-            display: flex;
-            flex-flow: row;
-            width: 100%;
-            padding: 5px;
-            justify-content: space-between;
-            align-items: baseline;
-    
-            .left {
-              margin: 10px;
-              // text-align: left;
-
-              p {
-                display: grid;
-                align-items: center;
-                // align-items: baseline;
-                padding: 0;
-                margin: 4px 0px;
-                ion-icon {
-                font-size: 30px;
-                }
-              }
-    
-              #item {
-                font-weight: bold;
-                letter-spacing: 1px;
-              
-              }
-            }
-    
-            .right {
-              margin: 5px;
-              text-align: right;
-              display: flex;
-              flex-flow: column;
-              justify-content: space-between;
-              p {
-               
-    
-                ion-icon {
-                  font-weight: lighter;
-                 font-size: 40px;
-                  color: maroon;
-                  margin-top: 30px;
-                }
-              }
-            }
-          }
-        }
-    
-        #msg {
-          display: flex;
-          flex-flow: column;
-          align-items: center;
-          justify-content: space-evenly;
+        flex-flow: row;
+        box-shadow: 5px 5px 10px rgb(211, 211, 211);
+        margin: 5px;
+        min-height: 20vh;
+        .image {
+          width: 15vw;
+          min-height: 15vh;
+          max-height: 19vh;
           margin: 10px;
-          font-family: "Poppins";
-          box-shadow: none !important;
           img {
-            width: 30vw;
-            height: 30vw;
-          }
-          p {
-            color: #c6cbdb;
-            
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
         }
-      }
-    
-      .total {
-        position: fixed;
-        bottom: 0;
-        background: white;
-        display: flex;
-        flex-flow: column;
-    
-        .carttotal {
+
+        .details {
           display: flex;
           flex-flow: row;
-          width: 60vw;
+          width: 100%;
           padding: 5px;
           justify-content: space-between;
-          p {
-            font-family: "Raleway";
-            
+          align-items: baseline;
+
+          .left {
+            margin: 10px;
+            // text-align: left;
+
+            p {
+              display: grid;
+              align-items: center;
+              // align-items: baseline;
+              padding: 0;
+              margin: 4px 0px;
+              ion-icon {
+                font-size: 30px;
+              }
+            }
+
+            #item {
+              font-weight: bold;
+              letter-spacing: 1px;
+            }
           }
-        }
-    
-        .btn {
-          ion-button {
-            color: white;
-            background: rgb(0, 0, 59);
-            padding: 5px;
-            font-family: "Raleway";
-            letter-spacing: 2px;
-          width: 60vw;
+
+          .right {
+            margin: 5px;
+            text-align: right;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            p {
+              ion-icon {
+                font-weight: lighter;
+                font-size: 40px;
+                color: maroon;
+                margin-top: 30px;
+              }
+            }
           }
         }
       }
-    
+
+      #msg {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 10px;
+        font-family: "Poppins";
+        box-shadow: none !important;
+        img {
+          width: 30vw;
+          height: 30vw;
+        }
+        p {
+          color: #c6cbdb;
+        }
+      }
+    }
+
+    .total {
+      position: fixed;
+      bottom: 0;
+      background: white;
+      display: flex;
+      flex-flow: column;
+
+      .carttotal {
+        display: flex;
+        flex-flow: row;
+        width: 60vw;
+        padding: 5px;
+        justify-content: space-between;
+        p {
+          font-family: "Raleway";
+        }
+      }
+
+      .btn {
+        ion-button {
+          color: white;
+          background: rgb(0, 0, 59);
+          padding: 5px;
+          font-family: "Raleway";
+          letter-spacing: 2px;
+          width: 60vw;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1000px;
+    margin: auto;
+
+    .cards {
+      display: flex;
+      flex-flow: column;
+      height: fit-content;
+      overflow-y: auto;
+      height: 70vh;
+      overflow-y: auto;
+      // border: 1px solid green;
+      .card {
+        display: flex;
+        flex-flow: row;
+        box-shadow: 5px 5px 10px rgb(211, 211, 211);
+        margin: 5px;
+        min-height: 20vh;
+        .image {
+          width: 15vw;
+          min-height: 15vh;
+          max-height: 19vh;
+          margin: 10px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .details {
+          display: flex;
+          flex-flow: row;
+          width: 100%;
+          padding: 5px;
+          justify-content: space-between;
+          align-items: baseline;
+
+          .left {
+            margin: 10px;
+            // text-align: left;
+
+            p {
+              display: grid;
+              align-items: center;
+              // align-items: baseline;
+              padding: 0;
+              margin: 4px 0px;
+              ion-icon {
+                font-size: 30px;
+              }
+            }
+
+            #item {
+              font-weight: bold;
+              letter-spacing: 1px;
+            }
+          }
+
+          .right {
+            margin: 5px;
+            text-align: right;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            p {
+              ion-icon {
+                font-weight: lighter;
+                font-size: 40px;
+                color: maroon;
+                margin-top: 30px;
+              }
+            }
+          }
+        }
+      }
+
+      #msg {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 10px;
+        font-family: "Poppins";
+        box-shadow: none !important;
+        img {
+          width: 30vw;
+          height: 30vw;
+        }
+        p {
+          color: #c6cbdb;
+        }
+      }
+    }
+
+    .total {
+      position: fixed;
+      bottom: 0;
+      background: white;
+      display: flex;
+      flex-flow: column;
+
+      .carttotal {
+        display: flex;
+        flex-flow: row;
+        width: 65vw;
+        padding: 5px;
+        justify-content: space-between;
+        p {
+          font-family: "Raleway";
+        }
+      }
+
+      .btn {
+        ion-button {
+          color: white;
+          background: rgb(0, 0, 59);
+          padding: 5px;
+          font-family: "Raleway";
+          letter-spacing: 2px;
+          width: 65vw;
+        }
+      }
+    }
   }
 }

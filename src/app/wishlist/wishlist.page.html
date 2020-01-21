@@ -8,6 +8,32 @@
       </ion-button>
     </ion-buttons>
 
+    <ion-buttons slot="end" (click)="logout()">
+      <div class="icon1">
+     
+        <ion-button id="icon">
+          Terms and Conditions
+        </ion-button>
+
+        <ion-button id="icon">
+          Disclaimer
+        </ion-button>
+
+        <ion-button id="icon">
+          FAQs
+        </ion-button>
+
+        <ion-button id="icon">
+          Payment Process
+        </ion-button>
+
+        <ion-button id="icon">
+          About Us
+        </ion-button>
+      </div>
+
+    </ion-buttons>
+
     <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
   </ion-toolbar>
 
@@ -35,11 +61,11 @@
         </div> -->
       </div>
   <div class="container">
-    <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
+    <div class="pagename" style="margin: 10px; font-family: 'Poiret One'; ">
       <h1>Wishlist ({{myWish.length}})</h1>
     </div>
 
-<p style="font-family: 'Raleway'; margin: 8px;">This is your wishlist. Save all your favourites here</p>
+<p style="font-family: 'Raleway'; margin: 8px; ">This is your wishlist. Save all your favourites here</p>
 
     <div class="cards" >
       <div class="card" *ngFor="let w of myWish">
@@ -76,11 +102,11 @@
   </div>
 
   <div class="web_view">
-    <div class="pagename" style="margin: 10px; font-family: 'Raleway';">
-      <h1>Wishlist ({{myWish.length}})</h1>
+    <div class="pagename" >
+      <h1 style="margin: 10px; font-family: 'Poiret One'; width: 100%; text-align: center; color: rgb(173, 173, 173); font-size: 30px;">Wishlist ({{myWish.length}})</h1>
     </div>
 
-<p style="font-family: 'Raleway'; margin: 8px;">This is your wishlist. Save all your favourites here</p>
+<p style="font-family: 'Poppins'; margin: 8px; width: 100%; text-align: center; color: rgb(173, 173, 173); font-size: 15px;">This is your wishlist. Save all your favourites here</p>
 
     <div class="cards" >
       <div class="card" *ngFor="let w of myWish">

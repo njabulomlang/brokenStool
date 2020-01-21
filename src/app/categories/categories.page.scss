@@ -138,10 +138,6 @@ ion-toolbar {
   ion-toolbar {
     --background: rgb(255, 255, 255);
     width: 100%;
-    // height: 25vh;
-    // display: grid;
-    // align-items: center;
-    // z-index: 20000000000000000000000000;
     #icon {
       color: rgb(131, 131, 131);
     }
@@ -156,22 +152,35 @@ ion-toolbar {
     }
 
     .icon1 {
-      margin: 0 20vw;
+      margin: 0 25vw;
+  
     }
   }
 
-  // .pagename{
-  //   background: rgb(54, 0, 0);
-  //   width: 60vw;
-  //   color: rgb(221, 221, 221);
-  //   height: 62px;
-  //   display: grid;
-  //   align-items: center;
-  //   margin: 5px;
-  //   h1{
-  //     margin: 5px;
-  //   }
-  // }
+  .pagename{
+  
+    width: 100%;
+    color: rgb(221, 221, 221);
+    height: 62px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poiret One';
+    margin: 10px;
+    
+    h1{
+      margin: 5px;
+      font-size: 40px;
+    }
+  }
+
+  .itemcount{
+    text-align: center;
+    width: 100%;
+    font-family: 'Poiret One';
+    color: rgb(221, 221, 221);
+    font-size: 20px;
+  }
 
   .web_view {
     min-width: 800px;
@@ -264,4 +273,144 @@ ion-toolbar {
     width: 0 !important;
     height: 0 !important;
   }
+}
+
+@media only screen and (min-width: 800px){
+
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  ion-toolbar {
+    --background: rgb(255, 255, 255);
+    width: 100%;
+    #icon {
+      color: rgb(131, 131, 131);
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: rgb(131, 131, 131);
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+
+    .icon1 {
+      margin: 0 25vw 0 0;
+  
+    }
+  }
+
+  #mobile {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .pagename{
+  
+    width: 100%;
+    color: rgb(221, 221, 221);
+    height: 62px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poiret One';
+    margin: 10px;
+    
+    h1{
+      margin: 5px;
+      font-size: 40px;
+    }
+  }
+
+  .itemcount{
+    text-align: center;
+    width: 100%;
+    font-family: 'Poiret One';
+    color: rgb(221, 221, 221);
+    font-size: 20px;
+  }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+
+    .cards{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .card:nth-child(1) {
+      width:31.5%;
+      height: 40vh;
+    }
+    
+    .card:nth-child(2) {
+      width: 31.5%;
+      height: 40vh;
+    }
+    
+    .card:nth-child(3) {
+      width: 31.5%;
+      height: 40vh;
+   
+    }
+    
+    .card:nth-child(4) {
+      width: 30%;
+      height: 42vh;
+    }
+    .card:nth-child(5) {
+      width: 65.5%;
+      height: 42vh;
+    }
+    
+    .card:nth-child(6) {
+      width: 30vw;
+      height: 25vh;
+    }
+    
+    .card:nth-child(7) {
+      width: 57vw;
+      height: 25vh;
+    }
+    
+    .card:nth-child(8) {
+      width: 89vw;
+      height: 25vh;
+    }
+
+    .card {
+      margin: 5px;
+      border-radius: 5px;
+      position: relative;
+      // border: 1px solid green;
+      box-shadow: 5px 5px 10px lightslategrey;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .category {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color: rgb(255, 255, 255);
+        text-shadow: 5px 5px 5px black;
+        font-family: "Poppins";
+      }
+    }
+
+  }
+
 }

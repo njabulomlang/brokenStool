@@ -428,6 +428,12 @@ ion-toolbar {
     width: 0 !important;
     height: 0 !important;
   }
+
+  #lorem{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
 }
 
 @media only screen and (min-width: 1330px) {
@@ -435,6 +441,12 @@ ion-toolbar {
     display: none;
     width: 0 !important;
     height: 0 !important;
+  }
+
+  #lorem{
+
+    position: relative;
+    top: 50px;
   }
 
   #mobile{
@@ -468,7 +480,7 @@ ion-toolbar {
     max-width: 1200px;
     margin: auto;
     position: relative;
-    top: 10%;
+    top: 8%;
     height: fit-content;
     display: flex;
     flex-flow: row;
