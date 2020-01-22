@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
-// import { fi } from 'firebase/app';
-// import '@firebase/messaging';
-import * as firebase from 'firebase/app'
-import { firebaseConfig } from '../firebaseConfig';
+import { firebase } from '@firebase/app';
+import '@firebase/messaging';
+//import { firebaseConfig } from 'src/environments/environment';
+//import { firebaseConfig } from 'src/environments/environment';
+//import { environment } from '../environments/environment'
 @Injectable({
     providedIn: 'root'
 })
 export class NotificationsService {
-
-    constructor() {
-
-
-    }
     init(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             navigator.serviceWorker.ready.then((registration) => {
@@ -20,17 +16,13 @@ export class NotificationsService {
                     resolve();
                     return;
                 }
-
                 const messaging = firebase.messaging();
-
                 // Register the Service Worker
-                messaging.useServiceWorker(registration);
-
+                messaging.useServiceWorker(registration)
                 // Initialize your VAPI key
-                messaging.usePublicVapidKey(
-                    firebaseConfig.vapidKey
-                );
-
+                // messaging.usePublicVapidKey(
+                //        config.vapidKey
+                // );
                 // Optional and not covered in the article
                 // Listen to messages when your app is in the foreground
                 messaging.onMessage((payload) => {
@@ -46,7 +38,6 @@ export class NotificationsService {
                             console.error(err);
                         });
                 });
-
                 resolve();
             }, (err) => {
                 reject(err);
@@ -54,36 +45,23 @@ export class NotificationsService {
         });
     }
     requestPermission(): Promise<void> {
-        console.log('hello 1');
-
         return new Promise<void>(async (resolve) => {
-            console.log('hello 2');
             if (!Notification) {
-                console.log('hello 3');
                 resolve();
                 return;
             }
             if (!firebase.messaging.isSupported()) {
-                console.log('hello 4');
                 resolve();
                 return;
             }
             try {
-                console.log('hello 5');
                 const messaging = firebase.messaging();
                 await messaging.requestPermission();
-                console.log('hello 6');
                 const token: string = await messaging.getToken();
-
-
-
                 console.log('User notifications token:', token);
             } catch (err) {
-                console.log('error 303 ', err.message);
-                
-                // No notifications granted
+                console.log('error', err);
             }
-
             resolve();
         });
     }

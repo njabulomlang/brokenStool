@@ -6,7 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase';
 import { firebaseConfig } from './firebaseConfig';
 import { Router } from '@angular/router';
-//import { NotificationsService } from './services/notifications.service';
+import { environment } from '../environments/environment';
+import { NotificationsService } from './services/notifications.service';
 //import { File, File } from '@ionic-native/file/ngx';
 
 @Component({
@@ -20,20 +21,22 @@ export class AppComponent {
     private platform: Platform,
     private screenOrientation: ScreenOrientation,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar, private router: Router, //private notificationsService: NotificationsService
+    private statusBar: StatusBar, private router: Router, private notificationsService: NotificationsService
   ) {
+    firebase.initializeApp(firebaseConfig);
     //this.initializeApp();
   }
-  async ngOnInit() {
-    firebase.initializeApp(firebaseConfig);
-   // await this.notificationsService.init();
-  }
+  // async ngOnInit() {
+  //   firebase.initializeApp(environment.firebase);
+  //   //firebase.initializeApp(firebaseConfig);
+  //  // await this.notificationsService.init();
+  // }
   ngAfterViewInit() {
     this.platform.ready().then(async () => {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.statusBar.backgroundColorByHexString('#000324');
-        this.statusBar.styleLightContent();
-     // await this.notificationsService.requestPermission();
+      this.statusBar.backgroundColorByHexString('#000324');
+      this.statusBar.styleLightContent();
+      //await this.notificationsService.requestPermission();
       this.checkUser();
     });
   }
