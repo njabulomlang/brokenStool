@@ -1,18 +1,11 @@
 <ion-header no-border id="nav">
 
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button id="icon" (click)="goBack()">
-        <ion-icon slot="icon-only" name="arrow-back" id="icon" style="  color: rgb(131, 131, 131);"></ion-icon>
-      </ion-button>
-    </ion-buttons> 
 
     <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">Pending Orders</ion-title>
   </ion-toolbar>
 
 </ion-header>
-
-
 
 <ion-header no-border id="mobile">
   <ion-toolbar>
@@ -42,6 +35,8 @@
         </div> -->
   </div>
   <div class="container">
+
+
     <div class="cards">
       <div class="card" *ngFor="let o of myOrder">
         <div class="top" *ngFor="let p of o.info.product">
@@ -64,6 +59,8 @@
           </div>
         </div>
 
+
+
         <div class="butt">
           <ion-button (click)="orderTrack(o.id,o.info)" color="transparent">
             Track My Order({{o.info.product.length}})
@@ -81,38 +78,84 @@
   </div>
 
   <div class="web_view">
-    <p id="lorem" style="font-size: 30px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">Pending Orders</p>
-    <p id="lorem" style="font-size: 15px; width: 100%; text-align: center; color: rgb(196, 196, 196);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+    <p id="lorem" style="font-size: 25px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">
+      Pending Orders</p>
+    <p id="lorem" style="font-size: 13px; width: 100%; text-align: center; color: rgb(196, 196, 196);">Lorem ipsum dolor
+      sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam</p>
 
     <div class="cards">
       <div class="card" *ngFor="let o of myOrder">
-        <div class="top" *ngFor="let p of o.info.product">
-          <div class="image">
-            <img src="{{p.picture}}" (click)="getOrder(o.id)">
-          </div>
-          <div class="info">
-            <p id="name" style="font-family: 'Poppins';"><span
-                style="letter-spacing: 1.2px; text-transform: uppercase;"><b>{{p.product_name}}</b></span> <br> <i>QTY.
-                {{p.quantity}}</i></p>
-            <p id="costs">
-              {{p.cost * p.quantity | currency:'R'}} <br>
-              <span style="line-height: 10px;">
-                {{p.timestamp | date:'medium'}} <br>
-                {{o.id}}
+        <div class="card1">
+          <div class="top" *ngFor="let p of o.info.product">
+            <div class="image">
+              <img src="{{p.picture}}" (click)="getOrder(o.id)">
+            </div>
+            <div class="info">
+              <p id="name" style="font-family: 'Poppins';"><span
+                  style="letter-spacing: 1.2px; text-transform: uppercase;"><b>{{p.product_name}}</b></span> <br>
+                <i>QTY.
+                  {{p.quantity}}</i></p>
+              <p id="costs">
+                {{p.cost * p.quantity | currency:'R'}} <br>
+                <span style="line-height: 10px;">
+                  {{p.timestamp | date:'medium'}} <br>
+                  {{o.id}}
 
-              </span>
+                </span>
 
-            </p>
+              </p>
+            </div>
           </div>
+
         </div>
 
-        <div class="butt">
-          <ion-button (click)="orderTrack(o.id,o.info)" color="transparent">
-            Track My Order({{o.info.product.length}})
-          </ion-button>
+        <div class="tracking">
+          <div class="left">
+            <div class="total">
+              <p id="tot">TOTAL</p>
+              <p id="price" *ngIf="delCost===0"> R400</p>
+              <p id="price" *ngIf="delCost===100"><span style="font-size: 0.8em; font-weight: lighter;"><i>incl
+                    delivery</i></span> R499</p>
+            </div>
+            <div class="bankingDets">
+              <p>
+                <b>Banking Details:</b><br>
+                Account Holder Name: Lunga <br>
+                Account Number: 1234567890<br>
+                Branch Name: Dube <br>
+                Branch Number: 47100<br>
+                Reference No.: 11225HGB</p>
+            </div>
+
+            <div class="orderstatus">
+              <p><span>Order Status</span> <br> <i>Your order is Ready</i></p>
+            </div>
+          </div>
+
+          <div class="tracks">
+            <div class="circles-container">
+              <div id="one">1</div>
+              <div id="line1"></div>
+              <div id="two">2</div>
+              <div id="line2"></div>
+              <div id="three">3</div>
+              <div id="line3"></div>
+              <div id="four">4</div>
+            </div>
+
+            <div class="text">
+              <div id="txt">Order <br> Received</div>
+              <div id="txt">Order is <br> being processed</div>
+              <div id="txt">Order ready <br> for delivery</div>
+              <div id="txt">Order <br> Collected</div>
+
+            </div>
+          </div>
         </div>
 
       </div>
+
 
       <div class="card" id="msg" *ngIf="myOrder.length==0">
         <p> You have no pending orders</p>

@@ -1,36 +1,31 @@
 <ion-header no-border id="nav">
 
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button id="icon" (click)="goBack()">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
 
     <ion-buttons slot="end" (click)="logout()">
       <div class="icon1">
-     
-        <ion-button id="icon">
-          Terms and Conditions
+
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" >
+          Terms and Privacy Policy
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer">
           Disclaimer
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs">
           FAQs
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process">
           Payment Process
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
-      
+
       </div>
 
       Logout<ion-icon slot="start" name="exit" id="icon"></ion-icon>
@@ -41,8 +36,6 @@
 
 </ion-header>
 
-
-
 <ion-header no-border id="mobile">
   <ion-toolbar>
     <ion-buttons slot="start" (click)="goBack()">
@@ -50,26 +43,33 @@
     </ion-buttons>
 
     <ion-buttons slot="end" (click)="logout()">
-        <ion-icon slot="start" name="exit" id="icon"></ion-icon>
-      </ion-buttons>
-      <ion-title >PROFILE</ion-title>
+      <ion-icon slot="start" name="exit" id="icon"></ion-icon>
+    </ion-buttons>
+    <ion-title>PROFILE</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-        <div class="maploader">
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-        </div>
-       <!--  <div class="loading-text">
+  <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+    <div class="maploader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+    </div>
+    <!--  <div class="loading-text">
           <p>Loading Map</p>
         </div> -->
-      </div>
-      <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">My Profile</p>
+  </div>
+  <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">My
+    Profile</p>
 
   <div class="container">
 
-    <div class="image" >
+    <div class="image">
       <img src="{{profilePic}}">
       <div class="name">
         <!-- <ion-progress-bar type="indeterminate"></ion-progress-bar> -->
@@ -86,21 +86,21 @@
     <div class="btnz">
       <ion-button (click)="showEdit()" color="transparent">
         <span *ngIf="!editprofile">Account Details <ion-icon slot="end" name="add"></ion-icon></span>
-        <span *ngIf="editprofile">Account Details <ion-icon slot="end" name="remove" ></ion-icon></span>
+        <span *ngIf="editprofile">Account Details <ion-icon slot="end" name="remove"></ion-icon></span>
       </ion-button>
 
       <div class="edit" *ngIf="editprofile">
-        <div class="inputs" >
-          
-            <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
+        <div class="inputs">
 
-            <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
+          <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
 
-            <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+          <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
 
-            <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
+          <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+
+          <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
         </div>
-        <div class="buttonz" >
+        <div class="buttonz">
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
             CANCEL
           </ion-button>
@@ -127,7 +127,7 @@
 
         <div class="right">
           <div class="heart">
-          
+
             <ion-icon slot="start" name="heart"></ion-icon>
           </div>
 
@@ -161,8 +161,8 @@
   </div>
 
   <div class="web_view">
-    
-    <div class="image" >
+
+    <div class="image">
       <img src="{{profilePic}}">
       <div class="name">
         <!-- <ion-progress-bar type="indeterminate"></ion-progress-bar> -->
@@ -175,16 +175,22 @@
         </ion-fab-button>
       </div>
     </div>
-<div class="stuff">
-    <div class="btnz" (ionBlur)="check('open')" (ionFocus)="check('close')">
-      <ion-button (click)="showEdit()" color="transparent" >
-        <span *ngIf="!editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">Account Details <ion-icon slot="end" name="add" ></ion-icon></span>
-        <span *ngIf="editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">Account Details <ion-icon slot="end" name="remove" ></ion-icon></span>
-      </ion-button>
+    <div class="stuff">
+      <div class="btnz" (ionBlur)="check('open')" (ionFocus)="check('close')">
+        <ion-button (click)="showEdit()" color="transparent" *ngIf="!editprofile" (ionBlur)="check('open')"
+          (ionFocus)="check('close')">
+          <span>Account Details <ion-icon slot="end" name="add"></ion-icon></span>
+          <!-- <span *ngIf="editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">Account Details <ion-icon slot="end" name="minus" ></ion-icon> <p style="color:grey"> UPDATE &nbsp; &nbsp; CANCEL</p> </span> -->
+        </ion-button>
+        <div class="update_cancel" *ngIf="editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">
+          <p class="acc">Account Details</p>
+          <p class="update" (click)="updateProfile()">UPDATE &nbsp; &nbsp; <span (click)="showEdit()">CANCEL</span></p>
 
-      <div class="edit" *ngIf="editprofile">
-        <div class="inputs" >
-          
+        </div>
+
+        <div class="edit" *ngIf="editprofile">
+          <div class="inputs">
+
             <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
 
             <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
@@ -192,66 +198,132 @@
             <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
 
             <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
-        </div>
-        <div class="buttonz" >
+          </div>
+          <!-- <div class="buttonz" >
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
             CANCEL
           </ion-button>
           <ion-button (click)="updateProfile()" color="transparent" id="update">
             UPDATE
           </ion-button>
+        </div> -->
         </div>
-      </div>
-      <ion-button (click)="pendingOrders()" color="transparent">
-        <span>Pending Orders <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
-      </ion-button>
+        <ion-button (click)="presentModal()" color="transparent">
+          <span>Pending Orders <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+        </ion-button>
 
-      <ion-button (click)="orderhistory()" color="transparent">
-        <span>Order History <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
-      </ion-button>
+        <ion-button (click)="presentPending() " color="transparent">
+          <span>Order History <ion-icon slot="end" name="arrow-forward"></ion-icon></span>
+        </ion-button>
+      </div>
+
+
+      <div class="files">
+        <div class="backdrop"></div>
+        <div class="wishlist" (click)=" reviewed()">
+          <div class="backdrop"></div>
+          <img src="https://i.pinimg.com/564x/d6/91/5b/d6915bda9b337db69c69cbd217c3b307.jpg">
+
+          <div class="right">
+            <div class="heart">
+              Wishlist
+              <ion-icon slot="start" name="heart"></ion-icon>
+            </div>
+
+            <div class="clock">
+              <p>{{myWish}} items</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="basket" (click)="basket()">
+          <div class="backdrop"></div>
+          <img src="https://i.pinimg.com/564x/91/2b/7c/912b7c0f897888c8ae8d24dce149da34.jpg">
+
+          <div class="right">
+            <div class="heart">
+              Basket
+              <ion-icon slot="start" name="basket"></ion-icon>
+            </div>
+
+            <div class="clock">
+              <p>{{myCart}} items</p>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
 
 
-    <div class="files" >
-      <div class="backdrop"></div>
-      <div class="wishlist" (click)="wishlist()" >
-        <div class="backdrop"></div>
-        <img src="https://i.pinimg.com/564x/d6/91/5b/d6915bda9b337db69c69cbd217c3b307.jpg">
+  </div>
+  
+  <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
 
-        <div class="right">
-          <div class="heart">
-            Wishlist
-            <ion-icon slot="start" name="heart"></ion-icon>
-          </div>
+    <div class="heading">
+      <p>Wishlist (2)</p>
 
-          <div class="clock">
-            <p>{{myWish}} items</p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="basket" (click)="basket()" >
-        <div class="backdrop"></div>
-        <img src="https://i.pinimg.com/564x/91/2b/7c/912b7c0f897888c8ae8d24dce149da34.jpg">
-
-        <div class="right">
-          <div class="heart">
-            Basket
-            <ion-icon slot="start" name="basket"></ion-icon>
-          </div>
-
-          <div class="clock">
-            <p>{{myCart}} items</p>
-          </div>
-
-        </div>
-      </div>
-
-
+      <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
 
     </div>
-  </div>
-  </div>
 
+
+    <div class="wishlist_items">
+      <div class="items">
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Yellow Tracksuits </p>
+            <p>R400.00</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="onClick()" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Yellow Tracksuits </p>
+            <p>R400.00</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="onClick()" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </ion-content>

@@ -4,28 +4,28 @@
 
     <ion-buttons slot="end">
       <div class="icon1">
-     
-        <ion-button id="icon">
-          Terms and Conditions
+
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" >
+          Terms and Privacy Policy
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer">
           Disclaimer
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs">
           FAQs
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process">
           Payment Process
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
-      
+
       </div>
 
       <ion-button (click)="profile()" id="icon">
@@ -36,7 +36,7 @@
       <ion-button id="icon" (click)="search('Dankie Jesu')">
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
-      <ion-button id="icon" (click)="wishlist()">
+      <ion-button id="icon" (click)="reviewed()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
@@ -102,7 +102,7 @@
         <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
-      <div class="saleitems" >
+      <div class="saleitems">
 
         <div class="image" *ngIf="sales.length === 0">
           <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
@@ -264,7 +264,8 @@
 
         <div class="all_summer">
           <div class="image">
-            <img src="https://i.pinimg.com/564x/46/71/e9/4671e912bfa5bea8fd52d872d0e03b3e.jpg" (click)="listDankie('Vests')">
+            <img src="https://i.pinimg.com/564x/46/71/e9/4671e912bfa5bea8fd52d872d0e03b3e.jpg"
+              (click)="listDankie('Vests')">
 
             <div class="itemname">
               <p>Vests</p>
@@ -272,7 +273,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/d5/d1/0e/d5d10ee01446a128edb6c5e49d716997.jpg" (click)="listDankie('Bucket Hats')">
+            <img src="https://i.pinimg.com/564x/d5/d1/0e/d5d10ee01446a128edb6c5e49d716997.jpg"
+              (click)="listDankie('Bucket Hats')">
 
             <div class="itemname">
               <p>Buckets Hats</p>
@@ -280,7 +282,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/c6/9c/60/c69c6023851a3aa9560ac006d24b88ea.jpg" (click)="listDankie('Tshirts')">
+            <img src="https://i.pinimg.com/564x/c6/9c/60/c69c6023851a3aa9560ac006d24b88ea.jpg"
+              (click)="listDankie('Tshirts')">
 
             <div class="itemname">
               <p>T-shirts</p>
@@ -288,7 +291,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/18/50/2d/18502da8476e0dc0253464a3f103dd55.jpg" (click)="listDankie('Crop Tops')">
+            <img src="https://i.pinimg.com/564x/18/50/2d/18502da8476e0dc0253464a3f103dd55.jpg"
+              (click)="listDankie('Crop Tops')">
 
             <div class="itemname">
               <p>Crop Tops</p>
@@ -296,7 +300,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/15/55/83/155583188fcc9072c0f22b7478bd9453.jpg" (click)="listDankie('Shorts')">
+            <img src="https://i.pinimg.com/564x/15/55/83/155583188fcc9072c0f22b7478bd9453.jpg"
+              (click)="listDankie('Shorts')">
 
             <div class="itemname">
               <p>Shorts</p>
@@ -338,7 +343,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg" (click)="listDankie('Hoodies')">
+            <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg"
+              (click)="listDankie('Hoodies')">
 
             <div class="itemname">
               <p>Hoodies</p>
@@ -346,7 +352,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg" (click)="listDankie('Sweaters')">
+            <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg"
+              (click)="listDankie('Sweaters')">
 
             <div class="itemname">
               <p>Sweaters</p>
@@ -354,7 +361,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/7e/82/1a/7e821a6ab104dfc0d6cfe83104bbf51e.jpg" (click)="listDankie('Beanies')">
+            <img src="https://i.pinimg.com/564x/7e/82/1a/7e821a6ab104dfc0d6cfe83104bbf51e.jpg"
+              (click)="listDankie('Beanies')">
 
             <div class="itemname">
               <p>Beanies</p>
@@ -362,7 +370,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/6f/85/3e/6f853e216ad9a18302338c5c2d596ff9.jpg" (click)="listDankie('Track Suits')">
+            <img src="https://i.pinimg.com/564x/6f/85/3e/6f853e216ad9a18302338c5c2d596ff9.jpg"
+              (click)="listDankie('Track Suits')">
 
             <div class="itemname">
               <p>Track suits</p>
@@ -370,7 +379,8 @@
           </div>
 
           <div class="image">
-            <img src="https://i.pinimg.com/564x/9f/3d/79/9f3d79a894b214724748a155809adb5d.jpg" (click)="listDankie('Accessories')">
+            <img src="https://i.pinimg.com/564x/9f/3d/79/9f3d79a894b214724748a155809adb5d.jpg"
+              (click)="listDankie('Accessories')">
 
             <div class="itemname">
               <p>Accessories</p>
@@ -449,6 +459,118 @@
       </div>
     </div>
   </div>
+
+
+  <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
+
+    <div class="heading">
+      <p>Wishlist (2)</p>
+
+      <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
+
+    </div>
+
+
+    <div class="wishlist_items">
+      <div class="items">
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Yellow Tracksuits </p>
+            <p>R400.00</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="onClick()" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Yellow Tracksuits </p>
+            <p>R400.00</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="onClick()" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <ion-footer id="webview">
+    <div class="footer">
+      <div class="heading">
+        <!-- <h1>Dankie Jesu</h1> -->
+        <img src="../../assets/NoPath - Copy.svg" alt="">
+      </div>
+  
+      <div class="contact_details">
+        <h1>CONTACT US</h1>
+        <p>(011) 954-7865</p>
+        <p>081 123 4566</p>
+        <p class="address">123 Motswaledi Street <br>
+          Diepkloof Ext 3 <br>
+          SOWETO <br>
+          1805</p>
+      </div>
+  
+      <div class="info">
+        <h1>INFO</h1>
+        <p>FAQs</p>
+        <p>Terms and Conditions</p>
+        <p>Disclaimer</p>
+        <p>Payment Process</p>
+        <p>Developers</p>
+      </div>
+  
+      <div class="connect">
+        <h1>CONNECT</h1>
+        <ion-button (click)="onClick()" color="transparent">
+          <ion-icon slot="start" name="logo-facebook"></ion-icon>
+          Facebook
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          <ion-icon slot="start" name="logo-instagram" ></ion-icon>
+          Instagram
+        </ion-button>
+      </div>
+  
+      <div class="app_store">
+        <img src="../../assets/android.png" alt="App Store">
+      </div>
+    </div>
+  </ion-footer>
+
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px;">
     <ion-fab-button (click)="busket()" #cart color="transparent">

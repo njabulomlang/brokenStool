@@ -65,5 +65,53 @@ export class PendingOrdersPage implements OnInit {
     this.navCtrl.pop()
   }
 
+  toggleOne() {
+    var circleOne = document.getElementById("one").style.background = "maroon";
+    var circleOne = document.getElementById("one").style.color = "whitesmoke";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid grey";
+    var circleTwo = document.getElementById("two").style.border = "1px solid grey";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid grey";
+    var circleThree = document.getElementById("three").style.border = "1px solid grey";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
+  }
+  toggleTwo() {
+    var circleOne = document.getElementById("one").style.background = "maroon";
+    var circleOne = document.getElementById("one").style.color = "whitesmoke";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid maroon";
+    var circleTwo = document.getElementById("two").style.background = " maroon";
+    var circleOne = document.getElementById("two").style.color = "whitesmoke";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid grey";
+    var circleThree = document.getElementById("three").style.border = "1px solid grey";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
+  }
+  toggleThree() {
+    var circleOne = document.getElementById("one").style.background = "maroon";
+    var circleOne = document.getElementById("one").style.color = "whitesmoke";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid maroon";
+    var circleTwo = document.getElementById("two").style.background = "maroon";
+    var circleOne = document.getElementById("two").style.color = "whitesmoke";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid maroon";
+    var circleThree = document.getElementById("three").style.background = "maroon";
+    var circleOne = document.getElementById("three").style.color = "whitesmoke";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid grey";
+    var circleFour = document.getElementById("four").style.border = "1px solid grey";
+  }
+  toggleFour() {
+
+    var circleOne = document.getElementById("one").style.background = "maroon";
+    var circleOne = document.getElementById("one").style.color = "whitesmoke";
+    var lineOne = document.getElementById("line1").style.border = "0.5px solid maroon";
+    var circleTwo = document.getElementById("two").style.background = "maroon";
+    var circleOne = document.getElementById("two").style.color = "whitesmoke";
+    var lineTwo = document.getElementById("line2").style.border = "0.5px solid maroon";
+    var circleThree = document.getElementById("three").style.background = "maroon";
+    var circleOne = document.getElementById("three").style.color = "whitesmoke";
+    var lineThree = document.getElementById("line3").style.border = "0.5px solid maroon";
+    var circleFour = document.getElementById("four").style.background = " maroon";
+    var circleOne = document.getElementById("four").style.color = "whitesmoke";
+  }
+
 
 }

@@ -30,6 +30,7 @@ export class HomePage implements OnInit {
   sales = [];
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
+  viewReviews = false;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     // public notificationService: NotificationsService
     ) {
@@ -58,6 +59,10 @@ export class HomePage implements OnInit {
     })
   }
   
+  reviewed() {
+    this.viewReviews = !this.viewReviews
+  }
+
   profile() {
     this.navCtrl.navigateForward('profile');
   }

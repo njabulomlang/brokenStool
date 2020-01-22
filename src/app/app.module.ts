@@ -22,12 +22,13 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
    
-     CartModalPageModule,
+     CartModalPageModule, 
    
      ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase';
 import { firebaseConfig } from './firebaseConfig';
 import { Router } from '@angular/router';
+
 //import { NotificationsService } from './services/notifications.service';
 //import { File, File } from '@ionic-native/file/ngx';
 

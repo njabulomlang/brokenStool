@@ -59,10 +59,6 @@
     <feature name="Downloader">
         <param name="android-package" value="hr.integrator.cordova.plugins.downloader.Downloader" />
     </feature>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
     </feature>
@@ -72,11 +68,6 @@
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />
     </feature>
-<<<<<<< HEAD
-=======
->>>>>>> a55a0be83f9b1225c40638ee16a9fe2da1aed132
-=======
->>>>>>> 739bd3c49c29ce23803ed580fd928aa60629e830
     <name>Broken</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>

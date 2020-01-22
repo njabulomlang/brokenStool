@@ -4,39 +4,32 @@
 
     <ion-buttons slot="end">
       <div class="icon1">
-     
-        <ion-button id="icon">
-          Terms and Conditions
+
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
+          Terms and Privacy Policy
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer">
           Disclaimer
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs">
           FAQs
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process">
           Payment Process
         </ion-button>
 
-        <ion-button id="icon">
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
-      
       </div>
 
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="start">
-      <ion-button id="icon" (click)="goBack()">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
 
@@ -75,19 +68,9 @@
     <div class="itemcount">
       <div class="items">
         <p>200 Items</p>
-       
+
       </div>
 
-     
-<!-- 
-      <div class="filter">
-
-        <ion-select placeholder="Filter">
-          <ion-select-option value="c">Colour</ion-select-option>
-          <ion-select-option value="p">Product Type</ion-select-option>
-          <ion-select-option value="s">Size</ion-select-option>
-        </ion-select>
-      </div> -->
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
 
@@ -170,9 +153,10 @@
     </div>
     <div class="itemcount">
       <div class="items">
-        <p id="lorem" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <p id="lorem" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
       </div>
-      
+
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
 
@@ -248,6 +232,48 @@
     </div>
   </div>
 
+  <ion-footer id="webview">
+    <div class="footer">
+      <div class="heading">
+        <!-- <h1>Dankie Jesu</h1> -->
+        <img src="../../assets/NoPath - Copy.svg" alt="">
+      </div>
 
+      <div class="contact_details">
+        <h1>CONTACT US</h1>
+        <p>(011) 954-7865</p>
+        <p>081 123 4566</p>
+        <p class="address">123 Motswaledi Street <br>
+          Diepkloof Ext 3 <br>
+          SOWETO <br>
+          1805</p>
+      </div>
+
+      <div class="info">
+        <h1>INFO</h1>
+        <p>FAQs</p>
+        <p>Terms and Conditions</p>
+        <p>Disclaimer</p>
+        <p>Payment Process</p>
+        <p>Developers</p>
+      </div>
+
+      <div class="connect">
+        <h1>CONNECT</h1>
+        <ion-button (click)="onClick()" color="transparent">
+          <ion-icon slot="start" name="logo-facebook"></ion-icon>
+          Facebook
+        </ion-button>
+        <ion-button (click)="onClick()" color="transparent">
+          <ion-icon slot="start" name="logo-instagram"></ion-icon>
+          Instagram
+        </ion-button>
+      </div>
+
+      <div class="app_store">
+        <img src="../../assets/android.png" alt="App Store">
+      </div>
+    </div>
+  </ion-footer>
 
 </ion-content>

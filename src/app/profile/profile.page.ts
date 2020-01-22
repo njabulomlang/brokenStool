@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { ToastController, LoadingController, ActionSheetController, NavController } from '@ionic/angular';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
+import { ModalController } from '@ionic/angular';
+import { PendingOrdersPage } from '../../app/pending-orders/pending-orders.page';
+import { OrderHistoryPage} from '../../app//order-history/order-history.page'
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -25,7 +29,8 @@ export class ProfilePage implements OnInit {
   address;
   myCart:number;
   myWish:number;
-  constructor(private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
+  viewReviews = false;
+  constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
 
   ngOnInit() { 
@@ -55,6 +60,23 @@ export class ProfilePage implements OnInit {
     })
   }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PendingOrdersPage
+    });
+    return await modal.present();
+  }
+
+  async presentPending() {
+    const modal = await this.modalController.create({
+      component: OrderHistoryPage
+    });
+    return await modal.present();
+  }
+
+  reviewed() {
+     this.viewReviews = !this.viewReviews
+   }
   
   check(val) {
     if (val == 'close') {
