@@ -172,7 +172,7 @@
         </div>
 
         <div class="price">
-          <p style="text-decoration: line-through;">R3000 </p>
+          <p style="text-decoration: line-through;">{{prod.data.normalPrice | currency:'R'  }} </p>
           <p>{{prod.data.saleprice  | currency:'R' }}</p>
         </div>
       </div>
@@ -417,7 +417,7 @@
       </div>
       <div class="quantity">
         <p>Quantity</p>
-        <ion-button (click)="minus(quantity)" color="transparent" style="background: rgb(212, 212, 212);
+        <ion-button (click)="minus()" color="transparent" style="background: rgb(212, 212, 212);
          color: maroon;
          border-top-left-radius: 7px;
          border-bottom-left-radius: 7px;">
@@ -426,7 +426,7 @@
         <ion-button color="transparent" style="background: rgb(212, 250, 255);">
           {{quantity}}
         </ion-button>
-        <ion-button (click)="plus(quantity)" color="transparent" style="background: rgb(212, 212, 212); 
+        <ion-button (click)="plus()" color="transparent" style="background: rgb(212, 212, 212); 
         color: maroon;
          border-top-right-radius: 7px;
          border-bottom-right-radius: 7px;">
