@@ -426,7 +426,7 @@ var Slides = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         finalOptions = this.normalizeOptions();
-                        return [4 /*yield*/, __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./swiper.bundle-ccdaac54.js */ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-ccdaac54.js"))];
+                        return [4 /*yield*/, __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./swiper.bundle-ccdaac54.js */ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-ccdaac54.js"))];
                     case 1:
                         Swiper = (_a.sent()).Swiper;
                         return [4 /*yield*/, waitForSlides(this.el)];

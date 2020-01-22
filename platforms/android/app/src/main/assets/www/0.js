@@ -170,7 +170,7 @@ var animation = function (animationBuilder, opts) { return Object(tslib__WEBPACK
                 _a.label = 2;
             case 2:
                 _a.trys.push([2, 5, , 6]);
-                return [4 /*yield*/, __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./index-69c37885.js */ "./node_modules/@ionic/core/dist/esm-es5/index-69c37885.js"))];
+                return [4 /*yield*/, __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./index-69c37885.js */ "./node_modules/@ionic/core/dist/esm-es5/index-69c37885.js"))];
             case 3:
                 mod = _a.sent();
                 return [4 /*yield*/, mod.create(animationBuilder, opts.baseEl, opts)];

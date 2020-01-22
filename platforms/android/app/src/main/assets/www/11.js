@@ -1,784 +1,5671 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[11],{
 
-/***/ "./node_modules/ionic4-star-rating/dist/components/ionic4-star-rating-component.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/ionic4-star-rating/dist/components/ionic4-star-rating-component.js ***!
-  \*****************************************************************************************/
-/*! exports provided: StarRating */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-ccdaac54.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-ccdaac54.js ***!
+  \*************************************************************************/
+/*! exports provided: Swiper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StarRating", function() { return StarRating; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Swiper", function() { return Swiper; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
-
-
-var HTML_TEMPLATE = "\n<div class=\"ionic4-star-rating\">\n  <button [ngStyle]=\"{'width' : fontSize, 'height' : fontSize}\" *ngFor=\"let index of iconsArray\" id=\"{{index}}\" type=\"button\" ion-button icon-only (click)=\"changeRating($event)\">\n    <ion-icon [ngStyle]=\"{'color':index < this.Math.round(this.parseFloat(rating)) ? activeColor : defaultColor, 'font-size' : fontSize }\" name=\"{{(halfStar ==='true' && (rating - index > 0) && (rating - index <= 0.5)) ? halfIcon : (index < this.Math.round(this.parseFloat(rating))) ? activeIcon : defaultIcon}}\"></ion-icon>\n  </button>\n</div>\n";
-var CSS_STYLE = "\n    .ionic4-star-rating button {\n        background: none;\n        box-shadow: none;\n        -webkit-box-shadow: none;\n        padding : 0px;\n    }\n";
-var StarRating = /** @class */ (function () {
-    function StarRating(events) {
-        this.events = events;
-        this.eventInfo = (function () {
-            var id = new Date().getTime();
-            var topic = "star-rating:" + id + ":changed";
-            return {
-                topic: topic
-            };
-        })();
-        this.ratingChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.readonly = "false";
-        this.activeColor = '#488aff';
-        this.defaultColor = '#aaaaaa';
-        this.activeIcon = 'ios-star';
-        this.defaultIcon = 'ios-star-outline';
-        this.halfIcon = 'ios-star-half';
-        this.halfStar = "false";
-        this.maxRating = 5;
-        this.fontSize = '28px';
-        this.iconsArray = [];
-        this.Math = Math;
-        this.parseFloat = parseFloat;
-    }
-    StarRating_1 = StarRating;
-    StarRating.prototype.ngOnInit = function () {
-        this.rating = this.rating || 3; //default after input`s initialization
-        for (var i = 0; i < this.maxRating; i++) {
-            this.iconsArray.push(i);
+/**
+ * SSR Window 1.0.1
+ * Better handling for window object in SSR environment
+ * https://github.com/nolimits4web/ssr-window
+ *
+ * Copyright 2018, Vladimir Kharlampidi
+ *
+ * Licensed under MIT
+ *
+ * Released on: July 18, 2018
+ */
+var doc = (typeof document === 'undefined') ? {
+    body: {},
+    addEventListener: function addEventListener() { },
+    removeEventListener: function removeEventListener() { },
+    activeElement: {
+        blur: function blur() { },
+        nodeName: '',
+    },
+    querySelector: function querySelector() {
+        return null;
+    },
+    querySelectorAll: function querySelectorAll() {
+        return [];
+    },
+    getElementById: function getElementById() {
+        return null;
+    },
+    createEvent: function createEvent() {
+        return {
+            initEvent: function initEvent() { },
+        };
+    },
+    createElement: function createElement() {
+        return {
+            children: [],
+            childNodes: [],
+            style: {},
+            setAttribute: function setAttribute() { },
+            getElementsByTagName: function getElementsByTagName() {
+                return [];
+            },
+        };
+    },
+    location: { hash: '' },
+} : document; // eslint-disable-line
+var win = (typeof window === 'undefined') ? {
+    document: doc,
+    navigator: {
+        userAgent: '',
+    },
+    location: {},
+    history: {},
+    CustomEvent: function CustomEvent() {
+        return this;
+    },
+    addEventListener: function addEventListener() { },
+    removeEventListener: function removeEventListener() { },
+    getComputedStyle: function getComputedStyle() {
+        return {
+            getPropertyValue: function getPropertyValue() {
+                return '';
+            },
+        };
+    },
+    Image: function Image() { },
+    Date: function Date() { },
+    screen: {},
+    setTimeout: function setTimeout() { },
+    clearTimeout: function clearTimeout() { },
+} : window; // eslint-disable-line
+/**
+ * Dom7 2.1.3
+ * Minimalistic JavaScript library for DOM manipulation, with a jQuery-compatible API
+ * http://framework7.io/docs/dom.html
+ *
+ * Copyright 2019, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ *
+ * Licensed under MIT
+ *
+ * Released on: February 11, 2019
+ */
+var Dom7 = /** @class */ (function () {
+    function Dom7(arr) {
+        var self = this;
+        // Create array-like object
+        for (var i = 0; i < arr.length; i += 1) {
+            self[i] = arr[i];
         }
-    };
-    StarRating.prototype.writeValue = function (obj) {
-        this.rating = obj;
-    };
-    StarRating.prototype.registerOnChange = function (fn) {
-        this.onChange = fn;
-    };
-    StarRating.prototype.registerOnTouched = function (fn) {
-        this.onTouched = fn;
-    };
-    StarRating.prototype.setDisabledState = function (isDisabled) {
-        this.readonly = isDisabled ? "true" : "false";
-    };
-    Object.defineProperty(StarRating.prototype, "rating", {
-        get: function () {
-            return this._rating;
-        },
-        set: function (val) {
-            this._rating = val;
-            // for form
-            if (this.onChange) {
-                this.onChange(val);
+        self.length = arr.length;
+        // Return collection with methods
+        return this;
+    }
+    return Dom7;
+}());
+function $(selector, context) {
+    var arr = [];
+    var i = 0;
+    if (selector && !context) {
+        if (selector instanceof Dom7) {
+            return selector;
+        }
+    }
+    if (selector) {
+        // String
+        if (typeof selector === 'string') {
+            var els = void 0;
+            var tempParent = void 0;
+            var html_1 = selector.trim();
+            if (html_1.indexOf('<') >= 0 && html_1.indexOf('>') >= 0) {
+                var toCreate = 'div';
+                if (html_1.indexOf('<li') === 0)
+                    toCreate = 'ul';
+                if (html_1.indexOf('<tr') === 0)
+                    toCreate = 'tbody';
+                if (html_1.indexOf('<td') === 0 || html_1.indexOf('<th') === 0)
+                    toCreate = 'tr';
+                if (html_1.indexOf('<tbody') === 0)
+                    toCreate = 'table';
+                if (html_1.indexOf('<option') === 0)
+                    toCreate = 'select';
+                tempParent = doc.createElement(toCreate);
+                tempParent.innerHTML = html_1;
+                for (i = 0; i < tempParent.childNodes.length; i += 1) {
+                    arr.push(tempParent.childNodes[i]);
+                }
             }
+            else {
+                if (!context && selector[0] === '#' && !selector.match(/[ .<>:~]/)) {
+                    // Pure ID selector
+                    els = [doc.getElementById(selector.trim().split('#')[1])];
+                }
+                else {
+                    // Other selectors
+                    els = (context || doc).querySelectorAll(selector.trim());
+                }
+                for (i = 0; i < els.length; i += 1) {
+                    if (els[i])
+                        arr.push(els[i]);
+                }
+            }
+        }
+        else if (selector.nodeType || selector === win || selector === doc) {
+            // Node/element
+            arr.push(selector);
+        }
+        else if (selector.length > 0 && selector[0].nodeType) {
+            // Array of elements or instance of Dom
+            for (i = 0; i < selector.length; i += 1) {
+                arr.push(selector[i]);
+            }
+        }
+    }
+    return new Dom7(arr);
+}
+$.fn = Dom7.prototype;
+$.Class = Dom7;
+$.Dom7 = Dom7;
+function unique(arr) {
+    var uniqueArray = [];
+    for (var i = 0; i < arr.length; i += 1) {
+        if (uniqueArray.indexOf(arr[i]) === -1)
+            uniqueArray.push(arr[i]);
+    }
+    return uniqueArray;
+}
+// Classes and attributes
+function addClass(className) {
+    if (typeof className === 'undefined') {
+        return this;
+    }
+    var classes = className.split(' ');
+    for (var i = 0; i < classes.length; i += 1) {
+        for (var j = 0; j < this.length; j += 1) {
+            if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined')
+                this[j].classList.add(classes[i]);
+        }
+    }
+    return this;
+}
+function removeClass(className) {
+    var classes = className.split(' ');
+    for (var i = 0; i < classes.length; i += 1) {
+        for (var j = 0; j < this.length; j += 1) {
+            if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined')
+                this[j].classList.remove(classes[i]);
+        }
+    }
+    return this;
+}
+function hasClass(className) {
+    if (!this[0])
+        return false;
+    return this[0].classList.contains(className);
+}
+function toggleClass(className) {
+    var classes = className.split(' ');
+    for (var i = 0; i < classes.length; i += 1) {
+        for (var j = 0; j < this.length; j += 1) {
+            if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined')
+                this[j].classList.toggle(classes[i]);
+        }
+    }
+    return this;
+}
+function attr(attrs, value) {
+    if (arguments.length === 1 && typeof attrs === 'string') {
+        // Get attr
+        if (this[0])
+            return this[0].getAttribute(attrs);
+        return undefined;
+    }
+    // Set attrs
+    for (var i = 0; i < this.length; i += 1) {
+        if (arguments.length === 2) {
+            // String
+            this[i].setAttribute(attrs, value);
+        }
+        else {
+            // Object
+            // eslint-disable-next-line
+            for (var attrName in attrs) {
+                this[i][attrName] = attrs[attrName];
+                this[i].setAttribute(attrName, attrs[attrName]);
+            }
+        }
+    }
+    return this;
+}
+// eslint-disable-next-line
+function removeAttr(attr) {
+    for (var i = 0; i < this.length; i += 1) {
+        this[i].removeAttribute(attr);
+    }
+    return this;
+}
+function data(key, value) {
+    var el;
+    if (typeof value === 'undefined') {
+        el = this[0];
+        // Get value
+        if (el) {
+            if (el.dom7ElementDataStorage && (key in el.dom7ElementDataStorage)) {
+                return el.dom7ElementDataStorage[key];
+            }
+            var dataKey = el.getAttribute("data-" + key);
+            if (dataKey) {
+                return dataKey;
+            }
+            return undefined;
+        }
+        return undefined;
+    }
+    // Set value
+    for (var i = 0; i < this.length; i += 1) {
+        el = this[i];
+        if (!el.dom7ElementDataStorage)
+            el.dom7ElementDataStorage = {};
+        el.dom7ElementDataStorage[key] = value;
+    }
+    return this;
+}
+// Transforms
+// eslint-disable-next-line
+function transform(transform) {
+    for (var i = 0; i < this.length; i += 1) {
+        var elStyle = this[i].style;
+        elStyle.webkitTransform = transform;
+        elStyle.transform = transform;
+    }
+    return this;
+}
+function transition(duration) {
+    if (typeof duration !== 'string') {
+        duration = duration + "ms"; // eslint-disable-line
+    }
+    for (var i = 0; i < this.length; i += 1) {
+        var elStyle = this[i].style;
+        elStyle.webkitTransitionDuration = duration;
+        elStyle.transitionDuration = duration;
+    }
+    return this;
+}
+// Events
+function on() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var eventType = args[0], targetSelector = args[1], listener = args[2], capture = args[3];
+    if (typeof args[1] === 'function') {
+        eventType = args[0], listener = args[1], capture = args[2];
+        targetSelector = undefined;
+    }
+    if (!capture)
+        capture = false;
+    function handleLiveEvent(e) {
+        var target = e.target;
+        if (!target)
+            return;
+        var eventData = e.target.dom7EventData || [];
+        if (eventData.indexOf(e) < 0) {
+            eventData.unshift(e);
+        }
+        if ($(target).is(targetSelector))
+            listener.apply(target, eventData);
+        else {
+            var parents_1 = $(target).parents(); // eslint-disable-line
+            for (var k = 0; k < parents_1.length; k += 1) {
+                if ($(parents_1[k]).is(targetSelector))
+                    listener.apply(parents_1[k], eventData);
+            }
+        }
+    }
+    function handleEvent(e) {
+        var eventData = e && e.target ? e.target.dom7EventData || [] : [];
+        if (eventData.indexOf(e) < 0) {
+            eventData.unshift(e);
+        }
+        listener.apply(this, eventData);
+    }
+    var events = eventType.split(' ');
+    var j;
+    for (var i = 0; i < this.length; i += 1) {
+        var el = this[i];
+        if (!targetSelector) {
+            for (j = 0; j < events.length; j += 1) {
+                var event = events[j];
+                if (!el.dom7Listeners)
+                    el.dom7Listeners = {};
+                if (!el.dom7Listeners[event])
+                    el.dom7Listeners[event] = [];
+                el.dom7Listeners[event].push({
+                    listener: listener,
+                    proxyListener: handleEvent,
+                });
+                el.addEventListener(event, handleEvent, capture);
+            }
+        }
+        else {
+            // Live events
+            for (j = 0; j < events.length; j += 1) {
+                var event = events[j];
+                if (!el.dom7LiveListeners)
+                    el.dom7LiveListeners = {};
+                if (!el.dom7LiveListeners[event])
+                    el.dom7LiveListeners[event] = [];
+                el.dom7LiveListeners[event].push({
+                    listener: listener,
+                    proxyListener: handleLiveEvent,
+                });
+                el.addEventListener(event, handleLiveEvent, capture);
+            }
+        }
+    }
+    return this;
+}
+function off() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var eventType = args[0], targetSelector = args[1], listener = args[2], capture = args[3];
+    if (typeof args[1] === 'function') {
+        eventType = args[0], listener = args[1], capture = args[2];
+        targetSelector = undefined;
+    }
+    if (!capture)
+        capture = false;
+    var events = eventType.split(' ');
+    for (var i = 0; i < events.length; i += 1) {
+        var event = events[i];
+        for (var j = 0; j < this.length; j += 1) {
+            var el = this[j];
+            var handlers = void 0;
+            if (!targetSelector && el.dom7Listeners) {
+                handlers = el.dom7Listeners[event];
+            }
+            else if (targetSelector && el.dom7LiveListeners) {
+                handlers = el.dom7LiveListeners[event];
+            }
+            if (handlers && handlers.length) {
+                for (var k = handlers.length - 1; k >= 0; k -= 1) {
+                    var handler = handlers[k];
+                    if (listener && handler.listener === listener) {
+                        el.removeEventListener(event, handler.proxyListener, capture);
+                        handlers.splice(k, 1);
+                    }
+                    else if (listener && handler.listener && handler.listener.dom7proxy && handler.listener.dom7proxy === listener) {
+                        el.removeEventListener(event, handler.proxyListener, capture);
+                        handlers.splice(k, 1);
+                    }
+                    else if (!listener) {
+                        el.removeEventListener(event, handler.proxyListener, capture);
+                        handlers.splice(k, 1);
+                    }
+                }
+            }
+        }
+    }
+    return this;
+}
+function trigger() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var events = args[0].split(' ');
+    var eventData = args[1];
+    for (var i = 0; i < events.length; i += 1) {
+        var event = events[i];
+        for (var j = 0; j < this.length; j += 1) {
+            var el = this[j];
+            var evt = void 0;
+            try {
+                evt = new win.CustomEvent(event, {
+                    detail: eventData,
+                    bubbles: true,
+                    cancelable: true,
+                });
+            }
+            catch (e) {
+                evt = doc.createEvent('Event');
+                evt.initEvent(event, true, true);
+                evt.detail = eventData;
+            }
+            // eslint-disable-next-line
+            el.dom7EventData = args.filter(function (data, dataIndex) { return dataIndex > 0; });
+            el.dispatchEvent(evt);
+            el.dom7EventData = [];
+            delete el.dom7EventData;
+        }
+    }
+    return this;
+}
+function transitionEnd(callback) {
+    var events = ['webkitTransitionEnd', 'transitionend'];
+    var dom = this;
+    var i;
+    function fireCallBack(e) {
+        /* jshint validthis:true */
+        if (e.target !== this)
+            return;
+        callback.call(this, e);
+        for (i = 0; i < events.length; i += 1) {
+            dom.off(events[i], fireCallBack);
+        }
+    }
+    if (callback) {
+        for (i = 0; i < events.length; i += 1) {
+            dom.on(events[i], fireCallBack);
+        }
+    }
+    return this;
+}
+function outerWidth(includeMargins) {
+    if (this.length > 0) {
+        if (includeMargins) {
+            // eslint-disable-next-line
+            var styles_1 = this.styles();
+            return this[0].offsetWidth + parseFloat(styles_1.getPropertyValue('margin-right')) + parseFloat(styles_1.getPropertyValue('margin-left'));
+        }
+        return this[0].offsetWidth;
+    }
+    return null;
+}
+function outerHeight(includeMargins) {
+    if (this.length > 0) {
+        if (includeMargins) {
+            // eslint-disable-next-line
+            var styles_2 = this.styles();
+            return this[0].offsetHeight + parseFloat(styles_2.getPropertyValue('margin-top')) + parseFloat(styles_2.getPropertyValue('margin-bottom'));
+        }
+        return this[0].offsetHeight;
+    }
+    return null;
+}
+function offset() {
+    if (this.length > 0) {
+        var el = this[0];
+        var box = el.getBoundingClientRect();
+        var body = doc.body;
+        var clientTop = el.clientTop || body.clientTop || 0;
+        var clientLeft = el.clientLeft || body.clientLeft || 0;
+        var scrollTop = el === win ? win.scrollY : el.scrollTop;
+        var scrollLeft = el === win ? win.scrollX : el.scrollLeft;
+        return {
+            top: (box.top + scrollTop) - clientTop,
+            left: (box.left + scrollLeft) - clientLeft,
+        };
+    }
+    return null;
+}
+function styles() {
+    if (this[0])
+        return win.getComputedStyle(this[0], null);
+    return {};
+}
+function css(props, value) {
+    var i;
+    if (arguments.length === 1) {
+        if (typeof props === 'string') {
+            if (this[0])
+                return win.getComputedStyle(this[0], null).getPropertyValue(props);
+        }
+        else {
+            for (i = 0; i < this.length; i += 1) {
+                // eslint-disable-next-line
+                for (var prop in props) {
+                    this[i].style[prop] = props[prop];
+                }
+            }
+            return this;
+        }
+    }
+    if (arguments.length === 2 && typeof props === 'string') {
+        for (i = 0; i < this.length; i += 1) {
+            this[i].style[props] = value;
+        }
+        return this;
+    }
+    return this;
+}
+// Iterate over the collection passing elements to `callback`
+function each(callback) {
+    // Don't bother continuing without a callback
+    if (!callback)
+        return this;
+    // Iterate over the current collection
+    for (var i = 0; i < this.length; i += 1) {
+        // If the callback returns false
+        if (callback.call(this[i], i, this[i]) === false) {
+            // End the loop early
+            return this;
+        }
+    }
+    // Return `this` to allow chained DOM operations
+    return this;
+}
+// eslint-disable-next-line
+function html(html) {
+    if (typeof html === 'undefined') {
+        return this[0] ? this[0].innerHTML : undefined;
+    }
+    for (var i = 0; i < this.length; i += 1) {
+        this[i].innerHTML = html;
+    }
+    return this;
+}
+// eslint-disable-next-line
+function text(text) {
+    if (typeof text === 'undefined') {
+        if (this[0]) {
+            return this[0].textContent.trim();
+        }
+        return null;
+    }
+    for (var i = 0; i < this.length; i += 1) {
+        this[i].textContent = text;
+    }
+    return this;
+}
+function is(selector) {
+    var el = this[0];
+    var compareWith;
+    var i;
+    if (!el || typeof selector === 'undefined')
+        return false;
+    if (typeof selector === 'string') {
+        if (el.matches)
+            return el.matches(selector);
+        else if (el.webkitMatchesSelector)
+            return el.webkitMatchesSelector(selector);
+        else if (el.msMatchesSelector)
+            return el.msMatchesSelector(selector);
+        compareWith = $(selector);
+        for (i = 0; i < compareWith.length; i += 1) {
+            if (compareWith[i] === el)
+                return true;
+        }
+        return false;
+    }
+    else if (selector === doc)
+        return el === doc;
+    else if (selector === win)
+        return el === win;
+    if (selector.nodeType || selector instanceof Dom7) {
+        compareWith = selector.nodeType ? [selector] : selector;
+        for (i = 0; i < compareWith.length; i += 1) {
+            if (compareWith[i] === el)
+                return true;
+        }
+        return false;
+    }
+    return false;
+}
+function index() {
+    var child = this[0];
+    var i;
+    if (child) {
+        i = 0;
+        // eslint-disable-next-line
+        while ((child = child.previousSibling) !== null) {
+            if (child.nodeType === 1)
+                i += 1;
+        }
+        return i;
+    }
+    return undefined;
+}
+// eslint-disable-next-line
+function eq(index) {
+    if (typeof index === 'undefined')
+        return this;
+    var length = this.length;
+    var returnIndex;
+    if (index > length - 1) {
+        return new Dom7([]);
+    }
+    if (index < 0) {
+        returnIndex = length + index;
+        if (returnIndex < 0)
+            return new Dom7([]);
+        return new Dom7([this[returnIndex]]);
+    }
+    return new Dom7([this[index]]);
+}
+function append() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var newChild;
+    for (var k = 0; k < args.length; k += 1) {
+        newChild = args[k];
+        for (var i = 0; i < this.length; i += 1) {
+            if (typeof newChild === 'string') {
+                var tempDiv = doc.createElement('div');
+                tempDiv.innerHTML = newChild;
+                while (tempDiv.firstChild) {
+                    this[i].appendChild(tempDiv.firstChild);
+                }
+            }
+            else if (newChild instanceof Dom7) {
+                for (var j = 0; j < newChild.length; j += 1) {
+                    this[i].appendChild(newChild[j]);
+                }
+            }
+            else {
+                this[i].appendChild(newChild);
+            }
+        }
+    }
+    return this;
+}
+function prepend(newChild) {
+    var i;
+    var j;
+    for (i = 0; i < this.length; i += 1) {
+        if (typeof newChild === 'string') {
+            var tempDiv = doc.createElement('div');
+            tempDiv.innerHTML = newChild;
+            for (j = tempDiv.childNodes.length - 1; j >= 0; j -= 1) {
+                this[i].insertBefore(tempDiv.childNodes[j], this[i].childNodes[0]);
+            }
+        }
+        else if (newChild instanceof Dom7) {
+            for (j = 0; j < newChild.length; j += 1) {
+                this[i].insertBefore(newChild[j], this[i].childNodes[0]);
+            }
+        }
+        else {
+            this[i].insertBefore(newChild, this[i].childNodes[0]);
+        }
+    }
+    return this;
+}
+function next(selector) {
+    if (this.length > 0) {
+        if (selector) {
+            if (this[0].nextElementSibling && $(this[0].nextElementSibling).is(selector)) {
+                return new Dom7([this[0].nextElementSibling]);
+            }
+            return new Dom7([]);
+        }
+        if (this[0].nextElementSibling)
+            return new Dom7([this[0].nextElementSibling]);
+        return new Dom7([]);
+    }
+    return new Dom7([]);
+}
+function nextAll(selector) {
+    var nextEls = [];
+    var el = this[0];
+    if (!el)
+        return new Dom7([]);
+    while (el.nextElementSibling) {
+        var next_1 = el.nextElementSibling; // eslint-disable-line
+        if (selector) {
+            if ($(next_1).is(selector))
+                nextEls.push(next_1);
+        }
+        else
+            nextEls.push(next_1);
+        el = next_1;
+    }
+    return new Dom7(nextEls);
+}
+function prev(selector) {
+    if (this.length > 0) {
+        var el = this[0];
+        if (selector) {
+            if (el.previousElementSibling && $(el.previousElementSibling).is(selector)) {
+                return new Dom7([el.previousElementSibling]);
+            }
+            return new Dom7([]);
+        }
+        if (el.previousElementSibling)
+            return new Dom7([el.previousElementSibling]);
+        return new Dom7([]);
+    }
+    return new Dom7([]);
+}
+function prevAll(selector) {
+    var prevEls = [];
+    var el = this[0];
+    if (!el)
+        return new Dom7([]);
+    while (el.previousElementSibling) {
+        var prev_1 = el.previousElementSibling; // eslint-disable-line
+        if (selector) {
+            if ($(prev_1).is(selector))
+                prevEls.push(prev_1);
+        }
+        else
+            prevEls.push(prev_1);
+        el = prev_1;
+    }
+    return new Dom7(prevEls);
+}
+function parent(selector) {
+    var parents = []; // eslint-disable-line
+    for (var i = 0; i < this.length; i += 1) {
+        if (this[i].parentNode !== null) {
+            if (selector) {
+                if ($(this[i].parentNode).is(selector))
+                    parents.push(this[i].parentNode);
+            }
+            else {
+                parents.push(this[i].parentNode);
+            }
+        }
+    }
+    return $(unique(parents));
+}
+function parents(selector) {
+    var parents = []; // eslint-disable-line
+    for (var i = 0; i < this.length; i += 1) {
+        var parent_1 = this[i].parentNode; // eslint-disable-line
+        while (parent_1) {
+            if (selector) {
+                if ($(parent_1).is(selector))
+                    parents.push(parent_1);
+            }
+            else {
+                parents.push(parent_1);
+            }
+            parent_1 = parent_1.parentNode;
+        }
+    }
+    return $(unique(parents));
+}
+function closest(selector) {
+    var closest = this; // eslint-disable-line
+    if (typeof selector === 'undefined') {
+        return new Dom7([]);
+    }
+    if (!closest.is(selector)) {
+        closest = closest.parents(selector).eq(0);
+    }
+    return closest;
+}
+function find(selector) {
+    var foundElements = [];
+    for (var i = 0; i < this.length; i += 1) {
+        var found = this[i].querySelectorAll(selector);
+        for (var j = 0; j < found.length; j += 1) {
+            foundElements.push(found[j]);
+        }
+    }
+    return new Dom7(foundElements);
+}
+function children(selector) {
+    var children = []; // eslint-disable-line
+    for (var i = 0; i < this.length; i += 1) {
+        var childNodes = this[i].childNodes;
+        for (var j = 0; j < childNodes.length; j += 1) {
+            if (!selector) {
+                if (childNodes[j].nodeType === 1)
+                    children.push(childNodes[j]);
+            }
+            else if (childNodes[j].nodeType === 1 && $(childNodes[j]).is(selector)) {
+                children.push(childNodes[j]);
+            }
+        }
+    }
+    return new Dom7(unique(children));
+}
+function remove() {
+    for (var i = 0; i < this.length; i += 1) {
+        if (this[i].parentNode)
+            this[i].parentNode.removeChild(this[i]);
+    }
+    return this;
+}
+function add() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var dom = this;
+    var i;
+    var j;
+    for (i = 0; i < args.length; i += 1) {
+        var toAdd = $(args[i]);
+        for (j = 0; j < toAdd.length; j += 1) {
+            dom[dom.length] = toAdd[j];
+            dom.length += 1;
+        }
+    }
+    return dom;
+}
+/**
+ * Swiper 4.5.1
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * http://www.idangero.us/swiper/
+ *
+ * Copyright 2014-2019 Vladimir Kharlampidi
+ *
+ * Released under the MIT License
+ *
+ * Released on: September 13, 2019
+ */
+var Methods = {
+    addClass: addClass,
+    removeClass: removeClass,
+    hasClass: hasClass,
+    toggleClass: toggleClass,
+    attr: attr,
+    removeAttr: removeAttr,
+    data: data,
+    transform: transform,
+    transition: transition,
+    on: on,
+    off: off,
+    trigger: trigger,
+    transitionEnd: transitionEnd,
+    outerWidth: outerWidth,
+    outerHeight: outerHeight,
+    offset: offset,
+    css: css,
+    each: each,
+    html: html,
+    text: text,
+    is: is,
+    index: index,
+    eq: eq,
+    append: append,
+    prepend: prepend,
+    next: next,
+    nextAll: nextAll,
+    prev: prev,
+    prevAll: prevAll,
+    parent: parent,
+    parents: parents,
+    closest: closest,
+    find: find,
+    children: children,
+    remove: remove,
+    add: add,
+    styles: styles,
+};
+Object.keys(Methods).forEach(function (methodName) {
+    $.fn[methodName] = $.fn[methodName] || Methods[methodName];
+});
+var Utils = {
+    deleteProps: function (obj) {
+        var object = obj;
+        Object.keys(object).forEach(function (key) {
+            try {
+                object[key] = null;
+            }
+            catch (e) {
+                // no getter for object
+            }
+            try {
+                delete object[key];
+            }
+            catch (e) {
+                // something got wrong
+            }
+        });
+    },
+    nextTick: function (callback, delay) {
+        if (delay === void 0) { delay = 0; }
+        return setTimeout(callback, delay);
+    },
+    now: function () {
+        return Date.now();
+    },
+    getTranslate: function (el, axis) {
+        if (axis === void 0) { axis = 'x'; }
+        var matrix;
+        var curTransform;
+        var transformMatrix;
+        var curStyle = win.getComputedStyle(el, null);
+        if (win.WebKitCSSMatrix) {
+            curTransform = curStyle.transform || curStyle.webkitTransform;
+            if (curTransform.split(',').length > 6) {
+                curTransform = curTransform.split(', ').map(function (a) { return a.replace(',', '.'); }).join(', ');
+            }
+            // Some old versions of Webkit choke when 'none' is passed; pass
+            // empty string instead in this case
+            transformMatrix = new win.WebKitCSSMatrix(curTransform === 'none' ? '' : curTransform);
+        }
+        else {
+            transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
+            matrix = transformMatrix.toString().split(',');
+        }
+        if (axis === 'x') {
+            // Latest Chrome and webkits Fix
+            if (win.WebKitCSSMatrix)
+                curTransform = transformMatrix.m41;
+            // Crazy IE10 Matrix
+            else if (matrix.length === 16)
+                curTransform = parseFloat(matrix[12]);
+            // Normal Browsers
+            else
+                curTransform = parseFloat(matrix[4]);
+        }
+        if (axis === 'y') {
+            // Latest Chrome and webkits Fix
+            if (win.WebKitCSSMatrix)
+                curTransform = transformMatrix.m42;
+            // Crazy IE10 Matrix
+            else if (matrix.length === 16)
+                curTransform = parseFloat(matrix[13]);
+            // Normal Browsers
+            else
+                curTransform = parseFloat(matrix[5]);
+        }
+        return curTransform || 0;
+    },
+    parseUrlQuery: function (url) {
+        var query = {};
+        var urlToParse = url || win.location.href;
+        var i;
+        var params;
+        var param;
+        var length;
+        if (typeof urlToParse === 'string' && urlToParse.length) {
+            urlToParse = urlToParse.indexOf('?') > -1 ? urlToParse.replace(/\S*\?/, '') : '';
+            params = urlToParse.split('&').filter(function (paramsPart) { return paramsPart !== ''; });
+            length = params.length;
+            for (i = 0; i < length; i += 1) {
+                param = params[i].replace(/#\S+/g, '').split('=');
+                query[decodeURIComponent(param[0])] = typeof param[1] === 'undefined' ? undefined : decodeURIComponent(param[1]) || '';
+            }
+        }
+        return query;
+    },
+    isObject: function (o) {
+        return typeof o === 'object' && o !== null && o.constructor && o.constructor === Object;
+    },
+    extend: function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var to = Object(args[0]);
+        for (var i = 1; i < args.length; i += 1) {
+            var nextSource = args[i];
+            if (nextSource !== undefined && nextSource !== null) {
+                var keysArray = Object.keys(Object(nextSource));
+                for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+                    var nextKey = keysArray[nextIndex];
+                    var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                    if (desc !== undefined && desc.enumerable) {
+                        if (Utils.isObject(to[nextKey]) && Utils.isObject(nextSource[nextKey])) {
+                            Utils.extend(to[nextKey], nextSource[nextKey]);
+                        }
+                        else if (!Utils.isObject(to[nextKey]) && Utils.isObject(nextSource[nextKey])) {
+                            to[nextKey] = {};
+                            Utils.extend(to[nextKey], nextSource[nextKey]);
+                        }
+                        else {
+                            to[nextKey] = nextSource[nextKey];
+                        }
+                    }
+                }
+            }
+        }
+        return to;
+    },
+};
+var Support = (function Support() {
+    var testDiv = doc.createElement('div');
+    return {
+        touch: (win.Modernizr && win.Modernizr.touch === true) || (function checkTouch() {
+            return !!((win.navigator.maxTouchPoints > 0) || ('ontouchstart' in win) || (win.DocumentTouch && doc instanceof win.DocumentTouch));
+        }()),
+        pointerEvents: !!(win.navigator.pointerEnabled || win.PointerEvent || ('maxTouchPoints' in win.navigator && win.navigator.maxTouchPoints > 0)),
+        prefixedPointerEvents: !!win.navigator.msPointerEnabled,
+        transition: (function checkTransition() {
+            var style = testDiv.style;
+            return ('transition' in style || 'webkitTransition' in style || 'MozTransition' in style);
+        }()),
+        transforms3d: (win.Modernizr && win.Modernizr.csstransforms3d === true) || (function checkTransforms3d() {
+            var style = testDiv.style;
+            return ('webkitPerspective' in style || 'MozPerspective' in style || 'OPerspective' in style || 'MsPerspective' in style || 'perspective' in style);
+        }()),
+        flexbox: (function checkFlexbox() {
+            var style = testDiv.style;
+            var styles = ('alignItems webkitAlignItems webkitBoxAlign msFlexAlign mozBoxAlign webkitFlexDirection msFlexDirection mozBoxDirection mozBoxOrient webkitBoxDirection webkitBoxOrient').split(' ');
+            for (var i = 0; i < styles.length; i += 1) {
+                if (styles[i] in style)
+                    return true;
+            }
+            return false;
+        }()),
+        observer: (function checkObserver() {
+            return ('MutationObserver' in win || 'WebkitMutationObserver' in win);
+        }()),
+        passiveListener: (function checkPassiveListener() {
+            var supportsPassive = false;
+            try {
+                var opts = Object.defineProperty({}, 'passive', {
+                    // eslint-disable-next-line
+                    get: function () {
+                        supportsPassive = true;
+                    },
+                });
+                win.addEventListener('testPassiveListener', null, opts);
+            }
+            catch (e) {
+                // No support
+            }
+            return supportsPassive;
+        }()),
+        gestures: (function checkGestures() {
+            return 'ongesturestart' in win;
+        }()),
+    };
+}());
+var Browser = (function Browser() {
+    function isSafari() {
+        var ua = win.navigator.userAgent.toLowerCase();
+        return (ua.indexOf('safari') >= 0 && ua.indexOf('chrome') < 0 && ua.indexOf('android') < 0);
+    }
+    return {
+        isIE: !!win.navigator.userAgent.match(/Trident/g) || !!win.navigator.userAgent.match(/MSIE/g),
+        isEdge: !!win.navigator.userAgent.match(/Edge/g),
+        isSafari: isSafari(),
+        isUiWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(win.navigator.userAgent),
+    };
+}());
+var SwiperClass = /** @class */ (function () {
+    function SwiperClass(params) {
+        if (params === void 0) { params = {}; }
+        var self = this;
+        self.params = params;
+        // Events
+        self.eventsListeners = {};
+        if (self.params && self.params.on) {
+            Object.keys(self.params.on).forEach(function (eventName) {
+                self.on(eventName, self.params.on[eventName]);
+            });
+        }
+    }
+    SwiperClass.prototype.on = function (events, handler, priority) {
+        var self = this;
+        if (typeof handler !== 'function')
+            return self;
+        var method = priority ? 'unshift' : 'push';
+        events.split(' ').forEach(function (event) {
+            if (!self.eventsListeners[event])
+                self.eventsListeners[event] = [];
+            self.eventsListeners[event][method](handler);
+        });
+        return self;
+    };
+    SwiperClass.prototype.once = function (events, handler, priority) {
+        var self = this;
+        if (typeof handler !== 'function')
+            return self;
+        function onceHandler() {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            handler.apply(self, args);
+            self.off(events, onceHandler);
+            if (onceHandler.f7proxy) {
+                delete onceHandler.f7proxy;
+            }
+        }
+        onceHandler.f7proxy = handler;
+        return self.on(events, onceHandler, priority);
+    };
+    SwiperClass.prototype.off = function (events, handler) {
+        var self = this;
+        if (!self.eventsListeners)
+            return self;
+        events.split(' ').forEach(function (event) {
+            if (typeof handler === 'undefined') {
+                self.eventsListeners[event] = [];
+            }
+            else if (self.eventsListeners[event] && self.eventsListeners[event].length) {
+                self.eventsListeners[event].forEach(function (eventHandler, index) {
+                    if (eventHandler === handler || (eventHandler.f7proxy && eventHandler.f7proxy === handler)) {
+                        self.eventsListeners[event].splice(index, 1);
+                    }
+                });
+            }
+        });
+        return self;
+    };
+    SwiperClass.prototype.emit = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var self = this;
+        if (!self.eventsListeners)
+            return self;
+        var events;
+        var data;
+        var context;
+        if (typeof args[0] === 'string' || Array.isArray(args[0])) {
+            events = args[0];
+            data = args.slice(1, args.length);
+            context = self;
+        }
+        else {
+            events = args[0].events;
+            data = args[0].data;
+            context = args[0].context || self;
+        }
+        var eventsArray = Array.isArray(events) ? events : events.split(' ');
+        eventsArray.forEach(function (event) {
+            if (self.eventsListeners && self.eventsListeners[event]) {
+                var handlers_1 = [];
+                self.eventsListeners[event].forEach(function (eventHandler) {
+                    handlers_1.push(eventHandler);
+                });
+                handlers_1.forEach(function (eventHandler) {
+                    eventHandler.apply(context, data);
+                });
+            }
+        });
+        return self;
+    };
+    SwiperClass.prototype.useModulesParams = function (instanceParams) {
+        var instance = this;
+        if (!instance.modules)
+            return;
+        Object.keys(instance.modules).forEach(function (moduleName) {
+            var module = instance.modules[moduleName];
+            // Extend params
+            if (module.params) {
+                Utils.extend(instanceParams, module.params);
+            }
+        });
+    };
+    SwiperClass.prototype.useModules = function (modulesParams) {
+        if (modulesParams === void 0) { modulesParams = {}; }
+        var instance = this;
+        if (!instance.modules)
+            return;
+        Object.keys(instance.modules).forEach(function (moduleName) {
+            var module = instance.modules[moduleName];
+            var moduleParams = modulesParams[moduleName] || {};
+            // Extend instance methods and props
+            if (module.instance) {
+                Object.keys(module.instance).forEach(function (modulePropName) {
+                    var moduleProp = module.instance[modulePropName];
+                    if (typeof moduleProp === 'function') {
+                        instance[modulePropName] = moduleProp.bind(instance);
+                    }
+                    else {
+                        instance[modulePropName] = moduleProp;
+                    }
+                });
+            }
+            // Add event listeners
+            if (module.on && instance.on) {
+                Object.keys(module.on).forEach(function (moduleEventName) {
+                    instance.on(moduleEventName, module.on[moduleEventName]);
+                });
+            }
+            // Module create callback
+            if (module.create) {
+                module.create.bind(instance)(moduleParams);
+            }
+        });
+    };
+    Object.defineProperty(SwiperClass, "components", {
+        set: function (components) {
+            var Class = this;
+            if (!Class.use)
+                return;
+            Class.use(components);
         },
         enumerable: true,
         configurable: true
     });
-    StarRating.prototype.changeRating = function (event) {
-        if (this.readonly && this.readonly === "true")
-            return;
-        // event is different for firefox and chrome
-        var id = event.target.id ? parseInt(event.target.id) : parseInt(event.target.parentElement.id);
-        if (this.halfStar && this.halfStar === "true") {
-            this.rating = ((this.rating - id > 0) && (this.rating - id <= 0.5)) ? id + 1 : id + .5;
+    SwiperClass.installModule = function (module) {
+        var params = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            params[_i - 1] = arguments[_i];
+        }
+        var Class = this;
+        if (!Class.prototype.modules)
+            Class.prototype.modules = {};
+        var name = module.name || (Object.keys(Class.prototype.modules).length + "_" + Utils.now());
+        Class.prototype.modules[name] = module;
+        // Prototype
+        if (module.proto) {
+            Object.keys(module.proto).forEach(function (key) {
+                Class.prototype[key] = module.proto[key];
+            });
+        }
+        // Class
+        if (module.static) {
+            Object.keys(module.static).forEach(function (key) {
+                Class[key] = module.static[key];
+            });
+        }
+        // Callback
+        if (module.install) {
+            module.install.apply(Class, params);
+        }
+        return Class;
+    };
+    SwiperClass.use = function (module) {
+        var params = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            params[_i - 1] = arguments[_i];
+        }
+        var Class = this;
+        if (Array.isArray(module)) {
+            module.forEach(function (m) { return Class.installModule(m); });
+            return Class;
+        }
+        return Class.installModule.apply(Class, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spreadArrays"])([module], params));
+    };
+    return SwiperClass;
+}());
+function updateSize() {
+    var swiper = this;
+    var width;
+    var height;
+    var $el = swiper.$el;
+    if (typeof swiper.params.width !== 'undefined') {
+        width = swiper.params.width;
+    }
+    else {
+        width = $el[0].clientWidth;
+    }
+    if (typeof swiper.params.height !== 'undefined') {
+        height = swiper.params.height;
+    }
+    else {
+        height = $el[0].clientHeight;
+    }
+    if ((width === 0 && swiper.isHorizontal()) || (height === 0 && swiper.isVertical())) {
+        return;
+    }
+    // Subtract paddings
+    width = width - parseInt($el.css('padding-left'), 10) - parseInt($el.css('padding-right'), 10);
+    height = height - parseInt($el.css('padding-top'), 10) - parseInt($el.css('padding-bottom'), 10);
+    Utils.extend(swiper, {
+        width: width,
+        height: height,
+        size: swiper.isHorizontal() ? width : height,
+    });
+}
+function updateSlides() {
+    var swiper = this;
+    var params = swiper.params;
+    var $wrapperEl = swiper.$wrapperEl, swiperSize = swiper.size, rtl = swiper.rtlTranslate, wrongRTL = swiper.wrongRTL;
+    var isVirtual = swiper.virtual && params.virtual.enabled;
+    var previousSlidesLength = isVirtual ? swiper.virtual.slides.length : swiper.slides.length;
+    var slides = $wrapperEl.children("." + swiper.params.slideClass);
+    var slidesLength = isVirtual ? swiper.virtual.slides.length : slides.length;
+    var snapGrid = [];
+    var slidesGrid = [];
+    var slidesSizesGrid = [];
+    var offsetBefore = params.slidesOffsetBefore;
+    if (typeof offsetBefore === 'function') {
+        offsetBefore = params.slidesOffsetBefore.call(swiper);
+    }
+    var offsetAfter = params.slidesOffsetAfter;
+    if (typeof offsetAfter === 'function') {
+        offsetAfter = params.slidesOffsetAfter.call(swiper);
+    }
+    var previousSnapGridLength = swiper.snapGrid.length;
+    var previousSlidesGridLength = swiper.snapGrid.length;
+    var spaceBetween = params.spaceBetween;
+    var slidePosition = -offsetBefore;
+    var prevSlideSize = 0;
+    var index = 0;
+    if (typeof swiperSize === 'undefined') {
+        return;
+    }
+    if (typeof spaceBetween === 'string' && spaceBetween.indexOf('%') >= 0) {
+        spaceBetween = (parseFloat(spaceBetween.replace('%', '')) / 100) * swiperSize;
+    }
+    swiper.virtualSize = -spaceBetween;
+    // reset margins
+    if (rtl)
+        slides.css({ marginLeft: '', marginTop: '' });
+    else
+        slides.css({ marginRight: '', marginBottom: '' });
+    var slidesNumberEvenToRows;
+    if (params.slidesPerColumn > 1) {
+        if (Math.floor(slidesLength / params.slidesPerColumn) === slidesLength / swiper.params.slidesPerColumn) {
+            slidesNumberEvenToRows = slidesLength;
         }
         else {
-            this.rating = id + 1;
+            slidesNumberEvenToRows = Math.ceil(slidesLength / params.slidesPerColumn) * params.slidesPerColumn;
         }
-        // subscribe this event to get the changed value in your parent compoanent 
-        this.events.publish("star-rating:changed", this.rating); //common event for all instances included for backwards compatibility
-        this.events.publish(this.eventInfo.topic, this.rating); //common event for all instances
-        // unique event
-        this.ratingChanged.emit(this.rating);
-    };
-    var StarRating_1;
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number),
-        __metadata("design:paramtypes", [Number])
-    ], StarRating.prototype, "rating", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
-    ], StarRating.prototype, "ratingChanged", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "readonly", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "activeColor", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "defaultColor", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "activeIcon", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "defaultIcon", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "halfIcon", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "halfStar", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number)
-    ], StarRating.prototype, "maxRating", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], StarRating.prototype, "fontSize", void 0);
-    StarRating = StarRating_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'ionic4-star-rating',
-            template: HTML_TEMPLATE,
-            styles: [CSS_STYLE],
-            providers: [
-                {
-                    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NG_VALUE_ACCESSOR"],
-                    useExisting: StarRating_1,
-                    multi: true
+        if (params.slidesPerView !== 'auto' && params.slidesPerColumnFill === 'row') {
+            slidesNumberEvenToRows = Math.max(slidesNumberEvenToRows, params.slidesPerView * params.slidesPerColumn);
+        }
+    }
+    // Calc slides
+    var slideSize;
+    var slidesPerColumn = params.slidesPerColumn;
+    var slidesPerRow = slidesNumberEvenToRows / slidesPerColumn;
+    var numFullColumns = Math.floor(slidesLength / params.slidesPerColumn);
+    for (var i = 0; i < slidesLength; i += 1) {
+        slideSize = 0;
+        var slide_1 = slides.eq(i);
+        if (params.slidesPerColumn > 1) {
+            // Set slides order
+            var newSlideOrderIndex = void 0;
+            var column = void 0;
+            var row = void 0;
+            if ((params.slidesPerColumnFill === 'column')
+                || (params.slidesPerColumnFill === 'row' && params.slidesPerGroup > 1)) {
+                if (params.slidesPerColumnFill === 'column') {
+                    column = Math.floor(i / slidesPerColumn);
+                    row = i - (column * slidesPerColumn);
+                    if (column > numFullColumns || (column === numFullColumns && row === slidesPerColumn - 1)) {
+                        row += 1;
+                        if (row >= slidesPerColumn) {
+                            row = 0;
+                            column += 1;
+                        }
+                    }
                 }
-            ]
-        }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Events"]])
-    ], StarRating);
-    return StarRating;
-}());
-
-//# sourceMappingURL=ionic4-star-rating-component.js.map
-
-/***/ }),
-
-/***/ "./node_modules/ionic4-star-rating/dist/index.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/ionic4-star-rating/dist/index.js ***!
-  \*******************************************************/
-/*! exports provided: StarRatingModule, StarRating */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ionic4_star_rating_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ionic4-star-rating.module */ "./node_modules/ionic4-star-rating/dist/ionic4-star-rating.module.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StarRatingModule", function() { return _ionic4_star_rating_module__WEBPACK_IMPORTED_MODULE_0__["StarRatingModule"]; });
-
-/* harmony import */ var _components_ionic4_star_rating_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ionic4-star-rating-component */ "./node_modules/ionic4-star-rating/dist/components/ionic4-star-rating-component.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StarRating", function() { return _components_ionic4_star_rating_component__WEBPACK_IMPORTED_MODULE_1__["StarRating"]; });
-
-
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "./node_modules/ionic4-star-rating/dist/ionic4-star-rating.module.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/ionic4-star-rating/dist/ionic4-star-rating.module.js ***!
-  \***************************************************************************/
-/*! exports provided: StarRatingModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StarRatingModule", function() { return StarRatingModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _components_ionic4_star_rating_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ionic4-star-rating-component */ "./node_modules/ionic4-star-rating/dist/components/ionic4-star-rating-component.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-var StarRatingModule = /** @class */ (function () {
-    function StarRatingModule() {
-    }
-    StarRatingModule_1 = StarRatingModule;
-    StarRatingModule.forRoot = function () {
-        return {
-            ngModule: StarRatingModule_1,
-        };
-    };
-    var StarRatingModule_1;
-    StarRatingModule = StarRatingModule_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["IonicModule"],
-                _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]
-            ],
-            declarations: [
-                _components_ionic4_star_rating_component__WEBPACK_IMPORTED_MODULE_1__["StarRating"]
-            ],
-            exports: [
-                _components_ionic4_star_rating_component__WEBPACK_IMPORTED_MODULE_1__["StarRating"]
-            ]
-        })
-    ], StarRatingModule);
-    return StarRatingModule;
-}());
-
-//# sourceMappingURL=ionic4-star-rating.module.js.map
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/popover/popover.component.html":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/popover/popover.component.html ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n    <div class=\"container\">\r\n        <pre>\r\n        </pre>\r\n        <div class=\"text\">\r\n            <p>RATE THIS PRODUCT</p>\r\n        </div>\r\n        <div class=\"ratings\">\r\n            <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n                defaultColor=\"#aaaaaa\" readonly=\"{{rateNow}}\" rating=\"{{myRate}}\"  fontSize=\"7vw\"\r\n                (ratingChanged)=\"logRatingChange($event)\">\r\n            </ionic4-star-rating>\r\n\r\n            <!-- <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n            defaultColor=\"#aaaaaa\" readonly=\"false\" rating=\"2\" fontSize=\"7vw\"\r\n            (ratingChanged)=\"logRatingChange($event)\">\r\n        </ionic4-star-rating> -->\r\n        </div>\r\n<br>\r\n        <div class=\"buttonz\">\r\n            <ion-button (click)=\"dismissPopover()\" color=\"transparent\">\r\n                DONE\r\n            </ion-button>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"web_view\">\r\n        <pre>\r\n        </pre>\r\n        <div class=\"text\">\r\n            <p>RATE THIS PRODUCT</p>\r\n        </div>\r\n        <div class=\"ratings\">\r\n            <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n                defaultColor=\"#aaaaaa\" readonly=\"{{rateNow}}\" rating=\"{{myRate}}\"  \r\n                (ratingChanged)=\"logRatingChange($event)\">\r\n            </ionic4-star-rating>\r\n\r\n            <!-- <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n            defaultColor=\"#aaaaaa\" readonly=\"false\" rating=\"2\" fontSize=\"7vw\"\r\n            (ratingChanged)=\"logRatingChange($event)\">\r\n        </ionic4-star-rating> -->\r\n        </div>\r\n<br>\r\n        <div class=\"buttonz\">\r\n            <ion-button (click)=\"dismissPopover()\" color=\"transparent\">\r\n                DONE\r\n            </ion-button>\r\n        </div>\r\n    </div>\r\n\r\n\r\n</ion-content>");
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/view/view.page.html":
-/*!***************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/view/view.page.html ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header no-border>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\" (click)=\"goBack()\">\r\n      <ion-icon slot=\"start\" id=\"icon\" name=\"arrow-back\"></ion-icon>\r\n    </ion-buttons>\r\n    <ion-buttons slot=\"primary\">\r\n      <ion-button id=\"rate\" (click)=\"presentPopover($event)\">\r\n        <ion-icon slot=\"start\" name=\"star\"></ion-icon> Rate This Product\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <!-- <ion-title style=\"font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;\">DankieJesu</ion-title> -->\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content fullscreen>\r\n  <div class=\"container\" *ngIf=\"col!=='sales'\">\r\n    <div class=\"image\" *ngFor=\"let prod of unitProduct\">\r\n      <img src=\"{{prod.data.pictureLink}}\">\r\n\r\n      <div class=\"iteminfo\">\r\n        <div class=\"itemname\">\r\n          <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n            defaultColor=\"#aaaaaa\" readonly=\"true\" rating=\"{{myRate}}\" >\r\n          </ionic4-star-rating>\r\n\r\n          <div class=\"appname\" style=\"line-height: 20px; font-weight: normal;\">\r\n            <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"price\">\r\n          <p>{{prod.data.price  | currency:'R' }}</p>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </div>\r\n\r\n    <div class=\"productinfo\" *ngFor=\"let prod of unitProduct\">\r\n      <div class=\"add\">\r\n        <ion-fab-button color=\"transparent\" (click)=\"toBusket()\">\r\n          <ion-icon name=\"basket\"></ion-icon>\r\n\r\n        </ion-fab-button>\r\n      </div>\r\n      <div class=\"about\">\r\n        <p><b>About Product</b></p>\r\n        <p>{{prod.data.description}}</p>\r\n      </div>\r\n      <div class=\"sizes\">\r\n        <p>Available sizes</p>\r\n\r\n        <ion-button *ngFor=\"let size of prod.data.size;let i=index\" (click)=\"sizeChosen(size, i)\" color=\"transparent\"\r\n          [ngClass]=\"{'sizeStyle':sizeIndex==i}\" >\r\n          {{size}}\r\n        </ion-button>\r\n\r\n      </div>\r\n      <div class=\"colours\">\r\n        <p>Colours</p>\r\n       <!--  <ion-item *ngFor=\"let c of prod.data.color; let i=index\" style=\"background: whitesmoke; border-radius: 6px;\">\r\n          <ion-label>{{c}}</ion-label>\r\n          <ion-checkbox (ionChange)=\"onBoolChenged(c,i)\"></ion-checkbox>\r\n        </ion-item> -->\r\n        <ion-button *ngFor=\"let c of prod.data.color; let i=index\" style=\"background: whitesmoke; border-radius: 6px;\"\r\n          (click)=\"colorChosen(c, i)\" color=\"transparent\" [ngClass]=\"{'colorStyle':colorIndex==i}\">\r\n          <p style=\"color: rgb(146, 146, 146);\">{{c}}</p>\r\n        </ion-button>\r\n        <!-- <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: blue; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: green; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: red; border-radius: 6px;\">\r\n        </ion-button> -->\r\n      </div>\r\n      <div class=\"quantity\">\r\n        <p>Quantity</p>\r\n        <ion-button (click)=\"minus()\" color=\"transparent\" style=\"background: rgb(212, 212, 212);\r\n         color: maroon;\r\n         border-top-left-radius: 7px;\r\n         border-bottom-left-radius: 7px;\">\r\n          <ion-icon name=\"remove\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button color=\"transparent\" style=\"background: rgb(212, 250, 255);\">\r\n          {{quantity}}\r\n        </ion-button>\r\n        <ion-button (click)=\"plus()\" color=\"transparent\" style=\"background: rgb(212, 212, 212); \r\n        color: maroon;\r\n         border-top-right-radius: 7px;\r\n         border-bottom-right-radius: 7px;\">\r\n          <ion-icon name=\"add\"></ion-icon>\r\n        </ion-button>\r\n      </div>\r\n      <div class=\"shipping\">\r\n        <p><b>Shipping Information</b></p>\r\n        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the\r\n          industry's standard dummy text ever since the 1500s, when an unknown</p>\r\n      </div>\r\n      <br>\r\n      <div class=\"delivery\">\r\n        <p><b>Delivery Information</b></p>\r\n        <p>Items are available for pick up at the following Address</p>\r\n        <p>123 Orlando East<br>\r\n          SOWETO<br>\r\n          1804\r\n        </p>\r\n      </div>\r\n\r\n      <div class=\"buttonz\">\r\n        <ion-button (click)=\"addToCart(prod.id, prod.data)\" color=\"transparent\">\r\n          <ion-icon slot=\"start\" name=\"basket\"></ion-icon> Add to basket <ion-icon name=\"bookmark\" id=\"book\"\r\n            style=\"color: maroon; font-size: 8vw;position: relative; bottom: 13px;\"></ion-icon>\r\n          {{prod.data.price * quantity | currency:'R'  }}\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n  <div class=\"container\" *ngIf=\"col==='sales'\">\r\n    <div class=\"image\" *ngFor=\"let prod of mySale\">\r\n      <img src=\"{{prod.data.pictureLink}}\">\r\n\r\n      <div class=\"iteminfo\">\r\n        <div class=\"itemname\">\r\n          <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n            defaultColor=\"#aaaaaa\" readonly=\"true\" rating=\"{{myRate}}\">\r\n        </ionic4-star-rating>\r\n\r\n          <div class=\"appname\" style=\"line-height: 20px; font-weight: normal;\">\r\n            <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"price\">\r\n          <p style=\"text-decoration: line-through;\">R3000 </p>\r\n          <p>{{prod.data.saleprice  | currency:'R' }}</p>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </div>\r\n\r\n    <div class=\"productinfo\" *ngFor=\"let prod of mySale\">\r\n      <div class=\"add\">\r\n        <ion-fab-button color=\"transparent\" (click)=\"toBusket()\">\r\n          <ion-icon name=\"basket\"></ion-icon>\r\n\r\n        </ion-fab-button>\r\n      </div>\r\n      <div class=\"about\">\r\n        <p><b>About Product</b></p>\r\n        <p>{{prod.data.description}}</p>\r\n      </div>\r\n      <div class=\"sizes\">\r\n        <p>Available sizes</p>\r\n\r\n        <ion-button *ngFor=\"let size of prod.data.size;let i=index\" (click)=\"sizeChosen(size, i)\" color=\"transparent\"\r\n          [ngClass]=\"{'sizeStyle':sizeIndex==i}\">\r\n          {{size}}\r\n        </ion-button>\r\n\r\n      </div>\r\n      <div class=\"colours\">\r\n        <p>Colours</p>\r\n        <ion-button *ngFor=\"let c of prod.data.color; let i=index\" style=\"background: whitesmoke; border-radius: 6px;\"\r\n          (click)=\"colorChosen(c, i)\" color=\"transparent\" [ngClass]=\"{'colorStyle':colorIndex==i}\">\r\n          <p style=\"color: rgb(146, 146, 146);\">{{c}}</p>\r\n        </ion-button>\r\n        <!-- <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: blue; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: green; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: red; border-radius: 6px;\">\r\n        </ion-button> -->\r\n      </div>\r\n      <div class=\"quantity\">\r\n        <p>Quantity</p>\r\n        <ion-button (click)=\"minus()\" color=\"transparent\" style=\"background: rgb(212, 212, 212);\r\n         color: maroon;\r\n         border-top-left-radius: 7px;\r\n         border-bottom-left-radius: 7px;\">\r\n          <ion-icon name=\"remove\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button color=\"transparent\" style=\"background: rgb(212, 250, 255);\">\r\n          {{quantity}}\r\n        </ion-button>\r\n        <ion-button (click)=\"plus()\" color=\"transparent\" style=\"background: rgb(212, 212, 212); \r\n        color: maroon;\r\n         border-top-right-radius: 7px;\r\n         border-bottom-right-radius: 7px;\">\r\n          <ion-icon name=\"add\"></ion-icon>\r\n        </ion-button>\r\n      </div>\r\n      <div class=\"shipping\">\r\n        <p><b>Shipping Information</b></p>\r\n        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the\r\n          industry's standard dummy text ever since the 1500s, when an unknown</p>\r\n      </div>\r\n      <br>\r\n      <div class=\"delivery\">\r\n        <p><b>Delivery Information</b></p>\r\n        <p>Items are available for pick up at the following Address</p>\r\n        <p>123 Orlando East<br>\r\n          SOWETO<br>\r\n          1804\r\n        </p>\r\n      </div>\r\n\r\n      <div class=\"buttonz\">\r\n        <ion-button (click)=\"addSaleToCart(prod.id, prod.data)\" color=\"transparent\">\r\n          <ion-icon slot=\"start\" name=\"basket\"></ion-icon> Add to basket <ion-icon name=\"bookmark\" id=\"book\"\r\n            style=\"color: maroon; font-size: 8vw;position: relative; bottom: 13px;\"></ion-icon>\r\n          {{prod.data.saleprice * quantity | currency:'R'  }}\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n  <div class=\"web_view\" *ngIf=\"col!=='sales'\">\r\n    <div class=\"image\" *ngFor=\"let prod of unitProduct\">\r\n      <img src=\"{{prod.data.pictureLink}}\">\r\n\r\n      <div class=\"iteminfo\">\r\n        <div class=\"itemname\">\r\n          <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n            defaultColor=\"#aaaaaa\" readonly=\"true\" rating=\"{{myRate}}\" >\r\n          </ionic4-star-rating>\r\n\r\n          <div class=\"appname\" style=\"line-height: 20px; font-weight: normal;\">\r\n            <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"price\">\r\n          <p>{{prod.data.price  | currency:'R' }}</p>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </div>\r\n\r\n    <div class=\"productinfo\" *ngFor=\"let prod of unitProduct\">\r\n      \r\n      <div class=\"about\">\r\n        <p><b>About Product</b></p>\r\n        <p>{{prod.data.description}}</p>\r\n      </div>\r\n      <div class=\"sizes\">\r\n        <p>Available sizes</p>\r\n\r\n        <ion-button *ngFor=\"let size of prod.data.size;let i=index\" (click)=\"sizeChosen(size, i)\" color=\"transparent\"\r\n          [ngClass]=\"{'sizeStyle':sizeIndex==i}\">\r\n          {{size}}\r\n        </ion-button>\r\n\r\n      </div>\r\n      <div class=\"colours\">\r\n        <p>Colours</p>\r\n        <ion-button *ngFor=\"let c of prod.data.color; let i=index\" style=\"background: whitesmoke; border-radius: 6px;\"\r\n          (click)=\"colorChosen(c, i)\" color=\"transparent\" [ngClass]=\"{'colorStyle':colorIndex==i}\">\r\n          <p style=\"color: rgb(146, 146, 146);\">{{c}}</p>\r\n        </ion-button>\r\n        <!-- <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: blue; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: green; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: red; border-radius: 6px;\">\r\n        </ion-button> -->\r\n      </div>\r\n      <div class=\"quantity\">\r\n        <p>Quantity</p>\r\n        <ion-button (click)=\"minus()\" color=\"transparent\" style=\"background: rgb(212, 212, 212);\r\n         color: maroon;\r\n         border-top-left-radius: 7px;\r\n         border-bottom-left-radius: 7px;\">\r\n          <ion-icon name=\"remove\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button color=\"transparent\" style=\"background: rgb(212, 250, 255);\">\r\n          {{quantity}}\r\n        </ion-button>\r\n        <ion-button (click)=\"plus()\" color=\"transparent\" style=\"background: rgb(212, 212, 212); \r\n        color: maroon;\r\n         border-top-right-radius: 7px;\r\n         border-bottom-right-radius: 7px;\">\r\n          <ion-icon name=\"add\"></ion-icon>\r\n        </ion-button>\r\n      </div>\r\n      <div class=\"shipping\">\r\n        <p><b>Shipping Information</b></p>\r\n        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.\r\n           Lorem Ipsum has been the\r\n          industry's standard dummy text ever since the 1500s, when an unknown</p>\r\n      </div>\r\n      <br>\r\n      <div class=\"delivery\">\r\n        <p><b>Delivery Information</b></p>\r\n        <p>Items are available for pick up at the following Address</p>\r\n        <p>123 Orlando East<br>\r\n          SOWETO<br>\r\n          1804\r\n        </p>\r\n      </div>\r\n\r\n      <div class=\"buttonz\">\r\n        <div class=\"add\">\r\n          <ion-fab-button color=\"transparent\" (click)=\"toBusket()\">\r\n            <ion-icon name=\"basket\"></ion-icon>\r\n  \r\n          </ion-fab-button>\r\n        </div>\r\n        <ion-button (click)=\"addToCart(prod.id, prod.data)\" color=\"transparent\">\r\n          <ion-icon slot=\"start\" name=\"basket\"></ion-icon> Add to basket <ion-icon name=\"bookmark\" id=\"book\"\r\n            style=\"color: maroon; position: relative; bottom: 13px;\"></ion-icon>\r\n          {{prod.data.price * quantity | currency:'R'  }}\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"web_view\" *ngIf=\"col==='sales'\">\r\n    <div class=\"image\" *ngFor=\"let prod of mySale\">\r\n      <img src=\"{{prod.data.pictureLink}}\">\r\n\r\n      <div class=\"iteminfo\">\r\n        <div class=\"itemname\">\r\n          <ionic4-star-rating #rating activeIcon=\"ios-star\" defaultIcon=\"ios-star-outline\" activeColor=\"#ff0000\"\r\n            defaultColor=\"#aaaaaa\" readonly=\"true\" rating=\"{{myRate}}\" >\r\n        </ionic4-star-rating>\r\n\r\n          <div class=\"appname\" style=\"line-height: 20px; font-weight: normal;\">\r\n            <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"price\">\r\n          <p style=\"text-decoration: line-through;\">{{prod.data.normalPrice  | currency:'R' }} </p>\r\n          <p>{{prod.data.saleprice  | currency:'R' }}</p>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </div>\r\n\r\n    <div class=\"productinfo\" *ngFor=\"let prod of mySale\">\r\n   \r\n      <div class=\"about\">\r\n        <p><b>About Product</b></p>\r\n        <p>{{prod.data.description}}</p>\r\n      </div>\r\n      <div class=\"sizes\">\r\n        <p>Available sizes</p>\r\n\r\n        <ion-button *ngFor=\"let size of prod.data.size;let i=index\" (click)=\"sizeChosen(size, i)\" color=\"transparent\"\r\n          [ngClass]=\"{'sizeStyle':sizeIndex==i}\">\r\n          {{size}}\r\n        </ion-button>\r\n\r\n      </div>\r\n      <div class=\"colours\">\r\n        <p>Colours</p>\r\n        <ion-button *ngFor=\"let c of prod.data.color; let i=index\" style=\"background: whitesmoke; border-radius: 6px;\"\r\n          (click)=\"colorChosen(c, i)\" color=\"transparent\" [ngClass]=\"{'colorStyle':colorIndex==i}\">\r\n          <p style=\"color: rgb(146, 146, 146);\">{{c}}</p>\r\n        </ion-button>\r\n        <!-- <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: blue; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: green; border-radius: 6px;\">\r\n        </ion-button>\r\n        <ion-button (click)=\"onClick()\" color=\"transparent\" style=\"background: red; border-radius: 6px;\">\r\n        </ion-button> -->\r\n      </div>\r\n      <div class=\"quantity\">\r\n        <p>Quantity</p>\r\n        <ion-button (click)=\"minus(quantity)\" color=\"transparent\" style=\"background: rgb(212, 212, 212);\r\n         color: maroon;\r\n         border-top-left-radius: 7px;\r\n         border-bottom-left-radius: 7px;\">\r\n          <ion-icon name=\"remove\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button color=\"transparent\" style=\"background: rgb(212, 250, 255);\">\r\n          {{quantity}}\r\n        </ion-button>\r\n        <ion-button (click)=\"plus(quantity)\" color=\"transparent\" style=\"background: rgb(212, 212, 212); \r\n        color: maroon;\r\n         border-top-right-radius: 7px;\r\n         border-bottom-right-radius: 7px;\">\r\n          <ion-icon name=\"add\"></ion-icon>\r\n        </ion-button>\r\n      </div>\r\n      <div class=\"shipping\">\r\n        <p><b>Shipping Information</b></p>\r\n        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the\r\n          industry's standard dummy text ever since the 1500s, when an unknown</p>\r\n      </div>\r\n      <br>\r\n      <div class=\"delivery\">\r\n        <p><b>Delivery Information</b></p>\r\n        <p>Items are available for pick up at the following Address</p>\r\n        <p>123 Orlando East<br>\r\n          SOWETO<br>\r\n          1804\r\n        </p>\r\n      </div>\r\n\r\n      <div class=\"buttonz\">\r\n\r\n        <div class=\"add\">\r\n          <ion-fab-button color=\"transparent\" (click)=\"toBusket()\" vertical=\"bottom\" >\r\n            <ion-icon name=\"basket\"></ion-icon>\r\n  \r\n          </ion-fab-button>\r\n        </div>\r\n\r\n        \r\n        <ion-button (click)=\"addSaleToCart(prod.id, prod.data)\" color=\"transparent\">\r\n          <ion-icon slot=\"start\" name=\"basket\"></ion-icon> Add to basket <ion-icon name=\"bookmark\" id=\"book\"\r\n            style=\"color: maroon; font-size: 30px; position: relative; bottom: 13px;\"></ion-icon>\r\n          {{prod.data.saleprice * quantity | currency:'R'  }}\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n\r\n\r\n");
-
-/***/ }),
-
-/***/ "./src/app/popover/popover.component.scss":
-/*!************************************************!*\
-  !*** ./src/app/popover/popover.component.scss ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".container {\n  display: flex;\n  flex-flow: column;\n  align-items: center;\n  height: 25vh; }\n  .container .text p {\n    font-family: \"Poppins\";\n    font-size: 3vw;\n    font-weight: bold;\n    letter-spacing: 2px; }\n  .container .buttonz ion-button {\n    background: #000024;\n    width: 50vw;\n    font-size: 3vw; }\n  @media only screen and (min-width: 1330px) {\n  .container {\n    display: none;\n    width: 0 !important;\n    height: 0 !important; }\n  .web_view {\n    min-width: inherit;\n    max-width: inherit;\n    margin: auto;\n    display: flex;\n    flex-flow: column;\n    align-items: center;\n    justify-content: center; }\n    .web_view .text p {\n      font-family: \"Poppins\";\n      font-weight: bold;\n      letter-spacing: 2px; }\n    .web_view .buttonz ion-button {\n      background: #000024;\n      width: 10vw; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9wb3Zlci9DOlxcVXNlcnNcXHphbmVsXFxEb2N1bWVudHNcXGJyb2tlblN0b29sL3NyY1xcYXBwXFxwb3BvdmVyXFxwb3BvdmVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLGlCQUFpQjtFQUVqQixtQkFBbUI7RUFFbkIsWUFBWSxFQUFBO0VBTmQ7SUFVTSxzQkFBc0I7SUFDdEIsY0FBYztJQUNkLGlCQUFpQjtJQUNqQixtQkFBbUIsRUFBQTtFQWJ6QjtJQW1CTSxtQkFBeUI7SUFDekIsV0FBVztJQUNYLGNBQWMsRUFBQTtFQUtwQjtFQUNFO0lBQ0UsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixvQkFBb0IsRUFBQTtFQUd0QjtJQUNFLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLGFBQWE7SUFDYixpQkFBaUI7SUFDakIsbUJBQW1CO0lBRW5CLHVCQUF1QixFQUFBO0lBUnpCO01BWU0sc0JBQXNCO01BQ3RCLGlCQUFpQjtNQUNqQixtQkFBbUIsRUFBQTtJQWR6QjtNQW9CTSxtQkFBeUI7TUFDekIsV0FBVyxFQUFBLEVBQ1oiLCJmaWxlIjoic3JjL2FwcC9wb3BvdmVyL3BvcG92ZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gIC8vICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1ldmVubHk7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAvLyAgIGJhY2tncm91bmQ6IHdoaXRlO1xyXG4gIGhlaWdodDogMjV2aDtcclxuXHJcbiAgLnRleHQge1xyXG4gICAgcCB7XHJcbiAgICAgIGZvbnQtZmFtaWx5OiBcIlBvcHBpbnNcIjtcclxuICAgICAgZm9udC1zaXplOiAzdnc7XHJcbiAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgICBsZXR0ZXItc3BhY2luZzogMnB4O1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLmJ1dHRvbnoge1xyXG4gICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgIGJhY2tncm91bmQ6IHJnYigwLCAwLCAzNik7XHJcbiAgICAgIHdpZHRoOiA1MHZ3O1xyXG4gICAgICBmb250LXNpemU6IDN2dztcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMTMzMHB4KSB7XHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgd2lkdGg6IDAgIWltcG9ydGFudDtcclxuICAgIGhlaWdodDogMCAhaW1wb3J0YW50O1xyXG4gIH1cclxuXHJcbiAgLndlYl92aWV3IHtcclxuICAgIG1pbi13aWR0aDogaW5oZXJpdDtcclxuICAgIG1heC13aWR0aDogaW5oZXJpdDtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWZsb3c6IGNvbHVtbjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblxyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcblxyXG4gICAgLnRleHQge1xyXG4gICAgICBwIHtcclxuICAgICAgICBmb250LWZhbWlseTogXCJQb3BwaW5zXCI7XHJcbiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICAgICAgbGV0dGVyLXNwYWNpbmc6IDJweDtcclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIC5idXR0b256IHtcclxuICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgYmFja2dyb3VuZDogcmdiKDAsIDAsIDM2KTtcclxuICAgICAgICB3aWR0aDogMTB2dztcclxuICAgICAgfVxyXG4gICAgfVxyXG4gIH1cclxufVxyXG4iXX0= */");
-
-/***/ }),
-
-/***/ "./src/app/popover/popover.component.ts":
-/*!**********************************************!*\
-  !*** ./src/app/popover/popover.component.ts ***!
-  \**********************************************/
-/*! exports provided: PopoverComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopoverComponent", function() { return PopoverComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-var PopoverComponent = /** @class */ (function () {
-    function PopoverComponent(navParams, popCtrl, render) {
-        this.navParams = navParams;
-        this.popCtrl = popCtrl;
-        this.render = render;
-        this.dbRate = firebase__WEBPACK_IMPORTED_MODULE_3__["firestore"]().collection('productRate');
-        // myRatings = [];
-        this.myRate = 0;
-        this.starRating = document.getElementsByClassName('ionic4-star-rating');
-    }
-    PopoverComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            var starButtons = _this.starRating[1].children;
-            for (var i = 0; i < starButtons.length; i++) {
-                _this.render.setStyle(_this.starRating[1].children[i], 'outline', 'none');
-            }
-        }, 500);
-        this.dbRate.where('product', '==', this.navParams.get('doc')).onSnapshot(function (res) {
-            // this.myRatings = [];
-            res.forEach(function (doc) {
-                _this.myRate = doc.data().rating / res.size;
-            });
-            if (res.size == 0) {
-                _this.rateNow = false;
-            }
-            else {
-                _this.rateNow = true;
-            }
-            // console.log('Read only ',this.rateNow);
-            /*  res.forEach((doc) => {
-               this.myRatings.push(doc.data().rating)
-             }) */
-        });
-        // console.log('Collection ', this.navParams.get('col'), 'Doc ', this.navParams.get('doc'));
-    };
-    PopoverComponent.prototype.logRatingChange = function (rating) {
-        var total = 0;
-        var arr = [5, 3, 5, 1, 4];
-        var avg = 0;
-        //let total = 0;
-        //console.log(rating);
-        /* setTimeout(()=>{
-          //console.log(this.starRating);
-          let starButtons =  this.starRating[0].children
-          for (let i = 0; i < starButtons.length; i++) {
-            console.log(this.starRating[0].children[i]);
-            this.render.setStyle(this.starRating[0].children[i], 'outline', 'none');
-          }
-        }, 1500) */
-        this.dbRate.add({ rating: rating, uid: firebase__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser.uid, product: this.navParams.get('doc'), category: this.navParams.get('col') }).then(function (res) {
-            // console.log("my data");
-        });
-        // this.dbRate.where('product', '==', this.navParams.get('doc')).onSnapshot((res) => {
-        //   res.forEach((doc) => {
-        //     if (doc.data().uid == firebase.auth().currentUser.uid && doc.data().product == this.navParams.get('doc')) {
-        //       console.log('You have rated this product');
-        //      // this.rateNow === false;
-        //     } else {
-        //      // this.rateNow === true;
-        //     }
-        //   })
-        //   /* for (let j = 0; j < res.docs.length; j++) {
-        //       avg += rating/res.size;
-        //     } */
-        //   // total = rating + 
-        // })
-        /*    for (let i = 0; i < arr.length; i++) {
-             //let product = arr.data.product;
-             // console.log(product);
-           //  product.forEach((item) => {
-               total += arr[i]/5;
-           //  })
-             //
-           } */
-        console.log('My tot ', total);
-        return total;
-        //console.log('My arr ', arr);
-        /*   arr.forEach((i)=>{
-            console.log('Rate ',i);
-            
-          }) */
-        /*  this.dbRate.where('product','==',this.navParams.get('doc')).onSnapshot((res) => {
-           for (let j = 0; j < res.docs.length; j++) {
-               total = rating+res.docs[j].data().rating/res.size+1
-             }
-         }) */
-        // this.dbRate.add({ rating: total, uid: firebase.auth().currentUser.uid, product: this.navParams.get('doc'), category:this.navParams.get('col')})
-    };
-    PopoverComponent.prototype.dismissPopover = function () {
-        this.popCtrl.dismiss();
-    };
-    PopoverComponent.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] },
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"] }
-    ]; };
-    PopoverComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-popover',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./popover.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/popover/popover.component.html")).default,
-            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./popover.component.scss */ "./src/app/popover/popover.component.scss")).default]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]])
-    ], PopoverComponent);
-    return PopoverComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/view/view-routing.module.ts":
-/*!*********************************************!*\
-  !*** ./src/app/view/view-routing.module.ts ***!
-  \*********************************************/
-/*! exports provided: ViewPageRoutingModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewPageRoutingModule", function() { return ViewPageRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _view_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./view.page */ "./src/app/view/view.page.ts");
-
-
-
-
-var routes = [
-    {
-        path: '',
-        component: _view_page__WEBPACK_IMPORTED_MODULE_3__["ViewPage"]
-    }
-];
-var ViewPageRoutingModule = /** @class */ (function () {
-    function ViewPageRoutingModule() {
-    }
-    ViewPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
-        })
-    ], ViewPageRoutingModule);
-    return ViewPageRoutingModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/view/view.module.ts":
-/*!*************************************!*\
-  !*** ./src/app/view/view.module.ts ***!
-  \*************************************/
-/*! exports provided: ViewPageModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewPageModule", function() { return ViewPageModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _view_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./view-routing.module */ "./src/app/view/view-routing.module.ts");
-/* harmony import */ var _view_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./view.page */ "./src/app/view/view.page.ts");
-/* harmony import */ var _popover_popover_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../popover/popover.component */ "./src/app/popover/popover.component.ts");
-/* harmony import */ var ionic4_star_rating__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ionic4-star-rating */ "./node_modules/ionic4-star-rating/dist/index.js");
-
-
-
-
-
-
-
-
-
-var ViewPageModule = /** @class */ (function () {
-    function ViewPageModule() {
-    }
-    ViewPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-                _view_routing_module__WEBPACK_IMPORTED_MODULE_5__["ViewPageRoutingModule"],
-                ionic4_star_rating__WEBPACK_IMPORTED_MODULE_8__["StarRatingModule"]
-            ],
-            entryComponents: [_popover_popover_component__WEBPACK_IMPORTED_MODULE_7__["PopoverComponent"]],
-            declarations: [_view_page__WEBPACK_IMPORTED_MODULE_6__["ViewPage"], _popover_popover_component__WEBPACK_IMPORTED_MODULE_7__["PopoverComponent"]]
-        })
-    ], ViewPageModule);
-    return ViewPageModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/view/view.page.scss":
-/*!*************************************!*\
-  !*** ./src/app/view/view.page.scss ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".sizeStyle {\n  background: rgba(175, 175, 175, 0.712);\n  border: 2px solid #929292;\n  color: white; }\n  .sizeStyle ion-button {\n    color: white; }\n  .colorStyle {\n  border: 2px solid #929292;\n  color: #636363; }\n  ion-toolbar {\n  --background: transparent;\n  position: absolute; }\n  ion-toolbar #icon {\n    color: maroon; }\n  ion-toolbar #rate {\n    color: white;\n    font-size: 0.7em;\n    background: #000027;\n    padding: 0 !important;\n    margin-right: -5px !important;\n    border-top-left-radius: 20px;\n    border-bottom-left-radius: 20px; }\n  ion-toolbar #rate ion-icon {\n      font-size: 1em; }\n  .container {\n  display: flex;\n  flex-flow: column;\n  align-items: center; }\n  .container .image {\n    position: relative;\n    display: flex;\n    flex-flow: column;\n    width: 100vw;\n    height: 70vh;\n    background: black; }\n  .container .image img {\n      width: 100%;\n      height: 100%;\n      -o-object-fit: cover;\n         object-fit: cover;\n      opacity: 0.8; }\n  .container .image .iteminfo {\n      z-index: 5;\n      position: absolute;\n      top: 37vh;\n      left: 5vw;\n      display: flex;\n      flex-flow: row;\n      text-align: center;\n      align-items: flex-end;\n      justify-content: space-between;\n      width: 70%;\n      margin: 5px;\n      padding: 5px;\n      color: white;\n      font-family: \"Raleway\";\n      line-height: 10px; }\n  .container .productinfo {\n    display: flex;\n    flex-flow: column;\n    width: 90vw;\n    background: white;\n    z-index: 5;\n    position: absolute;\n    top: 50%;\n    border-top-right-radius: 10px;\n    border-top-left-radius: 10px;\n    box-shadow: 5px 5px 10px #b8b8b8; }\n  .container .productinfo .add {\n      position: absolute;\n      right: -5px;\n      top: -25px; }\n  .container .productinfo .add ion-fab-button {\n        background: maroon;\n        border-radius: 50%; }\n  .container .productinfo .add ion-fab-button ion-icon {\n          color: white; }\n  .container .productinfo .about {\n      margin: 5px;\n      font-size: 0.7em; }\n  .container .productinfo .sizes {\n      margin: 5px;\n      font-size: 0.7em; }\n  .container .productinfo .sizes ion-button {\n        font-size: 1em;\n        width: 14vw;\n        color: black;\n        margin: 0 !important;\n        padding: 0 !important;\n        border: 0.5px solid #adadad; }\n  .container .productinfo .colours {\n      margin: 5px;\n      font-size: 0.7em; }\n  .container .productinfo .colours ion-button {\n        margin: 2px;\n        width: 14vw;\n        font-size: 1em; }\n  .container .productinfo .quantity {\n      margin: 5px;\n      font-size: 0.7em;\n      align-items: baseline; }\n  .container .productinfo .quantity ion-button {\n        font-size: 1em;\n        width: 10vw;\n        color: black;\n        margin: 0 !important;\n        padding: 0 !important;\n        border: 0.5px solid black; }\n  .container .productinfo .shipping {\n      margin: 5px;\n      font-size: 0.7em; }\n  .container .productinfo .delivery {\n      position: relative;\n      bottom: 40px;\n      margin: 5px;\n      font-size: 0.7em; }\n  .container .productinfo .buttonz {\n      width: 100%;\n      text-align: right;\n      font-size: 1em; }\n  .container .productinfo .buttonz ion-button {\n        font-size: 1em;\n        color: white;\n        background: #010136;\n        border-top-left-radius: 20px;\n        border-bottom-left-radius: 20px;\n        font-family: \"Raleway\"; }\n  .container .productinfo .buttonz ion-button ion-icon {\n          font-size: 1em;\n          color: white; }\n  .container .productinfo .buttonz ion-button ion-icon #book {\n            color: maroon; }\n  @media only screen and (max-width: 1024px) {\n  .web_view {\n    display: none;\n    width: 0%;\n    height: 0%; }\n    .web_view .sizeStyle {\n      background: rgba(175, 175, 175, 0.712);\n      border: 2px solid #929292;\n      color: white; }\n      .web_view .sizeStyle ion-button {\n        color: white; }\n      .web_view .sizeStyle .container .productinfo .sizes {\n        margin: 5px; }\n        .web_view .sizeStyle .container .productinfo .sizes ion-button {\n          color: black;\n          margin: 0 !important;\n          padding: 0 !important;\n          border: 0.5px solid #adadad; }\n    .web_view .colorStyle {\n      border: 2px solid #929292;\n      color: #636363; }\n    .web_view ion-toolbar {\n      --background: transparent;\n      position: absolute; }\n      .web_view ion-toolbar #icon {\n        color: maroon; }\n      .web_view ion-toolbar #rate {\n        color: white;\n        font-size: 0.7em;\n        background: #000027;\n        padding: 0 !important;\n        margin-right: -5px !important;\n        border-top-left-radius: 20px;\n        border-bottom-left-radius: 20px; }\n        .web_view ion-toolbar #rate ion-icon {\n          font-size: 1em; }\n    .web_view .container {\n      display: flex;\n      flex-flow: column;\n      align-items: center; }\n      .web_view .container .image {\n        position: relative;\n        display: flex;\n        flex-flow: column;\n        width: 100vw;\n        height: 70vh;\n        background: black; }\n        .web_view .container .image img {\n          width: 100%;\n          height: 100%;\n          -o-object-fit: cover;\n             object-fit: cover;\n          opacity: 0.8; }\n        .web_view .container .image .iteminfo {\n          z-index: 5;\n          position: absolute;\n          top: 53%;\n          left: 5vw;\n          display: flex;\n          flex-flow: row;\n          text-align: center;\n          align-items: flex-end;\n          justify-content: space-between;\n          width: 70%;\n          margin: 10px;\n          color: white;\n          font-family: \"Raleway\";\n          line-height: 10px; }\n          .web_view .container .image .iteminfo .stars ion-icon {\n            font-size: 6vw; }\n          .web_view .container .image .iteminfo .price p {\n            font-size: 5vw; }\n      .web_view .container .productinfo {\n        display: flex;\n        flex-flow: column;\n        width: 90vw;\n        background: white;\n        z-index: 5;\n        position: absolute;\n        top: 50%;\n        border-top-right-radius: 10px;\n        border-top-left-radius: 10px;\n        box-shadow: 5px 5px 10px #b8b8b8; }\n        .web_view .container .productinfo .add {\n          position: absolute;\n          right: -5px;\n          top: -25px; }\n          .web_view .container .productinfo .add ion-fab-button {\n            background: maroon;\n            border-radius: 50%; }\n            .web_view .container .productinfo .add ion-fab-button ion-icon {\n              color: white; }\n        .web_view .container .productinfo .about {\n          margin: 5px;\n          font-size: 0.7em; }\n        .web_view .container .productinfo .sizes {\n          margin: 5px;\n          font-size: 0.7em; }\n          .web_view .container .productinfo .sizes ion-button {\n            font-size: 1em;\n            color: black;\n            margin: 0 !important;\n            padding: 0 !important;\n            border: 0.5px solid #adadad; }\n        .web_view .container .productinfo .colours {\n          margin: 5px;\n          font-size: 0.7em; }\n          .web_view .container .productinfo .colours ion-button {\n            margin: 2px;\n            width: 14vw;\n            font-size: 1em; }\n        .web_view .container .productinfo .quantity {\n          margin: 5px;\n          font-size: 0.7em;\n          align-items: baseline; }\n          .web_view .container .productinfo .quantity ion-button {\n            font-size: 1em;\n            width: 10vw;\n            color: black;\n            margin: 0 !important;\n            padding: 0 !important;\n            border: 0.5px solid black; }\n        .web_view .container .productinfo .shipping {\n          margin: 5px;\n          font-size: 0.7em; }\n        .web_view .container .productinfo .delivery {\n          position: relative;\n          bottom: 40px;\n          margin: 5px;\n          font-size: 0.7em; }\n        .web_view .container .productinfo .buttonz {\n          width: 100%;\n          text-align: right;\n          font-size: 1em; }\n          .web_view .container .productinfo .buttonz ion-button {\n            font-size: 1em;\n            color: white;\n            background: #010136;\n            border-top-left-radius: 20px;\n            border-bottom-left-radius: 20px;\n            font-family: \"Raleway\"; }\n            .web_view .container .productinfo .buttonz ion-button ion-icon {\n              font-size: 1em;\n              color: white; }\n              .web_view .container .productinfo .buttonz ion-button ion-icon #book {\n                color: maroon; } }\n  @media only screen and (min-width: 1330px) {\n  .container {\n    display: none;\n    width: 0 !important;\n    height: 0 !important; }\n  ion-toolbar {\n    --background: rgb(255, 255, 255);\n    width: 100%;\n    font-family: \"Raleway\";\n    letter-spacing: 2px;\n    color: #838383; }\n    ion-toolbar #icon {\n      color: #838383; }\n    ion-toolbar #number {\n      font-size: 0.8em;\n      position: relative;\n      top: 8px;\n      right: 5px; }\n    ion-toolbar .icon1 {\n      margin: 0 20vw; }\n  .web_view {\n    min-width: 800px;\n    max-width: 1200px;\n    margin: auto;\n    display: flex;\n    flex-flow: row;\n    margin-top: 100px;\n    box-shadow: 5px 5px 10px #bebebe;\n    padding: 10px; }\n    .web_view .image {\n      width: 40vw;\n      height: 45vh; }\n      .web_view .image img {\n        width: 100%;\n        height: 100%;\n        -o-object-fit: cover;\n           object-fit: cover; }\n    .web_view .buttonz {\n      width: 100%;\n      text-align: right;\n      display: flex;\n      flex-flow: row;\n      justify-content: space-evenly; }\n      .web_view .buttonz ion-button {\n        width: 20vw;\n        color: white;\n        background: #010136;\n        border-radius: 20px;\n        font-family: \"Raleway\"; }\n        .web_view .buttonz ion-button ion-icon {\n          color: white; }\n          .web_view .buttonz ion-button ion-icon #book {\n            color: maroon; }\n    .web_view .shipping {\n      margin: 5px;\n      font-size: 15px; }\n    .web_view .delivery {\n      position: relative;\n      bottom: 40px;\n      margin: 5px;\n      font-size: 15px; }\n    .web_view .add ion-fab-button {\n      background: maroon;\n      border-radius: 50%; }\n      .web_view .add ion-fab-button ion-icon {\n        color: white; }\n    .web_view .about {\n      margin: 5px; }\n    .web_view .sizes {\n      margin: 5px; }\n      .web_view .sizes ion-button {\n        color: black;\n        margin: 0 !important;\n        padding: 0 !important;\n        border: 0.5px solid #adadad; }\n    .web_view .colours {\n      margin: 5px; }\n      .web_view .colours ion-button {\n        margin: 2px; }\n    .web_view .quantity {\n      margin: 5px;\n      align-items: baseline; }\n      .web_view .quantity ion-button {\n        color: black;\n        margin: 0 !important;\n        padding: 0 !important;\n        border: 0.5px solid black; }\n    .web_view .productinfo {\n      margin: 20px; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlldy9DOlxcVXNlcnNcXHphbmVsXFxEb2N1bWVudHNcXGJyb2tlblN0b29sL3NyY1xcYXBwXFx2aWV3XFx2aWV3LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNDQUFzQztFQUN0Qyx5QkFBb0M7RUFDcEMsWUFBWSxFQUFBO0VBSGQ7SUFLSSxZQUFZLEVBQUE7RUFJaEI7RUFDRSx5QkFBb0M7RUFDcEMsY0FBc0IsRUFBQTtFQUV4QjtFQUNFLHlCQUFhO0VBQ2Isa0JBQWtCLEVBQUE7RUFGcEI7SUFLSSxhQUFhLEVBQUE7RUFMakI7SUFTSSxZQUFZO0lBQ1osZ0JBQWdCO0lBQ2hCLG1CQUF5QjtJQUN6QixxQkFBcUI7SUFDckIsNkJBQTZCO0lBQzdCLDRCQUE0QjtJQUM1QiwrQkFBK0IsRUFBQTtFQWZuQztNQWlCTSxjQUFjLEVBQUE7RUFLcEI7RUFDRSxhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLG1CQUFtQixFQUFBO0VBSHJCO0lBTUksa0JBQWtCO0lBQ2xCLGFBQWE7SUFDYixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLFlBQVk7SUFDWixpQkFBaUIsRUFBQTtFQVhyQjtNQWFNLFdBQVc7TUFDWCxZQUFZO01BQ1osb0JBQWlCO1NBQWpCLGlCQUFpQjtNQUNqQixZQUFZLEVBQUE7RUFoQmxCO01Bb0JNLFVBQVU7TUFDVixrQkFBa0I7TUFDbEIsU0FBUTtNQUNSLFNBQVM7TUFDVCxhQUFhO01BQ2IsY0FBYztNQUNkLGtCQUFrQjtNQUNsQixxQkFBcUI7TUFDckIsOEJBQThCO01BQzlCLFVBQVU7TUFDVixXQUFXO01BQ1gsWUFBWTtNQUNaLFlBQVk7TUFDWixzQkFBc0I7TUFDdEIsaUJBQWlCLEVBQUE7RUFsQ3ZCO0lBa0RJLGFBQWE7SUFDYixpQkFBaUI7SUFDakIsV0FBVztJQUVYLGlCQUFpQjtJQUNqQixVQUFVO0lBQ1Ysa0JBQWtCO0lBQ2xCLFFBQVE7SUFFUiw2QkFBNkI7SUFDN0IsNEJBQTRCO0lBQzVCLGdDQUEyQyxFQUFBO0VBN0QvQztNQWdFTSxrQkFBa0I7TUFDbEIsV0FBVztNQUNYLFVBQVUsRUFBQTtFQWxFaEI7UUFvRVEsa0JBQWtCO1FBQ2xCLGtCQUFrQixFQUFBO0VBckUxQjtVQXVFVSxZQUFZLEVBQUE7RUF2RXRCO01BNkVNLFdBQVc7TUFDWCxnQkFBZ0IsRUFBQTtFQTlFdEI7TUFrRk0sV0FBVztNQUNYLGdCQUFnQixFQUFBO0VBbkZ0QjtRQXFGUSxjQUFjO1FBQ2QsV0FBVztRQUNYLFlBQVk7UUFDWixvQkFBb0I7UUFDcEIscUJBQXFCO1FBQ3JCLDJCQUFzQyxFQUFBO0VBMUY5QztNQWlHTSxXQUFXO01BQ1gsZ0JBQWdCLEVBQUE7RUFsR3RCO1FBb0dRLFdBQVc7UUFDWCxXQUFXO1FBRVgsY0FBYyxFQUFBO0VBdkd0QjtNQThHTSxXQUFXO01BQ1gsZ0JBQWdCO01BQ2hCLHFCQUFxQixFQUFBO0VBaEgzQjtRQW1IUSxjQUFjO1FBQ2QsV0FBVztRQUNYLFlBQVk7UUFDWixvQkFBb0I7UUFDcEIscUJBQXFCO1FBQ3JCLHlCQUF5QixFQUFBO0VBeEhqQztNQStITSxXQUFXO01BQ1gsZ0JBQWdCLEVBQUE7RUFoSXRCO01Bb0lNLGtCQUFrQjtNQUNsQixZQUFZO01BQ1osV0FBVztNQUNYLGdCQUFnQixFQUFBO0VBdkl0QjtNQTJJTSxXQUFXO01BQ1gsaUJBQWlCO01BQ2pCLGNBQWMsRUFBQTtFQTdJcEI7UUErSVEsY0FBYztRQUNkLFlBQVk7UUFDWixtQkFBeUI7UUFDekIsNEJBQTRCO1FBQzVCLCtCQUErQjtRQUMvQixzQkFBc0IsRUFBQTtFQXBKOUI7VUF1SlUsY0FBYztVQUNkLFlBQVksRUFBQTtFQXhKdEI7WUEySlksYUFBYSxFQUFBO0VBUXpCO0VBQ0U7SUFDRSxhQUFhO0lBQ2IsU0FBUztJQUNULFVBQVUsRUFBQTtJQUhaO01BTUksc0NBQXNDO01BQ3RDLHlCQUFvQztNQUNwQyxZQUFZLEVBQUE7TUFSaEI7UUFVTSxZQUFZLEVBQUE7TUFWbEI7UUFnQlUsV0FBVyxFQUFBO1FBaEJyQjtVQW9CWSxZQUFZO1VBQ1osb0JBQW9CO1VBQ3BCLHFCQUFxQjtVQUNyQiwyQkFBc0MsRUFBQTtJQXZCbEQ7TUErQkkseUJBQW9DO01BQ3BDLGNBQXNCLEVBQUE7SUFoQzFCO01BbUNJLHlCQUFhO01BQ2Isa0JBQWtCLEVBQUE7TUFwQ3RCO1FBdUNNLGFBQWEsRUFBQTtNQXZDbkI7UUEyQ00sWUFBWTtRQUNaLGdCQUFnQjtRQUNoQixtQkFBeUI7UUFDekIscUJBQXFCO1FBQ3JCLDZCQUE2QjtRQUM3Qiw0QkFBNEI7UUFDNUIsK0JBQStCLEVBQUE7UUFqRHJDO1VBbURRLGNBQWMsRUFBQTtJQW5EdEI7TUF5REksYUFBYTtNQUNiLGlCQUFpQjtNQUNqQixtQkFBbUIsRUFBQTtNQTNEdkI7UUE4RE0sa0JBQWtCO1FBQ2xCLGFBQWE7UUFDYixpQkFBaUI7UUFDakIsWUFBWTtRQUNaLFlBQVk7UUFDWixpQkFBaUIsRUFBQTtRQW5FdkI7VUFxRVEsV0FBVztVQUNYLFlBQVk7VUFDWixvQkFBaUI7YUFBakIsaUJBQWlCO1VBQ2pCLFlBQVksRUFBQTtRQXhFcEI7VUE0RVEsVUFBVTtVQUNWLGtCQUFrQjtVQUNsQixRQUFRO1VBQ1IsU0FBUztVQUNULGFBQWE7VUFDYixjQUFjO1VBQ2Qsa0JBQWtCO1VBQ2xCLHFCQUFxQjtVQUNyQiw4QkFBOEI7VUFDOUIsVUFBVTtVQUNWLFlBQVk7VUFDWixZQUFZO1VBQ1osc0JBQXNCO1VBQ3RCLGlCQUFpQixFQUFBO1VBekZ6QjtZQTRGWSxjQUFjLEVBQUE7VUE1RjFCO1lBa0dZLGNBQWMsRUFBQTtNQWxHMUI7UUF5R00sYUFBYTtRQUNiLGlCQUFpQjtRQUNqQixXQUFXO1FBRVgsaUJBQWlCO1FBQ2pCLFVBQVU7UUFDVixrQkFBa0I7UUFDbEIsUUFBUTtRQUVSLDZCQUE2QjtRQUM3Qiw0QkFBNEI7UUFDNUIsZ0NBQTJDLEVBQUE7UUFwSGpEO1VBdUhRLGtCQUFrQjtVQUNsQixXQUFXO1VBQ1gsVUFBVSxFQUFBO1VBekhsQjtZQTJIVSxrQkFBa0I7WUFDbEIsa0JBQWtCLEVBQUE7WUE1SDVCO2NBOEhZLFlBQVksRUFBQTtRQTlIeEI7VUFvSVEsV0FBVztVQUNYLGdCQUFnQixFQUFBO1FBckl4QjtVQXlJUSxXQUFXO1VBQ1gsZ0JBQWdCLEVBQUE7VUExSXhCO1lBNElVLGNBQWM7WUFFZCxZQUFZO1lBQ1osb0JBQW9CO1lBQ3BCLHFCQUFxQjtZQUNyQiwyQkFBc0MsRUFBQTtRQWpKaEQ7VUF3SlEsV0FBVztVQUNYLGdCQUFnQixFQUFBO1VBekp4QjtZQTJKVSxXQUFXO1lBQ1gsV0FBVztZQUVYLGNBQWMsRUFBQTtRQTlKeEI7VUFxS1EsV0FBVztVQUNYLGdCQUFnQjtVQUNoQixxQkFBcUIsRUFBQTtVQXZLN0I7WUEwS1UsY0FBYztZQUNkLFdBQVc7WUFDWCxZQUFZO1lBQ1osb0JBQW9CO1lBQ3BCLHFCQUFxQjtZQUNyQix5QkFBeUIsRUFBQTtRQS9LbkM7VUFzTFEsV0FBVztVQUNYLGdCQUFnQixFQUFBO1FBdkx4QjtVQTJMUSxrQkFBa0I7VUFDbEIsWUFBWTtVQUNaLFdBQVc7VUFDWCxnQkFBZ0IsRUFBQTtRQTlMeEI7VUFrTVEsV0FBVztVQUNYLGlCQUFpQjtVQUNqQixjQUFjLEVBQUE7VUFwTXRCO1lBc01VLGNBQWM7WUFDZCxZQUFZO1lBQ1osbUJBQXlCO1lBQ3pCLDRCQUE0QjtZQUM1QiwrQkFBK0I7WUFDL0Isc0JBQXNCLEVBQUE7WUEzTWhDO2NBOE1ZLGNBQWM7Y0FDZCxZQUFZLEVBQUE7Y0EvTXhCO2dCQWtOYyxhQUFhLEVBQUEsRUFDZDtFQVNmO0VBQ0U7SUFDRSxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLG9CQUFvQixFQUFBO0VBR3RCO0lBQ0UsZ0NBQWE7SUFDYixXQUFXO0lBSVgsc0JBQXNCO0lBQ3RCLG1CQUFtQjtJQUNuQixjQUF5QixFQUFBO0lBUjNCO01BSUksY0FBeUIsRUFBQTtJQUo3QjtNQVVJLGdCQUFnQjtNQUNoQixrQkFBa0I7TUFDbEIsUUFBUTtNQUNSLFVBQVUsRUFBQTtJQWJkO01BaUJJLGNBQWMsRUFBQTtFQUlsQjtJQUNFLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLGFBQWE7SUFDYixjQUFjO0lBQ2QsaUJBQWlCO0lBQ2pCLGdDQUEyQztJQUMzQyxhQUFhLEVBQUE7SUFSZjtNQVdJLFdBQVc7TUFDWCxZQUFZLEVBQUE7TUFaaEI7UUFlTSxXQUFXO1FBQ1gsWUFBWTtRQUNaLG9CQUFpQjtXQUFqQixpQkFBaUIsRUFBQTtJQWpCdkI7TUFzQkksV0FBVztNQUNYLGlCQUFpQjtNQUNqQixhQUFhO01BQ2IsY0FBYztNQUNkLDZCQUE2QixFQUFBO01BMUJqQztRQTRCTSxXQUFXO1FBQ1gsWUFBWTtRQUNaLG1CQUF5QjtRQUN6QixtQkFBbUI7UUFDbkIsc0JBQXNCLEVBQUE7UUFoQzVCO1VBa0NRLFlBQVksRUFBQTtVQWxDcEI7WUFvQ1UsYUFBYSxFQUFBO0lBcEN2QjtNQTJDSSxXQUFXO01BQ1gsZUFBZSxFQUFBO0lBNUNuQjtNQWdESSxrQkFBa0I7TUFDbEIsWUFBWTtNQUNaLFdBQVc7TUFDWCxlQUFlLEVBQUE7SUFuRG5CO01Bd0RNLGtCQUFrQjtNQUNsQixrQkFBa0IsRUFBQTtNQXpEeEI7UUEyRFEsWUFBWSxFQUFBO0lBM0RwQjtNQWlFSSxXQUFXLEVBQUE7SUFqRWY7TUFxRUksV0FBVyxFQUFBO01BckVmO1FBdUVNLFlBQVk7UUFDWixvQkFBb0I7UUFDcEIscUJBQXFCO1FBQ3JCLDJCQUFzQyxFQUFBO0lBMUU1QztNQWlGSSxXQUFXLEVBQUE7TUFqRmY7UUFtRk0sV0FBVyxFQUFBO0lBbkZqQjtNQTBGSSxXQUFXO01BQ1gscUJBQXFCLEVBQUE7TUEzRnpCO1FBNkZNLFlBQVk7UUFDWixvQkFBb0I7UUFDcEIscUJBQXFCO1FBQ3JCLHlCQUF5QixFQUFBO0lBaEcvQjtNQXFHSSxZQUFZLEVBQUEsRUFDYiIsImZpbGUiOiJzcmMvYXBwL3ZpZXcvdmlldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2l6ZVN0eWxlIHtcclxuICBiYWNrZ3JvdW5kOiByZ2JhKDE3NSwgMTc1LCAxNzUsIDAuNzEyKTtcclxuICBib3JkZXI6IDJweCBzb2xpZCByZ2IoMTQ2LCAxNDYsIDE0Nik7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGlvbi1idXR0b24ge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gIH1cclxufVxyXG5cclxuLmNvbG9yU3R5bGUge1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHJnYigxNDYsIDE0NiwgMTQ2KTtcclxuICBjb2xvcjogcmdiKDk5LCA5OSwgOTkpO1xyXG59XHJcbmlvbi10b29sYmFyIHtcclxuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHJcbiAgI2ljb24ge1xyXG4gICAgY29sb3I6IG1hcm9vbjtcclxuICB9XHJcblxyXG4gICNyYXRlIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGZvbnQtc2l6ZTogMC43ZW07XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMCwgMCwgMzkpO1xyXG4gICAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAtNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgIGlvbi1pY29uIHtcclxuICAgICAgZm9udC1zaXplOiAxZW07XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG4uY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblxyXG4gIC5pbWFnZSB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1mbG93OiBjb2x1bW47XHJcbiAgICB3aWR0aDogMTAwdnc7XHJcbiAgICBoZWlnaHQ6IDcwdmg7XHJcbiAgICBiYWNrZ3JvdW5kOiBibGFjaztcclxuICAgIGltZyB7XHJcbiAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICAgIG9iamVjdC1maXQ6IGNvdmVyO1xyXG4gICAgICBvcGFjaXR5OiAwLjg7XHJcbiAgICB9XHJcblxyXG4gICAgLml0ZW1pbmZvIHtcclxuICAgICAgei1pbmRleDogNTtcclxuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgICB0b3A6Mzd2aDtcclxuICAgICAgbGVmdDogNXZ3O1xyXG4gICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICBmbGV4LWZsb3c6IHJvdztcclxuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XHJcbiAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICAgICAgd2lkdGg6IDcwJTtcclxuICAgICAgbWFyZ2luOiA1cHg7XHJcbiAgICAgIHBhZGRpbmc6IDVweDtcclxuICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICBmb250LWZhbWlseTogXCJSYWxld2F5XCI7XHJcbiAgICAgIGxpbmUtaGVpZ2h0OiAxMHB4O1xyXG4gICAgICAuc3RhcnMge1xyXG4gICAgICAgIC8vIGlvbi1pY29uIHtcclxuICAgICAgICAvLyAgIGZvbnQtc2l6ZTogNnZ3O1xyXG4gICAgICAgIC8vIH1cclxuICAgICAgfVxyXG5cclxuICAgICAgLnByaWNlIHtcclxuICAgICAgICBwIHtcclxuICAgICAgICAgIC8vIGZvbnQtc2l6ZTogNXZ3O1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLnByb2R1Y3RpbmZvIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWZsb3c6IGNvbHVtbjtcclxuICAgIHdpZHRoOiA5MHZ3O1xyXG4gICAgLy8gaGVpZ2h0OiA2MHZoO1xyXG4gICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICB6LWluZGV4OiA1O1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiA1MCU7XHJcblxyXG4gICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDEwcHg7XHJcbiAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAxMHB4O1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAxMHB4IHJnYigxODQsIDE4NCwgMTg0KTtcclxuXHJcbiAgICAuYWRkIHtcclxuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgICByaWdodDogLTVweDtcclxuICAgICAgdG9wOiAtMjVweDtcclxuICAgICAgaW9uLWZhYi1idXR0b24ge1xyXG4gICAgICAgIGJhY2tncm91bmQ6IG1hcm9vbjtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICAgICAgaW9uLWljb24ge1xyXG4gICAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIC5hYm91dCB7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgfVxyXG5cclxuICAgIC5zaXplcyB7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgICBpb24tYnV0dG9uIHtcclxuICAgICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgICB3aWR0aDogMTR2dztcclxuICAgICAgICBjb2xvcjogYmxhY2s7XHJcbiAgICAgICAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJvcmRlcjogMC41cHggc29saWQgcmdiKDE3MywgMTczLCAxNzMpO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgLmNvbG91cnMge1xyXG4gICAgICAvLyBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgIC8vIGJvdHRvbTogMjBweDtcclxuICAgICAgbWFyZ2luOiA1cHg7XHJcbiAgICAgIGZvbnQtc2l6ZTogMC43ZW07XHJcbiAgICAgIGlvbi1idXR0b24ge1xyXG4gICAgICAgIG1hcmdpbjogMnB4O1xyXG4gICAgICAgIHdpZHRoOiAxNHZ3O1xyXG4gICAgICAgIC8vIGhlaWdodDogOHZ3O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgLnF1YW50aXR5IHtcclxuICAgICAgLy8gcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAvLyBib3R0b206IDQwcHg7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcblxyXG4gICAgICBpb24tYnV0dG9uIHtcclxuICAgICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgICB3aWR0aDogMTB2dztcclxuICAgICAgICBjb2xvcjogYmxhY2s7XHJcbiAgICAgICAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJvcmRlcjogMC41cHggc29saWQgYmxhY2s7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAuc2hpcHBpbmcge1xyXG4gICAgICAvLyBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgIC8vIGJvdHRvbTogNDBweDtcclxuICAgICAgbWFyZ2luOiA1cHg7XHJcbiAgICAgIGZvbnQtc2l6ZTogMC43ZW07XHJcbiAgICB9XHJcblxyXG4gICAgLmRlbGl2ZXJ5IHtcclxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICBib3R0b206IDQwcHg7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgfVxyXG5cclxuICAgIC5idXR0b256IHtcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgZm9udC1zaXplOiAxZW07XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6IHJnYigxLCAxLCA1NCk7XHJcbiAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgIGZvbnQtZmFtaWx5OiBcIlJhbGV3YXlcIjtcclxuXHJcbiAgICAgICAgaW9uLWljb24ge1xyXG4gICAgICAgICAgZm9udC1zaXplOiAxZW07XHJcbiAgICAgICAgICBjb2xvcjogd2hpdGU7XHJcblxyXG4gICAgICAgICAgI2Jvb2sge1xyXG4gICAgICAgICAgICBjb2xvcjogbWFyb29uO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDI0cHgpIHtcclxuICAud2ViX3ZpZXcge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxuICAgIHdpZHRoOiAwJTtcclxuICAgIGhlaWdodDogMCU7XHJcblxyXG4gICAgLnNpemVTdHlsZSB7XHJcbiAgICAgIGJhY2tncm91bmQ6IHJnYmEoMTc1LCAxNzUsIDE3NSwgMC43MTIpO1xyXG4gICAgICBib3JkZXI6IDJweCBzb2xpZCByZ2IoMTQ2LCAxNDYsIDE0Nik7XHJcbiAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAuY29udGFpbmVye1xyXG4gICAgICAgIC5wcm9kdWN0aW5mb3tcclxuICAgICAgICAgIC5zaXplcyB7XHJcbiAgICAgICAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBcclxuICAgICAgICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgXHJcbiAgICAgICAgICAgICAgY29sb3I6IGJsYWNrO1xyXG4gICAgICAgICAgICAgIG1hcmdpbjogMCAhaW1wb3J0YW50O1xyXG4gICAgICAgICAgICAgIHBhZGRpbmc6IDAgIWltcG9ydGFudDtcclxuICAgICAgICAgICAgICBib3JkZXI6IDAuNXB4IHNvbGlkIHJnYigxNzMsIDE3MywgMTczKTtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIC5jb2xvclN0eWxlIHtcclxuICAgICAgYm9yZGVyOiAycHggc29saWQgcmdiKDE0NiwgMTQ2LCAxNDYpO1xyXG4gICAgICBjb2xvcjogcmdiKDk5LCA5OSwgOTkpO1xyXG4gICAgfVxyXG4gICAgaW9uLXRvb2xiYXIge1xyXG4gICAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcblxyXG4gICAgICAjaWNvbiB7XHJcbiAgICAgICAgY29sb3I6IG1hcm9vbjtcclxuICAgICAgfVxyXG5cclxuICAgICAgI3JhdGUge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgICAgIGJhY2tncm91bmQ6IHJnYigwLCAwLCAzOSk7XHJcbiAgICAgICAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xyXG4gICAgICAgIG1hcmdpbi1yaWdodDogLTVweCAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgICBpb24taWNvbiB7XHJcbiAgICAgICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAuY29udGFpbmVyIHtcclxuICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgZmxleC1mbG93OiBjb2x1bW47XHJcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblxyXG4gICAgICAuaW1hZ2Uge1xyXG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gICAgICAgIHdpZHRoOiAxMDB2dztcclxuICAgICAgICBoZWlnaHQ6IDcwdmg7XHJcbiAgICAgICAgYmFja2dyb3VuZDogYmxhY2s7XHJcbiAgICAgICAgaW1nIHtcclxuICAgICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgICAgICAgb2JqZWN0LWZpdDogY292ZXI7XHJcbiAgICAgICAgICBvcGFjaXR5OiAwLjg7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAuaXRlbWluZm8ge1xyXG4gICAgICAgICAgei1pbmRleDogNTtcclxuICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICAgIHRvcDogNTMlO1xyXG4gICAgICAgICAgbGVmdDogNXZ3O1xyXG4gICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgIGZsZXgtZmxvdzogcm93O1xyXG4gICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgICAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xyXG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgICAgICAgd2lkdGg6IDcwJTtcclxuICAgICAgICAgIG1hcmdpbjogMTBweDtcclxuICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGZvbnQtZmFtaWx5OiBcIlJhbGV3YXlcIjtcclxuICAgICAgICAgIGxpbmUtaGVpZ2h0OiAxMHB4O1xyXG4gICAgICAgICAgLnN0YXJzIHtcclxuICAgICAgICAgICAgaW9uLWljb24ge1xyXG4gICAgICAgICAgICAgIGZvbnQtc2l6ZTogNnZ3O1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICB9XHJcblxyXG4gICAgICAgICAgLnByaWNlIHtcclxuICAgICAgICAgICAgcCB7XHJcbiAgICAgICAgICAgICAgZm9udC1zaXplOiA1dnc7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5wcm9kdWN0aW5mbyB7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBmbGV4LWZsb3c6IGNvbHVtbjtcclxuICAgICAgICB3aWR0aDogOTB2dztcclxuICAgICAgICAvLyBoZWlnaHQ6IDYwdmg7XHJcbiAgICAgICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICAgICAgei1pbmRleDogNTtcclxuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAgICAgdG9wOiA1MCU7XHJcblxyXG4gICAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAxMHB4O1xyXG4gICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDEwcHg7XHJcbiAgICAgICAgYm94LXNoYWRvdzogNXB4IDVweCAxMHB4IHJnYigxODQsIDE4NCwgMTg0KTtcclxuXHJcbiAgICAgICAgLmFkZCB7XHJcbiAgICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAgICAgICByaWdodDogLTVweDtcclxuICAgICAgICAgIHRvcDogLTI1cHg7XHJcbiAgICAgICAgICBpb24tZmFiLWJ1dHRvbiB7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQ6IG1hcm9vbjtcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgICAgICAgICBpb24taWNvbiB7XHJcbiAgICAgICAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAuYWJvdXQge1xyXG4gICAgICAgICAgbWFyZ2luOiA1cHg7XHJcbiAgICAgICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgLnNpemVzIHtcclxuICAgICAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICAgICAgZm9udC1zaXplOiAwLjdlbTtcclxuICAgICAgICAgIGlvbi1idXR0b24ge1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgICAgICAgLy8gd2lkdGg6IDE0dnc7XHJcbiAgICAgICAgICAgIGNvbG9yOiBibGFjaztcclxuICAgICAgICAgICAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDAgIWltcG9ydGFudDtcclxuICAgICAgICAgICAgYm9yZGVyOiAwLjVweCBzb2xpZCByZ2IoMTczLCAxNzMsIDE3Myk7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAuY29sb3VycyB7XHJcbiAgICAgICAgICAvLyBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgICAgICAvLyBib3R0b206IDIwcHg7XHJcbiAgICAgICAgICBtYXJnaW46IDVweDtcclxuICAgICAgICAgIGZvbnQtc2l6ZTogMC43ZW07XHJcbiAgICAgICAgICBpb24tYnV0dG9uIHtcclxuICAgICAgICAgICAgbWFyZ2luOiAycHg7XHJcbiAgICAgICAgICAgIHdpZHRoOiAxNHZ3O1xyXG4gICAgICAgICAgICAvLyBoZWlnaHQ6IDh2dztcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxZW07XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAucXVhbnRpdHkge1xyXG4gICAgICAgICAgLy8gcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAgICAgLy8gYm90dG9tOiA0MHB4O1xyXG4gICAgICAgICAgbWFyZ2luOiA1cHg7XHJcbiAgICAgICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgICAgICAgYWxpZ24taXRlbXM6IGJhc2VsaW5lO1xyXG5cclxuICAgICAgICAgIGlvbi1idXR0b24ge1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgICAgICAgd2lkdGg6IDEwdnc7XHJcbiAgICAgICAgICAgIGNvbG9yOiBibGFjaztcclxuICAgICAgICAgICAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDAgIWltcG9ydGFudDtcclxuICAgICAgICAgICAgYm9yZGVyOiAwLjVweCBzb2xpZCBibGFjaztcclxuICAgICAgICAgIH1cclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIC5zaGlwcGluZyB7XHJcbiAgICAgICAgICAvLyBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgICAgICAvLyBib3R0b206IDQwcHg7XHJcbiAgICAgICAgICBtYXJnaW46IDVweDtcclxuICAgICAgICAgIGZvbnQtc2l6ZTogMC43ZW07XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAuZGVsaXZlcnkge1xyXG4gICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAgICAgYm90dG9tOiA0MHB4O1xyXG4gICAgICAgICAgbWFyZ2luOiA1cHg7XHJcbiAgICAgICAgICBmb250LXNpemU6IDAuN2VtO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgLmJ1dHRvbnoge1xyXG4gICAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgICB0ZXh0LWFsaWduOiByaWdodDtcclxuICAgICAgICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQ6IHJnYigxLCAxLCA1NCk7XHJcbiAgICAgICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgICAgIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgICAgIGZvbnQtZmFtaWx5OiBcIlJhbGV3YXlcIjtcclxuXHJcbiAgICAgICAgICAgIGlvbi1pY29uIHtcclxuICAgICAgICAgICAgICBmb250LXNpemU6IDFlbTtcclxuICAgICAgICAgICAgICBjb2xvcjogd2hpdGU7XHJcblxyXG4gICAgICAgICAgICAgICNib29rIHtcclxuICAgICAgICAgICAgICAgIGNvbG9yOiBtYXJvb247XHJcbiAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDEzMzBweCkge1xyXG4gIC5jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxuICAgIHdpZHRoOiAwICFpbXBvcnRhbnQ7XHJcbiAgICBoZWlnaHQ6IDAgIWltcG9ydGFudDtcclxuICB9XHJcblxyXG4gIGlvbi10b29sYmFyIHtcclxuICAgIC0tYmFja2dyb3VuZDogcmdiKDI1NSwgMjU1LCAyNTUpO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICAjaWNvbiB7XHJcbiAgICAgIGNvbG9yOiByZ2IoMTMxLCAxMzEsIDEzMSk7XHJcbiAgICB9XHJcbiAgICBmb250LWZhbWlseTogXCJSYWxld2F5XCI7XHJcbiAgICBsZXR0ZXItc3BhY2luZzogMnB4O1xyXG4gICAgY29sb3I6IHJnYigxMzEsIDEzMSwgMTMxKTtcclxuICAgICNudW1iZXIge1xyXG4gICAgICBmb250LXNpemU6IDAuOGVtO1xyXG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgIHRvcDogOHB4O1xyXG4gICAgICByaWdodDogNXB4O1xyXG4gICAgfVxyXG5cclxuICAgIC5pY29uMSB7XHJcbiAgICAgIG1hcmdpbjogMCAyMHZ3O1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLndlYl92aWV3IHtcclxuICAgIG1pbi13aWR0aDogODAwcHg7XHJcbiAgICBtYXgtd2lkdGg6IDEyMDBweDtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWZsb3c6IHJvdztcclxuICAgIG1hcmdpbi10b3A6IDEwMHB4O1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAxMHB4IHJnYigxOTAsIDE5MCwgMTkwKTtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcblxyXG4gICAgLmltYWdlIHtcclxuICAgICAgd2lkdGg6IDQwdnc7XHJcbiAgICAgIGhlaWdodDogNDV2aDtcclxuXHJcbiAgICAgIGltZyB7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgICAgIG9iamVjdC1maXQ6IGNvdmVyO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgLmJ1dHRvbnoge1xyXG4gICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbiAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgIGZsZXgtZmxvdzogcm93O1xyXG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgd2lkdGg6IDIwdnc7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6IHJnYigxLCAxLCA1NCk7XHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMjBweDtcclxuICAgICAgICBmb250LWZhbWlseTogXCJSYWxld2F5XCI7XHJcbiAgICAgICAgaW9uLWljb24ge1xyXG4gICAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgICAgI2Jvb2sge1xyXG4gICAgICAgICAgICBjb2xvcjogbWFyb29uO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIC5zaGlwcGluZyB7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBmb250LXNpemU6IDE1cHg7XHJcbiAgICB9XHJcblxyXG4gICAgLmRlbGl2ZXJ5IHtcclxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICBib3R0b206IDQwcHg7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBmb250LXNpemU6IDE1cHg7XHJcbiAgICB9XHJcblxyXG4gICAgLmFkZCB7XHJcbiAgICAgIGlvbi1mYWItYnV0dG9uIHtcclxuICAgICAgICBiYWNrZ3JvdW5kOiBtYXJvb247XHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgICAgIGlvbi1pY29uIHtcclxuICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAuYWJvdXQge1xyXG4gICAgICBtYXJnaW46IDVweDtcclxuICAgIH1cclxuXHJcbiAgICAuc2l6ZXMge1xyXG4gICAgICBtYXJnaW46IDVweDtcclxuICAgICAgaW9uLWJ1dHRvbiB7XHJcbiAgICAgICAgY29sb3I6IGJsYWNrO1xyXG4gICAgICAgIG1hcmdpbjogMCAhaW1wb3J0YW50O1xyXG4gICAgICAgIHBhZGRpbmc6IDAgIWltcG9ydGFudDtcclxuICAgICAgICBib3JkZXI6IDAuNXB4IHNvbGlkIHJnYigxNzMsIDE3MywgMTczKTtcclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIC5jb2xvdXJzIHtcclxuICAgICAgLy8gcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAvLyBib3R0b206IDIwcHg7XHJcbiAgICAgIG1hcmdpbjogNXB4O1xyXG4gICAgICBpb24tYnV0dG9uIHtcclxuICAgICAgICBtYXJnaW46IDJweDtcclxuXHJcbiAgICAgICAgLy8gaGVpZ2h0OiA4dnc7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAucXVhbnRpdHkge1xyXG4gICAgICBtYXJnaW46IDVweDtcclxuICAgICAgYWxpZ24taXRlbXM6IGJhc2VsaW5lO1xyXG4gICAgICBpb24tYnV0dG9uIHtcclxuICAgICAgICBjb2xvcjogYmxhY2s7XHJcbiAgICAgICAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJvcmRlcjogMC41cHggc29saWQgYmxhY2s7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAucHJvZHVjdGluZm8ge1xyXG4gICAgICBtYXJnaW46IDIwcHg7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcbiJdfQ== */");
-
-/***/ }),
-
-/***/ "./src/app/view/view.page.ts":
-/*!***********************************!*\
-  !*** ./src/app/view/view.page.ts ***!
-  \***********************************/
-/*! exports provided: ViewPage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewPage", function() { return ViewPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _popover_popover_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../popover/popover.component */ "./src/app/popover/popover.component.ts");
-
-
-
-
-
-
-var ViewPage = /** @class */ (function () {
-    // colorIndex = null;
-    function ViewPage(router, route, toastCtrl, popoverController, navCtrl, render) {
-        var _this = this;
-        this.router = router;
-        this.route = route;
-        this.toastCtrl = toastCtrl;
-        this.popoverController = popoverController;
-        this.navCtrl = navCtrl;
-        this.render = render;
-        this.dbProduct = firebase__WEBPACK_IMPORTED_MODULE_2__["firestore"]().collection('Products');
-        this.dbCart = firebase__WEBPACK_IMPORTED_MODULE_2__["firestore"]().collection('Cart');
-        this.customerUID = firebase__WEBPACK_IMPORTED_MODULE_2__["auth"]().currentUser.uid;
-        this.quantity = 1;
-        this.myProduct = [];
-        this.data = [];
-        this.unitProduct = [];
-        this.my_size = '';
-        this.sizeIndex = null;
-        this.colorIndex = null;
-        this.color = '';
-        this.myRate = 0;
-        this.dbRate = firebase__WEBPACK_IMPORTED_MODULE_2__["firestore"]().collection('productRate');
-        this.dbSales = firebase__WEBPACK_IMPORTED_MODULE_2__["firestore"]().collection('Specials');
-        this.mySale = [];
-        this.category = '';
-        this.starRating = document.getElementsByClassName('ionic4-star-rating');
-        this.boolCheck = false;
-        this.doc_id = this.route.snapshot.paramMap.get('view_id');
-        this.route.queryParams.subscribe(function (params) {
-            _this.doc_data = params["data"];
-            _this.col = params["col"];
-            _this.category = params["category"];
-        });
-    }
-    ViewPage.prototype.ngOnInit = function () {
-        var _this = this;
-        // console.log(this.doc_data);
-        setTimeout(function () {
-            //console.log(this.starRating);
-            var starButtons = _this.starRating[0].children;
-            for (var i = 0; i < starButtons.length; i++) {
-                //console.log(this.starRating[0].children[i]);
-                _this.render.setStyle(_this.starRating[0].children[i], 'outline', 'none');
-            }
-        }, 500);
-        // console.log('my collection ', this.col, 'my data', this.doc_data, 'my docid');
-        this.dbRate.where('product', '==', this.doc_id).onSnapshot(function (res) {
-            // this.myRatings = [];
-            if (res.size === 0) {
-                _this.myRate = 0;
-            }
-            else {
-                res.forEach(function (doc) {
-                    _this.myRate = doc.data().rating / res.size;
+                else {
+                    var groupIndex = Math.floor(i / params.slidesPerGroup);
+                    row = Math.floor(i / params.slidesPerView) - groupIndex * params.slidesPerColumn;
+                    column = i - row * params.slidesPerView - groupIndex * params.slidesPerView;
+                }
+                newSlideOrderIndex = column + ((row * slidesNumberEvenToRows) / slidesPerColumn);
+                slide_1
+                    .css({
+                    '-webkit-box-ordinal-group': newSlideOrderIndex,
+                    '-moz-box-ordinal-group': newSlideOrderIndex,
+                    '-ms-flex-order': newSlideOrderIndex,
+                    '-webkit-order': newSlideOrderIndex,
+                    order: newSlideOrderIndex,
                 });
             }
-            // console.log('my rate ', this.myRate);
-        });
-        //console.log('doc id ', this.doc_id, 'Collection ref ', this.col);
-        // console.log(this.col);
-        if (this.col === 'sales') {
-            this.getSpecial();
+            else {
+                row = Math.floor(i / slidesPerRow);
+                column = i - (row * slidesPerRow);
+            }
+            slide_1
+                .css("margin-" + (swiper.isHorizontal() ? 'top' : 'left'), (row !== 0 && params.spaceBetween) && (params.spaceBetween + "px"))
+                .attr('data-swiper-column', column)
+                .attr('data-swiper-row', row);
         }
-        else {
-            this.getProduct();
-        }
-        // setTimeout(() => {
-        //let data = [] ; 
-        /* this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((snap) => {
-          // console.log('My snapshot ', snap);
-          snap.forEach((doc) => {
-            this.myProduct = []
-            this.data = doc.data().product
-            console.log('My data ', this.data);
-            this.data.forEach((item) => {
-              if (item.product_id == this.doc_id) {
-                this.myProduct.push({ info: doc.data(), id: doc.id })
-              }
-            });
-            console.log('My products ', this.myProduct);
-          })
-        }) */
-        // }, 1000);
-    };
-    ViewPage.prototype.onBoolChenged = function (c, i) {
-        console.log('Boolean val ', c, 'index ', i);
-    };
-    ViewPage.prototype.getProduct = function () {
-        var _this = this;
-        this.dbProduct.doc(this.category).collection(this.col).doc(this.doc_id).onSnapshot(function (doc) {
-            //console.log('My product ', doc.data());
-            _this.unitProduct.push({ data: doc.data(), id: doc.id });
-            // console.log('My product ', this.unitProduct);
-        });
-    };
-    ViewPage.prototype.getSpecial = function () {
-        var _this = this;
-        this.dbSales.doc(this.doc_id).onSnapshot(function (res) {
-            _this.mySale.push({ data: res.data(), id: res.id });
-            // console.log('My product ', this.mySale);
-        });
-    };
-    ViewPage.prototype.presentPopover = function (ev) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var popover;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.popoverController.create({
-                            component: _popover_popover_component__WEBPACK_IMPORTED_MODULE_5__["PopoverComponent"],
-                            event: ev,
-                            translucent: true,
-                            componentProps: {
-                                col: this.col,
-                                doc: this.doc_id
-                            }
-                        })];
-                    case 1:
-                        popover = _a.sent();
-                        return [4 /*yield*/, popover.present()];
-                    case 2: return [2 /*return*/, _a.sent()];
+        if (slide_1.css('display') === 'none')
+            continue; // eslint-disable-line
+        if (params.slidesPerView === 'auto') {
+            var slideStyles = win.getComputedStyle(slide_1[0], null);
+            var currentTransform = slide_1[0].style.transform;
+            var currentWebKitTransform = slide_1[0].style.webkitTransform;
+            if (currentTransform) {
+                slide_1[0].style.transform = 'none';
+            }
+            if (currentWebKitTransform) {
+                slide_1[0].style.webkitTransform = 'none';
+            }
+            if (params.roundLengths) {
+                slideSize = swiper.isHorizontal()
+                    ? slide_1.outerWidth(true)
+                    : slide_1.outerHeight(true);
+            }
+            else {
+                // eslint-disable-next-line
+                if (swiper.isHorizontal()) {
+                    var width = parseFloat(slideStyles.getPropertyValue('width'));
+                    var paddingLeft = parseFloat(slideStyles.getPropertyValue('padding-left'));
+                    var paddingRight = parseFloat(slideStyles.getPropertyValue('padding-right'));
+                    var marginLeft = parseFloat(slideStyles.getPropertyValue('margin-left'));
+                    var marginRight = parseFloat(slideStyles.getPropertyValue('margin-right'));
+                    var boxSizing = slideStyles.getPropertyValue('box-sizing');
+                    if (boxSizing && boxSizing === 'border-box' && !Browser.isIE) {
+                        slideSize = width + marginLeft + marginRight;
+                    }
+                    else {
+                        slideSize = width + paddingLeft + paddingRight + marginLeft + marginRight;
+                    }
                 }
-            });
-        });
-    };
-    ViewPage.prototype.sizeChosen = function (data, index) {
-        // console.log(index);
-        this.sizeIndex = index;
-        this.my_size = data;
-        //console.log('My size ', this.my_size);
-    };
-    ViewPage.prototype.colorChosen = function (color, index) {
-        this.color = color;
-        this.colorIndex = index;
-        // console.log("color", index);
-    };
-    ViewPage.prototype.plus = function () {
-        //console.log('Quantity ', quantity); 
-        this.quantity += 1;
-    };
-    ViewPage.prototype.minus = function () {
-        if (this.quantity <= 1) {
-            this.toastController('Quantity must be positive');
-        }
-        else {
-            this.quantity -= 1;
-        }
-    };
-    ViewPage.prototype.toastController = function (message) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var toast;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.toastCtrl.create({ message: message, duration: 2000 })];
-                    case 1:
-                        toast = _a.sent();
-                        return [2 /*return*/, toast.present()];
+                else {
+                    var height = parseFloat(slideStyles.getPropertyValue('height'));
+                    var paddingTop = parseFloat(slideStyles.getPropertyValue('padding-top'));
+                    var paddingBottom = parseFloat(slideStyles.getPropertyValue('padding-bottom'));
+                    var marginTop = parseFloat(slideStyles.getPropertyValue('margin-top'));
+                    var marginBottom = parseFloat(slideStyles.getPropertyValue('margin-bottom'));
+                    var boxSizing = slideStyles.getPropertyValue('box-sizing');
+                    if (boxSizing && boxSizing === 'border-box' && !Browser.isIE) {
+                        slideSize = height + marginTop + marginBottom;
+                    }
+                    else {
+                        slideSize = height + paddingTop + paddingBottom + marginTop + marginBottom;
+                    }
                 }
-            });
+            }
+            if (currentTransform) {
+                slide_1[0].style.transform = currentTransform;
+            }
+            if (currentWebKitTransform) {
+                slide_1[0].style.webkitTransform = currentWebKitTransform;
+            }
+            if (params.roundLengths)
+                slideSize = Math.floor(slideSize);
+        }
+        else {
+            slideSize = (swiperSize - ((params.slidesPerView - 1) * spaceBetween)) / params.slidesPerView;
+            if (params.roundLengths)
+                slideSize = Math.floor(slideSize);
+            if (slides[i]) {
+                if (swiper.isHorizontal()) {
+                    slides[i].style.width = slideSize + "px";
+                }
+                else {
+                    slides[i].style.height = slideSize + "px";
+                }
+            }
+        }
+        if (slides[i]) {
+            slides[i].swiperSlideSize = slideSize;
+        }
+        slidesSizesGrid.push(slideSize);
+        if (params.centeredSlides) {
+            slidePosition = slidePosition + (slideSize / 2) + (prevSlideSize / 2) + spaceBetween;
+            if (prevSlideSize === 0 && i !== 0)
+                slidePosition = slidePosition - (swiperSize / 2) - spaceBetween;
+            if (i === 0)
+                slidePosition = slidePosition - (swiperSize / 2) - spaceBetween;
+            if (Math.abs(slidePosition) < 1 / 1000)
+                slidePosition = 0;
+            if (params.roundLengths)
+                slidePosition = Math.floor(slidePosition);
+            if ((index) % params.slidesPerGroup === 0)
+                snapGrid.push(slidePosition);
+            slidesGrid.push(slidePosition);
+        }
+        else {
+            if (params.roundLengths)
+                slidePosition = Math.floor(slidePosition);
+            if ((index) % params.slidesPerGroup === 0)
+                snapGrid.push(slidePosition);
+            slidesGrid.push(slidePosition);
+            slidePosition = slidePosition + slideSize + spaceBetween;
+        }
+        swiper.virtualSize += slideSize + spaceBetween;
+        prevSlideSize = slideSize;
+        index += 1;
+    }
+    swiper.virtualSize = Math.max(swiper.virtualSize, swiperSize) + offsetAfter;
+    var newSlidesGrid;
+    if (rtl && wrongRTL && (params.effect === 'slide' || params.effect === 'coverflow')) {
+        $wrapperEl.css({ width: swiper.virtualSize + params.spaceBetween + "px" });
+    }
+    if (!Support.flexbox || params.setWrapperSize) {
+        if (swiper.isHorizontal())
+            $wrapperEl.css({ width: swiper.virtualSize + params.spaceBetween + "px" });
+        else
+            $wrapperEl.css({ height: swiper.virtualSize + params.spaceBetween + "px" });
+    }
+    if (params.slidesPerColumn > 1) {
+        swiper.virtualSize = (slideSize + params.spaceBetween) * slidesNumberEvenToRows;
+        swiper.virtualSize = Math.ceil(swiper.virtualSize / params.slidesPerColumn) - params.spaceBetween;
+        if (swiper.isHorizontal())
+            $wrapperEl.css({ width: swiper.virtualSize + params.spaceBetween + "px" });
+        else
+            $wrapperEl.css({ height: swiper.virtualSize + params.spaceBetween + "px" });
+        if (params.centeredSlides) {
+            newSlidesGrid = [];
+            for (var i = 0; i < snapGrid.length; i += 1) {
+                var slidesGridItem = snapGrid[i];
+                if (params.roundLengths)
+                    slidesGridItem = Math.floor(slidesGridItem);
+                if (snapGrid[i] < swiper.virtualSize + snapGrid[0])
+                    newSlidesGrid.push(slidesGridItem);
+            }
+            snapGrid = newSlidesGrid;
+        }
+    }
+    // Remove last grid elements depending on width
+    if (!params.centeredSlides) {
+        newSlidesGrid = [];
+        for (var i = 0; i < snapGrid.length; i += 1) {
+            var slidesGridItem = snapGrid[i];
+            if (params.roundLengths)
+                slidesGridItem = Math.floor(slidesGridItem);
+            if (snapGrid[i] <= swiper.virtualSize - swiperSize) {
+                newSlidesGrid.push(slidesGridItem);
+            }
+        }
+        snapGrid = newSlidesGrid;
+        if (Math.floor(swiper.virtualSize - swiperSize) - Math.floor(snapGrid[snapGrid.length - 1]) > 1) {
+            snapGrid.push(swiper.virtualSize - swiperSize);
+        }
+    }
+    if (snapGrid.length === 0)
+        snapGrid = [0];
+    if (params.spaceBetween !== 0) {
+        if (swiper.isHorizontal()) {
+            if (rtl)
+                slides.css({ marginLeft: spaceBetween + "px" });
+            else
+                slides.css({ marginRight: spaceBetween + "px" });
+        }
+        else
+            slides.css({ marginBottom: spaceBetween + "px" });
+    }
+    if (params.centerInsufficientSlides) {
+        var allSlidesSize_1 = 0;
+        slidesSizesGrid.forEach(function (slideSizeValue) {
+            allSlidesSize_1 += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
         });
-    };
-    ViewPage.prototype.toBusket = function () {
-        this.router.navigateByUrl('basket');
-    };
-    ViewPage.prototype.addToCart = function (id, details) {
-        var _this = this;
-        if (this.my_size === "" || this.color === "") {
-            this.toastController('Please select your size');
-        }
-        else {
-            this.dbCart.add({
-                customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{
-                        product_name: details.name, size: this.my_size,
-                        quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
-                        color: this.color
-                    }]
-            }).then(function () {
-                _this.toastController('Added to busket');
-                //this.router.navigateByUrl('basket');
+        allSlidesSize_1 -= params.spaceBetween;
+        if (allSlidesSize_1 < swiperSize) {
+            var allSlidesOffset_1 = (swiperSize - allSlidesSize_1) / 2;
+            snapGrid.forEach(function (snap, snapIndex) {
+                snapGrid[snapIndex] = snap - allSlidesOffset_1;
+            });
+            slidesGrid.forEach(function (snap, snapIndex) {
+                slidesGrid[snapIndex] = snap + allSlidesOffset_1;
             });
         }
-        /*   this.dbCart.doc(id).onSnapshot((res)=>{
-             // this.dbCart.add({ customerUID: this.customerUID, product: [{product_id: this.doc_id, quantity: this.quantity}]})
-          }) */
-        // console.log('Doc id ', id, 'Quantity ', quantity);
-        // console.log('Product ', details, id);
-    };
-    ViewPage.prototype.addSaleToCart = function (id, details) {
-        var _this = this;
-        var descr = "";
-        if (this.my_size === "") {
-            descr = "size";
+    }
+    Utils.extend(swiper, {
+        slides: slides,
+        snapGrid: snapGrid,
+        slidesGrid: slidesGrid,
+        slidesSizesGrid: slidesSizesGrid,
+    });
+    if (slidesLength !== previousSlidesLength) {
+        swiper.emit('slidesLengthChange');
+    }
+    if (snapGrid.length !== previousSnapGridLength) {
+        if (swiper.params.watchOverflow)
+            swiper.checkOverflow();
+        swiper.emit('snapGridLengthChange');
+    }
+    if (slidesGrid.length !== previousSlidesGridLength) {
+        swiper.emit('slidesGridLengthChange');
+    }
+    if (params.watchSlidesProgress || params.watchSlidesVisibility) {
+        swiper.updateSlidesOffset();
+    }
+}
+function updateAutoHeight(speed) {
+    var swiper = this;
+    var activeSlides = [];
+    var newHeight = 0;
+    var i;
+    if (typeof speed === 'number') {
+        swiper.setTransition(speed);
+    }
+    else if (speed === true) {
+        swiper.setTransition(swiper.params.speed);
+    }
+    // Find slides currently in view
+    if (swiper.params.slidesPerView !== 'auto' && swiper.params.slidesPerView > 1) {
+        for (i = 0; i < Math.ceil(swiper.params.slidesPerView); i += 1) {
+            var index_1 = swiper.activeIndex + i;
+            if (index_1 > swiper.slides.length)
+                break;
+            activeSlides.push(swiper.slides.eq(index_1)[0]);
         }
-        else if (this.color === "") {
-            descr = "color";
+    }
+    else {
+        activeSlides.push(swiper.slides.eq(swiper.activeIndex)[0]);
+    }
+    // Find new height from highest slide in view
+    for (i = 0; i < activeSlides.length; i += 1) {
+        if (typeof activeSlides[i] !== 'undefined') {
+            var height = activeSlides[i].offsetHeight;
+            newHeight = height > newHeight ? height : newHeight;
         }
-        if (this.my_size === "" || this.color === "") {
-            this.toastController('Missing selection of ' + descr);
+    }
+    // Update Height
+    if (newHeight)
+        swiper.$wrapperEl.css('height', newHeight + "px");
+}
+function updateSlidesOffset() {
+    var swiper = this;
+    var slides = swiper.slides;
+    for (var i = 0; i < slides.length; i += 1) {
+        slides[i].swiperSlideOffset = swiper.isHorizontal() ? slides[i].offsetLeft : slides[i].offsetTop;
+    }
+}
+function updateSlidesProgress(translate) {
+    if (translate === void 0) { translate = (this && this.translate) || 0; }
+    var swiper = this;
+    var params = swiper.params;
+    var slides = swiper.slides, rtl = swiper.rtlTranslate;
+    if (slides.length === 0)
+        return;
+    if (typeof slides[0].swiperSlideOffset === 'undefined')
+        swiper.updateSlidesOffset();
+    var offsetCenter = -translate;
+    if (rtl)
+        offsetCenter = translate;
+    // Visible Slides
+    slides.removeClass(params.slideVisibleClass);
+    swiper.visibleSlidesIndexes = [];
+    swiper.visibleSlides = [];
+    for (var i = 0; i < slides.length; i += 1) {
+        var slide_2 = slides[i];
+        var slideProgress = ((offsetCenter + (params.centeredSlides ? swiper.minTranslate() : 0)) - slide_2.swiperSlideOffset) / (slide_2.swiperSlideSize + params.spaceBetween);
+        if (params.watchSlidesVisibility) {
+            var slideBefore = -(offsetCenter - slide_2.swiperSlideOffset);
+            var slideAfter = slideBefore + swiper.slidesSizesGrid[i];
+            var isVisible = (slideBefore >= 0 && slideBefore < swiper.size - 1)
+                || (slideAfter > 1 && slideAfter <= swiper.size)
+                || (slideBefore <= 0 && slideAfter >= swiper.size);
+            if (isVisible) {
+                swiper.visibleSlides.push(slide_2);
+                swiper.visibleSlidesIndexes.push(i);
+                slides.eq(i).addClass(params.slideVisibleClass);
+            }
+        }
+        slide_2.progress = rtl ? -slideProgress : slideProgress;
+    }
+    swiper.visibleSlides = $(swiper.visibleSlides);
+}
+function updateProgress(translate) {
+    if (translate === void 0) { translate = (this && this.translate) || 0; }
+    var swiper = this;
+    var params = swiper.params;
+    var translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+    var progress = swiper.progress, isBeginning = swiper.isBeginning, isEnd = swiper.isEnd;
+    var wasBeginning = isBeginning;
+    var wasEnd = isEnd;
+    if (translatesDiff === 0) {
+        progress = 0;
+        isBeginning = true;
+        isEnd = true;
+    }
+    else {
+        progress = (translate - swiper.minTranslate()) / (translatesDiff);
+        isBeginning = progress <= 0;
+        isEnd = progress >= 1;
+    }
+    Utils.extend(swiper, {
+        progress: progress,
+        isBeginning: isBeginning,
+        isEnd: isEnd,
+    });
+    if (params.watchSlidesProgress || params.watchSlidesVisibility)
+        swiper.updateSlidesProgress(translate);
+    if (isBeginning && !wasBeginning) {
+        swiper.emit('reachBeginning toEdge');
+    }
+    if (isEnd && !wasEnd) {
+        swiper.emit('reachEnd toEdge');
+    }
+    if ((wasBeginning && !isBeginning) || (wasEnd && !isEnd)) {
+        swiper.emit('fromEdge');
+    }
+    swiper.emit('progress', progress);
+}
+function updateSlidesClasses() {
+    var swiper = this;
+    var slides = swiper.slides, params = swiper.params, $wrapperEl = swiper.$wrapperEl, activeIndex = swiper.activeIndex, realIndex = swiper.realIndex;
+    var isVirtual = swiper.virtual && params.virtual.enabled;
+    slides.removeClass(params.slideActiveClass + " " + params.slideNextClass + " " + params.slidePrevClass + " " + params.slideDuplicateActiveClass + " " + params.slideDuplicateNextClass + " " + params.slideDuplicatePrevClass);
+    var activeSlide;
+    if (isVirtual) {
+        activeSlide = swiper.$wrapperEl.find("." + params.slideClass + "[data-swiper-slide-index=\"" + activeIndex + "\"]");
+    }
+    else {
+        activeSlide = slides.eq(activeIndex);
+    }
+    // Active classes
+    activeSlide.addClass(params.slideActiveClass);
+    if (params.loop) {
+        // Duplicate to all looped slides
+        if (activeSlide.hasClass(params.slideDuplicateClass)) {
+            $wrapperEl
+                .children("." + params.slideClass + ":not(." + params.slideDuplicateClass + ")[data-swiper-slide-index=\"" + realIndex + "\"]")
+                .addClass(params.slideDuplicateActiveClass);
         }
         else {
-            this.dbCart.add({
-                customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{
-                        product_name: details.name, size: this.my_size,
-                        quantity: this.quantity, cost: details.saleprice, picture: details.pictureLink,
-                        color: this.color
-                    }]
-            }).then(function () {
-                _this.toastController('Added to busket');
-                //this.router.navigateByUrl('basket');
+            $wrapperEl
+                .children("." + params.slideClass + "." + params.slideDuplicateClass + "[data-swiper-slide-index=\"" + realIndex + "\"]")
+                .addClass(params.slideDuplicateActiveClass);
+        }
+    }
+    // Next Slide
+    var nextSlide = activeSlide.nextAll("." + params.slideClass).eq(0).addClass(params.slideNextClass);
+    if (params.loop && nextSlide.length === 0) {
+        nextSlide = slides.eq(0);
+        nextSlide.addClass(params.slideNextClass);
+    }
+    // Prev Slide
+    var prevSlide = activeSlide.prevAll("." + params.slideClass).eq(0).addClass(params.slidePrevClass);
+    if (params.loop && prevSlide.length === 0) {
+        prevSlide = slides.eq(-1);
+        prevSlide.addClass(params.slidePrevClass);
+    }
+    if (params.loop) {
+        // Duplicate to all looped slides
+        if (nextSlide.hasClass(params.slideDuplicateClass)) {
+            $wrapperEl
+                .children("." + params.slideClass + ":not(." + params.slideDuplicateClass + ")[data-swiper-slide-index=\"" + nextSlide.attr('data-swiper-slide-index') + "\"]")
+                .addClass(params.slideDuplicateNextClass);
+        }
+        else {
+            $wrapperEl
+                .children("." + params.slideClass + "." + params.slideDuplicateClass + "[data-swiper-slide-index=\"" + nextSlide.attr('data-swiper-slide-index') + "\"]")
+                .addClass(params.slideDuplicateNextClass);
+        }
+        if (prevSlide.hasClass(params.slideDuplicateClass)) {
+            $wrapperEl
+                .children("." + params.slideClass + ":not(." + params.slideDuplicateClass + ")[data-swiper-slide-index=\"" + prevSlide.attr('data-swiper-slide-index') + "\"]")
+                .addClass(params.slideDuplicatePrevClass);
+        }
+        else {
+            $wrapperEl
+                .children("." + params.slideClass + "." + params.slideDuplicateClass + "[data-swiper-slide-index=\"" + prevSlide.attr('data-swiper-slide-index') + "\"]")
+                .addClass(params.slideDuplicatePrevClass);
+        }
+    }
+}
+function updateActiveIndex(newActiveIndex) {
+    var swiper = this;
+    var translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+    var slidesGrid = swiper.slidesGrid, snapGrid = swiper.snapGrid, params = swiper.params, previousIndex = swiper.activeIndex, previousRealIndex = swiper.realIndex, previousSnapIndex = swiper.snapIndex;
+    var activeIndex = newActiveIndex;
+    var snapIndex;
+    if (typeof activeIndex === 'undefined') {
+        for (var i = 0; i < slidesGrid.length; i += 1) {
+            if (typeof slidesGrid[i + 1] !== 'undefined') {
+                if (translate >= slidesGrid[i] && translate < slidesGrid[i + 1] - ((slidesGrid[i + 1] - slidesGrid[i]) / 2)) {
+                    activeIndex = i;
+                }
+                else if (translate >= slidesGrid[i] && translate < slidesGrid[i + 1]) {
+                    activeIndex = i + 1;
+                }
+            }
+            else if (translate >= slidesGrid[i]) {
+                activeIndex = i;
+            }
+        }
+        // Normalize slideIndex
+        if (params.normalizeSlideIndex) {
+            if (activeIndex < 0 || typeof activeIndex === 'undefined')
+                activeIndex = 0;
+        }
+    }
+    if (snapGrid.indexOf(translate) >= 0) {
+        snapIndex = snapGrid.indexOf(translate);
+    }
+    else {
+        snapIndex = Math.floor(activeIndex / params.slidesPerGroup);
+    }
+    if (snapIndex >= snapGrid.length)
+        snapIndex = snapGrid.length - 1;
+    if (activeIndex === previousIndex) {
+        if (snapIndex !== previousSnapIndex) {
+            swiper.snapIndex = snapIndex;
+            swiper.emit('snapIndexChange');
+        }
+        return;
+    }
+    // Get real index
+    var realIndex = parseInt(swiper.slides.eq(activeIndex).attr('data-swiper-slide-index') || activeIndex, 10);
+    Utils.extend(swiper, {
+        snapIndex: snapIndex,
+        realIndex: realIndex,
+        previousIndex: previousIndex,
+        activeIndex: activeIndex,
+    });
+    swiper.emit('activeIndexChange');
+    swiper.emit('snapIndexChange');
+    if (previousRealIndex !== realIndex) {
+        swiper.emit('realIndexChange');
+    }
+    if (swiper.initialized || swiper.runCallbacksOnInit) {
+        swiper.emit('slideChange');
+    }
+}
+function updateClickedSlide(e) {
+    var swiper = this;
+    var params = swiper.params;
+    var slide = $(e.target).closest("." + params.slideClass)[0];
+    var slideFound = false;
+    if (slide) {
+        for (var i = 0; i < swiper.slides.length; i += 1) {
+            if (swiper.slides[i] === slide)
+                slideFound = true;
+        }
+    }
+    if (slide && slideFound) {
+        swiper.clickedSlide = slide;
+        if (swiper.virtual && swiper.params.virtual.enabled) {
+            swiper.clickedIndex = parseInt($(slide).attr('data-swiper-slide-index'), 10);
+        }
+        else {
+            swiper.clickedIndex = $(slide).index();
+        }
+    }
+    else {
+        swiper.clickedSlide = undefined;
+        swiper.clickedIndex = undefined;
+        return;
+    }
+    if (params.slideToClickedSlide && swiper.clickedIndex !== undefined && swiper.clickedIndex !== swiper.activeIndex) {
+        swiper.slideToClickedSlide();
+    }
+}
+var update = {
+    updateSize: updateSize,
+    updateSlides: updateSlides,
+    updateAutoHeight: updateAutoHeight,
+    updateSlidesOffset: updateSlidesOffset,
+    updateSlidesProgress: updateSlidesProgress,
+    updateProgress: updateProgress,
+    updateSlidesClasses: updateSlidesClasses,
+    updateActiveIndex: updateActiveIndex,
+    updateClickedSlide: updateClickedSlide,
+};
+function getTranslate(axis) {
+    if (axis === void 0) { axis = this.isHorizontal() ? 'x' : 'y'; }
+    var swiper = this;
+    var params = swiper.params, rtl = swiper.rtlTranslate, translate = swiper.translate, $wrapperEl = swiper.$wrapperEl;
+    if (params.virtualTranslate) {
+        return rtl ? -translate : translate;
+    }
+    var currentTranslate = Utils.getTranslate($wrapperEl[0], axis);
+    if (rtl)
+        currentTranslate = -currentTranslate;
+    return currentTranslate || 0;
+}
+function setTranslate(translate, byController) {
+    var swiper = this;
+    var rtl = swiper.rtlTranslate, params = swiper.params, $wrapperEl = swiper.$wrapperEl, progress = swiper.progress;
+    var x = 0;
+    var y = 0;
+    var z = 0;
+    if (swiper.isHorizontal()) {
+        x = rtl ? -translate : translate;
+    }
+    else {
+        y = translate;
+    }
+    if (params.roundLengths) {
+        x = Math.floor(x);
+        y = Math.floor(y);
+    }
+    if (!params.virtualTranslate) {
+        if (Support.transforms3d)
+            $wrapperEl.transform("translate3d(" + x + "px, " + y + "px, " + z + "px)");
+        else
+            $wrapperEl.transform("translate(" + x + "px, " + y + "px)");
+    }
+    swiper.previousTranslate = swiper.translate;
+    swiper.translate = swiper.isHorizontal() ? x : y;
+    // Check if we need to update progress
+    var newProgress;
+    var translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+    if (translatesDiff === 0) {
+        newProgress = 0;
+    }
+    else {
+        newProgress = (translate - swiper.minTranslate()) / (translatesDiff);
+    }
+    if (newProgress !== progress) {
+        swiper.updateProgress(translate);
+    }
+    swiper.emit('setTranslate', swiper.translate, byController);
+}
+function minTranslate() {
+    return (-this.snapGrid[0]);
+}
+function maxTranslate() {
+    return (-this.snapGrid[this.snapGrid.length - 1]);
+}
+var translate = {
+    getTranslate: getTranslate,
+    setTranslate: setTranslate,
+    minTranslate: minTranslate,
+    maxTranslate: maxTranslate,
+};
+function setTransition(duration, byController) {
+    var swiper = this;
+    swiper.$wrapperEl.transition(duration);
+    swiper.emit('setTransition', duration, byController);
+}
+function transitionStart(runCallbacks, direction) {
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var activeIndex = swiper.activeIndex, params = swiper.params, previousIndex = swiper.previousIndex;
+    if (params.autoHeight) {
+        swiper.updateAutoHeight();
+    }
+    var dir = direction;
+    if (!dir) {
+        if (activeIndex > previousIndex)
+            dir = 'next';
+        else if (activeIndex < previousIndex)
+            dir = 'prev';
+        else
+            dir = 'reset';
+    }
+    swiper.emit('transitionStart');
+    if (runCallbacks && activeIndex !== previousIndex) {
+        if (dir === 'reset') {
+            swiper.emit('slideResetTransitionStart');
+            return;
+        }
+        swiper.emit('slideChangeTransitionStart');
+        if (dir === 'next') {
+            swiper.emit('slideNextTransitionStart');
+        }
+        else {
+            swiper.emit('slidePrevTransitionStart');
+        }
+    }
+}
+function transitionEnd$1(runCallbacks, direction) {
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var activeIndex = swiper.activeIndex, previousIndex = swiper.previousIndex;
+    swiper.animating = false;
+    swiper.setTransition(0);
+    var dir = direction;
+    if (!dir) {
+        if (activeIndex > previousIndex)
+            dir = 'next';
+        else if (activeIndex < previousIndex)
+            dir = 'prev';
+        else
+            dir = 'reset';
+    }
+    swiper.emit('transitionEnd');
+    if (runCallbacks && activeIndex !== previousIndex) {
+        if (dir === 'reset') {
+            swiper.emit('slideResetTransitionEnd');
+            return;
+        }
+        swiper.emit('slideChangeTransitionEnd');
+        if (dir === 'next') {
+            swiper.emit('slideNextTransitionEnd');
+        }
+        else {
+            swiper.emit('slidePrevTransitionEnd');
+        }
+    }
+}
+var transition$1 = {
+    setTransition: setTransition,
+    transitionStart: transitionStart,
+    transitionEnd: transitionEnd$1,
+};
+function slideTo(index, speed, runCallbacks, internal) {
+    if (index === void 0) { index = 0; }
+    if (speed === void 0) { speed = this.params.speed; }
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var slideIndex = index;
+    if (slideIndex < 0)
+        slideIndex = 0;
+    var params = swiper.params, snapGrid = swiper.snapGrid, slidesGrid = swiper.slidesGrid, previousIndex = swiper.previousIndex, activeIndex = swiper.activeIndex, rtl = swiper.rtlTranslate;
+    if (swiper.animating && params.preventInteractionOnTransition) {
+        return false;
+    }
+    var snapIndex = Math.floor(slideIndex / params.slidesPerGroup);
+    if (snapIndex >= snapGrid.length)
+        snapIndex = snapGrid.length - 1;
+    if ((activeIndex || params.initialSlide || 0) === (previousIndex || 0) && runCallbacks) {
+        swiper.emit('beforeSlideChangeStart');
+    }
+    var translate = -snapGrid[snapIndex];
+    // Update progress
+    swiper.updateProgress(translate);
+    // Normalize slideIndex
+    if (params.normalizeSlideIndex) {
+        for (var i = 0; i < slidesGrid.length; i += 1) {
+            if (-Math.floor(translate * 100) >= Math.floor(slidesGrid[i] * 100)) {
+                slideIndex = i;
+            }
+        }
+    }
+    // Directions locks
+    if (swiper.initialized && slideIndex !== activeIndex) {
+        if (!swiper.allowSlideNext && translate < swiper.translate && translate < swiper.minTranslate()) {
+            return false;
+        }
+        if (!swiper.allowSlidePrev && translate > swiper.translate && translate > swiper.maxTranslate()) {
+            if ((activeIndex || 0) !== slideIndex)
+                return false;
+        }
+    }
+    var direction;
+    if (slideIndex > activeIndex)
+        direction = 'next';
+    else if (slideIndex < activeIndex)
+        direction = 'prev';
+    else
+        direction = 'reset';
+    // Update Index
+    if ((rtl && -translate === swiper.translate) || (!rtl && translate === swiper.translate)) {
+        swiper.updateActiveIndex(slideIndex);
+        // Update Height
+        if (params.autoHeight) {
+            swiper.updateAutoHeight();
+        }
+        swiper.updateSlidesClasses();
+        if (params.effect !== 'slide') {
+            swiper.setTranslate(translate);
+        }
+        if (direction !== 'reset') {
+            swiper.transitionStart(runCallbacks, direction);
+            swiper.transitionEnd(runCallbacks, direction);
+        }
+        return false;
+    }
+    if (speed === 0 || !Support.transition) {
+        swiper.setTransition(0);
+        swiper.setTranslate(translate);
+        swiper.updateActiveIndex(slideIndex);
+        swiper.updateSlidesClasses();
+        swiper.emit('beforeTransitionStart', speed, internal);
+        swiper.transitionStart(runCallbacks, direction);
+        swiper.transitionEnd(runCallbacks, direction);
+    }
+    else {
+        swiper.setTransition(speed);
+        swiper.setTranslate(translate);
+        swiper.updateActiveIndex(slideIndex);
+        swiper.updateSlidesClasses();
+        swiper.emit('beforeTransitionStart', speed, internal);
+        swiper.transitionStart(runCallbacks, direction);
+        if (!swiper.animating) {
+            swiper.animating = true;
+            if (!swiper.onSlideToWrapperTransitionEnd) {
+                swiper.onSlideToWrapperTransitionEnd = function transitionEnd(e) {
+                    if (!swiper || swiper.destroyed)
+                        return;
+                    if (e.target !== this)
+                        return;
+                    swiper.$wrapperEl[0].removeEventListener('transitionend', swiper.onSlideToWrapperTransitionEnd);
+                    swiper.$wrapperEl[0].removeEventListener('webkitTransitionEnd', swiper.onSlideToWrapperTransitionEnd);
+                    swiper.onSlideToWrapperTransitionEnd = null;
+                    delete swiper.onSlideToWrapperTransitionEnd;
+                    swiper.transitionEnd(runCallbacks, direction);
+                };
+            }
+            swiper.$wrapperEl[0].addEventListener('transitionend', swiper.onSlideToWrapperTransitionEnd);
+            swiper.$wrapperEl[0].addEventListener('webkitTransitionEnd', swiper.onSlideToWrapperTransitionEnd);
+        }
+    }
+    return true;
+}
+function slideToLoop(index, speed, runCallbacks, internal) {
+    if (index === void 0) { index = 0; }
+    if (speed === void 0) { speed = this.params.speed; }
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var newIndex = index;
+    if (swiper.params.loop) {
+        newIndex += swiper.loopedSlides;
+    }
+    return swiper.slideTo(newIndex, speed, runCallbacks, internal);
+}
+/* eslint no-unused-vars: "off" */
+function slideNext(speed, runCallbacks, internal) {
+    if (speed === void 0) { speed = this.params.speed; }
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var params = swiper.params, animating = swiper.animating;
+    if (params.loop) {
+        if (animating)
+            return false;
+        swiper.loopFix();
+        // eslint-disable-next-line
+        swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
+        return swiper.slideTo(swiper.activeIndex + params.slidesPerGroup, speed, runCallbacks, internal);
+    }
+    return swiper.slideTo(swiper.activeIndex + params.slidesPerGroup, speed, runCallbacks, internal);
+}
+/* eslint no-unused-vars: "off" */
+function slidePrev(speed, runCallbacks, internal) {
+    if (speed === void 0) { speed = this.params.speed; }
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var params = swiper.params, animating = swiper.animating, snapGrid = swiper.snapGrid, slidesGrid = swiper.slidesGrid, rtlTranslate = swiper.rtlTranslate;
+    if (params.loop) {
+        if (animating)
+            return false;
+        swiper.loopFix();
+        // eslint-disable-next-line
+        swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
+    }
+    var translate = rtlTranslate ? swiper.translate : -swiper.translate;
+    function normalize(val) {
+        if (val < 0)
+            return -Math.floor(Math.abs(val));
+        return Math.floor(val);
+    }
+    var normalizedTranslate = normalize(translate);
+    var normalizedSnapGrid = snapGrid.map(function (val) { return normalize(val); });
+    var normalizedSlidesGrid = slidesGrid.map(function (val) { return normalize(val); });
+    var currentSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate)];
+    var prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
+    var prevIndex;
+    if (typeof prevSnap !== 'undefined') {
+        prevIndex = slidesGrid.indexOf(prevSnap);
+        if (prevIndex < 0)
+            prevIndex = swiper.activeIndex - 1;
+    }
+    return swiper.slideTo(prevIndex, speed, runCallbacks, internal);
+}
+/* eslint no-unused-vars: "off" */
+function slideReset(speed, runCallbacks, internal) {
+    if (speed === void 0) { speed = this.params.speed; }
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    return swiper.slideTo(swiper.activeIndex, speed, runCallbacks, internal);
+}
+/* eslint no-unused-vars: "off" */
+function slideToClosest(speed, runCallbacks, internal) {
+    if (speed === void 0) { speed = this.params.speed; }
+    if (runCallbacks === void 0) { runCallbacks = true; }
+    var swiper = this;
+    var index = swiper.activeIndex;
+    var snapIndex = Math.floor(index / swiper.params.slidesPerGroup);
+    if (snapIndex < swiper.snapGrid.length - 1) {
+        var translate_1 = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+        var currentSnap = swiper.snapGrid[snapIndex];
+        var nextSnap = swiper.snapGrid[snapIndex + 1];
+        if ((translate_1 - currentSnap) > (nextSnap - currentSnap) / 2) {
+            index = swiper.params.slidesPerGroup;
+        }
+    }
+    return swiper.slideTo(index, speed, runCallbacks, internal);
+}
+function slideToClickedSlide() {
+    var swiper = this;
+    var params = swiper.params, $wrapperEl = swiper.$wrapperEl;
+    var slidesPerView = params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : params.slidesPerView;
+    var slideToIndex = swiper.clickedIndex;
+    var realIndex;
+    if (params.loop) {
+        if (swiper.animating)
+            return;
+        realIndex = parseInt($(swiper.clickedSlide).attr('data-swiper-slide-index'), 10);
+        if (params.centeredSlides) {
+            if ((slideToIndex < swiper.loopedSlides - (slidesPerView / 2))
+                || (slideToIndex > (swiper.slides.length - swiper.loopedSlides) + (slidesPerView / 2))) {
+                swiper.loopFix();
+                slideToIndex = $wrapperEl
+                    .children("." + params.slideClass + "[data-swiper-slide-index=\"" + realIndex + "\"]:not(." + params.slideDuplicateClass + ")")
+                    .eq(0)
+                    .index();
+                Utils.nextTick(function () {
+                    swiper.slideTo(slideToIndex);
+                });
+            }
+            else {
+                swiper.slideTo(slideToIndex);
+            }
+        }
+        else if (slideToIndex > swiper.slides.length - slidesPerView) {
+            swiper.loopFix();
+            slideToIndex = $wrapperEl
+                .children("." + params.slideClass + "[data-swiper-slide-index=\"" + realIndex + "\"]:not(." + params.slideDuplicateClass + ")")
+                .eq(0)
+                .index();
+            Utils.nextTick(function () {
+                swiper.slideTo(slideToIndex);
             });
         }
+        else {
+            swiper.slideTo(slideToIndex);
+        }
+    }
+    else {
+        swiper.slideTo(slideToIndex);
+    }
+}
+var slide = {
+    slideTo: slideTo,
+    slideToLoop: slideToLoop,
+    slideNext: slideNext,
+    slidePrev: slidePrev,
+    slideReset: slideReset,
+    slideToClosest: slideToClosest,
+    slideToClickedSlide: slideToClickedSlide,
+};
+function loopCreate() {
+    var swiper = this;
+    var params = swiper.params, $wrapperEl = swiper.$wrapperEl;
+    // Remove duplicated slides
+    $wrapperEl.children("." + params.slideClass + "." + params.slideDuplicateClass).remove();
+    var slides = $wrapperEl.children("." + params.slideClass);
+    if (params.loopFillGroupWithBlank) {
+        var blankSlidesNum = params.slidesPerGroup - (slides.length % params.slidesPerGroup);
+        if (blankSlidesNum !== params.slidesPerGroup) {
+            for (var i = 0; i < blankSlidesNum; i += 1) {
+                var blankNode = $(doc.createElement('div')).addClass(params.slideClass + " " + params.slideBlankClass);
+                $wrapperEl.append(blankNode);
+            }
+            slides = $wrapperEl.children("." + params.slideClass);
+        }
+    }
+    if (params.slidesPerView === 'auto' && !params.loopedSlides)
+        params.loopedSlides = slides.length;
+    swiper.loopedSlides = parseInt(params.loopedSlides || params.slidesPerView, 10);
+    swiper.loopedSlides += params.loopAdditionalSlides;
+    if (swiper.loopedSlides > slides.length) {
+        swiper.loopedSlides = slides.length;
+    }
+    var prependSlides = [];
+    var appendSlides = [];
+    slides.each(function (index, el) {
+        var slide = $(el);
+        if (index < swiper.loopedSlides)
+            appendSlides.push(el);
+        if (index < slides.length && index >= slides.length - swiper.loopedSlides)
+            prependSlides.push(el);
+        slide.attr('data-swiper-slide-index', index);
+    });
+    for (var i = 0; i < appendSlides.length; i += 1) {
+        $wrapperEl.append($(appendSlides[i].cloneNode(true)).addClass(params.slideDuplicateClass));
+    }
+    for (var i = prependSlides.length - 1; i >= 0; i -= 1) {
+        $wrapperEl.prepend($(prependSlides[i].cloneNode(true)).addClass(params.slideDuplicateClass));
+    }
+}
+function loopFix() {
+    var swiper = this;
+    var params = swiper.params, activeIndex = swiper.activeIndex, slides = swiper.slides, loopedSlides = swiper.loopedSlides, allowSlidePrev = swiper.allowSlidePrev, allowSlideNext = swiper.allowSlideNext, snapGrid = swiper.snapGrid, rtl = swiper.rtlTranslate;
+    var newIndex;
+    swiper.allowSlidePrev = true;
+    swiper.allowSlideNext = true;
+    var snapTranslate = -snapGrid[activeIndex];
+    var diff = snapTranslate - swiper.getTranslate();
+    // Fix For Negative Oversliding
+    if (activeIndex < loopedSlides) {
+        newIndex = (slides.length - (loopedSlides * 3)) + activeIndex;
+        newIndex += loopedSlides;
+        var slideChanged = swiper.slideTo(newIndex, 0, false, true);
+        if (slideChanged && diff !== 0) {
+            swiper.setTranslate((rtl ? -swiper.translate : swiper.translate) - diff);
+        }
+    }
+    else if ((params.slidesPerView === 'auto' && activeIndex >= loopedSlides * 2) || (activeIndex >= slides.length - loopedSlides)) {
+        // Fix For Positive Oversliding
+        newIndex = -slides.length + activeIndex + loopedSlides;
+        newIndex += loopedSlides;
+        var slideChanged = swiper.slideTo(newIndex, 0, false, true);
+        if (slideChanged && diff !== 0) {
+            swiper.setTranslate((rtl ? -swiper.translate : swiper.translate) - diff);
+        }
+    }
+    swiper.allowSlidePrev = allowSlidePrev;
+    swiper.allowSlideNext = allowSlideNext;
+}
+function loopDestroy() {
+    var swiper = this;
+    var $wrapperEl = swiper.$wrapperEl, params = swiper.params, slides = swiper.slides;
+    $wrapperEl.children("." + params.slideClass + "." + params.slideDuplicateClass + ",." + params.slideClass + "." + params.slideBlankClass).remove();
+    slides.removeAttr('data-swiper-slide-index');
+}
+var loop = {
+    loopCreate: loopCreate,
+    loopFix: loopFix,
+    loopDestroy: loopDestroy,
+};
+function setGrabCursor(moving) {
+    var swiper = this;
+    if (Support.touch || !swiper.params.simulateTouch || (swiper.params.watchOverflow && swiper.isLocked))
+        return;
+    var el = swiper.el;
+    el.style.cursor = 'move';
+    el.style.cursor = moving ? '-webkit-grabbing' : '-webkit-grab';
+    el.style.cursor = moving ? '-moz-grabbin' : '-moz-grab';
+    el.style.cursor = moving ? 'grabbing' : 'grab';
+}
+function unsetGrabCursor() {
+    var swiper = this;
+    if (Support.touch || (swiper.params.watchOverflow && swiper.isLocked))
+        return;
+    swiper.el.style.cursor = '';
+}
+var grabCursor = {
+    setGrabCursor: setGrabCursor,
+    unsetGrabCursor: unsetGrabCursor,
+};
+function appendSlide(slides) {
+    var swiper = this;
+    var $wrapperEl = swiper.$wrapperEl, params = swiper.params;
+    if (params.loop) {
+        swiper.loopDestroy();
+    }
+    if (typeof slides === 'object' && 'length' in slides) {
+        for (var i = 0; i < slides.length; i += 1) {
+            if (slides[i])
+                $wrapperEl.append(slides[i]);
+        }
+    }
+    else {
+        $wrapperEl.append(slides);
+    }
+    if (params.loop) {
+        swiper.loopCreate();
+    }
+    if (!(params.observer && Support.observer)) {
+        swiper.update();
+    }
+}
+function prependSlide(slides) {
+    var swiper = this;
+    var params = swiper.params, $wrapperEl = swiper.$wrapperEl, activeIndex = swiper.activeIndex;
+    if (params.loop) {
+        swiper.loopDestroy();
+    }
+    var newActiveIndex = activeIndex + 1;
+    if (typeof slides === 'object' && 'length' in slides) {
+        for (var i = 0; i < slides.length; i += 1) {
+            if (slides[i])
+                $wrapperEl.prepend(slides[i]);
+        }
+        newActiveIndex = activeIndex + slides.length;
+    }
+    else {
+        $wrapperEl.prepend(slides);
+    }
+    if (params.loop) {
+        swiper.loopCreate();
+    }
+    if (!(params.observer && Support.observer)) {
+        swiper.update();
+    }
+    swiper.slideTo(newActiveIndex, 0, false);
+}
+function addSlide(index, slides) {
+    var swiper = this;
+    var $wrapperEl = swiper.$wrapperEl, params = swiper.params, activeIndex = swiper.activeIndex;
+    var activeIndexBuffer = activeIndex;
+    if (params.loop) {
+        activeIndexBuffer -= swiper.loopedSlides;
+        swiper.loopDestroy();
+        swiper.slides = $wrapperEl.children("." + params.slideClass);
+    }
+    var baseLength = swiper.slides.length;
+    if (index <= 0) {
+        swiper.prependSlide(slides);
+        return;
+    }
+    if (index >= baseLength) {
+        swiper.appendSlide(slides);
+        return;
+    }
+    var newActiveIndex = activeIndexBuffer > index ? activeIndexBuffer + 1 : activeIndexBuffer;
+    var slidesBuffer = [];
+    for (var i = baseLength - 1; i >= index; i -= 1) {
+        var currentSlide = swiper.slides.eq(i);
+        currentSlide.remove();
+        slidesBuffer.unshift(currentSlide);
+    }
+    if (typeof slides === 'object' && 'length' in slides) {
+        for (var i = 0; i < slides.length; i += 1) {
+            if (slides[i])
+                $wrapperEl.append(slides[i]);
+        }
+        newActiveIndex = activeIndexBuffer > index ? activeIndexBuffer + slides.length : activeIndexBuffer;
+    }
+    else {
+        $wrapperEl.append(slides);
+    }
+    for (var i = 0; i < slidesBuffer.length; i += 1) {
+        $wrapperEl.append(slidesBuffer[i]);
+    }
+    if (params.loop) {
+        swiper.loopCreate();
+    }
+    if (!(params.observer && Support.observer)) {
+        swiper.update();
+    }
+    if (params.loop) {
+        swiper.slideTo(newActiveIndex + swiper.loopedSlides, 0, false);
+    }
+    else {
+        swiper.slideTo(newActiveIndex, 0, false);
+    }
+}
+function removeSlide(slidesIndexes) {
+    var swiper = this;
+    var params = swiper.params, $wrapperEl = swiper.$wrapperEl, activeIndex = swiper.activeIndex;
+    var activeIndexBuffer = activeIndex;
+    if (params.loop) {
+        activeIndexBuffer -= swiper.loopedSlides;
+        swiper.loopDestroy();
+        swiper.slides = $wrapperEl.children("." + params.slideClass);
+    }
+    var newActiveIndex = activeIndexBuffer;
+    var indexToRemove;
+    if (typeof slidesIndexes === 'object' && 'length' in slidesIndexes) {
+        for (var i = 0; i < slidesIndexes.length; i += 1) {
+            indexToRemove = slidesIndexes[i];
+            if (swiper.slides[indexToRemove])
+                swiper.slides.eq(indexToRemove).remove();
+            if (indexToRemove < newActiveIndex)
+                newActiveIndex -= 1;
+        }
+        newActiveIndex = Math.max(newActiveIndex, 0);
+    }
+    else {
+        indexToRemove = slidesIndexes;
+        if (swiper.slides[indexToRemove])
+            swiper.slides.eq(indexToRemove).remove();
+        if (indexToRemove < newActiveIndex)
+            newActiveIndex -= 1;
+        newActiveIndex = Math.max(newActiveIndex, 0);
+    }
+    if (params.loop) {
+        swiper.loopCreate();
+    }
+    if (!(params.observer && Support.observer)) {
+        swiper.update();
+    }
+    if (params.loop) {
+        swiper.slideTo(newActiveIndex + swiper.loopedSlides, 0, false);
+    }
+    else {
+        swiper.slideTo(newActiveIndex, 0, false);
+    }
+}
+function removeAllSlides() {
+    var swiper = this;
+    var slidesIndexes = [];
+    for (var i = 0; i < swiper.slides.length; i += 1) {
+        slidesIndexes.push(i);
+    }
+    swiper.removeSlide(slidesIndexes);
+}
+var manipulation = {
+    appendSlide: appendSlide,
+    prependSlide: prependSlide,
+    addSlide: addSlide,
+    removeSlide: removeSlide,
+    removeAllSlides: removeAllSlides,
+};
+var Device = (function Device() {
+    var ua = win.navigator.userAgent;
+    var device = {
+        ios: false,
+        android: false,
+        androidChrome: false,
+        desktop: false,
+        windows: false,
+        iphone: false,
+        ipod: false,
+        ipad: false,
+        cordova: win.cordova || win.phonegap,
+        phonegap: win.cordova || win.phonegap,
     };
-    ViewPage.prototype.goBack = function () {
-        this.navCtrl.pop();
-    };
-    ViewPage.prototype.viewitem = function () {
-        this.router.navigateByUrl("/basket");
-    };
-    ViewPage.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["PopoverController"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"] },
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"] }
-    ]; };
-    ViewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-view',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./view.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/view/view.page.html")).default,
-            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./view.page.scss */ "./src/app/view/view.page.scss")).default]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["PopoverController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]])
-    ], ViewPage);
-    return ViewPage;
+    var windows = ua.match(/(Windows Phone);?[\s\/]+([\d.]+)?/); // eslint-disable-line
+    var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/); // eslint-disable-line
+    var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+    var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+    var iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/);
+    // Windows
+    if (windows) {
+        device.os = 'windows';
+        device.osVersion = windows[2];
+        device.windows = true;
+    }
+    // Android
+    if (android && !windows) {
+        device.os = 'android';
+        device.osVersion = android[2];
+        device.android = true;
+        device.androidChrome = ua.toLowerCase().indexOf('chrome') >= 0;
+    }
+    if (ipad || iphone || ipod) {
+        device.os = 'ios';
+        device.ios = true;
+    }
+    // iOS
+    if (iphone && !ipod) {
+        device.osVersion = iphone[2].replace(/_/g, '.');
+        device.iphone = true;
+    }
+    if (ipad) {
+        device.osVersion = ipad[2].replace(/_/g, '.');
+        device.ipad = true;
+    }
+    if (ipod) {
+        device.osVersion = ipod[3] ? ipod[3].replace(/_/g, '.') : null;
+        device.iphone = true;
+    }
+    // iOS 8+ changed UA
+    if (device.ios && device.osVersion && ua.indexOf('Version/') >= 0) {
+        if (device.osVersion.split('.')[0] === '10') {
+            device.osVersion = ua.toLowerCase().split('version/')[1].split(' ')[0];
+        }
+    }
+    // Desktop
+    device.desktop = !(device.os || device.android || device.webView);
+    // Webview
+    device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i);
+    // Minimal UI
+    if (device.os && device.os === 'ios') {
+        var osVersionArr = device.osVersion.split('.');
+        var metaViewport = doc.querySelector('meta[name="viewport"]');
+        device.minimalUi = !device.webView
+            && (ipod || iphone)
+            && (osVersionArr[0] * 1 === 7 ? osVersionArr[1] * 1 >= 1 : osVersionArr[0] * 1 > 7)
+            && metaViewport && metaViewport.getAttribute('content').indexOf('minimal-ui') >= 0;
+    }
+    // Pixel Ratio
+    device.pixelRatio = win.devicePixelRatio || 1;
+    // Export object
+    return device;
 }());
+function onTouchStart(event) {
+    var swiper = this;
+    var data = swiper.touchEventsData;
+    var params = swiper.params, touches = swiper.touches;
+    if (swiper.animating && params.preventInteractionOnTransition) {
+        return;
+    }
+    var e = event;
+    if (e.originalEvent)
+        e = e.originalEvent;
+    data.isTouchEvent = e.type === 'touchstart';
+    if (!data.isTouchEvent && 'which' in e && e.which === 3)
+        return;
+    if (!data.isTouchEvent && 'button' in e && e.button > 0)
+        return;
+    if (data.isTouched && data.isMoved)
+        return;
+    if (params.noSwiping && $(e.target).closest(params.noSwipingSelector ? params.noSwipingSelector : "." + params.noSwipingClass)[0]) {
+        swiper.allowClick = true;
+        return;
+    }
+    if (params.swipeHandler) {
+        if (!$(e).closest(params.swipeHandler)[0])
+            return;
+    }
+    touches.currentX = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
+    touches.currentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+    var startX = touches.currentX;
+    var startY = touches.currentY;
+    // Do NOT start if iOS edge swipe is detected. Otherwise iOS app (UIWebView) cannot swipe-to-go-back anymore
+    var edgeSwipeDetection = params.edgeSwipeDetection || params.iOSEdgeSwipeDetection;
+    var edgeSwipeThreshold = params.edgeSwipeThreshold || params.iOSEdgeSwipeThreshold;
+    if (edgeSwipeDetection
+        && ((startX <= edgeSwipeThreshold)
+            || (startX >= win.screen.width - edgeSwipeThreshold))) {
+        return;
+    }
+    Utils.extend(data, {
+        isTouched: true,
+        isMoved: false,
+        allowTouchCallbacks: true,
+        isScrolling: undefined,
+        startMoving: undefined,
+    });
+    touches.startX = startX;
+    touches.startY = startY;
+    data.touchStartTime = Utils.now();
+    swiper.allowClick = true;
+    swiper.updateSize();
+    swiper.swipeDirection = undefined;
+    if (params.threshold > 0)
+        data.allowThresholdMove = false;
+    if (e.type !== 'touchstart') {
+        var preventDefault = true;
+        if ($(e.target).is(data.formElements))
+            preventDefault = false;
+        if (doc.activeElement
+            && $(doc.activeElement).is(data.formElements)
+            && doc.activeElement !== e.target) {
+            doc.activeElement.blur();
+        }
+        var shouldPreventDefault = preventDefault && swiper.allowTouchMove && params.touchStartPreventDefault;
+        if (params.touchStartForcePreventDefault || shouldPreventDefault) {
+            e.preventDefault();
+        }
+    }
+    swiper.emit('touchStart', e);
+}
+function onTouchMove(event) {
+    var swiper = this;
+    var data = swiper.touchEventsData;
+    var params = swiper.params, touches = swiper.touches, rtl = swiper.rtlTranslate;
+    var e = event;
+    if (e.originalEvent)
+        e = e.originalEvent;
+    if (!data.isTouched) {
+        if (data.startMoving && data.isScrolling) {
+            swiper.emit('touchMoveOpposite', e);
+        }
+        return;
+    }
+    if (data.isTouchEvent && e.type === 'mousemove')
+        return;
+    var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
+    var pageY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+    if (e.preventedByNestedSwiper) {
+        touches.startX = pageX;
+        touches.startY = pageY;
+        return;
+    }
+    if (!swiper.allowTouchMove) {
+        // isMoved = true;
+        swiper.allowClick = false;
+        if (data.isTouched) {
+            Utils.extend(touches, {
+                startX: pageX,
+                startY: pageY,
+                currentX: pageX,
+                currentY: pageY,
+            });
+            data.touchStartTime = Utils.now();
+        }
+        return;
+    }
+    if (data.isTouchEvent && params.touchReleaseOnEdges && !params.loop) {
+        if (swiper.isVertical()) {
+            // Vertical
+            if ((pageY < touches.startY && swiper.translate <= swiper.maxTranslate())
+                || (pageY > touches.startY && swiper.translate >= swiper.minTranslate())) {
+                data.isTouched = false;
+                data.isMoved = false;
+                return;
+            }
+        }
+        else if ((pageX < touches.startX && swiper.translate <= swiper.maxTranslate())
+            || (pageX > touches.startX && swiper.translate >= swiper.minTranslate())) {
+            return;
+        }
+    }
+    if (data.isTouchEvent && doc.activeElement) {
+        if (e.target === doc.activeElement && $(e.target).is(data.formElements)) {
+            data.isMoved = true;
+            swiper.allowClick = false;
+            return;
+        }
+    }
+    if (data.allowTouchCallbacks) {
+        swiper.emit('touchMove', e);
+    }
+    if (e.targetTouches && e.targetTouches.length > 1)
+        return;
+    touches.currentX = pageX;
+    touches.currentY = pageY;
+    var diffX = touches.currentX - touches.startX;
+    var diffY = touches.currentY - touches.startY;
+    if (swiper.params.threshold && Math.sqrt((Math.pow(diffX, 2)) + (Math.pow(diffY, 2))) < swiper.params.threshold)
+        return;
+    if (typeof data.isScrolling === 'undefined') {
+        var touchAngle = void 0;
+        if ((swiper.isHorizontal() && touches.currentY === touches.startY) || (swiper.isVertical() && touches.currentX === touches.startX)) {
+            data.isScrolling = false;
+        }
+        else {
+            // eslint-disable-next-line
+            if ((diffX * diffX) + (diffY * diffY) >= 25) {
+                touchAngle = (Math.atan2(Math.abs(diffY), Math.abs(diffX)) * 180) / Math.PI;
+                data.isScrolling = swiper.isHorizontal() ? touchAngle > params.touchAngle : (90 - touchAngle > params.touchAngle);
+            }
+        }
+    }
+    if (data.isScrolling) {
+        swiper.emit('touchMoveOpposite', e);
+    }
+    if (typeof data.startMoving === 'undefined') {
+        if (touches.currentX !== touches.startX || touches.currentY !== touches.startY) {
+            data.startMoving = true;
+        }
+    }
+    if (data.isScrolling) {
+        data.isTouched = false;
+        return;
+    }
+    if (!data.startMoving) {
+        return;
+    }
+    swiper.allowClick = false;
+    e.preventDefault();
+    if (params.touchMoveStopPropagation && !params.nested) {
+        e.stopPropagation();
+    }
+    if (!data.isMoved) {
+        if (params.loop) {
+            swiper.loopFix();
+        }
+        data.startTranslate = swiper.getTranslate();
+        swiper.setTransition(0);
+        if (swiper.animating) {
+            swiper.$wrapperEl.trigger('webkitTransitionEnd transitionend');
+        }
+        data.allowMomentumBounce = false;
+        // Grab Cursor
+        if (params.grabCursor && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
+            swiper.setGrabCursor(true);
+        }
+        swiper.emit('sliderFirstMove', e);
+    }
+    swiper.emit('sliderMove', e);
+    data.isMoved = true;
+    var diff = swiper.isHorizontal() ? diffX : diffY;
+    touches.diff = diff;
+    diff *= params.touchRatio;
+    if (rtl)
+        diff = -diff;
+    swiper.swipeDirection = diff > 0 ? 'prev' : 'next';
+    data.currentTranslate = diff + data.startTranslate;
+    var disableParentSwiper = true;
+    var resistanceRatio = params.resistanceRatio;
+    if (params.touchReleaseOnEdges) {
+        resistanceRatio = 0;
+    }
+    if ((diff > 0 && data.currentTranslate > swiper.minTranslate())) {
+        disableParentSwiper = false;
+        if (params.resistance)
+            data.currentTranslate = (swiper.minTranslate() - 1) + (Math.pow((-swiper.minTranslate() + data.startTranslate + diff), resistanceRatio));
+    }
+    else if (diff < 0 && data.currentTranslate < swiper.maxTranslate()) {
+        disableParentSwiper = false;
+        if (params.resistance)
+            data.currentTranslate = (swiper.maxTranslate() + 1) - (Math.pow((swiper.maxTranslate() - data.startTranslate - diff), resistanceRatio));
+    }
+    if (disableParentSwiper) {
+        e.preventedByNestedSwiper = true;
+    }
+    // Directions locks
+    if (!swiper.allowSlideNext && swiper.swipeDirection === 'next' && data.currentTranslate < data.startTranslate) {
+        data.currentTranslate = data.startTranslate;
+    }
+    if (!swiper.allowSlidePrev && swiper.swipeDirection === 'prev' && data.currentTranslate > data.startTranslate) {
+        data.currentTranslate = data.startTranslate;
+    }
+    // Threshold
+    if (params.threshold > 0) {
+        if (Math.abs(diff) > params.threshold || data.allowThresholdMove) {
+            if (!data.allowThresholdMove) {
+                data.allowThresholdMove = true;
+                touches.startX = touches.currentX;
+                touches.startY = touches.currentY;
+                data.currentTranslate = data.startTranslate;
+                touches.diff = swiper.isHorizontal() ? touches.currentX - touches.startX : touches.currentY - touches.startY;
+                return;
+            }
+        }
+        else {
+            data.currentTranslate = data.startTranslate;
+            return;
+        }
+    }
+    if (!params.followFinger)
+        return;
+    // Update active index in free mode
+    if (params.freeMode || params.watchSlidesProgress || params.watchSlidesVisibility) {
+        swiper.updateActiveIndex();
+        swiper.updateSlidesClasses();
+    }
+    if (params.freeMode) {
+        // Velocity
+        if (data.velocities.length === 0) {
+            data.velocities.push({
+                position: touches[swiper.isHorizontal() ? 'startX' : 'startY'],
+                time: data.touchStartTime,
+            });
+        }
+        data.velocities.push({
+            position: touches[swiper.isHorizontal() ? 'currentX' : 'currentY'],
+            time: Utils.now(),
+        });
+    }
+    // Update progress
+    swiper.updateProgress(data.currentTranslate);
+    // Update translate
+    swiper.setTranslate(data.currentTranslate);
+}
+function onTouchEnd(event) {
+    var swiper = this;
+    var data = swiper.touchEventsData;
+    var params = swiper.params, touches = swiper.touches, rtl = swiper.rtlTranslate, $wrapperEl = swiper.$wrapperEl, slidesGrid = swiper.slidesGrid, snapGrid = swiper.snapGrid;
+    var e = event;
+    if (e.originalEvent)
+        e = e.originalEvent;
+    if (data.allowTouchCallbacks) {
+        swiper.emit('touchEnd', e);
+    }
+    data.allowTouchCallbacks = false;
+    if (!data.isTouched) {
+        if (data.isMoved && params.grabCursor) {
+            swiper.setGrabCursor(false);
+        }
+        data.isMoved = false;
+        data.startMoving = false;
+        return;
+    }
+    // Return Grab Cursor
+    if (params.grabCursor && data.isMoved && data.isTouched && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
+        swiper.setGrabCursor(false);
+    }
+    // Time diff
+    var touchEndTime = Utils.now();
+    var timeDiff = touchEndTime - data.touchStartTime;
+    // Tap, doubleTap, Click
+    if (swiper.allowClick) {
+        swiper.updateClickedSlide(e);
+        swiper.emit('tap', e);
+        if (timeDiff < 300 && (touchEndTime - data.lastClickTime) > 300) {
+            if (data.clickTimeout)
+                clearTimeout(data.clickTimeout);
+            data.clickTimeout = Utils.nextTick(function () {
+                if (!swiper || swiper.destroyed)
+                    return;
+                swiper.emit('click', e);
+            }, 300);
+        }
+        if (timeDiff < 300 && (touchEndTime - data.lastClickTime) < 300) {
+            if (data.clickTimeout)
+                clearTimeout(data.clickTimeout);
+            swiper.emit('doubleTap', e);
+        }
+    }
+    data.lastClickTime = Utils.now();
+    Utils.nextTick(function () {
+        if (!swiper.destroyed)
+            swiper.allowClick = true;
+    });
+    if (!data.isTouched || !data.isMoved || !swiper.swipeDirection || touches.diff === 0 || data.currentTranslate === data.startTranslate) {
+        data.isTouched = false;
+        data.isMoved = false;
+        data.startMoving = false;
+        return;
+    }
+    data.isTouched = false;
+    data.isMoved = false;
+    data.startMoving = false;
+    var currentPos;
+    if (params.followFinger) {
+        currentPos = rtl ? swiper.translate : -swiper.translate;
+    }
+    else {
+        currentPos = -data.currentTranslate;
+    }
+    if (params.freeMode) {
+        if (currentPos < -swiper.minTranslate()) {
+            swiper.slideTo(swiper.activeIndex);
+            return;
+        }
+        if (currentPos > -swiper.maxTranslate()) {
+            if (swiper.slides.length < snapGrid.length) {
+                swiper.slideTo(snapGrid.length - 1);
+            }
+            else {
+                swiper.slideTo(swiper.slides.length - 1);
+            }
+            return;
+        }
+        if (params.freeModeMomentum) {
+            if (data.velocities.length > 1) {
+                var lastMoveEvent = data.velocities.pop();
+                var velocityEvent = data.velocities.pop();
+                var distance = lastMoveEvent.position - velocityEvent.position;
+                var time = lastMoveEvent.time - velocityEvent.time;
+                swiper.velocity = distance / time;
+                swiper.velocity /= 2;
+                if (Math.abs(swiper.velocity) < params.freeModeMinimumVelocity) {
+                    swiper.velocity = 0;
+                }
+                // this implies that the user stopped moving a finger then released.
+                // There would be no events with distance zero, so the last event is stale.
+                if (time > 150 || (Utils.now() - lastMoveEvent.time) > 300) {
+                    swiper.velocity = 0;
+                }
+            }
+            else {
+                swiper.velocity = 0;
+            }
+            swiper.velocity *= params.freeModeMomentumVelocityRatio;
+            data.velocities.length = 0;
+            var momentumDuration = 1000 * params.freeModeMomentumRatio;
+            var momentumDistance = swiper.velocity * momentumDuration;
+            var newPosition = swiper.translate + momentumDistance;
+            if (rtl)
+                newPosition = -newPosition;
+            var doBounce = false;
+            var afterBouncePosition_1;
+            var bounceAmount = Math.abs(swiper.velocity) * 20 * params.freeModeMomentumBounceRatio;
+            var needsLoopFix = void 0;
+            if (newPosition < swiper.maxTranslate()) {
+                if (params.freeModeMomentumBounce) {
+                    if (newPosition + swiper.maxTranslate() < -bounceAmount) {
+                        newPosition = swiper.maxTranslate() - bounceAmount;
+                    }
+                    afterBouncePosition_1 = swiper.maxTranslate();
+                    doBounce = true;
+                    data.allowMomentumBounce = true;
+                }
+                else {
+                    newPosition = swiper.maxTranslate();
+                }
+                if (params.loop && params.centeredSlides)
+                    needsLoopFix = true;
+            }
+            else if (newPosition > swiper.minTranslate()) {
+                if (params.freeModeMomentumBounce) {
+                    if (newPosition - swiper.minTranslate() > bounceAmount) {
+                        newPosition = swiper.minTranslate() + bounceAmount;
+                    }
+                    afterBouncePosition_1 = swiper.minTranslate();
+                    doBounce = true;
+                    data.allowMomentumBounce = true;
+                }
+                else {
+                    newPosition = swiper.minTranslate();
+                }
+                if (params.loop && params.centeredSlides)
+                    needsLoopFix = true;
+            }
+            else if (params.freeModeSticky) {
+                var nextSlide = void 0;
+                for (var j = 0; j < snapGrid.length; j += 1) {
+                    if (snapGrid[j] > -newPosition) {
+                        nextSlide = j;
+                        break;
+                    }
+                }
+                if (Math.abs(snapGrid[nextSlide] - newPosition) < Math.abs(snapGrid[nextSlide - 1] - newPosition) || swiper.swipeDirection === 'next') {
+                    newPosition = snapGrid[nextSlide];
+                }
+                else {
+                    newPosition = snapGrid[nextSlide - 1];
+                }
+                newPosition = -newPosition;
+            }
+            if (needsLoopFix) {
+                swiper.once('transitionEnd', function () {
+                    swiper.loopFix();
+                });
+            }
+            // Fix duration
+            if (swiper.velocity !== 0) {
+                if (rtl) {
+                    momentumDuration = Math.abs((-newPosition - swiper.translate) / swiper.velocity);
+                }
+                else {
+                    momentumDuration = Math.abs((newPosition - swiper.translate) / swiper.velocity);
+                }
+            }
+            else if (params.freeModeSticky) {
+                swiper.slideToClosest();
+                return;
+            }
+            if (params.freeModeMomentumBounce && doBounce) {
+                swiper.updateProgress(afterBouncePosition_1);
+                swiper.setTransition(momentumDuration);
+                swiper.setTranslate(newPosition);
+                swiper.transitionStart(true, swiper.swipeDirection);
+                swiper.animating = true;
+                $wrapperEl.transitionEnd(function () {
+                    if (!swiper || swiper.destroyed || !data.allowMomentumBounce)
+                        return;
+                    swiper.emit('momentumBounce');
+                    swiper.setTransition(params.speed);
+                    swiper.setTranslate(afterBouncePosition_1);
+                    $wrapperEl.transitionEnd(function () {
+                        if (!swiper || swiper.destroyed)
+                            return;
+                        swiper.transitionEnd();
+                    });
+                });
+            }
+            else if (swiper.velocity) {
+                swiper.updateProgress(newPosition);
+                swiper.setTransition(momentumDuration);
+                swiper.setTranslate(newPosition);
+                swiper.transitionStart(true, swiper.swipeDirection);
+                if (!swiper.animating) {
+                    swiper.animating = true;
+                    $wrapperEl.transitionEnd(function () {
+                        if (!swiper || swiper.destroyed)
+                            return;
+                        swiper.transitionEnd();
+                    });
+                }
+            }
+            else {
+                swiper.updateProgress(newPosition);
+            }
+            swiper.updateActiveIndex();
+            swiper.updateSlidesClasses();
+        }
+        else if (params.freeModeSticky) {
+            swiper.slideToClosest();
+            return;
+        }
+        if (!params.freeModeMomentum || timeDiff >= params.longSwipesMs) {
+            swiper.updateProgress();
+            swiper.updateActiveIndex();
+            swiper.updateSlidesClasses();
+        }
+        return;
+    }
+    // Find current slide
+    var stopIndex = 0;
+    var groupSize = swiper.slidesSizesGrid[0];
+    for (var i = 0; i < slidesGrid.length; i += params.slidesPerGroup) {
+        if (typeof slidesGrid[i + params.slidesPerGroup] !== 'undefined') {
+            if (currentPos >= slidesGrid[i] && currentPos < slidesGrid[i + params.slidesPerGroup]) {
+                stopIndex = i;
+                groupSize = slidesGrid[i + params.slidesPerGroup] - slidesGrid[i];
+            }
+        }
+        else if (currentPos >= slidesGrid[i]) {
+            stopIndex = i;
+            groupSize = slidesGrid[slidesGrid.length - 1] - slidesGrid[slidesGrid.length - 2];
+        }
+    }
+    // Find current slide size
+    var ratio = (currentPos - slidesGrid[stopIndex]) / groupSize;
+    if (timeDiff > params.longSwipesMs) {
+        // Long touches
+        if (!params.longSwipes) {
+            swiper.slideTo(swiper.activeIndex);
+            return;
+        }
+        if (swiper.swipeDirection === 'next') {
+            if (ratio >= params.longSwipesRatio)
+                swiper.slideTo(stopIndex + params.slidesPerGroup);
+            else
+                swiper.slideTo(stopIndex);
+        }
+        if (swiper.swipeDirection === 'prev') {
+            if (ratio > (1 - params.longSwipesRatio))
+                swiper.slideTo(stopIndex + params.slidesPerGroup);
+            else
+                swiper.slideTo(stopIndex);
+        }
+    }
+    else {
+        // Short swipes
+        if (!params.shortSwipes) {
+            swiper.slideTo(swiper.activeIndex);
+            return;
+        }
+        if (swiper.swipeDirection === 'next') {
+            swiper.slideTo(stopIndex + params.slidesPerGroup);
+        }
+        if (swiper.swipeDirection === 'prev') {
+            swiper.slideTo(stopIndex);
+        }
+    }
+}
+function onResize() {
+    var swiper = this;
+    var params = swiper.params, el = swiper.el;
+    if (el && el.offsetWidth === 0)
+        return;
+    // Breakpoints
+    if (params.breakpoints) {
+        swiper.setBreakpoint();
+    }
+    // Save locks
+    var allowSlideNext = swiper.allowSlideNext, allowSlidePrev = swiper.allowSlidePrev, snapGrid = swiper.snapGrid;
+    // Disable locks on resize
+    swiper.allowSlideNext = true;
+    swiper.allowSlidePrev = true;
+    swiper.updateSize();
+    swiper.updateSlides();
+    if (params.freeMode) {
+        var newTranslate = Math.min(Math.max(swiper.translate, swiper.maxTranslate()), swiper.minTranslate());
+        swiper.setTranslate(newTranslate);
+        swiper.updateActiveIndex();
+        swiper.updateSlidesClasses();
+        if (params.autoHeight) {
+            swiper.updateAutoHeight();
+        }
+    }
+    else {
+        swiper.updateSlidesClasses();
+        if ((params.slidesPerView === 'auto' || params.slidesPerView > 1) && swiper.isEnd && !swiper.params.centeredSlides) {
+            swiper.slideTo(swiper.slides.length - 1, 0, false, true);
+        }
+        else {
+            swiper.slideTo(swiper.activeIndex, 0, false, true);
+        }
+    }
+    if (swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused) {
+        swiper.autoplay.run();
+    }
+    // Return locks after resize
+    swiper.allowSlidePrev = allowSlidePrev;
+    swiper.allowSlideNext = allowSlideNext;
+    if (swiper.params.watchOverflow && snapGrid !== swiper.snapGrid) {
+        swiper.checkOverflow();
+    }
+}
+function onClick(e) {
+    var swiper = this;
+    if (!swiper.allowClick) {
+        if (swiper.params.preventClicks)
+            e.preventDefault();
+        if (swiper.params.preventClicksPropagation && swiper.animating) {
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+        }
+    }
+}
+function attachEvents() {
+    var swiper = this;
+    var params = swiper.params, touchEvents = swiper.touchEvents, el = swiper.el, wrapperEl = swiper.wrapperEl;
+    {
+        swiper.onTouchStart = onTouchStart.bind(swiper);
+        swiper.onTouchMove = onTouchMove.bind(swiper);
+        swiper.onTouchEnd = onTouchEnd.bind(swiper);
+    }
+    swiper.onClick = onClick.bind(swiper);
+    var target = params.touchEventsTarget === 'container' ? el : wrapperEl;
+    var capture = !!params.nested;
+    // Touch Events
+    {
+        if (!Support.touch && (Support.pointerEvents || Support.prefixedPointerEvents)) {
+            target.addEventListener(touchEvents.start, swiper.onTouchStart, false);
+            doc.addEventListener(touchEvents.move, swiper.onTouchMove, capture);
+            doc.addEventListener(touchEvents.end, swiper.onTouchEnd, false);
+        }
+        else {
+            if (Support.touch) {
+                var passiveListener = touchEvents.start === 'touchstart' && Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
+                target.addEventListener(touchEvents.start, swiper.onTouchStart, passiveListener);
+                target.addEventListener(touchEvents.move, swiper.onTouchMove, Support.passiveListener ? { passive: false, capture: capture } : capture);
+                target.addEventListener(touchEvents.end, swiper.onTouchEnd, passiveListener);
+            }
+            if ((params.simulateTouch && !Device.ios && !Device.android) || (params.simulateTouch && !Support.touch && Device.ios)) {
+                target.addEventListener('mousedown', swiper.onTouchStart, false);
+                doc.addEventListener('mousemove', swiper.onTouchMove, capture);
+                doc.addEventListener('mouseup', swiper.onTouchEnd, false);
+            }
+        }
+        // Prevent Links Clicks
+        if (params.preventClicks || params.preventClicksPropagation) {
+            target.addEventListener('click', swiper.onClick, true);
+        }
+    }
+    // Resize handler
+    swiper.on((Device.ios || Device.android ? 'resize orientationchange observerUpdate' : 'resize observerUpdate'), onResize, true);
+}
+function detachEvents() {
+    var swiper = this;
+    var params = swiper.params, touchEvents = swiper.touchEvents, el = swiper.el, wrapperEl = swiper.wrapperEl;
+    var target = params.touchEventsTarget === 'container' ? el : wrapperEl;
+    var capture = !!params.nested;
+    // Touch Events
+    {
+        if (!Support.touch && (Support.pointerEvents || Support.prefixedPointerEvents)) {
+            target.removeEventListener(touchEvents.start, swiper.onTouchStart, false);
+            doc.removeEventListener(touchEvents.move, swiper.onTouchMove, capture);
+            doc.removeEventListener(touchEvents.end, swiper.onTouchEnd, false);
+        }
+        else {
+            if (Support.touch) {
+                var passiveListener = touchEvents.start === 'onTouchStart' && Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
+                target.removeEventListener(touchEvents.start, swiper.onTouchStart, passiveListener);
+                target.removeEventListener(touchEvents.move, swiper.onTouchMove, capture);
+                target.removeEventListener(touchEvents.end, swiper.onTouchEnd, passiveListener);
+            }
+            if ((params.simulateTouch && !Device.ios && !Device.android) || (params.simulateTouch && !Support.touch && Device.ios)) {
+                target.removeEventListener('mousedown', swiper.onTouchStart, false);
+                doc.removeEventListener('mousemove', swiper.onTouchMove, capture);
+                doc.removeEventListener('mouseup', swiper.onTouchEnd, false);
+            }
+        }
+        // Prevent Links Clicks
+        if (params.preventClicks || params.preventClicksPropagation) {
+            target.removeEventListener('click', swiper.onClick, true);
+        }
+    }
+    // Resize handler
+    swiper.off((Device.ios || Device.android ? 'resize orientationchange observerUpdate' : 'resize observerUpdate'), onResize);
+}
+var events = {
+    attachEvents: attachEvents,
+    detachEvents: detachEvents,
+};
+function setBreakpoint() {
+    var swiper = this;
+    var activeIndex = swiper.activeIndex, initialized = swiper.initialized, _a = swiper.loopedSlides, loopedSlides = _a === void 0 ? 0 : _a, params = swiper.params;
+    var breakpoints = params.breakpoints;
+    if (!breakpoints || (breakpoints && Object.keys(breakpoints).length === 0))
+        return;
+    // Set breakpoint for window width and update parameters
+    var breakpoint = swiper.getBreakpoint(breakpoints);
+    if (breakpoint && swiper.currentBreakpoint !== breakpoint) {
+        var breakpointOnlyParams_1 = breakpoint in breakpoints ? breakpoints[breakpoint] : undefined;
+        if (breakpointOnlyParams_1) {
+            ['slidesPerView', 'spaceBetween', 'slidesPerGroup'].forEach(function (param) {
+                var paramValue = breakpointOnlyParams_1[param];
+                if (typeof paramValue === 'undefined')
+                    return;
+                if (param === 'slidesPerView' && (paramValue === 'AUTO' || paramValue === 'auto')) {
+                    breakpointOnlyParams_1[param] = 'auto';
+                }
+                else if (param === 'slidesPerView') {
+                    breakpointOnlyParams_1[param] = parseFloat(paramValue);
+                }
+                else {
+                    breakpointOnlyParams_1[param] = parseInt(paramValue, 10);
+                }
+            });
+        }
+        var breakpointParams = breakpointOnlyParams_1 || swiper.originalParams;
+        var directionChanged = breakpointParams.direction && breakpointParams.direction !== params.direction;
+        var needsReLoop = params.loop && (breakpointParams.slidesPerView !== params.slidesPerView || directionChanged);
+        if (directionChanged && initialized) {
+            swiper.changeDirection();
+        }
+        Utils.extend(swiper.params, breakpointParams);
+        Utils.extend(swiper, {
+            allowTouchMove: swiper.params.allowTouchMove,
+            allowSlideNext: swiper.params.allowSlideNext,
+            allowSlidePrev: swiper.params.allowSlidePrev,
+        });
+        swiper.currentBreakpoint = breakpoint;
+        if (needsReLoop && initialized) {
+            swiper.loopDestroy();
+            swiper.loopCreate();
+            swiper.updateSlides();
+            swiper.slideTo((activeIndex - loopedSlides) + swiper.loopedSlides, 0, false);
+        }
+        swiper.emit('breakpoint', breakpointParams);
+    }
+}
+function getBreakpoint(breakpoints) {
+    var swiper = this;
+    // Get breakpoint for window width
+    if (!breakpoints)
+        return undefined;
+    var breakpoint = false;
+    var points = [];
+    Object.keys(breakpoints).forEach(function (point) {
+        points.push(point);
+    });
+    points.sort(function (a, b) { return parseInt(a, 10) - parseInt(b, 10); });
+    for (var i = 0; i < points.length; i += 1) {
+        var point = points[i];
+        if (swiper.params.breakpointsInverse) {
+            if (point <= win.innerWidth) {
+                breakpoint = point;
+            }
+        }
+        else if (point >= win.innerWidth && !breakpoint) {
+            breakpoint = point;
+        }
+    }
+    return breakpoint || 'max';
+}
+var breakpoints = { setBreakpoint: setBreakpoint, getBreakpoint: getBreakpoint };
+function addClasses() {
+    var swiper = this;
+    var classNames = swiper.classNames, params = swiper.params, rtl = swiper.rtl, $el = swiper.$el;
+    var suffixes = [];
+    suffixes.push('initialized');
+    suffixes.push(params.direction);
+    if (params.freeMode) {
+        suffixes.push('free-mode');
+    }
+    if (!Support.flexbox) {
+        suffixes.push('no-flexbox');
+    }
+    if (params.autoHeight) {
+        suffixes.push('autoheight');
+    }
+    if (rtl) {
+        suffixes.push('rtl');
+    }
+    if (params.slidesPerColumn > 1) {
+        suffixes.push('multirow');
+    }
+    if (Device.android) {
+        suffixes.push('android');
+    }
+    if (Device.ios) {
+        suffixes.push('ios');
+    }
+    // WP8 Touch Events Fix
+    if ((Browser.isIE || Browser.isEdge) && (Support.pointerEvents || Support.prefixedPointerEvents)) {
+        suffixes.push("wp8-" + params.direction);
+    }
+    suffixes.forEach(function (suffix) {
+        classNames.push(params.containerModifierClass + suffix);
+    });
+    $el.addClass(classNames.join(' '));
+}
+function removeClasses() {
+    var swiper = this;
+    var $el = swiper.$el, classNames = swiper.classNames;
+    $el.removeClass(classNames.join(' '));
+}
+var classes = { addClasses: addClasses, removeClasses: removeClasses };
+function loadImage(imageEl, src, srcset, sizes, checkForComplete, callback) {
+    var image;
+    function onReady() {
+        if (callback)
+            callback();
+    }
+    if (!imageEl.complete || !checkForComplete) {
+        if (src) {
+            image = new win.Image();
+            image.onload = onReady;
+            image.onerror = onReady;
+            if (sizes) {
+                image.sizes = sizes;
+            }
+            if (srcset) {
+                image.srcset = srcset;
+            }
+            if (src) {
+                image.src = src;
+            }
+        }
+        else {
+            onReady();
+        }
+    }
+    else {
+        // image already loaded...
+        onReady();
+    }
+}
+function preloadImages() {
+    var swiper = this;
+    swiper.imagesToLoad = swiper.$el.find('img');
+    function onReady() {
+        if (typeof swiper === 'undefined' || swiper === null || !swiper || swiper.destroyed)
+            return;
+        if (swiper.imagesLoaded !== undefined)
+            swiper.imagesLoaded += 1;
+        if (swiper.imagesLoaded === swiper.imagesToLoad.length) {
+            if (swiper.params.updateOnImagesReady)
+                swiper.update();
+            swiper.emit('imagesReady');
+        }
+    }
+    for (var i = 0; i < swiper.imagesToLoad.length; i += 1) {
+        var imageEl = swiper.imagesToLoad[i];
+        swiper.loadImage(imageEl, imageEl.currentSrc || imageEl.getAttribute('src'), imageEl.srcset || imageEl.getAttribute('srcset'), imageEl.sizes || imageEl.getAttribute('sizes'), true, onReady);
+    }
+}
+var images = {
+    loadImage: loadImage,
+    preloadImages: preloadImages,
+};
+function checkOverflow() {
+    var swiper = this;
+    var wasLocked = swiper.isLocked;
+    swiper.isLocked = swiper.snapGrid.length === 1;
+    swiper.allowSlideNext = !swiper.isLocked;
+    swiper.allowSlidePrev = !swiper.isLocked;
+    // events
+    if (wasLocked !== swiper.isLocked)
+        swiper.emit(swiper.isLocked ? 'lock' : 'unlock');
+    if (wasLocked && wasLocked !== swiper.isLocked) {
+        swiper.isEnd = false;
+        swiper.navigation.update();
+    }
+}
+var checkOverflow$1 = { checkOverflow: checkOverflow };
+var defaults = {
+    init: true,
+    direction: 'horizontal',
+    touchEventsTarget: 'container',
+    initialSlide: 0,
+    speed: 300,
+    //
+    preventInteractionOnTransition: false,
+    // To support iOS's swipe-to-go-back gesture (when being used in-app, with UIWebView).
+    edgeSwipeDetection: false,
+    edgeSwipeThreshold: 20,
+    // Free mode
+    freeMode: false,
+    freeModeMomentum: true,
+    freeModeMomentumRatio: 1,
+    freeModeMomentumBounce: true,
+    freeModeMomentumBounceRatio: 1,
+    freeModeMomentumVelocityRatio: 1,
+    freeModeSticky: false,
+    freeModeMinimumVelocity: 0.02,
+    // Autoheight
+    autoHeight: false,
+    // Set wrapper width
+    setWrapperSize: false,
+    // Virtual Translate
+    virtualTranslate: false,
+    // Effects
+    effect: 'slide',
+    // Breakpoints
+    breakpoints: undefined,
+    breakpointsInverse: false,
+    // Slides grid
+    spaceBetween: 0,
+    slidesPerView: 1,
+    slidesPerColumn: 1,
+    slidesPerColumnFill: 'column',
+    slidesPerGroup: 1,
+    centeredSlides: false,
+    slidesOffsetBefore: 0,
+    slidesOffsetAfter: 0,
+    normalizeSlideIndex: true,
+    centerInsufficientSlides: false,
+    // Disable swiper and hide navigation when container not overflow
+    watchOverflow: false,
+    // Round length
+    roundLengths: false,
+    // Touches
+    touchRatio: 1,
+    touchAngle: 45,
+    simulateTouch: true,
+    shortSwipes: true,
+    longSwipes: true,
+    longSwipesRatio: 0.5,
+    longSwipesMs: 300,
+    followFinger: true,
+    allowTouchMove: true,
+    threshold: 0,
+    touchMoveStopPropagation: true,
+    touchStartPreventDefault: true,
+    touchStartForcePreventDefault: false,
+    touchReleaseOnEdges: false,
+    // Unique Navigation Elements
+    uniqueNavElements: true,
+    // Resistance
+    resistance: true,
+    resistanceRatio: 0.85,
+    // Progress
+    watchSlidesProgress: false,
+    watchSlidesVisibility: false,
+    // Cursor
+    grabCursor: false,
+    // Clicks
+    preventClicks: true,
+    preventClicksPropagation: true,
+    slideToClickedSlide: false,
+    // Images
+    preloadImages: true,
+    updateOnImagesReady: true,
+    // loop
+    loop: false,
+    loopAdditionalSlides: 0,
+    loopedSlides: null,
+    loopFillGroupWithBlank: false,
+    // Swiping/no swiping
+    allowSlidePrev: true,
+    allowSlideNext: true,
+    swipeHandler: null,
+    noSwiping: true,
+    noSwipingClass: 'swiper-no-swiping',
+    noSwipingSelector: null,
+    // Passive Listeners
+    passiveListeners: true,
+    // NS
+    containerModifierClass: 'swiper-container-',
+    slideClass: 'swiper-slide',
+    slideBlankClass: 'swiper-slide-invisible-blank',
+    slideActiveClass: 'swiper-slide-active',
+    slideDuplicateActiveClass: 'swiper-slide-duplicate-active',
+    slideVisibleClass: 'swiper-slide-visible',
+    slideDuplicateClass: 'swiper-slide-duplicate',
+    slideNextClass: 'swiper-slide-next',
+    slideDuplicateNextClass: 'swiper-slide-duplicate-next',
+    slidePrevClass: 'swiper-slide-prev',
+    slideDuplicatePrevClass: 'swiper-slide-duplicate-prev',
+    wrapperClass: 'swiper-wrapper',
+    // Callbacks
+    runCallbacksOnInit: true,
+};
+/* eslint no-param-reassign: "off" */
+var prototypes = {
+    update: update,
+    translate: translate,
+    transition: transition$1,
+    slide: slide,
+    loop: loop,
+    grabCursor: grabCursor,
+    manipulation: manipulation,
+    events: events,
+    breakpoints: breakpoints,
+    checkOverflow: checkOverflow$1,
+    classes: classes,
+    images: images,
+};
+var extendedDefaults = {};
+var Swiper = /** @class */ (function (_super) {
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Swiper, _super);
+    function Swiper() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var _this = this;
+        var el;
+        var params;
+        if (args.length === 1 && args[0].constructor && args[0].constructor === Object) {
+            params = args[0];
+        }
+        else {
+            el = args[0], params = args[1];
+        }
+        if (!params)
+            params = {};
+        params = Utils.extend({}, params);
+        if (el && !params.el)
+            params.el = el;
+        _this = _super.call(this, params) || this;
+        Object.keys(prototypes).forEach(function (prototypeGroup) {
+            Object.keys(prototypes[prototypeGroup]).forEach(function (protoMethod) {
+                if (!Swiper.prototype[protoMethod]) {
+                    Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
+                }
+            });
+        });
+        // Swiper Instance
+        var swiper = _this;
+        if (typeof swiper.modules === 'undefined') {
+            swiper.modules = {};
+        }
+        Object.keys(swiper.modules).forEach(function (moduleName) {
+            var module = swiper.modules[moduleName];
+            if (module.params) {
+                var moduleParamName = Object.keys(module.params)[0];
+                var moduleParams = module.params[moduleParamName];
+                if (typeof moduleParams !== 'object' || moduleParams === null)
+                    return;
+                if (!(moduleParamName in params && 'enabled' in moduleParams))
+                    return;
+                if (params[moduleParamName] === true) {
+                    params[moduleParamName] = { enabled: true };
+                }
+                if (typeof params[moduleParamName] === 'object'
+                    && !('enabled' in params[moduleParamName])) {
+                    params[moduleParamName].enabled = true;
+                }
+                if (!params[moduleParamName])
+                    params[moduleParamName] = { enabled: false };
+            }
+        });
+        // Extend defaults with modules params
+        var swiperParams = Utils.extend({}, defaults);
+        swiper.useModulesParams(swiperParams);
+        // Extend defaults with passed params
+        swiper.params = Utils.extend({}, swiperParams, extendedDefaults, params);
+        swiper.originalParams = Utils.extend({}, swiper.params);
+        swiper.passedParams = Utils.extend({}, params);
+        // Save Dom lib
+        swiper.$ = $;
+        // Find el
+        var $el = $(swiper.params.el);
+        el = $el[0];
+        if (!el) {
+            return undefined;
+        }
+        if ($el.length > 1) {
+            var swipers_1 = [];
+            $el.each(function (index, containerEl) {
+                var newParams = Utils.extend({}, params, { el: containerEl });
+                swipers_1.push(new Swiper(newParams));
+            });
+            return swipers_1;
+        }
+        el.swiper = swiper;
+        $el.data('swiper', swiper);
+        // Find Wrapper
+        var $wrapperEl = $el.children("." + swiper.params.wrapperClass);
+        // Extend Swiper
+        Utils.extend(swiper, {
+            $el: $el,
+            el: el,
+            $wrapperEl: $wrapperEl,
+            wrapperEl: $wrapperEl[0],
+            // Classes
+            classNames: [],
+            // Slides
+            slides: $(),
+            slidesGrid: [],
+            snapGrid: [],
+            slidesSizesGrid: [],
+            // isDirection
+            isHorizontal: function () {
+                return swiper.params.direction === 'horizontal';
+            },
+            isVertical: function () {
+                return swiper.params.direction === 'vertical';
+            },
+            // RTL
+            rtl: (el.dir.toLowerCase() === 'rtl' || $el.css('direction') === 'rtl'),
+            rtlTranslate: swiper.params.direction === 'horizontal' && (el.dir.toLowerCase() === 'rtl' || $el.css('direction') === 'rtl'),
+            wrongRTL: $wrapperEl.css('display') === '-webkit-box',
+            // Indexes
+            activeIndex: 0,
+            realIndex: 0,
+            //
+            isBeginning: true,
+            isEnd: false,
+            // Props
+            translate: 0,
+            previousTranslate: 0,
+            progress: 0,
+            velocity: 0,
+            animating: false,
+            // Locks
+            allowSlideNext: swiper.params.allowSlideNext,
+            allowSlidePrev: swiper.params.allowSlidePrev,
+            // Touch Events
+            touchEvents: (function touchEvents() {
+                var touch = ['touchstart', 'touchmove', 'touchend'];
+                var desktop = ['mousedown', 'mousemove', 'mouseup'];
+                if (Support.pointerEvents) {
+                    desktop = ['pointerdown', 'pointermove', 'pointerup'];
+                }
+                else if (Support.prefixedPointerEvents) {
+                    desktop = ['MSPointerDown', 'MSPointerMove', 'MSPointerUp'];
+                }
+                swiper.touchEventsTouch = {
+                    start: touch[0],
+                    move: touch[1],
+                    end: touch[2],
+                };
+                swiper.touchEventsDesktop = {
+                    start: desktop[0],
+                    move: desktop[1],
+                    end: desktop[2],
+                };
+                return Support.touch || !swiper.params.simulateTouch ? swiper.touchEventsTouch : swiper.touchEventsDesktop;
+            }()),
+            touchEventsData: {
+                isTouched: undefined,
+                isMoved: undefined,
+                allowTouchCallbacks: undefined,
+                touchStartTime: undefined,
+                isScrolling: undefined,
+                currentTranslate: undefined,
+                startTranslate: undefined,
+                allowThresholdMove: undefined,
+                // Form elements to match
+                formElements: 'input, select, option, textarea, button, video',
+                // Last click time
+                lastClickTime: Utils.now(),
+                clickTimeout: undefined,
+                // Velocities
+                velocities: [],
+                allowMomentumBounce: undefined,
+                isTouchEvent: undefined,
+                startMoving: undefined,
+            },
+            // Clicks
+            allowClick: true,
+            // Touches
+            allowTouchMove: swiper.params.allowTouchMove,
+            touches: {
+                startX: 0,
+                startY: 0,
+                currentX: 0,
+                currentY: 0,
+                diff: 0,
+            },
+            // Images
+            imagesToLoad: [],
+            imagesLoaded: 0,
+        });
+        // Install Modules
+        swiper.useModules();
+        // Init
+        if (swiper.params.init) {
+            swiper.init();
+        }
+        // Return app instance
+        return swiper;
+    }
+    Swiper.prototype.slidesPerViewDynamic = function () {
+        var swiper = this;
+        var params = swiper.params, slides = swiper.slides, slidesGrid = swiper.slidesGrid, swiperSize = swiper.size, activeIndex = swiper.activeIndex;
+        var spv = 1;
+        if (params.centeredSlides) {
+            var slideSize = slides[activeIndex].swiperSlideSize;
+            var breakLoop = void 0;
+            for (var i = activeIndex + 1; i < slides.length; i += 1) {
+                if (slides[i] && !breakLoop) {
+                    slideSize += slides[i].swiperSlideSize;
+                    spv += 1;
+                    if (slideSize > swiperSize)
+                        breakLoop = true;
+                }
+            }
+            for (var i = activeIndex - 1; i >= 0; i -= 1) {
+                if (slides[i] && !breakLoop) {
+                    slideSize += slides[i].swiperSlideSize;
+                    spv += 1;
+                    if (slideSize > swiperSize)
+                        breakLoop = true;
+                }
+            }
+        }
+        else {
+            for (var i = activeIndex + 1; i < slides.length; i += 1) {
+                if (slidesGrid[i] - slidesGrid[activeIndex] < swiperSize) {
+                    spv += 1;
+                }
+            }
+        }
+        return spv;
+    };
+    Swiper.prototype.update = function () {
+        var swiper = this;
+        if (!swiper || swiper.destroyed)
+            return;
+        var snapGrid = swiper.snapGrid, params = swiper.params;
+        // Breakpoints
+        if (params.breakpoints) {
+            swiper.setBreakpoint();
+        }
+        swiper.updateSize();
+        swiper.updateSlides();
+        swiper.updateProgress();
+        swiper.updateSlidesClasses();
+        function setTranslate() {
+            var translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate;
+            var newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());
+            swiper.setTranslate(newTranslate);
+            swiper.updateActiveIndex();
+            swiper.updateSlidesClasses();
+        }
+        var translated;
+        if (swiper.params.freeMode) {
+            setTranslate();
+            if (swiper.params.autoHeight) {
+                swiper.updateAutoHeight();
+            }
+        }
+        else {
+            if ((swiper.params.slidesPerView === 'auto' || swiper.params.slidesPerView > 1) && swiper.isEnd && !swiper.params.centeredSlides) {
+                translated = swiper.slideTo(swiper.slides.length - 1, 0, false, true);
+            }
+            else {
+                translated = swiper.slideTo(swiper.activeIndex, 0, false, true);
+            }
+            if (!translated) {
+                setTranslate();
+            }
+        }
+        if (params.watchOverflow && snapGrid !== swiper.snapGrid) {
+            swiper.checkOverflow();
+        }
+        swiper.emit('update');
+    };
+    Swiper.prototype.changeDirection = function (newDirection, needUpdate) {
+        if (needUpdate === void 0) { needUpdate = true; }
+        var swiper = this;
+        var currentDirection = swiper.params.direction;
+        if (!newDirection) {
+            // eslint-disable-next-line
+            newDirection = currentDirection === 'horizontal' ? 'vertical' : 'horizontal';
+        }
+        if ((newDirection === currentDirection) || (newDirection !== 'horizontal' && newDirection !== 'vertical')) {
+            return swiper;
+        }
+        swiper.$el
+            .removeClass("" + swiper.params.containerModifierClass + currentDirection + " wp8-" + currentDirection)
+            .addClass("" + swiper.params.containerModifierClass + newDirection);
+        if ((Browser.isIE || Browser.isEdge) && (Support.pointerEvents || Support.prefixedPointerEvents)) {
+            swiper.$el.addClass(swiper.params.containerModifierClass + "wp8-" + newDirection);
+        }
+        swiper.params.direction = newDirection;
+        swiper.slides.each(function (slideIndex, slideEl) {
+            if (newDirection === 'vertical') {
+                slideEl.style.width = '';
+            }
+            else {
+                slideEl.style.height = '';
+            }
+        });
+        swiper.emit('changeDirection');
+        if (needUpdate)
+            swiper.update();
+        return swiper;
+    };
+    Swiper.prototype.init = function () {
+        var swiper = this;
+        if (swiper.initialized)
+            return;
+        swiper.emit('beforeInit');
+        // Set breakpoint
+        if (swiper.params.breakpoints) {
+            swiper.setBreakpoint();
+        }
+        // Add Classes
+        swiper.addClasses();
+        // Create loop
+        if (swiper.params.loop) {
+            swiper.loopCreate();
+        }
+        // Update size
+        swiper.updateSize();
+        // Update slides
+        swiper.updateSlides();
+        if (swiper.params.watchOverflow) {
+            swiper.checkOverflow();
+        }
+        // Set Grab Cursor
+        if (swiper.params.grabCursor) {
+            swiper.setGrabCursor();
+        }
+        if (swiper.params.preloadImages) {
+            swiper.preloadImages();
+        }
+        // Slide To Initial Slide
+        if (swiper.params.loop) {
+            swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit);
+        }
+        else {
+            swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit);
+        }
+        // Attach events
+        swiper.attachEvents();
+        // Init Flag
+        swiper.initialized = true;
+        // Emit
+        swiper.emit('init');
+    };
+    Swiper.prototype.destroy = function (deleteInstance, cleanStyles) {
+        if (deleteInstance === void 0) { deleteInstance = true; }
+        if (cleanStyles === void 0) { cleanStyles = true; }
+        var swiper = this;
+        var params = swiper.params, $el = swiper.$el, $wrapperEl = swiper.$wrapperEl, slides = swiper.slides;
+        if (typeof swiper.params === 'undefined' || swiper.destroyed) {
+            return null;
+        }
+        swiper.emit('beforeDestroy');
+        // Init Flag
+        swiper.initialized = false;
+        // Detach events
+        swiper.detachEvents();
+        // Destroy loop
+        if (params.loop) {
+            swiper.loopDestroy();
+        }
+        // Cleanup styles
+        if (cleanStyles) {
+            swiper.removeClasses();
+            $el.removeAttr('style');
+            $wrapperEl.removeAttr('style');
+            if (slides && slides.length) {
+                slides
+                    .removeClass([
+                    params.slideVisibleClass,
+                    params.slideActiveClass,
+                    params.slideNextClass,
+                    params.slidePrevClass,
+                ].join(' '))
+                    .removeAttr('style')
+                    .removeAttr('data-swiper-slide-index')
+                    .removeAttr('data-swiper-column')
+                    .removeAttr('data-swiper-row');
+            }
+        }
+        swiper.emit('destroy');
+        // Detach emitter events
+        Object.keys(swiper.eventsListeners).forEach(function (eventName) {
+            swiper.off(eventName);
+        });
+        if (deleteInstance !== false) {
+            swiper.$el[0].swiper = null;
+            swiper.$el.data('swiper', null);
+            Utils.deleteProps(swiper);
+        }
+        swiper.destroyed = true;
+        return null;
+    };
+    Swiper.extendDefaults = function (newDefaults) {
+        Utils.extend(extendedDefaults, newDefaults);
+    };
+    Object.defineProperty(Swiper, "extendedDefaults", {
+        get: function () {
+            return extendedDefaults;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Swiper, "defaults", {
+        get: function () {
+            return defaults;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Swiper, "Class", {
+        get: function () {
+            return SwiperClass;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Swiper, "$", {
+        get: function () {
+            return $;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Swiper;
+}(SwiperClass));
+var Device$1 = {
+    name: 'device',
+    proto: {
+        device: Device,
+    },
+    static: {
+        device: Device,
+    },
+};
+var Support$1 = {
+    name: 'support',
+    proto: {
+        support: Support,
+    },
+    static: {
+        support: Support,
+    },
+};
+var Browser$1 = {
+    name: 'browser',
+    proto: {
+        browser: Browser,
+    },
+    static: {
+        browser: Browser,
+    },
+};
+var Resize = {
+    name: 'resize',
+    create: function () {
+        var swiper = this;
+        Utils.extend(swiper, {
+            resize: {
+                resizeHandler: function () {
+                    if (!swiper || swiper.destroyed || !swiper.initialized)
+                        return;
+                    swiper.emit('beforeResize');
+                    swiper.emit('resize');
+                },
+                orientationChangeHandler: function () {
+                    if (!swiper || swiper.destroyed || !swiper.initialized)
+                        return;
+                    swiper.emit('orientationchange');
+                },
+            },
+        });
+    },
+    on: {
+        init: function () {
+            var swiper = this;
+            // Emit resize
+            win.addEventListener('resize', swiper.resize.resizeHandler);
+            // Emit orientationchange
+            win.addEventListener('orientationchange', swiper.resize.orientationChangeHandler);
+        },
+        destroy: function () {
+            var swiper = this;
+            win.removeEventListener('resize', swiper.resize.resizeHandler);
+            win.removeEventListener('orientationchange', swiper.resize.orientationChangeHandler);
+        },
+    },
+};
+var Observer = {
+    func: win.MutationObserver || win.WebkitMutationObserver,
+    attach: function (target, options) {
+        if (options === void 0) { options = {}; }
+        var swiper = this;
+        var ObserverFunc = Observer.func;
+        var observer = new ObserverFunc(function (mutations) {
+            // The observerUpdate event should only be triggered
+            // once despite the number of mutations.  Additional
+            // triggers are redundant and are very costly
+            if (mutations.length === 1) {
+                swiper.emit('observerUpdate', mutations[0]);
+                return;
+            }
+            var observerUpdate = function observerUpdate() {
+                swiper.emit('observerUpdate', mutations[0]);
+            };
+            if (win.requestAnimationFrame) {
+                win.requestAnimationFrame(observerUpdate);
+            }
+            else {
+                win.setTimeout(observerUpdate, 0);
+            }
+        });
+        observer.observe(target, {
+            attributes: typeof options.attributes === 'undefined' ? true : options.attributes,
+            childList: typeof options.childList === 'undefined' ? true : options.childList,
+            characterData: typeof options.characterData === 'undefined' ? true : options.characterData,
+        });
+        swiper.observer.observers.push(observer);
+    },
+    init: function () {
+        var swiper = this;
+        if (!Support.observer || !swiper.params.observer)
+            return;
+        if (swiper.params.observeParents) {
+            var containerParents = swiper.$el.parents();
+            for (var i = 0; i < containerParents.length; i += 1) {
+                swiper.observer.attach(containerParents[i]);
+            }
+        }
+        // Observe container
+        swiper.observer.attach(swiper.$el[0], { childList: swiper.params.observeSlideChildren });
+        // Observe wrapper
+        swiper.observer.attach(swiper.$wrapperEl[0], { attributes: false });
+    },
+    destroy: function () {
+        var swiper = this;
+        swiper.observer.observers.forEach(function (observer) {
+            observer.disconnect();
+        });
+        swiper.observer.observers = [];
+    },
+};
+var Observer$1 = {
+    name: 'observer',
+    params: {
+        observer: false,
+        observeParents: false,
+        observeSlideChildren: false,
+    },
+    create: function () {
+        var swiper = this;
+        Utils.extend(swiper, {
+            observer: {
+                init: Observer.init.bind(swiper),
+                attach: Observer.attach.bind(swiper),
+                destroy: Observer.destroy.bind(swiper),
+                observers: [],
+            },
+        });
+    },
+    on: {
+        init: function () {
+            var swiper = this;
+            swiper.observer.init();
+        },
+        destroy: function () {
+            var swiper = this;
+            swiper.observer.destroy();
+        },
+    },
+};
+function isEventSupported() {
+    var eventName = 'onwheel';
+    var isSupported = eventName in doc;
+    if (!isSupported) {
+        var element = doc.createElement('div');
+        element.setAttribute(eventName, 'return;');
+        isSupported = typeof element[eventName] === 'function';
+    }
+    if (!isSupported
+        && doc.implementation
+        && doc.implementation.hasFeature
+        // always returns true in newer browsers as per the standard.
+        // @see http://dom.spec.whatwg.org/#dom-domimplementation-hasfeature
+        && doc.implementation.hasFeature('', '') !== true) {
+        // This is the only way to test support for the `wheel` event in IE9+.
+        isSupported = doc.implementation.hasFeature('Events.wheel', '3.0');
+    }
+    return isSupported;
+}
+var Mousewheel = {
+    lastScrollTime: Utils.now(),
+    event: (function getEvent() {
+        if (win.navigator.userAgent.indexOf('firefox') > -1)
+            return 'DOMMouseScroll';
+        return isEventSupported() ? 'wheel' : 'mousewheel';
+    }()),
+    normalize: function (e) {
+        // Reasonable defaults
+        var PIXEL_STEP = 10;
+        var LINE_HEIGHT = 40;
+        var PAGE_HEIGHT = 800;
+        var sX = 0;
+        var sY = 0; // spinX, spinY
+        var pX = 0;
+        var pY = 0; // pixelX, pixelY
+        // Legacy
+        if ('detail' in e) {
+            sY = e.detail;
+        }
+        if ('wheelDelta' in e) {
+            sY = -e.wheelDelta / 120;
+        }
+        if ('wheelDeltaY' in e) {
+            sY = -e.wheelDeltaY / 120;
+        }
+        if ('wheelDeltaX' in e) {
+            sX = -e.wheelDeltaX / 120;
+        }
+        // side scrolling on FF with DOMMouseScroll
+        if ('axis' in e && e.axis === e.HORIZONTAL_AXIS) {
+            sX = sY;
+            sY = 0;
+        }
+        pX = sX * PIXEL_STEP;
+        pY = sY * PIXEL_STEP;
+        if ('deltaY' in e) {
+            pY = e.deltaY;
+        }
+        if ('deltaX' in e) {
+            pX = e.deltaX;
+        }
+        if ((pX || pY) && e.deltaMode) {
+            if (e.deltaMode === 1) { // delta in LINE units
+                pX *= LINE_HEIGHT;
+                pY *= LINE_HEIGHT;
+            }
+            else { // delta in PAGE units
+                pX *= PAGE_HEIGHT;
+                pY *= PAGE_HEIGHT;
+            }
+        }
+        // Fall-back if spin cannot be determined
+        if (pX && !sX) {
+            sX = (pX < 1) ? -1 : 1;
+        }
+        if (pY && !sY) {
+            sY = (pY < 1) ? -1 : 1;
+        }
+        return {
+            spinX: sX,
+            spinY: sY,
+            pixelX: pX,
+            pixelY: pY,
+        };
+    },
+    handleMouseEnter: function () {
+        var swiper = this;
+        swiper.mouseEntered = true;
+    },
+    handleMouseLeave: function () {
+        var swiper = this;
+        swiper.mouseEntered = false;
+    },
+    handle: function (event) {
+        var e = event;
+        var swiper = this;
+        var params = swiper.params.mousewheel;
+        if (!swiper.mouseEntered && !params.releaseOnEdges)
+            return true;
+        if (e.originalEvent)
+            e = e.originalEvent; // jquery fix
+        var delta = 0;
+        var rtlFactor = swiper.rtlTranslate ? -1 : 1;
+        var data = Mousewheel.normalize(e);
+        if (params.forceToAxis) {
+            if (swiper.isHorizontal()) {
+                if (Math.abs(data.pixelX) > Math.abs(data.pixelY))
+                    delta = data.pixelX * rtlFactor;
+                else
+                    return true;
+            }
+            else if (Math.abs(data.pixelY) > Math.abs(data.pixelX))
+                delta = data.pixelY;
+            else
+                return true;
+        }
+        else {
+            delta = Math.abs(data.pixelX) > Math.abs(data.pixelY) ? -data.pixelX * rtlFactor : -data.pixelY;
+        }
+        if (delta === 0)
+            return true;
+        if (params.invert)
+            delta = -delta;
+        if (!swiper.params.freeMode) {
+            if (Utils.now() - swiper.mousewheel.lastScrollTime > 60) {
+                if (delta < 0) {
+                    if ((!swiper.isEnd || swiper.params.loop) && !swiper.animating) {
+                        swiper.slideNext();
+                        swiper.emit('scroll', e);
+                    }
+                    else if (params.releaseOnEdges)
+                        return true;
+                }
+                else if ((!swiper.isBeginning || swiper.params.loop) && !swiper.animating) {
+                    swiper.slidePrev();
+                    swiper.emit('scroll', e);
+                }
+                else if (params.releaseOnEdges)
+                    return true;
+            }
+            swiper.mousewheel.lastScrollTime = (new win.Date()).getTime();
+        }
+        else {
+            // Freemode or scrollContainer:
+            if (swiper.params.loop) {
+                swiper.loopFix();
+            }
+            var position = swiper.getTranslate() + (delta * params.sensitivity);
+            var wasBeginning = swiper.isBeginning;
+            var wasEnd = swiper.isEnd;
+            if (position >= swiper.minTranslate())
+                position = swiper.minTranslate();
+            if (position <= swiper.maxTranslate())
+                position = swiper.maxTranslate();
+            swiper.setTransition(0);
+            swiper.setTranslate(position);
+            swiper.updateProgress();
+            swiper.updateActiveIndex();
+            swiper.updateSlidesClasses();
+            if ((!wasBeginning && swiper.isBeginning) || (!wasEnd && swiper.isEnd)) {
+                swiper.updateSlidesClasses();
+            }
+            if (swiper.params.freeModeSticky) {
+                clearTimeout(swiper.mousewheel.timeout);
+                swiper.mousewheel.timeout = Utils.nextTick(function () {
+                    swiper.slideToClosest();
+                }, 300);
+            }
+            // Emit event
+            swiper.emit('scroll', e);
+            // Stop autoplay
+            if (swiper.params.autoplay && swiper.params.autoplayDisableOnInteraction)
+                swiper.autoplay.stop();
+            // Return page scroll on edge positions
+            if (position === swiper.minTranslate() || position === swiper.maxTranslate())
+                return true;
+        }
+        if (e.preventDefault)
+            e.preventDefault();
+        else
+            e.returnValue = false;
+        return false;
+    },
+    enable: function () {
+        var swiper = this;
+        if (!Mousewheel.event)
+            return false;
+        if (swiper.mousewheel.enabled)
+            return false;
+        var target = swiper.$el;
+        if (swiper.params.mousewheel.eventsTarged !== 'container') {
+            target = $(swiper.params.mousewheel.eventsTarged);
+        }
+        target.on('mouseenter', swiper.mousewheel.handleMouseEnter);
+        target.on('mouseleave', swiper.mousewheel.handleMouseLeave);
+        target.on(Mousewheel.event, swiper.mousewheel.handle);
+        swiper.mousewheel.enabled = true;
+        return true;
+    },
+    disable: function () {
+        var swiper = this;
+        if (!Mousewheel.event)
+            return false;
+        if (!swiper.mousewheel.enabled)
+            return false;
+        var target = swiper.$el;
+        if (swiper.params.mousewheel.eventsTarged !== 'container') {
+            target = $(swiper.params.mousewheel.eventsTarged);
+        }
+        target.off(Mousewheel.event, swiper.mousewheel.handle);
+        swiper.mousewheel.enabled = false;
+        return true;
+    },
+};
+var Pagination = {
+    update: function () {
+        // Render || Update Pagination bullets/items
+        var swiper = this;
+        var rtl = swiper.rtl;
+        var params = swiper.params.pagination;
+        if (!params.el || !swiper.pagination.el || !swiper.pagination.$el || swiper.pagination.$el.length === 0)
+            return;
+        var slidesLength = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides.length : swiper.slides.length;
+        var $el = swiper.pagination.$el;
+        // Current/Total
+        var current;
+        var total = swiper.params.loop ? Math.ceil((slidesLength - (swiper.loopedSlides * 2)) / swiper.params.slidesPerGroup) : swiper.snapGrid.length;
+        if (swiper.params.loop) {
+            current = Math.ceil((swiper.activeIndex - swiper.loopedSlides) / swiper.params.slidesPerGroup);
+            if (current > slidesLength - 1 - (swiper.loopedSlides * 2)) {
+                current -= (slidesLength - (swiper.loopedSlides * 2));
+            }
+            if (current > total - 1)
+                current -= total;
+            if (current < 0 && swiper.params.paginationType !== 'bullets')
+                current = total + current;
+        }
+        else if (typeof swiper.snapIndex !== 'undefined') {
+            current = swiper.snapIndex;
+        }
+        else {
+            current = swiper.activeIndex || 0;
+        }
+        // Types
+        if (params.type === 'bullets' && swiper.pagination.bullets && swiper.pagination.bullets.length > 0) {
+            var bullets = swiper.pagination.bullets;
+            var firstIndex_1;
+            var lastIndex_1;
+            var midIndex = void 0;
+            if (params.dynamicBullets) {
+                swiper.pagination.bulletSize = bullets.eq(0)[swiper.isHorizontal() ? 'outerWidth' : 'outerHeight'](true);
+                $el.css(swiper.isHorizontal() ? 'width' : 'height', swiper.pagination.bulletSize * (params.dynamicMainBullets + 4) + "px");
+                if (params.dynamicMainBullets > 1 && swiper.previousIndex !== undefined) {
+                    swiper.pagination.dynamicBulletIndex += (current - swiper.previousIndex);
+                    if (swiper.pagination.dynamicBulletIndex > (params.dynamicMainBullets - 1)) {
+                        swiper.pagination.dynamicBulletIndex = params.dynamicMainBullets - 1;
+                    }
+                    else if (swiper.pagination.dynamicBulletIndex < 0) {
+                        swiper.pagination.dynamicBulletIndex = 0;
+                    }
+                }
+                firstIndex_1 = current - swiper.pagination.dynamicBulletIndex;
+                lastIndex_1 = firstIndex_1 + (Math.min(bullets.length, params.dynamicMainBullets) - 1);
+                midIndex = (lastIndex_1 + firstIndex_1) / 2;
+            }
+            bullets.removeClass(params.bulletActiveClass + " " + params.bulletActiveClass + "-next " + params.bulletActiveClass + "-next-next " + params.bulletActiveClass + "-prev " + params.bulletActiveClass + "-prev-prev " + params.bulletActiveClass + "-main");
+            if ($el.length > 1) {
+                bullets.each(function (index, bullet) {
+                    var $bullet = $(bullet);
+                    var bulletIndex = $bullet.index();
+                    if (bulletIndex === current) {
+                        $bullet.addClass(params.bulletActiveClass);
+                    }
+                    if (params.dynamicBullets) {
+                        if (bulletIndex >= firstIndex_1 && bulletIndex <= lastIndex_1) {
+                            $bullet.addClass(params.bulletActiveClass + "-main");
+                        }
+                        if (bulletIndex === firstIndex_1) {
+                            $bullet
+                                .prev()
+                                .addClass(params.bulletActiveClass + "-prev")
+                                .prev()
+                                .addClass(params.bulletActiveClass + "-prev-prev");
+                        }
+                        if (bulletIndex === lastIndex_1) {
+                            $bullet
+                                .next()
+                                .addClass(params.bulletActiveClass + "-next")
+                                .next()
+                                .addClass(params.bulletActiveClass + "-next-next");
+                        }
+                    }
+                });
+            }
+            else {
+                var $bullet = bullets.eq(current);
+                $bullet.addClass(params.bulletActiveClass);
+                if (params.dynamicBullets) {
+                    var $firstDisplayedBullet = bullets.eq(firstIndex_1);
+                    var $lastDisplayedBullet = bullets.eq(lastIndex_1);
+                    for (var i = firstIndex_1; i <= lastIndex_1; i += 1) {
+                        bullets.eq(i).addClass(params.bulletActiveClass + "-main");
+                    }
+                    $firstDisplayedBullet
+                        .prev()
+                        .addClass(params.bulletActiveClass + "-prev")
+                        .prev()
+                        .addClass(params.bulletActiveClass + "-prev-prev");
+                    $lastDisplayedBullet
+                        .next()
+                        .addClass(params.bulletActiveClass + "-next")
+                        .next()
+                        .addClass(params.bulletActiveClass + "-next-next");
+                }
+            }
+            if (params.dynamicBullets) {
+                var dynamicBulletsLength = Math.min(bullets.length, params.dynamicMainBullets + 4);
+                var bulletsOffset = (((swiper.pagination.bulletSize * dynamicBulletsLength) - (swiper.pagination.bulletSize)) / 2) - (midIndex * swiper.pagination.bulletSize);
+                var offsetProp = rtl ? 'right' : 'left';
+                bullets.css(swiper.isHorizontal() ? offsetProp : 'top', bulletsOffset + "px");
+            }
+        }
+        if (params.type === 'fraction') {
+            $el.find("." + params.currentClass).text(params.formatFractionCurrent(current + 1));
+            $el.find("." + params.totalClass).text(params.formatFractionTotal(total));
+        }
+        if (params.type === 'progressbar') {
+            var progressbarDirection = void 0;
+            if (params.progressbarOpposite) {
+                progressbarDirection = swiper.isHorizontal() ? 'vertical' : 'horizontal';
+            }
+            else {
+                progressbarDirection = swiper.isHorizontal() ? 'horizontal' : 'vertical';
+            }
+            var scale = (current + 1) / total;
+            var scaleX = 1;
+            var scaleY = 1;
+            if (progressbarDirection === 'horizontal') {
+                scaleX = scale;
+            }
+            else {
+                scaleY = scale;
+            }
+            $el.find("." + params.progressbarFillClass).transform("translate3d(0,0,0) scaleX(" + scaleX + ") scaleY(" + scaleY + ")").transition(swiper.params.speed);
+        }
+        if (params.type === 'custom' && params.renderCustom) {
+            $el.html(params.renderCustom(swiper, current + 1, total));
+            swiper.emit('paginationRender', swiper, $el[0]);
+        }
+        else {
+            swiper.emit('paginationUpdate', swiper, $el[0]);
+        }
+        $el[swiper.params.watchOverflow && swiper.isLocked ? 'addClass' : 'removeClass'](params.lockClass);
+    },
+    render: function () {
+        // Render Container
+        var swiper = this;
+        var params = swiper.params.pagination;
+        if (!params.el || !swiper.pagination.el || !swiper.pagination.$el || swiper.pagination.$el.length === 0)
+            return;
+        var slidesLength = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides.length : swiper.slides.length;
+        var $el = swiper.pagination.$el;
+        var paginationHTML = '';
+        if (params.type === 'bullets') {
+            var numberOfBullets = swiper.params.loop ? Math.ceil((slidesLength - (swiper.loopedSlides * 2)) / swiper.params.slidesPerGroup) : swiper.snapGrid.length;
+            for (var i = 0; i < numberOfBullets; i += 1) {
+                if (params.renderBullet) {
+                    paginationHTML += params.renderBullet.call(swiper, i, params.bulletClass);
+                }
+                else {
+                    paginationHTML += "<" + params.bulletElement + " class=\"" + params.bulletClass + "\"></" + params.bulletElement + ">";
+                }
+            }
+            $el.html(paginationHTML);
+            swiper.pagination.bullets = $el.find("." + params.bulletClass);
+        }
+        if (params.type === 'fraction') {
+            if (params.renderFraction) {
+                paginationHTML = params.renderFraction.call(swiper, params.currentClass, params.totalClass);
+            }
+            else {
+                paginationHTML = "<span class=\"" + params.currentClass + "\"></span>"
+                    + ' / '
+                    + ("<span class=\"" + params.totalClass + "\"></span>");
+            }
+            $el.html(paginationHTML);
+        }
+        if (params.type === 'progressbar') {
+            if (params.renderProgressbar) {
+                paginationHTML = params.renderProgressbar.call(swiper, params.progressbarFillClass);
+            }
+            else {
+                paginationHTML = "<span class=\"" + params.progressbarFillClass + "\"></span>";
+            }
+            $el.html(paginationHTML);
+        }
+        if (params.type !== 'custom') {
+            swiper.emit('paginationRender', swiper.pagination.$el[0]);
+        }
+    },
+    init: function () {
+        var swiper = this;
+        var params = swiper.params.pagination;
+        if (!params.el)
+            return;
+        var $el = $(params.el);
+        if ($el.length === 0)
+            return;
+        if (swiper.params.uniqueNavElements
+            && typeof params.el === 'string'
+            && $el.length > 1
+            && swiper.$el.find(params.el).length === 1) {
+            $el = swiper.$el.find(params.el);
+        }
+        if (params.type === 'bullets' && params.clickable) {
+            $el.addClass(params.clickableClass);
+        }
+        $el.addClass(params.modifierClass + params.type);
+        if (params.type === 'bullets' && params.dynamicBullets) {
+            $el.addClass("" + params.modifierClass + params.type + "-dynamic");
+            swiper.pagination.dynamicBulletIndex = 0;
+            if (params.dynamicMainBullets < 1) {
+                params.dynamicMainBullets = 1;
+            }
+        }
+        if (params.type === 'progressbar' && params.progressbarOpposite) {
+            $el.addClass(params.progressbarOppositeClass);
+        }
+        if (params.clickable) {
+            $el.on('click', "." + params.bulletClass, function onClick(e) {
+                e.preventDefault();
+                var index = $(this).index() * swiper.params.slidesPerGroup;
+                if (swiper.params.loop)
+                    index += swiper.loopedSlides;
+                swiper.slideTo(index);
+            });
+        }
+        Utils.extend(swiper.pagination, {
+            $el: $el,
+            el: $el[0],
+        });
+    },
+    destroy: function () {
+        var swiper = this;
+        var params = swiper.params.pagination;
+        if (!params.el || !swiper.pagination.el || !swiper.pagination.$el || swiper.pagination.$el.length === 0)
+            return;
+        var $el = swiper.pagination.$el;
+        $el.removeClass(params.hiddenClass);
+        $el.removeClass(params.modifierClass + params.type);
+        if (swiper.pagination.bullets)
+            swiper.pagination.bullets.removeClass(params.bulletActiveClass);
+        if (params.clickable) {
+            $el.off('click', "." + params.bulletClass);
+        }
+    },
+};
+var pagination = {
+    name: 'pagination',
+    params: {
+        pagination: {
+            el: null,
+            bulletElement: 'span',
+            clickable: false,
+            hideOnClick: false,
+            renderBullet: null,
+            renderProgressbar: null,
+            renderFraction: null,
+            renderCustom: null,
+            progressbarOpposite: false,
+            type: 'bullets',
+            dynamicBullets: false,
+            dynamicMainBullets: 1,
+            formatFractionCurrent: function (number) { return number; },
+            formatFractionTotal: function (number) { return number; },
+            bulletClass: 'swiper-pagination-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active',
+            modifierClass: 'swiper-pagination-',
+            currentClass: 'swiper-pagination-current',
+            totalClass: 'swiper-pagination-total',
+            hiddenClass: 'swiper-pagination-hidden',
+            progressbarFillClass: 'swiper-pagination-progressbar-fill',
+            progressbarOppositeClass: 'swiper-pagination-progressbar-opposite',
+            clickableClass: 'swiper-pagination-clickable',
+            lockClass: 'swiper-pagination-lock',
+        },
+    },
+    create: function () {
+        var swiper = this;
+        Utils.extend(swiper, {
+            pagination: {
+                init: Pagination.init.bind(swiper),
+                render: Pagination.render.bind(swiper),
+                update: Pagination.update.bind(swiper),
+                destroy: Pagination.destroy.bind(swiper),
+                dynamicBulletIndex: 0,
+            },
+        });
+    },
+    on: {
+        init: function () {
+            var swiper = this;
+            swiper.pagination.init();
+            swiper.pagination.render();
+            swiper.pagination.update();
+        },
+        activeIndexChange: function () {
+            var swiper = this;
+            if (swiper.params.loop) {
+                swiper.pagination.update();
+            }
+            else if (typeof swiper.snapIndex === 'undefined') {
+                swiper.pagination.update();
+            }
+        },
+        snapIndexChange: function () {
+            var swiper = this;
+            if (!swiper.params.loop) {
+                swiper.pagination.update();
+            }
+        },
+        slidesLengthChange: function () {
+            var swiper = this;
+            if (swiper.params.loop) {
+                swiper.pagination.render();
+                swiper.pagination.update();
+            }
+        },
+        snapGridLengthChange: function () {
+            var swiper = this;
+            if (!swiper.params.loop) {
+                swiper.pagination.render();
+                swiper.pagination.update();
+            }
+        },
+        destroy: function () {
+            var swiper = this;
+            swiper.pagination.destroy();
+        },
+        click: function (e) {
+            var swiper = this;
+            if (swiper.params.pagination.el
+                && swiper.params.pagination.hideOnClick
+                && swiper.pagination.$el.length > 0
+                && !$(e.target).hasClass(swiper.params.pagination.bulletClass)) {
+                var isHidden = swiper.pagination.$el.hasClass(swiper.params.pagination.hiddenClass);
+                if (isHidden === true) {
+                    swiper.emit('paginationShow', swiper);
+                }
+                else {
+                    swiper.emit('paginationHide', swiper);
+                }
+                swiper.pagination.$el.toggleClass(swiper.params.pagination.hiddenClass);
+            }
+        },
+    },
+};
+var Scrollbar = {
+    setTranslate: function () {
+        var swiper = this;
+        if (!swiper.params.scrollbar.el || !swiper.scrollbar.el)
+            return;
+        var scrollbar = swiper.scrollbar, rtl = swiper.rtlTranslate, progress = swiper.progress;
+        var dragSize = scrollbar.dragSize, trackSize = scrollbar.trackSize, $dragEl = scrollbar.$dragEl, $el = scrollbar.$el;
+        var params = swiper.params.scrollbar;
+        var newSize = dragSize;
+        var newPos = (trackSize - dragSize) * progress;
+        if (rtl) {
+            newPos = -newPos;
+            if (newPos > 0) {
+                newSize = dragSize - newPos;
+                newPos = 0;
+            }
+            else if (-newPos + dragSize > trackSize) {
+                newSize = trackSize + newPos;
+            }
+        }
+        else if (newPos < 0) {
+            newSize = dragSize + newPos;
+            newPos = 0;
+        }
+        else if (newPos + dragSize > trackSize) {
+            newSize = trackSize - newPos;
+        }
+        if (swiper.isHorizontal()) {
+            if (Support.transforms3d) {
+                $dragEl.transform("translate3d(" + newPos + "px, 0, 0)");
+            }
+            else {
+                $dragEl.transform("translateX(" + newPos + "px)");
+            }
+            $dragEl[0].style.width = newSize + "px";
+        }
+        else {
+            if (Support.transforms3d) {
+                $dragEl.transform("translate3d(0px, " + newPos + "px, 0)");
+            }
+            else {
+                $dragEl.transform("translateY(" + newPos + "px)");
+            }
+            $dragEl[0].style.height = newSize + "px";
+        }
+        if (params.hide) {
+            clearTimeout(swiper.scrollbar.timeout);
+            $el[0].style.opacity = 1;
+            swiper.scrollbar.timeout = setTimeout(function () {
+                $el[0].style.opacity = 0;
+                $el.transition(400);
+            }, 1000);
+        }
+    },
+    setTransition: function (duration) {
+        var swiper = this;
+        if (!swiper.params.scrollbar.el || !swiper.scrollbar.el)
+            return;
+        swiper.scrollbar.$dragEl.transition(duration);
+    },
+    updateSize: function () {
+        var swiper = this;
+        if (!swiper.params.scrollbar.el || !swiper.scrollbar.el)
+            return;
+        var scrollbar = swiper.scrollbar;
+        var $dragEl = scrollbar.$dragEl, $el = scrollbar.$el;
+        $dragEl[0].style.width = '';
+        $dragEl[0].style.height = '';
+        var trackSize = swiper.isHorizontal() ? $el[0].offsetWidth : $el[0].offsetHeight;
+        var divider = swiper.size / swiper.virtualSize;
+        var moveDivider = divider * (trackSize / swiper.size);
+        var dragSize;
+        if (swiper.params.scrollbar.dragSize === 'auto') {
+            dragSize = trackSize * divider;
+        }
+        else {
+            dragSize = parseInt(swiper.params.scrollbar.dragSize, 10);
+        }
+        if (swiper.isHorizontal()) {
+            $dragEl[0].style.width = dragSize + "px";
+        }
+        else {
+            $dragEl[0].style.height = dragSize + "px";
+        }
+        if (divider >= 1) {
+            $el[0].style.display = 'none';
+        }
+        else {
+            $el[0].style.display = '';
+        }
+        if (swiper.params.scrollbar.hide) {
+            $el[0].style.opacity = 0;
+        }
+        Utils.extend(scrollbar, {
+            trackSize: trackSize,
+            divider: divider,
+            moveDivider: moveDivider,
+            dragSize: dragSize,
+        });
+        scrollbar.$el[swiper.params.watchOverflow && swiper.isLocked ? 'addClass' : 'removeClass'](swiper.params.scrollbar.lockClass);
+    },
+    getPointerPosition: function (e) {
+        var swiper = this;
+        if (swiper.isHorizontal()) {
+            return ((e.type === 'touchstart' || e.type === 'touchmove') ? e.targetTouches[0].pageX : e.pageX || e.clientX);
+        }
+        return ((e.type === 'touchstart' || e.type === 'touchmove') ? e.targetTouches[0].pageY : e.pageY || e.clientY);
+    },
+    setDragPosition: function (e) {
+        var swiper = this;
+        var scrollbar = swiper.scrollbar, rtl = swiper.rtlTranslate;
+        var $el = scrollbar.$el, dragSize = scrollbar.dragSize, trackSize = scrollbar.trackSize, dragStartPos = scrollbar.dragStartPos;
+        var positionRatio;
+        positionRatio = ((scrollbar.getPointerPosition(e)) - $el.offset()[swiper.isHorizontal() ? 'left' : 'top']
+            - (dragStartPos !== null ? dragStartPos : dragSize / 2)) / (trackSize - dragSize);
+        positionRatio = Math.max(Math.min(positionRatio, 1), 0);
+        if (rtl) {
+            positionRatio = 1 - positionRatio;
+        }
+        var position = swiper.minTranslate() + ((swiper.maxTranslate() - swiper.minTranslate()) * positionRatio);
+        swiper.updateProgress(position);
+        swiper.setTranslate(position);
+        swiper.updateActiveIndex();
+        swiper.updateSlidesClasses();
+    },
+    onDragStart: function (e) {
+        var swiper = this;
+        var params = swiper.params.scrollbar;
+        var scrollbar = swiper.scrollbar, $wrapperEl = swiper.$wrapperEl;
+        var $el = scrollbar.$el, $dragEl = scrollbar.$dragEl;
+        swiper.scrollbar.isTouched = true;
+        swiper.scrollbar.dragStartPos = (e.target === $dragEl[0] || e.target === $dragEl)
+            ? scrollbar.getPointerPosition(e) - e.target.getBoundingClientRect()[swiper.isHorizontal() ? 'left' : 'top'] : null;
+        e.preventDefault();
+        e.stopPropagation();
+        $wrapperEl.transition(100);
+        $dragEl.transition(100);
+        scrollbar.setDragPosition(e);
+        clearTimeout(swiper.scrollbar.dragTimeout);
+        $el.transition(0);
+        if (params.hide) {
+            $el.css('opacity', 1);
+        }
+        swiper.emit('scrollbarDragStart', e);
+    },
+    onDragMove: function (e) {
+        var swiper = this;
+        var scrollbar = swiper.scrollbar, $wrapperEl = swiper.$wrapperEl;
+        var $el = scrollbar.$el, $dragEl = scrollbar.$dragEl;
+        if (!swiper.scrollbar.isTouched)
+            return;
+        if (e.preventDefault)
+            e.preventDefault();
+        else
+            e.returnValue = false;
+        scrollbar.setDragPosition(e);
+        $wrapperEl.transition(0);
+        $el.transition(0);
+        $dragEl.transition(0);
+        swiper.emit('scrollbarDragMove', e);
+    },
+    onDragEnd: function (e) {
+        var swiper = this;
+        var params = swiper.params.scrollbar;
+        var scrollbar = swiper.scrollbar;
+        var $el = scrollbar.$el;
+        if (!swiper.scrollbar.isTouched)
+            return;
+        swiper.scrollbar.isTouched = false;
+        if (params.hide) {
+            clearTimeout(swiper.scrollbar.dragTimeout);
+            swiper.scrollbar.dragTimeout = Utils.nextTick(function () {
+                $el.css('opacity', 0);
+                $el.transition(400);
+            }, 1000);
+        }
+        swiper.emit('scrollbarDragEnd', e);
+        if (params.snapOnRelease) {
+            swiper.slideToClosest();
+        }
+    },
+    enableDraggable: function () {
+        var swiper = this;
+        if (!swiper.params.scrollbar.el)
+            return;
+        var scrollbar = swiper.scrollbar, touchEventsTouch = swiper.touchEventsTouch, touchEventsDesktop = swiper.touchEventsDesktop, params = swiper.params;
+        var $el = scrollbar.$el;
+        var target = $el[0];
+        var activeListener = Support.passiveListener && params.passiveListeners ? { passive: false, capture: false } : false;
+        var passiveListener = Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
+        if (!Support.touch) {
+            target.addEventListener(touchEventsDesktop.start, swiper.scrollbar.onDragStart, activeListener);
+            doc.addEventListener(touchEventsDesktop.move, swiper.scrollbar.onDragMove, activeListener);
+            doc.addEventListener(touchEventsDesktop.end, swiper.scrollbar.onDragEnd, passiveListener);
+        }
+        else {
+            target.addEventListener(touchEventsTouch.start, swiper.scrollbar.onDragStart, activeListener);
+            target.addEventListener(touchEventsTouch.move, swiper.scrollbar.onDragMove, activeListener);
+            target.addEventListener(touchEventsTouch.end, swiper.scrollbar.onDragEnd, passiveListener);
+        }
+    },
+    disableDraggable: function () {
+        var swiper = this;
+        if (!swiper.params.scrollbar.el)
+            return;
+        var scrollbar = swiper.scrollbar, touchEventsTouch = swiper.touchEventsTouch, touchEventsDesktop = swiper.touchEventsDesktop, params = swiper.params;
+        var $el = scrollbar.$el;
+        var target = $el[0];
+        var activeListener = Support.passiveListener && params.passiveListeners ? { passive: false, capture: false } : false;
+        var passiveListener = Support.passiveListener && params.passiveListeners ? { passive: true, capture: false } : false;
+        if (!Support.touch) {
+            target.removeEventListener(touchEventsDesktop.start, swiper.scrollbar.onDragStart, activeListener);
+            doc.removeEventListener(touchEventsDesktop.move, swiper.scrollbar.onDragMove, activeListener);
+            doc.removeEventListener(touchEventsDesktop.end, swiper.scrollbar.onDragEnd, passiveListener);
+        }
+        else {
+            target.removeEventListener(touchEventsTouch.start, swiper.scrollbar.onDragStart, activeListener);
+            target.removeEventListener(touchEventsTouch.move, swiper.scrollbar.onDragMove, activeListener);
+            target.removeEventListener(touchEventsTouch.end, swiper.scrollbar.onDragEnd, passiveListener);
+        }
+    },
+    init: function () {
+        var swiper = this;
+        if (!swiper.params.scrollbar.el)
+            return;
+        var scrollbar = swiper.scrollbar, $swiperEl = swiper.$el;
+        var params = swiper.params.scrollbar;
+        var $el = $(params.el);
+        if (swiper.params.uniqueNavElements && typeof params.el === 'string' && $el.length > 1 && $swiperEl.find(params.el).length === 1) {
+            $el = $swiperEl.find(params.el);
+        }
+        var $dragEl = $el.find("." + swiper.params.scrollbar.dragClass);
+        if ($dragEl.length === 0) {
+            $dragEl = $("<div class=\"" + swiper.params.scrollbar.dragClass + "\"></div>");
+            $el.append($dragEl);
+        }
+        Utils.extend(scrollbar, {
+            $el: $el,
+            el: $el[0],
+            $dragEl: $dragEl,
+            dragEl: $dragEl[0],
+        });
+        if (params.draggable) {
+            scrollbar.enableDraggable();
+        }
+    },
+    destroy: function () {
+        var swiper = this;
+        swiper.scrollbar.disableDraggable();
+    },
+};
+var scrollbar = {
+    name: 'scrollbar',
+    params: {
+        scrollbar: {
+            el: null,
+            dragSize: 'auto',
+            hide: false,
+            draggable: false,
+            snapOnRelease: true,
+            lockClass: 'swiper-scrollbar-lock',
+            dragClass: 'swiper-scrollbar-drag',
+        },
+    },
+    create: function () {
+        var swiper = this;
+        Utils.extend(swiper, {
+            scrollbar: {
+                init: Scrollbar.init.bind(swiper),
+                destroy: Scrollbar.destroy.bind(swiper),
+                updateSize: Scrollbar.updateSize.bind(swiper),
+                setTranslate: Scrollbar.setTranslate.bind(swiper),
+                setTransition: Scrollbar.setTransition.bind(swiper),
+                enableDraggable: Scrollbar.enableDraggable.bind(swiper),
+                disableDraggable: Scrollbar.disableDraggable.bind(swiper),
+                setDragPosition: Scrollbar.setDragPosition.bind(swiper),
+                getPointerPosition: Scrollbar.getPointerPosition.bind(swiper),
+                onDragStart: Scrollbar.onDragStart.bind(swiper),
+                onDragMove: Scrollbar.onDragMove.bind(swiper),
+                onDragEnd: Scrollbar.onDragEnd.bind(swiper),
+                isTouched: false,
+                timeout: null,
+                dragTimeout: null,
+            },
+        });
+    },
+    on: {
+        init: function () {
+            var swiper = this;
+            swiper.scrollbar.init();
+            swiper.scrollbar.updateSize();
+            swiper.scrollbar.setTranslate();
+        },
+        update: function () {
+            var swiper = this;
+            swiper.scrollbar.updateSize();
+        },
+        resize: function () {
+            var swiper = this;
+            swiper.scrollbar.updateSize();
+        },
+        observerUpdate: function () {
+            var swiper = this;
+            swiper.scrollbar.updateSize();
+        },
+        setTranslate: function () {
+            var swiper = this;
+            swiper.scrollbar.setTranslate();
+        },
+        setTransition: function (duration) {
+            var swiper = this;
+            swiper.scrollbar.setTransition(duration);
+        },
+        destroy: function () {
+            var swiper = this;
+            swiper.scrollbar.destroy();
+        },
+    },
+};
+var Zoom = {
+    // Calc Scale From Multi-touches
+    getDistanceBetweenTouches: function (e) {
+        if (e.targetTouches.length < 2)
+            return 1;
+        var x1 = e.targetTouches[0].pageX;
+        var y1 = e.targetTouches[0].pageY;
+        var x2 = e.targetTouches[1].pageX;
+        var y2 = e.targetTouches[1].pageY;
+        var distance = Math.sqrt((Math.pow((x2 - x1), 2)) + (Math.pow((y2 - y1), 2)));
+        return distance;
+    },
+    // Events
+    onGestureStart: function (e) {
+        var swiper = this;
+        var params = swiper.params.zoom;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture;
+        zoom.fakeGestureTouched = false;
+        zoom.fakeGestureMoved = false;
+        if (!Support.gestures) {
+            if (e.type !== 'touchstart' || (e.type === 'touchstart' && e.targetTouches.length < 2)) {
+                return;
+            }
+            zoom.fakeGestureTouched = true;
+            gesture.scaleStart = Zoom.getDistanceBetweenTouches(e);
+        }
+        if (!gesture.$slideEl || !gesture.$slideEl.length) {
+            gesture.$slideEl = $(e.target).closest('.swiper-slide');
+            if (gesture.$slideEl.length === 0)
+                gesture.$slideEl = swiper.slides.eq(swiper.activeIndex);
+            gesture.$imageEl = gesture.$slideEl.find('img, svg, canvas');
+            gesture.$imageWrapEl = gesture.$imageEl.parent("." + params.containerClass);
+            gesture.maxRatio = gesture.$imageWrapEl.attr('data-swiper-zoom') || params.maxRatio;
+            if (gesture.$imageWrapEl.length === 0) {
+                gesture.$imageEl = undefined;
+                return;
+            }
+        }
+        gesture.$imageEl.transition(0);
+        swiper.zoom.isScaling = true;
+    },
+    onGestureChange: function (e) {
+        var swiper = this;
+        var params = swiper.params.zoom;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture;
+        if (!Support.gestures) {
+            if (e.type !== 'touchmove' || (e.type === 'touchmove' && e.targetTouches.length < 2)) {
+                return;
+            }
+            zoom.fakeGestureMoved = true;
+            gesture.scaleMove = Zoom.getDistanceBetweenTouches(e);
+        }
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        if (Support.gestures) {
+            zoom.scale = e.scale * zoom.currentScale;
+        }
+        else {
+            zoom.scale = (gesture.scaleMove / gesture.scaleStart) * zoom.currentScale;
+        }
+        if (zoom.scale > gesture.maxRatio) {
+            zoom.scale = (gesture.maxRatio - 1) + (Math.pow(((zoom.scale - gesture.maxRatio) + 1), 0.5));
+        }
+        if (zoom.scale < params.minRatio) {
+            zoom.scale = (params.minRatio + 1) - (Math.pow(((params.minRatio - zoom.scale) + 1), 0.5));
+        }
+        gesture.$imageEl.transform("translate3d(0,0,0) scale(" + zoom.scale + ")");
+    },
+    onGestureEnd: function (e) {
+        var swiper = this;
+        var params = swiper.params.zoom;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture;
+        if (!Support.gestures) {
+            if (!zoom.fakeGestureTouched || !zoom.fakeGestureMoved) {
+                return;
+            }
+            if (e.type !== 'touchend' || (e.type === 'touchend' && e.changedTouches.length < 2 && !Device.android)) {
+                return;
+            }
+            zoom.fakeGestureTouched = false;
+            zoom.fakeGestureMoved = false;
+        }
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        zoom.scale = Math.max(Math.min(zoom.scale, gesture.maxRatio), params.minRatio);
+        gesture.$imageEl.transition(swiper.params.speed).transform("translate3d(0,0,0) scale(" + zoom.scale + ")");
+        zoom.currentScale = zoom.scale;
+        zoom.isScaling = false;
+        if (zoom.scale === 1)
+            gesture.$slideEl = undefined;
+    },
+    onTouchStart: function (e) {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture, image = zoom.image;
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        if (image.isTouched)
+            return;
+        if (Device.android)
+            e.preventDefault();
+        image.isTouched = true;
+        image.touchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
+        image.touchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+    },
+    onTouchMove: function (e) {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture, image = zoom.image, velocity = zoom.velocity;
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        swiper.allowClick = false;
+        if (!image.isTouched || !gesture.$slideEl)
+            return;
+        if (!image.isMoved) {
+            image.width = gesture.$imageEl[0].offsetWidth;
+            image.height = gesture.$imageEl[0].offsetHeight;
+            image.startX = Utils.getTranslate(gesture.$imageWrapEl[0], 'x') || 0;
+            image.startY = Utils.getTranslate(gesture.$imageWrapEl[0], 'y') || 0;
+            gesture.slideWidth = gesture.$slideEl[0].offsetWidth;
+            gesture.slideHeight = gesture.$slideEl[0].offsetHeight;
+            gesture.$imageWrapEl.transition(0);
+            if (swiper.rtl) {
+                image.startX = -image.startX;
+                image.startY = -image.startY;
+            }
+        }
+        // Define if we need image drag
+        var scaledWidth = image.width * zoom.scale;
+        var scaledHeight = image.height * zoom.scale;
+        if (scaledWidth < gesture.slideWidth && scaledHeight < gesture.slideHeight)
+            return;
+        image.minX = Math.min(((gesture.slideWidth / 2) - (scaledWidth / 2)), 0);
+        image.maxX = -image.minX;
+        image.minY = Math.min(((gesture.slideHeight / 2) - (scaledHeight / 2)), 0);
+        image.maxY = -image.minY;
+        image.touchesCurrent.x = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
+        image.touchesCurrent.y = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+        if (!image.isMoved && !zoom.isScaling) {
+            if (swiper.isHorizontal()
+                && ((Math.floor(image.minX) === Math.floor(image.startX) && image.touchesCurrent.x < image.touchesStart.x)
+                    || (Math.floor(image.maxX) === Math.floor(image.startX) && image.touchesCurrent.x > image.touchesStart.x))) {
+                image.isTouched = false;
+                return;
+            }
+            if (!swiper.isHorizontal()
+                && ((Math.floor(image.minY) === Math.floor(image.startY) && image.touchesCurrent.y < image.touchesStart.y)
+                    || (Math.floor(image.maxY) === Math.floor(image.startY) && image.touchesCurrent.y > image.touchesStart.y))) {
+                image.isTouched = false;
+                return;
+            }
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        image.isMoved = true;
+        image.currentX = (image.touchesCurrent.x - image.touchesStart.x) + image.startX;
+        image.currentY = (image.touchesCurrent.y - image.touchesStart.y) + image.startY;
+        if (image.currentX < image.minX) {
+            image.currentX = (image.minX + 1) - (Math.pow(((image.minX - image.currentX) + 1), 0.8));
+        }
+        if (image.currentX > image.maxX) {
+            image.currentX = (image.maxX - 1) + (Math.pow(((image.currentX - image.maxX) + 1), 0.8));
+        }
+        if (image.currentY < image.minY) {
+            image.currentY = (image.minY + 1) - (Math.pow(((image.minY - image.currentY) + 1), 0.8));
+        }
+        if (image.currentY > image.maxY) {
+            image.currentY = (image.maxY - 1) + (Math.pow(((image.currentY - image.maxY) + 1), 0.8));
+        }
+        // Velocity
+        if (!velocity.prevPositionX)
+            velocity.prevPositionX = image.touchesCurrent.x;
+        if (!velocity.prevPositionY)
+            velocity.prevPositionY = image.touchesCurrent.y;
+        if (!velocity.prevTime)
+            velocity.prevTime = Date.now();
+        velocity.x = (image.touchesCurrent.x - velocity.prevPositionX) / (Date.now() - velocity.prevTime) / 2;
+        velocity.y = (image.touchesCurrent.y - velocity.prevPositionY) / (Date.now() - velocity.prevTime) / 2;
+        if (Math.abs(image.touchesCurrent.x - velocity.prevPositionX) < 2)
+            velocity.x = 0;
+        if (Math.abs(image.touchesCurrent.y - velocity.prevPositionY) < 2)
+            velocity.y = 0;
+        velocity.prevPositionX = image.touchesCurrent.x;
+        velocity.prevPositionY = image.touchesCurrent.y;
+        velocity.prevTime = Date.now();
+        gesture.$imageWrapEl.transform("translate3d(" + image.currentX + "px, " + image.currentY + "px,0)");
+    },
+    onTouchEnd: function () {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture, image = zoom.image, velocity = zoom.velocity;
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        if (!image.isTouched || !image.isMoved) {
+            image.isTouched = false;
+            image.isMoved = false;
+            return;
+        }
+        image.isTouched = false;
+        image.isMoved = false;
+        var momentumDurationX = 300;
+        var momentumDurationY = 300;
+        var momentumDistanceX = velocity.x * momentumDurationX;
+        var newPositionX = image.currentX + momentumDistanceX;
+        var momentumDistanceY = velocity.y * momentumDurationY;
+        var newPositionY = image.currentY + momentumDistanceY;
+        // Fix duration
+        if (velocity.x !== 0)
+            momentumDurationX = Math.abs((newPositionX - image.currentX) / velocity.x);
+        if (velocity.y !== 0)
+            momentumDurationY = Math.abs((newPositionY - image.currentY) / velocity.y);
+        var momentumDuration = Math.max(momentumDurationX, momentumDurationY);
+        image.currentX = newPositionX;
+        image.currentY = newPositionY;
+        // Define if we need image drag
+        var scaledWidth = image.width * zoom.scale;
+        var scaledHeight = image.height * zoom.scale;
+        image.minX = Math.min(((gesture.slideWidth / 2) - (scaledWidth / 2)), 0);
+        image.maxX = -image.minX;
+        image.minY = Math.min(((gesture.slideHeight / 2) - (scaledHeight / 2)), 0);
+        image.maxY = -image.minY;
+        image.currentX = Math.max(Math.min(image.currentX, image.maxX), image.minX);
+        image.currentY = Math.max(Math.min(image.currentY, image.maxY), image.minY);
+        gesture.$imageWrapEl.transition(momentumDuration).transform("translate3d(" + image.currentX + "px, " + image.currentY + "px,0)");
+    },
+    onTransitionEnd: function () {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        var gesture = zoom.gesture;
+        if (gesture.$slideEl && swiper.previousIndex !== swiper.activeIndex) {
+            gesture.$imageEl.transform('translate3d(0,0,0) scale(1)');
+            gesture.$imageWrapEl.transform('translate3d(0,0,0)');
+            zoom.scale = 1;
+            zoom.currentScale = 1;
+            gesture.$slideEl = undefined;
+            gesture.$imageEl = undefined;
+            gesture.$imageWrapEl = undefined;
+        }
+    },
+    // Toggle Zoom
+    toggle: function (e) {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        if (zoom.scale && zoom.scale !== 1) {
+            // Zoom Out
+            zoom.out();
+        }
+        else {
+            // Zoom In
+            zoom.in(e);
+        }
+    },
+    in: function (e) {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        var params = swiper.params.zoom;
+        var gesture = zoom.gesture, image = zoom.image;
+        if (!gesture.$slideEl) {
+            gesture.$slideEl = swiper.clickedSlide ? $(swiper.clickedSlide) : swiper.slides.eq(swiper.activeIndex);
+            gesture.$imageEl = gesture.$slideEl.find('img, svg, canvas');
+            gesture.$imageWrapEl = gesture.$imageEl.parent("." + params.containerClass);
+        }
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        gesture.$slideEl.addClass("" + params.zoomedSlideClass);
+        var touchX;
+        var touchY;
+        var offsetX;
+        var offsetY;
+        var diffX;
+        var diffY;
+        var translateX;
+        var translateY;
+        var imageWidth;
+        var imageHeight;
+        var scaledWidth;
+        var scaledHeight;
+        var translateMinX;
+        var translateMinY;
+        var translateMaxX;
+        var translateMaxY;
+        var slideWidth;
+        var slideHeight;
+        if (typeof image.touchesStart.x === 'undefined' && e) {
+            touchX = e.type === 'touchend' ? e.changedTouches[0].pageX : e.pageX;
+            touchY = e.type === 'touchend' ? e.changedTouches[0].pageY : e.pageY;
+        }
+        else {
+            touchX = image.touchesStart.x;
+            touchY = image.touchesStart.y;
+        }
+        zoom.scale = gesture.$imageWrapEl.attr('data-swiper-zoom') || params.maxRatio;
+        zoom.currentScale = gesture.$imageWrapEl.attr('data-swiper-zoom') || params.maxRatio;
+        if (e) {
+            slideWidth = gesture.$slideEl[0].offsetWidth;
+            slideHeight = gesture.$slideEl[0].offsetHeight;
+            offsetX = gesture.$slideEl.offset().left;
+            offsetY = gesture.$slideEl.offset().top;
+            diffX = (offsetX + (slideWidth / 2)) - touchX;
+            diffY = (offsetY + (slideHeight / 2)) - touchY;
+            imageWidth = gesture.$imageEl[0].offsetWidth;
+            imageHeight = gesture.$imageEl[0].offsetHeight;
+            scaledWidth = imageWidth * zoom.scale;
+            scaledHeight = imageHeight * zoom.scale;
+            translateMinX = Math.min(((slideWidth / 2) - (scaledWidth / 2)), 0);
+            translateMinY = Math.min(((slideHeight / 2) - (scaledHeight / 2)), 0);
+            translateMaxX = -translateMinX;
+            translateMaxY = -translateMinY;
+            translateX = diffX * zoom.scale;
+            translateY = diffY * zoom.scale;
+            if (translateX < translateMinX) {
+                translateX = translateMinX;
+            }
+            if (translateX > translateMaxX) {
+                translateX = translateMaxX;
+            }
+            if (translateY < translateMinY) {
+                translateY = translateMinY;
+            }
+            if (translateY > translateMaxY) {
+                translateY = translateMaxY;
+            }
+        }
+        else {
+            translateX = 0;
+            translateY = 0;
+        }
+        gesture.$imageWrapEl.transition(300).transform("translate3d(" + translateX + "px, " + translateY + "px,0)");
+        gesture.$imageEl.transition(300).transform("translate3d(0,0,0) scale(" + zoom.scale + ")");
+    },
+    out: function () {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        var params = swiper.params.zoom;
+        var gesture = zoom.gesture;
+        if (!gesture.$slideEl) {
+            gesture.$slideEl = swiper.clickedSlide ? $(swiper.clickedSlide) : swiper.slides.eq(swiper.activeIndex);
+            gesture.$imageEl = gesture.$slideEl.find('img, svg, canvas');
+            gesture.$imageWrapEl = gesture.$imageEl.parent("." + params.containerClass);
+        }
+        if (!gesture.$imageEl || gesture.$imageEl.length === 0)
+            return;
+        zoom.scale = 1;
+        zoom.currentScale = 1;
+        gesture.$imageWrapEl.transition(300).transform('translate3d(0,0,0)');
+        gesture.$imageEl.transition(300).transform('translate3d(0,0,0) scale(1)');
+        gesture.$slideEl.removeClass("" + params.zoomedSlideClass);
+        gesture.$slideEl = undefined;
+    },
+    // Attach/Detach Events
+    enable: function () {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        if (zoom.enabled)
+            return;
+        zoom.enabled = true;
+        var passiveListener = swiper.touchEvents.start === 'touchstart' && Support.passiveListener && swiper.params.passiveListeners ? { passive: true, capture: false } : false;
+        // Scale image
+        if (Support.gestures) {
+            swiper.$wrapperEl.on('gesturestart', '.swiper-slide', zoom.onGestureStart, passiveListener);
+            swiper.$wrapperEl.on('gesturechange', '.swiper-slide', zoom.onGestureChange, passiveListener);
+            swiper.$wrapperEl.on('gestureend', '.swiper-slide', zoom.onGestureEnd, passiveListener);
+        }
+        else if (swiper.touchEvents.start === 'touchstart') {
+            swiper.$wrapperEl.on(swiper.touchEvents.start, '.swiper-slide', zoom.onGestureStart, passiveListener);
+            swiper.$wrapperEl.on(swiper.touchEvents.move, '.swiper-slide', zoom.onGestureChange, passiveListener);
+            swiper.$wrapperEl.on(swiper.touchEvents.end, '.swiper-slide', zoom.onGestureEnd, passiveListener);
+        }
+        // Move image
+        swiper.$wrapperEl.on(swiper.touchEvents.move, "." + swiper.params.zoom.containerClass, zoom.onTouchMove);
+    },
+    disable: function () {
+        var swiper = this;
+        var zoom = swiper.zoom;
+        if (!zoom.enabled)
+            return;
+        swiper.zoom.enabled = false;
+        var passiveListener = swiper.touchEvents.start === 'touchstart' && Support.passiveListener && swiper.params.passiveListeners ? { passive: true, capture: false } : false;
+        // Scale image
+        if (Support.gestures) {
+            swiper.$wrapperEl.off('gesturestart', '.swiper-slide', zoom.onGestureStart, passiveListener);
+            swiper.$wrapperEl.off('gesturechange', '.swiper-slide', zoom.onGestureChange, passiveListener);
+            swiper.$wrapperEl.off('gestureend', '.swiper-slide', zoom.onGestureEnd, passiveListener);
+        }
+        else if (swiper.touchEvents.start === 'touchstart') {
+            swiper.$wrapperEl.off(swiper.touchEvents.start, '.swiper-slide', zoom.onGestureStart, passiveListener);
+            swiper.$wrapperEl.off(swiper.touchEvents.move, '.swiper-slide', zoom.onGestureChange, passiveListener);
+            swiper.$wrapperEl.off(swiper.touchEvents.end, '.swiper-slide', zoom.onGestureEnd, passiveListener);
+        }
+        // Move image
+        swiper.$wrapperEl.off(swiper.touchEvents.move, "." + swiper.params.zoom.containerClass, zoom.onTouchMove);
+    },
+};
+var zoom = {
+    name: 'zoom',
+    params: {
+        zoom: {
+            enabled: false,
+            maxRatio: 3,
+            minRatio: 1,
+            toggle: true,
+            containerClass: 'swiper-zoom-container',
+            zoomedSlideClass: 'swiper-slide-zoomed',
+        },
+    },
+    create: function () {
+        var swiper = this;
+        var zoom = {
+            enabled: false,
+            scale: 1,
+            currentScale: 1,
+            isScaling: false,
+            gesture: {
+                $slideEl: undefined,
+                slideWidth: undefined,
+                slideHeight: undefined,
+                $imageEl: undefined,
+                $imageWrapEl: undefined,
+                maxRatio: 3,
+            },
+            image: {
+                isTouched: undefined,
+                isMoved: undefined,
+                currentX: undefined,
+                currentY: undefined,
+                minX: undefined,
+                minY: undefined,
+                maxX: undefined,
+                maxY: undefined,
+                width: undefined,
+                height: undefined,
+                startX: undefined,
+                startY: undefined,
+                touchesStart: {},
+                touchesCurrent: {},
+            },
+            velocity: {
+                x: undefined,
+                y: undefined,
+                prevPositionX: undefined,
+                prevPositionY: undefined,
+                prevTime: undefined,
+            },
+        };
+        ('onGestureStart onGestureChange onGestureEnd onTouchStart onTouchMove onTouchEnd onTransitionEnd toggle enable disable in out').split(' ').forEach(function (methodName) {
+            zoom[methodName] = Zoom[methodName].bind(swiper);
+        });
+        Utils.extend(swiper, {
+            zoom: zoom,
+        });
+        var scale = 1;
+        Object.defineProperty(swiper.zoom, 'scale', {
+            get: function () {
+                return scale;
+            },
+            set: function (value) {
+                if (scale !== value) {
+                    var imageEl = swiper.zoom.gesture.$imageEl ? swiper.zoom.gesture.$imageEl[0] : undefined;
+                    var slideEl = swiper.zoom.gesture.$slideEl ? swiper.zoom.gesture.$slideEl[0] : undefined;
+                    swiper.emit('zoomChange', value, imageEl, slideEl);
+                }
+                scale = value;
+            },
+        });
+    },
+    on: {
+        init: function () {
+            var swiper = this;
+            if (swiper.params.zoom.enabled) {
+                swiper.zoom.enable();
+            }
+        },
+        destroy: function () {
+            var swiper = this;
+            swiper.zoom.disable();
+        },
+        touchStart: function (e) {
+            var swiper = this;
+            if (!swiper.zoom.enabled)
+                return;
+            swiper.zoom.onTouchStart(e);
+        },
+        touchEnd: function (e) {
+            var swiper = this;
+            if (!swiper.zoom.enabled)
+                return;
+            swiper.zoom.onTouchEnd(e);
+        },
+        doubleTap: function (e) {
+            var swiper = this;
+            if (swiper.params.zoom.enabled && swiper.zoom.enabled && swiper.params.zoom.toggle) {
+                swiper.zoom.toggle(e);
+            }
+        },
+        transitionEnd: function () {
+            var swiper = this;
+            if (swiper.zoom.enabled && swiper.params.zoom.enabled) {
+                swiper.zoom.onTransitionEnd();
+            }
+        },
+    },
+};
+/* eslint no-underscore-dangle: "off" */
+var Autoplay = {
+    run: function () {
+        var swiper = this;
+        var $activeSlideEl = swiper.slides.eq(swiper.activeIndex);
+        var delay = swiper.params.autoplay.delay;
+        if ($activeSlideEl.attr('data-swiper-autoplay')) {
+            delay = $activeSlideEl.attr('data-swiper-autoplay') || swiper.params.autoplay.delay;
+        }
+        clearTimeout(swiper.autoplay.timeout);
+        swiper.autoplay.timeout = Utils.nextTick(function () {
+            if (swiper.params.autoplay.reverseDirection) {
+                if (swiper.params.loop) {
+                    swiper.loopFix();
+                    swiper.slidePrev(swiper.params.speed, true, true);
+                    swiper.emit('autoplay');
+                }
+                else if (!swiper.isBeginning) {
+                    swiper.slidePrev(swiper.params.speed, true, true);
+                    swiper.emit('autoplay');
+                }
+                else if (!swiper.params.autoplay.stopOnLastSlide) {
+                    swiper.slideTo(swiper.slides.length - 1, swiper.params.speed, true, true);
+                    swiper.emit('autoplay');
+                }
+                else {
+                    swiper.autoplay.stop();
+                }
+            }
+            else if (swiper.params.loop) {
+                swiper.loopFix();
+                swiper.slideNext(swiper.params.speed, true, true);
+                swiper.emit('autoplay');
+            }
+            else if (!swiper.isEnd) {
+                swiper.slideNext(swiper.params.speed, true, true);
+                swiper.emit('autoplay');
+            }
+            else if (!swiper.params.autoplay.stopOnLastSlide) {
+                swiper.slideTo(0, swiper.params.speed, true, true);
+                swiper.emit('autoplay');
+            }
+            else {
+                swiper.autoplay.stop();
+            }
+        }, delay);
+    },
+    start: function () {
+        var swiper = this;
+        if (typeof swiper.autoplay.timeout !== 'undefined')
+            return false;
+        if (swiper.autoplay.running)
+            return false;
+        swiper.autoplay.running = true;
+        swiper.emit('autoplayStart');
+        swiper.autoplay.run();
+        return true;
+    },
+    stop: function () {
+        var swiper = this;
+        if (!swiper.autoplay.running)
+            return false;
+        if (typeof swiper.autoplay.timeout === 'undefined')
+            return false;
+        if (swiper.autoplay.timeout) {
+            clearTimeout(swiper.autoplay.timeout);
+            swiper.autoplay.timeout = undefined;
+        }
+        swiper.autoplay.running = false;
+        swiper.emit('autoplayStop');
+        return true;
+    },
+    pause: function (speed) {
+        var swiper = this;
+        if (!swiper.autoplay.running)
+            return;
+        if (swiper.autoplay.paused)
+            return;
+        if (swiper.autoplay.timeout)
+            clearTimeout(swiper.autoplay.timeout);
+        swiper.autoplay.paused = true;
+        if (speed === 0 || !swiper.params.autoplay.waitForTransition) {
+            swiper.autoplay.paused = false;
+            swiper.autoplay.run();
+        }
+        else {
+            swiper.$wrapperEl[0].addEventListener('transitionend', swiper.autoplay.onTransitionEnd);
+            swiper.$wrapperEl[0].addEventListener('webkitTransitionEnd', swiper.autoplay.onTransitionEnd);
+        }
+    },
+};
+var autoplay = {
+    name: 'autoplay',
+    params: {
+        autoplay: {
+            enabled: false,
+            delay: 3000,
+            waitForTransition: true,
+            disableOnInteraction: true,
+            stopOnLastSlide: false,
+            reverseDirection: false,
+        },
+    },
+    create: function () {
+        var swiper = this;
+        Utils.extend(swiper, {
+            autoplay: {
+                running: false,
+                paused: false,
+                run: Autoplay.run.bind(swiper),
+                start: Autoplay.start.bind(swiper),
+                stop: Autoplay.stop.bind(swiper),
+                pause: Autoplay.pause.bind(swiper),
+                onTransitionEnd: function (e) {
+                    if (!swiper || swiper.destroyed || !swiper.$wrapperEl)
+                        return;
+                    if (e.target !== this)
+                        return;
+                    swiper.$wrapperEl[0].removeEventListener('transitionend', swiper.autoplay.onTransitionEnd);
+                    swiper.$wrapperEl[0].removeEventListener('webkitTransitionEnd', swiper.autoplay.onTransitionEnd);
+                    swiper.autoplay.paused = false;
+                    if (!swiper.autoplay.running) {
+                        swiper.autoplay.stop();
+                    }
+                    else {
+                        swiper.autoplay.run();
+                    }
+                },
+            },
+        });
+    },
+    on: {
+        init: function () {
+            var swiper = this;
+            if (swiper.params.autoplay.enabled) {
+                swiper.autoplay.start();
+            }
+        },
+        beforeTransitionStart: function (speed, internal) {
+            var swiper = this;
+            if (swiper.autoplay.running) {
+                if (internal || !swiper.params.autoplay.disableOnInteraction) {
+                    swiper.autoplay.pause(speed);
+                }
+                else {
+                    swiper.autoplay.stop();
+                }
+            }
+        },
+        sliderFirstMove: function () {
+            var swiper = this;
+            if (swiper.autoplay.running) {
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    swiper.autoplay.stop();
+                }
+                else {
+                    swiper.autoplay.pause();
+                }
+            }
+        },
+        destroy: function () {
+            var swiper = this;
+            if (swiper.autoplay.running) {
+                swiper.autoplay.stop();
+            }
+        },
+    },
+};
+// Swiper Class
+var components = [
+    Device$1,
+    Support$1,
+    Browser$1,
+    Resize,
+    Observer$1,
+];
+if (typeof Swiper.use === 'undefined') {
+    Swiper.use = Swiper.Class.use;
+    Swiper.installModule = Swiper.Class.installModule;
+}
+Swiper.use(components);
+Swiper.use([pagination, scrollbar, autoplay, zoom]);
 
 
 

@@ -321,6 +321,12 @@ ion-toolbar {
     width: 0%;
     height: 0%;
   }
+
+  #nav {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
 }
 
 @media only screen and (min-width: 1330px) {
@@ -330,11 +336,39 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #mobile {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  ion-toolbar {
+    --background: rgb(255, 255, 255);
+    width: 100%;
+    #icon {
+      color: rgb(131, 131, 131);
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: rgb(131, 131, 131);
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+
+    .icon1 {
+      margin: 0 20vw;
+    }
+  }
+
   .web_view {
     min-width: 800px;
     max-width: 1000px;
     margin: auto;
-    border: 1px solid green;
+
+    height: fit-content;
 
     .cards {
       display: flex;
@@ -343,18 +377,18 @@ ion-toolbar {
       overflow-y: auto;
       height: 70vh;
       overflow-y: auto;
-      // border: 1px solid green;
+
       .card {
         display: flex;
         flex-flow: row;
         box-shadow: 5px 5px 10px rgb(211, 211, 211);
         margin: 5px;
-        min-height: 20vh;
+        min-height: 8vw;
         .image {
-          width: 15vw;
-          min-height: 15vh;
-          max-height: 19vh;
-          margin: 10px;
+          width: 7vw;
+          min-height: 7vw;
+          max-height: 8vw;
+          margin: 5px;
           img {
             width: 100%;
             height: 100%;
@@ -415,8 +449,8 @@ ion-toolbar {
         font-family: "Poppins";
         box-shadow: none !important;
         img {
-          width: 30vw;
-          height: 30vw;
+          width: 10vw;
+          height: 10vw;
         }
         p {
           color: #c6cbdb;
@@ -424,32 +458,25 @@ ion-toolbar {
       }
     }
 
-    .total {
-      position: fixed;
-      bottom: 0;
-      background: white;
-      display: flex;
-      flex-flow: column;
-
-      .carttotal {
+    .bottom {
+      position: absolute;
+      bottom: 20vh;
+      width: 60vw;
+      .baskettotal {
+        width: 85%;
         display: flex;
         flex-flow: row;
-        // width: 60vw;
-        padding: 5px;
         justify-content: space-between;
-        p {
-          font-family: "Raleway";
-        }
       }
 
       .btn {
+        position: absolute;
+        width: 87%;
+        background: rgb(0, 0, 39);
         ion-button {
-          color: white;
-          background: rgb(0, 0, 59);
-          padding: 5px;
-          font-family: "Raleway";
-          letter-spacing: 2px;
-          // width: 60vw;
+          text-align: center;
+          width: 100%;
+          object-fit: cover;
         }
       }
     }
@@ -480,12 +507,12 @@ ion-toolbar {
         flex-flow: row;
         box-shadow: 5px 5px 10px rgb(211, 211, 211);
         margin: 5px;
-        min-height: 20vh;
+        min-height: 8vw;
         .image {
-          width: 15vw;
-          min-height: 15vh;
-          max-height: 19vh;
-          margin: 10px;
+          width: 7vw;
+          min-height: 7vw;
+          max-height: 8vw;
+          margin: 5px;
           img {
             width: 100%;
             height: 100%;
@@ -562,7 +589,7 @@ ion-toolbar {
       background: white;
       display: flex;
       flex-flow: column;
-
+      width: 60vw;
       .carttotal {
         display: flex;
         flex-flow: row;
@@ -583,6 +610,69 @@ ion-toolbar {
           letter-spacing: 2px;
           width: 60vw;
         }
+      }
+    }
+  }
+}
+
+ion-footer {
+  text-align: center;
+  .footer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 100vw;
+    background: rgb(0, 0, 32);
+    color: white;
+
+    .heading {
+      width: 10vw;
+      height: 5vw;
+      margin: 15px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .app_store {
+      width: 10vw;
+      height: 5vw;
+    }
+
+    .contact_details {
+      font-size: 13px;
+      text-align: left;
+      p {
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .info {
+      font-size: 13px;
+      text-align: left;
+      p {
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .connect {
+      display: flex;
+      flex-flow: column;
+      ion-button {
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 20px;
       }
     }
   }

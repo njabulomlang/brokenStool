@@ -572,8 +572,9 @@
 
 
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px;">
-    <ion-fab-button (click)="busket()" #cart color="transparent">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px; align-items: center; color: grey">
+    Add to Basket
+    <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 25px;"> 
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
   </ion-fab>

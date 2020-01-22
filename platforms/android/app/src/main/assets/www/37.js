@@ -44,18 +44,18 @@ var App = /** @class */ (function () {
             rIC(function () {
                 var isHybrid = Object(_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["i"])(window, 'hybrid');
                 if (!_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('_testing')) {
-                    __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ./tap-click-ca00ce7f.js */ "./node_modules/@ionic/core/dist/esm-es5/tap-click-ca00ce7f.js")).then(function (module) { return module.startTapClick(_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"]); });
+                    __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./tap-click-ca00ce7f.js */ "./node_modules/@ionic/core/dist/esm-es5/tap-click-ca00ce7f.js")).then(function (module) { return module.startTapClick(_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"]); });
                 }
                 if (_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('statusTap', isHybrid)) {
-                    __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./status-tap-a0df8284.js */ "./node_modules/@ionic/core/dist/esm-es5/status-tap-a0df8284.js")).then(function (module) { return module.startStatusTap(); });
+                    __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ./status-tap-a0df8284.js */ "./node_modules/@ionic/core/dist/esm-es5/status-tap-a0df8284.js")).then(function (module) { return module.startStatusTap(); });
                 }
                 if (_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('inputShims', needInputShims())) {
-                    __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./input-shims-a4fc53ac.js */ "./node_modules/@ionic/core/dist/esm-es5/input-shims-a4fc53ac.js")).then(function (module) { return module.startInputShims(_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"]); });
+                    __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./input-shims-a4fc53ac.js */ "./node_modules/@ionic/core/dist/esm-es5/input-shims-a4fc53ac.js")).then(function (module) { return module.startInputShims(_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"]); });
                 }
                 if (_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('hardwareBackButton', isHybrid)) {
-                    __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./hardware-back-button-5afe3cb0.js */ "./node_modules/@ionic/core/dist/esm-es5/hardware-back-button-5afe3cb0.js")).then(function (module) { return module.startHardwareBackButton(); });
+                    __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./hardware-back-button-5afe3cb0.js */ "./node_modules/@ionic/core/dist/esm-es5/hardware-back-button-5afe3cb0.js")).then(function (module) { return module.startHardwareBackButton(); });
                 }
-                __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./focus-visible-70713a0c.js */ "./node_modules/@ionic/core/dist/esm-es5/focus-visible-70713a0c.js")).then(function (module) { return module.startFocusVisible(); });
+                __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./focus-visible-70713a0c.js */ "./node_modules/@ionic/core/dist/esm-es5/focus-visible-70713a0c.js")).then(function (module) { return module.startFocusVisible(); });
             });
         }
     };

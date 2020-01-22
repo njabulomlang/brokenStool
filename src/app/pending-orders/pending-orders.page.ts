@@ -38,7 +38,7 @@ export class PendingOrdersPage implements OnInit {
     // console.log('My order id ',id, 'data ', data )
   }
   getAllOrders() {
-    this.dbOrder.limit(2).where('userID', '==', this.uid).onSnapshot((res) => {
+    this.dbOrder.where('userID', '==', this.uid).onSnapshot((res) => {
       this.myOrder = [];
       setTimeout(() => {
         this.loaderAnimate = false;

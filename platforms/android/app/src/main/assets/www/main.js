@@ -713,18 +713,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: function () { return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
+    { path: 'home', loadChildren: function () { return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
     {
         path: 'profile',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 22).then(__webpack_require__.bind(null, /*! ./profile/profile.module */ "./src/app/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(3), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ./profile/profile.module */ "./src/app/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
     },
     {
         path: 'basket',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./basket/basket.module */ "./src/app/basket/basket.module.ts")).then(function (m) { return m.BasketPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./basket/basket.module */ "./src/app/basket/basket.module.ts")).then(function (m) { return m.BasketPageModule; }); }
     },
     {
         path: 'payment/:docname',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ./payment/payment.module */ "./src/app/payment/payment.module.ts")).then(function (m) { return m.PaymentPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ./payment/payment.module */ "./src/app/payment/payment.module.ts")).then(function (m) { return m.PaymentPageModule; }); }
     },
     {
         path: 'wishlist',
@@ -744,18 +744,18 @@ var routes = [
     },
     {
         path: 'list/:key',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(function (m) { return m.ListPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(function (m) { return m.ListPageModule; }); }
     },
     {
         path: 'categories/:data',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./categories/categories.module */ "./src/app/categories/categories.module.ts")).then(function (m) { return m.CategoriesPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ./categories/categories.module */ "./src/app/categories/categories.module.ts")).then(function (m) { return m.CategoriesPageModule; }); }
     },
     {
         path: 'kwanga-apparel',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ./kwanga-apparel/kwanga-apparel.module */ "./src/app/kwanga-apparel/kwanga-apparel.module.ts")).then(function (m) { return m.KwangaApparelPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! ./kwanga-apparel/kwanga-apparel.module */ "./src/app/kwanga-apparel/kwanga-apparel.module.ts")).then(function (m) { return m.KwangaApparelPageModule; }); }
     },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'home', loadChildren: function () { return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
+    { path: 'home', loadChildren: function () { return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
     {
         path: 'login',
         loadChildren: function () { return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); }
@@ -766,7 +766,7 @@ var routes = [
     },
     {
         path: 'create-account',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./create-account/create-account.module */ "./src/app/create-account/create-account.module.ts")).then(function (m) { return m.CreateAccountPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ./create-account/create-account.module */ "./src/app/create-account/create-account.module.ts")).then(function (m) { return m.CreateAccountPageModule; }); }
     },
     /*  {
        path: 'cart-modal',
@@ -774,19 +774,19 @@ var routes = [
      }, */
     {
         path: 'view/:view_id',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./view/view.module */ "./src/app/view/view.module.ts")).then(function (m) { return m.ViewPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./view/view.module */ "./src/app/view/view.module.ts")).then(function (m) { return m.ViewPageModule; }); }
     },
     {
         path: 'pending-orders',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ./pending-orders/pending-orders.module */ "./src/app/pending-orders/pending-orders.module.ts")).then(function (m) { return m.PendingOrdersPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./pending-orders/pending-orders.module */ "./src/app/pending-orders/pending-orders.module.ts")).then(function (m) { return m.PendingOrdersPageModule; }); }
     },
     {
         path: 'order-history',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! ./order-history/order-history.module */ "./src/app/order-history/order-history.module.ts")).then(function (m) { return m.OrderHistoryPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./order-history/order-history.module */ "./src/app/order-history/order-history.module.ts")).then(function (m) { return m.OrderHistoryPageModule; }); }
     },
     {
         path: 'track-orders/:id',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./track-orders/track-orders.module */ "./src/app/track-orders/track-orders.module.ts")).then(function (m) { return m.TrackOrdersPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./track-orders/track-orders.module */ "./src/app/track-orders/track-orders.module.ts")).then(function (m) { return m.TrackOrdersPageModule; }); }
     },
     {
         path: 'receipts/:id',
@@ -798,7 +798,7 @@ var routes = [
     },
     {
         path: 'info',
-        loadChildren: function () { return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ./info/info.module */ "./src/app/info/info.module.ts")).then(function (m) { return m.InfoPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ./info/info.module */ "./src/app/info/info.module.ts")).then(function (m) { return m.InfoPageModule; }); }
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -852,6 +852,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _firebaseConfig__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firebaseConfig */ "./src/app/firebaseConfig.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/notifications.service */ "./src/app/services/notifications.service.ts");
 
 
 
@@ -861,26 +862,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//import { NotificationsService } from './services/notifications.service';
+
 //import { File, File } from '@ionic-native/file/ngx';
 var AppComponent = /** @class */ (function () {
     // dbUser = firebase.firestore().collection("userProfile");
-    function AppComponent(platform, screenOrientation, splashScreen, statusBar, router) {
+    function AppComponent(platform, screenOrientation, splashScreen, statusBar, router, notificationsService) {
         this.platform = platform;
         this.screenOrientation = screenOrientation;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
+        this.notificationsService = notificationsService;
+        firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
         //this.initializeApp();
     }
-    AppComponent.prototype.ngOnInit = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                firebase__WEBPACK_IMPORTED_MODULE_6__["initializeApp"](_firebaseConfig__WEBPACK_IMPORTED_MODULE_7__["firebaseConfig"]);
-                return [2 /*return*/];
-            });
-        });
-    };
+    // async ngOnInit() {
+    //   firebase.initializeApp(environment.firebase);
+    //   //firebase.initializeApp(firebaseConfig);
+    //  // await this.notificationsService.init();
+    // }
     AppComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         this.platform.ready().then(function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
@@ -888,7 +888,7 @@ var AppComponent = /** @class */ (function () {
                 this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
                 this.statusBar.backgroundColorByHexString('#000324');
                 this.statusBar.styleLightContent();
-                // await this.notificationsService.requestPermission();
+                //await this.notificationsService.requestPermission();
                 this.checkUser();
                 return [2 /*return*/];
             });
@@ -915,7 +915,8 @@ var AppComponent = /** @class */ (function () {
         { type: _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] },
+        { type: _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__["NotificationsService"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -926,7 +927,7 @@ var AppComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]])
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"], _services_notifications_service__WEBPACK_IMPORTED_MODULE_9__["NotificationsService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -1514,6 +1515,116 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/notifications.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/notifications.service.ts ***!
+  \***************************************************/
+/*! exports provided: NotificationsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsService", function() { return NotificationsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/app */ "./node_modules/@firebase/app/dist/index.cjs.js");
+/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_firebase_app__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _firebase_messaging__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @firebase/messaging */ "./node_modules/@firebase/messaging/dist/index.esm.js");
+
+
+
+
+//import { firebaseConfig } from 'src/environments/environment';
+//import { firebaseConfig } from 'src/environments/environment';
+//import { environment } from '../environments/environment'
+var NotificationsService = /** @class */ (function () {
+    function NotificationsService() {
+    }
+    NotificationsService.prototype.init = function () {
+        return new Promise(function (resolve, reject) {
+            navigator.serviceWorker.ready.then(function (registration) {
+                // Don't crash an error if messaging not supported
+                if (!_firebase_app__WEBPACK_IMPORTED_MODULE_2__["firebase"].messaging.isSupported()) {
+                    resolve();
+                    return;
+                }
+                var messaging = _firebase_app__WEBPACK_IMPORTED_MODULE_2__["firebase"].messaging();
+                // Register the Service Worker
+                messaging.useServiceWorker(registration);
+                // Initialize your VAPI key
+                // messaging.usePublicVapidKey(
+                //        config.vapidKey
+                // );
+                // Optional and not covered in the article
+                // Listen to messages when your app is in the foreground
+                messaging.onMessage(function (payload) {
+                    console.log(payload);
+                });
+                // Optional and not covered in the article
+                // Handle token refresh
+                messaging.onTokenRefresh(function () {
+                    messaging.getToken().then(function (refreshedToken) {
+                        console.log(refreshedToken);
+                    }).catch(function (err) {
+                        console.error(err);
+                    });
+                });
+                resolve();
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NotificationsService.prototype.requestPermission = function () {
+        var _this = this;
+        return new Promise(function (resolve) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var messaging, token, err_1;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!Notification) {
+                            resolve();
+                            return [2 /*return*/];
+                        }
+                        if (!_firebase_app__WEBPACK_IMPORTED_MODULE_2__["firebase"].messaging.isSupported()) {
+                            resolve();
+                            return [2 /*return*/];
+                        }
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 4, , 5]);
+                        messaging = _firebase_app__WEBPACK_IMPORTED_MODULE_2__["firebase"].messaging();
+                        return [4 /*yield*/, messaging.requestPermission()];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, messaging.getToken()];
+                    case 3:
+                        token = _a.sent();
+                        console.log('User notifications token:', token);
+                        return [3 /*break*/, 5];
+                    case 4:
+                        err_1 = _a.sent();
+                        console.log('error', err_1);
+                        return [3 /*break*/, 5];
+                    case 5:
+                        resolve();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    NotificationsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], NotificationsService);
+    return NotificationsService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -1530,7 +1641,18 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 
 var environment = {
-    production: false
+    production: false,
+    firebase: {
+        apiKey: "AIzaSyDOthq8-7ipC4rQYCh_R8_oC9fL0F0Oz5g",
+        authDomain: "fir-crud-11c1f.firebaseapp.com",
+        databaseURL: "https://fir-crud-11c1f.firebaseio.com",
+        projectId: "fir-crud-11c1f",
+        storageBucket: "fir-crud-11c1f.appspot.com",
+        messagingSenderId: "704929489176",
+        appId: "1:704929489176:web:334d209d3679ed5d8a3e6d",
+        measurementId: "G-BYBG8HFL6W",
+        vapidKey: "BFHowuxjiDtFztqFIeWXG7LAj3zWBBknnNI3BfpMRf3otq5LgxydLaZBWzTgPgv0bXHegMsgxbACeA3fE6WsEUI"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file
