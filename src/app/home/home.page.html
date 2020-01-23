@@ -5,7 +5,7 @@
     <ion-buttons slot="end">
       <div class="icon1">
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" >
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
           Terms and Privacy Policy
         </ion-button>
 
@@ -486,7 +486,7 @@
 
         <div class="right">
           <div class="trash_icon" (click)="delete(w.id)">
-            <ion-icon slot="start" name="trash" ></ion-icon>
+            <ion-icon slot="start" name="trash"></ion-icon>
           </div>
 
           <div class="add_to_basket">
@@ -497,36 +497,13 @@
         </div>
       </div>
 
-    <!--   <div class="items">
-        <div class="left">
-          <div class="img">
-            <img src="../../assets/yellow.jpg" alt="">
-          </div>
 
-          <div class="item_details">
-            <p> Yellow Tracksuits </p>
-            <p>R400.00</p>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="trash_icon">
-            <ion-icon slot="start" name="trash" ></ion-icon>
-          </div>
-
-          <div class="add_to_basket">
-            <ion-button (click)="onClick()" color="transparent">
-              Add<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
-        </div>
-      </div> -->
     </div>
 
 
   </div>
 
-  <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}" >
+  <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}">
 
     <div class="heading">
       <p>Basket ({{myWishlist.length}})</p>
@@ -537,29 +514,37 @@
 
 
     <div class="wishlist_items">
-      <div class="items" >
+      <div class="items">
         <div class="left">
           <div class="img">
             <img src="../../assets/yellow.jpg" alt="">
           </div>
 
           <div class="item_details">
-            <p> Tracks </p>
-            <p>R400</p>
+            <p> <b>Tracks &nbsp;  R400</b><br>
+              size: xs &nbsp; color: Yellow <br>
+              jan 23, 2020</p>
+
+              <p>
+                <ion-icon slot="start" name="remove-circle-outline"(click)="onClick()"></ion-icon>
+                 2 <ion-icon slot="end" name="add-circle-outline" (click)="onClick()"></ion-icon>
+              </p>
+
           </div>
         </div>
 
         <div class="right">
           <div class="trash_icon" (click)="delete(w.id)">
-            <ion-icon slot="start" name="trash" ></ion-icon>
+            <ion-icon slot="start" name="trash"></ion-icon>
           </div>
 
-          <div class="add_to_basket">
-            <ion-button color="transparent">
-              Done<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
+          
         </div>
+      </div>
+      <div class="add_to_basket">
+        <ion-button color="transparent">
+          <span>Done</span><ion-icon slot="end" name="basket"></ion-icon>
+        </ion-button>
       </div>
 
     </div>
@@ -573,7 +558,7 @@
         <!-- <h1>Dankie Jesu</h1> -->
         <img src="../../assets/NoPath - Copy.svg" alt="">
       </div>
-  
+
       <div class="contact_details">
         <h1>CONTACT US</h1>
         <p>(011) 954-7865</p>
@@ -583,11 +568,11 @@
           SOWETO <br>
           1805</p>
       </div>
-  
+
       <div class="info">
         <h1>INFO</h1>
         <ion-button href="https://broken-stool.firebaseapp.com/home/FAQs" color="transparent">
-         <span>FAQs</span> 
+          <span>FAQs</span>
         </ion-button>
         <ion-button href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" color="transparent">
           <span>Terms and Privacy Policy</span>
@@ -599,10 +584,10 @@
           <span>Payment Process</span>
         </ion-button>
         <ion-button href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
-        <span>Developers</span>
+          <span>Developers</span>
         </ion-button>
       </div>
-  
+
       <div class="connect">
         <h1>CONNECT</h1>
         <ion-button href="https://www.facebook.com/brokenstoolbrand/" color="transparent">
@@ -610,11 +595,11 @@
           Facebook
         </ion-button>
         <ion-button href="https://www.instagram.com/dankiejesu/" color="transparent">
-          <ion-icon slot="start" name="logo-instagram" ></ion-icon>
+          <ion-icon slot="start" name="logo-instagram"></ion-icon>
           Instagram
         </ion-button>
       </div>
-  
+
       <div class="app_store">
         <img src="../../assets/android.png" alt="App Store">
       </div>
@@ -623,18 +608,20 @@
 
 
 
-  <ion-fab id="web" vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px; align-items: center; color: grey">
+  <ion-fab id="web" vertical="bottom" horizontal="end" slot="fixed" size="small"
+    style=" margin: 20px; align-items: center; color: grey" *ngIf="!viewCart">
     My Basket
-    <ion-fab-button (click)="gotocart()" #cart color="transparent" style=" margin: 0 0 0 25px;"> 
+    <ion-fab-button (click)="gotocart()" #cart color="transparent" style=" margin: 0 0 0 25px;">
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
-  </ion-fab> 
+  </ion-fab>
 
-  <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px; align-items: center; color: grey">
-    <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 25px;"> 
+  <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small"
+    style=" margin: 20px; align-items: center; color: grey">
+    <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 25px;">
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
-  </ion-fab> 
+  </ion-fab>
 
 
 

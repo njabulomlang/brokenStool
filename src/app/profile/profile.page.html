@@ -237,7 +237,7 @@
           </div>
         </div>
 
-        <div class="basket" (click)="basket()">
+        <div class="basket" (click)="gotocart()">
           <div class="backdrop"></div>
           <img src="https://i.pinimg.com/564x/91/2b/7c/912b7c0f897888c8ae8d24dce149da34.jpg">
 
@@ -333,7 +333,7 @@
     <div class="heading">
       <p>Basket ({{myWishlist.length}})</p>
 
-      <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
+      <ion-icon slot="icon-only" name="close" (click)="gotocart()"></ion-icon>
 
     </div>
 
@@ -346,8 +346,15 @@
           </div>
 
           <div class="item_details">
-            <p> Tracks </p>
-            <p>R400</p>
+            <p> <b>Tracks &nbsp;  R400</b><br>
+              size: xs &nbsp; color: Yellow <br>
+              jan 23, 2020</p>
+
+              <p>
+                <ion-icon slot="start" name="remove-circle-outline"(click)="onClick()"></ion-icon>
+                 2 <ion-icon slot="end" name="add-circle-outline" (click)="onClick()"></ion-icon>
+              </p>
+
           </div>
         </div>
 
@@ -356,12 +363,14 @@
             <ion-icon slot="start" name="trash" ></ion-icon>
           </div>
 
-          <div class="add_to_basket">
-            <ion-button color="transparent">
-              Done<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
+         
         </div>
+      
+      </div>
+      <div class="add_to_basket">
+        <ion-button color="transparent">
+          <span>Done</span><ion-icon slot="end" name="basket"></ion-icon>
+        </ion-button>
       </div>
 
     </div>
