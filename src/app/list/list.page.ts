@@ -89,6 +89,7 @@ export class ListPage implements OnInit {
     this.getSales(this.sortSale);
   }
   viewitem(id, data) {
+   // console.log('Data ', data, 'Brand ',this.col, 'Category ', this.collectionName);
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,

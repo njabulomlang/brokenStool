@@ -43,7 +43,8 @@ export class ViewPage implements OnInit {
       this.col = params["col"];
       this.category = params["category"];
     })
-
+    console.log('My info ',this.doc_data,'Col ',this.col, 'Category ',this.category);
+    
   }
 
   ngOnInit() {
