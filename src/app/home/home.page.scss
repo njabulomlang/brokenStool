@@ -667,7 +667,7 @@ ion-toolbar {
   .viewreviews {
     position: absolute;
     z-index: 150;
-    background: white;
+    background: rgb(201, 201, 201);
     width: 20vw;
     height: 94%;
     top: 50px;
@@ -1302,7 +1302,7 @@ ion-toolbar {
   .viewreviews {
     position: absolute;
     z-index: 150;
-    background: rgb(230, 230, 230);
+    background: rgb(201, 201, 201);
     width: 20vw;
     height: 94%;
     top: 50px;
@@ -1495,10 +1495,22 @@ ion-footer {
     .info {
       font-size: 13px;
       text-align: left;
-      p {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      ion-button {
         font-size: 13px;
-        cursor: pointer;
+        color: white;
+        border: 1px solid white;
+       padding-left: 0 !important;
+        span{
+          text-align:left;
+          width:100%;
+          left: 0px !important;
+        }
+        
       }
+  
 
       h1 {
         font-size: 20px;

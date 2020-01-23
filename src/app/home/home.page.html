@@ -545,20 +545,30 @@
   
       <div class="info">
         <h1>INFO</h1>
-        <p>FAQs</p>
-        <p>Terms and Conditions</p>
-        <p>Disclaimer</p>
-        <p>Payment Process</p>
-        <p>Developers</p>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/FAQs" color="transparent">
+         <span>FAQs</span> 
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" color="transparent">
+          <span>Terms and Privacy Policy</span>
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/Disclaimer" color="transparent">
+          <span>Disclaimer</span>
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/Payment%20Process" color="transparent">
+          <span>Payment Process</span>
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        <span>Developers</span>
+        </ion-button>
       </div>
   
       <div class="connect">
         <h1>CONNECT</h1>
-        <ion-button (click)="onClick()" color="transparent">
+        <ion-button href="https://www.facebook.com/brokenstoolbrand/" color="transparent">
           <ion-icon slot="start" name="logo-facebook"></ion-icon>
           Facebook
         </ion-button>
-        <ion-button (click)="onClick()" color="transparent">
+        <ion-button href="https://www.instagram.com/dankiejesu/" color="transparent">
           <ion-icon slot="start" name="logo-instagram" ></ion-icon>
           Instagram
         </ion-button>
@@ -573,11 +583,11 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small" style=" margin: 20px; align-items: center; color: grey">
-    Add to Basket
+    My Basket
     <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 25px;"> 
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> 
 
 
 
