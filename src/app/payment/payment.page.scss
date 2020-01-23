@@ -201,7 +201,6 @@
       margin: 0 20vw;
     }
   }
-
   .web_view {
     min-width: 800px;
     max-width: 1200px;
@@ -226,7 +225,7 @@
       margin-bottom: 25vh;
       height: 60vh;
     }
-
+  
     .cards {
       display: flex;
       flex-flow: column;
@@ -272,7 +271,7 @@
           color: rgb(158, 158, 158);
         }
       }
-
+  
       .order_fee {
         width: 50vw;
         display: flex;
@@ -284,7 +283,7 @@
           color: rgb(158, 158, 158);
         }
       }
-
+  
       .total {
         width: 60vw;
         display: flex;
@@ -296,7 +295,7 @@
         }
       }
     }
-
+  
     .account_info {
       width: 60vw;
       display: flex;
@@ -311,7 +310,7 @@
       background: rgb(0, 0, 46);
       color: white;
     }
-
+  
     .order_type {
       display: flex;
       flex-flow: row;
@@ -319,7 +318,7 @@
         color: grey;
         height: 3vw;
       }
-
+  
       .delivery {
         width: 20vw;
         align-items: center;
@@ -352,7 +351,7 @@
       }
       .collection {
         width: 20vw;
-
+  
         overflow: hidden;
         background: rgb(184, 184, 184);
         ion-button {
@@ -387,7 +386,9 @@
       }
     }
   }
+  
 }
+
 
 @media only screen and (max-width: 1024px) {
   .web_view {
@@ -408,195 +409,17 @@
     height: 0%;
   }
 
-  // .pagename{
-  //   display: none;
-  //   width: 0%;
-  //   height: 0%;
-  // }
 }
 
 @media only screen and (min-width: 800px) {
   .container {
-    display: none;
-    width: 0 !important;
-    height: 0 !important;
+    width: 600px;
+    height: 700px;
   }
-
-  .web_view {
-    min-width: 800px;
-    max-width: 1200px;
-    margin: auto;
-
-    align-items: center;
-
-    .depositto {
-      margin: 20px;
-    }
-    .list {
-      // position: absolute;
-      // left: 15%;
-      // right: 15%;
-      width: 60vw;
-      //height: 30vh;
-      overflow-y: auto;
-      table {
-        font-family: "Poppins";
-        width: 90%;
-        padding: 20px;
-        margin: 20px 50px;
-
-        td {
-          // border: 1px solid #dddddd;
-          text-align: center;
-          padding: 8px;
-          font-family: "Raleway";
-        }
-
-        td:nth-child(1) {
-          text-align: left;
-        }
-
-        td:nth-child(2) {
-          text-align: right;
-        }
-
-        th {
-          border-top: 0.5px solid black;
-          text-align: center;
-          padding: 8px;
-        }
-
-        th:nth-child(1) {
-          text-align: left;
-        }
-
-        th:nth-child(2) {
-          text-align: right;
-        }
-      }
-    }
-
-    .text {
-      position: absolute;
-      top: 60%;
-      margin: 15px;
-      font-family: "Poppins";
-    }
-
-    .btnz {
-      position: fixed;
-      bottom: 5px;
-      width: 65vw;
-      text-align: center;
-      ion-button {
-        width: 95%;
-        color: white;
-        background: rgb(0, 0, 36);
-        font-family: "Poppins";
-        letter-spacing: 2px;
-      }
-    }
-    .details {
-      position: absolute;
-      top: 20%;
-      width: 100%;
-
-      .title {
-        font-family: "Poppins";
-        font-weight: lighter;
-        margin: 10px;
-      }
-    }
-
-    .pagename {
-      margin: 10px;
-      font-family: "Poppins";
-    }
-
-    .btn {
-      // position: absolute;
-      // top: 15%;
-      // width: 100%;
-      display: flex;
-      flex-flow: row;
-      justify-content: space-evenly;
-      .line {
-        width: 20vw;
-        height: 1.5px;
-        background: grey;
-      }
-      ion-button {
-        color: black;
-        width: 30vw;
-      }
-    }
-
-    .delivery {
-      width: 20vw;
-      height: 100%;
-      align-items: center;
-      overflow: hidden;
-      background: rgb(184, 184, 184);
-      ion-button {
-        border-bottom: 2px solid black;
-      }
-    }
-    .delivery-inactive {
-      width: 50%;
-      height: 100%;
-      align-items: center;
-      overflow: hidden;
-      opacity: 0.5;
-      background: rgb(250, 250, 250);
-      ion-button {
-        width: 100%;
-        height: 100%;
-        border-radius: 30px;
-        font-family: "Poiret One";
-        font-weight: bold;
-        letter-spacing: 3px;
-        background: #bf967e;
-        color: white;
-        border: none;
-      }
-    }
-    .collection {
-      width: 50%;
-      height: 100%;
-      overflow: hidden;
-      background: rgb(184, 184, 184);
-      ion-button {
-        width: 100%;
-        height: 100%;
-        border-radius: 30px;
-        font-family: "Poiret One";
-        font-weight: bold;
-        letter-spacing: 3px;
-        background: #bf967e;
-        color: white;
-        border: none;
-      }
-    }
-    .collection-inactive {
-      background: rgb(250, 250, 250);
-      width: 50%;
-      height: 100%;
-      overflow: hidden;
-      opacity: 0.5;
-      ion-button {
-        width: 100%;
-        height: 100%;
-        border-radius: 30px;
-        font-family: "Poiret One";
-        font-weight: bold;
-        letter-spacing: 3px;
-        background: #bf967e;
-        color: white;
-        border: none;
-      }
-    }
-  }
+  
 }
+
+
 
 ion-footer {
   position: absolute;

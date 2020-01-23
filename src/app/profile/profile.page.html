@@ -31,7 +31,7 @@
       Logout<ion-icon slot="start" name="exit" id="icon"></ion-icon>
     </ion-buttons>
 
-    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
+    <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
 
 </ion-header>
@@ -323,6 +323,47 @@
           </div>
         </div>
       </div> -->
+    </div>
+
+
+  </div>
+
+  <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}" >
+
+    <div class="heading">
+      <p>Basket ({{myWishlist.length}})</p>
+
+      <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
+
+    </div>
+
+
+    <div class="wishlist_items">
+      <div class="items" >
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Tracks </p>
+            <p>R400</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon" (click)="delete(w.id)">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button color="transparent">
+              Done<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
 

@@ -34,6 +34,8 @@ export class ViewPage implements OnInit {
   category: string = '';
   starRating = document.getElementsByClassName('ionic4-star-rating')
   boolCheck: boolean = false;
+  viewCart= false;
+  viewBackdrop = false;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2) {
@@ -65,6 +67,12 @@ export class ViewPage implements OnInit {
     })
    
   }
+
+  gotocart(){
+    this.viewCart = !this.viewCart
+    this.viewBackdrop = !this.viewBackdrop
+  }
+  
   onBoolChenged(c, i) {
     console.log('Boolean val ', c, 'index ', i);
   }

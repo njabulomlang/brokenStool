@@ -31,6 +31,7 @@ export class ProfilePage implements OnInit {
   myWish:number;
   myWishlist=[];
   viewReviews = false;
+  viewCart= false;
   viewBackdrop = false;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
@@ -116,6 +117,11 @@ export class ProfilePage implements OnInit {
 
   reviewed() {
      this.viewReviews = !this.viewReviews
+     this.viewBackdrop = !this.viewBackdrop
+   }
+
+   gotocart(){
+     this.viewCart = !this.viewCart
      this.viewBackdrop = !this.viewBackdrop
    }
   

@@ -31,6 +31,8 @@ export class HomePage implements OnInit {
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   viewReviews = false;
+  viewBackdrop = false;
+  viewCart= false;
   myWishlist = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     // public notificationService: NotificationsService
@@ -49,6 +51,16 @@ export class HomePage implements OnInit {
       this.splashScreen.hide();
     }, 4000);
   }
+
+  gotocart(){
+    this.viewCart = !this.viewCart
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
+  getBackdrop(){
+    this.viewBackdrop = !this.viewBackdrop
+  }
+  
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((doc) => {
       if (doc.exists) {
@@ -85,6 +97,7 @@ export class HomePage implements OnInit {
   }
   reviewed() {
     this.viewReviews = !this.viewReviews
+    this.viewBackdrop = !this.viewBackdrop
   }
 
   profile() {
