@@ -13,13 +13,13 @@ export class AuthService {
   user;
   uid;
   confirm;
-  myuid="";
+  myuid = "";
   constructor(public alertController: AlertController,
-    public router: Router) { 
-      
-    }
+    public router: Router) {
 
-registerUser(email, password) {
+  }
+
+  registerUser(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then((res) => {
       console.log("User details", res.user);
       this.uid = res.user.uid
@@ -31,7 +31,7 @@ registerUser(email, password) {
       //this.myuid = res.user.uid;
     })
   }
-  
+
   loginPhone() {
     firebase.auth().settings.appVerificationDisabledForTesting = true;
     var phone = "+27769020059";
@@ -46,31 +46,26 @@ registerUser(email, password) {
     firebase.auth().signOut();
   }
   loggedIn() {
-    console.log("User details ", this.uid);
-
-    /*     this.dbUser.doc(this.uid).onSnapshot((res)=>{
-          console.log("User details", res.data());
-          this.user = res.data().uid
-        }) */
+    //console.log("User details ", this.uid);
     return this.user
   }
   requestLogin(number, appVerifier) {
     // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      // .then(()=> {
-        return firebase.auth().signInWithPhoneNumber('+27'+number, appVerifier).then(confirmationResult => {
-          window.confirmationResult = confirmationResult;
-          this.confirm = confirmationResult;
-          let result = { success: true, result: confirmationResult }
-          this.alert();
-          return result
-        }).catch((error) => {
-          let result = { success: false, result: error }
-          return result
-        });
+    // .then(()=> {
+    return firebase.auth().signInWithPhoneNumber('+27' + number, appVerifier).then(confirmationResult => {
+      window.confirmationResult = confirmationResult;
+      this.confirm = confirmationResult;
+      let result = { success: true, result: confirmationResult }
+      this.alert();
+      return result
+    }).catch((error) => {
+      let result = { success: false, result: error }
+      return result
+    });
 
-   
+
   }
-  async alert(){
+  async alert() {
     const alert = await this.alertController.create({
       header: 'Verfification code',
       subHeader: 'Enter verification code',
@@ -87,21 +82,21 @@ registerUser(email, password) {
         handler: (result) => {
           console.log(result.code);
           return this.confirm.confirm(result.code).then((result) => {
-            var user = result.user; 
+            var user = result.user;
             console.log(user);
             this.myuid = result.user.uid;
             return user
-          }).catch( (error) => {
+          }).catch((error) => {
             console.log(error);
             return error
           });
         }
       }]
     });
-​
+
     await alert.present();
   }
-  
+
   login(code, confirmationResult) {
     return confirmationResult.confirm(code).then((result) => {
       var user = result.user; console.log(user);
