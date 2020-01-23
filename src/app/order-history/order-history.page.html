@@ -55,34 +55,111 @@
 
   <div class="web_view">
 
-    <p id="lorem" style="font-size: 30px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">Order History</p>
-    <p id="lorem" style="font-size: 15px; width: 100%; text-align: center; color: rgb(196, 196, 196);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+    <p id="lorem" style="font-size: 30px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">
+      Order History</p>
+    <p id="lorem" style="font-size: 15px; width: 100%; text-align: center; color: rgb(196, 196, 196);">Lorem ipsum dolor
+      sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam</p>
 
     <div class="cards" *ngFor="let o of orderHistory;">
 
       <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
-        <div class="image">
-          <img src="{{b.picture}}" alt="">
+        <div class="left">
+          <div class="itemz">
+            <div class="image">
+              <img src="{{b.picture}}" alt="">
+            </div>
+
+            <div class="right">
+              <div class="itemname">
+                <p>{{b.product_name}}</p>
+              </div>
+
+              <div class="costs">
+                <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="right">
-          <div class="itemname">
-            <p>{{b.product_name}}</p>
+
+        <div id="receipt">
+          <div class="receipt">
+            <h1>Your Receipt</h1>
           </div>
 
-          <div class="costs">
-            <p><i>QTY. {{b.quantity}}</i> <br> {{b.cost | currency:'R'}} <br> </p>
+          <div class="name">
+            <p>Zanele Nkosi <br> <span>0813003232</span></p>
+          </div>
+
+          <div class="ref">
+            <p>REF NO: <span><i>JHL1235</i></span></p>
+          </div>
+
+          <div class="cart">
+            <p><b>Date of Puchase: </b><i>12 Jan 2010</i> <br>
+              <b>Items</b></p>
+          </div>
+
+          <div class="table">
+            <div class="list">
+              <p style="width: 70vw">T-shirt</p>
+              <p>4</p>
+            </div>
+
+
+            <br>
+            <div class="total">
+              <p style="width: 70vw"><b>Total Quantity</b></p>
+              <p>4</p>
+            </div>
+          </div>
+
+          <div class="grand">
+            <p>Grand Total</p>
+            <p>R500</p>
+          </div>
+          <div class="ordertype">
+            <p>Order Type</p>
+            <p id="del"><i>Delivery</i></p>
+          </div>
+
+          <div class="address">
+            <p>Order Address <br> <span>246 Orlando East</span></p>
+
+          </div>
+
+          <div class="status">
+            <p>Order Status: &nbsp; <i>Delivered</i></p>
+          </div>
+
+          <div class="timeline">
+            <p>Order Received - 20 January 2020<br>
+              Order Processed - 21 January 2020<br>
+              Order Ready for Delivery - 23 January 2020 <br>
+              Order Delivered - 25 January 2020</p>
+          </div>
+          <!-- </div> -->
+
+          <div class="buttonz">
+            <ion-button (click)=" downloadPDF(order.reciept)" color="transparent">
+              DOWNLOAD COPY
+            </ion-button>
           </div>
         </div>
-      
+
       </div>
 
       <p style="font-style: italic;">{{o.timestamp | date:"medium"}}</p>
     </div>
-    <div class="card" id="msg" *ngIf="orderHistory.length==0">
+    <!-- <div class="card" id="msg" *ngIf="orderHistory.length==0">
       <p> No History Yet</p>
       <img src="../../assets/sad_smile.svg">
-    </div>
+    </div> -->
+
+
+
+
   </div>
 
 

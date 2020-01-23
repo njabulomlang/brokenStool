@@ -27,7 +27,7 @@
 
       </div>
 
-      <ion-button id="icon" (click)="wishlist()">
+      <ion-button id="icon" (click)="wish()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
@@ -232,6 +232,72 @@
     </div>
   </div>
 
+
+  <div id="wish" [ngClass]="{'viewwishlist': viewPrice, 'closewishlist': !viewPrice}">
+
+    <div class="heading">
+      <p>Wishlist (2)</p>
+
+      <ion-icon slot="icon-only" name="close" (click)="wish()"></ion-icon>
+
+    </div>
+
+
+    <div class="wishlist_items">
+      <div class="items">
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Yellow Tracksuits </p>
+            <p>R400.00</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="onClick()" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="left">
+          <div class="img">
+            <img src="../../assets/yellow.jpg" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> Yellow Tracksuits </p>
+            <p>R400.00</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="onClick()" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
   <ion-footer id="webview">
     <div class="footer">
       <div class="heading">
@@ -251,13 +317,23 @@
 
       <div class="info">
         <h1>INFO</h1>
-        <p>FAQs</p>
-        <p>Terms and Conditions</p>
-        <p>Disclaimer</p>
-        <p>Payment Process</p>
-        <p>Developers</p>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/FAQs" color="transparent">
+         <span>FAQs</span> 
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" color="transparent">
+          <span>Terms and Privacy Policy</span>
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/Disclaimer" color="transparent">
+          <span>Disclaimer</span>
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/Payment%20Process" color="transparent">
+          <span>Payment Process</span>
+        </ion-button>
+        <ion-button href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        <span>Developers</span>
+        </ion-button>
       </div>
-
+      
       <div class="connect">
         <h1>CONNECT</h1>
         <ion-button (click)="onClick()" color="transparent">

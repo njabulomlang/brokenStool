@@ -741,15 +741,27 @@ ion-footer {
       }
     }
 
-    .info{
+    .info {
       font-size: 13px;
       text-align: left;
-      p{
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      ion-button {
         font-size: 13px;
-        cursor: pointer;
+        color: white;
+        //border: 1px solid white;
+       padding-left: 0 !important;
+        span{
+          text-align:left;
+          width:100%;
+          left: 0px !important;
+        }
+        
       }
+  
 
-      h1{
+      h1 {
         font-size: 20px;
       }
     }

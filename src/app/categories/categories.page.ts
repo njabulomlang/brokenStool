@@ -14,6 +14,7 @@ export class CategoriesPage implements OnInit {
   uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
+  viewPrice =  false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController) {
     // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
     this.category = this.route.snapshot.paramMap.get('data').toUpperCase();
@@ -35,6 +36,12 @@ export class CategoriesPage implements OnInit {
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
+  }
+
+
+  
+  wish(){
+    this.viewPrice = !this.viewPrice
   }
 
   list(data) {

@@ -52,6 +52,10 @@ export class ListPage implements OnInit {
     })
   }
 
+  wish(){
+    this.viewPrice = !this.viewPrice
+  }
+
   /* list() {
     this.router.navigateByUrl("/list")
   } */
