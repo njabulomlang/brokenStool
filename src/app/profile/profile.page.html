@@ -261,8 +261,9 @@
 
 
   </div>
+  <div class="backdrop1" *ngIf="viewBackdrop"></div>
   
-  <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
+  <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}" >
 
     <div class="heading">
       <p>Wishlist (2)</p>
