@@ -56,10 +56,10 @@ export class LoginPage implements OnInit {
     }
   }
 
-  async webGoogleLogin() : Promise<void>  {
+   webGoogleLogin() {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
-      const credential = await firebase.auth().signInWithPopup(provider).then((i)=>{
+      const credential = firebase.auth().signInWithPopup(provider).then((i)=>{
         console.log(i.user);
         
         this.router.navigateByUrl('create-account');
@@ -67,7 +67,6 @@ export class LoginPage implements OnInit {
     } catch(err) {
       console.log(err)
     }
-  
   }
   googleLogin() {
     if (this.plt.is('cordova')) {
