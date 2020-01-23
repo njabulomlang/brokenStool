@@ -61,11 +61,11 @@
       sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
       ad minim veniam</p>
 
-    <div class="cards" *ngFor="let o of orderHistory;">
+    <div class="cards" *ngFor="let o of orderHistory; let z = index">
 
-      <div class="card" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
+      <div class="card" >
         <div class="left">
-          <div class="itemz">
+          <div class="itemz" *ngFor="let b of o.orders" (click)="viewReceipt(o.refNo)">
             <div class="image">
               <img src="{{b.picture}}" alt="">
             </div>
@@ -89,35 +89,35 @@
           </div>
 
           <div class="name">
-            <p>Zanele Nkosi <br> <span>0813003232</span></p>
+            <p>{{userProfile.name}} {{userProfile.surname}} <br> <span>{{userProfile.cellno}}</span></p>
           </div>
 
           <div class="ref">
-            <p>REF NO: <span><i>JHL1235</i></span></p>
+            <p>REF NO: <span><i>{{o.refNo}}</i></span></p>
           </div>
 
           <div class="cart">
-            <p><b>Date of Puchase: </b><i>12 Jan 2010</i> <br>
+            <p><b>Date of Puchase: </b><i>{{o.timestamp | date:"medium"}}</i> <br>
               <b>Items</b></p>
           </div>
 
-          <div class="table">
-            <div class="list">
-              <p style="width: 70vw">T-shirt</p>
-              <p>4</p>
+          <div class="table" >
+            <div class="list" *ngFor="let prod of o.orders;">
+              <p style="width: 70vw">{{prod.product_name}}</p>
+              <p>{{prod.quantity}}</p>
             </div>
 
 
             <br>
-            <div class="total">
+            <div class="total" >
               <p style="width: 70vw"><b>Total Quantity</b></p>
-              <p>4</p>
+              <p>{{getQuantity(z)}}</p>
             </div>
           </div>
 
           <div class="grand">
             <p>Grand Total</p>
-            <p>R500</p>
+            <p>{{getTotal() | currency:'R'}}</p>
           </div>
           <div class="ordertype">
             <p>Order Type</p>
@@ -125,12 +125,12 @@
           </div>
 
           <div class="address">
-            <p>Order Address <br> <span>246 Orlando East</span></p>
+            <p>Order Address <br> <span>{{userProfile.address}}</span></p>
 
           </div>
 
           <div class="status">
-            <p>Order Status: &nbsp; <i>Delivered</i></p>
+            <p>Order Status: &nbsp; <i>{{o.status}}</i></p>
           </div>
 
           <div class="timeline">

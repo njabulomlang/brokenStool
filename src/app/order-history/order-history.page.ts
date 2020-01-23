@@ -11,34 +11,69 @@ import { NavController } from '@ionic/angular';
 export class OrderHistoryPage implements OnInit {
   dbHistory = firebase.firestore().collection('orderHistory');
   uid = firebase.auth().currentUser.uid;
-  orderHistory=[];
+  orderHistory = [];
   loaderMessages = 'Loading...';
-  loaderAnimate:boolean = true;
+  loaderAnimate: boolean = true;
+  dbProfile = firebase.firestore().collection('userProfile');
+  userProfile = {
+    name: '',
+    surname: '',
+    cellno: 0,
+    address: ''
+  }
+  qty: number = 0;
   constructor(public NavCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
-  
-    this.getAll();
-  }
 
+    this.getAll();
+    this.getProfile();
+    //this.getTotal();
+  }
+  getProfile() {
+    this.dbProfile.doc(this.uid).onSnapshot((res) => {
+      this.userProfile.name = res.data().name;
+      this.userProfile.surname = res.data().surname;
+      this.userProfile.cellno = res.data().cellPhone;
+      this.userProfile.address = res.data().address;
+    })
+  }
   viewReceipt(id) {
-   // console.log('My id ',id);
-  
+
     this.router.navigate(["receipts", id])
   }
   getAll() {
-    this.dbHistory.where('uid','==',this.uid).onSnapshot((res)=>{
-      this.orderHistory =[];
+    this.dbHistory.where('uid', '==', this.uid).onSnapshot((res) => {
+      this.orderHistory = [];
       setTimeout(() => {
         this.loaderAnimate = false;
       }, 2000);
-      res.forEach((doc)=>{
+      res.forEach((doc) => {
         this.orderHistory.push(doc.data());
+
       })
     })
   }
-
-  goBack(){
+  getTotal() {
+    let total = 0;
+    for (let i = 0; i < this.orderHistory.length; i++) {
+      let product = this.orderHistory[i].orders;
+      product.forEach((item) => {
+        total += item.cost * item.quantity;
+        this.qty += item.quantity
+      })
+    }
+    return total;
+  }
+  getQuantity(i) {
+    let total = 0;
+    let product = this.orderHistory[i].orders;
+    product.forEach((item) => {
+      total += item.quantity
+    })
+    return total;
+  }
+  goBack() {
     this.NavCtrl.pop()
   }
 }
