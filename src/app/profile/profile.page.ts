@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { ToastController, LoadingController, ActionSheetController, NavController } from '@ionic/angular';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
@@ -29,6 +29,7 @@ export class ProfilePage implements OnInit {
   address;
   myCart:number;
   myWish:number;
+  myWishlist=[];
   viewReviews = false;
   viewBackdrop = false;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
@@ -42,7 +43,33 @@ export class ProfilePage implements OnInit {
     //this.presentLoading();
     this.getCartSize();
     this.getWishSize();
+    this.getWishlist();
 
+  }
+  delete(id) {
+    this.dbWish.doc(id).delete()
+  }
+  addtoBusket(view_id, data, id) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: data.brand,
+        category: data.category
+      }
+    };
+    this.dbWish.doc(id).delete().then(() => {
+      this.navCtrl.navigateForward(['view', view_id], navigationExtras)
+    })
+  }
+
+
+  getWishlist() {
+    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
+      this.myWishlist = [];
+      res.forEach((doc) => {
+        this.myWishlist.push({ info: doc.data(), id: doc.id });
+      })
+    })
   }
   getWishSize() {
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {

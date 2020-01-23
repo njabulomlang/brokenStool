@@ -32,8 +32,6 @@ export class ListPage implements OnInit {
   viewReviews = false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
-    //  console.log(this.collectionName);
-
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
       this.col = params["col"];
@@ -45,7 +43,7 @@ export class ListPage implements OnInit {
     setTimeout(() => {
       this.loaderAnimate = false;
     }, 2000);
-    //  console.log(); 
+      //console.log(); 
     this.getAllProduct();
     this.getSales("name");
 
@@ -94,14 +92,11 @@ export class ListPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: this.collectionName,
-        category: this.col
-        //currency: JSON.stringify(currency),
-        // refresh: refresh
+        col: this.col,
+        category: this.collectionName
       }
     };
     this.navCtrl.navigateForward(['view', id], navigationExtras);
-    // this.router.navigate(['view', id])
   }
 
   wishList(id, data, index) {
@@ -113,7 +108,8 @@ export class ListPage implements OnInit {
       } else {
         this.dbWishlist.doc(res.id).set({ 
           customerUID: firebase.auth().currentUser.uid, price: data.price,
-           image: data.pictureLink, name: data.name, id: id, category: this.collectionName }).then(() => {
+           image: data.pictureLink, name: data.name, id: id, category: this.collectionName,
+          brand: this.col }).then(() => {
           this.toastController('Added to wishlist..');
         })
       }

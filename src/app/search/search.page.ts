@@ -65,10 +65,8 @@ export class SearchPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: this.txtSearch,
-        category:'Dankie Jesu'
-        //currency: JSON.stringify(currency),
-        // refresh: refresh
+        col: 'Dankie Jesu',
+        category: this.txtSearch
       }
     };
     this.navCtrl.navigateForward(['view', id], navigationExtras);

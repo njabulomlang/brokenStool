@@ -266,7 +266,7 @@
   <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}" >
 
     <div class="heading">
-      <p>Wishlist (2)</p>
+      <p>Wishlist ({{myWishlist.length}})</p>
 
       <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
 
@@ -274,7 +274,32 @@
 
 
     <div class="wishlist_items">
-      <div class="items">
+      <div class="items" *ngFor="let w of myWishlist">
+        <div class="left">
+          <div class="img">
+            <img src="{{w.info.image}}" alt="">
+          </div>
+
+          <div class="item_details">
+            <p> {{w.info.name}} </p>
+            <p>{{w.info.price | currency:'R'}}</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="trash_icon" (click)="delete(w.id)">
+            <ion-icon slot="start" name="trash" ></ion-icon>
+          </div>
+
+          <div class="add_to_basket">
+            <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+              Add<ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+
+    <!--   <div class="items">
         <div class="left">
           <div class="img">
             <img src="../../assets/yellow.jpg" alt="">
@@ -297,32 +322,7 @@
             </ion-button>
           </div>
         </div>
-      </div>
-
-      <div class="items">
-        <div class="left">
-          <div class="img">
-            <img src="../../assets/yellow.jpg" alt="">
-          </div>
-
-          <div class="item_details">
-            <p> Yellow Tracksuits </p>
-            <p>R400.00</p>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="trash_icon">
-            <ion-icon slot="start" name="trash" ></ion-icon>
-          </div>
-
-          <div class="add_to_basket">
-            <ion-button (click)="onClick()" color="transparent">
-              Add<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
 
 
