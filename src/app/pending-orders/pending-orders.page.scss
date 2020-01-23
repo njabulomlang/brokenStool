@@ -294,11 +294,11 @@ ion-toolbar {
 }
 
 @media only screen and (max-width: 1024px) {
-  .web_view {
-    display: none;
-    width: 0%;
-    height: 0%;
-  }
+  // .web_view {
+  //   display: none;
+  //   width: 0%;
+  //   height: 0%;
+  // }
 
 
   #nav {
@@ -307,8 +307,46 @@ ion-toolbar {
     height: 0 !important;
   }
 }
+@media only screen and (min-width: 1024px){
 
-@media only screen and (min-width: 1330px) {
+}
+
+@media only screen and (max-width: 1330px) {
+  .container {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  #mobile {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  ion-toolbar {
+    --background: rgb(255, 255, 255);
+    width: 100%;
+    #icon {
+      color: rgb(131, 131, 131);
+    }
+    font-family: "Raleway";
+    letter-spacing: 2px;
+    color: rgb(131, 131, 131);
+    #number {
+      font-size: 0.8em;
+      position: relative;
+      top: 8px;
+      right: 5px;
+    }
+    .icon1 {
+      margin: 0 20vw;
+    }
+  }
+  
+}
+
+@media only screen and (min-width: 1331px) {
   .container {
     display: none;
     width: 0 !important;

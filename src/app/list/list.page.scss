@@ -522,7 +522,7 @@ ion-toolbar {
   }
 }
 
-@media only screen and (min-width: 1330px) {
+@media only screen and (min-width: 1331px) {
   .container {
     display: none;
     width: 0 !important;
@@ -555,498 +555,10 @@ ion-toolbar {
     }
   }
 
-  .web_view {
-    min-width: 800px;
-    max-width: 1200px;
-    margin: auto;
-    height: 100%;
-
-    .top {
-      width: 100%;
-      padding: 10px;
-
-      .pagename {
-        width: 100%;
-        color: rgb(221, 221, 221);
-        height: 62px;
-        display: grid;
-        align-items: center;
-        text-align: center;
-        font-family: "Poiret One";
-     
-
-        h1 {
-          margin: 5px;
-          font-size: 40px;
-        }
-      }
-
-      .itemcount {
-        text-align: center;
-        width: 100%;
-        font-family: "Poiret One";
-        color: rgb(221, 221, 221);
-        font-size: 20px;
-
-        .filter{
-          position: relative;
-          left: 30vw;
-          bottom: 20px;
-          color: grey;
-        }
-      }
-    }
-
-    .cards {
-      padding: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      object-fit: cover;
-      overflow-y: auto;
-      padding: 16px;
-      justify-content: space-evenly;
-      justify-items: center;
-      position: relative;
-
-      .card {
-        width: 30%;
-        height: fit-content;
-        display: flex;
-        flex-flow: column;
-        margin: 4px 0px;
-
-        img {
-          width: 100%;
-          height: 40vh;
-          border-radius: 5px;
-          box-shadow: 5px 5px 10px rgb(184, 184, 184);
-        }
-
-        .itemdetails {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-between;
-          align-items: baseline;
-          align-items: flex-end;
-
-          p {
-            font-weight: bold;
-            span {
-              font-weight: normal;
-            }
-          }
-
-          #icon {
-            position: relative;
-            bottom: 15px;
-            right: 10px;
-
-            ion-icon {
-              cursor: pointer;
-            }
-          }
-        }
-      }
-    }
-
-    #msg {
-      width: 60%;
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: space-evenly;
-      font-family: "Poppins";
-      box-shadow: none !important;
-
-      img {
-        width: 20vw;
-        height: 20vw;
-      }
-      p {
-        color: #c6cbdb;
-        font-size: 1.5vw;
-      }
-    }
-  }
-
-  .viewreviews {
-    position: absolute;
-    z-index: 150;
-    background: white;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 5px 5px 10px rgb(185, 185, 185);
-    width: 20vw;
-    height: 90%;
-    top: 10%;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
-
-    .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      text-align: center;
-      margin: 5px;
-
-      ion-icon {
-        color: white;
-        position: relative;
-        right: 2vw;
-        top: 2.2vh;
-        font-size: 1em;
-        background: black;
-        border-radius: 50%;
-      }
-
-      p {
-        letter-spacing: 1px;
-        margin: 15px 5px;
-        position: relative;
-        left: 2vw;
-        font-size: 1em;
-      }
-    }
-
-    .filtering {
-      display: flex;
-      flex-flow: column;
-      text-align: left;
-      padding: 10px;
-      width: 100%;
-      .color {
-        cursor: pointer;
-        h4 {
-          color: grey;
-          font-size: 1em;
-        }
-      }
-
-      .colors {
-        cursor: pointer;
-        p {
-          font-size: 1em;
-        }
-      }
-
-      .price {
-        cursor: pointer;
-        h4 {
-          color: grey;
-          font-size: 1em;
-        }
-      }
-
-      .prices {
-        cursor: pointer;
-      }
-    }
-
-    .crds {
-      height: 70vh;
-      overflow-y: auto;
-
-      .crd {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        width: 90vw;
-        height: 20vh;
-        margin: 5px;
-
-        .profimage {
-          width: 20%;
-          height: 9vh;
-          border-radius: 50%;
-          overflow: hidden;
-          margin: 10px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-          }
-        }
-
-        .reviewdets {
-          width: 60vw;
-
-          h4 {
-            font-family: "Poiret One";
-            font-weight: bold;
-          }
-
-          p {
-            font-family: "Raleway";
-          }
-        }
-      }
-    }
-  }
-
-  .closereviews {
-    position: absolute;
-    z-index: 150;
-    background: rgba(255, 255, 255, 0.774);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 0vw;
-    height: 85vh;
-    top: 10%;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
-
-    .line {
-      width: 80vw;
-      height: 2px;
-      background: grey;
-    }
-
-    .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      text-align: center;
-
-      ion-button {
-        border: none !important;
-        box-shadow: none !important;
-        margin: 5px;
-        ion-icon {
-          color: black;
-          position: relative;
-          // left: 5vw;
-        }
-      }
-
-      h2 {
-        font-family: "Poiret One";
-        letter-spacing: 5px;
-        margin: 10px 5px;
-        position: relative;
-        left: 6vw;
-      }
-    }
-
-    .crds {
-      height: 70vh;
-      overflow-y: auto;
-
-      .crd {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        width: 90vw;
-        height: 20vh;
-        margin: 10px;
-
-        .profimage {
-          width: 20%;
-          height: 9vh;
-          border-radius: 50%;
-          overflow: hidden;
-          margin: 10px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-          }
-        }
-
-        .reviewdets {
-          width: 60vw;
-
-          h4 {
-            font-family: "Poiret One";
-            font-weight: bold;
-          }
-
-          p {
-            font-family: "Raleway";
-            font-size: 3vw;
-          }
-        }
-      }
-    }
-  }
-
-  .viewwishlist {
-    position: absolute;
-    z-index: 150;
-    background: rgb(201, 201, 201);
-    width: 20vw;
-    height: 94%;
-    top: 50px;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
-
-    .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      // text-align: center;
-      margin: 5px;
-
-      ion-icon {
-        color: white;
-        position: relative;
-        right: 20px;
-        top: 2.2vh;
-        font-size: 1em;
-        background: rgb(0, 0, 0);
-        border-radius: 50%;
-      }
-
-      p {
-        letter-spacing: 1px;
-        margin: 5px;
-        position: relative;
-        left: 2vw;
-        font-size: 1em;
-      }
-    }
-
-    .wishlist_items {
-      display: flex;
-      flex-flow: column;
-      overflow-y: auto;
-      margin: 10px;
-      width: 20vw;
-      .items {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        margin: 10px;
-        min-height: 7vh;
-        margin: 5px;
-        background: rgb(255, 255, 255);
-        border-radius: 5px;
-        box-shadow: 5px 5px 10px rgb(158, 158, 158);
-        .left {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-between;
-          margin: 5px;
-          .img {
-            width: 5vw;
-            height: 5.5vw;
-            margin: 3px;
-            border-radius: 5px;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              border-radius: 5px;
-            }
-          }
-
-          .item_details {
-            width: 8vw;
-          }
-        }
-
-        .right {
-          width: 6vw;
-          display: flex;
-          flex-flow: column;
-          justify-content: space-between;
-          text-align: right;
-          margin: 5px;
-          ion-button {
-            font-size: 12px;
-            width: 4vw;
-            height: 20px;
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            ion-icon {
-              font-size: 12px;
-            }
-          }
-
-          .trash_icon {
-            ion-icon {
-              color: rgb(148, 14, 14);
-            }
-          }
-          .add_to_basket {
-            background: rgb(2, 2, 37);
-            color: white;
-          }
-        }
-      }
-    }
-  }
-
-  .closewishlist {
-    position: absolute;
-    z-index: 150;
-    background: rgb(255, 255, 255);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 0vw;
-    height: 85vh;
-    top: 10%;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
-  }
+ 
 }
 
-@media only screen and (max-width: 1024px) {
-  .web_view {
-    display: none;
-    width: 0%;
-    height: 0%;
-  }
-  #webview{
-    display: none;
-  }
-
-  #nav {
-    display: none;
-    width: 0 !important;
-    height: 0 !important;
-  }
-}
-
-@media only screen and (max-width: 512px){
-  .web_view {
-    display: none;
-    width: 0%;
-    height: 0%;
-  }
-
-  #nav {
-    display: none;
-    width: 0 !important;
-    height: 0 !important;
-  }
-}
-
-@media only screen and (min-width: 800px){
+@media only screen and (max-width: 1330px) {
   .container {
     display: none;
     width: 0 !important;
@@ -1075,467 +587,487 @@ ion-toolbar {
       right: 5px;
     }
     .icon1 {
-      margin: 0 25vw 0 0;
+      margin: 0 25vw;
     }
   }
 
+ 
+}
+
+@media only screen and (max-width: 1024px) {
   .web_view {
-    min-width: 800px;
-    max-width: 1200px;
-    margin: auto;
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+  #webview{
+    display: none;
+  }
 
-    .top {
+  #nav {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+.web_view {
+  min-width: 800px;
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+
+  .top {
+    width: 100%;
+    padding: 10px;
+
+    .pagename {
       width: 100%;
-      padding: 10px;
+      color: rgb(221, 221, 221);
+      height: 62px;
+      display: grid;
+      align-items: center;
+      text-align: center;
+      font-family: "Poiret One";
+   
 
-      .pagename {
-        width: 100%;
-        color: rgb(221, 221, 221);
-        height: 62px;
-        display: grid;
-        align-items: center;
-        text-align: center;
-        font-family: "Poiret One";
-     
-
-        h1 {
-          margin: 5px;
-          font-size: 40px;
-        }
-      }
-
-      .itemcount {
-        text-align: center;
-        width: 100%;
-        font-family: "Poiret One";
-        color: rgb(221, 221, 221);
-        font-size: 20px;
-
-        .filter{
-          position: relative;
-          left: 30vw;
-          bottom: 20px;
-          color: grey;
-        }
+      h1 {
+        margin: 5px;
+        font-size: 40px;
       }
     }
 
-    .cards {
-      padding: 10px;
-      display: flex;
-      flex-wrap: wrap;
+    .itemcount {
+      text-align: center;
       width: 100%;
-      object-fit: cover;
-      overflow-y: auto;
-      padding: 16px;
-      justify-content: space-evenly;
-      justify-items: center;
-      position: relative;
+      font-family: "Poiret One";
+      color: rgb(221, 221, 221);
+      font-size: 20px;
 
-      .card {
-        width: 30%;
-        height: fit-content;
+      .filter{
+        position: relative;
+        left: 30vw;
+        bottom: 20px;
+        color: grey;
+      }
+    }
+  }
+
+  .cards {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    object-fit: cover;
+    overflow-y: auto;
+    padding: 16px;
+    justify-content: space-evenly;
+    justify-items: center;
+    position: relative;
+
+    .card {
+      width: 30%;
+      height: fit-content;
+      display: flex;
+      flex-flow: column;
+      margin: 4px 0px;
+
+      img {
+        width: 100%;
+        height: 40vh;
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(184, 184, 184);
+      }
+
+      .itemdetails {
         display: flex;
-        flex-flow: column;
-        margin: 4px 0px;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: baseline;
+        align-items: flex-end;
+
+        p {
+          font-weight: bold;
+          span {
+            font-weight: normal;
+          }
+        }
+
+        #icon {
+          position: relative;
+          bottom: 15px;
+          right: 10px;
+
+          ion-icon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  #msg {
+    width: 60%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: "Poppins";
+    box-shadow: none !important;
+
+    img {
+      width: 20vw;
+      height: 20vw;
+    }
+    p {
+      color: #c6cbdb;
+      font-size: 1.5vw;
+    }
+  }
+}
+
+.viewreviews {
+  position: absolute;
+  z-index: 150;
+  background: white;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 5px 5px 10px rgb(185, 185, 185);
+  width: 20vw;
+  height: 90%;
+  top: 10%;
+  bottom: 40%;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+
+  .heading {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+
+    ion-icon {
+      color: white;
+      position: relative;
+      right: 2vw;
+      top: 2.2vh;
+      font-size: 1em;
+      background: black;
+      border-radius: 50%;
+    }
+
+    p {
+      letter-spacing: 1px;
+      margin: 15px 5px;
+      position: relative;
+      left: 2vw;
+      font-size: 1em;
+    }
+  }
+
+  .filtering {
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+    .color {
+      cursor: pointer;
+      h4 {
+        color: grey;
+        font-size: 1em;
+      }
+    }
+
+    .colors {
+      cursor: pointer;
+      p {
+        font-size: 1em;
+      }
+    }
+
+    .price {
+      cursor: pointer;
+      h4 {
+        color: grey;
+        font-size: 1em;
+      }
+    }
+
+    .prices {
+      cursor: pointer;
+    }
+  }
+
+  .crds {
+    height: 70vh;
+    overflow-y: auto;
+
+    .crd {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 90vw;
+      height: 20vh;
+      margin: 5px;
+
+      .profimage {
+        width: 20%;
+        height: 9vh;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 10px;
 
         img {
           width: 100%;
-          height: 40vh;
-          border-radius: 5px;
-          box-shadow: 5px 5px 10px rgb(184, 184, 184);
-        }
-
-        .itemdetails {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-between;
-          align-items: baseline;
-          align-items: flex-end;
-
-          p {
-            font-weight: bold;
-            span {
-              font-weight: normal;
-            }
-          }
-
-          #icon {
-            position: relative;
-            bottom: 15px;
-            right: 10px;
-
-            ion-icon {
-              cursor: pointer;
-            }
-          }
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
         }
       }
-    }
 
-    #msg {
-      width: 60%;
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: space-evenly;
-      font-family: "Poppins";
-      box-shadow: none !important;
+      .reviewdets {
+        width: 60vw;
 
-      img {
-        width: 20vw;
-        height: 20vw;
-      }
-      p {
-        color: #c6cbdb;
-        font-size: 1.5vw;
-      }
-    }
-  }
-
-  .viewreviews {
-    position: absolute;
-    z-index: 150;
-    background: white;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 5px 5px 10px rgb(185, 185, 185);
-    width: 20vw;
-    height: 90%;
-    top: 10%;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
-
-    .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      text-align: center;
-      margin: 5px;
-
-      ion-icon {
-        color: white;
-        position: relative;
-        right: 2vw;
-        top: 2.2vh;
-        font-size: 1em;
-        background: black;
-        border-radius: 50%;
-      }
-
-      p {
-        letter-spacing: 1px;
-        margin: 15px 5px;
-        position: relative;
-        left: 2vw;
-        font-size: 1em;
-      }
-    }
-
-    .filtering {
-      display: flex;
-      flex-flow: column;
-      text-align: left;
-      padding: 10px;
-      width: 100%;
-      .color {
-        cursor: pointer;
         h4 {
-          color: grey;
-          font-size: 1em;
+          font-family: "Poiret One";
+          font-weight: bold;
         }
-      }
 
-      .colors {
-        cursor: pointer;
         p {
-          font-size: 1em;
-        }
-      }
-
-      .price {
-        cursor: pointer;
-        h4 {
-          color: grey;
-          font-size: 1em;
-        }
-      }
-
-      .prices {
-        cursor: pointer;
-      }
-    }
-
-    .crds {
-      height: 70vh;
-      overflow-y: auto;
-
-      .crd {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        width: 90vw;
-        height: 20vh;
-        margin: 5px;
-
-        .profimage {
-          width: 20%;
-          height: 9vh;
-          border-radius: 50%;
-          overflow: hidden;
-          margin: 10px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-          }
-        }
-
-        .reviewdets {
-          width: 60vw;
-
-          h4 {
-            font-family: "Poiret One";
-            font-weight: bold;
-          }
-
-          p {
-            font-family: "Raleway";
-          }
+          font-family: "Raleway";
         }
       }
     }
   }
+}
 
-  .closereviews {
-    position: absolute;
-    z-index: 150;
-    background: rgba(255, 255, 255, 0.774);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 0vw;
-    height: 85vh;
-    top: 10%;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
+.closereviews {
+  position: absolute;
+  z-index: 150;
+  background: rgba(255, 255, 255, 0.774);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 0vw;
+  height: 85vh;
+  top: 10%;
+  bottom: 40%;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
 
-    .line {
-      width: 80vw;
-      height: 2px;
-      background: grey;
-    }
-
-    .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      text-align: center;
-
-      ion-button {
-        border: none !important;
-        box-shadow: none !important;
-        margin: 5px;
-        ion-icon {
-          color: black;
-          position: relative;
-          // left: 5vw;
-        }
-      }
-
-      h2 {
-        font-family: "Poiret One";
-        letter-spacing: 5px;
-        margin: 10px 5px;
-        position: relative;
-        left: 6vw;
-      }
-    }
-
-    .crds {
-      height: 70vh;
-      overflow-y: auto;
-
-      .crd {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        width: 90vw;
-        height: 20vh;
-        margin: 10px;
-
-        .profimage {
-          width: 20%;
-          height: 9vh;
-          border-radius: 50%;
-          overflow: hidden;
-          margin: 10px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-          }
-        }
-
-        .reviewdets {
-          width: 60vw;
-
-          h4 {
-            font-family: "Poiret One";
-            font-weight: bold;
-          }
-
-          p {
-            font-family: "Raleway";
-            font-size: 3vw;
-          }
-        }
-      }
-    }
+  .line {
+    width: 80vw;
+    height: 2px;
+    background: grey;
   }
 
-  .viewwishlist {
-    position: absolute;
-    z-index: 150;
-    background: rgb(201, 201, 201);
-    width: 20vw;
-    height: 94%;
-    top: 50px;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
+  .heading {
     display: flex;
-    flex-flow: column;
-    overflow: hidden;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
 
-    .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 100%;
-      // text-align: center;
+    ion-button {
+      border: none !important;
+      box-shadow: none !important;
       margin: 5px;
-
       ion-icon {
-        color: white;
+        color: black;
         position: relative;
-        right: 20px;
-        top: 2.2vh;
-        font-size: 1em;
-        background: rgb(0, 0, 0);
-        border-radius: 50%;
-      }
-
-      p {
-        letter-spacing: 1px;
-        margin: 5px;
-        position: relative;
-        left: 2vw;
-        font-size: 1em;
+        // left: 5vw;
       }
     }
 
-    .wishlist_items {
+    h2 {
+      font-family: "Poiret One";
+      letter-spacing: 5px;
+      margin: 10px 5px;
+      position: relative;
+      left: 6vw;
+    }
+  }
+
+  .crds {
+    height: 70vh;
+    overflow-y: auto;
+
+    .crd {
       display: flex;
-      flex-flow: column;
-      overflow-y: auto;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 90vw;
+      height: 20vh;
       margin: 10px;
-      width: 20vw;
-      .items {
+
+      .profimage {
+        width: 20%;
+        height: 9vh;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 10px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+
+      .reviewdets {
+        width: 60vw;
+
+        h4 {
+          font-family: "Poiret One";
+          font-weight: bold;
+        }
+
+        p {
+          font-family: "Raleway";
+          font-size: 3vw;
+        }
+      }
+    }
+  }
+}
+
+.viewwishlist {
+  position: absolute;
+  z-index: 150;
+  background: rgb(201, 201, 201);
+  width: 20vw;
+  height: 94%;
+  top: 50px;
+  bottom: 40%;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+
+  .heading {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+    // text-align: center;
+    margin: 5px;
+
+    ion-icon {
+      color: white;
+      position: relative;
+      right: 20px;
+      top: 2.2vh;
+      font-size: 1em;
+      background: rgb(0, 0, 0);
+      border-radius: 50%;
+    }
+
+    p {
+      letter-spacing: 1px;
+      margin: 5px;
+      position: relative;
+      left: 2vw;
+      font-size: 1em;
+    }
+  }
+
+  .wishlist_items {
+    display: flex;
+    flex-flow: column;
+    overflow-y: auto;
+    margin: 10px;
+    width: 20vw;
+    .items {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      margin: 10px;
+      min-height: 7vh;
+      margin: 5px;
+      background: rgb(255, 255, 255);
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px rgb(158, 158, 158);
+      .left {
         display: flex;
         flex-flow: row;
         justify-content: space-between;
-        margin: 10px;
-        min-height: 7vh;
         margin: 5px;
-        background: rgb(255, 255, 255);
-        border-radius: 5px;
-        box-shadow: 5px 5px 10px rgb(158, 158, 158);
-        .left {
+        .img {
+          width: 5vw;
+          height: 5.5vw;
+          margin: 3px;
+          border-radius: 5px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+          }
+        }
+
+        .item_details {
+          width: 8vw;
+        }
+      }
+
+      .right {
+        width: 6vw;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        text-align: right;
+        margin: 5px;
+        ion-button {
+          font-size: 12px;
+          width: 4vw;
+          height: 20px;
           display: flex;
           flex-flow: row;
           justify-content: space-between;
-          margin: 5px;
-          .img {
-            width: 5vw;
-            height: 5.5vw;
-            margin: 3px;
-            border-radius: 5px;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              border-radius: 5px;
-            }
-          }
-
-          .item_details {
-            width: 8vw;
+          ion-icon {
+            font-size: 12px;
           }
         }
 
-        .right {
-          width: 6vw;
-          display: flex;
-          flex-flow: column;
-          justify-content: space-between;
-          text-align: right;
-          margin: 5px;
-          ion-button {
-            font-size: 12px;
-            width: 4vw;
-            height: 20px;
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            ion-icon {
-              font-size: 12px;
-            }
+        .trash_icon {
+          ion-icon {
+            color: rgb(148, 14, 14);
           }
-
-          .trash_icon {
-            ion-icon {
-              color: rgb(148, 14, 14);
-            }
-          }
-          .add_to_basket {
-            background: rgb(2, 2, 37);
-            color: white;
-          }
+        }
+        .add_to_basket {
+          background: rgb(2, 2, 37);
+          color: white;
         }
       }
     }
   }
+}
 
-  .closewishlist {
-    position: absolute;
-    z-index: 150;
-    background: rgb(255, 255, 255);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 0vw;
-    height: 85vh;
-    top: 10%;
-    bottom: 40%;
-    right: 0;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    overflow: hidden;
-  }
+.closewishlist {
+  position: absolute;
+  z-index: 150;
+  background: rgb(255, 255, 255);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 0vw;
+  height: 85vh;
+  top: 10%;
+  bottom: 40%;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
 }
 
 ion-footer {
@@ -1584,7 +1116,7 @@ ion-footer {
       ion-button {
         font-size: 13px;
         color: white;
-        border: 1px solid white;
+       // border: 1px solid white;
        padding-left: 0 !important;
         span{
           text-align:left;
