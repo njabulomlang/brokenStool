@@ -438,6 +438,11 @@ ion-toolbar {
     width: 0 !important;
     height: 0 !important;
   }
+   #cart{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+   }
 }
 
 @media only screen and (min-width: 1330px) {
@@ -477,6 +482,558 @@ ion-toolbar {
       margin: 0 20vw;
     }
   }
+
+  .web_view {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    top: 8%;
+    height: fit-content;
+    display: flex;
+    flex-flow: row;
+    box-shadow: 5px 5px 10px rgb(196, 196, 196);
+  
+    .image {
+      width: 60vw;
+      height: 75vh;
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      align-items: center;
+      margin: 10px;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      .name {
+        width: 80%;
+        min-height: 3vw;
+        background: white;
+        text-align: center;
+        color: grey;
+        font-family: "Poppins";
+        border-radius: 10px;
+        // z-index: 10;
+        position: absolute;
+  
+        bottom: 15px;
+        display: grid;
+        align-items: center;
+        box-shadow: 5px 5px 10px grey;
+  
+        p {
+          margin: 0 !important;
+          font-weight: bold;
+          span {
+            font-weight: normal;
+          }
+        }
+      }
+  
+      .camera {
+        position: absolute;
+        bottom: 5px;
+        right: 15px;
+        // z-index: 15;
+        border-radius: 50%;
+        ion-fab-button {
+          background: maroon;
+          border-radius: 50%;
+          color: white;
+        }
+      }
+    }
+  
+    .stuff {
+      width: 35vw;
+      margin: 10px;
+    }
+  
+    .update_cancel {
+      width: 100%;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      padding: 10px;
+      margin: 5px 0px;
+  
+      margin: 0;
+      padding: 0;
+      height: 7vh;
+      margin: 5px;
+      border-radius: 0 !important;
+      text-align: left;
+      border-bottom: 0.1px solid rgb(212, 212, 212);
+      border-top: 0.1px solid rgb(212, 212, 212);
+      border: 0.1px solid rgb(212, 212, 212);
+      background: #f2f2f2;
+      color: black;
+      font-weight: lighter;
+      overflow: hidden;
+      letter-spacing: 1px;
+      font-family: "Poppins";
+      .update {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 30%;
+        margin-right: 10px;
+        color: rgb(150, 150, 150);
+        cursor: pointer;
+      }
+  
+      .acc {
+        margin-left: 10px;
+      }
+    }
+  
+    .btnz {
+      display: flex;
+      flex-flow: column;
+      // width: 70.5vw;
+      margin: 5px 0px;
+  
+      ion-button {
+        margin: 0;
+        padding: 0;
+        height: 7vh;
+        margin: 5px;
+        border-radius: 0 !important;
+        text-align: left;
+        border-bottom: 0.1px solid rgb(212, 212, 212);
+        border-top: 0.1px solid rgb(212, 212, 212);
+        border: 0.1px solid rgb(212, 212, 212);
+        background: #f2f2f2;
+        color: black;
+        font-weight: lighter;
+        overflow: hidden;
+        letter-spacing: 1px;
+        font-family: "Poppins";
+        span {
+          width: 100%;
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+        }
+      }
+  
+      .edit {
+        // width: 100%;
+        padding: 5px;
+        ion-input {
+          // width: 100%;
+          border: 1px solid rgb(255, 255, 255);
+          margin: 5px;
+          padding: 3px;
+          border-radius: 7px;
+          // font-size: 0.8em;
+          box-shadow: 2px 2px 20px rgb(165, 165, 165);
+        }
+  
+        .buttonz {
+          width: 100%;
+          display: flex;
+          flex-flow: row;
+          #cancel {
+            width: 45vw;
+            background: red;
+            border-radius: 8px;
+          }
+  
+          #update {
+            width: 45vw;
+            background: green;
+            border-radius: 8px;
+          }
+          ion-button {
+            // font-size: 0.8em;
+            margin: 5px;
+            // height: 10vw;
+            border-radius: 10px;
+            color: white;
+            font-family: "Poppins";
+            letter-spacing: 2px;
+          }
+        }
+      }
+    }
+  
+    .files {
+      width: 100%;
+      padding: 5px;
+      position: relative;
+      justify-content: space-evenly;
+      justify-items: center;
+      display: flex;
+      flex-flow: row;
+  
+      .wishlist {
+        width: 45vw;
+        height: 47vh;
+        position: relative;
+        border-radius: 8px;
+        margin: 5px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+  
+        .right {
+          display: flex;
+          height: 100%;
+          flex-flow: column;
+          text-align: right;
+          justify-content: space-between;
+          // z-index: 10;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: white;
+          font-family: "Poppins";
+          font-weight: lighter;
+  
+          .heart {
+            ion-icon {
+              text-shadow: 5px 5px 10px grey;
+            }
+          }
+        }
+  
+        .backdrop {
+          backdrop-filter: blur(3px);
+          background: rgba(0, 0, 0, 0.39);
+          width: 100%;
+          height: 30px;
+          position: absolute;
+          bottom: 0;
+  
+          z-index: 10;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+      }
+  
+      .basket {
+        margin: 5px;
+        width: 45vw;
+        height: 47vh;
+        position: relative;
+        border-radius: 8px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+  
+        .right {
+          display: flex;
+          height: 100%;
+          flex-flow: column;
+          text-align: right;
+          justify-content: space-between;
+          // z-index: 10;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: white;
+          font-family: "Poppins";
+          font-weight: lighter;
+        }
+  
+        .backdrop {
+          backdrop-filter: blur(3px);
+          background: rgba(0, 0, 0, 0.39);
+          width: 100%;
+          height: 30px;
+          position: absolute;
+          bottom: 0;
+  
+          z-index: 10;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+      }
+    }
+  }
+  
+  .backdrop1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+  }
+  
+  .viewreviews {
+    position: absolute;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    width: 20vw;
+    height: 94%;
+    top: 50px;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+  
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+  
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+  
+    .wishlist_items {
+      display: flex;
+      flex-flow: column;
+      overflow-y: auto;
+      margin: 10px;
+      width: 20vw;
+      .items {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        margin: 10px;
+        min-height: 7vh;
+        margin: 5px;
+        background: rgb(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(158, 158, 158);
+        .left {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          margin: 5px;
+          .img {
+            width: 5vw;
+            height: 5.5vw;
+            margin: 3px;
+            border-radius: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+  
+          .item_details {
+            width: 8vw;
+          }
+        }
+  
+        .right {
+          width: 6vw;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          text-align: right;
+          margin: 5px;
+          ion-button {
+            font-size: 12px;
+            width: 4vw;
+            height: 20px;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            ion-icon {
+              font-size: 12px;
+            }
+          }
+  
+          .trash_icon {
+            ion-icon {
+              color: rgb(148, 14, 14);
+            }
+          }
+          .add_to_basket {
+            background: rgb(2, 2, 37);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  
+  .closereviews {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+
+  .viewcart {
+    position: absolute;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    width: 20vw;
+    height: 94%;
+    top: 50px;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+  
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+  
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+  
+    .wishlist_items {
+      display: flex;
+      flex-flow: column;
+      overflow-y: auto;
+      margin: 10px;
+      width: 20vw;
+      .items {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        margin: 10px;
+        min-height: 7vh;
+        margin: 5px;
+        background: rgb(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(158, 158, 158);
+        .left {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          margin: 5px;
+          .img {
+            width: 5vw;
+            height: 5.5vw;
+            margin: 3px;
+            border-radius: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+  
+          .item_details {
+            width: 8vw;
+          }
+        }
+  
+        .right {
+          width: 6vw;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          text-align: right;
+          margin: 5px;
+          ion-button {
+            font-size: 12px;
+            width: 4vw;
+            height: 20px;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            ion-icon {
+              font-size: 12px;
+            }
+          }
+  
+          .trash_icon {
+            ion-icon {
+              color: rgb(148, 14, 14);
+            }
+          }
+          .add_to_basket {
+            background: rgb(2, 2, 37);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  
+  .closecart {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+  
 
   
 }
@@ -520,424 +1077,4 @@ ion-toolbar {
   }
 
   
-}
-.web_view {
-  min-width: 800px;
-  max-width: 1200px;
-  margin: auto;
-  position: relative;
-  top: 8%;
-  height: fit-content;
-  display: flex;
-  flex-flow: row;
-  box-shadow: 5px 5px 10px rgb(196, 196, 196);
-
-  .image {
-    width: 60vw;
-    height: 75vh;
-    display: flex;
-    flex-flow: column;
-    position: relative;
-    align-items: center;
-    margin: 10px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .name {
-      width: 80%;
-      min-height: 3vw;
-      background: white;
-      text-align: center;
-      color: grey;
-      font-family: "Poppins";
-      border-radius: 10px;
-      // z-index: 10;
-      position: absolute;
-
-      bottom: 15px;
-      display: grid;
-      align-items: center;
-      box-shadow: 5px 5px 10px grey;
-
-      p {
-        margin: 0 !important;
-        font-weight: bold;
-        span {
-          font-weight: normal;
-        }
-      }
-    }
-
-    .camera {
-      position: absolute;
-      bottom: 5px;
-      right: 15px;
-      // z-index: 15;
-      border-radius: 50%;
-      ion-fab-button {
-        background: maroon;
-        border-radius: 50%;
-        color: white;
-      }
-    }
-  }
-
-  .stuff {
-    width: 35vw;
-    margin: 10px;
-  }
-
-  .update_cancel {
-    width: 100%;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    padding: 10px;
-    margin: 5px 0px;
-
-    margin: 0;
-    padding: 0;
-    height: 7vh;
-    margin: 5px;
-    border-radius: 0 !important;
-    text-align: left;
-    border-bottom: 0.1px solid rgb(212, 212, 212);
-    border-top: 0.1px solid rgb(212, 212, 212);
-    border: 0.1px solid rgb(212, 212, 212);
-    background: #f2f2f2;
-    color: black;
-    font-weight: lighter;
-    overflow: hidden;
-    letter-spacing: 1px;
-    font-family: "Poppins";
-    .update {
-      width: 100%;
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 30%;
-      margin-right: 10px;
-      color: rgb(150, 150, 150);
-      cursor: pointer;
-    }
-
-    .acc {
-      margin-left: 10px;
-    }
-  }
-
-  .btnz {
-    display: flex;
-    flex-flow: column;
-    // width: 70.5vw;
-    margin: 5px 0px;
-
-    ion-button {
-      margin: 0;
-      padding: 0;
-      height: 7vh;
-      margin: 5px;
-      border-radius: 0 !important;
-      text-align: left;
-      border-bottom: 0.1px solid rgb(212, 212, 212);
-      border-top: 0.1px solid rgb(212, 212, 212);
-      border: 0.1px solid rgb(212, 212, 212);
-      background: #f2f2f2;
-      color: black;
-      font-weight: lighter;
-      overflow: hidden;
-      letter-spacing: 1px;
-      font-family: "Poppins";
-      span {
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-      }
-    }
-
-    .edit {
-      // width: 100%;
-      padding: 5px;
-      ion-input {
-        // width: 100%;
-        border: 1px solid rgb(255, 255, 255);
-        margin: 5px;
-        padding: 3px;
-        border-radius: 7px;
-        // font-size: 0.8em;
-        box-shadow: 2px 2px 20px rgb(165, 165, 165);
-      }
-
-      .buttonz {
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-        #cancel {
-          width: 45vw;
-          background: red;
-          border-radius: 8px;
-        }
-
-        #update {
-          width: 45vw;
-          background: green;
-          border-radius: 8px;
-        }
-        ion-button {
-          // font-size: 0.8em;
-          margin: 5px;
-          // height: 10vw;
-          border-radius: 10px;
-          color: white;
-          font-family: "Poppins";
-          letter-spacing: 2px;
-        }
-      }
-    }
-  }
-
-  .files {
-    width: 100%;
-    padding: 5px;
-    position: relative;
-    justify-content: space-evenly;
-    justify-items: center;
-    display: flex;
-    flex-flow: row;
-
-    .wishlist {
-      width: 45vw;
-      height: 47vh;
-      position: relative;
-      border-radius: 8px;
-      margin: 5px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-
-      .right {
-        display: flex;
-        height: 100%;
-        flex-flow: column;
-        text-align: right;
-        justify-content: space-between;
-        // z-index: 10;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: white;
-        font-family: "Poppins";
-        font-weight: lighter;
-
-        .heart {
-          ion-icon {
-            text-shadow: 5px 5px 10px grey;
-          }
-        }
-      }
-
-      .backdrop {
-        backdrop-filter: blur(3px);
-        background: rgba(0, 0, 0, 0.39);
-        width: 100%;
-        height: 30px;
-        position: absolute;
-        bottom: 0;
-
-        z-index: 10;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-    }
-
-    .basket {
-      margin: 5px;
-      width: 45vw;
-      height: 47vh;
-      position: relative;
-      border-radius: 8px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-
-      .right {
-        display: flex;
-        height: 100%;
-        flex-flow: column;
-        text-align: right;
-        justify-content: space-between;
-        // z-index: 10;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: white;
-        font-family: "Poppins";
-        font-weight: lighter;
-      }
-
-      .backdrop {
-        backdrop-filter: blur(3px);
-        background: rgba(0, 0, 0, 0.39);
-        width: 100%;
-        height: 30px;
-        position: absolute;
-        bottom: 0;
-
-        z-index: 10;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-    }
-  }
-}
-
-.backdrop1 {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: black;
-  opacity: 0.5;
-}
-
-.viewreviews {
-  position: absolute;
-  z-index: 150;
-  background: rgb(201, 201, 201);
-  width: 20vw;
-  height: 94%;
-  top: 50px;
-  bottom: 40%;
-  right: 0;
-  align-items: center;
-  display: flex;
-  flex-flow: column;
-  overflow: hidden;
-
-  .heading {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    width: 100%;
-    // text-align: center;
-    margin: 5px;
-
-    ion-icon {
-      color: white;
-      position: relative;
-      right: 20px;
-      top: 2.2vh;
-      font-size: 1em;
-      background: rgb(0, 0, 0);
-      border-radius: 50%;
-    }
-
-    p {
-      letter-spacing: 1px;
-      margin: 5px;
-      position: relative;
-      left: 2vw;
-      font-size: 1em;
-    }
-  }
-
-  .wishlist_items {
-    display: flex;
-    flex-flow: column;
-    overflow-y: auto;
-    margin: 10px;
-    width: 20vw;
-    .items {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      margin: 10px;
-      min-height: 7vh;
-      margin: 5px;
-      background: rgb(255, 255, 255);
-      border-radius: 5px;
-      box-shadow: 5px 5px 10px rgb(158, 158, 158);
-      .left {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        margin: 5px;
-        .img {
-          width: 5vw;
-          height: 5.5vw;
-          margin: 3px;
-          border-radius: 5px;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-          }
-        }
-
-        .item_details {
-          width: 8vw;
-        }
-      }
-
-      .right {
-        width: 6vw;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-        text-align: right;
-        margin: 5px;
-        ion-button {
-          font-size: 12px;
-          width: 4vw;
-          height: 20px;
-          display: flex;
-          flex-flow: row;
-          justify-content: space-between;
-          ion-icon {
-            font-size: 12px;
-          }
-        }
-
-        .trash_icon {
-          ion-icon {
-            color: rgb(148, 14, 14);
-          }
-        }
-        .add_to_basket {
-          background: rgb(2, 2, 37);
-          color: white;
-        }
-      }
-    }
-  }
-}
-
-.closereviews {
-  position: absolute;
-  z-index: 150;
-  background: rgb(255, 255, 255);
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  width: 0vw;
-  height: 85vh;
-  top: 10%;
-  bottom: 40%;
-  right: 0;
-  align-items: center;
-  display: flex;
-  flex-flow: column;
-  overflow: hidden;
 }

@@ -32,6 +32,7 @@ export class HomePage implements OnInit {
   myWish: number;
   viewReviews = false;
   viewBackdrop = false;
+  viewCart= false;
   myWishlist = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     // public notificationService: NotificationsService
@@ -49,6 +50,11 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.splashScreen.hide();
     }, 4000);
+  }
+
+  gotocart(){
+    this.viewCart = !this.viewCart
+    this.viewBackdrop = !this.viewBackdrop
   }
 
   getBackdrop(){

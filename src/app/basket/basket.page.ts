@@ -22,6 +22,8 @@ export class BasketPage implements OnInit {
   doc_id: string = '';
   loaderMessages = 'Loading...';
   loaderAnimate:boolean = true;
+  viewCart= false;
+  viewBackdrop = false;
   constructor(public NavCtrl: NavController, public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController) { }
 
   ngOnInit() {
@@ -41,6 +43,11 @@ export class BasketPage implements OnInit {
       this.getTotal();
     }, 1000);
 
+  }
+
+  gotocart(){
+    this.viewCart = !this.viewCart
+    this.viewBackdrop = !this.viewBackdrop
   }
   getTotal() {
     let total = 0;
