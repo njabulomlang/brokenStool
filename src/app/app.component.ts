@@ -36,7 +36,7 @@ export class AppComponent {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.statusBar.backgroundColorByHexString('#000324');
       this.statusBar.styleLightContent();
-      //await this.notificationsService.requestPermission();
+      // await this.notificationsService.requestPermission();
       this.checkUser();
     });
   }
