@@ -31,6 +31,7 @@ export class HomePage implements OnInit {
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   viewReviews = false;
+  myWishlist = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     // public notificationService: NotificationsService
     ) {
@@ -40,6 +41,7 @@ export class HomePage implements OnInit {
     // this.notificationService.requestPermission();
     this.getProfile();
     this.getPromo();
+    this.getWishlist();
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
@@ -58,7 +60,26 @@ export class HomePage implements OnInit {
       }
     })
   }
-  
+  addtoBusket(view_id, data, id) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: data.brand,
+        category: data.category
+      }
+    };
+    this.dbWish.doc(id).delete().then(() => {
+      this.navCtrl.navigateForward(['view', view_id], navigationExtras)
+    })
+  }
+  getWishlist() {
+    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
+      this.myWishlist = [];
+      res.forEach((doc) => {
+        this.myWishlist.push({ info: doc.data(), id: doc.id });
+      })
+    })
+  }
   reviewed() {
     this.viewReviews = !this.viewReviews
   }

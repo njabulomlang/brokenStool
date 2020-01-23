@@ -33,7 +33,7 @@ export class ViewPage implements OnInit {
   mySale = [];
   category: string = '';
   starRating = document.getElementsByClassName('ionic4-star-rating')
-  boolCheck : boolean = false;
+  boolCheck: boolean = false;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2) {
@@ -42,25 +42,17 @@ export class ViewPage implements OnInit {
       this.doc_data = params["data"];
       this.col = params["col"];
       this.category = params["category"];
-    });
+    })
+
   }
 
   ngOnInit() {
-   
-    // console.log(this.doc_data);
-    setTimeout(()=>{
-      //console.log(this.starRating);
-      
-      let starButtons =  this.starRating[0].children
-      for (let i = 0; i < starButtons.length; i++) {
-        //console.log(this.starRating[0].children[i]);
-        this.render.setStyle(this.starRating[0].children[i], 'outline', 'none');
-      }
-      
-    }, 500)
-    // console.log('my collection ', this.col, 'my data', this.doc_data, 'my docid');
+    if (this.col === 'sales') {
+      this.getSpecial();
+  } else {
+      this.getProduct();
+  }
     this.dbRate.where('product', '==', this.doc_id).onSnapshot((res) => {
-      // this.myRatings = [];
       if (res.size === 0) {
         this.myRate = 0
       } else {
@@ -68,48 +60,15 @@ export class ViewPage implements OnInit {
           this.myRate = doc.data().rating / res.size;
         })
       }
-
-      // console.log('my rate ', this.myRate);
-
     })
-    //console.log('doc id ', this.doc_id, 'Collection ref ', this.col);
-    // console.log(this.col);
-    if (this.col === 'sales') {
-      this.getSpecial();
-    } else {
-      this.getProduct();
-    }
-
-    // setTimeout(() => {
-    //let data = [] ; 
-    /* this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((snap) => {
-      // console.log('My snapshot ', snap);
-      snap.forEach((doc) => {
-        this.myProduct = []
-        this.data = doc.data().product
-        console.log('My data ', this.data);
-        this.data.forEach((item) => {
-          if (item.product_id == this.doc_id) {
-            this.myProduct.push({ info: doc.data(), id: doc.id })
-          }
-        });
-        console.log('My products ', this.myProduct);
-      })
-    }) */
-
-
-    // }, 1000);
-
+   
   }
-  onBoolChenged(c,i) {
+  onBoolChenged(c, i) {
     console.log('Boolean val ', c, 'index ', i);
   }
-  getProduct() {
-    this.dbProduct.doc(this.category).collection(this.col).doc(this.doc_id).onSnapshot((doc) => {
-      //console.log('My product ', doc.data());
-      this.unitProduct.push({ data: doc.data(), id: doc.id });
-      // console.log('My product ', this.unitProduct);
-
+  async getProduct() {
+   await this.dbProduct.doc(this.col).collection(this.category).doc(this.doc_id).get().then((doc) => {
+      this.unitProduct.push({ data: doc.data(), id: doc.id })
     })
   }
   getSpecial() {

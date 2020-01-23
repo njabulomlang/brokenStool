@@ -18,10 +18,17 @@ export class PendingOrdersPage implements OnInit {
   storageRef = firebase.storage().ref();
   pdfObj = null;
   reciept = null;
+  myArr=[];
+  productOrder=[];
+  delCost: number=0;
+  delType: string='';
+  status: string='';
   constructor(public navCtrl: NavController, ) { }
 
   ngOnInit() {
     this.getAllOrders();
+    this.getOrder();
+    this.getProdInfo();
   }
 
   orderTrack(id, data) {
@@ -30,12 +37,51 @@ export class PendingOrdersPage implements OnInit {
         id: id,
         data: data,
         reciept: this.reciept
-        //currency: JSON.stringify(currency),
-        // refresh: refresh
       }
     }
     this.navCtrl.navigateForward(['track-orders', id], navigationExtras)
-    // console.log('My order id ',id, 'data ', data )
+  }
+  getTotal() {
+    let total = 0;
+    for (let i = 0; i < this.myOrder.length; i++) {
+      this.myOrder[i].info.product.forEach((j) => {
+        this.status = j.status;
+        total += (j.cost * j.quantity) + this.delCost;
+      });
+    }
+    return total;
+  }
+  getProdInfo() {
+    for (let i = 0; i < this.myOrder.length; i++) {
+      if (this.myOrder[i].info.status === 'received') {
+        this.toggleOne();
+      } else if (this.myOrder[i].info.status === 'processed') {
+        this.toggleTwo();
+      } else if (this.myOrder[i].info.status === 'ready') {
+        this.toggleThree()
+      } else if (this.myOrder[i].info.status === 'collected') {
+        setTimeout(() => {
+         // this.downloadPdf();
+          console.log('Deleting PDF');
+        }, 1000);
+        this.toggleFour()
+      }
+    }
+  }
+  getOrder() {
+    this.myOrder.forEach((item)=>{
+      console.log('Item ', item);
+      this.dbOrder.doc(item.id).onSnapshot((res) => {
+     
+      // this.productOrder = [];
+      // this.delCost = res.data().deliveryCost;
+      // this.delType = res.data().deliveryType;
+      // this.status = res.data().status;
+      // res.data().product.forEach(item => {
+      //   this.productOrder.push(item);
+      // });
+    })
+    })
   }
   getAllOrders() {
     this.dbOrder.where('userID', '==', this.uid).onSnapshot((res) => {
@@ -48,19 +94,6 @@ export class PendingOrdersPage implements OnInit {
       })
     })
   }
-  /*   removeOrder() {
-     this.myOrder.forEach((i) => {
-       // this.getOrder(i.id);
-       this.dbHistory.doc(i.id).set({ date: new Date().getTime(), reciept: this.reciept }).then(() => {
-         this.dbOrder.doc(i.id).delete();
-       })
-     })
-   }  */
-  
-  getOrder(id) {
- 
-  }
-
   goBack(){
     this.navCtrl.pop()
   }

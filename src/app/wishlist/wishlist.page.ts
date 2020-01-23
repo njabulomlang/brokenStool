@@ -36,7 +36,8 @@ export class WishlistPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: data.category,
+        col: data.brand,
+        category: data.category
       }
     };
     this.dbWishlist.doc(id).delete().then(() => {

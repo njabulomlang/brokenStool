@@ -52,15 +52,15 @@ export class ProfilePage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: data.category,
+        col: data.brand,
+        category: data.category
       }
     };
-    console.log('My details ', view_id, 'My data ', data, 'id ', id);
-    
-/*     this.dbWish.doc(id).delete().then(() => {
+    this.dbWish.doc(id).delete().then(() => {
       this.navCtrl.navigateForward(['view', view_id], navigationExtras)
-    }) */
+    })
   }
+
 
   getWishlist() {
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
