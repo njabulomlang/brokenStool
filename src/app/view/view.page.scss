@@ -213,216 +213,135 @@ ion-toolbar {
     width: 0%;
     height: 0%;
 
-    .sizeStyle {
-      background: rgba(175, 175, 175, 0.712);
-      border: 2px solid rgb(146, 146, 146);
-      color: white;
-      ion-button {
-        color: white;
-      }
-
-      .container{
-        .productinfo{
-          .sizes {
-            margin: 5px;
-      
-            ion-button {
-        
-              color: black;
-              margin: 0 !important;
-              padding: 0 !important;
-              border: 0.5px solid rgb(173, 173, 173);
-            }
-          }
-        }
-      }
-    }
-
-    .colorStyle {
-      border: 2px solid rgb(146, 146, 146);
-      color: rgb(99, 99, 99);
-    }
-    ion-toolbar {
-      --background: transparent;
-      position: absolute;
-
-      #icon {
-        color: maroon;
-      }
-
-      #rate {
-        color: white;
-        font-size: 0.7em;
-        background: rgb(0, 0, 39);
-        padding: 0 !important;
-        margin-right: -5px !important;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        ion-icon {
-          font-size: 1em;
-        }
-      }
-    }
-
     .container {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-
-      .image {
+      display: none;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  
+    ion-toolbar {
+      --background: rgb(255, 255, 255);
+      width: 100%;
+      #icon {
+        color: rgb(131, 131, 131);
+      }
+      font-family: "Raleway";
+      letter-spacing: 2px;
+      color: rgb(131, 131, 131);
+      #number {
+        font-size: 0.8em;
         position: relative;
-        display: flex;
-        flex-flow: column;
-        width: 100vw;
-        height: 70vh;
-        background: black;
+        top: 8px;
+        right: 5px;
+      }
+  
+      .icon1 {
+        margin: 0 20vw;
+      }
+    }
+  
+    .web_view {
+      min-width: 800px;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-flow: row;
+      margin-top: 100px;
+      box-shadow: 5px 5px 10px rgb(190, 190, 190);
+      padding: 10px;
+  
+      .image {
+        width: 40vw;
+        height: 45vh;
+  
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.8;
         }
-
-        .iteminfo {
-          z-index: 5;
-          position: absolute;
-          top: 53%;
-          left: 5vw;
-          display: flex;
-          flex-flow: row;
-          text-align: center;
-          align-items: flex-end;
-          justify-content: space-between;
-          width: 70%;
-          margin: 10px;
+      }
+  
+      .buttonz {
+        width: 100%;
+        text-align: right;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+        ion-button {
+          width: 20vw;
           color: white;
+          background: rgb(1, 1, 54);
+          border-radius: 20px;
           font-family: "Raleway";
-          line-height: 10px;
-          .stars {
-            ion-icon {
-              font-size: 6vw;
-            }
-          }
-
-          .price {
-            p {
-              font-size: 5vw;
+          ion-icon {
+            color: white;
+            #book {
+              color: maroon;
             }
           }
         }
       }
-
-      .productinfo {
-        display: flex;
-        flex-flow: column;
-        width: 90vw;
-        // height: 60vh;
-        background: white;
-        z-index: 5;
-        position: absolute;
-        top: 50%;
-
-        border-top-right-radius: 10px;
-        border-top-left-radius: 10px;
-        box-shadow: 5px 5px 10px rgb(184, 184, 184);
-
-        .add {
-          position: absolute;
-          right: -5px;
-          top: -25px;
-          ion-fab-button {
-            background: maroon;
-            border-radius: 50%;
-            ion-icon {
-              color: white;
-            }
-          }
-        }
-
-        .about {
-          margin: 5px;
-          font-size: 0.7em;
-        }
-
-        .sizes {
-          margin: 5px;
-          font-size: 0.7em;
-          ion-button {
-            font-size: 1em;
-            // width: 14vw;
-            color: black;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: 0.5px solid rgb(173, 173, 173);
-          }
-        }
-
-        .colours {
-          // position: relative;
-          // bottom: 20px;
-          margin: 5px;
-          font-size: 0.7em;
-          ion-button {
-            margin: 2px;
-            width: 14vw;
-            // height: 8vw;
-            font-size: 1em;
-          }
-        }
-
-        .quantity {
-          // position: relative;
-          // bottom: 40px;
-          margin: 5px;
-          font-size: 0.7em;
-          align-items: baseline;
-
-          ion-button {
-            font-size: 1em;
-            width: 10vw;
-            color: black;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: 0.5px solid black;
-          }
-        }
-
-        .shipping {
-          // position: relative;
-          // bottom: 40px;
-          margin: 5px;
-          font-size: 0.7em;
-        }
-
-        .delivery {
-          position: relative;
-          bottom: 40px;
-          margin: 5px;
-          font-size: 0.7em;
-        }
-
-        .buttonz {
-          width: 100%;
-          text-align: right;
-          font-size: 1em;
-          ion-button {
-            font-size: 1em;
+  
+      .shipping {
+        margin: 5px;
+        font-size: 15px;
+      }
+  
+      .delivery {
+        position: relative;
+        bottom: 40px;
+        margin: 5px;
+        font-size: 15px;
+      }
+  
+      .add {
+        ion-fab-button {
+          background: maroon;
+          border-radius: 50%;
+          ion-icon {
             color: white;
-            background: rgb(1, 1, 54);
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            font-family: "Raleway";
-
-            ion-icon {
-              font-size: 1em;
-              color: white;
-
-              #book {
-                color: maroon;
-              }
-            }
           }
         }
+      }
+  
+      .about {
+        margin: 5px;
+      }
+  
+      .sizes {
+        margin: 5px;
+        ion-button {
+          color: black;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 0.5px solid rgb(173, 173, 173);
+        }
+      }
+  
+      .colours {
+        // position: relative;
+        // bottom: 20px;
+        margin: 5px;
+        ion-button {
+          margin: 2px;
+  
+          // height: 8vw;
+        }
+      }
+  
+      .quantity {
+        margin: 5px;
+        align-items: baseline;
+        ion-button {
+          color: black;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 0.5px solid black;
+        }
+      }
+  
+      .productinfo {
+        margin: 20px;
       }
     }
   }
@@ -465,6 +384,7 @@ ion-toolbar {
   .web_view {
     min-width: 800px;
     max-width: 1200px;
+    // height: 100%;
     margin: auto;
     display: flex;
     flex-flow: row;
@@ -569,135 +489,148 @@ ion-toolbar {
 }
 
 @media only screen and (min-width: 800px){
-  .container {
+  #nav{
     display: none;
     width: 0 !important;
     height: 0 !important;
   }
 
-  ion-toolbar {
-    --background: rgb(255, 255, 255);
-    width: 100%;
-    #icon {
-      color: rgb(131, 131, 131);
-    }
-    font-family: "Raleway";
-    letter-spacing: 2px;
-    color: rgb(131, 131, 131);
-    #number {
-      font-size: 0.8em;
-      position: relative;
-      top: 8px;
-      right: 5px;
-    }
-
-    .icon1 {
-      margin: 0 20vw;
-    }
+  #webview{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
   }
-
   .web_view {
-    min-width: 800px;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-flow: row;
-    margin-top: 100px;
-    box-shadow: 5px 5px 10px rgb(190, 190, 190);
-    padding: 10px;
+    display: none;
+    width: 0%;
+    height: 0%;
 
-    .image {
-      width: 40vw;
-      height: 45vh;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .container {
+      display: none;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  
+    ion-toolbar {
+      --background: rgb(255, 255, 255);
+      width: 100%;
+      #icon {
+        color: rgb(131, 131, 131);
+      }
+      font-family: "Raleway";
+      letter-spacing: 2px;
+      color: rgb(131, 131, 131);
+      #number {
+        font-size: 0.8em;
+        position: relative;
+        top: 8px;
+        right: 5px;
+      }
+  
+      .icon1 {
+        margin: 0 20vw;
       }
     }
-
-    .buttonz {
-      width: 100%;
-      text-align: right;
+  
+    .web_view {
+      min-width: 800px;
+      max-width: 1200px;
+      margin: auto;
       display: flex;
       flex-flow: row;
-      justify-content: space-evenly;
-      ion-button {
-        width: 20vw;
-        color: white;
-        background: rgb(1, 1, 54);
-        border-radius: 20px;
-        font-family: "Raleway";
-        ion-icon {
+      margin-top: 100px;
+      box-shadow: 5px 5px 10px rgb(190, 190, 190);
+      padding: 10px;
+  
+      .image {
+        width: 40vw;
+        height: 45vh;
+  
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+  
+      .buttonz {
+        width: 100%;
+        text-align: right;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+        ion-button {
+          width: 20vw;
           color: white;
-          #book {
-            color: maroon;
+          background: rgb(1, 1, 54);
+          border-radius: 20px;
+          font-family: "Raleway";
+          ion-icon {
+            color: white;
+            #book {
+              color: maroon;
+            }
           }
         }
       }
-    }
-
-    .shipping {
-      margin: 5px;
-      font-size: 15px;
-    }
-
-    .delivery {
-      position: relative;
-      bottom: 40px;
-      margin: 5px;
-      font-size: 15px;
-    }
-
-    .add {
-      ion-fab-button {
-        background: maroon;
-        border-radius: 50%;
-        ion-icon {
-          color: white;
+  
+      .shipping {
+        margin: 5px;
+        font-size: 15px;
+      }
+  
+      .delivery {
+        position: relative;
+        bottom: 40px;
+        margin: 5px;
+        font-size: 15px;
+      }
+  
+      .add {
+        ion-fab-button {
+          background: maroon;
+          border-radius: 50%;
+          ion-icon {
+            color: white;
+          }
         }
       }
-    }
-
-    .about {
-      margin: 5px;
-    }
-
-    .sizes {
-      margin: 5px;
-      ion-button {
-        color: black;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: 0.5px solid rgb(173, 173, 173);
+  
+      .about {
+        margin: 5px;
       }
-    }
-
-    .colours {
-      // position: relative;
-      // bottom: 20px;
-      margin: 5px;
-      ion-button {
-        margin: 2px;
-
-        // height: 8vw;
+  
+      .sizes {
+        margin: 5px;
+        ion-button {
+          color: black;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 0.5px solid rgb(173, 173, 173);
+        }
       }
-    }
-
-    .quantity {
-      margin: 5px;
-      align-items: baseline;
-      ion-button {
-        color: black;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: 0.5px solid black;
+  
+      .colours {
+        margin: 5px;
+        ion-button {
+          margin: 2px;
+        }
       }
-    }
-
-    .productinfo {
-      margin: 20px;
+  
+      .quantity {
+        margin: 5px;
+        align-items: baseline;
+        ion-button {
+          color: black;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 0.5px solid black;
+        }
+      }
+  
+      .productinfo {
+        margin: 20px;
+      }
     }
   }
 }
