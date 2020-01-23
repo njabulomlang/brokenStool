@@ -51,7 +51,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <div class="container" *ngIf="col!=='sales'">
+  <div class="container" *ngIf="col!=='Specials'">
     <div class="image" *ngFor="let prod of unitProduct">
       <img src="{{prod.data.pictureLink}}">
 
@@ -156,10 +156,9 @@
 
 
 
-  <div class="container" *ngIf="col==='sales'">
+  <div class="container" *ngIf="col==='Specials'">
     <div class="image" *ngFor="let prod of mySale">
       <img src="{{prod.data.pictureLink}}">
-
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
@@ -206,12 +205,7 @@
           (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
           <p style="color: rgb(146, 146, 146);">{{c}}</p>
         </ion-button>
-        <!-- <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent" style="background: green; border-radius: 6px;">
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent" style="background: red; border-radius: 6px;">
-        </ion-button> -->
+       
       </div>
       <div class="quantity">
         <p>Quantity</p>
@@ -258,7 +252,7 @@
 
 
 
-  <div class="web_view" *ngIf="col!=='sales'">
+  <div class="web_view" *ngIf="col!=='Specials'">
     <div class="image" *ngFor="let prod of unitProduct">
       <img src="{{prod.data.pictureLink}}">
 
@@ -359,7 +353,7 @@
     </div>
   </div>
 
-  <div class="web_view" *ngIf="col==='sales'">
+  <div class="web_view" *ngIf="col==='Specials'">
     <div class="image" *ngFor="let prod of mySale">
       <img src="{{prod.data.pictureLink}}">
 

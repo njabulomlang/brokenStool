@@ -78,6 +78,9 @@ export class HomePage implements OnInit {
       this.navCtrl.navigateForward(['view', view_id], navigationExtras)
     })
   }
+  delete(id) {
+    this.dbWish.doc(id).delete()
+  }
   getWishlist() {
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
       this.myWishlist = [];
@@ -197,7 +200,7 @@ export class HomePage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: 'sales',
+        col: 'Specials',
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }
@@ -218,7 +221,5 @@ export class HomePage implements OnInit {
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
-  ozowPayment() {
-    
-  }
+ 
 }

@@ -14,7 +14,8 @@ export class CategoriesPage implements OnInit {
   uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
-  viewPrice =  false;
+  viewPrice = false;
+  myWishlist = [];
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController) {
     // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
     this.category = this.route.snapshot.paramMap.get('data').toUpperCase();
@@ -36,11 +37,33 @@ export class CategoriesPage implements OnInit {
     this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
+    this.getWishlist();
+  }
+  getWishlist() {
+    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
+      this.myWishlist = [];
+      res.forEach((doc) => {
+        this.myWishlist.push({ info: doc.data(), id: doc.id });
+      })
+    })
+  }
+  addtoBusket(view_id, data, id) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: data.brand,
+        category: data.category
+      }
+    };
+    this.dbWish.doc(id).delete().then(() => {
+      this.navCtrl.navigateForward(['view', view_id], navigationExtras)
+    })
   }
 
-
-  
-  wish(){
+  delete(id) {
+    this.dbWish.doc(id).delete()
+  }
+  wish() {
     this.viewPrice = !this.viewPrice
   }
 
