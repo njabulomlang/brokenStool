@@ -30,6 +30,7 @@ export class ListPage implements OnInit {
   viewFilter = false;
   viewPrice =  false
   viewReviews = false;
+  myWishlist=[];
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -50,6 +51,32 @@ export class ListPage implements OnInit {
     this.dbWishlist.where('customerUID', '==', this.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     })
+    this.getWishlist();
+  }
+  getWishlist() {
+    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
+      this.myWishlist = [];
+      res.forEach((doc) => {
+        this.myWishlist.push({ info: doc.data(), id: doc.id });
+      })
+    })
+  }
+
+  addtoBusket(view_id, data, id) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: data.brand,
+        category: data.category
+      }
+    };
+    this.dbWish.doc(id).delete().then(() => {
+      this.navCtrl.navigateForward(['view', view_id], navigationExtras)
+    })
+  }
+
+  delete(id) {
+    this.dbWish.doc(id).delete()
   }
 
   wish(){
@@ -99,7 +126,17 @@ export class ListPage implements OnInit {
     };
     this.navCtrl.navigateForward(['view', id], navigationExtras);
   }
-
+  viewitemSale(id, data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'sales',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    this.navCtrl.navigateForward(['view', id], navigationExtras);
+  }
   wishList(id, data, index) {
     //console.log('My info ', id, data);
     this.heartIndex = index;
@@ -125,7 +162,8 @@ export class ListPage implements OnInit {
       } else {
         this.dbWishlist.doc(res.id).set({
           customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
-          image: data.pictureLink, id: id, category: this.collectionName
+          image: data.pictureLink, id: id, category: this.collectionName,
+          brand: this.col
         }).then(() => {
           this.toastController('Added to wishlist..');
           //this.router.navigateByUrl('basket');

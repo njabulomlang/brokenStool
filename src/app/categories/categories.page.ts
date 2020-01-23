@@ -59,6 +59,7 @@ export class CategoriesPage implements OnInit {
       this.navCtrl.navigateForward(['view', view_id], navigationExtras)
     })
   }
+
   delete(id) {
     this.dbWish.doc(id).delete()
   }

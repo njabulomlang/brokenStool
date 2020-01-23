@@ -193,7 +193,7 @@ export class HomePage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: 'sales',
+        col: 'Specials',
         //currency: JSON.stringify(currency),
         // refresh: refresh
       }

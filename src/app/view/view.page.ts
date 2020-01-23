@@ -43,13 +43,14 @@ export class ViewPage implements OnInit {
       this.col = params["col"];
       this.category = params["category"];
     })
-    console.log('My info ',this.doc_data,'Col ',this.col, 'Category ',this.category);
-    
   }
 
   ngOnInit() {
-    if (this.col === 'sales') {
-      this.getSpecial();
+    if (this.col === 'Specials') {
+      this.dbSales.doc(this.doc_id).get().then((res) => {
+        this.mySale.push({ data: res.data(), id: res.id });
+      })
+    //  this.getSpecial();
   } else {
       this.getProduct();
   }
@@ -72,10 +73,9 @@ export class ViewPage implements OnInit {
       this.unitProduct.push({ data: doc.data(), id: doc.id })
     })
   }
-  getSpecial() {
-    this.dbSales.doc(this.doc_id).onSnapshot((res) => {
+  async getSpecial() {
+   await this.dbSales.doc(this.doc_id).get().then((res) => {
       this.mySale.push({ data: res.data(), id: res.id });
-      // console.log('My product ', this.mySale);
     })
   }
   async presentPopover(ev: any) {
