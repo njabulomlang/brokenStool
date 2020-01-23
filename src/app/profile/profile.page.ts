@@ -31,6 +31,7 @@ export class ProfilePage implements OnInit {
   myWish:number;
   myWishlist=[];
   viewReviews = false;
+  viewBackdrop = false;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
 
@@ -80,6 +81,11 @@ export class ProfilePage implements OnInit {
       this.myCart = res.size;
     })
   }
+
+  getBackdrop(){
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
   getUserDetails(uid) {
     this.dbProfile.doc(uid).onSnapshot((doc) => {
       if (doc.exists) {
@@ -110,6 +116,7 @@ export class ProfilePage implements OnInit {
 
   reviewed() {
      this.viewReviews = !this.viewReviews
+     this.viewBackdrop = !this.viewBackdrop
    }
   
   check(val) {

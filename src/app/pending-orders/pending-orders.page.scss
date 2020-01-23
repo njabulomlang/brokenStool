@@ -300,6 +300,7 @@ ion-toolbar {
     height: 0%;
   }
 
+
   #nav {
     display: none;
     width: 0 !important;
@@ -339,248 +340,249 @@ ion-toolbar {
       margin: 0 20vw;
     }
   }
+  
+}
 
-  .web_view {
-    min-width: 800px;
-    max-width: 1200px;
-    margin: auto;
+.web_view {
+  min-width: 100%;
+  max-width: 100%;
+  margin: auto;
 
-    .cards {
+  .cards {
+    display: flex;
+    flex-flow: column;
+    height: auto;
+    align-items: center;
+    border-radius: 5px;
+    margin: 6px;
+    position: relative;
+
+    .card {
       display: flex;
-      flex-flow: column;
-      height: auto;
-      align-items: center;
-      border-radius: 5px;
-      margin: 6px;
+      flex-flow: row;
       position: relative;
+      top: 10px;
+      padding: 5px;
+      width: 100%;
+      overflow-x: auto;
+      min-height: 30vh;
+      margin: 10px;
+      box-shadow: 5px 5px 10px rgb(190, 190, 190);
+      border-radius: 5px;
 
-      .card {
+      .card1 {
+        display: flex;
+        flex-flow: column;
+        position: relative;
+      }
+
+      .top {
         display: flex;
         flex-flow: row;
-        position: relative;
-        top: 10px;
-        padding: 5px;
-        width: 100%;
-        overflow-x: auto;
-        min-height: 30vh;
-        margin: 10px;
-        box-shadow: 5px 5px 10px rgb(190, 190, 190);
-        border-radius: 5px;
-
-        .card1 {
-          display: flex;
-          flex-flow: column;
-          position: relative;
-        }
-
-        .top {
-          display: flex;
-          flex-flow: row;
-          min-width: 20vw;
-          height: fit-content;
+        min-width: 20vw;
+        height: fit-content;
+        margin: 5px;
+        box-shadow: 3px 3px 3px 3px rgb(209, 209, 209);
+        font-size: 12px;
+        .image {
+          width: 6vw;
+          height: 6vw;
           margin: 5px;
-          box-shadow: 3px 3px 3px 3px rgb(209, 209, 209);
-          font-size: 12px;
-          .image {
-            width: 6vw;
-            height: 6vw;
-            margin: 5px;
+          border-radius: 5px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 5px;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              border-radius: 5px;
+          }
+          .info {
+            width: 100%;
+            padding: 10px;
+            margin: 15px;
+            display: grid;
+            align-items: center;
+
+            #name {
+              font-family: "Poppins";
+              font-size: 12px;
+              span {
+                font-weight: bold;
+              }
             }
-            .info {
-              width: 100%;
-              padding: 10px;
-              margin: 15px;
-              display: grid;
-              align-items: center;
 
-              #name {
-                font-family: "Poppins";
-                font-size: 12px;
-                span {
-                  font-weight: bold;
-                }
-              }
-
-              #costs {
-                line-height: 0.2px;
-              }
-              p {
-                font-size: 12px;
-                font-family: "Poppins";
-                span {
-                  font-weight: bold;
-                }
+            #costs {
+              line-height: 0.2px;
+            }
+            p {
+              font-size: 12px;
+              font-family: "Poppins";
+              span {
+                font-weight: bold;
               }
             }
           }
-        }
-      }
-
-      .butt {
-        width: 100%;
-        height: 30%;
-        margin: 18px 0px 20px 0px;
-        ion-button {
-          font-family: "Poppins";
-          letter-spacing: 1px;
-          color: white;
-          background: rgb(0, 0, 26);
-          width: 80%;
-          position: absolute;
-          left: 10%;
-          bottom: 2px;
-        }
-      }
-
-      #msg {
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: space-evenly;
-        margin: 10px;
-        margin-top: 60px;
-        font-family: "Poppins";
-        box-shadow: none !important;
-        img {
-          width: 30vw;
-          height: 40vh;
-        }
-        p {
-          color: #c6cbdb;
-          font-size: 40px;
         }
       }
     }
 
-    .tracking {
+    .butt {
+      width: 100%;
+      height: 30%;
+      margin: 18px 0px 20px 0px;
+      ion-button {
+        font-family: "Poppins";
+        letter-spacing: 1px;
+        color: white;
+        background: rgb(0, 0, 26);
+        width: 80%;
+        position: absolute;
+        left: 10%;
+        bottom: 2px;
+      }
+    }
+
+    #msg {
       display: flex;
       flex-flow: column;
-      justify-content: space-between;
-      margin: 20px;
-      width: 100%;
-      color: rgb(143, 143, 143);
+      align-items: center;
+      justify-content: space-evenly;
+      margin: 10px;
+      margin-top: 60px;
+      font-family: "Poppins";
+      box-shadow: none !important;
+      img {
+        width: 30vw;
+        height: 40vh;
+      }
+      p {
+        color: #c6cbdb;
+        font-size: 40px;
+      }
+    }
+  }
 
-      .orderstatus{
-        p{
-          span{
-            font-size: 12px;
-          }
+  .tracking {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: 20px;
+    width: 100%;
+    color: rgb(143, 143, 143);
+
+    .orderstatus{
+      p{
+        span{
+          font-size: 12px;
         }
       }
-      .left {
-        flex: 1;
-      }
+    }
+    .left {
+      flex: 1;
+    }
 
-      .bankingDets {
-        p{
-           font-size: 12px;
-      
-        }
-       
+    .bankingDets {
+      p{
+         font-size: 12px;
+    
       }
-
-      .tracks {
-        width: 20vw;
      
-        .text {
-          position: relative;
-          right: 8px;
-          top: 10px;
-          display: flex;
-          flex-flow: row;
-          width: 30vw;
-          justify-content: space-between;
-          font-weight: lighter;
-          text-align: center;
-          margin: 5px;
-          font-size: 15px;
-          // line-height: 20px;
-          // font-size: 1em;
-          #txt{
-            font-size: 12px;
-          }
-        }
-        flex: 2;
-        .circle-container {
-          width: 30vw;
-          margin: 0 auto;
-          display: flex;
-          flex-flow: row;
-          // border: 1px solid red;
-          text-align: center;
-        }
-        .circle-container > #one {
-          cursor: pointer;
-          width: 2vw;
-          height: 2vw;
-          border-radius: 50px;
-          border: 1px solid grey;
-          transition: 700ms;
-          font-weight: lighter;
-          font-size: 1em;
-        }
-        .circle-container > #two {
-          cursor: pointer;
-          width: 2vw;
-          height: 2vw;
-          border-radius: 50px;
-          border: 1px solid grey;
-          font-size: 1em;
-          transition: 700ms;
-          font-weight: lighter;
-        }
-        .circle-container > #three {
-          cursor: pointer;
-          width: 2vw;
-          height: 2vw;
-          border-radius: 50px;
-          border: 0.5px solid grey;
-          transition: 700ms;
-          font-size: 1em;
-          font-weight: lighter;
-        }
-        .circle-container > #four {
-          cursor: pointer;
-          width: 2vw;
-          height: 2vw;
-          border-radius: 50px;
-          border: 1px solid grey;
-          font-size: 1em;
-          transition: 700ms;
-          font-weight: lighter;
-        }
-        #line1,
-        #line2,
-        #line3 {
-          width: calc(33.33333333% - 28px);
-          height: 0;
-          margin-top: 13px;
-          transition: 700ms;
-          font-size: 0.8em;
-        }
-        #line1 {
-          border: 0.5px solid grey;
-        }
-        #line2 {
-          border: 0.5px solid grey;
-        }
-        #line3 {
-          border: 0.5px solid grey;
-        }
+    }
 
-        #one,
-        #two,
-        #three,
-        #four {
-          display: grid;
-          align-items: center;
+    .tracks {
+      width: 20vw;
+   
+      .text {
+        position: relative;
+        right: 8px;
+        top: 10px;
+        display: flex;
+        flex-flow: row;
+        width: 30vw;
+        justify-content: space-between;
+        font-weight: lighter;
+        text-align: center;
+        margin: 5px;
+        font-size: 15px;
+        // line-height: 20px;
+        // font-size: 1em;
+        #txt{
+          font-size: 12px;
         }
+      }
+      flex: 2;
+      .circle-container {
+        width: 30vw;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row;
+        // border: 1px solid red;
+        text-align: center;
+      }
+      .circle-container > #one {
+        cursor: pointer;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50px;
+        border: 1px solid grey;
+        transition: 700ms;
+        font-weight: lighter;
+        font-size: 1em;
+      }
+      .circle-container > #two {
+        cursor: pointer;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50px;
+        border: 1px solid grey;
+        font-size: 1em;
+        transition: 700ms;
+        font-weight: lighter;
+      }
+      .circle-container > #three {
+        cursor: pointer;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50px;
+        border: 0.5px solid grey;
+        transition: 700ms;
+        font-size: 1em;
+        font-weight: lighter;
+      }
+      .circle-container > #four {
+        cursor: pointer;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50px;
+        border: 1px solid grey;
+        font-size: 1em;
+        transition: 700ms;
+        font-weight: lighter;
+      }
+      #line1,
+      #line2,
+      #line3 {
+        width: calc(33.33333333% - 28px);
+        height: 0;
+        margin-top: 13px;
+        transition: 700ms;
+        font-size: 0.8em;
+      }
+      #line1 {
+        border: 0.5px solid grey;
+      }
+      #line2 {
+        border: 0.5px solid grey;
+      }
+      #line3 {
+        border: 0.5px solid grey;
+      }
+
+      #one,
+      #two,
+      #three,
+      #four {
+        display: grid;
+        align-items: center;
       }
     }
   }
