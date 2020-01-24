@@ -910,7 +910,7 @@ ion-toolbar {
     background: rgb(201, 201, 201);
     width: 20vw;
     height: 94%;
-    top: 50px;
+    top: 56.5px;
     bottom: 40%;
     right: 0;
     align-items: center;
@@ -923,7 +923,6 @@ ion-toolbar {
       flex-flow: row;
       justify-content: space-between;
       width: 100%;
-      // text-align: center;
       margin: 5px;
   
       ion-icon {
@@ -951,6 +950,8 @@ ion-toolbar {
       overflow-y: auto;
       margin: 10px;
       width: 20vw;
+      height: 100%;
+      position: relative;
       .items {
         display: flex;
         flex-flow: row;
@@ -978,9 +979,11 @@ ion-toolbar {
               border-radius: 5px;
             }
           }
-  
           .item_details {
-            width: 8vw;
+            width: 12vw;
+            p{
+              font-size: 13px;;
+            }
           }
         }
   
@@ -1008,9 +1011,22 @@ ion-toolbar {
               color: rgb(148, 14, 14);
             }
           }
-          .add_to_basket {
-            background: rgb(2, 2, 37);
-            color: white;
+      
+        }
+      }
+      .add_to_basket {
+        background: rgb(2, 2, 37);
+        color: white;
+        position: absolute;
+        bottom: 0;
+        width: 90% ;
+        margin: 20px;
+        ion-button{
+          span{
+            display: flex;
+            width: 100%;
+            border-radius: 5px;
+            align-items: center;
           }
         }
       }

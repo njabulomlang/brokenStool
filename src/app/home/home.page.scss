@@ -536,10 +536,6 @@ ion-toolbar {
   ion-toolbar {
     --background: rgb(255, 255, 255);
     width: 100%;
-    // height: 25vh;
-    // display: grid;
-    // align-items: center;
-    // z-index: 20000000000000000000000000;
     #icon {
       color: rgb(131, 131, 131);
     }
@@ -645,7 +641,6 @@ ion-footer {
   min-width: 850px;
   max-width: 1200px;
   margin: auto;
-
   .sales {
     position: relative;
     // top: 40px;
@@ -857,24 +852,25 @@ ion-footer {
 }
 
 .backdrop1 {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   background: black;
   opacity: 0.5;
-  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .viewcart {
-  position: absolute;
+  position: fixed;
   z-index: 150;
   background: rgb(201, 201, 201);
   width: 20vw;
   height: 94%;
-  top: 50px;
-  bottom: 40%;
+  top: 56px;
+  // bottom: 35%;
   right: 0;
   align-items: center;
   display: flex;
@@ -914,6 +910,8 @@ ion-footer {
     overflow-y: auto;
     margin: 10px;
     width: 20vw;
+    height: 100%;
+    position: relative;
     .items {
       display: flex;
       flex-flow: row;
@@ -943,12 +941,15 @@ ion-footer {
         }
 
         .item_details {
-          width: 8vw;
+          width: 12vw;
+          p{
+            font-size: 13px;;
+          }
         }
       }
 
       .right {
-        width: 6vw;
+        width: 3vw;
         display: flex;
         flex-flow: column;
         justify-content: space-between;
@@ -971,9 +972,23 @@ ion-footer {
             color: rgb(148, 14, 14);
           }
         }
-        .add_to_basket {
-          background: rgb(2, 2, 37);
-          color: white;
+    
+      }
+    }
+
+    .add_to_basket {
+      background: rgb(2, 2, 37);
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 90% ;
+      margin: 20px;
+      ion-button{
+        span{
+          display: flex;
+          width: 100%;
+          border-radius: 5px;
+          align-items: center;
         }
       }
     }
@@ -998,13 +1013,13 @@ ion-footer {
 }
 
 .viewreviews {
-  position: absolute;
+  position: fixed;
   z-index: 150;
   background: rgb(201, 201, 201);
   width: 20%;
   height: 94%;
-  top: 50px;
-  bottom: 40%;
+  top: 57px;
+  // bottom: 40%;
   right: 0;
   align-items: center;
   display: flex;
