@@ -7,6 +7,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { async } from '@angular/core/testing';
 //import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
 declare var window;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -33,7 +34,8 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
- 
+   //console.log('My status ', FB.getLoginStatus());
+   
   }
 /*   goSignUp() {
     this.router.navigateByUrl("/signup")
@@ -43,7 +45,7 @@ export class LoginPage implements OnInit {
     //let credential = '';
     try {
       const gplusUser = await this.gplus.login({
-         'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
+        'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
         'offline': true,
         'scopes': 'profile email'
       })
@@ -54,6 +56,42 @@ export class LoginPage implements OnInit {
     } catch(err) {
       console.log('Error ',err)
     }
+  }
+  Facebook() {
+   
+// <script>
+// window.fbAsyncInit = function() {
+//   FB.init({
+//     appId      : '{your-app-id}',
+//     cookie     : true,
+//     xfbml      : true,
+//     version    : '{api-version}'
+//   });
+    
+//   FB.AppEvents.logPageView();   
+    
+// };
+
+// (function(d, s, id){
+//    var js, fjs = d.getElementsByTagName(s)[0];
+//    if (d.getElementById(id)) {return;}
+//    js = d.createElement(s); js.id = id;
+//    js.src = "https://connect.facebook.net/en_US/sdk.js";
+//    fjs.parentNode.insertBefore(js, fjs);
+//  }(document, 'script', 'facebook-jssdk'));
+// </script>
+
+
+
+/* {
+  status: 'connected',
+  authResponse: {
+      accessToken: '...',
+      expiresIn:'...',
+      signedRequest:'...',
+      userID:'...'
+  }
+} */
   }
 
    webGoogleLogin() {
