@@ -304,6 +304,32 @@ ion-toolbar {
       overflow-y: auto;
       margin: 10px;
       width: 20vw;
+
+      .div{
+        height: 80vh;
+        overflow-y: auto;
+        scrollbar-width: 2px;
+        width: 100%;
+      }
+
+      #noItems{
+        display: flex;
+        flex-flow: column;
+        background: none;
+        align-items: center;
+        box-shadow:  none;
+        justify-content: center;
+        margin-top: 200px;
+        img{
+          width: 5vw;
+          height: 5vw;
+        }
+        p{
+          text-align: center;
+          font-size: 15px;
+          color: grey;
+        }
+      }
       .items {
         display: flex;
         flex-flow: row;
@@ -464,7 +490,7 @@ ion-footer {
       ion-button {
         font-size: 13px;
         color: white;
-        border: 1px solid white;
+        margin-left: -8%;
         padding-left: 0 !important;
         span {
           text-align: left;

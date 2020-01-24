@@ -559,7 +559,7 @@ ion-toolbar {
     min-width: 800px;
     max-width: 1200px;
     margin: auto;
-    height: 100%;
+    // height: 100%;
   
     .top {
       width: 100%;
@@ -601,9 +601,8 @@ ion-toolbar {
       padding: 10px;
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
+      width: 100%;  
       object-fit: cover;
-      overflow-y: auto;
       padding: 16px;
       justify-content: space-evenly;
       justify-items: center;
@@ -883,14 +882,27 @@ ion-toolbar {
       }
     }
   }
+
+  .backdrop1 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+  
   
   .viewwishlist {
-    position: absolute;
+    position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
     width: 20vw;
     height: 94%;
-    top: 50px;
+    top: 57px;
     bottom: 40%;
     right: 0;
     align-items: center;
@@ -931,6 +943,34 @@ ion-toolbar {
       overflow-y: auto;
       margin: 10px;
       width: 20vw;
+      height: 90%;
+      overflow-y: auto;
+
+      #noItems{
+        display: flex;
+        flex-flow: column;
+        background: none;
+        align-items: center;
+        box-shadow:  none;
+        justify-content: center;
+        margin-top: 200px;
+        img{
+          width: 5vw;
+          height: 5vw;
+        }
+        p{
+          text-align: center;
+          font-size: 15px;
+          color: grey;
+        }
+      }
+
+      .div{
+        height: 80vh;
+        overflow-y: auto;
+        scrollbar-width: 2px;
+        width: 100%;
+      }
       .items {
         display: flex;
         flex-flow: row;
@@ -1012,12 +1052,8 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  }
-
- 
+  } 
 }
-
-
 
 @media only screen and (max-width: 1024px) {
   .web_view {
@@ -1041,8 +1077,6 @@ ion-toolbar {
     height: 0 !important;
   }
 }
-
-
 
 ion-footer {
   text-align: center;
@@ -1090,7 +1124,7 @@ ion-footer {
       ion-button {
         font-size: 13px;
         color: white;
-       // border: 1px solid white;
+        margin-left: -8%;
        padding-left: 0 !important;
         span{
           text-align:left;

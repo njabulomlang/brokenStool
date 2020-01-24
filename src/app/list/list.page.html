@@ -74,9 +74,7 @@
       </div>
       <p style="color:white; text-align: center;">{{loaderMessages}}</p>
     </div>
-    <!--  <div class="loading-text">
-          <p>Loading Map</p>
-        </div> -->
+
   </div>
 
   <div class="container">
@@ -96,14 +94,6 @@
           <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter <ion-icon slot="end" name="funnel"></ion-icon></p>
         </div>
 
-        <!-- <div class="filter" *ngIf="collectionName==='sales'">
-
-          <ion-select placeholder="Filter ASC" [(ngModel)]="sortSale" (ionChange)="sortSales()">
-            <ion-select-option value="name">Name</ion-select-option>
-            <ion-select-option value="discount">Discount</ion-select-option>
-            <ion-select-option value="saleprice">Price</ion-select-option>
-          </ion-select>
-        </div> -->
       </div>
     </div>
     <div class="cards" *ngIf="collectionName!=='sales'">
@@ -117,7 +107,6 @@
 
             <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>
           </div>
-          <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
         </div>
       </div>
@@ -197,25 +186,12 @@
       </div>
       <div class="itemcount">
         <p id="lorem" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-        <!-- <div class="items" *ngIf="collectionName!=='sales'">
-          <p>{{myProduct.length}} item(s)</p>
-        </div>
-        <div class="items" *ngIf="collectionName==='sales'">
-          <p>{{promo.length}} item(s)</p>
-        </div> -->
+   
         <div class="filter"  style="cursor: pointer;"> 
 
           <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter <ion-icon slot="end" name="funnel"></ion-icon></p>
         </div>
 
-        <!-- <div class="filter" *ngIf="collectionName==='sales'">
-
-          <ion-select placeholder="Filter ASC" [(ngModel)]="sortSale" (ionChange)="sortSales()">
-            <ion-select-option value="name">Name</ion-select-option>
-            <ion-select-option value="discount">Discount</ion-select-option>
-            <ion-select-option value="saleprice">Price</ion-select-option>
-          </ion-select>
-        </div> -->
       </div>
     </div>
     <div class="cards" *ngIf="collectionName!=='sales'">
@@ -229,7 +205,6 @@
 
             <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info,i)"></ion-icon>
           </div>
-          <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
         </div>
       </div>
@@ -299,7 +274,9 @@
     </div>
   </div>
 
-  <div id="wish" [ngClass]="{'viewwishlist': viewPrice, 'closewishlist': !viewPrice}">
+  <div class="backdrop1" *ngIf="viewBackdrop"></div>
+
+  <div id="wish" [ngClass]="{'viewwishlist': viewwish, 'closewishlist': !viewwish}">
 
     <div class="heading">
       <p>Wishlist ({{myWishlist.length}})</p>
@@ -310,6 +287,7 @@
 
 
     <div class="wishlist_items">
+      <div class="div">
       <div class="items" *ngFor="let w of myWishlist">
         <div class="left">
           <div class="img">
@@ -335,32 +313,12 @@
         </div>
       </div>
 
-      <!-- <div class="items">
-        <div class="left">
-          <div class="img">
-            <img src="../../assets/yellow.jpg" alt="">
-          </div>
-
-          <div class="item_details">
-            <p> Yellow Tracksuits </p>
-            <p>R400.00</p>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="trash_icon">
-            <ion-icon slot="start" name="trash" ></ion-icon>
-          </div>
-
-          <div class="add_to_basket">
-            <ion-button (click)="onClick()" color="transparent">
-              Add<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
-        </div>
-      </div> -->
+      <div class="items" id="noItems">
+        <p>Wishlist Empty</p>
+        <img src="../../assets/sad_smile.svg" alt="">
+           </div>
     </div>
-
+  </div>
 
   </div>
 

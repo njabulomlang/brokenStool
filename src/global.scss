@@ -76,3 +76,7 @@ ion-modal {
   --min-width: 70vw !important;
   --width: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 1px;
+}

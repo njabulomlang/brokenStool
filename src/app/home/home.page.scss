@@ -198,6 +198,9 @@ ion-toolbar {
     }
   }
 }
+
+
+// =================================== Start Loader ==================================== 
 .loader {
   position: absolute;
   top: 0;
@@ -373,7 +376,7 @@ ion-toolbar {
     // transform: rotate(360deg);
   }
 }
-
+//----------------------------------- Media Queries -----------------------------------------
 @media only screen and (min-width: 1330px) {
   #background {
     width: 100%;
@@ -564,79 +567,8 @@ ion-toolbar {
   }
 }
 
-ion-footer {
-  text-align: center;
-  .footer {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    width: 100vw;
-    background: rgb(0, 0, 32);
-    color: white;
 
-    .heading {
-      width: 10vw;
-      height: 5vw;
-      margin: 15px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .app_store {
-      width: 10vw;
-      height: 5vw;
-    }
-
-    .contact_details {
-      font-size: 13px;
-      text-align: left;
-      p {
-        font-size: 13px;
-      }
-      h1 {
-        font-size: 20px;
-      }
-    }
-
-    .info {
-      font-size: 13px;
-      text-align: left;
-      display: flex;
-      flex-flow: column;
-      align-items: flex-start;
-      ion-button {
-        font-size: 13px;
-        color: white;
-        //border: 1px solid white;
-        padding-left: 0 !important;
-        span {
-          text-align: left;
-          width: 100%;
-          left: 0px !important;
-        }
-      }
-
-      h1 {
-        font-size: 20px;
-      }
-    }
-
-    .connect {
-      display: flex;
-      flex-flow: column;
-      ion-button {
-        overflow: hidden;
-      }
-      h1 {
-        font-size: 20px;
-      }
-    }
-  }
-}
-
+// =================================== Start Web View ==================================== 
 .web_view {
   min-width: 850px;
   max-width: 1200px;
@@ -862,7 +794,7 @@ ion-footer {
   width: 100%;
   height: 100%;
 }
-
+//----------------------------------- Basket CSS -----------------------------------------
 .viewcart {
   position: fixed;
   z-index: 150;
@@ -870,7 +802,6 @@ ion-footer {
   width: 20vw;
   height: 94%;
   top: 56px;
-  // bottom: 35%;
   right: 0;
   align-items: center;
   display: flex;
@@ -882,7 +813,6 @@ ion-footer {
     flex-flow: row;
     justify-content: space-between;
     width: 100%;
-    // text-align: center;
     margin: 5px;
 
     ion-icon {
@@ -910,8 +840,32 @@ ion-footer {
     overflow-y: auto;
     margin: 10px;
     width: 20vw;
-    height: 100%;
+    height: 90%;
     position: relative;
+    #noItems{
+      display: flex;
+      flex-flow: column;
+      background: none;
+      align-items: center;
+      box-shadow:  none;
+      justify-content: center;
+      margin-top: 200px;
+      img{
+        width: 5vw;
+        height: 5vw;
+      }
+      p{
+        text-align: center;
+        font-size: 15px;
+        color: grey;
+      }
+    }
+    .div{
+      height: 65vh;
+      overflow-y: auto;
+      scrollbar-width: 2px;
+      width: 100%;
+    }
     .items {
       display: flex;
       flex-flow: row;
@@ -959,6 +913,7 @@ ion-footer {
           font-size: 12px;
           width: 4vw;
           height: 20px;
+          margin: 10px;
           display: flex;
           flex-flow: row;
           justify-content: space-between;
@@ -977,18 +932,103 @@ ion-footer {
     }
 
     .add_to_basket {
-      background: rgb(2, 2, 37);
+      
       color: white;
       position: absolute;
       bottom: 0;
       width: 90% ;
-      margin: 20px;
+      margin: 15px;
+      p{
+        color: rgb(0, 0, 43);
+      }
       ion-button{
-        span{
-          display: flex;
+        background: rgb(2, 2, 37);
+        width: 100%;
+        object-fit: cover;
+        text-align: center;
+  
+      }
+      .delivery_options{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+        margin: 5px;
+        ion-button{
+          font-size: 13px;
+          color: grey;
+          width: 20vw;
+          height: 2vw;
+        }
+
+        .line {
+          width: 20vw;
+          height: 1.5px;
+          background: grey;
+        }
+      }
+
+      .delivery {
+        width: 50%;
+        height: 100%;
+        align-items: center;
+        overflow: hidden;
+        background: rgb(184, 184, 184);
+        ion-button {
+          border-bottom: 2px solid black;
+        }
+      }
+      .delivery-inactive {
+        width: 50%;
+        height: 100%;
+        align-items: center;
+        overflow: hidden;
+        opacity: 0.5;
+        background: rgb(250, 250, 250);
+        ion-button {
           width: 100%;
-          border-radius: 5px;
-          align-items: center;
+          height: 100%;
+          border-radius: 30px;
+          font-family: "Poiret One";
+          font-weight: bold;
+          letter-spacing: 3px;
+          background: #bf967e;
+          color: white;
+          border: none;
+        }
+      }
+      .collection {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        background: rgb(184, 184, 184);
+        ion-button {
+          width: 100%;
+          height: 100%;
+          border-radius: 30px;
+          font-family: "Poiret One";
+          font-weight: bold;
+          letter-spacing: 3px;
+          background: #bf967e;
+          color: white;
+          border: none;
+        }
+      }
+      .collection-inactive {
+        background: rgb(250, 250, 250);
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        opacity: 0.5;
+        ion-button {
+          width: 100%;
+          height: 100%;
+          border-radius: 30px;
+          font-family: "Poiret One";
+          font-weight: bold;
+          letter-spacing: 3px;
+          background: #bf967e;
+          color: white;
+          border: none;
         }
       }
     }
@@ -1011,7 +1051,7 @@ ion-footer {
   flex-flow: column;
   overflow: hidden;
 }
-
+//----------------------------------- Wishlist CSS -----------------------------------------
 .viewreviews {
   position: fixed;
   z-index: 150;
@@ -1059,6 +1099,33 @@ ion-footer {
     overflow-y: auto;
     margin: 10px;
     width: 20vw;
+    height: 90%;
+    overflow-y: auto;
+
+    #noItems{
+      display: flex;
+      flex-flow: column;
+      background: none;
+      align-items: center;
+      box-shadow:  none;
+      justify-content: center;
+      margin-top: 200px;
+      img{
+        width: 5vw;
+        height: 5vw;
+      }
+      p{
+        text-align: center;
+        font-size: 15px;
+        color: grey;
+      }
+    }
+    .div{
+      height: 80vh;
+      overflow-y: auto;
+      scrollbar-width: 2px;
+      width: 100%;
+    }
     .items {
       display: flex;
       flex-flow: row;
@@ -1140,4 +1207,84 @@ ion-footer {
   display: flex;
   flex-flow: column;
   overflow: hidden;
+}
+
+//----------------------------------- Footer ---------------------------------------------
+
+ion-footer {
+  text-align: center;
+  .footer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 100vw;
+    background: rgb(0, 0, 32);
+    color: white;
+
+    .heading {
+      width: 10vw;
+      height: 5vw;
+      margin: 15px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .app_store {
+      width: 10vw;
+      height: 5vw;
+    }
+
+    .contact_details {
+      font-size: 13px;
+      text-align: left;
+      p {
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .info {
+      font-size: 13px;
+      text-align: left;
+      display: flex;
+      flex-flow: column;
+      ion-button {
+        
+        font-size: 13px;
+        color: white;
+
+        padding-left: 0 !important;
+        span {
+          text-align: left;
+          width: 100%;
+          left: 0px !important;
+          margin-left: -15%;
+        }
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .connect {
+      display: flex;
+      flex-flow: column;
+      ion-button {
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+//- --------------------- Scrollbar width ---------------------- 
+::-webkit-scrollbar {
+  width: 1px;
 }
