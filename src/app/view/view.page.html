@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <div class="icon1">
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" >
+        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
           Terms and Privacy Policy
         </ion-button>
 
@@ -58,7 +58,7 @@
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}" >
+            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}">
           </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
@@ -89,14 +89,14 @@
         <p>Available sizes</p>
 
         <ion-button *ngFor="let size of prod.data.size;let i=index" (click)="sizeChosen(size, i)" color="transparent"
-          [ngClass]="{'sizeStyle':sizeIndex==i}" >
+          [ngClass]="{'sizeStyle':sizeIndex==i}">
           {{size}}
         </ion-button>
 
       </div>
       <div class="colours">
         <p>Colours</p>
-       <!--  <ion-item *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;">
+        <!--  <ion-item *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;">
           <ion-label>{{c}}</ion-label>
           <ion-checkbox (ionChange)="onBoolChenged(c,i)"></ion-checkbox>
         </ion-item> -->
@@ -163,7 +163,7 @@
         <div class="itemname">
           <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
             defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}">
-        </ionic4-star-rating>
+          </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
             <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
@@ -205,7 +205,7 @@
           (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
           <p style="color: rgb(146, 146, 146);">{{c}}</p>
         </ion-button>
-       
+
       </div>
       <div class="quantity">
         <p>Quantity</p>
@@ -259,7 +259,7 @@
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}" >
+            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}">
           </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
@@ -276,7 +276,7 @@
     </div>
 
     <div class="productinfo" *ngFor="let prod of unitProduct">
-      
+
       <div class="about">
         <p><b>About Product</b></p>
         <p>{{prod.data.description}}</p>
@@ -324,7 +324,7 @@
       <div class="shipping">
         <p><b>Shipping Information</b></p>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-           Lorem Ipsum has been the
+          Lorem Ipsum has been the
           industry's standard dummy text ever since the 1500s, when an unknown</p>
       </div>
       <br>
@@ -339,9 +339,9 @@
 
       <div class="buttonz">
         <div class="add">
-          <ion-fab-button color="transparent" (click)="gotocart()">
+          <ion-fab-button color="transparent" (click)="toBusket()">
             <ion-icon name="basket"></ion-icon>
-  
+
           </ion-fab-button>
         </div>
         <ion-button (click)="addToCart(prod.id, prod.data)" color="transparent">
@@ -360,8 +360,8 @@
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}" >
-        </ionic4-star-rating>
+            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}">
+          </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
             <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
@@ -378,7 +378,7 @@
     </div>
 
     <div class="productinfo" *ngFor="let prod of mySale">
-   
+
       <div class="about">
         <p><b>About Product</b></p>
         <p>{{prod.data.description}}</p>
@@ -441,13 +441,13 @@
       <div class="buttonz">
 
         <div class="add">
-          <ion-fab-button color="transparent" (click)="gotocart()" vertical="bottom" >
+          <ion-fab-button color="transparent" (click)="gotocart()" vertical="bottom">
             <ion-icon name="basket"></ion-icon>
-  
+
           </ion-fab-button>
         </div>
 
-        
+
         <ion-button (click)="addSaleToCart(prod.id, prod.data)" color="transparent">
           <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
             style="color: maroon; font-size: 30px; position: relative; bottom: 13px;"></ion-icon>
@@ -459,7 +459,7 @@
 
   <div class="backdrop1" *ngIf="viewBackdrop"></div>
 
-  <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}" >
+  <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}">
 
     <div class="heading">
       <p>Basket</p>
@@ -470,34 +470,65 @@
 
 
     <div class="wishlist_items">
-      <div class="items" >
-        <div class="left">
-          <div class="img">
-            <img src="../../assets/yellow.jpg" alt="">
+      <div class="div">
+
+
+        <div class="items">
+          <div class="left">
+            <div class="img">
+              <img src="../../assets/yellow.jpg" alt="">
+            </div>
+
+            <div class="item_details">
+              <p> <b>Tracks &nbsp; R400</b><br>
+                size: xs &nbsp; color: Yellow <br>
+                jan 23, 2020</p>
+
+              <p>
+                <ion-icon slot="start" name="remove-circle-outline" (click)="onClick()"></ion-icon>
+                2 <ion-icon slot="end" name="add-circle-outline" (click)="onClick()"></ion-icon>
+              </p>
+
+            </div>
           </div>
 
-          <div class="item_details">
-            <p> Tracks </p>
-            <p>R400</p>
+          <div class="right">
+            <div class="trash_icon" (click)="delete(w.id)">
+              <ion-icon slot="start" name="trash"></ion-icon>
+            </div>
+
+
           </div>
         </div>
 
-        <div class="right">
-          <div class="trash_icon" >
-            <ion-icon slot="start" name="trash" ></ion-icon>
-          </div>
+        <div class="items" id="noItems">
+          <p>Wishlist Empty</p>
+          <img src="../../assets/sad_smile.svg" alt="">
+        </div>
 
-          <div class="add_to_basket">
-            <ion-button color="transparent">
-              Done<ion-icon slot="end" name="basket"></ion-icon>
+
+        <div class="add_to_basket">
+
+          <div class="delivery_options">
+            <ion-button (click)="onClick()" color="transparent"
+              [ngClass]="{'delivery':buttonActive, 'delivery-inactive': !buttonActive}">
+              Delivery
+            </ion-button>
+            <ion-button (click)="onClick()" color="transparent"
+              [ngClass]="{'collection': !buttonActive, 'collection-inactive': buttonActive}">
+              Collection
             </ion-button>
           </div>
+          <p style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - R400.00</i></p>
+          <p style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - R500 Incl delivery</i></p>
+          <ion-button color="transparent">
+            FINISH
+          </ion-button>
         </div>
+
       </div>
 
     </div>
-
-
   </div>
 
   <ion-footer id="webview">
@@ -506,7 +537,7 @@
         <!-- <h1>Dankie Jesu</h1> -->
         <img src="../../assets/NoPath - Copy.svg" alt="">
       </div>
-  
+
       <div class="contact_details">
         <h1>CONTACT US</h1>
         <p>(011) 954-7865</p>
@@ -516,11 +547,11 @@
           SOWETO <br>
           1805</p>
       </div>
-  
+
       <div class="info">
         <h1>INFO</h1>
         <ion-button href="https://broken-stool.firebaseapp.com/home/FAQs" color="transparent">
-         <span>FAQs</span> 
+          <span>FAQs</span>
         </ion-button>
         <ion-button href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" color="transparent">
           <span>Terms and Privacy Policy</span>
@@ -532,10 +563,10 @@
           <span>Payment Process</span>
         </ion-button>
         <ion-button href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
-        <span>Developers</span>
+          <span>Developers</span>
         </ion-button>
       </div>
-      
+
       <div class="connect">
         <h1>CONNECT</h1>
         <ion-button (click)="onClick()" color="transparent">
@@ -543,11 +574,11 @@
           Facebook
         </ion-button>
         <ion-button (click)="onClick()" color="transparent">
-          <ion-icon slot="start" name="logo-instagram" ></ion-icon>
+          <ion-icon slot="start" name="logo-instagram"></ion-icon>
           Instagram
         </ion-button>
       </div>
-  
+
       <div class="app_store">
         <img src="../../assets/android.png" alt="App Store">
       </div>
@@ -555,5 +586,3 @@
   </ion-footer>
 
 </ion-content>
-
-

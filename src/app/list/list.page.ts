@@ -31,6 +31,8 @@ export class ListPage implements OnInit {
   viewPrice =  false
   viewReviews = false;
   myWishlist=[];
+  viewwish = false;
+  viewBackdrop = false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
@@ -62,6 +64,8 @@ export class ListPage implements OnInit {
     })
   }
 
+ 
+
   addtoBusket(view_id, data, id) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -80,7 +84,8 @@ export class ListPage implements OnInit {
   }
 
   wish(){
-    this.viewPrice = !this.viewPrice
+    this.viewwish = !this.viewwish
+    this.viewBackdrop = !this.viewBackdrop
   }
 
   /* list() {
@@ -197,6 +202,8 @@ export class ListPage implements OnInit {
   priced(){
     this.viewPrice = !this.viewPrice
   }
+
+
   colorOpt(info) {
     //console.log(info.path[0].innerHTML);
     //this.myProduct.sort(info.path[0].innerHTML);

@@ -244,58 +244,40 @@
 
 
     <div class="wishlist_items">
-      <div class="items" *ngFor="let w of myWishlist">
-        <div class="left">
-          <div class="img">
-            <img src="{{w.info.image}}" alt="">
+      <div class="div">
+        <div class="items" *ngFor="let w of myWishlist">
+          <div class="left">
+            <div class="img">
+              <img src="{{w.info.image}}" alt="">
+            </div>
+
+            <div class="item_details">
+              <p> {{w.info.name}} </p>
+              <p>{{w.info.price | currency:'R'}}</p>
+            </div>
           </div>
 
-          <div class="item_details">
-            <p> {{w.info.name}} </p>
-            <p>{{w.info.price | currency:'R'}}</p>
+          <div class="right">
+            <div class="trash_icon" (click)="delete(w.id)">
+              <ion-icon slot="start" name="trash"></ion-icon>
+            </div>
+
+            <div class="add_to_basket">
+              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+                Add<ion-icon slot="end" name="basket"></ion-icon>
+              </ion-button>
+            </div>
           </div>
         </div>
 
-        <div class="right">
-          <div class="trash_icon" (click)="delete(w.id)">
-            <ion-icon slot="start" name="trash" ></ion-icon>
-          </div>
-
-          <div class="add_to_basket">
-            <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
-              Add<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
+        <div class="items" id="noItems">
+          <p>Wishlist Empty</p>
+          <img src="../../assets/sad_smile.svg" alt="">
         </div>
+
       </div>
 
-      <!-- <div class="items">
-        <div class="left">
-          <div class="img">
-            <img src="../../assets/yellow.jpg" alt="">
-          </div>
-
-          <div class="item_details">
-            <p> Yellow Tracksuits </p>
-            <p>R400.00</p>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="trash_icon">
-            <ion-icon slot="start" name="trash" ></ion-icon>
-          </div>
-
-          <div class="add_to_basket">
-            <ion-button (click)="onClick()" color="transparent">
-              Add<ion-icon slot="end" name="basket"></ion-icon>
-            </ion-button>
-          </div>
-        </div>
-      </div> -->
     </div>
-
-
   </div>
 
   <ion-footer id="webview">
@@ -318,7 +300,7 @@
       <div class="info">
         <h1>INFO</h1>
         <ion-button href="https://broken-stool.firebaseapp.com/home/FAQs" color="transparent">
-         <span>FAQs</span> 
+          <span>FAQs</span>
         </ion-button>
         <ion-button href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy" color="transparent">
           <span>Terms and Privacy Policy</span>
@@ -330,10 +312,10 @@
           <span>Payment Process</span>
         </ion-button>
         <ion-button href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
-        <span>Developers</span>
+          <span>Developers</span>
         </ion-button>
       </div>
-      
+
       <div class="connect">
         <h1>CONNECT</h1>
         <ion-button (click)="onClick()" color="transparent">
