@@ -24,6 +24,11 @@
 <body>
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=2711385568940230&autoLogAppEvents=1"></script>
+  <script>
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+  </script>
   <app-root></app-root>
   
   <noscript>Please enable JavaScript to continue using this application.</noscript>

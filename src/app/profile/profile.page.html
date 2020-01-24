@@ -66,18 +66,18 @@
   </div>
   <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">My
     Profile</p>
-
+  <input type="file"
+    id="file"
+    (change)="featuredPhotoSelected($event)">
   <div class="container">
-
     <div class="image">
       <img src="{{profilePic}}">
       <div class="name">
         <!-- <ion-progress-bar type="indeterminate"></ion-progress-bar> -->
-        <p>{{name }} &nbsp; {{ surname}} <br><span>{{email}}</span></p>
-
+        <p>{{name }} &nbsp; {{ surname}} <br><span>{{email}}</span></p><br>
       </div>
       <div class="camera">
-        <ion-fab-button color="transparent" (click)="selectImage()">
+        <ion-fab-button color="transparent" id="image" (click)="selectImage()">
           <ion-icon name="camera"></ion-icon>
         </ion-fab-button>
       </div>
