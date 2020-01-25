@@ -24,6 +24,8 @@ export class HomePage implements OnInit {
   surname:string = '';
   dbProfile = firebase.firestore().collection("userProfile");
   dbSales = firebase.firestore().collection("Specials");
+  dbCart = firebase.firestore().collection('Cart');
+  dbOrder = firebase.firestore().collection('Order');
   uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -34,6 +36,9 @@ export class HomePage implements OnInit {
   viewBackdrop = false;
   viewCart= false;
   myWishlist = [];
+  prodCart = [];
+  delCost: number;
+  delType: string;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     // public notificationService: NotificationsService
     ) {
@@ -41,6 +46,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     // this.notificationService.requestPermission();
+    this.getCart();
     this.getProfile();
     this.getPromo();
     this.getWishlist();
@@ -51,7 +57,126 @@ export class HomePage implements OnInit {
       this.splashScreen.hide();
     }, 4000);
   }
+  placeOrder(info) {
+    let myArr = [];
+    let doc = [];
+    for (let i = 0; i < info.length; i++) {
+      // const element = info[i].data;
+      /* myArr = info[i].data.product */
+      doc.push(info[i].id)
+      //console.log('my info ', );
+      info[i].data.product.forEach(item => {
+        myArr.push(item);
+      });
+    }
+    if (this.prodCart.length === 0) {
+     // this.toastController('You cannot place order with empty basket');
+    } else {
+      let docname = 'brkn-' + Math.floor(Math.random() * 10000000);
+      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
+        status: 'received', userID: firebase.auth().currentUser.uid,
+         totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+         }).then(() => {
+        doc.forEach((id) => {
+          this.dbCart.doc(id).delete();
+        })
+        //Toast must be created
+        //this.router.navigate(['payment', docname])
+      })
+    }
+  }
+  getCart() {
+    this.dbCart.where('customerUID', '==', this.uid).onSnapshot((info) => {
+      this.prodCart = [];
+      // this.totalCost = 0;
+      info.forEach((doc) => {
+        this.prodCart.push({ data: doc.data(), id: doc.id });
+      })
+    })
+  }
+  getTotal() {
+    let total = 0;
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      // console.log(product);
+      product.forEach((item) => {
+        total += (item.cost * item.quantity);
+      })
+      //
+    }
+    //console.log('My tot ', total);
 
+    return total;
+  }
+  Delivery() {
+    let total = 0;
+    this.delCost = 100;
+    this.delType = "Delivery";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      // console.log(product);
+      product.forEach((item) => {
+        total = (item.cost * item.quantity);
+      })
+       total+=100
+    }
+    //console.log('My tot ', total);
+
+    return total;
+    
+  }
+  notDelivery() {
+    let total = 0;
+    this.delCost = 0;
+    this.delType = "Collection";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      // console.log(product);
+      product.forEach((item) => {
+        total += (item.cost * item.quantity) + 0;
+      })
+      //
+    }
+    //console.log('My tot ', total);
+    return total;
+  }
+  pluss(prod, index) {
+    let num = index.data.product[0].quantity++
+    index.data.product[0].cost = index.data.product[0].cost
+    let id = index.id
+
+    let product = [prod]
+    this.dbCart.doc(id).update({ product: product }).then(res => {
+      // console.log('updated');
+
+    })
+  }
+  removeProd(id) {
+    this.dbCart.doc(id).delete().then((res) => {
+    })
+  }
+  minuss(prod, index) {
+
+    // product.push[prod]
+    // this.dbCart.doc(id).onSnapshot((res)=>{
+    if (index.data.product[0].quantity === 1) {
+      // console.log('You are about to delete your product');
+      // this.presentAlertConfirm(index.id);
+    } else {
+      let num = index.data.product[0].quantity--
+      index.data.product[0].cost = index.data.product[0].cost
+      let id = index.id
+      // console.log('Prod ', prod, ' index', index );
+      let product = [prod]
+      this.dbCart.doc(id).update({ product: product }).then(res => {
+        //   console.log('updated');
+      })
+    }
+
+    // this.prodCount = quantity+1
+    // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
+    //console.log('Quan decr ', quan);
+  }
   gotocart(){
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop

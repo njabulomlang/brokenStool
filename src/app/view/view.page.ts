@@ -13,6 +13,7 @@ import { PopoverComponent } from '../popover/popover.component';
 export class ViewPage implements OnInit {
   dbProduct = firebase.firestore().collection('Products');
   dbCart = firebase.firestore().collection('Cart');
+  dbOrder = firebase.firestore().collection('Order');
   customerUID = firebase.auth().currentUser.uid;
   docID: string;
   col: string;
@@ -36,6 +37,9 @@ export class ViewPage implements OnInit {
   boolCheck: boolean = false;
   viewCart= false;
   viewBackdrop = false;
+  prodCart = [];
+  delCost : number;
+  delType : string;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2) {
@@ -48,6 +52,7 @@ export class ViewPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getCart();
     if (this.col === 'Specials') {
       this.dbSales.doc(this.doc_id).get().then((res) => {
         this.mySale.push({ data: res.data(), id: res.id });
@@ -65,14 +70,73 @@ export class ViewPage implements OnInit {
         })
       }
     })
-   
   }
+  getTotal() {
+    let total = 0;
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      // console.log(product);
+      product.forEach((item) => {
+        total += (item.cost * item.quantity);
+      })
+      //
+    }
+    //console.log('My tot ', total);
 
+    return total;
+  }
+  placeOrder(info) {
+    let myArr = [];
+    let doc = [];
+    for (let i = 0; i < info.length; i++) {
+      // const element = info[i].data;
+      /* myArr = info[i].data.product */
+      doc.push(info[i].id)
+      //console.log('my info ', );
+      info[i].data.product.forEach(item => {
+        myArr.push(item);
+      });
+    }
+    if (this.prodCart.length === 0) {
+      this.toastController('You cannot place order with empty basket');
+    } else {
+      let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
+      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
+        status: 'received', userID: firebase.auth().currentUser.uid,
+         totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+         }).then(() => {
+        doc.forEach((id) => {
+          this.dbCart.doc(id).delete();
+        })
+        //Toast must be created
+        //this.router.navigate(['payment', docname])
+      })
+    }
+  }
+  getCart() {
+    this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
+      this.prodCart = [];
+      // this.totalCost = 0;
+      info.forEach((doc) => {
+        this.prodCart.push({ data: doc.data(), id: doc.id });
+      })
+    })
+  }
   gotocart(){
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop
   }
-  
+  Delivery() {
+    this.delCost = 100;
+    this.delType = "Delivery";
+    //console.log('Del cost ', this.delCost);
+    
+  }
+  notDelivery() {
+    this.delCost = 0;
+    this.delType = "Collection";
+    //console.log('Del cost ', this.delCost);
+  }
   onBoolChenged(c, i) {
     console.log('Boolean val ', c, 'index ', i);
   }
@@ -121,6 +185,44 @@ export class ViewPage implements OnInit {
     } else {
       this.quantity -= 1
     }
+  }
+
+  pluss(prod, index) {
+    let num = index.data.product[0].quantity++
+    index.data.product[0].cost = index.data.product[0].cost
+    let id = index.id
+
+    let product = [prod]
+    this.dbCart.doc(id).update({ product: product }).then(res => {
+      // console.log('updated');
+
+    })
+  }
+  removeProd(id) {
+    this.dbCart.doc(id).delete().then((res) => {
+    })
+  }
+  minuss(prod, index) {
+
+    // product.push[prod]
+    // this.dbCart.doc(id).onSnapshot((res)=>{
+    if (index.data.product[0].quantity === 1) {
+      // console.log('You are about to delete your product');
+      // this.presentAlertConfirm(index.id);
+    } else {
+      let num = index.data.product[0].quantity--
+      index.data.product[0].cost = index.data.product[0].cost
+      let id = index.id
+      // console.log('Prod ', prod, ' index', index );
+      let product = [prod]
+      this.dbCart.doc(id).update({ product: product }).then(res => {
+        //   console.log('updated');
+      })
+    }
+
+    // this.prodCount = quantity+1
+    // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
+    //console.log('Quan decr ', quan);
   }
   async toastController(message) {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
