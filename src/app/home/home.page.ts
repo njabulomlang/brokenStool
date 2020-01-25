@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, ToastController, AlertController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
   delCost: number;
   delType: string;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
+    public toastCtrl : ToastController, public alertCtrl : AlertController
     // public notificationService: NotificationsService
     ) {
   }
@@ -70,8 +71,11 @@ export class HomePage implements OnInit {
       });
     }
     if (this.prodCart.length === 0) {
-     // this.toastController('You cannot place order with empty basket');
-    } else {
+      this.toastController('You cannot place order with empty basket');
+    } else if (!this.delType) {
+      this.toastController('Please select delivery type');
+    }
+     else {
       let docname = 'brkn-' + Math.floor(Math.random() * 10000000);
       this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
         status: 'received', userID: firebase.auth().currentUser.uid,
@@ -80,10 +84,33 @@ export class HomePage implements OnInit {
         doc.forEach((id) => {
           this.dbCart.doc(id).delete();
         })
-        //Toast must be created
-        //this.router.navigate(['payment', docname])
       })
     }
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Place order now?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Yes, continue',
+          handler: () => {
+           // console.log('Confirm Okay');
+           this.placeOrder(this.prodCart)
+          }
+        }
+      ]
+    });
+    await alert.present();
+  } 
+
+  async toastController(message) {
+    let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
+    return toast.present();
   }
   getCart() {
     this.dbCart.where('customerUID', '==', this.uid).onSnapshot((info) => {
@@ -108,36 +135,28 @@ export class HomePage implements OnInit {
 
     return total;
   }
-  Delivery() {
+  Delivery(tot) {
     let total = 0;
     this.delCost = 100;
     this.delType = "Delivery";
     for (let i = 0; i < this.prodCart.length; i++) {
       let product = this.prodCart[i].data.product;
-      // console.log(product);
       product.forEach((item) => {
-        total = (item.cost * item.quantity);
+        total = tot+100
       })
-       total+=100
     }
-    //console.log('My tot ', total);
-
     return total;
-    
   }
-  notDelivery() {
+  notDelivery(tot) {
     let total = 0;
     this.delCost = 0;
     this.delType = "Collection";
     for (let i = 0; i < this.prodCart.length; i++) {
       let product = this.prodCart[i].data.product;
-      // console.log(product);
       product.forEach((item) => {
-        total += (item.cost * item.quantity) + 0;
+        total = tot
       })
-      //
     }
-    //console.log('My tot ', total);
     return total;
   }
   pluss(prod, index) {

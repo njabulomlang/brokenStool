@@ -561,7 +561,7 @@
         <div class="add_to_basket">
 
           <div class="delivery_options">
-            <ion-button (click)="Delivery()" color="transparent"
+            <ion-button (click)="Delivery(getTotal())" color="transparent"
               [ngClass]="{'delivery':buttonActive, 'delivery-inactive': !buttonActive}">
               Delivery
             </ion-button>
@@ -570,10 +570,10 @@
               Collection
             </ion-button>
           </div>
-          <p style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{getTotal() | currency:'R'}}</i></p>
-          <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{getTotal() | currency:'R'}} Incl delivery</i></p>
-          <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{getTotal() | currency:'R'}} Excl delivery</i></p>
-          <ion-button color="transparent" [disabled]="prodCart.length==0 || !delCost" (click)="placeOrder(prodCart)">
+          <p style="width: 100%; text-align: right; font-size: 13px;" *ngIf="!delType"><i>Cart Total - {{getTotal() | currency:'R'}}</i></p>
+          <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{Delivery(getTotal()) | currency:'R'}} Incl delivery</i></p>
+          <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{notDelivery(getTotal()) | currency:'R'}} Excl delivery</i></p>
+          <ion-button color="transparent" [disabled]="prodCart.length==0" (click)="presentAlertConfirm()">
             PLACE ORDER
           </ion-button>
         </div>

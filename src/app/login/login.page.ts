@@ -4,8 +4,6 @@ import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
 import { IonSlides, AlertController, ToastController, Platform } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
-import { async } from '@angular/core/testing';
-//import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
 declare var window;
 
 @Component({
@@ -57,43 +55,7 @@ export class LoginPage implements OnInit {
       console.log('Error ',err)
     }
   }
-  Facebook() {
-   
-// <script>
-// window.fbAsyncInit = function() {
-//   FB.init({
-//     appId      : '{your-app-id}',
-//     cookie     : true,
-//     xfbml      : true,
-//     version    : '{api-version}'
-//   });
-    
-//   FB.AppEvents.logPageView();   
-    
-// };
-
-// (function(d, s, id){
-//    var js, fjs = d.getElementsByTagName(s)[0];
-//    if (d.getElementById(id)) {return;}
-//    js = d.createElement(s); js.id = id;
-//    js.src = "https://connect.facebook.net/en_US/sdk.js";
-//    fjs.parentNode.insertBefore(js, fjs);
-//  }(document, 'script', 'facebook-jssdk'));
-// </script>
-
-
-
-/* {
-  status: 'connected',
-  authResponse: {
-      accessToken: '...',
-      expiresIn:'...',
-      signedRequest:'...',
-      userID:'...'
-  }
-} */
-  }
-
+  
    webGoogleLogin() {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();

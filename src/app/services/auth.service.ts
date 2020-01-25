@@ -62,8 +62,6 @@ export class AuthService {
       let result = { success: false, result: error }
       return result
     });
-
-
   }
   async alert() {
     const alert = await this.alertController.create({
@@ -72,7 +70,7 @@ export class AuthService {
       inputs: [
         {
           name: 'code',
-          type: 'text',
+          type: 'number',
           placeholder: 'Enter code'
         }],
       buttons: [{

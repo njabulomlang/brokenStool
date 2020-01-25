@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController, PopoverController, NavController } from '@ionic/angular';
+import { ToastController, PopoverController, NavController, AlertController } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 
 
@@ -42,7 +42,7 @@ export class ViewPage implements OnInit {
   delType : string;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
-    public render: Renderer2) {
+    public render: Renderer2, public alertCtrl :AlertController) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -126,16 +126,49 @@ export class ViewPage implements OnInit {
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop
   }
-  Delivery() {
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Place order now?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Yes, continue',
+          handler: () => {
+           // console.log('Confirm Okay');
+           this.placeOrder(this.prodCart)
+          }
+        }
+      ]
+    });
+    await alert.present();
+  } 
+  Delivery(tot) {
+    let total = 0;
     this.delCost = 100;
     this.delType = "Delivery";
-    //console.log('Del cost ', this.delCost);
-    
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot+100
+      })
+    }
+    return total;
   }
-  notDelivery() {
+  notDelivery(tot) {
+    let total = 0;
     this.delCost = 0;
     this.delType = "Collection";
-    //console.log('Del cost ', this.delCost);
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot
+      })
+    }
+    return total;
   }
   onBoolChenged(c, i) {
     console.log('Boolean val ', c, 'index ', i);
