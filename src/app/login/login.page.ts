@@ -4,9 +4,8 @@ import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
 import { IonSlides, AlertController, ToastController, Platform } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
-import { async } from '@angular/core/testing';
-//import { FacebookLoginResponse, Facebook } from '@ionic-native/facebook/ngx';
 declare var window;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -33,7 +32,8 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
- 
+   //console.log('My status ', FB.getLoginStatus());
+   
   }
 /*   goSignUp() {
     this.router.navigateByUrl("/signup")
@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
     //let credential = '';
     try {
       const gplusUser = await this.gplus.login({
-         'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
+        'webClientId': '704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com',
         'offline': true,
         'scopes': 'profile email'
       })
@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
       console.log('Error ',err)
     }
   }
-
+  
    webGoogleLogin() {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();

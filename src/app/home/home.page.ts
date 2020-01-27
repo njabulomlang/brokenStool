@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, ToastController, AlertController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
@@ -24,6 +24,8 @@ export class HomePage implements OnInit {
   surname:string = '';
   dbProfile = firebase.firestore().collection("userProfile");
   dbSales = firebase.firestore().collection("Specials");
+  dbCart = firebase.firestore().collection('Cart');
+  dbOrder = firebase.firestore().collection('Order');
   uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -34,13 +36,18 @@ export class HomePage implements OnInit {
   viewBackdrop = false;
   viewCart= false;
   myWishlist = [];
+  prodCart = [];
+  delCost: number;
+  delType: string;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
+    public toastCtrl : ToastController, public alertCtrl : AlertController
     // public notificationService: NotificationsService
     ) {
   }
 
   ngOnInit() {
     // this.notificationService.requestPermission();
+    this.getCart();
     this.getProfile();
     this.getPromo();
     this.getWishlist();
@@ -51,7 +58,144 @@ export class HomePage implements OnInit {
       this.splashScreen.hide();
     }, 4000);
   }
+  placeOrder(info) {
+    let myArr = [];
+    let doc = [];
+    for (let i = 0; i < info.length; i++) {
+      // const element = info[i].data;
+      /* myArr = info[i].data.product */
+      doc.push(info[i].id)
+      //console.log('my info ', );
+      info[i].data.product.forEach(item => {
+        myArr.push(item);
+      });
+    }
+    if (this.prodCart.length === 0) {
+      this.toastController('You cannot place order with empty basket');
+    } else if (!this.delType) {
+      this.toastController('Please select delivery type');
+    }
+     else {
+      let docname = 'brkn-' + Math.floor(Math.random() * 10000000);
+      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
+        status: 'received', userID: firebase.auth().currentUser.uid,
+         totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+         }).then(() => {
+        doc.forEach((id) => {
+          this.dbCart.doc(id).delete();
+        })
+      })
+    }
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Place order now?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Yes, continue',
+          handler: () => {
+           // console.log('Confirm Okay');
+           this.placeOrder(this.prodCart)
+          }
+        }
+      ]
+    });
+    await alert.present();
+  } 
 
+  async toastController(message) {
+    let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
+    return toast.present();
+  }
+  getCart() {
+    this.dbCart.where('customerUID', '==', this.uid).onSnapshot((info) => {
+      this.prodCart = [];
+      // this.totalCost = 0;
+      info.forEach((doc) => {
+        this.prodCart.push({ data: doc.data(), id: doc.id });
+      })
+    })
+  }
+  getTotal() {
+    let total = 0;
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      // console.log(product);
+      product.forEach((item) => {
+        total += (item.cost * item.quantity);
+      })
+      //
+    }
+    //console.log('My tot ', total);
+
+    return total;
+  }
+  Delivery(tot) {
+    let total = 0;
+    this.delCost = 100;
+    this.delType = "Delivery";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot+100
+      })
+    }
+    return total;
+  }
+  notDelivery(tot) {
+    let total = 0;
+    this.delCost = 0;
+    this.delType = "Collection";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot
+      })
+    }
+    return total;
+  }
+  pluss(prod, index) {
+    let num = index.data.product[0].quantity++
+    index.data.product[0].cost = index.data.product[0].cost
+    let id = index.id
+
+    let product = [prod]
+    this.dbCart.doc(id).update({ product: product }).then(res => {
+      // console.log('updated');
+
+    })
+  }
+  removeProd(id) {
+    this.dbCart.doc(id).delete().then((res) => {
+    })
+  }
+  minuss(prod, index) {
+
+    // product.push[prod]
+    // this.dbCart.doc(id).onSnapshot((res)=>{
+    if (index.data.product[0].quantity === 1) {
+      // console.log('You are about to delete your product');
+      // this.presentAlertConfirm(index.id);
+    } else {
+      let num = index.data.product[0].quantity--
+      index.data.product[0].cost = index.data.product[0].cost
+      let id = index.id
+      // console.log('Prod ', prod, ' index', index );
+      let product = [prod]
+      this.dbCart.doc(id).update({ product: product }).then(res => {
+        //   console.log('updated');
+      })
+    }
+
+    // this.prodCount = quantity+1
+    // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
+    //console.log('Quan decr ', quan);
+  }
   gotocart(){
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop

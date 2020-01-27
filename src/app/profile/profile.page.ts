@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, NavigationExtras } from '@angular/router';
-import { ToastController, LoadingController, ActionSheetController, NavController } from '@ionic/angular';
+import { ToastController, LoadingController, ActionSheetController, NavController, Platform } from '@ionic/angular';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
 import { ModalController } from '@ionic/angular';
 import { PendingOrdersPage } from '../../app/pending-orders/pending-orders.page';
-import { OrderHistoryPage} from '../../app//order-history/order-history.page'
-
+import { OrderHistoryPage } from '../../app//order-history/order-history.page'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -27,14 +26,15 @@ export class ProfilePage implements OnInit {
   surname;
   email;
   address;
-  myCart:number;
-  myWish:number;
-  myWishlist=[];
+  myCart: number;
+  myWish: number;
+  myWishlist = [];
   viewReviews = false;
-  viewCart= false;
+  viewCart = false;
   viewBackdrop = false;
-  constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController,private camera: Camera,
-    private actionSheetCtrl: ActionSheetController, public navCtrl: NavController) { }
+  cordova: boolean;
+  constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
+    private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -45,7 +45,11 @@ export class ProfilePage implements OnInit {
     this.getCartSize();
     this.getWishSize();
     this.getWishlist();
-
+    if (this.platform.is('cordova')) {
+      document.getElementById('file').style.display = "none";
+    } else {
+      document.getElementsByClassName('camera')[1].style.display = "none";
+    }
   }
   delete(id) {
     this.dbWish.doc(id).delete()
@@ -83,7 +87,7 @@ export class ProfilePage implements OnInit {
     })
   }
 
-  getBackdrop(){
+  getBackdrop() {
     this.viewBackdrop = !this.viewBackdrop
   }
 
@@ -116,15 +120,15 @@ export class ProfilePage implements OnInit {
   }
 
   reviewed() {
-     this.viewReviews = !this.viewReviews
-     this.viewBackdrop = !this.viewBackdrop
-   }
+    this.viewReviews = !this.viewReviews
+    this.viewBackdrop = !this.viewBackdrop
+  }
 
-   gotocart(){
-     this.viewCart = !this.viewCart
-     this.viewBackdrop = !this.viewBackdrop
-   }
-  
+  gotocart() {
+    this.viewCart = !this.viewCart
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
   check(val) {
     if (val == 'close') {
       document.getElementById('image').style.display = 'none';
@@ -180,32 +184,53 @@ export class ProfilePage implements OnInit {
     return toast.present()
   }
 
-  async selectImage() {
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: "Select image",
-      buttons: [{
-        icon: 'images',
-        text: 'Gallery',
+  async selectImage(event) {
+    if (this.platform.is('cordova')) {
+      const actionSheet = await this.actionSheetCtrl.create({
+        header: "Select image",
+        buttons: [{
+          icon: 'images',
+          text: 'Gallery',
 
-        handler: () => {
-          this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY)
+          handler: () => {
+            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY)
+          }
+        },
+        {
+          icon: 'camera',
+          text: 'Camera',
+          handler: () => {
+            this.takePicture(this.camera.PictureSourceType.CAMERA)
+          }
+        },
+        {
+          icon: 'close',
+          text: 'Cancel',
+          role: 'cancel'
         }
-      },
-      {
-        icon: 'camera',
-        text: 'Camera',
-        handler: () => {
-          this.takePicture(this.camera.PictureSourceType.CAMERA)
-        }
-      },
-      {
-        icon: 'close',
-        text: 'Cancel',
-        role: 'cancel'
-      }
-      ]
+        ]
+      });
+
+      await actionSheet.present();
+    }
+  }
+
+
+  featuredPhotoSelected(event: any) {
+    const i = event.target.files[0];
+    const upload = this.storage.child('HomeOwner-Profile/'+i.name).put(i);
+    upload.on('state_changed', snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('upload is: ', progress, '% done.');
+    }, err => {
+    }, () => {
+      upload.snapshot.ref.getDownloadURL().then(dwnURL => {
+        // console.log('File avail at: ', dwnURL);
+        this.profilePic = dwnURL;
+        this.dbProfile.doc(this.uid).update({profilePic: this.profilePic})
+      });
     });
-    await actionSheet.present();
+   // console.log("My pic is ", this.profilePic);
   }
   async takePicture(sourcetype: PictureSourceType) {
     const options: CameraOptions = {

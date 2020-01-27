@@ -513,7 +513,7 @@
   <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}">
 
     <div class="heading">
-      <p>Basket ({{myWishlist.length}})</p>
+      <p>Basket ({{prodCart.length}})</p>
 
       <ion-icon slot="icon-only" name="close" (click)="gotocart()"></ion-icon>
 
@@ -522,27 +522,29 @@
 
     <div class="wishlist_items">
       <div class="div">
-        <div class="items">
-          <div class="left">
+
+
+        <div class="items" *ngFor="let c of prodCart; let i of index">
+          <div class="left" *ngFor="let p of c.data.product">
             <div class="img">
-              <img src="../../assets/yellow.jpg" alt="">
+              <img src="{{p.picture}}" alt="">
             </div>
 
-            <div class="item_details">
-              <p> <b>Tracks &nbsp; R400</b><br>
-                size: xs &nbsp; color: Yellow <br>
+            <div class="item_details" >
+              <p> <b>{{p.product_name}} &nbsp; {{p.cost | currency:'R'}}</b><br>
+                size: {{p.size}} &nbsp; color: {{p.color}} <br>
                 jan 23, 2020</p>
 
               <p>
-                <ion-icon slot="start" name="remove-circle-outline" (click)="onClick()"></ion-icon>
-                2 <ion-icon slot="end" name="add-circle-outline" (click)="onClick()"></ion-icon>
+                <ion-icon slot="start" name="remove-circle-outline" (click)="minuss(p, i)"></ion-icon>
+                {{p.quantity}} <ion-icon slot="end" name="add-circle-outline" (click)="pluss(p, i)"></ion-icon>
               </p>
 
             </div>
           </div>
 
           <div class="right">
-            <div class="trash_icon" (click)="delete(w.id)">
+            <div class="trash_icon" (click)="removeProd(c.id)">
               <ion-icon slot="start" name="trash"></ion-icon>
             </div>
 
@@ -550,32 +552,33 @@
           </div>
         </div>
 
-        <div class="items" id="noItems">
+        <div class="items" id="noItems" *ngIf="prodCart.length === 0">
           <p>Wishlist Empty</p>
           <img src="../../assets/sad_smile.svg" alt="">
         </div>
 
+
         <div class="add_to_basket">
 
           <div class="delivery_options">
-            <ion-button (click)="onClick()" color="transparent"
+            <ion-button (click)="Delivery(getTotal())" color="transparent"
               [ngClass]="{'delivery':buttonActive, 'delivery-inactive': !buttonActive}">
               Delivery
             </ion-button>
-            <ion-button (click)="onClick()" color="transparent"
+            <ion-button (click)="notDelivery()" color="transparent"
               [ngClass]="{'collection': !buttonActive, 'collection-inactive': buttonActive}">
               Collection
             </ion-button>
           </div>
-          <p style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - R400.00</i></p>
-          <p style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - R500 Incl delivery</i></p>
-          <ion-button color="transparent">
-            FINISH
+          <p style="width: 100%; text-align: right; font-size: 13px;" *ngIf="!delType"><i>Cart Total - {{getTotal() | currency:'R'}}</i></p>
+          <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{Delivery(getTotal()) | currency:'R'}} Incl delivery</i></p>
+          <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{notDelivery(getTotal()) | currency:'R'}} Excl delivery</i></p>
+          <ion-button color="transparent" [disabled]="prodCart.length==0" (click)="presentAlertConfirm()">
+            PLACE ORDER
           </ion-button>
         </div>
 
       </div>
-
 
     </div>
   </div>
