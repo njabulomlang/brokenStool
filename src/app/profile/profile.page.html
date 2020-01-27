@@ -96,7 +96,7 @@
 
           <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
 
-          <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+          <ion-input [(ngModel)]="email" placeholder="Email" readonly></ion-input>
 
           <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
         </div>
@@ -169,11 +169,11 @@
         <p>{{name }} &nbsp; {{ surname}} <br><span>{{email}}</span></p>
 
       </div>
-      <div class="camera">
+      <!-- <div class="camera">
         <ion-fab-button color="transparent" (click)="selectImage()" size="small">
           <ion-icon name="camera"></ion-icon>
         </ion-fab-button>
-      </div>
+      </div> -->
     </div>
     <div class="stuff">
       <div class="btnz" (ionBlur)="check('open')" (ionFocus)="check('close')">
@@ -195,18 +195,11 @@
 
             <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>
 
-            <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+            <ion-input [(ngModel)]="email" placeholder="Email" readonly></ion-input>
 
             <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
           </div>
-          <!-- <div class="buttonz" >
-          <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
-            CANCEL
-          </ion-button>
-          <ion-button (click)="updateProfile()" color="transparent" id="update">
-            UPDATE
-          </ion-button>
-        </div> -->
+
         </div>
         <ion-button (click)="presentModal()" color="transparent">
           <span>Pending Orders <ion-icon slot="end" name="arrow-forward"></ion-icon></span>

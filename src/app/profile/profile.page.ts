@@ -34,6 +34,7 @@ export class ProfilePage implements OnInit {
   viewBackdrop = false;
   cordova: boolean;
   buttonActive: boolean = true;
+  isDisabled: boolean=false;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2) { }
 
