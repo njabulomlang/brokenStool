@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, NavigationExtras } from '@angular/router';
-import { ToastController, LoadingController, ActionSheetController, NavController, Platform } from '@ionic/angular';
+import { ToastController, LoadingController, ActionSheetController, NavController, Platform, AlertController } from '@ionic/angular';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
 import { ModalController } from '@ionic/angular';
@@ -33,8 +33,13 @@ export class ProfilePage implements OnInit {
   viewCart = false;
   viewBackdrop = false;
   cordova: boolean;
+  prodCart=[];
+  delType: any;
+  dbOrder: any;
+  delCost: any;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
-    private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2) { }
+    private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2,
+    public alertCtrl : AlertController) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -45,10 +50,143 @@ export class ProfilePage implements OnInit {
     this.getCartSize();
     this.getWishSize();
     this.getWishlist();
+    this.getCart();
     if (this.platform.is('cordova')) {
       document.getElementById('file').style.display = "none";
+    }
+  }
+  placeOrder(info) {
+    let myArr = [];
+    let doc = [];
+    for (let i = 0; i < info.length; i++) {
+      // const element = info[i].data;
+      /* myArr = info[i].data.product */
+      doc.push(info[i].id)
+      //console.log('my info ', );
+      info[i].data.product.forEach(item => {
+        myArr.push(item);
+      });
+    }
+    if (this.prodCart.length === 0) {
+      this.toastController1('You cannot place order with empty basket');
+    } else if (!this.delType) {
+      this.toastController1('Please select delivery type');
+    }
+     else {
+      let docname = 'brkn-' + Math.floor(Math.random() * 10000000);
+      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
+        status: 'received', userID: firebase.auth().currentUser.uid,
+         totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+         }).then(() => {
+        doc.forEach((id) => {
+          this.dbCart.doc(id).delete();
+        })
+      })
+    }
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Place order now?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Yes, continue',
+          handler: () => {
+           // console.log('Confirm Okay');
+           this.placeOrder(this.prodCart)
+          }
+        }
+      ]
+    });
+    await alert.present();
+  } 
+
+  async toastController1(message) {
+    let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
+    return toast.present();
+  }
+  getCart() {
+    this.dbCart.where('customerUID', '==', this.uid).onSnapshot((info) => {
+      this.prodCart = [];
+      // this.totalCost = 0;
+      info.forEach((doc) => {
+        this.prodCart.push({ data: doc.data(), id: doc.id });
+      })
+    })
+  }
+  getTotal() {
+    let total = 0;
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      // console.log(product);
+      product.forEach((item) => {
+        total += (item.cost * item.quantity);
+      })
+      //
+    }
+    //console.log('My tot ', total);
+
+    return total;
+  }
+  Delivery(tot) {
+    let total = 0;
+    this.delCost = 100;
+    this.delType = "Delivery";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot+100
+      })
+    }
+    return total;
+  }
+  notDelivery(tot) {
+    let total = 0;
+    this.delCost = 0;
+    this.delType = "Collection";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot
+      })
+    }
+    return total;
+  }
+  pluss(prod, index) {
+    let num = index.data.product[0].quantity++
+    index.data.product[0].cost = index.data.product[0].cost
+    let id = index.id
+
+    let product = [prod]
+    this.dbCart.doc(id).update({ product: product }).then(res => {
+      // console.log('updated');
+
+    })
+  }
+  removeProd(id) {
+    this.dbCart.doc(id).delete().then((res) => {
+    })
+  }
+  minuss(prod, index) {
+
+    // product.push[prod]
+    // this.dbCart.doc(id).onSnapshot((res)=>{
+    if (index.data.product[0].quantity === 1) {
+      // console.log('You are about to delete your product');
+      // this.presentAlertConfirm(index.id);
     } else {
-     // document.getElementsByClassName('camera')[1].style.display = "none";
+      let num = index.data.product[0].quantity--
+      index.data.product[0].cost = index.data.product[0].cost
+      let id = index.id
+      // console.log('Prod ', prod, ' index', index );
+      let product = [prod]
+      this.dbCart.doc(id).update({ product: product }).then(res => {
+        //   console.log('updated');
+      })
     }
   }
   delete(id) {
@@ -184,7 +322,7 @@ export class ProfilePage implements OnInit {
     return toast.present()
   }
 
-  async selectImage(event) {
+  async selectImage() {
     if (this.platform.is('cordova')) {
       const actionSheet = await this.actionSheetCtrl.create({
         header: "Select image",

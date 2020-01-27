@@ -41,7 +41,7 @@
       <div class="card" *ngFor="let o of myOrder">
         <div class="top" *ngFor="let p of o.info.product">
           <div class="image">
-            <img src="{{p.picture}}" (click)="getOrder(o.id)">
+            <img src="{{p.picture}}" (click)="getOrder()">
           </div>
           <div class="info">
             <p id="name" style="font-family: 'Poppins'; font-size: 3vw; "><span
@@ -89,7 +89,7 @@
         <div class="card1">
           <div class="top" *ngFor="let p of o.info.product">
             <div class="image">
-              <img src="{{p.picture}}" (click)="getOrder(o.id)">
+              <img src="{{p.picture}}" (click)="getOrder()">
             </div>
             <div class="info">
               <p id="name" style="font-family: 'Poppins';"><span
