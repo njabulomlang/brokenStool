@@ -455,7 +455,7 @@ ion-toolbar {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 799px) {
   .web_view {
     display: none;
     width: 0%;
@@ -536,11 +536,24 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #mobile1{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  // .image1 {
+  //  width: 15vw;
+  //   .message{ 
+  //     width: 100%;
+  //   }
+  // }
+
   ion-toolbar {
     --background: rgb(255, 255, 255);
     width: 100%;
     #icon {
       color: rgb(131, 131, 131);
+      // font-size: 11px;
     }
     font-family: "Raleway";
     letter-spacing: 2px;
@@ -554,6 +567,7 @@ ion-toolbar {
 
     .icon1 {
       margin: 0 20vw;
+      // font-size: 12px;
     }
   }
 
@@ -570,7 +584,7 @@ ion-toolbar {
 
 // =================================== Start Web View ==================================== 
 .web_view {
-  min-width: 850px;
+  min-width: 70%;
   max-width: 1200px;
   margin: auto;
   .sales {
@@ -586,7 +600,7 @@ ion-toolbar {
     margin: 10px;
 
     .image1 {
-      min-width: 15vw;
+      min-width: 30%;
       h4 {
         font-weight: bolder;
         font-family: "Poiret One";
@@ -595,11 +609,11 @@ ion-toolbar {
       }
       p {
         font-weight: lighter;
-        font-size: 14px;
+        font-size: 13px;
         color: rgb(148, 147, 147);
       }
       .p {
-        font-size: 13px;
+        font-size: 12px;
         color: rgb(194, 194, 194);
       }
     }
@@ -799,9 +813,9 @@ ion-toolbar {
   position: fixed;
   z-index: 150;
   background: rgb(201, 201, 201);
-  width: 20vw;
-  height: 94%;
-  top: 56px;
+  width: 25%;
+  height: 97vh;
+  top: 57px;
   right: 0;
   align-items: center;
   display: flex;
@@ -1056,7 +1070,7 @@ ion-toolbar {
   position: fixed;
   z-index: 150;
   background: rgb(201, 201, 201);
-  width: 20%;
+  width: 25%;
   height: 94%;
   top: 57px;
   // bottom: 40%;
