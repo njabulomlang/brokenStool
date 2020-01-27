@@ -76,7 +76,7 @@
 
     <div class="productinfo" *ngFor="let prod of unitProduct">
       <div class="add">
-        <ion-fab-button color="transparent" (click)="gotocart()">
+        <ion-fab-button color="transparent" (click)="toBusket()">
           <ion-icon name="basket"></ion-icon>
 
         </ion-fab-button>
@@ -181,7 +181,7 @@
 
     <div class="productinfo" *ngFor="let prod of mySale">
       <div class="add">
-        <ion-fab-button color="transparent" (click)="gotocart()">
+        <ion-fab-button color="transparent" (click)="toBusket()">
           <ion-icon name="basket"></ion-icon>
 
         </ion-fab-button>
@@ -408,12 +408,7 @@
           (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
           <p style="color: rgb(146, 146, 146);">{{c}}</p>
         </ion-button>
-        <!-- <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent" style="background: green; border-radius: 6px;">
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent" style="background: red; border-radius: 6px;">
-        </ion-button> -->
+   
       </div>
       <div class="quantity">
         <p>Quantity</p>
