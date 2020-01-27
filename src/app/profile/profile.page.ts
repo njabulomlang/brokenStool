@@ -49,7 +49,7 @@ export class ProfilePage implements OnInit {
     if (this.platform.is('cordova')) {
       document.getElementById('file').style.display = "none";
     } else {
-      document.getElementsByClassName('camera')[1].style.display = "none";
+     // document.getElementsByClassName('camera')[1].style.display = "none";
     }
   }
   delete(id) {
