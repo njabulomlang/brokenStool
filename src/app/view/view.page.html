@@ -338,17 +338,22 @@
       </div>
 
       <div class="buttonz">
-        <div class="add">
-          <ion-fab-button color="transparent" (click)="toBusket()">
-            <ion-icon name="basket"></ion-icon>
 
-          </ion-fab-button>
-        </div>
         <ion-button (click)="addToCart(prod.id, prod.data)" color="transparent">
           <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
             style="color: maroon; position: relative; bottom: 13px;"></ion-icon>
           {{prod.data.price * quantity | currency:'R'  }}
         </ion-button>
+
+        <div class="add">
+          <ion-button (click)="gotocart()" color="transparent" style="background: rgb(5, 5, 29); width: 10vw">
+            Go To Cart
+          </ion-button>
+          <!-- <ion-fab-button color="transparent" (click)="gotocart()">
+            <ion-icon name="basket"></ion-icon>
+
+          </ion-fab-button> -->
+        </div>
       </div>
     </div>
   </div>
@@ -441,18 +446,24 @@
       <div class="buttonz">
 
         <div class="add">
-          <ion-fab-button color="transparent" (click)="gotocart()" vertical="bottom">
+
+          <ion-button (click)="addSaleToCart(prod.id, prod.data)" color="transparent">
+            <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
+              style="color: maroon; font-size: 30px; position: relative; bottom: 13px;"></ion-icon>
+            {{prod.data.saleprice * quantity | currency:'R'}}
+          </ion-button>
+
+          <ion-button (click)="gotocart()" color="transparent" style="background: rgb(0, 0, 37); width: 10vw">
+            Go To Basket
+          </ion-button>
+          <!-- <ion-fab-button color="transparent" (click)="gotocart()" vertical="bottom">
             <ion-icon name="basket"></ion-icon>
 
-          </ion-fab-button>
+          </ion-fab-button> -->
         </div>
 
 
-        <ion-button (click)="addSaleToCart(prod.id, prod.data)" color="transparent">
-          <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
-            style="color: maroon; font-size: 30px; position: relative; bottom: 13px;"></ion-icon>
-          {{prod.data.saleprice * quantity | currency:'R'  }}
-        </ion-button>
+
       </div>
     </div>
   </div>
@@ -502,8 +513,8 @@
         </div>
 
         <div class="items" id="noItems">
-          <p>Wishlist Empty</p>
-          <img src="../../assets/sad_smile.svg" alt="">
+          <p>Basket Empty</p>
+          <img src="../../assets/empty-cart.svg" alt="">
         </div>
 
 
