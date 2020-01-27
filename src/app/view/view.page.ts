@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController, PopoverController, NavController, AlertController } from '@ionic/angular';
+import { ToastController, PopoverController, NavController, AlertController, Platform } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 
 
@@ -41,9 +41,10 @@ export class ViewPage implements OnInit {
   delCost : number;
   delType : string;
   buttonActive: boolean = true;
+  cordova:boolean
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
-    public render: Renderer2, public alertCtrl :AlertController) {
+    public render: Renderer2, public alertCtrl :AlertController, public plt : Platform) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -53,6 +54,11 @@ export class ViewPage implements OnInit {
   }
 
   ngOnInit() {
+    if (this.plt.is('cordova')) {
+      this.cordova = true
+    } else {
+      this.cordova = false;
+    }
     this.getCart();
     if (this.col === 'Specials') {
       this.dbSales.doc(this.doc_id).get().then((res) => {
