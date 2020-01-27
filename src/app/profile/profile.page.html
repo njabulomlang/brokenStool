@@ -66,9 +66,7 @@
   </div>
   <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">My
     Profile</p>
-  <input type="file"
-    id="file"
-    (change)="featuredPhotoSelected($event)">
+
   <div class="container">
     <div class="image">
       <img src="{{profilePic}}">
@@ -99,6 +97,8 @@
           <ion-input [(ngModel)]="email" placeholder="Email" readonly></ion-input>
 
           <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
+
+          
         </div>
         <div class="buttonz">
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
@@ -198,6 +198,8 @@
             <ion-input [(ngModel)]="email" placeholder="Email" readonly></ion-input>
 
             <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
+
+            <ion-input type="file" id="file" (change)="featuredPhotoSelected($event)"></ion-input>
           </div>
 
         </div>
