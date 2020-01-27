@@ -39,6 +39,7 @@ export class HomePage implements OnInit {
   prodCart = [];
   delCost: number;
   delType: string;
+  buttonActive: boolean = true;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     public toastCtrl : ToastController, public alertCtrl : AlertController
     // public notificationService: NotificationsService
@@ -371,5 +372,21 @@ export class HomePage implements OnInit {
     //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
+
+
  
+  switchView(state) {
+    switch (state) {
+      case 'd':
+        this.buttonActive = true;
+        this.Delivery(this.getTotal());
+        break;
+      case 'c':
+        this.buttonActive = false;
+        this.notDelivery(this.getTotal());
+        break;
+    }
+  }
+
+  
 }

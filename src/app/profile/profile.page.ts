@@ -33,6 +33,7 @@ export class ProfilePage implements OnInit {
   viewCart = false;
   viewBackdrop = false;
   cordova: boolean;
+  buttonActive: boolean = true;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2) { }
 
@@ -276,4 +277,17 @@ export class ProfilePage implements OnInit {
     // this.imageSelected = true;
     // })
   }
+
+  // switchView(state) {
+  //   switch (state) {
+  //     case 'd':
+  //       this.buttonActive = true;
+  //       this.Delivery(this.getTotal());
+  //       break;
+  //     case 'c':
+  //       this.buttonActive = false;
+  //       this.notDelivery(this.getTotal());
+  //       break;
+  //   }
+  // }
 }
