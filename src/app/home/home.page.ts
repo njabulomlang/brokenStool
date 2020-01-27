@@ -192,10 +192,6 @@ export class HomePage implements OnInit {
         //   console.log('updated');
       })
     }
-
-    // this.prodCount = quantity+1
-    // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
-    //console.log('Quan decr ', quan);
   }
   gotocart(){
     this.viewCart = !this.viewCart
