@@ -38,6 +38,7 @@ export class ProfilePage implements OnInit {
   dbOrder: any;
   delCost: any;
   buttonActive: boolean = true;
+  isDisabled: boolean=false;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2,
     public alertCtrl : AlertController) { }
