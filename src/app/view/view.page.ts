@@ -40,6 +40,7 @@ export class ViewPage implements OnInit {
   prodCart = [];
   delCost : number;
   delType : string;
+  buttonActive: boolean = true;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2, public alertCtrl :AlertController) {
@@ -313,5 +314,18 @@ export class ViewPage implements OnInit {
   }
   viewitem() {
     this.router.navigateByUrl("/basket")
+  }
+
+  switchView(state) {
+    switch (state) {
+      case 'd':
+        this.buttonActive = true;
+        this.Delivery(this.getTotal());
+        break;
+      case 'c':
+        this.buttonActive = false;
+        this.notDelivery(this.getTotal());
+        break;
+    }
   }
 }
