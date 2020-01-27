@@ -417,16 +417,16 @@ export class ProfilePage implements OnInit {
     // })
   }
 
-  // switchView(state) {
-  //   switch (state) {
-  //     case 'd':
-  //       this.buttonActive = true;
-  //       this.Delivery(this.getTotal());
-  //       break;
-  //     case 'c':
-  //       this.buttonActive = false;
-  //       this.notDelivery(this.getTotal());
-  //       break;
-  //   }
-  // }
+  switchView(state) {
+    switch (state) {
+      case 'd':
+        this.buttonActive = true;
+        this.Delivery(this.getTotal());
+        break;
+      case 'c':
+        this.buttonActive = false;
+        this.notDelivery(this.getTotal());
+        break;
+    }
+  }
 }

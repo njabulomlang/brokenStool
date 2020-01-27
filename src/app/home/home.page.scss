@@ -455,7 +455,7 @@ ion-toolbar {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 799px) {
   .web_view {
     display: none;
     width: 0%;
@@ -536,11 +536,19 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  // .image1 {
+  //  width: 15vw;
+  //   .message{ 
+  //     width: 100%;
+  //   }
+  // }
+
   ion-toolbar {
     --background: rgb(255, 255, 255);
     width: 100%;
     #icon {
       color: rgb(131, 131, 131);
+      font-size: 11px;
     }
     font-family: "Raleway";
     letter-spacing: 2px;
@@ -553,7 +561,8 @@ ion-toolbar {
     }
 
     .icon1 {
-      margin: 0 20vw;
+      margin: 0 6vw;
+      font-size: 12px;
     }
   }
 
