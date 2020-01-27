@@ -38,7 +38,7 @@
 
 <ion-header no-border id="mobile">
   <ion-toolbar>
-    <ion-buttons slot="start" (click)="goBack()">
+    <ion-buttons slot="start" (click)="goBack()" *ngIf="cordova">
       <ion-icon slot="start" id="icon" name="arrow-back"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="primary">
