@@ -1,10 +1,9 @@
 .container {
   display: flex;
   flex-flow: column;
-  //   justify-content: space-evenly;
   align-items: center;
-  //   background: white;
-  height: 25vh;
+  overflow: hidden;
+  height: 100%;
 
   .text {
     p {
