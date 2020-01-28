@@ -94,6 +94,11 @@
         <img src="https://i.pinimg.com/564x/c8/1b/aa/c81baa4f14e6a9890b03b78c412c2f91.jpg">
         <div class="category">Crop Tops</div>
       </div>
+      <div class="card" (click)="list('Bags')">
+        <img src="https://i.pinimg.com/564x/45/e3/d2/45e3d28ac6d8241dcb85a0b8389da557.jpg">
+        <div class="category">Bags</div>
+      </div>
+      
 
     </div>
 
@@ -114,10 +119,10 @@
         <img src="https://i.pinimg.com/564x/96/97/0c/96970c6ee2cb886eb19289a90b6bb35e.jpg">
         <div class="category">Beanies</div>
       </div>
-      <div class="card" (click)="list('Bags')">
+      <!-- <div class="card" (click)="list('Bags')">
         <img src="https://i.pinimg.com/564x/9f/3d/79/9f3d79a894b214724748a155809adb5d.jpg">
         <div class="category">Bags</div>
-      </div>
+      </div> -->
 
     </div>
 
@@ -180,10 +185,14 @@
         <img src="https://i.pinimg.com/564x/c8/1b/aa/c81baa4f14e6a9890b03b78c412c2f91.jpg">
         <div class="category">Crop Tops</div>
       </div>
+      <div class="card" (click)="list('Bags')">
+        <img src="https://i.pinimg.com/564x/45/e3/d2/45e3d28ac6d8241dcb85a0b8389da557.jpg">
+        <div class="category">Bags</div>
+      </div>
 
     </div>
 
-    <div class="cards" *ngIf="category==='WINTER'">
+    <div class="cards" *ngIf="category==='WINTER'" id="winter">
       <div class="card" (click)="list('Hoodies')">
         <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
         <div class="category">Hoodies</div>
@@ -200,14 +209,10 @@
         <img src="https://i.pinimg.com/564x/96/97/0c/96970c6ee2cb886eb19289a90b6bb35e.jpg">
         <div class="category">Beanies</div>
       </div>
-      <div class="card" (click)="list('Bags')">
-        <img src="https://i.pinimg.com/564x/9f/3d/79/9f3d79a894b214724748a155809adb5d.jpg">
-        <div class="category">Bags</div>
-      </div>
 
     </div>
 
-    <div class="cards" *ngIf="category==='KWANGA'">
+    <div class="cards" *ngIf="category==='KWANGA'" id="kwanga">
       <div class="card" (click)="list('Traditional')">
         <img src="https://i.pinimg.com/564x/45/60/09/4560091dba34204379150440c77cfb58.jpg">
         <div class="category">Traditional</div>

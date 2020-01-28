@@ -32,12 +32,12 @@ ion-toolbar {
   height: 30vh;
 }
 .card:nth-child(5) {
-  width: 90vw;
+  width: 30vw;
   height: 25vh;
 }
 
 .card:nth-child(6) {
-  width: 30vw;
+  width: 57vw;
   height: 25vh;
 }
 
@@ -122,7 +122,6 @@ ion-toolbar {
   }
 }
 
-
 @media only screen and (max-width: 1024px) {
   .web_view {
     display: none;
@@ -139,13 +138,13 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  #wish{
+  #wish {
     display: none;
     width: 0 !important;
     height: 0 !important;
   }
 }
-@media only screen and (min-width: 1025px){
+@media only screen and (min-width: 1025px) {
   .container {
     display: none;
     width: 0 !important;
@@ -188,13 +187,13 @@ ion-toolbar {
     text-align: center;
     font-family: "Poiret One";
     margin: 10px;
-  
+
     h1 {
       margin: 5px;
       font-size: 40px;
     }
   }
-  
+
   .itemcount {
     text-align: center;
     width: 100%;
@@ -202,7 +201,7 @@ ion-toolbar {
     color: rgb(221, 221, 221);
     font-size: 20px;
   }
-  
+
   .web_view {
     min-width: 800px;
     max-width: 1200px;
@@ -216,46 +215,46 @@ ion-toolbar {
       overflow-y: auto;
       position: relative;
     }
-  
+
     .card:nth-child(1) {
       width: 31.5%;
       height: 40vh;
     }
-  
+
     .card:nth-child(2) {
       width: 31.5%;
       height: 40vh;
     }
-  
+
     .card:nth-child(3) {
       width: 31.5%;
       height: 40vh;
     }
-  
+
     .card:nth-child(4) {
-      width: 30%;
+      width: 31.5%;
       height: 42vh;
     }
     .card:nth-child(5) {
-      width: 65.5%;
+      width: 31.5%;
       height: 42vh;
     }
-  
+
     .card:nth-child(6) {
-      width: 30vw;
-      height: 25vh;
+      width: 31.5%;
+      height: 42vh;
     }
-  
+
     .card:nth-child(7) {
       width: 57vw;
       height: 25vh;
     }
-  
+
     .card:nth-child(8) {
       width: 89vw;
       height: 25vh;
     }
-  
+
     .card {
       margin: 5px;
       border-radius: 5px;
@@ -268,7 +267,7 @@ ion-toolbar {
         object-fit: cover;
         border-radius: 5px;
       }
-  
+
       .category {
         position: absolute;
         bottom: 10px;
@@ -278,8 +277,52 @@ ion-toolbar {
         font-family: "Poppins";
       }
     }
-  }
+
+    #winter{
+      .card:nth-child(1) {
+        width: 25%;
+        height: 40vh;
+      }
   
+      .card:nth-child(2) {
+        width: 70%;
+        height: 40vh;
+      }
+  
+      .card:nth-child(3) {
+        width: 70%;
+        height: 40vh;
+      }
+  
+      .card:nth-child(4) {
+        width: 25%;
+        height: 40vh;
+      }
+    }
+
+    #kwanga{
+      .card:nth-child(1) {
+        width: 25%;
+        height: 40vh;
+      }
+  
+      .card:nth-child(2) {
+        width: 70%;
+        height: 40vh;
+      }
+  
+      .card:nth-child(3) {
+        width: 70%;
+        height: 40vh;
+      }
+  
+      .card:nth-child(4) {
+        width: 25%;
+        height: 40vh;
+      }
+    }
+  }
+
   .viewwishlist {
     position: absolute;
     z-index: 150;
@@ -293,7 +336,7 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  
+
     .heading {
       display: flex;
       flex-flow: row;
@@ -301,7 +344,7 @@ ion-toolbar {
       width: 100%;
       // text-align: center;
       margin: 5px;
-  
+
       ion-icon {
         color: white;
         position: relative;
@@ -311,7 +354,7 @@ ion-toolbar {
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-  
+
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -320,7 +363,7 @@ ion-toolbar {
         font-size: 1em;
       }
     }
-  
+
     .wishlist_items {
       display: flex;
       flex-flow: column;
@@ -328,26 +371,26 @@ ion-toolbar {
       margin: 10px;
       width: 20vw;
 
-      .div{
+      .div {
         height: 80vh;
         overflow-y: auto;
         scrollbar-width: 2px;
         width: 100%;
       }
 
-      #noItems{
+      #noItems {
         display: flex;
         flex-flow: column;
         background: none;
         align-items: center;
-        box-shadow:  none;
+        box-shadow: none;
         justify-content: center;
         margin-top: 200px;
-        img{
+        img {
           width: 5vw;
           height: 5vw;
         }
-        p{
+        p {
           text-align: center;
           font-size: 15px;
           color: grey;
@@ -380,12 +423,12 @@ ion-toolbar {
               border-radius: 5px;
             }
           }
-  
+
           .item_details {
             width: 8vw;
           }
         }
-  
+
         .right {
           width: 6vw;
           display: flex;
@@ -404,7 +447,7 @@ ion-toolbar {
               font-size: 12px;
             }
           }
-  
+
           .trash_icon {
             ion-icon {
               color: rgb(148, 14, 14);
@@ -418,7 +461,7 @@ ion-toolbar {
       }
     }
   }
-  
+
   .closewishlist {
     position: absolute;
     z-index: 150;
@@ -434,13 +477,11 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     overflow: hidden;
-    .heading{
+    .heading {
       display: none;
     }
   }
 }
-
-
 
 ion-footer {
   text-align: center;
