@@ -293,7 +293,7 @@ ion-toolbar {
   }
 }
 
-@media only screen and (max-width: 799px) {
+@media only screen and (max-width: 1023px) {
   .web_view {
     display: none;
     width: 0%;
@@ -308,8 +308,7 @@ ion-toolbar {
   }
 }
 
-
-@media only screen and (min-width: 1330px) {
+@media only screen and (min-width: 1024px){
   .container {
     display: none;
     width: 0 !important;
@@ -586,9 +585,10 @@ ion-toolbar {
       }
     }
   }
-  
-  
 }
+
+
+
 
 
 
