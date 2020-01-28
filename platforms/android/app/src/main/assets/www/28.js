@@ -164,7 +164,8 @@ var WishlistPage = /** @class */ (function () {
         var navigationExtras = {
             queryParams: {
                 data: data,
-                col: data.category,
+                col: data.brand,
+                category: data.category
             }
         };
         this.dbWishlist.doc(id).delete().then(function () {

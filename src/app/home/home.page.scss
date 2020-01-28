@@ -883,9 +883,10 @@ ion-toolbar {
     .items {
       display: flex;
       flex-flow: row;
-      justify-content: space-between;
+      justify-content: space-around;
       margin: 10px;
       min-height: 7vh;
+      width: 95%;
       margin: 5px;
       background: rgb(255, 255, 255);
       border-radius: 5px;
@@ -923,6 +924,7 @@ ion-toolbar {
         justify-content: space-between;
         text-align: right;
         margin: 5px;
+        // margin-right: 10px;
         ion-button {
           font-size: 12px;
           width: 4vw;

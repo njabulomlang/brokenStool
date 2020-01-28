@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"inner-container\">\r\n      <div id=\"left\">\r\n        <div class=\"logo-container-left\">\r\n          <img src=\"../../assets/NoPath - Copy.svg\" id=\"logo-left\" alt=\"\">\r\n          <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo porro laborum illo suscipit aperiam culpa molestiae aliquam laboriosam eveniet!\r\n        </div>\r\n      </div>\r\n      <div id=\"right\">\r\n        <div class=\"cont\">\r\n          <div class=\"logo-container-right\">\r\n            <img src=\"../../assets/NoPath - Copy.svg\" id=\"logo\" alt=\"\">\r\n            <br>\r\n          </div>\r\n         <div class=\"login\">\r\n          <ion-input placeholder=\"Phone Number\" [(ngModel)]=\"number\" type=\"number\" maxLength=\"9\">+27</ion-input>\r\n          <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"addUser()\"> <ion-icon slot=\"end\" name=\"call\"></ion-icon> Sign-in with Phone</ion-button>\r\n          <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"googleLogin()\" > <ion-icon slot=\"end\" name=\"logo-google\"></ion-icon> Sign-in with Google</ion-button>\r\n          <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"loginwithemail()\" ><ion-icon slot=\"end\" name=\"mail\"></ion-icon>Sign-in with Email</ion-button>\r\n          <div class=\"emails\" *ngIf=\"log\">\r\n            <form>\r\n            <ion-item lines=\"null\">\r\n              <ion-label position=\"floating\">Email</ion-label>\r\n              <ion-input type=\"email\"></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Password</ion-label>\r\n              <ion-input type=\"password\"></ion-input>\r\n            </ion-item>\r\n            <ion-button color=\"transparent\"> Sign-In</ion-button>\r\n          \r\n          </form>\r\n          </div>\r\n            </div>\r\n\r\n            <div id=\"recaptcha-container\"></div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<!-- <ion-header no-border>\r\n  <ion-toolbar>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content full screen>\r\n    <div [ngClass]=\"{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}\">\r\n        <div class=\"maploader\">\r\n            <div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div><p style=\"color:white; text-align: center;\">{{loaderMessages}}</p>\r\n        </div>\r\n    \r\n      </div>\r\n  <div class=\"container\" slot= \"fixed\">\r\n    <div class=\"logo\">\r\n      <img src=\"../../assets/NoPath - Copy.svg\">\r\n    </div>\r\n\r\n    <div class=\"desc\">\r\n      <p>Est lorem ipsum dolor sit amet consectetur adipiscing elit. Quis\r\n        eleifend quam adipiscing vitae proin sagittis.\r\n      </p>\r\n    </div>\r\n    <div class=\"login\">\r\n      <ion-input placeholder=\"Phone Number\" [(ngModel)]=\"number\" type=\"number\" maxLength=\"9\">+27</ion-input>\r\n\r\n    \r\n      <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"addUser()\"> <ion-icon slot=\"end\" name=\"call\"></ion-icon> Sign-in with Phone</ion-button>\r\n      <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"googleLogin()\" > <ion-icon slot=\"end\" name=\"logo-google\"></ion-icon> Sign-in with Google</ion-button>\r\n      <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"Facebook()\" ><ion-icon slot=\"end\" name=\"logo-facebook\"></ion-icon>Sign-in with Email</ion-button>\r\n     \r\n    </div>\r\n    <div id=\"recaptcha-container\"></div>\r\n  </div>\r\n\r\n\r\n\r\n</ion-content> -->");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"inner-container\">\r\n      <div id=\"left\">\r\n        <div class=\"logo-container-left\">\r\n          <img src=\"../../assets/NoPath - Copy.svg\" id=\"logo-left\" alt=\"\">\r\n          <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo porro laborum illo suscipit aperiam culpa molestiae aliquam laboriosam eveniet!\r\n        </div>\r\n      </div>\r\n      <div id=\"right\">\r\n        <div class=\"cont\">\r\n          <div class=\"logo-container-right\">\r\n            <img src=\"../../assets/NoPath - Copy.svg\" id=\"logo\" alt=\"\">\r\n            <br>\r\n          </div>\r\n         <div class=\"login\">\r\n          <ion-input placeholder=\"Phone Number\" [(ngModel)]=\"number\" type=\"number\" maxLength=\"9\">+27</ion-input>\r\n          <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"addUser()\"> <ion-icon slot=\"end\" name=\"call\"></ion-icon> Sign-in with Phone</ion-button>\r\n          <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"googleLogin()\" > <ion-icon slot=\"end\" name=\"logo-google\"></ion-icon> Sign-in with Google</ion-button>\r\n          <!-- <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"Facebook()\" ><ion-icon slot=\"end\" name=\"mail\"></ion-icon>Sign-in with Facebook</ion-button> -->\r\n          <!-- <div class=\"fb-login-button\" data-width=\"\" data-size=\"large\" data-button-type=\"continue_with\" data-auto-logout-link=\"false\" data-use-continue-as=\"false\"></div> -->\r\n          <div class=\"emails\" *ngIf=\"log\">\r\n            <form>\r\n            <ion-item lines=\"null\">\r\n              <ion-label position=\"floating\">Email</ion-label>\r\n              <ion-input type=\"email\"></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Password</ion-label>\r\n              <ion-input type=\"password\"></ion-input>\r\n            </ion-item>\r\n            <ion-button color=\"transparent\"> Sign-In</ion-button>\r\n          \r\n          </form>\r\n          </div>\r\n            </div>\r\n\r\n            <div id=\"recaptcha-container\"></div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<!-- <ion-header no-border>\r\n  <ion-toolbar>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content full screen>\r\n    <div [ngClass]=\"{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}\">\r\n        <div class=\"maploader\">\r\n            <div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div><p style=\"color:white; text-align: center;\">{{loaderMessages}}</p>\r\n        </div>\r\n    \r\n      </div>\r\n  <div class=\"container\" slot= \"fixed\">\r\n    <div class=\"logo\">\r\n      <img src=\"../../assets/NoPath - Copy.svg\">\r\n    </div>\r\n\r\n    <div class=\"desc\">\r\n      <p>Est lorem ipsum dolor sit amet consectetur adipiscing elit. Quis\r\n        eleifend quam adipiscing vitae proin sagittis.\r\n      </p>\r\n    </div>\r\n    <div class=\"login\">\r\n      <ion-input placeholder=\"Phone Number\" [(ngModel)]=\"number\" type=\"number\" maxLength=\"9\">+27</ion-input>\r\n\r\n    \r\n      <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"addUser()\"> <ion-icon slot=\"end\" name=\"call\"></ion-icon> Sign-in with Phone</ion-button>\r\n      <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"googleLogin()\" > <ion-icon slot=\"end\" name=\"logo-google\"></ion-icon> Sign-in with Google</ion-button>\r\n      <ion-button  id=\"sign-in-button\" color=\"transparent\" (click)=\"Facebook()\" ><ion-icon slot=\"end\" name=\"logo-facebook\"></ion-icon>Sign-in with Email</ion-button>\r\n     \r\n    </div>\r\n    <div id=\"recaptcha-container\"></div>\r\n  </div>\r\n\r\n\r\n\r\n</ion-content> -->");
 
 /***/ }),
 
@@ -151,6 +151,7 @@ var LoginPage = /** @class */ (function () {
         this.userProfile = firebase__WEBPACK_IMPORTED_MODULE_4__["firestore"]().collection('userProfile');
     }
     LoginPage.prototype.ngOnInit = function () {
+        //console.log('My status ', FB.getLoginStatus());
     };
     /*   goSignUp() {
         this.router.navigateByUrl("/signup")
@@ -188,29 +189,17 @@ var LoginPage = /** @class */ (function () {
         });
     };
     LoginPage.prototype.webGoogleLogin = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var provider, credential, err_2;
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        provider = new firebase__WEBPACK_IMPORTED_MODULE_4__["auth"].GoogleAuthProvider();
-                        return [4 /*yield*/, firebase__WEBPACK_IMPORTED_MODULE_4__["auth"]().signInWithPopup(provider).then(function (i) {
-                                console.log(i.user);
-                                _this.router.navigateByUrl('create-account');
-                            })];
-                    case 1:
-                        credential = _a.sent();
-                        return [3 /*break*/, 3];
-                    case 2:
-                        err_2 = _a.sent();
-                        console.log(err_2);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
+        var _this = this;
+        try {
+            var provider = new firebase__WEBPACK_IMPORTED_MODULE_4__["auth"].GoogleAuthProvider();
+            var credential = firebase__WEBPACK_IMPORTED_MODULE_4__["auth"]().signInWithPopup(provider).then(function (i) {
+                console.log(i.user);
+                _this.router.navigateByUrl('create-account');
             });
-        });
+        }
+        catch (err) {
+            console.log(err);
+        }
     };
     LoginPage.prototype.googleLogin = function () {
         if (this.plt.is('cordova')) {
@@ -297,7 +286,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage.prototype.loginAnon = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var err_3;
+            var err_2;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -305,8 +294,8 @@ var LoginPage = /** @class */ (function () {
                         return [4 /*yield*/, firebase__WEBPACK_IMPORTED_MODULE_4__["auth"]().signInAnonymously()];
                     case 1: return [2 /*return*/, _a.sent()];
                     case 2:
-                        err_3 = _a.sent();
-                        console.log("Error...", err_3);
+                        err_2 = _a.sent();
+                        console.log("Error...", err_2);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
