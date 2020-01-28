@@ -108,8 +108,9 @@ export class ListPage implements OnInit {
     this.dbProduct.doc(this.col).collection(this.collectionName).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
-        this.myProduct.push({ info: doc.data(), id: doc.id });
-        // console.log('These products ', this.myProduct); 
+        if (doc.data().hideItem === false) {
+          this.myProduct.push({ info: doc.data(), id: doc.id });
+        }
       })
     })
   }
