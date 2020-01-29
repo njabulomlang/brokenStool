@@ -63,7 +63,7 @@
   width: 200px;
 }
 .inner-container > div:nth-child(1) {
-  background: url("https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80i");
+  background: url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
   background-size: cover;
 }
 .inner-container > div:nth-child(2) {
@@ -110,6 +110,38 @@ ion-button {
   }
   .inner-container > div:nth-child(1) {
     display: none;
+  }
+  .inner-container > div:nth-child(2) {
+    background-image: linear-gradient(rgba(190, 190, 190, 0.589), rgba(187, 187, 187, 0.514)),
+      url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
+    .cont {
+      background: transparent;
+
+.everything{
+
+  .image{
+ width: 40vw;
+ height: 40vw;
+  }
+}    
+    }
+    .login{
+      margin-top: 100px;
+      ion-button{
+        background-color: white;
+        color: black;
+        border-radius: 8px;
+      }
+
+      ion-input{
+        color: black;
+      }
+    }
   }
 }
 @media screen and (max-width: 512px) {

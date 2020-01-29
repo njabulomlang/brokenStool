@@ -1,157 +1,172 @@
 .container {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to left, w hite, rgba(0, 0, 0, 0.363));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, w hite, rgba(0, 0, 0, 0.363));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.inner-container {
+  width: 60%;
+  height: 70%;
+  transition: 300ms;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  min-height: 300px;
+}
+.inner-container > div {
+  transition: 300ms;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#prompt {
+  color: grey;
+  font-style: italic;
+  font-size: 12px;
+}
+#password-forgotten {
+  color: blue;
+  cursor: pointer;
+  font-size: 14px;
+}
+.cont {
+  margin: 0 auto;
+  width: 95%;
+  // height: 95%;
+  background: white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.logo-container-right {
+  text-align: center;
+  width: 100%;
+  //   border: 2px solid red;
+  display: none;
+
+  filter: invert(100%);
+}
+.logo-container-left {
+  text-align: center;
+  color: white;
+}
+#logo {
+  width: 100px;
+  transition: 300ms;
+}
+#logo-left {
+  width: 200px;
+}
+.inner-container > div:nth-child(1) {
+  background: url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
+  background-size: cover;
+}
+.inner-container > div:nth-child(2) {
+  background: white;
+}
+ion-button {
+  text-transform: capitalize;
+}
+
+.login {
+  display: flex;
+  flex-flow: column;
+  ion-button {
+    background: rgb(0, 0, 36);
+
+    margin: auto;
+    margin: 5px;
+  }
+
+  .emails {
+    ion-button {
+      background: rgb(0, 0, 36);
+      margin: auto;
+      margin: 5px;
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  #logo {
+    width: 200px;
+  }
+  .logo-container-right {
+    text-align: center;
+    display: block;
   }
   .inner-container {
     width: 60%;
     height: 70%;
-    transition: 300ms;
-    margin: 0 auto;
-    background: white;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.281);
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    min-height: 300px;
   }
   .inner-container > div {
-    transition: 300ms;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  #prompt {
-    color: grey;
-    font-style: italic;
-    font-size: 12px;
-  }
-  #password-forgotten {
-    color: blue;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  .cont {
-    margin: 0 auto;
-    width: 95%;
-    // height: 95%;
-    background: white;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  .logo-container-right {
-    text-align: center;
     width: 100%;
-    //   border: 2px solid red;
-    display: none;
-  
-    filter: invert(100%);
-  }
-  .logo-container-left {
-    text-align: center;
-    color:white;
-  }
-  #logo {
-    width: 100px;
-    transition: 300ms;
-  }
-  #logo-left {
-    width: 200px;
+    height: 100%;
   }
   .inner-container > div:nth-child(1) {
-    background: url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
-    background-size: cover;
+    display: none;
   }
   .inner-container > div:nth-child(2) {
-    background: white;
-  }
-  ion-button {
-    text-transform: capitalize;
-  }
+    background-image: linear-gradient(rgba(190, 190, 190, 0.589), rgba(187, 187, 187, 0.514)),
+      url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 
-  .login{
-      display: flex;
-      flex-flow: column;
+    .cont {
+      background: transparent;
+      logo-container-right{
+          img{
+        width: 30vw;
+        height: 20vw;
+      }
+      }
+    
+    }
+    .login{
+      margin-top: 100px;
       ion-button{
-          background: rgb(0, 0, 36);
-
-          margin: auto;
-          margin: 5px;
+        background-color: white;
+        color: black;
+        border-radius: 8px;
       }
 
-      .emails{
-        ion-button{
-            background: rgb(0, 0, 36);
-            margin: auto;
-            margin: 5px;
-            width: 100%;
-        }
+      ion-input{
+        color: black;
       }
-  }
-  @media screen and (max-width: 1024px) {
-    #logo {
-      width: 200px;
-    }
-    .logo-container-right {
-      text-align: center;
-      display: block;
-    }
-    .inner-container {
-      width: 60%;
-      height: 70%;
-    }
-    .inner-container > div {
-      width: 100%;
-      height: 100%;
-    }
-    .inner-container > div:nth-child(1) {
-      display: none;
     }
   }
-  @media screen and (max-width: 512px) {
-    #logo {
-      width: 150px;
-    }
-    .inner-container {
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-    }
-    .inner-container > div {
-      width: 100%;
-      height: 100%;
-    }
-    .inner-container > div:nth-child(1) {
-      display: none;
-    }
+}
+@media screen and (max-width: 512px) {
+  #logo {
+    width: 150px;
   }
-  @media screen and (max-height: 435px) {
-    .inner-container {
-      height: 100%;
-      overflow: scroll;
-    }
+  .inner-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .inner-container > div {
+    width: 100%;
+    height: 100%;
+  }
+  .inner-container > div:nth-child(1) {
+    display: none;
+  }
+}
+@media screen and (max-height: 435px) {
+  .inner-container {
+    height: 100%;
+    overflow: scroll;
+  }
+}
 
 // @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 
