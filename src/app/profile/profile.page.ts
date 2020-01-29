@@ -53,9 +53,7 @@ export class ProfilePage implements OnInit {
     this.getWishSize();
     this.getWishlist();
     this.getCart();
-    if (this.platform.is('cordova')) {
-      document.getElementById('file').style.display = "none";
-    } 
+   
   }
   placeOrder(info) {
     let myArr = [];

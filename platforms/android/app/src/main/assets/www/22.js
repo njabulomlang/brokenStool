@@ -185,9 +185,6 @@ var ProfilePage = /** @class */ (function () {
         this.getWishSize();
         this.getWishlist();
         this.getCart();
-        if (this.platform.is('cordova')) {
-            document.getElementById('file').style.display = "none";
-        }
     };
     ProfilePage.prototype.placeOrder = function (info) {
         var _this = this;
