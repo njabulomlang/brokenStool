@@ -52,6 +52,7 @@
     "integrator-cordova-plugin-downloader": "1.1.0",
     "ionic-selectable": "^4.5.0",
     "ionic4-star-rating": "^1.1.1",
+    "ngx-webstorage": "^4.0.2",
     "pdfmake": "^0.1.62",
     "remove-node-modules": "^1.7.6",
     "rxjs": "~6.5.1",

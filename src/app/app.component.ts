@@ -37,7 +37,7 @@ export class AppComponent {
       this.statusBar.backgroundColorByHexString('#000324');
       this.statusBar.styleLightContent();
       // await this.notificationsService.requestPermission();
-      this.checkUser();
+      //this.checkUser();
     });
   }
   // console.log("UID ", firebase.auth().currentUser.uid)

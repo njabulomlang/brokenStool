@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController, PopoverController, NavController, AlertController, Platform } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
+import { LocalStorageService } from 'ngx-webstorage';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ViewPage implements OnInit {
   dbProduct = firebase.firestore().collection('Products');
   dbCart = firebase.firestore().collection('Cart');
   dbOrder = firebase.firestore().collection('Order');
-  customerUID = firebase.auth().currentUser.uid;
+  // customerUID = firebase.auth().currentUser.uid;
   docID: string;
   col: string;
   doc_data: [];
@@ -35,16 +36,17 @@ export class ViewPage implements OnInit {
   category: string = '';
   starRating = document.getElementsByClassName('ionic4-star-rating')
   boolCheck: boolean = false;
-  viewCart= false;
+  viewCart = false;
   viewBackdrop = false;
   prodCart = [];
-  delCost : number;
-  delType : string;
+  delCost: number;
+  delType: string;
   buttonActive: boolean = true;
-  cordova:boolean
+  cordova: boolean
+  alertView: boolean = false;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
-    public render: Renderer2, public alertCtrl :AlertController, public plt : Platform) {
+    public render: Renderer2, public alertCtrl: AlertController, public plt: Platform, private localSt: LocalStorageService) {
     this.doc_id = this.route.snapshot.paramMap.get('view_id');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -59,15 +61,12 @@ export class ViewPage implements OnInit {
     } else {
       this.cordova = false;
     }
-    this.getCart();
+    this.checkUser();
     if (this.col === 'Specials') {
-      this.dbSales.doc(this.doc_id).get().then((res) => {
-        this.mySale.push({ data: res.data(), id: res.id });
-      })
-    //  this.getSpecial();
-  } else {
+      this.getSpecial();
+    } else {
       this.getProduct();
-  }
+    }
     this.dbRate.where('product', '==', this.doc_id).onSnapshot((res) => {
       if (res.size === 0) {
         this.myRate = 0
@@ -77,6 +76,47 @@ export class ViewPage implements OnInit {
         })
       }
     })
+  }
+  checkUser() {
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.getCart();
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          // console.log('My data ',this.alertView);
+          if (this.localSt.retrieve('alertShowed') !== true) {
+            this.presentAlertConfirm1();
+          }
+        }
+      })
+    }, 0);
+  }
+  async presentAlertConfirm1() {
+    const alert = await this.alertCtrl.create({
+      header: 'Not logged in',
+      message: 'Do you want to login?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+          }
+        }, {
+          text: 'Login',
+          handler: () => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+            this.navCtrl.navigateForward('login');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
   getTotal() {
     let total = 0;
@@ -93,35 +133,33 @@ export class ViewPage implements OnInit {
     return total;
   }
   placeOrder(info) {
-    let myArr = [];
-    let doc = [];
-    for (let i = 0; i < info.length; i++) {
-      // const element = info[i].data;
-      /* myArr = info[i].data.product */
-      doc.push(info[i].id)
-      //console.log('my info ', );
-      info[i].data.product.forEach(item => {
-        myArr.push(item);
-      });
-    }
-    if (this.prodCart.length === 0) {
-      this.toastController('You cannot place order with empty basket');
-    } else {
-      let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
-      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
-        status: 'received', userID: firebase.auth().currentUser.uid,
-         totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
-         }).then(() => {
-        doc.forEach((id) => {
-          this.dbCart.doc(id).delete();
+      let myArr = [];
+      let doc = [];
+      for (let i = 0; i < info.length; i++) {
+        // const element = info[i].data;
+        /* myArr = info[i].data.product */
+        doc.push(info[i].id)
+        //console.log('my info ', );
+        info[i].data.product.forEach(item => {
+          myArr.push(item);
+        });
+      }
+      if (this.prodCart.length === 0) {
+        this.toastController('You cannot place order with empty basket');
+      } else {
+        let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
+        this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
+          status: 'received', userID: firebase.auth().currentUser.uid,
+           totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+           }).then(() => {
+          doc.forEach((id) => {
+            this.dbCart.doc(id).delete();
+          })
         })
-        //Toast must be created
-        //this.router.navigate(['payment', docname])
-      })
-    }
+      }
   }
   getCart() {
-    this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
+    this.dbCart.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((info) => {
       this.prodCart = [];
       // this.totalCost = 0;
       info.forEach((doc) => {
@@ -129,7 +167,7 @@ export class ViewPage implements OnInit {
       })
     })
   }
-  gotocart(){
+  gotocart() {
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop
   }
@@ -145,14 +183,13 @@ export class ViewPage implements OnInit {
         }, {
           text: 'Yes, continue',
           handler: () => {
-           // console.log('Confirm Okay');
-           this.placeOrder(this.prodCart)
+            this.placeOrder(this.prodCart)
           }
         }
       ]
     });
     await alert.present();
-  } 
+  }
   Delivery(tot) {
     let total = 0;
     this.delCost = 100;
@@ -160,7 +197,7 @@ export class ViewPage implements OnInit {
     for (let i = 0; i < this.prodCart.length; i++) {
       let product = this.prodCart[i].data.product;
       product.forEach((item) => {
-        total = tot+100
+        total = tot + 100
       })
     }
     return total;
@@ -181,12 +218,12 @@ export class ViewPage implements OnInit {
     console.log('Boolean val ', c, 'index ', i);
   }
   async getProduct() {
-   await this.dbProduct.doc(this.col).collection(this.category).doc(this.doc_id).get().then((doc) => {
+    await this.dbProduct.doc(this.col).collection(this.category).doc(this.doc_id).get().then((doc) => {
       this.unitProduct.push({ data: doc.data(), id: doc.id })
     })
   }
   async getSpecial() {
-   await this.dbSales.doc(this.doc_id).get().then((res) => {
+    await this.dbSales.doc(this.doc_id).get().then((res) => {
       this.mySale.push({ data: res.data(), id: res.id });
     })
   }
@@ -204,19 +241,15 @@ export class ViewPage implements OnInit {
   }
 
   sizeChosen(data, index) {
-    // console.log(index);
     this.sizeIndex = index
     this.my_size = data;
-    //console.log('My size ', this.my_size);
   }
 
   colorChosen(color, index) {
     this.color = color;
     this.colorIndex = index
-    // console.log("color", index);
   }
   plus() {
-    //console.log('Quantity ', quantity); 
     this.quantity += 1
   }
   minus() {
@@ -234,8 +267,6 @@ export class ViewPage implements OnInit {
 
     let product = [prod]
     this.dbCart.doc(id).update({ product: product }).then(res => {
-      // console.log('updated');
-
     })
   }
   removeProd(id) {
@@ -243,26 +274,15 @@ export class ViewPage implements OnInit {
     })
   }
   minuss(prod, index) {
-
-    // product.push[prod]
-    // this.dbCart.doc(id).onSnapshot((res)=>{
     if (index.data.product[0].quantity === 1) {
-      // console.log('You are about to delete your product');
-      // this.presentAlertConfirm(index.id);
     } else {
       let num = index.data.product[0].quantity--
       index.data.product[0].cost = index.data.product[0].cost
       let id = index.id
-      // console.log('Prod ', prod, ' index', index );
       let product = [prod]
       this.dbCart.doc(id).update({ product: product }).then(res => {
-        //   console.log('updated');
       })
     }
-
-    // this.prodCount = quantity+1
-    // this.dbCart.doc(id).update({product:{quantity: this.prodCount}})
-    //console.log('Quan decr ', quan);
   }
   async toastController(message) {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
@@ -272,48 +292,64 @@ export class ViewPage implements OnInit {
     this.router.navigateByUrl('basket');
   }
   addToCart(id, details) {
-    if (this.my_size === "" || this.color === "") {
-      this.toastController('Please select your size');
-    } else {
-      this.dbCart.add({
-        customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{
-          product_name: details.name, size: this.my_size,
-          quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
-          color: this.color
-        }]
-      }).then(() => {
-        this.toastController('Added to busket')
-        //this.router.navigateByUrl('basket');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          let descr = "";
+          if (this.my_size === "") {
+            descr = "size"
+          } else if (this.color === "") {
+            descr = "color"
+          }
+          if (this.my_size === "" || this.color === "") {
+            this.toastController('Missing selection of ' + descr);
+          } else {
+            this.dbCart.add({
+              customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
+                product_name: details.name, size: this.my_size,
+                quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
+                color: this.color
+              }]
+            }).then(() => {
+              this.toastController('Added to busket')
+            })
+          }
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          this.presentAlertConfirm1();
+        }
       })
-    }
-
-    /*   this.dbCart.doc(id).onSnapshot((res)=>{
-         // this.dbCart.add({ customerUID: this.customerUID, product: [{product_id: this.doc_id, quantity: this.quantity}]}) 
-      }) */
-    // console.log('Doc id ', id, 'Quantity ', quantity);
-    // console.log('Product ', details, id);
+    }, 0);
   }
   addSaleToCart(id, details) {
-    let descr = "";
-    if (this.my_size === "") {
-      descr = "size"
-    } else if (this.color === "") {
-      descr = "color"
-    }
-    if (this.my_size === "" || this.color === "") {
-      this.toastController('Missing selection of ' + descr);
-    } else {
-      this.dbCart.add({
-        customerUID: this.customerUID, timestamp: new Date().getTime(), product: [{
-          product_name: details.name, size: this.my_size,
-          quantity: this.quantity, cost: details.saleprice, picture: details.pictureLink,
-          color: this.color
-        }]
-      }).then(() => {
-        this.toastController('Added to busket')
-        //this.router.navigateByUrl('basket');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          let descr = "";
+          if (this.my_size === "") {
+            descr = "size"
+          } else if (this.color === "") {
+            descr = "color"
+          }
+          if (this.my_size === "" || this.color === "") {
+            this.toastController('Missing selection of ' + descr);
+          } else {
+            this.dbCart.add({
+              customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
+                product_name: details.name, size: this.my_size,
+                quantity: this.quantity, cost: details.saleprice, picture: details.pictureLink,
+                color: this.color
+              }]
+            }).then(() => {
+              this.toastController('Added to busket')
+            })
+          }
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          this.presentAlertConfirm1();
+        }
       })
-    }
+    }, 0);
   }
   goBack() {
     this.navCtrl.pop()
