@@ -338,7 +338,7 @@ export class ProfilePage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop()
+    this.navCtrl.navigateRoot('home')
   }
 
   logout() {
