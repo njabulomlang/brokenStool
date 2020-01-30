@@ -50,8 +50,8 @@ export class ListPage implements OnInit {
       this.loaderAnimate = false;
     }, 2000);
     //console.log(); 
-    this.getAllProduct();
-    this.getSales("name");
+    this.getAllProduct("dateAdded");
+    this.getSales("timestamp");
     //this.getWishlist();
     this.checkUser();
   }
@@ -148,8 +148,8 @@ export class ListPage implements OnInit {
 
     })
   }
-  getAllProduct() {
-    this.dbProduct.doc(this.col).collection(this.collectionName).onSnapshot((res) => {
+  getAllProduct(order) {
+    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order,'desc').onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
         if (doc.data().hideItem === false) {
