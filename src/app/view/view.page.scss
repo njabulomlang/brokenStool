@@ -55,7 +55,7 @@ ion-toolbar {
     .iteminfo {
       z-index: 5;
       position: absolute;
-      top: 33vh;
+      top: 45%;
       left: 5vw;
       display: flex;
       flex-flow: row;
@@ -68,17 +68,9 @@ ion-toolbar {
       color: white;
       font-family: "Raleway";
       line-height: 10px;
-      .stars {
-        // ion-icon {
-        //   font-size: 6vw;
-        // }
-      }
 
-      .price {
-        p {
-          // font-size: 5vw;
-        }
-      }
+    
+ 
     }
   }
 

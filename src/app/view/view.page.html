@@ -67,26 +67,33 @@
   </ion-toolbar> -->
 </ion-header>
 
-<ion-content fullscreen>
-  <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-    <div class="maploader">
-      <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+<div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+  <div class="maploader">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+    <p style="color:white; text-align: center;">{{loaderMessages}}</p>
   </div>
+</div>
+
+<ion-content fullscreen>
+
   <div class="container" *ngIf="col!=='Specials'">
     <div class="image" *ngFor="let prod of unitProduct">
       <img src="{{prod.data.pictureLink}}">
 
       <div class="iteminfo">
         <div class="itemname">
-          <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-            defaultColor="#aaaaaa" readonly="true" rating="{{myRate}}">
+          <ionic4-star-rating id="rating"
+           #rating activeIcon="ios-star"
+            defaultIcon="ios-star-outline"
+             activeColor="#E48D0C"
+            defaultColor="#aaaaaa" 
+            readonly="true" 
+            rating="{{myRate}}">
           </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">

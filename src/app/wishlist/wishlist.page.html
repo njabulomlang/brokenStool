@@ -51,15 +51,15 @@
       </ion-toolbar>
 </ion-header>
 
+<div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+  <div class="maploader">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
+  </div>
+
+</div>
+
 <ion-content fullscreen id="content">
-    <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-        <div class="maploader">
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-        </div>
-       <!--  <div class="loading-text">
-          <p>Loading Map</p>
-        </div> -->
-      </div>
+ 
   <div class="container">
     <div class="pagename" style="margin: 10px; font-family: 'Poiret One'; ">
       <h1>Wishlist ({{myWish.length}})</h1>
