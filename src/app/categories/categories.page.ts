@@ -60,8 +60,8 @@ export class CategoriesPage implements OnInit {
   }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
-      header: 'Not logged in',
-      message: 'Do you want to login?',
+      header: 'Alert',
+      message: 'Please Sign-in first',
       buttons: [
         {
           text: 'Cancel',
@@ -72,7 +72,7 @@ export class CategoriesPage implements OnInit {
             this.localSt.store('alertShowed', this.alertView);
           }
         }, {
-          text: 'Login',
+          text: 'Sign In',
           handler: () => {
             this.alertView = true;
             this.localSt.store('alertShowed', this.alertView);

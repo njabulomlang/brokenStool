@@ -72,8 +72,8 @@ export class ListPage implements OnInit {
 
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
-      header: 'Not logged in',
-      message: 'Do you want to login?',
+      header: 'Alert',
+      message: 'Please Sign-in first',
       buttons: [
         {
           text: 'Cancel',
@@ -84,7 +84,7 @@ export class ListPage implements OnInit {
             this.localSt.store('alertShowed', this.alertView);
           }
         }, {
-          text: 'Login',
+          text: 'Sign In',
           handler: () => {
             this.alertView = true;
             this.localSt.store('alertShowed', this.alertView);
