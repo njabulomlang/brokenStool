@@ -290,7 +290,15 @@ export class HomePage implements OnInit {
   }
 
   profile() {
-    this.navCtrl.navigateForward('profile');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.navCtrl.navigateForward('profile');
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0); 
   }
   getPromo() {
     this.dbSales.limit(4).onSnapshot((res) => {
