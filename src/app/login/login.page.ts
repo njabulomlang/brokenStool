@@ -55,13 +55,14 @@ export class LoginPage implements OnInit {
       console.log('Error ',err)
     }
   }
-  
+  Explore() {
+    this.router.navigateByUrl('home');
+  }
    webGoogleLogin() {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
       const credential = firebase.auth().signInWithPopup(provider).then((i)=>{
         console.log(i.user);
-        
         this.router.navigateByUrl('create-account');
       });
     } catch(err) {

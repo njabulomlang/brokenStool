@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 //import { CartService } from './cart.service';
 import { Router } from '@angular/router';
 declare var window
@@ -15,7 +15,7 @@ export class AuthService {
   confirm;
   myuid = "";
   constructor(public alertController: AlertController,
-    public router: Router) {
+    public router: Router, public navCtrl: NavController) {
 
   }
 
@@ -83,6 +83,7 @@ export class AuthService {
             var user = result.user;
             console.log(user);
             this.myuid = result.user.uid;
+            this.navCtrl.pop();
             return user
           }).catch((error) => {
             console.log(error);

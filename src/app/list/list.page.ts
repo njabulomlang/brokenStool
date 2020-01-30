@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.page.html',
@@ -24,16 +25,18 @@ export class ListPage implements OnInit {
   loaderAnimate: boolean = true;
   sortVal;
   sortSale;
-  uid = firebase.auth().currentUser.uid;
+  // uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   viewFilter = false;
-  viewPrice =  false
+  viewPrice = false
   viewReviews = false;
-  myWishlist=[];
+  myWishlist = [];
   viewwish = false;
   viewBackdrop = false;
-  constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController) {
+  alertView: boolean = false;
+  constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController,
+    public alertCtrl: AlertController, private localSt: LocalStorageService) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -42,30 +45,71 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-
+    //this.alertView = false;
     setTimeout(() => {
       this.loaderAnimate = false;
     }, 2000);
-      //console.log(); 
+    //console.log(); 
     this.getAllProduct();
     this.getSales("name");
-
-    this.dbWishlist.where('customerUID', '==', this.uid).onSnapshot((res1) => {
-      this.myWish = res1.size;
-    })
-    this.getWishlist();
+    //this.getWishlist();
+    this.checkUser();
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
-      this.myWishlist = [];
-      res.forEach((doc) => {
-        this.myWishlist.push({ info: doc.data(), id: doc.id });
+    if (firebase.auth().currentUser.uid) {
+      this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
+        this.myWish = res.size;
+        this.myWishlist = [];
+        res.forEach((doc) => {
+          this.myWishlist.push({ info: doc.data(), id: doc.id });
+        })
       })
-    })
+    } else {
+      this.presentAlertConfirm();
+    }
+  }
+  checkUser() {
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.getWishlist();
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          // console.log('My data ',this.alertView);
+          if (this.localSt.retrieve('alertShowed') !== true) {
+            this.presentAlertConfirm();
+          }
+        }
+      })
+    }, 0);
   }
 
- 
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Not logged in',
+      message: 'Do you want to login?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+          }
+        }, {
+          text: 'Login',
+          handler: () => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+            this.navCtrl.navigateForward('login');
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
   addtoBusket(view_id, data, id) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -83,7 +127,7 @@ export class ListPage implements OnInit {
     this.dbWish.doc(id).delete()
   }
 
-  wish(){
+  wish() {
     this.viewwish = !this.viewwish
     this.viewBackdrop = !this.viewBackdrop
   }
@@ -122,7 +166,6 @@ export class ListPage implements OnInit {
     this.getSales(this.sortSale);
   }
   viewitem(id, data) {
-   // console.log('Data ', data, 'Brand ',this.col, 'Category ', this.collectionName);
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
@@ -137,45 +180,60 @@ export class ListPage implements OnInit {
       queryParams: {
         data: data,
         col: 'sales',
-        //currency: JSON.stringify(currency),
-        // refresh: refresh
       }
     };
     this.navCtrl.navigateForward(['view', id], navigationExtras);
   }
   wishList(id, data, index) {
-    //console.log('My info ', id, data);
-    this.heartIndex = index;
-    this.dbWishlist.doc(id).get().then((res) => {
-      if (res.exists == true) {
-        this.toastController('Product already in wishlist..');
-      } else {
-        this.dbWishlist.doc(res.id).set({ 
-          customerUID: firebase.auth().currentUser.uid, price: data.price,
-           image: data.pictureLink, name: data.name, id: id, category: this.collectionName,
-          brand: this.col }).then(() => {
-          this.toastController('Added to wishlist..');
-        })
-      }
-    })
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.heartIndex = index;
+          this.dbWishlist.doc(id).get().then((res) => {
+            if (res.exists == true) {
+              this.toastController('Product already in wishlist..');
+            } else {
+              this.dbWishlist.doc(res.id).set({
+                customerUID: firebase.auth().currentUser.uid, price: data.price,
+                image: data.pictureLink, name: data.name, id: id, category: this.collectionName,
+                brand: this.col
+              }).then(() => {
+                this.toastController('Added to wishlist..');
+              })
+            }
+          })
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          this.presentAlertConfirm();
+        }
+      })
+    }, 0);
   }
   wishListSale(id, data, index) {
-    // console.log('My info ', id, data);
-    this.heartIndex = index
-    this.dbWishlist.doc(id).get().then((res) => {
-      if (res.exists == true) {
-        this.toastController('Product already in wishlist..');
-      } else {
-        this.dbWishlist.doc(res.id).set({
-          customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
-          image: data.pictureLink, id: id, category: this.collectionName,
-          brand: this.col
-        }).then(() => {
-          this.toastController('Added to wishlist..');
-          //this.router.navigateByUrl('basket');
-        })
-      }
-    })
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.heartIndex = index
+          this.dbWishlist.doc(id).get().then((res) => {
+            if (res.exists == true) {
+              this.toastController('Product already in wishlist..');
+            } else {
+              this.dbWishlist.doc(res.id).set({
+                customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
+                image: data.pictureLink, id: id, category: this.collectionName,
+                brand: this.col
+              }).then(() => {
+                this.toastController('Added to wishlist..');
+                //this.router.navigateByUrl('basket');
+              })
+            }
+          })
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          this.presentAlertConfirm();
+        }
+      })
+    }, 0);
   }
   wishlist() {
     this.router.navigateByUrl('wishlist');
@@ -189,7 +247,7 @@ export class ListPage implements OnInit {
     this.navCtrl.pop();
   }
   reviewed() {
-   // this.getAllProduct()
+    // this.getAllProduct()
     this.viewReviews = !this.viewReviews
   }
   rev() {
@@ -200,7 +258,7 @@ export class ListPage implements OnInit {
     this.viewFilter = !this.viewFilter
   }
 
-  priced(){
+  priced() {
     this.viewPrice = !this.viewPrice
   }
 

@@ -21,16 +21,14 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
-   
      CartModalPageModule, 
-   
-     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), NgxWebstorageModule.forRoot()],
   providers: [
     StatusBar,
     ScreenOrientation,

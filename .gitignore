@@ -77,4 +77,3 @@ platforms/android/app/src/main/res/xml/config.xml
 platforms/android/cordova/node_modules/nopt/package.json
 *.js
 platforms/android/app/src/main/assets/www/13.js
-src/app/profile/profile.page.scss

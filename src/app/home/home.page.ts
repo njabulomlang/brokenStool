@@ -8,6 +8,7 @@ import { Router, NavigationExtras } from '@angular/router';
 //import { FcmService } from '../fcm.service';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { NotificationsService } from '../services/notifications.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,7 @@ export class HomePage implements OnInit {
   dbSales = firebase.firestore().collection("Specials");
   dbCart = firebase.firestore().collection('Cart');
   dbOrder = firebase.firestore().collection('Order');
-  uid = firebase.auth().currentUser.uid;
+  // uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
   sales = [];
@@ -40,24 +41,70 @@ export class HomePage implements OnInit {
   delCost: number;
   delType: string;
   buttonActive: boolean = true;
+  alertView: boolean = false;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    public toastCtrl : ToastController, public alertCtrl : AlertController
+    public toastCtrl : ToastController, public alertCtrl : AlertController, private localSt:LocalStorageService
     // public notificationService: NotificationsService
     ) {
   }
 
   ngOnInit() {
     // this.notificationService.requestPermission();
-    this.getCart();
-    this.getProfile();
-    this.getPromo();
-    this.getWishlist();
-    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
-      this.myWish = res1.size;
-    })
+    // this.getCart();
+    // this.getProfile();
+     this.getPromo();
+    // this.getWishlist();
+    // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
+    //   this.myWish = res1.size;
+    // })
+    this.checkUser();
     setTimeout(() => {
       this.splashScreen.hide();
     }, 4000);
+  }
+
+  checkUser() {
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.getCart();
+          this.getProfile();
+          this.getWishlist();
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+         // console.log('My data ',this.alertView);
+          if (this.localSt.retrieve('alertShowed') !== true) {
+            this.presentAlertConfirm1();
+          }
+        }
+      })
+    }, 0);
+  }
+  async presentAlertConfirm1() {
+    const alert = await this.alertCtrl.create({
+      header: 'Not logged in',
+      message: 'Do you want to login?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+          }
+        }, {
+          text: 'Login',
+          handler: () => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+            this.navCtrl.navigateForward('login');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
   placeOrder(info) {
     let myArr = [];
@@ -114,7 +161,7 @@ export class HomePage implements OnInit {
     return toast.present();
   }
   getCart() {
-    this.dbCart.where('customerUID', '==', this.uid).onSnapshot((info) => {
+    this.dbCart.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((info) => {
       this.prodCart = [];
       // this.totalCost = 0;
       info.forEach((doc) => {
@@ -203,7 +250,7 @@ export class HomePage implements OnInit {
   }
   
   getProfile() {
-    this.dbProfile.doc(this.uid).onSnapshot((doc) => {
+    this.dbProfile.doc(firebase.auth().currentUser.uid).onSnapshot((doc) => {
       if (doc.exists) {
         this.name = doc.data().name;
         this.surname = doc.data().surname;
@@ -229,7 +276,8 @@ export class HomePage implements OnInit {
     this.dbWish.doc(id).delete()
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
+      this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
         this.myWishlist.push({ info: doc.data(), id: doc.id });
