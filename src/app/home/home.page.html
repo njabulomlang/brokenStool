@@ -73,8 +73,17 @@
 
 
 </ion-header>
-
-
+<div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+  <div class="maploader">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+  </div>
+</div>
 
 <ion-content fullscreen>
 
@@ -83,17 +92,7 @@
   </div>
   <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
 
-  <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-    <div class="maploader">
-      <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <p style="color:white; text-align: center;">{{loaderMessages}}</p>
-    </div>
-  </div>
+ 
   <!-- =================================== Start Mobile View =================================== -->
   <div class="container" no-padding>
     <div class="sales">

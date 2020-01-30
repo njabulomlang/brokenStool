@@ -149,7 +149,7 @@ export class ListPage implements OnInit {
     })
   }
   getAllProduct(order) {
-    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order,'desc').onSnapshot((res) => {
+    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order, 'desc').onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
         if (doc.data().hideItem === false) {
