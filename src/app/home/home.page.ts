@@ -56,7 +56,7 @@ export class HomePage implements OnInit {
     // this.getWishlist();
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
     //   this.myWish = res1.size;
-    // })
+    // }
     this.checkUser();
     setTimeout(() => {
       this.splashScreen.hide();
@@ -73,12 +73,15 @@ export class HomePage implements OnInit {
         } else {
           this.alertView = this.localSt.retrieve('alertShowed');
          // console.log('My data ',this.alertView);
+         setTimeout(() => {
           if (this.localSt.retrieve('alertShowed') !== true) {
             this.presentAlertConfirm1();
           }
+        }, 2000);
+         
         }
       })
-    }, 0);
+    }, 1000);
   }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
@@ -241,8 +244,17 @@ export class HomePage implements OnInit {
     }
   }
   gotocart(){
-    this.viewCart = !this.viewCart
-    this.viewBackdrop = !this.viewBackdrop
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.viewCart = !this.viewCart
+          this.viewBackdrop = !this.viewBackdrop
+          this.getCart();
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0); 
   }
 
   getBackdrop(){
@@ -285,8 +297,18 @@ export class HomePage implements OnInit {
     })
   }
   reviewed() {
-    this.viewReviews = !this.viewReviews
-    this.viewBackdrop = !this.viewBackdrop
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.viewReviews = !this.viewReviews
+          this.viewBackdrop = !this.viewBackdrop
+          this.getWishlist();
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0);
+
   }
 
   profile() {
@@ -338,10 +360,27 @@ export class HomePage implements OnInit {
       */
   }
   busket() {
-    this.navCtrl.navigateForward('basket');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.navCtrl.navigateForward('basket');
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0);  
   }
   wishlist() {
-    this.navCtrl.navigateForward('wishlist');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.navCtrl.navigateForward('wishlist');
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0);  
+    
   }
   animateCSS(animationName, keepAnimated = false) {
     const node = this.fab.nativeElement;

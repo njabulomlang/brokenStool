@@ -53,7 +53,7 @@ export class ListPage implements OnInit {
     this.getAllProduct("dateAdded");
     this.getSales("timestamp");
     //this.getWishlist();
-    this.checkUser();
+    // this.checkUser();
   }
   getWishlist() {
     if (firebase.auth().currentUser.uid) {
@@ -68,21 +68,7 @@ export class ListPage implements OnInit {
       this.presentAlertConfirm();
     }
   }
-  checkUser() {
-    setTimeout(() => {
-      firebase.auth().onAuthStateChanged((res) => {
-        if (res) {
-          this.getWishlist();
-        } else {
-          this.alertView = this.localSt.retrieve('alertShowed');
-          // console.log('My data ',this.alertView);
-          if (this.localSt.retrieve('alertShowed') !== true) {
-            this.presentAlertConfirm();
-          }
-        }
-      })
-    }, 0);
-  }
+  
 
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
@@ -128,8 +114,17 @@ export class ListPage implements OnInit {
   }
 
   wish() {
-    this.viewwish = !this.viewwish
-    this.viewBackdrop = !this.viewBackdrop
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.viewwish = !this.viewwish
+          this.viewBackdrop = !this.viewBackdrop
+          this.getWishlist();
+        } else {
+            this.presentAlertConfirm();
+        }
+      })
+    }, 0); 
   }
 
   /* list() {
@@ -236,7 +231,15 @@ export class ListPage implements OnInit {
     }, 0);
   }
   wishlist() {
-    this.router.navigateByUrl('wishlist');
+       setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.router.navigateByUrl('wishlist');
+        } else {
+            this.presentAlertConfirm();
+        }
+      })
+    }, 0); 
   }
   async toastController(message) {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });

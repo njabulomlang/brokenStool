@@ -49,9 +49,12 @@ export class ProfilePage implements OnInit {
     setTimeout(() => {
       this.loaderAnimate = false
     }, 2000);
-    this.checkUser();
+    //this.checkUser();
+    this.getUserDetails(firebase.auth().currentUser.uid);
+    this.getCart();
+    this.getWishlist();
   }
-  checkUser() {
+/*   checkUser() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
@@ -67,9 +70,9 @@ export class ProfilePage implements OnInit {
         }
       })
     }, 0);
-  }
+  } */
 
-  async presentAlertConfirm1() {
+ /*  async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
       header: 'Not logged in',
       message: 'Do you want to login?',
@@ -94,7 +97,7 @@ export class ProfilePage implements OnInit {
     });
 
     await alert.present();
-  }
+  } */
   placeOrder(info) {
     let myArr = [];
     let doc = [];
