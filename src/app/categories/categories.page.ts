@@ -110,7 +110,16 @@ export class CategoriesPage implements OnInit {
     this.dbWish.doc(id).delete()
   }
   wish() {
-    this.viewPrice = !this.viewPrice
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.viewPrice = !this.viewPrice
+          this.getWishlist();
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0); 
   }
 
   list(data) {
@@ -118,16 +127,20 @@ export class CategoriesPage implements OnInit {
       queryParams: {
         data: data,
         col: this.colDef,
-        // category: this.category
-        //currency: JSON.stringify(currency),
-        // refresh: refresh
       }
     };
-    //this.router.navigate(['list', data])
     this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
   wishlist() {
-    this.router.navigateByUrl('wishlist');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.router.navigateByUrl('wishlist');
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0); 
   }
 
   goBack() {

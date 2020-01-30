@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { AlertController, NavController } from '@ionic/angular';
 //import { CartService } from './cart.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'ngx-webstorage';
 declare var window
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   uid;
   confirm;
   myuid = "";
-  constructor(public alertController: AlertController,
+  constructor(public alertController: AlertController, private localSt:LocalStorageService,
     public router: Router, public navCtrl: NavController) {
 
   }
@@ -43,7 +44,10 @@ export class AuthService {
     })
   }
   logoutUser() {
-    firebase.auth().signOut();
+    firebase.auth().signOut().then(()=>{
+      this.localSt.store('alertShowed', true);
+      this.navCtrl.navigateRoot('home');
+    });
   }
   loggedIn() {
     //console.log("User details ", this.uid);
