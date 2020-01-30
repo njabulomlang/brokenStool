@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { AlertController, ToastController, NavController } from '@ionic/angular';
 // import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-basket',
@@ -13,7 +14,7 @@ export class BasketPage implements OnInit {
   dbProduct = firebase.firestore().collection('Products');
   dbCart = firebase.firestore().collection('Cart');
   dbOrder = firebase.firestore().collection('Order');
-  customerUID = firebase.auth().currentUser.uid;
+  // customerUID = firebase.auth().currentUser.uid;
   cartDoc: string = '';
   cartCount: number = 0;
   prodCart = [];
@@ -24,27 +25,67 @@ export class BasketPage implements OnInit {
   loaderAnimate:boolean = true;
   viewCart= false;
   viewBackdrop = false;
-  constructor(public NavCtrl: NavController, public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController) { }
+  alertView: boolean = false;
+  constructor(public NavCtrl: NavController, public alertCtrl: AlertController, public router: Router, public toastCtrl: ToastController,
+     private localSt:LocalStorageService) { }
 
   ngOnInit() {
-  
-    this.dbCart.where('customerUID', '==', this.customerUID).onSnapshot((info) => {
-      this.cartCount = info.size;
-      this.prodCart = [];
-      this.totalCost = 0;
-      setTimeout(() => {
-        this.loaderAnimate = false;
-      }, 2000);
-      info.forEach((doc) => {
-        this.prodCart.push({ data: doc.data(), id: doc.id });
-      })
-    })
+    setTimeout(() => {
+      this.loaderAnimate = false;
+    }, 2000);
+    this.checkUser();
     setTimeout(() => {
       this.getTotal();
     }, 1000);
-
   }
+  checkUser() {
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.dbCart.where('customerUID', '==', res.uid).onSnapshot((info) => {
+            this.cartCount = info.size;
+            this.prodCart = [];
+            this.totalCost = 0;
+            info.forEach((doc) => {
+              this.prodCart.push({ data: doc.data(), id: doc.id });
+            })
+          })
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          // console.log('My data ',this.alertView);
+          if (this.localSt.retrieve('alertShowed') !== true) {
+            this.presentAlertConfirm1();
+          }
+        }
+      })
+    }, 0);
+  }
+  async presentAlertConfirm1() {
+    const alert = await this.alertCtrl.create({
+      header: 'Not logged in',
+      message: 'Do you want to login?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+          }
+        }, {
+          text: 'Login',
+          handler: () => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+            this.NavCtrl.navigateForward('login');
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
   gotocart(){
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop

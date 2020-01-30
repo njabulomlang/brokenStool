@@ -44,6 +44,8 @@ export class ViewPage implements OnInit {
   buttonActive: boolean = true;
   cordova: boolean
   alertView: boolean = false;
+  loaderMessages = 'Loading...';
+  loaderAnimate: boolean = true;
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2, public alertCtrl: AlertController, public plt: Platform, private localSt: LocalStorageService) {
@@ -56,6 +58,9 @@ export class ViewPage implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+     this.loaderAnimate = false; 
+    }, 2000);
     if (this.plt.is('cordova')) {
       this.cordova = true
     } else {

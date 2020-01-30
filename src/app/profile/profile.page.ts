@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { ModalController } from '@ionic/angular';
 import { PendingOrdersPage } from '../../app/pending-orders/pending-orders.page';
 import { OrderHistoryPage } from '../../app//order-history/order-history.page'
+import { LocalStorageService } from 'ngx-webstorage';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -20,7 +21,7 @@ export class ProfilePage implements OnInit {
   dbCart = firebase.firestore().collection('Cart');
   dbWish = firebase.firestore().collection('Wishlist');
   storage = firebase.storage().ref();
-  uid = firebase.auth().currentUser.uid;
+  // uid = ;
   profilePic;
   name;
   surname;
@@ -39,23 +40,60 @@ export class ProfilePage implements OnInit {
   delCost: any;
   buttonActive: boolean = true;
   isDisabled: boolean=false;
+  alertView: boolean = false;
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2,
-    public alertCtrl : AlertController) { }
+    public alertCtrl : AlertController,private localSt:LocalStorageService) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.loaderAnimate = false
     }, 2000);
-    this.getUserDetails(this.uid);
-    //this.presentLoading();
-    this.getCartSize();
-    this.getWishSize();
-    this.getWishlist();
-    this.getCart();
-    /* if (this.platform.is('cordova')) {
-      document.getElementById('file').style.display = "none";
-    }  */
+    this.checkUser();
+  }
+  checkUser() {
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.getUserDetails(firebase.auth().currentUser.uid);
+          this.getCart();
+          this.getWishlist();
+        } else {
+          this.alertView = this.localSt.retrieve('alertShowed');
+          // console.log('My data ',this.alertView);
+          if (this.localSt.retrieve('alertShowed') !== true) {
+            this.presentAlertConfirm1();
+          }
+        }
+      })
+    }, 0);
+  }
+
+  async presentAlertConfirm1() {
+    const alert = await this.alertCtrl.create({
+      header: 'Not logged in',
+      message: 'Do you want to login?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+          }
+        }, {
+          text: 'Login',
+          handler: () => {
+            this.alertView = true;
+            this.localSt.store('alertShowed', this.alertView);
+            this.navCtrl.navigateForward('login');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
   placeOrder(info) {
     let myArr = [];
@@ -112,7 +150,8 @@ export class ProfilePage implements OnInit {
     return toast.present();
   }
   getCart() {
-    this.dbCart.where('customerUID', '==', this.uid).onSnapshot((info) => {
+    this.dbCart.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((info) => {
+      this.myCart = info.size;
       this.prodCart = [];
       // this.totalCost = 0;
       info.forEach((doc) => {
@@ -209,24 +248,15 @@ export class ProfilePage implements OnInit {
 
 
   getWishlist() {
-    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res) => {
+    this.dbWish.where('customerUID', '==',firebase.auth().currentUser.uid).onSnapshot((res) => {
+      this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
         this.myWishlist.push({ info: doc.data(), id: doc.id });
       })
     })
   }
-  getWishSize() {
-    this.dbWish.where('customerUID', '==', this.uid).onSnapshot((res1) => {
-      this.myWish = res1.size;
-    })
-  }
-  getCartSize() {
-    this.dbCart.where('customerUID', '==', this.uid).onSnapshot((res) => {
-      this.myCart = res.size;
-    })
-  }
-
+ 
   getBackdrop() {
     this.viewBackdrop = !this.viewBackdrop
   }
@@ -313,7 +343,7 @@ export class ProfilePage implements OnInit {
   }
 
   updateProfile() {
-    this.dbProfile.doc(this.uid).update({ name: this.name, surname: this.surname, email: this.email, address: this.address }).then(() => {
+    this.dbProfile.doc(firebase.auth().currentUser.uid).update({ name: this.name, surname: this.surname, email: this.email, address: this.address }).then(() => {
       this.editprofile = !this.editprofile;
       this.toastController();
     })
@@ -367,7 +397,7 @@ export class ProfilePage implements OnInit {
       upload.snapshot.ref.getDownloadURL().then(dwnURL => {
         // console.log('File avail at: ', dwnURL);
         this.profilePic = dwnURL;
-        this.dbProfile.doc(this.uid).update({profilePic: this.profilePic})
+        this.dbProfile.doc(firebase.auth().currentUser.uid).update({profilePic: this.profilePic})
       });
     });
    // console.log("My pic is ", this.profilePic);
@@ -387,7 +417,7 @@ export class ProfilePage implements OnInit {
     await this.camera.getPicture(options).then(res => {
       let base64Image = 'data:image/jpeg;base64,' + res;
       //this.profileImage = base64Image;
-      let file = 'HomeOwner-Profile/' + this.uid + '.jpg';
+      let file = 'HomeOwner-Profile/' + firebase.auth().currentUser.uid + '.jpg';
       const UserImage = this.storage.child(file);
       const upload = UserImage.putString(base64Image, 'data_url');
       upload.on('state_changed', snapshot => {
