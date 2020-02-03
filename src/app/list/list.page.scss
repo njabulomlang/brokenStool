@@ -123,10 +123,9 @@ ion-toolbar {
         #icon {
           ion-button {
             text-align: right !important;
+            overflow: hidden !important;
           }
-         button.button-native{
-           padding: 0 !important;
-         }
+     
           ion-icon {
             font-size: 3vw;
             cursor: pointer;
@@ -642,7 +641,7 @@ ion-toolbar {
             position: relative;
             bottom: 15px;
             right: 10px;
-
+            overflow: hidden;
             ion-icon {
               cursor: pointer;
             }

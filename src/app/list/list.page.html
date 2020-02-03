@@ -102,8 +102,8 @@
             <p>{{p.info.name}} <br> <span>{{p.info.price | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-button (click)="wishList(p.id, p.info, i)" color="transparent">
-              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 2vw; color: black"></ion-icon>
+            <ion-button (click)="wishList(p.id, p.info, i)" color="transparent" style="overflow: hidden;">
+              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1.2em; color: black"></ion-icon>
             </ion-button>
             <!-- <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>-->
           </div>
@@ -120,8 +120,10 @@
             <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-
-            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info,i)"></ion-icon>
+            <ion-button (click)="wishList(p.id, p.info, i)" color="transparent">
+              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1em; color: black"></ion-icon>
+            </ion-button>
+            <!-- <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info,i)" ></ion-icon> -->
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 

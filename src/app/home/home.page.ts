@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
     this.checkUser();
     setTimeout(() => {
       this.splashScreen.hide();
-    }, 4000);
+    }, 8000);
   }
 
   checkUser() {
