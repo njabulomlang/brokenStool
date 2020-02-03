@@ -98,12 +98,12 @@
           </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
-            <p style="font-size: 14px;"><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
+            <p ><b> <span  style="font-size: 13px;">{{prod.data.name}}</span></b> <br> By Dankie Jesu</p>
           </div>
         </div>
 
         <div class="price">
-          <p>{{prod.data.price  | currency:'R' }}</p>
+          <p style="font-size: 13px;">{{prod.data.price  | currency:'R' }}</p>
         </div>
       </div>
 
@@ -202,13 +202,13 @@
           </ionic4-star-rating>
 
           <div class="appname" style="line-height: 20px; font-weight: normal;">
-            <p><b> {{prod.data.name}}</b> <br> By Dankie Jesu</p>
+            <p><b><span style="font-size: 13px;">{{prod.data.name}}</span></b> <br> By Dankie Jesu</p>
           </div>
         </div>
 
         <div class="price">
-          <p style="text-decoration: line-through; font-size: 20px">{{prod.data.normalPrice | currency:'R'  }} </p>
-          <p style="font-size: 20px; color: maroon">{{prod.data.saleprice  | currency:'R' }}</p>
+          <p style="text-decoration: line-through; font-size: 15px">{{prod.data.normalPrice | currency:'R'  }} </p>
+          <p style="font-size: 15px; color: maroon">{{prod.data.saleprice  | currency:'R' }}</p>
         </div>
       </div>
 
