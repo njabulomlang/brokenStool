@@ -17,18 +17,18 @@ ion-toolbar {
     flex-flow: column;
     height: fit-content;
     overflow-y: auto;
-    height: 85vh;
-    overflow-y: auto;
+  //  min-height: 70vh;
     .card {
       display: flex;
       flex-flow: row;
       box-shadow: 5px 5px 10px rgb(211, 211, 211);
       margin: 5px;
-      min-height: 28vw;
+      margin-bottom: 5px;
+      min-height: 20vh;
       .image {
         width: 45vw;
-        min-height: 25vw;
-        max-height: 28vw;
+        min-height: 16vh;
+        // max-height:25vh;
         margin: 10px;
         img {
           width: 100%;
@@ -108,12 +108,11 @@ ion-toolbar {
   }
 
   .total {
-    position: fixed;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
     background: white;
     display: flex;
     flex-flow: column;
-
     .carttotal {
       display: flex;
       flex-flow: row;
@@ -328,7 +327,7 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  #webview{
+  #webview {
     display: none;
     width: 0 !important;
     height: 0 !important;
