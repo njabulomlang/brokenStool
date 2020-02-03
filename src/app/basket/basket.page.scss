@@ -341,6 +341,12 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #mobile{
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
   .web_view {
     min-width: 800px;
     max-width: 1000px;
