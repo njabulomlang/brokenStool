@@ -120,7 +120,7 @@
             <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-button (click)="wishList(p.id, p.info, i)" color="transparent">
+            <ion-button (click)="wishList(s.id, s.info, i)" color="transparent">
               <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1em; color: black"></ion-icon>
             </ion-button>
             <!-- <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info,i)" ></ion-icon> -->
@@ -167,10 +167,10 @@
         </div>
         <div class="prices">
           <ion-item *ngIf="viewPrice">
-            <ion-range style="width: 50%" pin="true" min="0" max="1000" step="10" color="secondary" [(ngModel)]="price"
+            <ion-range style="width: 50%" pin="true" min="0" max="5000" step="10" color="secondary" [(ngModel)]="price"
               (ionChange)="setPriceRange(price)">
               <ion-label slot="start">{{price | currency:'R'}}</ion-label>
-              <ion-label slot="end">{{1000 | currency:'R'}}</ion-label>
+              <ion-label slot="end">{{5000 | currency:'R'}}</ion-label>
             </ion-range>
           </ion-item>
         </div>
