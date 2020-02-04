@@ -37,7 +37,7 @@ ion-toolbar {
       font-family: "Poppins";
       font-size: 4vw;
       border-radius: 10px;
-      z-index: 10;
+      // z-index: 10;
       position: absolute;
       left: 10%;
       bottom: 15px;
@@ -59,7 +59,7 @@ ion-toolbar {
       position: absolute;
       bottom: 0;
       right: 10px;
-      z-index: 15;
+      z-index: 5;
       border-radius: 50%;
       ion-fab-button {
         background: maroon;
@@ -444,21 +444,98 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  #file{
+  #file {
     display: none;
     width: 0 !important;
     height: 0 !important;
   }
+
+  .viewsettings {
+    position: absolute;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    width: 100vw;
+    height: 100vh;
+    // top: 56.5px;
+    // bottom: 40%;
+    // right: 10px;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+    justify-content: center;
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 90%;
+      margin: 5px;
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 10px;
+        top: 10px;
+        font-size: 30px;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+    }
+    .btnz {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      flex-flow: column;
+      align-self: center;
+      ion-button {
+        border-bottom: 1px solid grey;
+        width: 70%;
+        margin: auto;
+        text-align: center;
+      }
+    }
+  }
+
+  .closesettings {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+
+  .backdrop1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.6;
+    z-index: 10;
+  }
 }
 
-
-@media only screen and (min-width:1025px){
+@media only screen and (min-width: 1025px) {
   .container {
     display: none;
     width: 0 !important;
     height: 0 !important;
   }
 
+  #settings {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
   #lorem {
     position: relative;
     top: 50px;
@@ -491,7 +568,7 @@ ion-toolbar {
   }
 
   .web_view {
-    min-width:70%;
+    min-width: 70%;
     max-width: 1200px;
     margin: auto;
     position: relative;
@@ -828,26 +905,26 @@ ion-toolbar {
       margin: 10px;
       width: 20vw;
 
-      #noItems{
+      #noItems {
         display: flex;
         flex-flow: column;
         background: none;
         align-items: center;
-        box-shadow:  none;
+        box-shadow: none;
         justify-content: center;
         margin-top: 200px;
-        img{
+        img {
           width: 5vw;
           height: 5vw;
         }
-        p{
+        p {
           text-align: center;
           font-size: 15px;
           color: grey;
         }
       }
 
-      .div{
+      .div {
         height: 80vh;
         overflow-y: auto;
         scrollbar-width: 2px;
@@ -984,26 +1061,26 @@ ion-toolbar {
       width: 20vw;
       height: 100%;
       position: relative;
-      #noItems{
+      #noItems {
         display: flex;
         flex-flow: column;
         background: none;
         align-items: center;
-        box-shadow:  none;
+        box-shadow: none;
         justify-content: center;
         margin-top: 200px;
-        img{
+        img {
           width: 5vw;
           height: 5vw;
         }
-        p{
+        p {
           text-align: center;
           font-size: 15px;
           color: grey;
         }
       }
 
-      .div{
+      .div {
         height: 65vh;
         overflow-y: auto;
         scrollbar-width: 2px;
