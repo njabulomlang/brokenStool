@@ -2,42 +2,58 @@
   <div class="container">
     <div class="inner-container">
       <div id="left">
-        <div class="logo-container-left">
+        <div class="logo-container-left" style="color: black; font-weight: lighter;">
           <img src="../../assets/NoPath - Copy.svg" id="logo-left" alt="">
-          <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo porro laborum illo suscipit aperiam culpa molestiae aliquam laboriosam eveniet!
+          <!--    -->
+          <br> <p style="margin: 10px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo porro laborum illo suscipit
+          aperiam culpa molestiae aliquam laboriosam eveniet!</p>
         </div>
       </div>
       <div id="right">
-        <div class="cont">
+        <div class="cont" id="logz">
           <div class="logo-container-right">
-            <img src="../../assets/Logo.png" id="logo" alt="">
+            <h1 style="font-size: 32px; font-weight: lighter; font-family: 'Raleway'; letter-spacing: 5px;">DANKIE JESU
+              <br> <span style="font-size: 14px;"> & <br>KWANAGA APPAREL</span></h1>
+            <!-- <img src="../../assets/Logo.png" id="logo" alt=""> -->
             <br>
           </div>
-         <div class="login">
-          <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" (ionInput)="phone($event)">+27 &nbsp; &nbsp;</ion-input>
-          <ion-button  id="sign-in-button" color="transparent" [disabled]="myArr.length!==9" (click)="addUser()"> <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone</ion-button>
-          <ion-button  id="sign-in-button" color="transparent" (click)="googleLogin()" > <ion-icon slot="end" name="logo-google"></ion-icon> Sign-in with Google</ion-button>
-          <ion-button  id="sign-in-button" color="transparent" (click)="Explore()" ><ion-icon slot="end" name="search"></ion-icon>Explore</ion-button>
-          <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
-          <div class="emails" *ngIf="log">
-            <form>
-            <ion-item lines="null">
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="email"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input type="password"></ion-input>
-            </ion-item>
-            <ion-button color="transparent"> Sign-In</ion-button>
-          
-          </form>
-          </div>
+          <div class="login">
+            <ion-button id="sign-in-button" color="transparent" (click)="showLogin()" *ngIf="!showInput">
+              <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone
+            </ion-button>
+            <div class="phone_login" *ngIf="showInput">
+              <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" (ionInput)="phone($event)"
+                >+27 &nbsp; &nbsp;</ion-input>
+              <ion-button id="sign-in-button" color="transparent" [disabled]="myArr.length!==9" (click)="addUser()"> Sign-in with Phone</ion-button>
             </div>
 
-            <div id="recaptcha-container"></div>
+            <ion-button id="sign-in-button" color="transparent" (click)="googleLogin()" *ngIf="!showInput">
+              <ion-icon slot="end" name="logo-google"></ion-icon> Sign-in with Google
+            </ion-button>
+            <ion-button id="sign-in-button" color="transparent" (click)="Explore()" *ngIf="!showInput">
+              <ion-icon slot="end" name="search"></ion-icon>Explore
+            </ion-button>
+            <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+            <div class="emails" *ngIf="log">
+              <form>
+                <ion-item lines="null">
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input type="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input type="password"></ion-input>
+                </ion-item>
+                <ion-button color="transparent"> Sign-In</ion-button>
 
+              </form>
+            </div>
+          </div>
+          <div id="recaptcha-container"></div>
         </div>
+
+   
+
       </div>
     </div>
   </div>

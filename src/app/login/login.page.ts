@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
   loaderAnimate: boolean;
   cred: any;
   log = false
+  showInput = false;
   userProfile = firebase.firestore().collection('userProfile');
   myArr=[];
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
@@ -59,6 +60,10 @@ export class LoginPage implements OnInit {
   Explore() {
     this.router.navigateByUrl('home');
   }
+
+  showLogin(){
+    this.showInput = !this.showInput
+  }
    webGoogleLogin() {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
@@ -87,6 +92,7 @@ export class LoginPage implements OnInit {
     if (this.confirmationResult !== '') {
       //var code = this.inputCode
       return this.authService.login(code, this.confirmationResult).then(result => {
+        
         console.log(result);
       })
     }

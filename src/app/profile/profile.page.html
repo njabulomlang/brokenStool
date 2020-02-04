@@ -42,8 +42,8 @@
       <ion-icon slot="start" name="arrow-back" id="icon"></ion-icon>
     </ion-buttons>
 
-    <ion-buttons slot="end" (click)="logout()">
-      <ion-icon slot="start" name="exit" id="icon"></ion-icon>
+    <ion-buttons slot="end" (click)="settings()">
+      <ion-icon slot="start" name="settings" id="icon"></ion-icon>
     </ion-buttons>
     <ion-title>PROFILE</ion-title>
   </ion-toolbar>
@@ -63,10 +63,10 @@
       </div> -->
 </div>
 <ion-content fullscreen>
- 
+
   <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One';">My
     Profile</p>
-
+  <!-- ====================================== Mobile View ============================================= -->
   <div class="container">
     <div class="image">
       <img src="{{profilePic}}">
@@ -98,7 +98,7 @@
 
           <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
 
-          
+
         </div>
         <div class="buttonz">
           <ion-button (click)="showEdit()" color="transparent" id="cancel" style="border-radius: 20px;">
@@ -127,12 +127,11 @@
 
         <div class="right">
           <div class="heart">
-
             <ion-icon slot="start" name="heart"></ion-icon>
           </div>
 
           <div class="clock">
-            <p>{{myWish}} items</p>
+            <p>Wishlist {{myWish}}</p>
           </div>
 
         </div>
@@ -148,7 +147,7 @@
           </div>
 
           <div class="clock">
-            <p>{{myCart}} items</p>
+            <p>Basket {{myCart}}</p>
           </div>
 
         </div>
@@ -159,7 +158,7 @@
     </div>
 
   </div>
-
+  <!-- ====================================== Web View ================================================ -->
   <div class="web_view">
 
     <div class="image">
@@ -250,8 +249,9 @@
 
 
   </div>
+  <!-- ====================================== Backdrop ============================================== -->
   <div class="backdrop1" *ngIf="viewBackdrop"></div>
-
+  <!-- ====================================== View Wishlist =========================================== -->
   <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
 
     <div class="heading">
@@ -299,6 +299,7 @@
     </div>
   </div>
 
+  <!-- ====================================== View Basket ============================================= -->
   <div id="cart" [ngClass]="{'viewcart': viewCart, 'closecart': !viewCart}">
 
     <div class="heading">
@@ -319,7 +320,7 @@
               <img src="{{p.picture}}" alt="">
             </div>
 
-            <div class="item_details" >
+            <div class="item_details">
               <p> <b>{{p.product_name}} &nbsp; {{p.cost | currency:'R'}}</b><br>
                 size: {{p.size}} &nbsp; color: {{p.color}} <br>
                 jan 23, 2020</p>
@@ -359,9 +360,12 @@
               Collection
             </ion-button>
           </div>
-          <p style="width: 100%; text-align: right; font-size: 13px;" *ngIf="!delType"><i>Cart Total - {{getTotal() | currency:'R'}}</i></p>
-          <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{Delivery(getTotal()) | currency:'R'}} Incl delivery</i></p>
-          <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total - {{notDelivery(getTotal()) | currency:'R'}} Excl delivery</i></p>
+          <p style="width: 100%; text-align: right; font-size: 13px;" *ngIf="!delType"><i>Cart Total -
+              {{getTotal() | currency:'R'}}</i></p>
+          <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total -
+              {{Delivery(getTotal()) | currency:'R'}} Incl delivery</i></p>
+          <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total -
+              {{notDelivery(getTotal()) | currency:'R'}} Excl delivery</i></p>
           <ion-button color="transparent" [disabled]="prodCart.length==0" (click)="presentAlertConfirm()">
             PLACE ORDER
           </ion-button>
@@ -370,5 +374,44 @@
       </div>
 
     </div>
+  </div>
+
+  <!-- ====================================== Settings Menu =========================================== -->
+  <div id="settings" [ngClass]="{'viewsettings': viewSettings, 'closesettings': !viewSettings}">
+    <div class="heading">
+      <ion-icon slot="icon-only" name="close" (click)="settings()"></ion-icon>
+    </div>
+
+    <div class="btnz">
+
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy"
+        color="transparent">
+        Terms and Privacy Policy
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer" color="transparent">
+        Disclaimer
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs" color="transparent">
+        FAQs
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process" color="transparent">
+        Payment Process
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        About Us
+      </ion-button>
+
+      <ion-button (click)="logout()" color="transparent">
+        Sign-Out
+      </ion-button>
+    </div>
+
+
+    <p slot="bottom">Version 1.0.0</p>
   </div>
 </ion-content>

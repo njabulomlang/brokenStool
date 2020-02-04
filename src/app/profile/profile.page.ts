@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
 import { PendingOrdersPage } from '../../app/pending-orders/pending-orders.page';
 import { OrderHistoryPage } from '../../app//order-history/order-history.page'
 import { LocalStorageService } from 'ngx-webstorage';
+import { tick } from '@angular/core/testing';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -33,6 +34,7 @@ export class ProfilePage implements OnInit {
   viewReviews = false;
   viewCart = false;
   viewBackdrop = false;
+  viewSettings = false;
   cordova: boolean;
   prodCart=[];
   delType: any;
@@ -299,6 +301,11 @@ export class ProfilePage implements OnInit {
 
   gotocart() {
     this.viewCart = !this.viewCart
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
+  settings(){
+    this.viewSettings = !this.viewSettings
     this.viewBackdrop = !this.viewBackdrop
   }
 
