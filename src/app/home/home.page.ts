@@ -9,6 +9,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { NotificationsService } from '../services/notifications.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -42,8 +43,9 @@ export class HomePage implements OnInit {
   delType: string;
   buttonActive: boolean = true;
   alertView: boolean = false;
+  fileUrl;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    public toastCtrl : ToastController, public alertCtrl : AlertController, private localSt:LocalStorageService
+    public toastCtrl : ToastController, public alertCtrl : AlertController, private localSt:LocalStorageService, private sanitizer: DomSanitizer
     // public notificationService: NotificationsService
     ) {
   }
@@ -52,6 +54,10 @@ export class HomePage implements OnInit {
     // this.notificationService.requestPermission();
     // this.getCart();
     // this.getProfile();
+    const data = 'some text';
+    const blob = new Blob([data], { type: 'application/octet-stream' });
+    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+
      this.getPromo();
     // this.getWishlist();
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
@@ -72,7 +78,6 @@ export class HomePage implements OnInit {
           this.getWishlist();
         } else {
           this.alertView = this.localSt.retrieve('alertShowed');
-         // console.log('My data ',this.alertView);
          setTimeout(() => {
           if (this.localSt.retrieve('alertShowed') !== true) {
             this.presentAlertConfirm1();
@@ -315,7 +320,7 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
-          this.navCtrl.navigateForward('profile');
+          this.navCtrl.navigateRoot('profile');
         } else {
             this.presentAlertConfirm1();
         }

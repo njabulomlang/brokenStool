@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { IonSlides, AlertController, ToastController, Platform } from '@ionic/angular';
+import { IonSlides, AlertController, ToastController, Platform, NavController } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import {Location} from '@angular/common';
 declare var window;
 
 @Component({
@@ -27,7 +28,8 @@ export class LoginPage implements OnInit {
   userProfile = firebase.firestore().collection('userProfile');
   myArr=[];
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
-    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus,
+    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus, public navCtrl : NavController,
+    public location:Location
     // public fb: Facebook
   ) {
 
@@ -68,8 +70,9 @@ export class LoginPage implements OnInit {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
       const credential = firebase.auth().signInWithPopup(provider).then((i)=>{
-        console.log(i.user);
-        this.router.navigateByUrl('create-account');
+        if (i.user) {
+          this.location.back();
+        }
       });
     } catch(err) {
       console.log(err)

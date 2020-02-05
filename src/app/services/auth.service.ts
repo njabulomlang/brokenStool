@@ -4,6 +4,7 @@ import { AlertController, NavController } from '@ionic/angular';
 //import { CartService } from './cart.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
+import {Location} from '@angular/common';
 declare var window
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ declare var window
 export class AuthService {
 
   dbUser = firebase.firestore().collection("Users");
-  user;
+  user: string;
   uid;
   confirm;
   myuid = "";
   constructor(public alertController: AlertController, private localSt:LocalStorageService,
-    public router: Router, public navCtrl: NavController) {
+    public router: Router, public navCtrl: NavController, public location: Location) {
 
   }
 
@@ -50,7 +51,14 @@ export class AuthService {
     });
   }
   loggedIn() {
-    //console.log("User details ", this.uid);
+    firebase.auth().onAuthStateChanged((res) => {
+      if (res) {
+        this.user = res.uid
+      } else {
+        this.user = ""
+      }
+    })
+    console.log("User details ", this.user);
     return this.user
   }
   requestLogin(number, appVerifier) {
@@ -85,12 +93,16 @@ export class AuthService {
           console.log(result.code);
           return this.confirm.confirm(result.code).then((result) => {
             var user = result.user;
-            console.log(user);
+            // console.log(user);
+            if (result) {
+              this.location.back();
+              // this.navCtrl.navigateRoot('home');
+            }
             this.myuid = result.user.uid;
-            this.navCtrl.pop();
+            
             return user
           }).catch((error) => {
-            console.log(error);
+            // console.log(error);
             return error
           });
         }
