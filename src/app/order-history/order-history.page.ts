@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { NavController } from '@ionic/angular';
+import { FileDownloadService } from '../services/file-download.service';
+import { saveAs } from 'file-saver';
+
+const MIME_TYPES = {
+  pdf: 'application/pdf',
+  xls: 'application/vnd.ms-excel',
+  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetxml.sheet'
+}
 
 @Component({
   selector: 'app-order-history',
@@ -22,7 +30,7 @@ export class OrderHistoryPage implements OnInit {
     address: ''
   }
   qty: number = 0;
-  constructor(public NavCtrl: NavController, private router: Router) { }
+  constructor(public NavCtrl: NavController, private router: Router, private service:FileDownloadService) { }
 
   ngOnInit() {
 
@@ -30,6 +38,15 @@ export class OrderHistoryPage implements OnInit {
     this.getProfile();
     //this.getTotal();
   }
+  downloadFile(fileName) {
+    const EXT = fileName.substr(fileName.lastIndexOf('.') + 1);
+    this.service.downloadFile({ 'fileName': fileName})
+    .subscribe(data => {
+      //save it on the client machine.
+      saveAs(new Blob([data], {type: MIME_TYPES[EXT]}), fileName);
+    })
+  }
+
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((res) => {
       this.userProfile.name = res.data().name;

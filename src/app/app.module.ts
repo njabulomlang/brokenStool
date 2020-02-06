@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,11 +23,17 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { OrderHistoryPage } from './order-history/order-history.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    OrderHistoryPage
+  ],
   entryComponents: [],
-  imports: [BrowserModule,FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [BrowserModule,
+    HttpClientModule,
+    FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
      CartModalPageModule, 
      ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), NgxWebstorageModule.forRoot()],
   providers: [
