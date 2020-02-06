@@ -23,10 +23,12 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+//import { OrderHistoryPage } from './order-history/order-history.page';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    //OrderHistoryPage
   ],
   entryComponents: [],
   imports: [BrowserModule,
