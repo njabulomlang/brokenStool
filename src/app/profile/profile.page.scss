@@ -480,7 +480,7 @@ ion-toolbar {
         border-radius: 50%;
       }
     }
-    .btnz {
+    .btnz1 {
       width: 80%;
       margin: auto;
       display: flex;
@@ -489,8 +489,10 @@ ion-toolbar {
       ion-button {
         border-bottom: 1px solid grey;
         width: 70%;
+        height: 6vh;
         margin: auto;
         text-align: center;
+        color: black; 
       }
     }
   }
