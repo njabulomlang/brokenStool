@@ -24,7 +24,7 @@ export class WishlistPage implements OnInit {
     setTimeout(() => {
       this.loaderAnimate = false;
     }, 2000);
-   
+   this.checkUser();
     //console.log('My wish ', this.myWish);
   }
   checkUser() {
