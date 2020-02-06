@@ -173,8 +173,16 @@ export class ViewPage implements OnInit {
     })
   }
   gotocart() {
-    this.viewCart = !this.viewCart
-    this.viewBackdrop = !this.viewBackdrop
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.viewCart = !this.viewCart
+          this.viewBackdrop = !this.viewBackdrop
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0); 
   }
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
@@ -233,7 +241,25 @@ export class ViewPage implements OnInit {
     })
   }
   async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged(async (res) => {
+        if (res) {
+          const popover = await this.popoverController.create({
+            component: PopoverComponent,
+            event: ev,
+            translucent: true,
+            componentProps: {
+              col: this.col,
+              doc: this.doc_id
+            }
+          });
+          return await popover.present();
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0);
+ /*    const popover = await this.popoverController.create({
       component: PopoverComponent,
       event: ev,
       translucent: true,
@@ -242,9 +268,8 @@ export class ViewPage implements OnInit {
         doc: this.doc_id
       }
     });
-    return await popover.present();
+    return await popover.present(); */
   }
-
   sizeChosen(data, index) {
     this.sizeIndex = index
     this.my_size = data;
@@ -294,7 +319,15 @@ export class ViewPage implements OnInit {
     return toast.present();
   }
   toBusket() {
-    this.router.navigateByUrl('basket');
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.router.navigateByUrl('basket');
+        } else {
+            this.presentAlertConfirm1();
+        }
+      })
+    }, 0);  
   }
   addToCart(id, details) {
     setTimeout(() => {

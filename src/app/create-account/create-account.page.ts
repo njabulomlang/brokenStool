@@ -46,18 +46,27 @@ export class CreateAccountPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('my email',this.email);
-    
+    // console.log('my email',this.email);
+    firebase.auth().onAuthStateChanged((res) => {
+      if (res) {
+        this.dbProfile.doc(res.uid).onSnapshot((res)=>{
+          this.address = res.data().address;
+          this.name = res.data().name;
+          this.surname = res.data().surname;
+          this.email = res.data().email;
+          this.profilePic = res.data().profilePic;
+        })
+      }
+      })
+    }
     // this.name = 
     //this.surname 
     //this.email = firebase.auth().currentUser.email;
-    this.profilePic = firebase.auth().currentUser.photoURL;
+    
     /* this.name = firebase.auth().currentUser.displayName.substr(0,firebase.auth().currentUser.displayName.indexOf(' '));
     this.surname = firebase.auth().currentUser.displayName.substr(firebase.auth().currentUser.displayName.indexOf(' ')+1);
     this.email = firebase.auth().currentUser.email;
     this.profilePic = firebase.auth().currentUser.photoURL; */
-  }
-
   check(val) {
     if (val == 'close') {
       document.getElementById('image').style.display = 'none';

@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { IonSlides, AlertController, ToastController, Platform } from '@ionic/angular';
+import { IonSlides, AlertController, ToastController, Platform, NavController } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import {Location} from '@angular/common';
 declare var window;
 
 @Component({
@@ -25,8 +26,10 @@ export class LoginPage implements OnInit {
   log = false
   showInput = false;
   userProfile = firebase.firestore().collection('userProfile');
+  myArr=[];
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
-    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus,
+    public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus, public navCtrl : NavController,
+    public location:Location
     // public fb: Facebook
   ) {
 
@@ -67,8 +70,9 @@ export class LoginPage implements OnInit {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
       const credential = firebase.auth().signInWithPopup(provider).then((i)=>{
-        console.log(i.user);
-        this.router.navigateByUrl('create-account');
+        if (i.user) {
+          this.location.back();
+        }
       });
     } catch(err) {
       console.log(err)
@@ -96,11 +100,17 @@ export class LoginPage implements OnInit {
       })
     }
   }
-
-  addUser() {
-    if (this.number.length < 9) {
-      this.toast();
+  phone(ev) { 
+     if (ev.detail.data===null) {
+      this.myArr.splice(this.myArr.lastIndexOf(this.myArr[this.myArr.length-1]));
     } else {
+      this.myArr.push(ev.detail.data)
+    }
+  }
+  addUser() {
+   // console.log("My num ", );
+    if (String(this.number).length === 9) {
+      //this.toast();
       window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         size: 'invisible',
         callback: (response) => {
@@ -117,6 +127,10 @@ export class LoginPage implements OnInit {
       let appVerifier = window.recaptchaVerifier
       return this.authService.requestLogin(this.number, appVerifier).then(()=>{
       })
+      
+    } else {
+     // console.log("My num is bad");
+     this.toast();
     }
 
     // window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(recaptchaParameters, result => {
@@ -124,7 +138,6 @@ export class LoginPage implements OnInit {
 
     // })
   }
-
   async toast() {
     (await this.toastCtrl.create({
       message: 'Please confirm your cellphone digits..',
@@ -138,7 +151,6 @@ export class LoginPage implements OnInit {
     }).catch(err=> {
       console.log(err);
     })
-  
   }
 
   async loginAnon(): Promise<firebase.auth.UserCredential> {
