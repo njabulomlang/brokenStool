@@ -31,7 +31,7 @@ export class TrackOrdersPage implements OnInit {
     to: '',
     from: '',
     text: '',
-    address:''
+    address: ''
   }
   delType: string = '';
   delCost: number = 0;
@@ -175,7 +175,7 @@ export class TrackOrdersPage implements OnInit {
 
   }
   downloadPdf() {
-   // firebase.firestore().collection('').doc('').
+    // firebase.firestore().collection('').doc('').
     this.createPdf();
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
@@ -219,7 +219,7 @@ export class TrackOrdersPage implements OnInit {
         console.log('Wait until it is');
       }
     })
-  }    
+  }
   getOrder() {
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
       res.data().product.forEach((item) => {

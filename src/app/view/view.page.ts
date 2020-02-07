@@ -99,8 +99,8 @@ export class ViewPage implements OnInit {
   }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      message: 'Please Sign-in first',
+      header: 'Message',
+      message: 'Please Sign-in',
       buttons: [
         {
           text: 'Cancel',
@@ -349,7 +349,7 @@ export class ViewPage implements OnInit {
                 color: this.color
               }]
             }).then(() => {
-              this.toastController('Added to busket')
+              this.toastController('Added to basket')
             })
           }
         } else {
@@ -379,7 +379,7 @@ export class ViewPage implements OnInit {
                 color: this.color
               }]
             }).then(() => {
-              this.toastController('Added to busket')
+              this.toastController('Added to basket')
             })
           }
         } else {

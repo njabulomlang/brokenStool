@@ -74,7 +74,13 @@ ion-toolbar {
       font-family: "Raleway";
       line-height: 10px;
 
-    
+    .appname{
+      display:block; width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left !important;
+    }
  
     }
   }

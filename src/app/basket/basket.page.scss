@@ -17,7 +17,7 @@ ion-toolbar {
     flex-flow: column;
     height: fit-content;
     overflow-y: auto;
-  //  min-height: 70vh;
+  height: 70vh;
     .card {
       display: flex;
       flex-flow: row;

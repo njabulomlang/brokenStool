@@ -72,8 +72,8 @@ export class ListPage implements OnInit {
 
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      message: 'Please Sign-in first',
+      header: 'Message',
+      message: 'Please Sign-in',
       buttons: [
         {
           text: 'Cancel',

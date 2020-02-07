@@ -49,8 +49,8 @@ export class WishlistPage implements OnInit {
   }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      message: 'Please Sign-in first',
+      header: 'Message',
+      message: 'Please Sign-in',
       buttons: [
         {
           text: 'Cancel',
