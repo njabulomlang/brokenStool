@@ -38,14 +38,14 @@ export class OrderHistoryPage implements OnInit {
     this.getProfile();
     //this.getTotal();
   }
-  downloadFile(fileName) {
+/*   downloadFile(fileName) {
     const EXT = fileName.substr(fileName.lastIndexOf('.') + 1);
     this.service.downloadFile({ 'fileName': fileName})
     .subscribe(data => {
       //save it on the client machine.
       saveAs(new Blob([data], {type: MIME_TYPES[EXT]}), fileName);
     })
-  }
+  } */
 
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((res) => {
@@ -71,8 +71,16 @@ export class OrderHistoryPage implements OnInit {
       })
     })
   }
-  getTotal() {
+  getTotal(i) {
     let total = 0;
+    let product = this.orderHistory[i].orders;
+    product.forEach((item) => {
+      total += item.cost * item.quantity
+    })
+    return total;
+
+
+    /* let total = 0;
     for (let i = 0; i < this.orderHistory.length; i++) {
       let product = this.orderHistory[i].orders;
       product.forEach((item) => {
@@ -80,7 +88,7 @@ export class OrderHistoryPage implements OnInit {
         this.qty += item.quantity
       })
     }
-    return total;
+    return total; */
   }
   getQuantity(i) {
     let total = 0;

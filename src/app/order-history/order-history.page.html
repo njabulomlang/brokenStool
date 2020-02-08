@@ -119,7 +119,7 @@
 
           <div class="grand">
             <p>Grand Total</p>
-            <p>{{getTotal() | currency:'R'}}</p>
+            <p>{{getTotal(z) | currency:'R'}}</p>
           </div>
           <div class="ordertype">
             <p>Order Type</p>
@@ -144,7 +144,7 @@
           <!-- </div> -->
 
           <div class="buttonz">
-            <ion-button color="transparent" (click)="downloadFile(selectedFile.value)">
+            <ion-button color="transparent" >
               DOWNLOAD COPY
             </ion-button>
           </div>
