@@ -34,7 +34,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
+    <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
 
 </ion-header>
@@ -76,18 +76,18 @@
   <div class="container">
     <div class="top">
       <div class="pagename">
-        <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
+        <h1 style="text-transform: uppercase; letter-spacing: 2px; font-size: 20px;"><b>{{collectionName}}</b></h1>
       </div>
       <div class="itemcount">
         <div class="items" *ngIf="collectionName!=='sales'">
-          <p>{{myProduct.length}} item(s)</p>
+          <p style="font-size: 16px">{{myProduct.length}} item(s)</p>
         </div>
         <div class="items" *ngIf="collectionName==='sales'">
-          <p>{{promo.length}} item(s)</p>
+          <p  style="font-size: 16px">{{promo.length}} item(s)</p>
         </div>
         <div class="filter" style="cursor: pointer;">
 
-          <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter <ion-icon slot="end" name="funnel">
+          <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer; font-size: 20px;">Filter <ion-icon slot="end" name="funnel">
             </ion-icon>
           </p>
         </div>
@@ -166,8 +166,8 @@
           <h4>Price</h4>
         </div>
         <div class="prices">
-          <ion-item *ngIf="viewPrice">
-            <ion-range style="width: 50%" pin="true" min="0" max="5000" step="10" color="secondary" [(ngModel)]="price"
+          <ion-item *ngIf="viewPrice" id="range">
+            <ion-range  pin="true" min="0" max="5000" step="10" color="secondary" [(ngModel)]="price"
               (ionChange)="setPriceRange(price)">
               <ion-label slot="start">{{price | currency:'R'}}</ion-label>
               <ion-label slot="end">{{5000 | currency:'R'}}</ion-label>

@@ -61,6 +61,8 @@ ion-toolbar {
       }
     }
 
+   
+
     .itemcount {
       margin-top: -10px;
       padding: 5px;
@@ -71,11 +73,11 @@ ion-toolbar {
       position: relative;
       bottom: 25px;
 
-      .items {
-        p {
-          font-size: 3.5vw;
-        }
-      }
+      // .items {
+      //   p {
+      //     font-size: 3.5vw;
+      //   }
+      // }
     }
   }
 
@@ -384,7 +386,10 @@ ion-toolbar {
 
     .prices {
       ion-item {
-        font-size: 3.5vw;
+        width:70vw;
+        font-size: 10px;
+        margin-left: -30px !important;
+        // padding-right: 35px !important;
       }
     }
   }
@@ -526,7 +531,7 @@ ion-toolbar {
   }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
   .container {
     display: none;
     width: 0 !important;
@@ -548,13 +553,13 @@ ion-toolbar {
     letter-spacing: 2px;
     color: rgb(131, 131, 131);
     #number {
-      font-size: 0.8em;
+      // font-size: 0.8em;
       position: relative;
       top: 8px;
       right: 5px;
     }
     .icon1 {
-      margin: 0 25vw;
+      margin: 0 18vw 0 10vw;
     }
   }
 
@@ -1056,7 +1061,7 @@ ion-toolbar {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1023px) {
   .web_view {
     display: none;
     width: 0%;
