@@ -123,7 +123,7 @@
           </div>
           <div class="ordertype">
             <p>Order Type</p>
-            <p id="del"><i>Delivery</i></p>
+            <p id="del"><i>{{o.deliveryType}}</i></p>
           </div>
 
           <div class="address">
@@ -143,10 +143,14 @@
           </div>
           <!-- </div> -->
 
-          <div class="buttonz">
-            <ion-button color="transparent" >
+          <div class="buttonz" *ngIf="o.receipt">
+            <ion-button color="transparent" (click)="downloadPdf1(o.receipt)">
               DOWNLOAD COPY
             </ion-button>
+          </div>
+
+          <div class="buttonz" *ngIf="!o.receipt">
+            <ion-label>No reciept</ion-label>
           </div>
         </div>
 
