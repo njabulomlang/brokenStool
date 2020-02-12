@@ -1,4 +1,4 @@
-ionic4-star-rating{
+ionic4-star-rating {
   button {
     outline: none !important;
   }
@@ -74,14 +74,14 @@ ion-toolbar {
       font-family: "Raleway";
       line-height: 10px;
 
-    .appname{
-      display:block; width: 170px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: left !important;
-    }
- 
+      .appname {
+        display: block;
+        width: 170px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left !important;
+      }
     }
   }
 
@@ -215,15 +215,14 @@ ion-toolbar {
     height: 0 !important;
   }
 
-  #cart{
+  #cart {
     display: none;
     width: 0 !important;
     height: 0 !important;
   }
 }
 
-
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: 1024px) {
   .container {
     display: none;
     width: 0 !important;
@@ -260,7 +259,7 @@ ion-toolbar {
     flex-flow: row;
     margin-top: 100px;
     box-shadow: 5px 5px 10px rgb(190, 190, 190);
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
 
     .image {
@@ -308,13 +307,9 @@ ion-toolbar {
     }
 
     .add {
-      ion-fab-button {
-        background: maroon;
-        border-radius: 50%;
-        ion-icon {
-          color: white;
-        }
-      }
+    ion-button{
+      font-size: 12px;
+    }
     }
 
     .about {
@@ -359,7 +354,7 @@ ion-toolbar {
   }
 
   .backdrop1 {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
@@ -369,10 +364,10 @@ ion-toolbar {
   }
 
   .viewcart {
-    position: absolute;
+    position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
-    width: 20vw;
+    width: 25%;
     height: 94%;
     top: 57px;
     // bottom: 40%;
@@ -413,10 +408,12 @@ ion-toolbar {
       display: flex;
       flex-flow: column;
       overflow-y: auto;
-      margin: 10px;
-      width: 20vw;
+      margin: 5px;
+      width: 90%;
       height: 100%;
       position: relative;
+      left: 5px;
+      // align-items: center;
       #noItems {
         display: flex;
         flex-flow: column;
@@ -439,15 +436,15 @@ ion-toolbar {
         height: 65vh;
         overflow-y: auto;
         scrollbar-width: 2px;
-        width: 100%;
+        width: 100vh;
       }
       .items {
         display: flex;
         flex-flow: row;
         justify-content: space-between;
-        margin: 10px;
+        margin:5px;
         min-height: 7vh;
-        margin: 5px;
+        width: fit-content;
         background: rgb(255, 255, 255);
         border-radius: 5px;
         box-shadow: 5px 5px 10px rgb(158, 158, 158);
@@ -455,7 +452,7 @@ ion-toolbar {
           display: flex;
           flex-flow: row;
           justify-content: space-between;
-          margin: 5px;
+          //margin: 5px;
           .img {
             width: 5vw;
             height: 5.5vw;
@@ -507,6 +504,7 @@ ion-toolbar {
       .add_to_basket {
         color: white;
         position: absolute;
+        right: 5px;
         bottom: 0;
         width: 90%;
         margin: 20px;

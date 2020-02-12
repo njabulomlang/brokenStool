@@ -11,6 +11,7 @@ ion-toolbar {
   }
 }
 
+
 .sizeStyle {
   background: rgba(128, 0, 0, 0.712);
 }
@@ -61,8 +62,6 @@ ion-toolbar {
       }
     }
 
-   
-
     .itemcount {
       margin-top: -10px;
       padding: 5px;
@@ -99,7 +98,6 @@ ion-toolbar {
       flex-flow: column;
       margin: 4px 0px;
       border-radius: 5px;
-     
 
       img {
         width: 100%;
@@ -127,11 +125,10 @@ ion-toolbar {
             text-align: right !important;
             overflow: hidden !important;
           }
-     
+
           ion-icon {
             font-size: 3vw;
             cursor: pointer;
-            
           }
         }
       }
@@ -386,7 +383,7 @@ ion-toolbar {
 
     .prices {
       ion-item {
-        width:70vw;
+        width: 70vw;
         font-size: 10px;
         margin-left: -30px !important;
         // padding-right: 35px !important;
@@ -567,6 +564,7 @@ ion-toolbar {
     min-width: 800px;
     max-width: 1200px;
     margin: auto;
+    height: 100%;
 
     .top {
       width: 100%;
@@ -619,11 +617,11 @@ ion-toolbar {
         height: fit-content;
         display: flex;
         flex-flow: column;
-        margin: 4px 0px;
+        margin: 5px;
 
         img {
           width: 100%;
-          height: 40vh;
+          height: 35vh;
           border-radius: 5px;
           box-shadow: 5px 5px 10px rgb(184, 184, 184);
         }
@@ -637,6 +635,12 @@ ion-toolbar {
 
           p {
             font-weight: bold;
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left !important;
+
             span {
               font-weight: normal;
             }

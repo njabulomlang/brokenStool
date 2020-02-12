@@ -7,7 +7,9 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" /> <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
+    <allow-intent href="tel:*" />
+    <p id="welcome" style="margin: 10px ; font-family: 'Poppins'">Welcome         <i>{{name}} {{surname}}</i>
+</p>
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
