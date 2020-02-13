@@ -109,6 +109,9 @@ export class CategoriesPage implements OnInit {
   delete(id) {
     this.dbWish.doc(id).delete()
   }
+  back() {
+    this.navCtrl.pop()
+  }
   wish() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {

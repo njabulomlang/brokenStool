@@ -97,6 +97,13 @@ export class ViewPage implements OnInit {
       })
     }, 0);
   }
+  
+  home() {
+    this.navCtrl.navigateRoot('home');
+  }
+  back() {
+    this.navCtrl.pop();
+  }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
       header: 'Message',

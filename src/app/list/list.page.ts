@@ -112,7 +112,12 @@ export class ListPage implements OnInit {
   delete(id) {
     this.dbWish.doc(id).delete()
   }
-
+  back() {
+    this.NavCtrl.pop();
+  }
+  home() {
+    this.NavCtrl.navigateRoot('home');
+  }
   wish() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
