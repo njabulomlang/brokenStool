@@ -10,29 +10,29 @@
           Home
         </ion-button>
 
-        <ion-button id="icon" routerLink="/home" *ngIf="category==='sales'" class="active">
+        <ion-button id="icon" *ngIf="collectionName==='sales'"  class="active" >
           Sales and Specials
         </ion-button>
-        <ion-button id="icon" routerLink="/home" *ngIf="category!=='sales'">
+        <ion-button id="icon" (click)="goList('sales')" *ngIf="collectionName!=='sales'">
           Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" routerLink="/categories" *ngIf="category==='summer'" class="active">
+        <ion-button id="icon"  *ngIf="collectionName==='summer' || category==='summer'" class="active">
           Summer Gear
         </ion-button>
-        <ion-button id="icon" routerLink="/categories" *ngIf="category!=='summer'">
+        <ion-button id="icon" (click)="categories('summer')" *ngIf="collectionName!=='summer' && category!=='summer'">
           Summer Gear
         </ion-button>
-        <ion-button id="icon" routerLink="/list" *ngIf="category==='winter'" class="active">
+        <ion-button id="icon"  *ngIf="collectionName==='winter'|| category==='winter'" class="active">
           Winter Gear
         </ion-button>
-        <ion-button id="icon" routerLink="/list" *ngIf="category!=='winter'">
+        <ion-button id="icon" (click)="categories('winter')" *ngIf="collectionName!=='winter' && category!=='winter'">
           Winter Gear
         </ion-button>
-        <ion-button id="icon" routerLink="/view" *ngIf="category==='kwanga'" class="active">
+        <ion-button id="icon"  *ngIf="collectionName==='kwanga'|| category==='kwanga'" class="active">
           Kwanga Apparel
         </ion-button>
-        <ion-button id="icon" routerLink="/view" *ngIf="category!=='kwanga'">
+        <ion-button id="icon" (click)="categories('kwanga')" *ngIf="collectionName!=='kwanga' && category!=='kwanga'">
           Kwanga Apparel
         </ion-button>
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
