@@ -130,6 +130,7 @@ export class CategoriesPage implements OnInit {
       queryParams: {
         data: data,
         col: this.colDef,
+        category: this.category
       }
     };
     this.navCtrl.navigateForward(['list', data], navigationExtras);
