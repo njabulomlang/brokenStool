@@ -3,6 +3,8 @@ ionic4-star-rating {
     outline: none !important;
   }
 }
+
+
 .sizeStyle {
   background: rgba(175, 175, 175, 0.712);
   border: 2px solid rgb(146, 146, 146);
@@ -205,8 +207,6 @@ ion-toolbar {
   }
   .web_view {
     display: none;
-    width: 0px !important;
-    height: 0px !important;
   }
 
   #webview {
@@ -251,8 +251,8 @@ ion-toolbar {
   }
 
   .web_view {
-    min-width: 800px;
-    max-width: 1200px;
+    min-width: 600px;
+    max-width: 1000px;
     // height: 100%;
     margin: auto;
     display: flex;
