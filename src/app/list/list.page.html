@@ -1,39 +1,38 @@
 <ion-header no-border id="nav">
-
   <ion-toolbar>
-    <img src = "../../assets/navylogo.jpg" width="150px" height="90px" routerLink= "/home">
+    <img src="../../assets/navylogo.jpg" width="150px" height="90px" routerLink="/home">
 
     <ion-buttons slot="end">
-    
+
       <div class="icon1">
 
-        <ion-button id="icon" routerLink= "/home" >
+        <ion-button id="icon" routerLink="/home">
           Home
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/home" *ngIf="category==='sales'"  class="active" >
+        <ion-button id="icon" routerLink="/home" *ngIf="category==='sales'" class="active">
           Sales and Specials
         </ion-button>
-        <ion-button id="icon" routerLink= "/home" *ngIf="category!=='sales'">
+        <ion-button id="icon" routerLink="/home" *ngIf="category!=='sales'">
           Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/categories" *ngIf="category==='summer'" class="active">
+        <ion-button id="icon" routerLink="/categories" *ngIf="category==='summer'" class="active">
           Summer Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/categories" *ngIf="category!=='summer'">
+        <ion-button id="icon" routerLink="/categories" *ngIf="category!=='summer'">
           Summer Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/list" *ngIf="category==='winter'" class="active">
+        <ion-button id="icon" routerLink="/list" *ngIf="category==='winter'" class="active">
           Winter Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/list" *ngIf="category!=='winter'">
+        <ion-button id="icon" routerLink="/list" *ngIf="category!=='winter'">
           Winter Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/view" *ngIf="category==='kwanga'" class="active">
+        <ion-button id="icon" routerLink="/view" *ngIf="category==='kwanga'" class="active">
           Kwanga Apparel
         </ion-button>
-        <ion-button id="icon" routerLink= "/view" *ngIf="category!=='kwanga'">
+        <ion-button id="icon" routerLink="/view" *ngIf="category!=='kwanga'">
           Kwanga Apparel
         </ion-button>
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
@@ -41,18 +40,17 @@
         </ion-button>
 
       </div>
-      
+
       <ion-button id="icon" (click)="wish()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
-
-    <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
 
-</ion-header>
+  <p id="crumbs"> <span (click)="home()"> Home</span> / <span (click)="back()"> Category</span> / List</p>
 
+</ion-header>
 
 <ion-header no-border id="mobile">
 
@@ -71,6 +69,7 @@
 
   </ion-toolbar>
 </ion-header>
+
 
 <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
   <div class="maploader">
