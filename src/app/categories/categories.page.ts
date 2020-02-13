@@ -124,7 +124,22 @@ export class CategoriesPage implements OnInit {
       })
     }, 0); 
   }
-
+  goList(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Specials',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
+  categories(data) {
+    // console.log(data);
+    this.router.navigate(['categories', data])
+  }
   list(data) {
     let navigationExtras: NavigationExtras = {
       queryParams: {

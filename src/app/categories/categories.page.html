@@ -10,29 +10,29 @@
           Home
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/home" *ngIf="category==='sales'"  class="active" >
+        <ion-button id="icon" *ngIf="category==='sales'"  class="active" >
           Sales and Specials
         </ion-button>
-        <ion-button id="icon" routerLink= "/home" *ngIf="category!=='sales'">
+        <ion-button id="icon"  (click)="goList('sales')" *ngIf="category!=='sales'">
           Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/categories" *ngIf="category==='SUMMER'" class="active">
+        <ion-button id="icon" *ngIf="category==='SUMMER'" class="active">
           Summer Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/categories" *ngIf="category!=='SUMMER'">
+        <ion-button id="icon" (click)="categories('summer')" *ngIf="category!=='SUMMER'">
           Summer Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/list" *ngIf="category==='WINTER'" class="active">
+        <ion-button id="icon" *ngIf="category==='WINTER'" class="active">
           Winter Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/list" *ngIf="category!=='WINTER'">
+        <ion-button id="icon" (click)="categories('winter')" *ngIf="category!=='WINTER'">
           Winter Gear
         </ion-button>
-        <ion-button id="icon" routerLink= "/view" *ngIf="category==='KWANGA'" class="active">
+        <ion-button id="icon" *ngIf="category==='KWANGA'" class="active">
           Kwanga Apparel
         </ion-button>
-        <ion-button id="icon" routerLink= "/view" *ngIf="category!=='KWANGA'">
+        <ion-button id="icon" (click)="categories('kwanga')" routerLink= "/view" *ngIf="category!=='KWANGA'">
           Kwanga Apparel
         </ion-button>
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
