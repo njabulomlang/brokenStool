@@ -1,38 +1,46 @@
 <ion-header no-border id="nav">
 
   <ion-toolbar>
+    <img src = "../../assets/Logo.png" width="150px" height="90px">
 
     <ion-buttons slot="end">
       <div class="icon1">
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
-          Terms and Privacy Policy
+        <ion-button id="icon" routerLink= "/home" class="active">
+          Home
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer">
-          Disclaimer
+        <ion-button id="icon" (click)="goList('sales')">
+          Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs">
-          FAQs
+        <ion-button id="icon" (click)="categories('summer')">
+          Summer Gear
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process">
-          Payment Process
+        <ion-button id="icon" (click)="categories('winter')">
+          Winter Gear
+        </ion-button>
+
+        <ion-button id="icon" (click)="categories('kwanga')">
+          Kwanga Apparel
         </ion-button>
 
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
-
       </div>
+
+      <ion-button id="icon" (click)="gotocart()">
+        <ion-icon slot="icon-only" name="basket"></ion-icon>
+      </ion-button>
 
       <ion-button (click)="profile()" id="icon">
         <ion-icon slot="icon-only" name="person"></ion-icon>
 
       </ion-button>
-
+  
       <ion-button id="icon" (click)="search('Dankie Jesu')">
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
@@ -91,7 +99,7 @@
 <ion-content fullscreen>
 
   <div id="background">
-    <h1>Dankie Jesu <br> <span><i>and Kwanga Apparel</i></span></h1>
+    <!-- <h1>Dankie Jesu <br> <span><i>and Kwanga Apparel</i></span></h1> -->
   </div>
   <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
  
@@ -210,6 +218,8 @@
 
   </div>
   <!-- =================================== Start Web View ====================================== -->
+
+
 
   <div class="web_view">
 
@@ -435,6 +445,9 @@
       </div>
     </div>
   </div>
+
+
+
   <!-- ------------------------------ Wishlist Side Panel -------------------------------------- -->
   <div class="backdrop1" *ngIf="viewBackdrop"></div>
   <div id="wish" [ngClass]="{'viewreviews': viewReviews, 'closereviews': !viewReviews}">
@@ -621,13 +634,13 @@
 
   <!-- ----------------------------------- Fab buttons ----------------------------------------- -->
   <!-- --------------------- Web View ------------------------- -->
-  <ion-fab id="web" vertical="bottom" horizontal="end" slot="fixed" size="small"
+  <!-- <ion-fab id="web" vertical="bottom" horizontal="end" slot="fixed" size="small"
     style=" margin: 20px; align-items: center; color: grey" *ngIf="!viewCart">
     My Basket
     <ion-fab-button (click)="gotocart()" #cart color="transparent" style=" margin: 0 0 0 25px;">
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
   <!-- --------------------- Mobile View ---------------------- -->
   <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small"
     style=" margin: 20px; align-items: center; color: grey">

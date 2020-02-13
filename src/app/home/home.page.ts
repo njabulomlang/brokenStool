@@ -484,5 +484,4 @@ export class HomePage implements OnInit {
     }
   }
 
-  
 }

@@ -158,14 +158,18 @@ ion-toolbar {
   }
 
   ion-toolbar {
-    --background: rgb(255, 255, 255);
+    img{
+      margin-left: 10%;
+    }
+    --background: #000324;
     width: 100%;
     #icon {
-      color: rgb(131, 131, 131);
+      color: rgb(255, 255, 255);
+      font-size: 12.5px;
     }
     font-family: "Raleway";
     letter-spacing: 2px;
-    color: rgb(131, 131, 131);
+    color: rgb(255, 255, 255);
     #number {
       // font-size: 0.8em;
       position: relative;
@@ -175,6 +179,22 @@ ion-toolbar {
 
     .icon1 {
       margin: 0 18vw 0 10vw;
+
+      ion-button:hover{
+        background: maroon;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      ion-button.active{
+        background: maroon;
+        border-radius: 5px;
+        border-bottom: 2px solid white;
+      }
+
+      ion-button{
+        transition: 0.6s ease;
+      }
     }
   }
 

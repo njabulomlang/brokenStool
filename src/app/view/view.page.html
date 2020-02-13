@@ -1,39 +1,41 @@
 <ion-header no-border id="nav">
+
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <!-- <div class="icon1">
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
-          Terms and Privacy Policy
+    <ion-buttons slot="end" (click)="logout()">
+      <div class="icon1">
+
+        <ion-button id="icon" routerLink= "/home">
+          Home
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer">
-          Disclaimer
+        <ion-button id="icon" routerLink= "/categories">
+          Categories
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs">
-          FAQs
+        <ion-button id="icon" routerLink= "/list">
+          List
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process">
-          Payment Process
+        <ion-button id="icon" routerLink= "/view">
+          View
         </ion-button>
 
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
+      </div>
 
-      </div> -->
+      <ion-buttons slot="end">
+        <ion-button id="rate" (click)="presentPopover($event)">
+          <ion-icon slot="start" name="star"></ion-icon> Rate This Product
+        </ion-button>
+      </ion-buttons>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button id="rate" (click)="presentPopover($event)">
-        <ion-icon slot="start" name="star"></ion-icon> Rate This Product
-      </ion-button>
-    </ion-buttons>
+
     <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
-</ion-header>
 
 
 <ion-header no-border id="mobile">
