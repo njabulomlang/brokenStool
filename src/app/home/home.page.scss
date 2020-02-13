@@ -380,7 +380,8 @@ ion-toolbar {
 //----------------------------------- Media Queries -----------------------------------------
 @media only screen and (min-width: 1024px) {
   #background {
-    width: 100%;
+    width: 60%;
+    margin: auto;
     height: 35vh;
     background: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
     background-size: cover;
@@ -444,15 +445,15 @@ ion-toolbar {
       margin: 0 18vw 0 10vw;
 
       ion-button:hover{
-        background: maroon;
+       border: 2px solid maroon;
         border-radius: 5px;
         padding: 5px;
       }
 
       ion-button.active{
-        background: maroon;
+        border: 2px solid maroon;
         border-radius: 5px;
-        border-bottom: 2px solid white;
+        // border-bottom: 2px solid white;
       }
 
       ion-button{
