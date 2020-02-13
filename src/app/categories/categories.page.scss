@@ -157,6 +157,15 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #crumbs{
+    color: grey;
+    cursor: pointer;
+    margin: 20px;
+    span{
+      color: maroon;
+    }
+  }
+
   ion-toolbar {
     img{
       margin-left: 10%;
@@ -178,18 +187,17 @@ ion-toolbar {
     }
 
     .icon1 {
-      margin: 0 18vw 0 10vw;
+      margin: 0 20vw 0 10vw;
 
       ion-button:hover{
-        background: maroon;
+      border: 2px solid maroon;
         border-radius: 5px;
         padding: 5px;
       }
 
       ion-button.active{
-        background: maroon;
+        border: 2px solid maroon;
         border-radius: 5px;
-        border-bottom: 2px solid white;
       }
 
       ion-button{
@@ -574,4 +582,9 @@ ion-footer {
       }
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  background-color: maroon;
 }
