@@ -35,16 +35,20 @@ export class ListPage implements OnInit {
   viewwish = false;
   viewBackdrop = false;
   alertView: boolean = false;
+  category = "";
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController,
     public alertCtrl: AlertController, private localSt: LocalStorageService) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
       this.col = params["col"];
+      this.category =String(params["category"]).toLowerCase();
     });
   }
 
   ngOnInit() {
+    console.log("my col name ", this.category);
+    
     //this.alertView = false;
     setTimeout(() => {
       this.loaderAnimate = false;

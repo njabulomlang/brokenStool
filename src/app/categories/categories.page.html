@@ -10,22 +10,31 @@
           Home
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/home" class="active" >
+        <ion-button id="icon" routerLink= "/home" *ngIf="category==='sales'"  class="active" >
+          Sales and Specials
+        </ion-button>
+        <ion-button id="icon" routerLink= "/home" *ngIf="category!=='sales'">
           Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/categories" class="active">
+        <ion-button id="icon" routerLink= "/categories" *ngIf="category==='SUMMER'" class="active">
           Summer Gear
         </ion-button>
-
-        <ion-button id="icon" routerLink= "/list" class="active">
+        <ion-button id="icon" routerLink= "/categories" *ngIf="category!=='SUMMER'">
+          Summer Gear
+        </ion-button>
+        <ion-button id="icon" routerLink= "/list" *ngIf="category==='WINTER'" class="active">
           Winter Gear
         </ion-button>
-
-        <ion-button id="icon" routerLink= "/view" class="active">
+        <ion-button id="icon" routerLink= "/list" *ngIf="category!=='WINTER'">
+          Winter Gear
+        </ion-button>
+        <ion-button id="icon" routerLink= "/view" *ngIf="category==='KWANGA'" class="active">
           Kwanga Apparel
         </ion-button>
-
+        <ion-button id="icon" routerLink= "/view" *ngIf="category!=='KWANGA'">
+          Kwanga Apparel
+        </ion-button>
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
