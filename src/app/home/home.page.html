@@ -98,8 +98,20 @@
 
 <ion-content fullscreen>
 
-  <div id="background">
- 
+  <div id="background"> 
+    <div class="b_left"> 
+  
+
+    </div>
+
+    <div class="b_middle">
+        <p>Praise <br> Throught <br>  Fashion</p>
+    </div>
+
+    <div class="b_right">
+
+    </div>
+    
   </div>
   <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
  
@@ -108,7 +120,7 @@
     <div class="sales">
       <ion-item (click)="goList('sales')">
         <label style="width: 100%">Sales & Specials</label>
-        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
       <div class="saleitems">
@@ -156,7 +168,7 @@
     <div class="Kwanga">
       <ion-item (click)="categories('kwanga')">
         <label style="width: 100%">kwanga Apparel</label>
-        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
       <div class="apparel">
@@ -226,7 +238,7 @@
     <div class="sales">
       <ion-item (click)="goList('sales')">
         <!-- <label>Sales & Specials</label> -->
-        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
       <div class="saleitems">
@@ -272,7 +284,7 @@
       <div class="summer_gear">
         <ion-item (click)="categories('summer')">
           <!-- <label>Summer Gear</label> -->
-          <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+          <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
         </ion-item>
 
         <div class="all_summer">
@@ -337,7 +349,7 @@
       <div class="winter_gear">
         <ion-item (click)="categories('winter')">
 
-          <label slot="end" (click)="categories('winter')">All <ion-icon slot="start" name="arrow-forward"></ion-icon>
+          <label slot="end" (click)="categories('winter')" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon>
           </label>
         </ion-item>
 
@@ -399,7 +411,7 @@
     <div class="Kwanga">
       <ion-item (click)="categories('kwanga')">
         <label>kwanga Apparel</label>
-        <label slot="end">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
+        <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
       <p style="font-size: 13px; color: rgb(168, 168, 168); font-family: 'Raleway'; margin-left: 10px;">Shop Kwanga and find your ideal
         outfit for every occasion, for every event and even just to look your best. DAILY</p>
