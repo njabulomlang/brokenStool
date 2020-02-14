@@ -4,7 +4,6 @@ ionic4-star-rating {
   }
 }
 
-
 .sizeStyle {
   background: rgba(175, 175, 175, 0.712);
   border: 2px solid rgb(146, 146, 146);
@@ -204,6 +203,8 @@ ion-toolbar {
 @media only screen and (max-width: 1023px) {
   #nav {
     display: none;
+    width: 0 !important;
+    height: 0 !important;
   }
   .web_view {
     display: none;
@@ -229,24 +230,57 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #crumbs {
+    color: grey;
+    cursor: pointer;
+    margin: 20px;
+    margin-top: 110px;
+    z-index: 10;
+    span {
+      color: maroon;
+    }
+  }
+
+  #mobile {
+    display: none;
+  }
+
   ion-toolbar {
-    --background: rgb(255, 255, 255);
+    img {
+      margin-left: 10%;
+    }
+    --background: #000324;
     width: 100%;
     #icon {
-      color: rgb(131, 131, 131);
+      color: rgb(255, 255, 255);
+      font-size: 12.5px;
     }
     font-family: "Raleway";
     letter-spacing: 2px;
-    color: rgb(131, 131, 131);
+    color: rgb(255, 255, 255);
     #number {
-      font-size: 0.8em;
       position: relative;
       top: 8px;
       right: 5px;
     }
 
     .icon1 {
-      margin: 0 20vw;
+      margin: 0 20vw 0 10vw;
+
+      ion-button:hover {
+        border: 2px solid maroon;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      ion-button.active {
+        border: 2px solid maroon;
+        border-radius: 5px;
+      }
+
+      ion-button {
+        transition: 0.6s ease;
+      }
     }
   }
 
@@ -257,14 +291,14 @@ ion-toolbar {
     margin: auto;
     display: flex;
     flex-flow: row;
-    margin-top: 100px;
+    margin-top: 80px;
     box-shadow: 5px 5px 10px rgb(190, 190, 190);
     padding: 20px;
     margin-bottom: 20px;
 
     .image {
       width: 40vw;
-      height: 45vh;
+      height: 30%;
 
       img {
         width: 100%;
@@ -307,9 +341,9 @@ ion-toolbar {
     }
 
     .add {
-    ion-button{
-      font-size: 12px;
-    }
+      ion-button {
+        font-size: 12px;
+      }
     }
 
     .about {
@@ -442,7 +476,7 @@ ion-toolbar {
         display: flex;
         flex-flow: row;
         justify-content: space-between;
-        margin:5px;
+        margin: 5px;
         min-height: 7vh;
         width: fit-content;
         background: rgb(255, 255, 255);
