@@ -421,6 +421,12 @@ ion-toolbar {
     height: 0%;
   }
 
+  #webview{
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+
   #wish {
     display: none;
     width: 0%;
@@ -1172,7 +1178,6 @@ ion-toolbar {
       justify-content: space-between;
       padding: 10px;
       margin: 5px 0px;
-
       margin: 0;
       padding: 0;
       height: 7vh;
@@ -1204,6 +1209,32 @@ ion-toolbar {
       }
     }
 
+    .btn_update{
+      display: flex;
+      flex-flow: row;
+      width: 100%;
+      justify-content: space-evenly;
+
+      #up{
+        background: maroon;
+        color: white;
+        width: 50%;
+        margin: 3px;
+        font-size: 13px;
+        height: 40px;
+      }
+
+      #can{
+        background: rgb(1, 1, 58);
+        color: white;
+        width: 50%;
+        margin: 3px;
+        font-size: 13px;
+        height: 40px;
+      }
+
+    }
+
     .btnz {
       display: flex;
       flex-flow: column;
@@ -1213,7 +1244,7 @@ ion-toolbar {
       ion-button {
         margin: 0;
         padding: 0;
-        height: 7.5vh;
+        height: 100px;
         margin: 5px;
         border-radius: 0 !important;
         text-align: left;

@@ -208,7 +208,7 @@ ion-toolbar {
 
   .pagename {
     width: 100%;
-    color: rgb(221, 221, 221);
+    color: rgb(11, 1, 49);
     height: 62px;
     display: grid;
     align-items: center;
@@ -228,6 +228,12 @@ ion-toolbar {
     font-family: "Poiret One";
     color: rgb(221, 221, 221);
     font-size: 20px;
+
+    .items{
+      p{
+        color: rgb(11, 1, 49);
+      }
+    }
   }
 
   .web_view {

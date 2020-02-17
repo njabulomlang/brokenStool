@@ -77,8 +77,8 @@
 </div>
 <ion-content fullscreen>
 
-  <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One'; margin-top: 55px">My
-    Profile</p>
+  <p id="lorem" style="font-size: 35px; width: 100%; text-align: center; color: grey; font-family: 'poiret One'; margin-top: 65px">
+    My Profile</p>
   <!-- ====================================== Mobile View ============================================= -->
   <div class="container">
     <div class="image">
@@ -183,17 +183,11 @@
     </div>
     <div class="stuff">
       <div class="btnz" (ionBlur)="check('open')" (ionFocus)="check('close')">
-        <ion-button (click)="showEdit()" color="transparent" *ngIf="!editprofile" (ionBlur)="check('open')"
-          (ionFocus)="check('close')">
-          <span>Account Details <ion-icon slot="end" name="add"></ion-icon></span>
-          <!-- <span *ngIf="editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">Account Details <ion-icon slot="end" name="minus" ></ion-icon> <p style="color:grey"> UPDATE &nbsp; &nbsp; CANCEL</p> </span> -->
+        <ion-button (click)="showEdit()" color="transparent" (ionBlur)="check('open')" (ionFocus)="check('close')">
+          <span *ngIf="!editprofile">Account Details <ion-icon slot="end" name="add"></ion-icon></span>
+          <span *ngIf="editprofile">Account Details <ion-icon slot="end" name="remove"></ion-icon></span>
         </ion-button>
-        <div class="update_cancel" *ngIf="editprofile" (ionBlur)="check('open')" (ionFocus)="check('close')">
-          <p class="acc">Account Details</p>
-          <p class="update" (click)="updateProfile()">UPDATE &nbsp; &nbsp; <span (click)="showEdit()">CANCEL</span></p>
-
-        </div>
-
+      
         <div class="edit" *ngIf="editprofile">
           <div class="inputs">
 
@@ -206,6 +200,14 @@
             <ion-input [(ngModel)]="address" placeholder="address"></ion-input>
 
             <ion-input type="file" id="file" (change)="featuredPhotoSelected($event)"></ion-input>
+          </div>
+          <div class="btn_update">
+            <ion-button (click)="updateProfile()" color="transparent" id="up">
+              Update
+            </ion-button>
+            <ion-button (click)="showEdit()" color="transparent" id="can">
+              Cancel
+            </ion-button>
           </div>
 
         </div>
