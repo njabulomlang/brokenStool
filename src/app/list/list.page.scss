@@ -11,7 +11,6 @@ ion-toolbar {
   }
 }
 
-
 .sizeStyle {
   background: rgba(128, 0, 0, 0.712);
 }
@@ -528,11 +527,11 @@ ion-toolbar {
     width: 0 !important;
   }
 
-  #crumbs{
+  #crumbs {
     color: grey;
     cursor: pointer;
     margin: 20px;
-    span{
+    span {
       color: maroon;
     }
   }
@@ -544,8 +543,8 @@ ion-toolbar {
   }
 
   ion-toolbar {
-    img{
-      margin-left: 10%;
+    img {
+      margin-left: 5%;
     }
     --background: #000324;
     width: 100%;
@@ -566,19 +565,19 @@ ion-toolbar {
     .icon1 {
       margin: 0 18vw 0 10vw;
 
-      ion-button:hover{
-       border: 2px solid maroon;
+      ion-button:hover {
+        border: 2px solid maroon;
         border-radius: 5px;
         padding: 5px;
       }
 
-      ion-button.active{
+      ion-button.active {
         border: 2px solid maroon;
         border-radius: 5px;
         // border-bottom: 2px solid white;
       }
 
-      ion-button{
+      ion-button {
         transition: 0.6s ease;
       }
     }
@@ -643,13 +642,11 @@ ion-toolbar {
         flex-flow: column;
         margin: 5px;
 
-
         img {
           width: 100%;
           height: 35vh;
           border-radius: 5px;
           box-shadow: 5px 5px 10px rgb(184, 184, 184);
-
         }
 
         .itemdetails {
@@ -937,7 +934,7 @@ ion-toolbar {
     z-index: 150;
     background: rgb(201, 201, 201);
     width: 25%;
-    height:90%;
+    height: 90%;
     top: 95px;
     bottom: 40%;
     right: 0;
@@ -1112,6 +1109,473 @@ ion-toolbar {
     width: 0 !important;
     height: 0 !important;
   }
+}
+
+@media only screen and (max-width: 1024px) {
+  .icon1 {
+    display: none;
+  }
+  .wishssss {
+    display: none;
+  }
+  .viewMenu {
+    position: fixed;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    min-width: 40%;
+    height: 100%;
+    top: 98px;
+    // bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .side_buttons {
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      top: 150px;
+      ion-button {
+        color: rgb(82, 82, 82);
+        margin: 5px;
+        height: 50px;
+        width: 30vw;
+        font-size: 15px;
+        border-bottom: 2px solid rgb(255, 255, 255);
+      }
+    }
+  }
+
+  .closeMenu {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+
+  .backdrop1 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+
+  .viewwishlist {
+    position: fixed;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    min-width: 40%;
+    height: 100%;
+    top: 100px;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .wishlist_items {
+      display: flex;
+      flex-flow: column;
+      overflow-y: auto;
+      margin: 10px;
+      min-width: 30vw;
+      height: 90%;
+      overflow-y: auto;
+
+      #noItems {
+        display: flex;
+        flex-flow: column;
+        background: none;
+        align-items: center;
+        box-shadow: none;
+        justify-content: center;
+        margin-top: 200px;
+        img {
+          width: 5vw;
+          height: 5vw;
+        }
+        p {
+          text-align: center;
+          font-size: 15px;
+          color: grey;
+        }
+      }
+
+      .div {
+        height: 80vh;
+        overflow-y: auto;
+        scrollbar-width: 2px;
+        width: 100%;
+      }
+      .items {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        margin: 10px;
+        min-height: 7vh;
+        margin: 5px;
+        background: rgb(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(158, 158, 158);
+        .left {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          margin: 5px;
+          .img {
+            width: 5vw;
+            height: 5.5vw;
+            margin: 3px;
+            border-radius: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+
+          .item_details {
+            width: 8vw;
+          }
+        }
+
+        .right {
+          width: 6vw;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          text-align: right;
+          margin: 5px;
+          ion-button {
+            font-size: 12px;
+            width: 4vw;
+            height: 20px;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            ion-icon {
+              font-size: 12px;
+            }
+          }
+
+          .trash_icon {
+            ion-icon {
+              color: rgb(148, 14, 14);
+            }
+          }
+          .add_to_basket {
+            background: rgb(2, 2, 37);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .closewishlist {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+
+  .viewreviews {
+    position: fixed;
+    z-index: 150;
+    background: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 5px 5px 10px rgb(185, 185, 185);
+    min-width: 40%;
+    height: 90%;
+    top: 15%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      text-align: center;
+      margin: 5px;
+
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 2vw;
+        top: 2.2vh;
+        font-size: 1em;
+        background: black;
+        border-radius: 50%;
+      }
+
+      p {
+        letter-spacing: 1px;
+        margin: 15px 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .filtering {
+      display: flex;
+      flex-flow: column;
+      text-align: left;
+      padding: 10px;
+      width: 100%;
+      .color {
+        cursor: pointer;
+        h4 {
+          color: grey;
+          font-size: 1em;
+        }
+      }
+
+      .colors {
+        cursor: pointer;
+        p {
+          font-size: 1em;
+        }
+      }
+
+      .price {
+        cursor: pointer;
+        h4 {
+          color: grey;
+          font-size: 1em;
+        }
+      }
+
+      .prices {
+        cursor: pointer;
+      }
+    }
+
+    .crds {
+      height: 70vh;
+      overflow-y: auto;
+
+      .crd {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 90vw;
+        height: 20vh;
+        margin: 5px;
+
+        .profimage {
+          width: 20%;
+          height: 9vh;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        .reviewdets {
+          width: 60vw;
+
+          h4 {
+            font-family: "Poiret One";
+            font-weight: bold;
+          }
+
+          p {
+            font-family: "Raleway";
+          }
+        }
+      }
+    }
+  }
+
+  .closereviews {
+    position: absolute;
+    z-index: 150;
+    background: rgba(255, 255, 255, 0.774);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .line {
+      width: 80vw;
+      height: 2px;
+      background: grey;
+    }
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      text-align: center;
+
+      ion-button {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 5px;
+        ion-icon {
+          color: black;
+          position: relative;
+          // left: 5vw;
+        }
+      }
+
+      h2 {
+        font-family: "Poiret One";
+        letter-spacing: 5px;
+        margin: 10px 5px;
+        position: relative;
+        left: 6vw;
+      }
+    }
+
+    .crds {
+      height: 70vh;
+      overflow-y: auto;
+
+      .crd {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 90vw;
+        height: 20vh;
+        margin: 10px;
+
+        .profimage {
+          width: 20%;
+          height: 9vh;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        .reviewdets {
+          width: 60vw;
+
+          h4 {
+            font-family: "Poiret One";
+            font-weight: bold;
+          }
+
+          p {
+            font-family: "Raleway";
+            font-size: 3vw;
+          }
+        }
+      }
+    }
+  }
+
 }
 
 ion-footer {

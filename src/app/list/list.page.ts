@@ -34,6 +34,7 @@ export class ListPage implements OnInit {
   myWishlist = [];
   viewwish = false;
   viewBackdrop = false;
+  viewSideMenu = false;
   alertView: boolean = false;
   category = "";
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController,
@@ -58,6 +59,11 @@ export class ListPage implements OnInit {
     this.getSales("timestamp");
     //this.getWishlist();
     // this.checkUser();
+  }
+
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
+    this.viewBackdrop = !this.viewBackdrop
   }
   getWishlist() {
     if (firebase.auth().currentUser.uid) {

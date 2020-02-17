@@ -38,6 +38,7 @@ export class ViewPage implements OnInit {
   boolCheck: boolean = false;
   viewCart = false;
   viewBackdrop = false;
+  viewSideMenu =  false;
   prodCart = [];
   delCost: number;
   delType: string;
@@ -81,6 +82,11 @@ export class ViewPage implements OnInit {
         })
       }
     })
+  }
+
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
+    this.viewBackdrop = !this.viewBackdrop
   }
   checkUser() {
     setTimeout(() => {
