@@ -1,7 +1,7 @@
  import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { ModalController, NavController, ToastController, AlertController } from '@ionic/angular';
+import { ModalController, NavController, ToastController, AlertController, Platform } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
@@ -10,6 +10,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { NotificationsService } from '../services/notifications.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Network } from '@ionic-native/network/ngx';
+
 
 @Component({
   selector: 'app-home',
@@ -46,9 +48,15 @@ export class HomePage implements OnInit {
   alertView: boolean = false;
   fileUrl;
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    public toastCtrl : ToastController, public alertCtrl : AlertController, private localSt:LocalStorageService, private sanitizer: DomSanitizer
+    public toastCtrl : ToastController, public alertCtrl : AlertController, private localSt:LocalStorageService, private sanitizer: DomSanitizer, public network : Network,
+    public plt : Platform
     // public notificationService: NotificationsService
     ) {
+     if(this.plt.is('cordova')) {
+       this.network.onDisconnect().subscribe(()=>{
+        this.presentAlt();
+       })
+     } 
   }
 
   ngOnInit() {
@@ -69,7 +77,22 @@ export class HomePage implements OnInit {
       this.splashScreen.hide();
     }, 3000);
   }
+  async presentAlt() {
+    const alert = await this.alertCtrl.create({
+      header: 'Network problem',
+      message: 'Ooops! ,you have lost connection',
+      buttons: [
+        {
+          text: 'Close app',
+          handler: () => {
+            navigator['app'].exitApp();
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
   checkUser() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
