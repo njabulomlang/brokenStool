@@ -32,25 +32,31 @@
 
       </div>
 
+  
       <ion-button id="icon" (click)="gotocart()">
         <ion-icon slot="icon-only" name="basket"></ion-icon>
       </ion-button>
 
-      <ion-button (click)="profile()" id="icon">
+      <ion-button (click)="profile()" class="icon2" id="icon">
         <ion-icon slot="icon-only" name="person"></ion-icon>
-
       </ion-button>
   
       <ion-button id="icon" (click)="search('Dankie Jesu')">
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
+      
+
       <ion-button id="icon" (click)="reviewed()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
       </ion-button>
+
+      <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
     </ion-buttons> 
 
-    <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
 
 </ion-header>
@@ -585,6 +591,47 @@
 
     </div>
   </div>
+<!-- ----------------------------------- Side Menu ----------------------------------- -->
+  <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
+    <div class="heading">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </div>
+
+    <div class="side_buttons">
+
+      <ion-button (click)="profile()" color="transparent">
+        Profile
+      </ion-button>
+
+
+      <ion-button id="icon" routerLink= "/home" class="active" color="transparent">
+        Home
+      </ion-button>
+
+      <ion-button id="icon" (click)="goList('sales')" color="transparent">
+        Sales and Specials
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('summer')" color="transparent">
+        Summer Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('winter')" color="transparent">
+        Winter Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('kwanga')" color="transparent">
+        Kwanga Apparel
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        About Us
+      </ion-button>
+
+     
+    </div>
+  </div>
+
   <!-- ----------------------------------- Page Footer ----------------------------------------- -->
   <ion-footer id="webview">
     <div class="footer">
@@ -645,18 +692,10 @@
 
 
   <!-- ----------------------------------- Fab buttons ----------------------------------------- -->
-  <!-- --------------------- Web View ------------------------- -->
-  <!-- <ion-fab id="web" vertical="bottom" horizontal="end" slot="fixed" size="small"
-    style=" margin: 20px; align-items: center; color: grey" *ngIf="!viewCart">
-    My Basket
-    <ion-fab-button (click)="gotocart()" #cart color="transparent" style=" margin: 0 0 0 25px;">
-      <ion-icon name="basket" class="cart-icon"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
   <!-- --------------------- Mobile View ---------------------- -->
   <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small"
-    style=" margin: 20px; align-items: center; color: grey">
-    <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 25px;">
+    style=" margin: 10px; align-items: center; color: grey">
+    <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 15px;">
       <ion-icon name="basket" class="cart-icon"></ion-icon>
     </ion-fab-button>
   </ion-fab>

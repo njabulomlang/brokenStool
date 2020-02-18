@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
 import { ModalController, NavController, ToastController, AlertController } from '@ionic/angular';
@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
   viewReviews = false;
   viewBackdrop = false;
   viewCart= false;
+  viewSideMenu = false;
   myWishlist = [];
   prodCart = [];
   delCost: number;
@@ -263,6 +264,11 @@ export class HomePage implements OnInit {
   }
 
   getBackdrop(){
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
   

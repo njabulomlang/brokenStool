@@ -40,14 +40,15 @@
 
       </div>
 
-      <ion-button id="icon" (click)="wish()">
-        <ion-icon slot="icon-only" name="basket"></ion-icon>
-        <!-- <p id="number">{{myWish}}</p> -->
-      </ion-button>
+     
 
       <ion-button id="icon" (click)="wish()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <p id="number">{{myWish}}</p>
+      </ion-button>
+
+      <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
 
@@ -310,6 +311,41 @@
 
       </div>
 
+    </div>
+  </div>
+  <div class="backdrop1" *ngIf="viewBackdrop"></div>
+  <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
+    <div class="heading">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </div>
+
+    <div class="side_buttons">
+
+      <ion-button id="icon" routerLink= "/home" class="active" color="transparent">
+        Home
+      </ion-button>
+
+      <ion-button id="icon" (click)="goList('sales')" color="transparent">
+        Sales and Specials
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('summer')" color="transparent">
+        Summer Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('winter')" color="transparent">
+        Winter Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('kwanga')" color="transparent">
+        Kwanga Apparel
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        About Us
+      </ion-button>
+
+     
     </div>
   </div>
 

@@ -1,12 +1,12 @@
 <ion-header no-border id="nav">
-  
+
   <ion-toolbar>
     <img src="../../assets/Logo.png" width="150px" height="90px" routerLink="/home">
 
-    <ion-buttons slot="end" >
+    <ion-buttons slot="end">
       <div class="icon1">
 
-        <ion-button id="icon" routerLink= "/home" class="active">
+        <ion-button id="icon" routerLink="/home" class="active">
           Home
         </ion-button>
 
@@ -33,16 +33,22 @@
       </div>
 
       <ion-buttons slot="end">
+        
         <ion-button id="rate" (click)="presentPopover($event)">
           <ion-icon slot="start" name="star"></ion-icon> Rate This Product
         </ion-button>
+
+        <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+
       </ion-buttons>
     </ion-buttons>
-   
+
 
   </ion-toolbar>
 
- 
+
 
 </ion-header>
 <p id="crumbs"> <span (click)="home()"> Home</span> / <span (click)="back()"> List</span> / View Product</p>
@@ -570,6 +576,41 @@
 
       </div>
 
+    </div>
+  </div>
+
+  <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
+    <div class="heading">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </div>
+
+    <div class="side_buttons">
+
+      <ion-button id="icon" routerLink= "/home" class="active" color="transparent">
+        Home
+      </ion-button>
+
+      <ion-button id="icon" (click)="goList('sales')" color="transparent">
+        Sales and Specials
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('summer')" color="transparent">
+        Summer Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('winter')" color="transparent">
+        Winter Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('kwanga')" color="transparent">
+        Kwanga Apparel
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        About Us
+      </ion-button>
+
+     
     </div>
   </div>
 

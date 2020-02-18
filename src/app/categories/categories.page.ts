@@ -16,6 +16,8 @@ export class CategoriesPage implements OnInit {
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   viewPrice = false;
+  viewSideMenu = false;
+  viewBackdrop = false;
   myWishlist = [];
   alertView: boolean = false;
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController,public alertCtrl : AlertController, 
@@ -43,6 +45,12 @@ export class CategoriesPage implements OnInit {
     // this.getWishlist();
     this.checkUser();
   }
+
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
   checkUser() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
@@ -117,6 +125,7 @@ export class CategoriesPage implements OnInit {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           this.viewPrice = !this.viewPrice
+          this.viewBackdrop = !this.viewBackdrop
           this.getWishlist();
         } else {
             this.presentAlertConfirm1();

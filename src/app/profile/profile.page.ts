@@ -35,6 +35,7 @@ export class ProfilePage implements OnInit {
   viewCart = false;
   viewBackdrop = false;
   viewSettings = false;
+  viewSideMenu = false;
   cordova: boolean;
   prodCart=[];
   delType: any;
@@ -263,6 +264,10 @@ export class ProfilePage implements OnInit {
   }
  
   getBackdrop() {
+    this.viewBackdrop = !this.viewBackdrop
+  }
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
 

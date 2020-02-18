@@ -225,8 +225,8 @@ export class TrackOrdersPage implements OnInit {
       res.data().product.forEach((item) => {
         this.myArr.push(item)
       })
-      //this.userDetails(res.data().userID);
-      // console.log('My order', res.data());
+      // this.userDetails(res.data().userID);
+      console.log('My order', res.data());
       if (res.data().status === 'received') {
         setTimeout(() => {
           this.toggleOne();
@@ -239,6 +239,7 @@ export class TrackOrdersPage implements OnInit {
       } else if (res.data().status === 'collected') {
         setTimeout(() => {
           this.downloadPdf();
+         
           console.log('Deleting PDF');
         }, 1000);
         this.toggleFour()

@@ -247,7 +247,7 @@ ion-toolbar {
 
   ion-toolbar {
     img {
-      margin-left: 10%;
+      margin-left: 5%;
     }
     --background: #000324;
     width: 100%;
@@ -639,6 +639,87 @@ ion-toolbar {
   }
 
   .closecart {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .icon1{
+display: none ;
+  }
+
+  .viewMenu {
+    position: fixed;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    min-width: 40%;
+    height: 100vh;
+    top: 98px;
+    // bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+  
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+  
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .side_buttons{
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      top: 150px;
+      ion-button{
+        color: rgb(82, 82, 82);
+        margin: 5px;
+        height: 50px;
+        width: 30vw;
+        font-size: 15px;
+        border-bottom: 2px solid rgb(255, 255, 255);
+      }
+    }
+  
+  }
+  
+  .closeMenu {
     position: absolute;
     z-index: 150;
     background: rgb(255, 255, 255);
