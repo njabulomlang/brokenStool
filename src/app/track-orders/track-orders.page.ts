@@ -228,7 +228,10 @@ export class TrackOrdersPage implements OnInit {
       // this.userDetails(res.data().userID);
       console.log('My order', res.data());
       if (res.data().status === 'received') {
-        this.toggleOne();
+        setTimeout(() => {
+          this.toggleOne();
+        }, 1000);
+        
       } else if (res.data().status === 'processed') {
         this.toggleTwo();
       } else if (res.data().status === 'ready') {
@@ -269,6 +272,8 @@ export class TrackOrdersPage implements OnInit {
     this.router.navigateByUrl("pending-orders")
   }
   toggleOne() {
+    console.log("My div ", document.getElementById("one"));
+    
     var circleOne = document.getElementById("one").style.background = "maroon";
     var circleOne = document.getElementById("one").style.color = "whitesmoke";
     var lineOne = document.getElementById("line1").style.border = "0.5px solid grey";

@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ToastController, PopoverController, NavController, AlertController, Platform } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -103,7 +103,23 @@ export class ViewPage implements OnInit {
       })
     }, 0);
   }
-  
+  categories(data) {
+    // console.log(data);
+    this.router.navigate(['categories', data])
+  }
+  goList(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Specials',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
+
   home() {
     this.navCtrl.navigateRoot('home');
   }

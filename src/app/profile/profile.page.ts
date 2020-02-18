@@ -313,6 +313,22 @@ export class ProfilePage implements OnInit {
     this.viewSettings = !this.viewSettings
     this.viewBackdrop = !this.viewBackdrop
   }
+  categories(data) {
+    // console.log(data);
+    this.router.navigate(['categories', data])
+  }
+  goList(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Specials',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
 
   check(val) {
     if (val == 'close') {
