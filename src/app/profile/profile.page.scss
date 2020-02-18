@@ -1045,7 +1045,11 @@ ion-toolbar {
     }
   }
 }
-
+@media only screen and (min-width: 1025px){
+  .ext{
+    display: none;
+  }
+}
 @media only screen and (min-width: 1024px) {
   .container {
     display: none;
@@ -1180,7 +1184,7 @@ ion-toolbar {
     }
 
     .stuff {
-      width: 35vw;
+      width: 45vw;
       margin: 5px;
       height: 100%;
     }

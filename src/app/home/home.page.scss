@@ -508,6 +508,12 @@ ion-toolbar {
   }
 }
 
+@media only screen and (min-width: 1025px){
+  .sidemenu{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1024px){
   .icon2{
     display: none;
