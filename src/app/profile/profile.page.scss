@@ -1033,6 +1033,15 @@ ion-toolbar {
     flex-flow: column;
     overflow: hidden;
   }
+
+  .image{
+    height: 70vh;
+    margin: 10px;
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1041,9 +1050,9 @@ ion-toolbar {
     width: 0 !important;
     height: 0 !important;
   }
-  .ext {
-    display: none;
-  }
+  // .ext {
+  //   display: none;
+  // }
 
   #settings {
     display: none;
@@ -1063,7 +1072,7 @@ ion-toolbar {
 
   ion-toolbar {
     img {
-      margin-left: 10%;
+      margin-left: 5%;
     }
     --background: #000324;
     width: 100%;
@@ -1099,6 +1108,8 @@ ion-toolbar {
         transition: 0.6s ease;
       }
     }
+
+
   }
 
   .web_view {
@@ -1113,7 +1124,7 @@ ion-toolbar {
     // box-shadow: 5px 5px 10px rgb(196, 196, 196);
 
     .image {
-      width: 60vw;
+      width: 55vw;
       height: 75vh;
       display: flex;
       flex-flow: column;
@@ -1168,7 +1179,8 @@ ion-toolbar {
 
     .stuff {
       width: 35vw;
-      margin: 10px;
+      margin: 5px;
+      height: 100%;
     }
 
     .update_cancel {
@@ -1244,7 +1256,7 @@ ion-toolbar {
       ion-button {
         margin: 0;
         padding: 0;
-        height: 100px;
+        height: 6.5vh;
         margin: 5px;
         border-radius: 0 !important;
         text-align: left;
@@ -1317,7 +1329,7 @@ ion-toolbar {
 
       .wishlist {
         width: 100%;
-        height: 24vh;
+        height: 24.5vh;
         position: relative;
         border-radius: 8px;
         margin: 5px;
@@ -1366,7 +1378,7 @@ ion-toolbar {
       .basket {
         margin: 5px;
         width: 100%;
-        height: 24vh;
+        height: 24.5vh;
         position: relative;
         border-radius: 8px;
         img {
