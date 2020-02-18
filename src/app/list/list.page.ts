@@ -43,25 +43,24 @@ export class ListPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
       this.col = params["col"];
-      this.category =String(params["category"]).toLowerCase();
+      this.category = String(params["category"]).toLowerCase();
     });
   }
 
   ngOnInit() {
-    console.log("my col name ", this.category);
-    
+
     //this.alertView = false;
     setTimeout(() => {
       this.loaderAnimate = false;
     }, 2000);
     //console.log(); 
-    this.getAllProduct("dateAdded");
-    this.getSales("timestamp");
+    this.getAllProduct();
+    this.getSales();
     //this.getWishlist();
     // this.checkUser();
   }
 
-  getSideMenu(){
+  getSideMenu() {
     this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
@@ -151,10 +150,10 @@ export class ListPage implements OnInit {
           this.viewBackdrop = !this.viewBackdrop
           this.getWishlist();
         } else {
-            this.presentAlertConfirm();
+          this.presentAlertConfirm();
         }
       })
-    }, 0); 
+    }, 0);
   }
 
   /* list() {
@@ -163,23 +162,21 @@ export class ListPage implements OnInit {
   /*  async productCategory() {
  
    } */
-  getSales(order) {
-    this.dbPromo.orderBy(order, 'asc').onSnapshot((res) => {
+  getSales() {
+    this.dbPromo.onSnapshot((res) => {
       this.promo = [];
       res.forEach((doc) => {
         this.promo.push({ info: doc.data(), id: doc.id });
       })
-      // console.log('Sales arr ',this.promo);
-
     })
   }
-  getAllProduct(order) {
-    this.dbProduct.doc(this.col).collection(this.collectionName).orderBy(order, 'desc').onSnapshot((res) => {
+  getAllProduct() {
+    this.dbProduct.doc(this.col).collection(this.collectionName).where('hideItem', '==', false).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
-        if (doc.data().hideItem === false) {
-          this.myProduct.push({ info: doc.data(), id: doc.id });
-        }
+        // if (doc.data().hideItem === false) {
+        this.myProduct.push({ info: doc.data(), id: doc.id });
+        // }
       })
     })
   }
@@ -188,7 +185,7 @@ export class ListPage implements OnInit {
     // this.getSales(this.sortVal);
   } */
   sortSales() {
-    this.getSales(this.sortSale);
+    this.getSales();
   }
   viewitem(id, data) {
     let navigationExtras: NavigationExtras = {
@@ -261,15 +258,15 @@ export class ListPage implements OnInit {
     }, 0);
   }
   wishlist() {
-       setTimeout(() => {
+    setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           this.router.navigateByUrl('wishlist');
         } else {
-            this.presentAlertConfirm();
+          this.presentAlertConfirm();
         }
       })
-    }, 0); 
+    }, 0);
   }
   async toastController(message) {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
@@ -287,46 +284,55 @@ export class ListPage implements OnInit {
     this.viewReviews = !this.viewReviews
   }
   filtered() {
-    //console.log(val);
     this.viewFilter = !this.viewFilter
   }
 
   priced() {
-    this.viewPrice = !this.viewPrice
+    this.viewPrice = !this.viewPrice;
   }
-
-
   colorOpt(info) {
-    //console.log(info.path[0].innerHTML);
-    //this.myProduct.sort(info.path[0].innerHTML);
-    // this.myProduct = [];
-    this.dbProduct.doc(this.col).collection(this.collectionName).where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
-      this.myProduct = [];
-      res.forEach((doc) => {
-        this.myProduct.push({ info: doc.data(), id: doc.id });
-        // console.log('These products ', this.myProduct); 
+    if (this.collectionName === 'sales') {
+      this.promo = [];
+      this.dbPromo.where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
+        res.forEach((doc) => {
+          this.promo.push({ info: doc.data(), id: doc.id });
+        })
       })
-      this.rev();
-    })
+    } else {
+      this.dbProduct.doc(this.col).collection(this.collectionName).where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
+        this.myProduct = [];
+        res.forEach((doc) => {
+          this.myProduct.push({ info: doc.data(), id: doc.id });
+        })
+        this.rev();
+      })
+    }
+
   }
   setPriceRange(param) {
     this.price = param;
-    //console.log("Price range = "+ this.price);
-    if (this.price >= 0) {
-      this.myProduct = [];
-      this.dbProduct.doc(this.col).collection(this.collectionName).where('price', '>=', param)
-        .onSnapshot((res) => {
-          //console.log(res.docs);
+    if (this.collectionName === 'sales') {
+      if (this.price >= 0) {
+        this.promo = [];
+        this.dbPromo.where('saleprice', '>=', param).onSnapshot((res) => {
           res.forEach((doc) => {
-            // this.db.collection('builderProfile').get().then(snapshot => {
-            //   snapshot.forEach(doc => {
-            this.myProduct.push({ info: doc.data(), id: doc.id });
-            // this.bUID = doc.id;
-            //   });
-            //   console.log('Builders: ', this.builder);
-            // });
+            this.promo.push({ info: doc.data(), id: doc.id });
           })
         })
+      }
+    } else {
+      if (this.price >= 0) {
+        this.dbProduct.doc(this.col).collection(this.collectionName).where('price', '>=', param)
+          .onSnapshot((res) => {
+            this.myProduct = [];
+            res.forEach((doc) => {
+              if (doc.data().hideItem === false) {
+                this.myProduct.push({ info: doc.data(), id: doc.id });
+              }
+            })
+          })
+      }
     }
+
   }
 }
