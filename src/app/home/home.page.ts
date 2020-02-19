@@ -486,19 +486,36 @@ export class HomePage implements OnInit {
   }
 
   goList(data) {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        data: data,
-        col: 'Specials',
-        //currency: JSON.stringify(currency),
-        // refresh: refresh
-      }
-    };
-    //this.router.navigate(['list', data])
-    this.navCtrl.navigateForward(['list', data], navigationExtras);
+    if (this.sales.length===0) {
+      this.alertSample('We have no promotions so far. Check again later or continue shopping.')
+      // this.toastController();
+    } else {
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          data: data,
+          col: 'Specials',
+          //currency: JSON.stringify(currency),
+          // refresh: refresh
+        }
+      };
+      //this.router.navigate(['list', data])
+      this.navCtrl.navigateForward(['list', data], navigationExtras);
+    } 
   }
-
-
+  async alertSample(message) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      message: message,
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          cssClass: 'danger',
+        }
+      ]
+    });
+    await alert.present();
+  } 
  
   switchView(state) {
     switch (state) {

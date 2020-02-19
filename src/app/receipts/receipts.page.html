@@ -108,7 +108,7 @@
         </div>
       <!-- </div> -->
 
-      <div class="buttonz">
+      <div class="buttonz" *ngIf="order.receipt">
         <ion-button (click)=" downloadPDF(order.receipt)" color="transparent">
           DOWNLOAD COPY
         </ion-button>

@@ -54,9 +54,10 @@ export class ListPage implements OnInit {
       this.loaderAnimate = false;
     }, 2000);
     //console.log(); 
+
     this.getAllProduct();
     this.getSales();
-    //this.getWishlist();
+    this.getWishlist();
     // this.checkUser();
   }
 
