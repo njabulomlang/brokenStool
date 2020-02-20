@@ -222,19 +222,23 @@
         <p>{{prod.data.description}}</p>
       </div>
       <p>Available sizes</p>
+      <div class="sizess">
       <div class="sizes" *ngFor="let size of prod.data.size;let i=index">
         <ion-label for="size">{{size}}</ion-label>
         <ion-checkbox  (ionChange)="sizeChosen($event,size, i)" color="transparent"
           [ngClass]="{'sizeStyle':myArr[i]==i}">
         </ion-checkbox>
       </div>
+    </div>
       <p>Colours</p>
+      <div class="sizess">
       <div class="colours"  *ngFor="let c of prod.data.color; let i=index">
         <ion-label for="c">{{c}}</ion-label>
         <ion-checkbox style="background: whitesmoke; border-radius: 6px;"
           (ionChange)="colorChosen($event,c, i)" color="transparent" [ngClass]="{'colorStyle':colorArr[i]==i}">
         </ion-checkbox>
       </div>
+  </div>
       <div class="quantity">
         <p>Quantity</p>
         <ion-button (click)="minus()" color="transparent" style="background: rgb(212, 212, 212);
