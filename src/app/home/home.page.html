@@ -135,7 +135,10 @@
           <img src="https://i.pinimg.com/564x/7a/1c/b7/7a1cb7327a150b3441defdd37b7c3605.jpg">
 
 
-          <div class="itemname">
+          <div class="itemname" *ngIf="sales.length === 0">
+            <p>NO SALES FOR NOW</p>
+          </div>
+          <div class="itemname" *ngIf="sales.length !== 0">
             <p>SALES AND PROMOTIONS</p>
           </div>
         </div>
@@ -173,7 +176,7 @@
 
     <div class="Kwanga">
       <ion-item (click)="categories('kwanga')">
-        <label style="width: 100%">kwanga Apparel</label>
+        <label style="width: 100%">Kwanga Apparel</label>
         <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
 
