@@ -92,7 +92,6 @@ ion-toolbar {
       font-family: "Raleway";
       line-height: 10px;
 
-    
       .appname {
         display: block;
         width: 170px;
@@ -121,28 +120,59 @@ ion-toolbar {
       font-size: 0.7em;
     }
 
-    .sizes {
+    .sizess {
+      display: flex;
+      flex-wrap: wrap;
+      // flex-flow: row;
+      align-items: center;
+      width: 100%;
       margin: 5px;
-      font-size: 0.7em;
-      ion-button {
-        font-size: 1em;
+      .sizes {
+        margin: 3px;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        border: 1px solid rgb(204, 204, 204);
+        font-size: 12px;
         width: 14vw;
         color: black;
-        margin: 0 !important;
+        padding: 0 !important;  
+
+        ion-checkbox{
+          border: none !important;
+      
+        }
+      }
+
+      .colours{
+        margin: 3px;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        border: 1px solid rgb(204, 204, 204);
+        font-size: 12px;
+        width: 19vw;
+        color: black;
         padding: 0 !important;
-        border: 0.5px solid rgb(173, 173, 173);
       }
     }
 
-    .colours {
-      margin: 5px;
-      font-size: 0.7em;
-      ion-button {
-        margin: 2px;
-        width: 14vw;
+    // .sizes {
+    //   margin: 5px;
+    //   font-size: 0.7em;
+    //   ion-button {
+    //     font-size: 1em;
+    //     width: 14vw;
+    //     color: black;
+    //     margin: 0 !important;
+    //     padding: 0 !important;
+    //     border: 0.5px solid rgb(173, 173, 173);
+    //   }
+    // }
 
-        font-size: 1em;
-      }
+    .colours {
+      display: flex;
+      flex-flow: row;
     }
 
     .quantity {

@@ -5,6 +5,12 @@
 * {
   outline: none !important;
 }
+
+.checkbox-icon{
+  button{
+    border: none !important;
+  }
+}
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
