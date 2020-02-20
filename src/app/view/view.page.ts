@@ -306,7 +306,9 @@ export class ViewPage implements OnInit {
     // console.log("event ", ev);
     if (ev.detail.checked === true) {
       this.myArr.push(data)
+      this.plus();
     } else {
+      this.minus()
       this.myArr.splice(this.myArr.indexOf(data), 1);
     }
     // console.log("my sizes ",this.myArr);
