@@ -51,16 +51,18 @@ ion-toolbar {
 
     .saleitems {
       width: 100vw;
-      // height: 65vw;
+
+      align-items: center;
       display: flex;
       overflow-x: auto;
-      // margin: 5px;
 
       .image {
         margin: 8px;
         margin-bottom: 10px;
         min-width: 50vw;
         height: 30vh;
+        width: 100%;
+        align-items: center;
         border-radius: 5px;
         position: relative;
 

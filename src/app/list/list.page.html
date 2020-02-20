@@ -92,8 +92,9 @@
 <ion-content fullscreen>
 
 
+
   <div class="container">
-    <div class="top">
+    <div class="top" >
       <div class="pagename">
         <h1 style="text-transform: uppercase; letter-spacing: 2px; font-size: 20px;"><b>{{collectionName}}</b></h1>
       </div>
@@ -105,15 +106,16 @@
           <p style="font-size: 16px">{{promo.length}} item(s)</p>
         </div>
         <div class="filter" style="cursor: pointer;">
-
+  
           <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer; font-size: 20px;">Filter <ion-icon slot="end"
               name="funnel">
             </ion-icon>
           </p>
         </div>
-
+  
       </div>
     </div>
+
     <div class="cards" *ngIf="collectionName!=='sales'">
       <div class="card" *ngFor="let p of myProduct, let i=index">
         <img src="{{p.info.pictureLink}}" (click)="viewitem(p.id, p.info)">
@@ -267,7 +269,7 @@
       <div class="heading">
         <p>Filter Items By:</p>
 
-        <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
+        <!-- <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon> -->
 
       </div>
       <div class="line"></div>
@@ -358,7 +360,7 @@
 
   <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
     <div class="heading">
-      <ion-icon slot="icon-only" name="close"></ion-icon>
+      <!-- <ion-icon slot="icon-only" name="close"></ion-icon> -->
     </div>
 
     <div class="side_buttons">

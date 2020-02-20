@@ -33,7 +33,7 @@
       </div>
 
       <ion-buttons slot="end">
-        
+
         <ion-button id="rate" (click)="presentPopover($event)">
           <ion-icon slot="start" name="star"></ion-icon> Rate This Product
         </ion-button>
@@ -84,6 +84,12 @@
     <div class="image" *ngFor="let prod of unitProduct">
       <img src="{{prod.data.pictureLink}}">
 
+
+
+    </div>
+
+    <div class="productinfo" *ngFor="let prod of unitProduct">
+
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating id="rating" #rating activeIcon="ios-star" defaultIcon="ios-star-outline"
@@ -101,10 +107,6 @@
         </div>
       </div>
 
-
-    </div>
-
-    <div class="productinfo" *ngFor="let prod of unitProduct">
       <div class="add">
         <ion-fab-button color="transparent" (click)="toBusket()">
           <ion-icon name="basket"></ion-icon>
@@ -191,6 +193,12 @@
   <div class="container" *ngIf="col==='Specials'">
     <div class="image" *ngFor="let prod of mySale">
       <img src="{{prod.data.pictureLink}}">
+
+
+
+    </div>
+
+    <div class="productinfo" *ngFor="let prod of mySale">
       <div class="iteminfo">
         <div class="itemname">
           <ionic4-star-rating style="outline: none !important;" #rating activeIcon="ios-star"
@@ -205,14 +213,9 @@
 
         <div class="price">
           <p style="text-decoration: line-through; font-size: 15px">{{prod.data.normalPrice | currency:'R'  }} </p>
-          <p style="font-size: 15px; color: maroon">{{prod.data.saleprice  | currency:'R' }}</p>
+          <p style="font-size: 15px; color: maroon; ">{{prod.data.saleprice  | currency:'R' }}</p>
         </div>
       </div>
-
-
-    </div>
-
-    <div class="productinfo" *ngFor="let prod of mySale">
       <div class="add">
         <ion-fab-button color="transparent" (click)="toBusket()">
           <ion-icon name="basket"></ion-icon>
@@ -586,7 +589,7 @@
 
     <div class="side_buttons">
 
-      <ion-button id="icon" routerLink= "/home" class="active" color="transparent">
+      <ion-button id="icon" routerLink="/home" class="active" color="transparent">
         Home
       </ion-button>
 
@@ -610,7 +613,7 @@
         About Us
       </ion-button>
 
-     
+
     </div>
   </div>
 

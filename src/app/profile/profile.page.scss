@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+      @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 
 ion-toolbar {
   --background: transparent;
@@ -462,46 +462,50 @@ ion-toolbar {
     position: absolute;
     z-index: 150;
     background: rgb(201, 201, 201);
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    // top: 56.5px;
-    // bottom: 40%;
-    // right: 10px;
     align-items: center;
     display: flex;
     flex-flow: column;
     overflow: hidden;
     justify-content: center;
     .heading {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      width: 90%;
-      margin: 5px;
+      width: 100vw;
       ion-icon {
         color: white;
         position: relative;
-        right: 10px;
-        top: 10px;
-        font-size: 30px;
+        right: -88%;
+        top: 15px;
+        margin: 10px;
+        font-size: 20px;
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
     }
     .btnz1 {
-      width: 80%;
+      width: 100%;
       margin: auto;
       display: flex;
       flex-flow: column;
       align-self: center;
+      position: absolute;
+      top: 30%;
       ion-button {
         border-bottom: 1px solid grey;
+        font-size: 10px;
         width: 70%;
         height: 6vh;
         margin: auto;
         text-align: center;
         color: black;
       }
+    }
+
+    p{
+      position: absolute;
+      bottom: 0 !important;
+      width: 100%;
+      text-align: center;
     }
   }
 
@@ -967,11 +971,12 @@ ion-toolbar {
     z-index: 150;
     background: rgb(201, 201, 201);
     min-width: 40%;
-    height: 100vh;
+    height: 100%;
     top: 98px;
     // bottom: 40%;
     right: 0;
     align-items: center;
+    justify-content: center;
     display: flex;
     flex-flow: column;
     overflow: hidden;
@@ -987,7 +992,7 @@ ion-toolbar {
       ion-icon {
         color: white;
         position: relative;
-        right: 20px;
+        right: 2px;
         top: 2.2vh;
         font-size: 1em;
         background: rgb(0, 0, 0);
