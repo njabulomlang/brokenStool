@@ -31,6 +31,23 @@
   font-family: "Poppins";
 }
 
+ion-checkbox {
+  --background: #ffffff;
+  --background-checked: #ffffff;
+  --border-color: #ffffff;
+  --border-color-checked: #530307;
+  --border-radius: 4px;
+  --border-style: solid;
+  --border-width: 1px;
+  --checkmark-color-width: #ffffff;
+  --checkmark-width: 30px;
+  --size: 18px;
+  --transition: background-color 15ms linear;
+  checkbox-icon{
+    color: black;
+  }
+}
+
 ion-button {
   overflow: hidden;
 }
