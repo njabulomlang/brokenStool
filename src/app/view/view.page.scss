@@ -44,6 +44,7 @@ ion-toolbar {
   display: flex;
   flex-flow: column;
   align-items: center;
+  height: 100%;
 
   .image {
     position: relative;
@@ -58,11 +59,26 @@ ion-toolbar {
       object-fit: cover;
       opacity: 0.8;
     }
+  }
+
+  .productinfo {
+    display: flex;
+    flex-flow: column;
+    width: 90vw;
+    // height: 60vh;
+    background: white;
+    z-index: 5;
+    position: relative;
+    bottom: 20vh;
+
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(184, 184, 184);
 
     .iteminfo {
       z-index: 5;
       position: absolute;
-      top: 45%;
+      bottom: 100%;
       left: 5vw;
       display: flex;
       flex-flow: row;
@@ -76,6 +92,7 @@ ion-toolbar {
       font-family: "Raleway";
       line-height: 10px;
 
+    
       .appname {
         display: block;
         width: 170px;
@@ -85,21 +102,6 @@ ion-toolbar {
         text-align: left !important;
       }
     }
-  }
-
-  .productinfo {
-    display: flex;
-    flex-flow: column;
-    width: 90vw;
-    // height: 60vh;
-    background: white;
-    z-index: 5;
-    position: absolute;
-    top: 50%;
-
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    box-shadow: 5px 5px 10px rgb(184, 184, 184);
 
     .add {
       position: absolute;
@@ -133,14 +135,12 @@ ion-toolbar {
     }
 
     .colours {
-      // position: relative;
-      // bottom: 20px;
       margin: 5px;
       font-size: 0.7em;
       ion-button {
         margin: 2px;
         width: 14vw;
-        // height: 8vw;
+
         font-size: 1em;
       }
     }
@@ -224,8 +224,8 @@ ion-toolbar {
   }
 }
 
-@media only screen and (min-width: 1025px){
-  .sidemenu{
+@media only screen and (min-width: 1025px) {
+  .sidemenu {
     display: none;
   }
 }
@@ -663,9 +663,9 @@ ion-toolbar {
   }
 }
 
-@media only screen and (max-width: 1024px){
-  .icon1{
-display: none ;
+@media only screen and (max-width: 1024px) {
+  .icon1 {
+    display: none;
   }
 
   .viewMenu {
@@ -681,7 +681,7 @@ display: none ;
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  
+
     .heading {
       display: flex;
       flex-flow: row;
@@ -689,7 +689,7 @@ display: none ;
       width: 100%;
       // text-align: center;
       margin: 5px;
-  
+
       ion-icon {
         color: white;
         position: relative;
@@ -699,7 +699,7 @@ display: none ;
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-  
+
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -709,12 +709,12 @@ display: none ;
       }
     }
 
-    .side_buttons{
+    .side_buttons {
       display: flex;
       flex-flow: column;
       position: relative;
       top: 150px;
-      ion-button{
+      ion-button {
         color: rgb(82, 82, 82);
         margin: 5px;
         height: 50px;
@@ -723,9 +723,8 @@ display: none ;
         border-bottom: 2px solid rgb(255, 255, 255);
       }
     }
-  
   }
-  
+
   .closeMenu {
     position: absolute;
     z-index: 150;
