@@ -67,7 +67,8 @@ export class PaymentPage implements OnInit {
   }
   placeOrder() {
       let docname = 'ZXY' + Math.floor(Math.random() * 10000000);
-      this.dbOrder.doc(docname).set({ product: this.myOrder, timestamp: new Date().getTime(), status: 'received', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal() }).then(() => {
+      this.dbOrder.doc(docname).set({ product: this.myOrder, timestamp: new Date().getTime(), status: 'received', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal(),
+      deliveryType: this.deliveryType, deliveryCost : this.delCost }).then(() => {
         this.prodCart.forEach((i) => {
           this.dbCart.doc(i.id).delete().then(()=>{
             this.alertConfirm();
