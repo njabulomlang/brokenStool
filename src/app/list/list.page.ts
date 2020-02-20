@@ -172,7 +172,18 @@ export class ListPage implements OnInit {
     this.dbPromo.onSnapshot((res) => {
       this.promo = [];
       res.forEach((doc) => {
-        this.promo.push({ info: doc.data(), id: doc.id });
+        if (this.myWishlist.length === 0) {
+          this.promo.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
+        } else {
+          this.myWishlist.forEach((item) => {
+            if (item.id === doc.id) {
+              this.clr = 'heart';
+            } else {
+              this.clr = 'heart-empty'
+            }
+            this.promo.push({ info: doc.data(), id: doc.id, wish: this.clr });
+          })
+        }
       })
     })
   }
@@ -223,7 +234,6 @@ export class ListPage implements OnInit {
     this.navCtrl.navigateForward(['view', id], navigationExtras);
   }
   wishList(id, data, index) {
-
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
@@ -260,13 +270,17 @@ export class ListPage implements OnInit {
           this.heartIndex = index
           this.dbWishlist.doc(id).get().then((res) => {
             if (res.exists == true) {
-              this.toastController('Product already in wishlist..');
+              this.dbWishlist.doc(id).delete().then((res) => {
+                this.promo[index].wish = 'heart-empty';
+                this.toastController('Removed from wishlist..');
+              })
             } else {
               this.dbWishlist.doc(res.id).set({
                 customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
                 image: data.pictureLink, id: id, category: this.collectionName,
                 brand: this.col
               }).then(() => {
+                this.promo[index].wish = 'heart';
                 this.toastController('Added to wishlist..');
                 //this.router.navigateByUrl('basket');
               })
