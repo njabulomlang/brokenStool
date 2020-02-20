@@ -32,11 +32,6 @@ export class PopoverComponent implements OnInit {
       } else {
         this.rateNow = true;
       }
-     // console.log('Read only ',this.rateNow);
-      
-     /*  res.forEach((doc) => {
-        this.myRatings.push(doc.data().rating)
-      }) */
     }) 
     // console.log('Collection ', this.navParams.get('col'), 'Doc ', this.navParams.get('doc'));
   }

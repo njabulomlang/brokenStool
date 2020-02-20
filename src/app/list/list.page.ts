@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
 import { NavController, ToastController, AlertController } from '@ionic/angular';
@@ -37,8 +37,9 @@ export class ListPage implements OnInit {
   viewSideMenu = false;
   alertView: boolean = false;
   category = "";
+  clr = "";
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController,
-    public alertCtrl: AlertController, private localSt: LocalStorageService) {
+    public alertCtrl: AlertController, private localSt: LocalStorageService, private elementRef: ElementRef) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
     this.route.queryParams.subscribe(params => {
       this.doc_data = params["data"];
@@ -70,9 +71,13 @@ export class ListPage implements OnInit {
       this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
         this.myWish = res.size;
         this.myWishlist = [];
-        res.forEach((doc) => {
+        // this.myProduct[]
+        for (let j = 0; j < res.docs.length; j++) {
+          this.myWishlist.push({ info: res.docs[j].data(), id: res.docs[j].id })
+        }
+        /* res.forEach((doc) => {
           this.myWishlist.push({ info: doc.data(), id: doc.id });
-        })
+        }) */
       })
     } else {
       this.presentAlertConfirm();
@@ -175,10 +180,20 @@ export class ListPage implements OnInit {
     this.dbProduct.doc(this.col).collection(this.collectionName).where('hideItem', '==', false).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
-        // if (doc.data().hideItem === false) {
-        this.myProduct.push({ info: doc.data(), id: doc.id });
-        // }
+        if (this.myWishlist.length === 0) {
+          this.myProduct.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
+        } else {
+          this.myWishlist.forEach((item) => {
+            if (item.id === doc.id) {
+              this.clr = 'heart';
+            } else {
+              this.clr = 'heart-empty'
+            }
+            this.myProduct.push({ info: doc.data(), id: doc.id, wish: this.clr });
+          })
+        }
       })
+
     })
   }
   /* orderBy() {
@@ -208,19 +223,24 @@ export class ListPage implements OnInit {
     this.navCtrl.navigateForward(['view', id], navigationExtras);
   }
   wishList(id, data, index) {
+
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           this.heartIndex = index;
           this.dbWishlist.doc(id).get().then((res) => {
             if (res.exists == true) {
-              this.toastController('Product already in wishlist..');
+              this.dbWishlist.doc(id).delete().then((res) => {
+                this.myProduct[index].wish = 'heart-empty';
+                this.toastController('Removed from wishlist..');
+              })
             } else {
               this.dbWishlist.doc(res.id).set({
                 customerUID: firebase.auth().currentUser.uid, price: data.price,
                 image: data.pictureLink, name: data.name, id: id, category: this.collectionName,
                 brand: this.col
               }).then(() => {
+                this.myProduct[index].wish = 'heart';
                 this.toastController('Added to wishlist..');
               })
             }
@@ -231,6 +251,7 @@ export class ListPage implements OnInit {
         }
       })
     }, 0);
+    // }
   }
   wishListSale(id, data, index) {
     setTimeout(() => {
