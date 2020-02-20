@@ -43,7 +43,7 @@
 
       <ion-button id="icon" (click)="wish()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number" *ngIf="myWish>0">{{myWish}}</p>
+        <p id="number">{{myWish}}</p>
       </ion-button>
 
       <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
@@ -63,7 +63,7 @@
     <ion-buttons slot="end">
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number" *ngIf="myWish>0">{{myWish}}</p>
+        <p id="number">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
@@ -125,8 +125,7 @@
           </div>
           <div id="icon">
             <ion-button (click)="wishList(p.id, p.info, i)" color="transparent" style="overflow: hidden;">
-              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: maroon;" *ngIf="p.wish==='heart'"></ion-icon>
-              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="p.wish!=='heart'"></ion-icon>
+              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1.2em; color: black"></ion-icon>
             </ion-button>
             <!-- <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>-->
           </div>
@@ -143,9 +142,8 @@
             <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-button (click)="wishListSale(s.id, s.info, i)" color="transparent">
-              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: maroon;" *ngIf="s.wish==='heart'"></ion-icon>
-              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="s.wish!=='heart'"></ion-icon>
+            <ion-button (click)="wishList(s.id, s.info, i)" color="transparent">
+              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1em; color: black"></ion-icon>
             </ion-button>
             <!-- <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info,i)" ></ion-icon> -->
           </div>
@@ -236,10 +234,10 @@
           </div>
           <div id="icon">
             <ion-button (click)="wishList(p.id, p.info, i)" color="transparent">
-              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: maroon;" *ngIf="p.wish==='heart'"></ion-icon>
-              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="p.wish!=='heart'"></ion-icon>
+              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 20px; color: black"></ion-icon>
             </ion-button>
           </div>
+
         </div>
       </div>
 
@@ -252,11 +250,8 @@
             <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-button (click)="wishListSale(s.id, s.info, i)" color="transparent">
-              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: maroon;" *ngIf="s.wish==='heart'"></ion-icon>
-              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="s.wish!=='heart'"></ion-icon>
-            </ion-button>
-            <!-- <ion-icon slot="end" name="heart-empty"  (click)="wishListSale(s.id, s.info, i)"></ion-icon> -->
+
+            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info, i)"></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
@@ -274,7 +269,7 @@
       <div class="heading">
         <p>Filter Items By:</p>
 
-        <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
+        <!-- <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon> -->
 
       </div>
       <div class="line"></div>
