@@ -310,6 +310,7 @@ export class ViewPage implements OnInit {
     } else {
       this.myArr.splice(this.myArr.indexOf(data), 1);
       
+      
     }
     
     this.sizeIndex = index
@@ -320,6 +321,7 @@ export class ViewPage implements OnInit {
       this.colorArr.push(color)
     } else {
       this.colorArr.splice(this.colorArr.indexOf(color), 1);
+      console.log('MY color ', ev);
     }
     
     this.color = color;
