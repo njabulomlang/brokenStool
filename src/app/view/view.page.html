@@ -423,7 +423,7 @@
         <p>Available sizes</p>
 
         <ion-button *ngFor="let size of prod.data.size;let i=index" (click)="sizeChosen($event,size, i)" color="transparent"
-          [ngClass]="{'sizeStyle':myArr[i]==i}">
+          [ngClass]="{'sizeStyle':sizeIndex==i}">
           {{size}}
         </ion-button>
 
@@ -431,7 +431,7 @@
       <div class="colours">
         <p>Colours</p>
         <ion-button *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;"
-          (click)="colorChosen($event,c, i)" color="transparent" [ngClass]="{'colorStyle':colorArr[i]==i}">
+          (click)="colorChosen($event,c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
           <p style="color: rgb(146, 146, 146);">{{c}}</p>
         </ion-button>
 

@@ -321,7 +321,7 @@ export class ViewPage implements OnInit {
       this.colorArr.push(color)
     } else {
       this.colorArr.splice(this.colorArr.indexOf(color), 1);
-      console.log('MY color ', ev);
+      // console.log('MY color ', ev);
     }
     
     this.color = color;
