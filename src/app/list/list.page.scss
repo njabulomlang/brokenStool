@@ -11,6 +11,10 @@ ion-toolbar {
   }
 }
 
+ion-content {
+  height: 100%;
+}
+
 .sizeStyle {
   background: rgba(128, 0, 0, 0.712);
 }
@@ -525,7 +529,6 @@ ion-toolbar {
 }
 
 @media only screen and (min-width: 1024px) {
- 
   .container {
     display: none;
     width: 0 !important;
@@ -590,8 +593,9 @@ ion-toolbar {
   .web_view {
     min-width: 800px;
     max-width: 1200px;
-    height: 100%;
     margin: auto;
+border: 2px,solid red;
+height: 100% !important;
     .top {
       width: 100%;
       padding: 10px;
@@ -631,13 +635,15 @@ ion-toolbar {
       padding: 10px;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       width: 100%;
-      object-fit: cover;
+      // height: 90%;
       padding: 16px;
+      // overflow-y: auto;
       justify-content: space-evenly;
       justify-items: center;
       position: relative;
-
+      // border: 2px solid green;
       .card {
         width: 22%;
         height: fit-content;
@@ -647,7 +653,7 @@ ion-toolbar {
 
         img {
           width: 100%;
-          // height: 35%;
+          height: 35%;
           border-radius: 5px;
           box-shadow: 2px 2px 5px rgb(184, 184, 184);
         }
@@ -781,7 +787,7 @@ ion-toolbar {
 
       .prices {
         cursor: pointer;
-        ion-item{
+        ion-item {
           width: 100%;
         }
       }
@@ -1117,8 +1123,8 @@ ion-toolbar {
   }
 }
 
-@media only screen and (min-width: 1025px){
-  .sidemenu{
+@media only screen and (min-width: 1025px) {
+  .sidemenu {
     display: none;
   }
 }
@@ -1587,7 +1593,6 @@ ion-toolbar {
       }
     }
   }
-
 }
 
 ion-footer {
