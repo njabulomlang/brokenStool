@@ -65,16 +65,24 @@
       </div>
 
       <div class="list">
-        <table *ngFor="let o of myOrder">
-          <tr *ngFor="let b of o.product">
-            <td>{{b.product_name}}</td>
-            <td>{{b.cost*b.quantity | currency:'R'}}</td>
+        <table >
+          <tr *ngFor="let p of myOrder">
+            <td>{{p.product_name}}</td>
+            <td>{{p.cost*p.quantity | currency:"R"}}</td>
           </tr>
-
           <tr>
             <td>Delivery Fee</td>
-            <td>{{delCost|currency:'R'}}</td>
+            <td>{{delCost | currency:"R"}}</td>
           </tr>
+
+         <!--  <tr>
+            <td>QQRScxc ssfs13</td>
+            <td>12 Nov 2019</td>
+          </tr> -->
+          <!-- <tr>
+            <td>Delivery Fee</td>
+            <td>{{delCost|currency:'R'}}</td>
+          </tr> -->
           <!-- Cart Total- -->
           <tr>
             <th>TOTAL</th>

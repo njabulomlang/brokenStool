@@ -126,7 +126,6 @@
         <ion-checkbox  (ionChange)="sizeChosen($event,size, i)" color="transparent"
           [ngClass]="{'sizeStyle':myArr[i]==i}" slot="end">
         </ion-checkbox>
-
       </div>
       </div>
       
@@ -134,20 +133,9 @@
       <div class="sizess">
       <div class="colours"  *ngFor="let c of prod.data.color; let i=index">
         <ion-label for="c">{{c}}</ion-label>
-        <!--  <ion-item *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;">
-          <ion-label>{{c}}</ion-label>
-          <ion-checkbox (ionChange)="onBoolChenged(c,i)"></ion-checkbox>
-        </ion-item> -->
         <ion-checkbox style="background: whitesmoke; border-radius: 6px;"
           (ionChange)="colorChosen($event,c, i)" color="transparent" [ngClass]="{'colorStyle':colorArr[i]==i}">
-          <!-- <p style="color: rgb(146, 146, 146);">{{c}}</p> -->
         </ion-checkbox>
-        <!-- <ion-button (click)="onClick()" color="transparent" style="background: blue; border-radius: 6px;">
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent" style="background: green; border-radius: 6px;">
-        </ion-button>
-        <ion-button (click)="onClick()" color="transparent" style="background: red; border-radius: 6px;">
-        </ion-button> -->
       </div>
       </div>
       <div class="quantity">
@@ -233,22 +221,19 @@
         <p><b>About Product</b></p>
         <p>{{prod.data.description}}</p>
       </div>
-      <div class="sizes">
-        <p>Available sizes</p>
-
-        <ion-button *ngFor="let size of prod.data.size;let i=index" (click)="sizeChosen(size, i)" color="transparent"
-          [ngClass]="{'sizeStyle':sizeIndex==i}">
-          {{size}}
-        </ion-button>
-
+      <p>Available sizes</p>
+      <div class="sizes" *ngFor="let size of prod.data.size;let i=index">
+        <ion-label for="size">{{size}}</ion-label>
+        <ion-checkbox  (ionChange)="sizeChosen($event,size, i)" color="transparent"
+          [ngClass]="{'sizeStyle':myArr[i]==i}">
+        </ion-checkbox>
       </div>
-      <div class="colours">
-        <p>Colours</p>
-        <ion-button *ngFor="let c of prod.data.color; let i=index" style="background: whitesmoke; border-radius: 6px;"
-          (click)="colorChosen(c, i)" color="transparent" [ngClass]="{'colorStyle':colorIndex==i}">
-          <p style="color: rgb(146, 146, 146);">{{c}}</p>
-        </ion-button>
-
+      <p>Colours</p>
+      <div class="colours"  *ngFor="let c of prod.data.color; let i=index">
+        <ion-label for="c">{{c}}</ion-label>
+        <ion-checkbox style="background: whitesmoke; border-radius: 6px;"
+          (ionChange)="colorChosen($event,c, i)" color="transparent" [ngClass]="{'colorStyle':colorArr[i]==i}">
+        </ion-checkbox>
       </div>
       <div class="quantity">
         <p>Quantity</p>

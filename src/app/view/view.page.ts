@@ -306,24 +306,21 @@ export class ViewPage implements OnInit {
     // console.log("event ", ev);
     if (ev.detail.checked === true) {
       this.myArr.push(data)
-      this.plus();
+      
     } else {
-      this.minus()
       this.myArr.splice(this.myArr.indexOf(data), 1);
+      
     }
-    // console.log("my sizes ",this.myArr);
     
     this.sizeIndex = index
     this.my_size = data;
   }
-
   colorChosen(ev,color, index) {
     if (ev.detail.checked === true) {
       this.colorArr.push(color)
     } else {
       this.colorArr.splice(this.colorArr.indexOf(color), 1);
     }
-    //  console.log("my colors ",this.colorArr);
     
     this.color = color;
     this.colorIndex = index
@@ -423,9 +420,9 @@ export class ViewPage implements OnInit {
           } else {
             this.dbCart.add({
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
-                product_name: details.name, size: this.my_size,
+                product_name: details.name, size: this.myArr,
                 quantity: this.quantity, cost: details.saleprice, picture: details.pictureLink,
-                color: this.color
+                color: this.colorArr
               }]
             }).then(() => {
               this.toastController('Added to basket')
