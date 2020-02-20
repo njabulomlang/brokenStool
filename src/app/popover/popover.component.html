@@ -17,15 +17,16 @@
         </ionic4-star-rating> -->
         </div>
         <br>
+        <div class="buttonz" *ngIf="myRate">
+            <p>You rated with {{myRate}} stars before </p>
+        </div>
         <div class="buttonz" *ngIf="!myRate">
             <ion-button (click)="dismissPopover()" color="transparent">
                 DONE
             </ion-button>
         </div>
 
-        <div class="buttonz" *ngIf="!myRate">
-            <p>You have rated with {{myRate}} before </p>
-        </div>
+      
     </div>
 
     <div class="web_view">
