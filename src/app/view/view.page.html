@@ -121,6 +121,7 @@
       <div class="sizess">
   
         <div class="sizes" *ngFor="let size of prod.data.size;let i=index">
+         
         <ion-label for="size">{{size}}</ion-label>
         <ion-checkbox  (ionChange)="sizeChosen($event,size, i)" color="transparent"
           [ngClass]="{'sizeStyle':myArr[i]==i}" slot="end">

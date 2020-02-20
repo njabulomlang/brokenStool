@@ -139,7 +139,9 @@ ion-toolbar {
         padding: 0 !important;  
 
         ion-checkbox{
-          border: none !important;
+          .aux-input{
+            border: none;
+          }
       
         }
       }
@@ -1022,3 +1024,5 @@ ion-footer {
     // transform: rotate(360deg);
   }
 }
+
+
