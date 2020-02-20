@@ -44,7 +44,7 @@
 
       <ion-button id="icon" (click)="wish()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number">{{myWish}}</p>
+        <p id="number" *ngIf="myWish>0">{{myWish}}</p>
       </ion-button>
 
       <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
@@ -63,7 +63,7 @@
     <ion-buttons slot="end">
       <ion-button id="icon" (click)="wishlist()">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number">{{myWish}}</p>
+        <p id="number" *ngIf="myWish>0">{{myWish}}</p>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
