@@ -38,7 +38,7 @@ export class ViewPage implements OnInit {
   boolCheck: boolean = false;
   viewCart = false;
   viewBackdrop = false;
-  viewSideMenu =  false;
+  viewSideMenu = false;
   prodCart = [];
   delCost: number;
   delType: string;
@@ -47,6 +47,8 @@ export class ViewPage implements OnInit {
   alertView: boolean = false;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
+  colorArr=[];
+  myArr = [];
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2, public alertCtrl: AlertController, public plt: Platform, private localSt: LocalStorageService) {
@@ -60,7 +62,7 @@ export class ViewPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-     this.loaderAnimate = false; 
+      this.loaderAnimate = false;
     }, 2000);
     if (this.plt.is('cordova')) {
       this.cordova = true
@@ -84,7 +86,7 @@ export class ViewPage implements OnInit {
     })
   }
 
-  getSideMenu(){
+  getSideMenu() {
     this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
@@ -167,30 +169,31 @@ export class ViewPage implements OnInit {
     return total;
   }
   placeOrder(info) {
-      let myArr = [];
-      let doc = [];
-      for (let i = 0; i < info.length; i++) {
-        // const element = info[i].data;
-        /* myArr = info[i].data.product */
-        doc.push(info[i].id)
-        //console.log('my info ', );
-        info[i].data.product.forEach(item => {
-          myArr.push(item);
-        });
-      }
-      if (this.prodCart.length === 0) {
-        this.toastController('You cannot place order with empty basket');
-      } else {
-        let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
-        this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
-          status: 'received', userID: firebase.auth().currentUser.uid,
-           totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
-           }).then(() => {
-          doc.forEach((id) => {
-            this.dbCart.doc(id).delete();
-          })
+    let myArr = [];
+    let doc = [];
+    for (let i = 0; i < info.length; i++) {
+      // const element = info[i].data;
+      /* myArr = info[i].data.product */
+      doc.push(info[i].id)
+      //console.log('my info ', );
+      info[i].data.product.forEach(item => {
+        myArr.push(item);
+      });
+    }
+    if (this.prodCart.length === 0) {
+      this.toastController('You cannot place order with empty basket');
+    } else {
+      let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
+      this.dbOrder.doc(docname).set({
+        product: myArr, timestamp: new Date().getTime(),
+        status: 'received', userID: firebase.auth().currentUser.uid,
+        totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+      }).then(() => {
+        doc.forEach((id) => {
+          this.dbCart.doc(id).delete();
         })
-      }
+      })
+    }
   }
   getCart() {
     this.dbCart.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((info) => {
@@ -208,10 +211,10 @@ export class ViewPage implements OnInit {
           this.viewCart = !this.viewCart
           this.viewBackdrop = !this.viewBackdrop
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0); 
+    }, 0);
   }
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
@@ -284,27 +287,42 @@ export class ViewPage implements OnInit {
           });
           return await popover.present();
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
     }, 0);
- /*    const popover = await this.popoverController.create({
-      component: PopoverComponent,
-      event: ev,
-      translucent: true,
-      componentProps: {
-        col: this.col,
-        doc: this.doc_id
-      }
-    });
-    return await popover.present(); */
+    /*    const popover = await this.popoverController.create({
+         component: PopoverComponent,
+         event: ev,
+         translucent: true,
+         componentProps: {
+           col: this.col,
+           doc: this.doc_id
+         }
+       });
+       return await popover.present(); */
   }
-  sizeChosen(data, index) {
+  sizeChosen(ev, data, index) {
+    // console.log("event ", ev);
+    if (ev.detail.checked === true) {
+      this.myArr.push(data)
+    } else {
+      this.myArr.splice(this.myArr.indexOf(data), 1);
+    }
+    // console.log("my sizes ",this.myArr);
+    
     this.sizeIndex = index
     this.my_size = data;
   }
 
-  colorChosen(color, index) {
+  colorChosen(ev,color, index) {
+    if (ev.detail.checked === true) {
+      this.colorArr.push(color)
+    } else {
+      this.colorArr.splice(this.colorArr.indexOf(color), 1);
+    }
+    //  console.log("my colors ",this.colorArr);
+    
     this.color = color;
     this.colorIndex = index
   }
@@ -353,29 +371,29 @@ export class ViewPage implements OnInit {
         if (res) {
           this.router.navigateByUrl('basket');
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0);  
+    }, 0);
   }
   addToCart(id, details) {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           let descr = "";
-          if (this.my_size === "") {
+          if (this.myArr.length===0) {
             descr = "size"
-          } else if (this.color === "") {
+          } else if (this.colorArr.length===0) {
             descr = "color"
           }
-          if (this.my_size === "" || this.color === "") {
+          if (this.myArr.length===0 || this.colorArr.length===0) {
             this.toastController('Missing selection of ' + descr);
           } else {
             this.dbCart.add({
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
-                product_name: details.name, size: this.my_size,
+                product_name: details.name, size: this.myArr,
                 quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
-                color: this.color
+                color: this.colorArr
               }]
             }).then(() => {
               this.toastController('Added to basket')
