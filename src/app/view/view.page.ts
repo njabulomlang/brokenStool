@@ -302,30 +302,32 @@ export class ViewPage implements OnInit {
        });
        return await popover.present(); */
   }
-  sizeChosen(ev, data, index) {
+  sizeChosen( data, index) {
     // console.log("event ", ev);
-    if (ev.detail.checked === true) {
+ /*    if (ev.detail.checked === true) {
       this.myArr.push(data)
       
     } else {
       this.myArr.splice(this.myArr.indexOf(data), 1);
       
       
-    }
+    } */
     
     this.sizeIndex = index
     this.my_size = data;
+    console.log('MY size ', this.my_size);
   }
-  colorChosen(ev,color, index) {
-    if (ev.detail.checked === true) {
+  colorChosen(color, index) {
+  /*   if (ev.detail.checked === true) {
       this.colorArr.push(color)
     } else {
       this.colorArr.splice(this.colorArr.indexOf(color), 1);
       // console.log('MY color ', ev);
     }
-    
+     */
     this.color = color;
     this.colorIndex = index
+    console.log('MY color ', this.color);
   }
   plus() {
     this.quantity += 1
@@ -382,19 +384,19 @@ export class ViewPage implements OnInit {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           let descr = "";
-          if (this.myArr.length===0) {
+          if (this.my_size === "") {
             descr = "size"
-          } else if (this.colorArr.length===0) {
+          } else if (this.color === "") {
             descr = "color"
           }
-          if (this.myArr.length===0 || this.colorArr.length===0) {
+          if (this.my_size === "" || this.color === "") {
             this.toastController('Missing selection of ' + descr);
           } else {
             this.dbCart.add({
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
-                product_name: details.name, size: this.myArr,
+                product_name: details.name, size: this.my_size,
                 quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
-                color: this.colorArr
+                color: this.color, prod_id: id
               }]
             }).then(() => {
               this.toastController('Added to basket')
@@ -422,9 +424,9 @@ export class ViewPage implements OnInit {
           } else {
             this.dbCart.add({
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
-                product_name: details.name, size: this.myArr,
+                product_name: details.name, size: this.my_size,
                 quantity: this.quantity, cost: details.saleprice, picture: details.pictureLink,
-                color: this.colorArr
+                color: this.color, prod_id: id
               }]
             }).then(() => {
               this.toastController('Added to basket')

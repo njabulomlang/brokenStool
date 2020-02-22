@@ -59,7 +59,7 @@ export class ListPage implements OnInit {
     this.getAllProduct();
     this.getSales();
     this.getWishlist();
-    // this.checkUser();
+   
   }
 
   getSideMenu() {
@@ -67,21 +67,23 @@ export class ListPage implements OnInit {
     this.viewBackdrop = !this.viewBackdrop
   }
   getWishlist() {
-    if (firebase.auth().currentUser.uid) {
-      this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
-        this.myWish = res.size;
-        this.myWishlist = [];
-        // this.myProduct[]
-        for (let j = 0; j < res.docs.length; j++) {
-          this.myWishlist.push({ info: res.docs[j].data(), id: res.docs[j].id })
-        }
-        /* res.forEach((doc) => {
-          this.myWishlist.push({ info: doc.data(), id: doc.id });
-        }) */
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.dbWish.where('customerUID', '==', res.uid).onSnapshot((res) => {
+            this.myWish = res.size;
+            this.myWishlist = [];
+            // this.myProduct[]
+            for (let j = 0; j < res.docs.length; j++) {
+              this.myWishlist.push({ info: res.docs[j].data(), id: res.docs[j].id })
+            }
+            /* res.forEach((doc) => {
+              this.myWishlist.push({ info: doc.data(), id: doc.id });
+            }) */
+          })
+        } 
       })
-    } else {
-      this.presentAlertConfirm();
-    }
+    }, 0);
   }
   goList(data) {
     let navigationExtras: NavigationExtras = {

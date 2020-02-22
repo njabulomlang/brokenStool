@@ -71,9 +71,9 @@ export class PaymentPage implements OnInit {
       deliveryType: this.deliveryType, deliveryCost : this.delCost }).then(() => {
         this.prodCart.forEach((i) => {
           this.dbCart.doc(i.id).delete().then(()=>{
-            this.alertConfirm();
           });
         })
+        this.alertConfirm();
       })
   }
   Delivery() {
