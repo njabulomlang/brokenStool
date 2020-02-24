@@ -357,13 +357,25 @@ ion-toolbar {
     }
   }
 
+  .backdrop1 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+
   .viewwishlist {
-    position: absolute;
+    position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
     width: 20vw;
-    height: 100%;
-    top: 50px;
+    height: 90vh;
+    top: 97px;
     bottom: 40%;
     right: 0;
     align-items: center;
