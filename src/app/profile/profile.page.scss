@@ -1431,7 +1431,7 @@ ion-toolbar {
   }
 
   .backdrop1 {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
@@ -1441,11 +1441,11 @@ ion-toolbar {
   }
 
   .viewreviews {
-    position: absolute;
+    position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
     width: 25%;
-    height: 95%;
+    height: 90%;
     top: 98px;
     right: 0;
     align-items: center;
@@ -1596,11 +1596,11 @@ ion-toolbar {
   }
 
   .viewcart {
-    position: absolute;
+    position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
-    min-width: 40%;
-    height: 95%;
+    min-width: 25%;
+    height: 90%;
     top: 98px;
     right: 0;
     align-items: center;
