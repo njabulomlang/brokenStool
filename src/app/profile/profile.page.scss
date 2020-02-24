@@ -1,4 +1,4 @@
-      @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 
 ion-toolbar {
   --background: transparent;
@@ -21,7 +21,7 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     position: relative;
-    margin:  0;
+    margin: 0;
     padding: 0;
 
     img {
@@ -102,6 +102,7 @@ ion-toolbar {
     .edit {
       width: 100%;
       padding: 5px;
+      margin: auto;
       ion-input {
         width: 93vw;
         border: 1px solid rgb(255, 255, 255);
@@ -116,21 +117,22 @@ ion-toolbar {
         width: 100%;
         display: flex;
         flex-flow: row;
+        margin: 10px auto;
         #cancel {
           width: 45vw;
-          background: red;
+          background: rgb(0, 0, 36);
           border-radius: 8px;
         }
 
         #update {
           width: 45vw;
-          background: green;
+          background: maroon;
           border-radius: 8px;
         }
         ion-button {
           font-size: 0.8em;
           margin: 5px;
-          height: 10vw;
+          height: 8vw;
           border-radius: 10px;
           color: white;
           font-family: "Poppins";
@@ -259,8 +261,7 @@ ion-toolbar {
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation: backgroundmover 30s linear infinite;
 
-
-.loader {
+  .loader {
     width: 10em;
     height: 10em;
     font-size: 25px;
@@ -270,30 +271,30 @@ ion-toolbar {
     position: relative;
     animation: rotating 2s ease-in-out infinite;
     --direction: 1;
-}
+  }
 
-.loader::before,
-.loader::after {
-    content: '';
+  .loader::before,
+  .loader::after {
+    content: "";
     position: absolute;
     width: inherit;
     height: inherit;
     border-radius: 50%;
     box-sizing: border-box;
     top: -0.2em;
-}
+  }
 
-.loader::before {
+  .loader::before {
     border-top: 0.3em solid dodgerblue;
     transform: rotate(120deg);
-}
+  }
 
-.loader::after {
+  .loader::after {
     border-top: 0.3em solid gold;
     transform: rotate(240deg);
-}
+  }
 
-.loader span {
+  .loader span {
     position: absolute;
     color: white;
     width: inherit;
@@ -303,17 +304,17 @@ ion-toolbar {
     font-family: sans-serif;
     animation: rotating 2s linear infinite;
     --direction: -1;
-}
+  }
 
-@keyframes rotating {
+  @keyframes rotating {
     50% {
-        transform: rotate(calc(180deg * var(--direction)));
+      transform: rotate(calc(180deg * var(--direction)));
     }
 
     100% {
-        transform: rotate(calc(360deg * var(--direction)));
+      transform: rotate(calc(360deg * var(--direction)));
     }
-}
+  }
 
   // .maploader {
   //   .lds-ellipsis {
@@ -480,7 +481,7 @@ ion-toolbar {
     height: 0%;
   }
 
-  #webview{
+  #webview {
     display: none;
     width: 0%;
     height: 0%;
@@ -558,7 +559,7 @@ ion-toolbar {
       }
     }
 
-    p{
+    p {
       position: absolute;
       bottom: 0 !important;
       width: 100%;
@@ -1098,17 +1099,17 @@ ion-toolbar {
     overflow: hidden;
   }
 
-  .image{
+  .image {
     height: 70vh;
     margin: 10px;
-    img{
+    img {
       height: 100%;
       object-fit: cover;
     }
   }
 }
-@media only screen and (min-width: 1025px){
-  .ext{
+@media only screen and (min-width: 1025px) {
+  .ext {
     display: none;
   }
 }
@@ -1176,8 +1177,6 @@ ion-toolbar {
         transition: 0.6s ease;
       }
     }
-
-
   }
 
   .web_view {
@@ -1289,13 +1288,13 @@ ion-toolbar {
       }
     }
 
-    .btn_update{
+    .btn_update {
       display: flex;
       flex-flow: row;
       width: 100%;
       justify-content: space-evenly;
 
-      #up{
+      #up {
         background: maroon;
         color: white;
         width: 50%;
@@ -1304,7 +1303,7 @@ ion-toolbar {
         height: 40px;
       }
 
-      #can{
+      #can {
         background: rgb(1, 1, 58);
         color: white;
         width: 50%;
@@ -1312,7 +1311,6 @@ ion-toolbar {
         font-size: 13px;
         height: 40px;
       }
-
     }
 
     .btnz {
@@ -1501,8 +1499,8 @@ ion-toolbar {
     position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
-    width: 25%;
-    height: 90%;
+    width: 25vw;
+    height: 100%;
     top: 98px;
     right: 0;
     align-items: center;
@@ -1542,7 +1540,7 @@ ion-toolbar {
       flex-flow: column;
       overflow-y: auto;
       margin: 10px;
-      min-width: 30vw;
+      width: 22vw;
 
       #noItems {
         display: flex;
@@ -1656,22 +1654,22 @@ ion-toolbar {
     position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
-    min-width: 25%;
-    height: 90%;
-    top: 98px;
+    width: 25vw;
+    height:100%;
+    top: 97px;
     right: 0;
     align-items: center;
     display: flex;
     flex-flow: column;
     overflow: hidden;
-
+  
     .heading {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
       width: 100%;
       margin: 5px;
-
+  
       ion-icon {
         color: white;
         position: relative;
@@ -1681,7 +1679,7 @@ ion-toolbar {
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-
+  
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -1690,14 +1688,14 @@ ion-toolbar {
         font-size: 1em;
       }
     }
-
+  
     .wishlist_items {
       display: flex;
       flex-flow: column;
       overflow-y: auto;
       margin: 10px;
-      min-width: 30vw;
-      height: 100%;
+      width: 90%;
+      height: 90%;
       position: relative;
       #noItems {
         display: flex;
@@ -1708,8 +1706,9 @@ ion-toolbar {
         justify-content: center;
         margin-top: 200px;
         img {
-          width: 5vw;
-          height: 5vw;
+          margin-right: 5px;
+          width: 10vw;
+          height: 10vw;
         }
         p {
           text-align: center;
@@ -1717,7 +1716,6 @@ ion-toolbar {
           color: grey;
         }
       }
-
       .div {
         height: 65vh;
         overflow-y: auto;
@@ -1727,9 +1725,10 @@ ion-toolbar {
       .items {
         display: flex;
         flex-flow: row;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: 10px;
         min-height: 7vh;
+        width: 95%;
         margin: 5px;
         background: rgb(255, 255, 255);
         border-radius: 5px;
@@ -1738,7 +1737,8 @@ ion-toolbar {
           display: flex;
           flex-flow: row;
           justify-content: space-between;
-          margin: 5px;
+          // margin: 5px;
+          width: 70%;
           .img {
             width: 5vw;
             height: 5.5vw;
@@ -1751,25 +1751,29 @@ ion-toolbar {
               border-radius: 5px;
             }
           }
+  
           .item_details {
             width: 12vw;
+            margin-left: 5px;
             p {
               font-size: 13px;
             }
           }
         }
-
+  
         .right {
-          width: 6vw;
+          width: 3vw;
           display: flex;
           flex-flow: column;
           justify-content: space-between;
           text-align: right;
           margin: 5px;
+          // margin-right: 10px;
           ion-button {
             font-size: 12px;
             width: 4vw;
             height: 20px;
+            margin: 10px;
             display: flex;
             flex-flow: row;
             justify-content: space-between;
@@ -1777,7 +1781,7 @@ ion-toolbar {
               font-size: 12px;
             }
           }
-
+  
           .trash_icon {
             ion-icon {
               color: rgb(148, 14, 14);
@@ -1785,12 +1789,13 @@ ion-toolbar {
           }
         }
       }
+  
       .add_to_basket {
         color: white;
         position: absolute;
-        bottom: 0;
+        bottom: 50px;
         width: 90%;
-        margin: 20px;
+        margin: 15px;
         p {
           color: rgb(0, 0, 43);
         }
@@ -1811,14 +1816,14 @@ ion-toolbar {
             width: 20vw;
             height: 2vw;
           }
-
+  
           .line {
             width: 20vw;
             height: 1.5px;
             background: grey;
           }
         }
-
+  
         .delivery {
           width: 50%;
           height: 100%;
@@ -1840,7 +1845,7 @@ ion-toolbar {
             width: 100%;
             height: 100%;
             border-radius: 30px;
-            font-family: "Poiret One";
+            //font-family: "Poiret One";
             font-weight: bold;
             letter-spacing: 3px;
             background: #bf967e;
@@ -1857,7 +1862,7 @@ ion-toolbar {
             width: 100%;
             height: 100%;
             border-radius: 30px;
-            font-family: "Poiret One";
+            //font-family: "Poiret One";
             font-weight: bold;
             letter-spacing: 3px;
             background: #bf967e;
@@ -1875,7 +1880,7 @@ ion-toolbar {
             width: 100%;
             height: 100%;
             border-radius: 30px;
-            font-family: "Poiret One";
+            //font-family: "Poiret One";
             font-weight: bold;
             letter-spacing: 3px;
             background: #bf967e;
@@ -1886,7 +1891,7 @@ ion-toolbar {
       }
     }
   }
-
+  
   .closecart {
     position: absolute;
     z-index: 150;
