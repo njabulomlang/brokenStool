@@ -70,6 +70,8 @@ export class ViewPage implements OnInit {
       this.cordova = false;
     }
     this.checkUser();
+    // console.log("My col ", this.col, "My cat ", this.category);
+    
     if (this.col === 'Specials') {
       this.getSpecial();
     } else {
