@@ -135,63 +135,129 @@ ion-toolbar {
   transition: 0.4s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation: backgroundmover 30s linear infinite;
-  .maploader {
-    .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
+
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
+}
+
+.loader {
+    width: 10em;
+    height: 10em;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-top: 0.3em solid hotpink;
+    border-radius: 50%;
+    position: relative;
+    animation: rotating 2s ease-in-out infinite;
+    --direction: 1;
+}
+
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+}
+
+.loader::before {
+    border-top: 0.3em solid dodgerblue;
+    transform: rotate(120deg);
+}
+
+.loader::after {
+    border-top: 0.3em solid gold;
+    transform: rotate(240deg);
+}
+
+.loader span {
+    position: absolute;
+    color: white;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: 10em;
+    font-family: sans-serif;
+    animation: rotating 2s linear infinite;
+    --direction: -1;
+}
+
+@keyframes rotating {
+    50% {
+        transform: rotate(calc(180deg * var(--direction)));
     }
-    .lds-ellipsis div {
-      position: absolute;
-      top: 33px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #fff;
-      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+    100% {
+        transform: rotate(calc(360deg * var(--direction)));
     }
-    .lds-ellipsis div:nth-child(1) {
-      left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(2) {
-      left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-      left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-      left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes lds-ellipsis3 {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0);
-      }
-    }
-    @keyframes lds-ellipsis2 {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(24px, 0);
-      }
-    }
-  }
+}
+
+  // .maploader {
+  //   .lds-ellipsis {
+  //     display: inline-block;
+  //     position: relative;
+  //     width: 80px;
+  //     height: 80px;
+  //   }
+  //   .lds-ellipsis div {
+  //     position: absolute;
+  //     top: 33px;
+  //     width: 13px;
+  //     height: 13px;
+  //     border-radius: 50%;
+  //     background: #fff;
+  //     animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  //   }
+  //   .lds-ellipsis div:nth-child(1) {
+  //     left: 8px;
+  //     animation: lds-ellipsis1 0.6s infinite;
+  //   }
+  //   .lds-ellipsis div:nth-child(2) {
+  //     left: 8px;
+  //     animation: lds-ellipsis2 0.6s infinite;
+  //   }
+  //   .lds-ellipsis div:nth-child(3) {
+  //     left: 32px;
+  //     animation: lds-ellipsis2 0.6s infinite;
+  //   }
+  //   .lds-ellipsis div:nth-child(4) {
+  //     left: 56px;
+  //     animation: lds-ellipsis3 0.6s infinite;
+  //   }
+  //   @keyframes lds-ellipsis1 {
+  //     0% {
+  //       transform: scale(0);
+  //     }
+  //     100% {
+  //       transform: scale(1);
+  //     }
+  //   }
+  //   @keyframes lds-ellipsis3 {
+  //     0% {
+  //       transform: scale(1);
+  //     }
+  //     100% {
+  //       transform: scale(0);
+  //     }
+  //   }
+  //   @keyframes lds-ellipsis2 {
+  //     0% {
+  //       transform: translate(0, 0);
+  //     }
+  //     100% {
+  //       transform: translate(24px, 0);
+  //     }
+  //   }
+  // }
 }
 .loading-text {
   // color: yellow;
