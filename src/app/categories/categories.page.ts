@@ -20,6 +20,9 @@ export class CategoriesPage implements OnInit {
   viewBackdrop = false;
   myWishlist = [];
   alertView: boolean = false;
+  itemAvailable=[];
+  dbSales = firebase.firestore().collection("Specials");
+  dbProduct = firebase.firestore().collection('Products');
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController,public alertCtrl : AlertController, 
     private localSt:LocalStorageService) {
     // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
@@ -93,10 +96,28 @@ export class CategoriesPage implements OnInit {
     await alert.present();
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==',firebase.auth().currentUser.uid).onSnapshot((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
+        if (doc.data().brand === "Specials") {
+          this.dbSales.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        } else {
+          this.itemAvailable = [];
+          this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        }
         this.myWishlist.push({ info: doc.data(), id: doc.id });
       })
     })

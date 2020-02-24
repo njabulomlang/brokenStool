@@ -14,6 +14,8 @@ export class ListPage implements OnInit {
   dbWishlist = firebase.firestore().collection("Wishlist");
   dbProduct = firebase.firestore().collection("Products");
   dbPromo = firebase.firestore().collection("Specials");
+  dbSales = firebase.firestore().collection("Specials");
+  itemAvailable= [];
   promo = [];
   myProduct = [];
   collectionName: string = "";
@@ -67,23 +69,31 @@ export class ListPage implements OnInit {
     this.viewBackdrop = !this.viewBackdrop
   }
   getWishlist() {
-    setTimeout(() => {
-      firebase.auth().onAuthStateChanged((res) => {
-        if (res) {
-          this.dbWish.where('customerUID', '==', res.uid).onSnapshot((res) => {
-            this.myWish = res.size;
-            this.myWishlist = [];
-            // this.myProduct[]
-            for (let j = 0; j < res.docs.length; j++) {
-              this.myWishlist.push({ info: res.docs[j].data(), id: res.docs[j].id })
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
+      this.myWish = res.size;
+      this.myWishlist = [];
+      res.forEach((doc) => {
+        if (doc.data().brand === "Specials") {
+          this.dbSales.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
             }
-            /* res.forEach((doc) => {
-              this.myWishlist.push({ info: doc.data(), id: doc.id });
-            }) */
           })
-        } 
+        } else {
+          this.itemAvailable = [];
+          this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        }
+        this.myWishlist.push({ info: doc.data(), id: doc.id });
       })
-    }, 0);
+    })
   }
   goList(data) {
     let navigationExtras: NavigationExtras = {

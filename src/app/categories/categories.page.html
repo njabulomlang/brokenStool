@@ -279,7 +279,7 @@
 
     <div class="wishlist_items">
       <div class="div">
-        <div class="items" *ngFor="let w of myWishlist">
+        <div class="items" *ngFor="let w of myWishlist; let i = index">
           <div class="left">
             <div class="img">
               <img src="{{w.info.image}}" alt="">
@@ -288,6 +288,7 @@
             <div class="item_details">
               <p> {{w.info.name}} </p>
               <p>{{w.info.price | currency:'R'}}</p>
+              <p>{{itemAvailable[i] }}</p>
             </div>
           </div>
 
@@ -297,17 +298,18 @@
             </div>
 
             <div class="add_to_basket">
-              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+              <ion-button [disabled]="itemAvailable[i]==='Out of stock'" (click)="addtoBusket(w.info.id, w.info, w.id, itemAvailable[i])" color="transparent">
                 Add<ion-icon slot="end" name="basket"></ion-icon>
               </ion-button>
             </div>
           </div>
         </div>
 
-        <div class="items" id="noItems">
+        <div class="items" id="noItems" *ngIf="myWishlist.length===0">
           <p>Wishlist Empty</p>
           <img src="../../assets/sad_smile.svg" alt="">
         </div>
+
 
       </div>
 

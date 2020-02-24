@@ -1,4 +1,4 @@
- import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
 import { ModalController, NavController, ToastController, AlertController, Platform } from '@ionic/angular';
@@ -25,11 +25,12 @@ export class HomePage implements OnInit {
   cartItemCount: BehaviorSubject<number>;
   //uid;
   name: string = '';
-  surname:string = '';
+  surname: string = '';
   dbProfile = firebase.firestore().collection("userProfile");
   dbSales = firebase.firestore().collection("Specials");
   dbCart = firebase.firestore().collection('Cart');
   dbOrder = firebase.firestore().collection('Order');
+  dbProduct = firebase.firestore().collection('Products');
   // uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -38,7 +39,7 @@ export class HomePage implements OnInit {
   myWish: number;
   viewReviews = false;
   viewBackdrop = false;
-  viewCart= false;
+  viewCart = false;
   viewSideMenu = false;
   myWishlist = [];
   prodCart = [];
@@ -47,16 +48,17 @@ export class HomePage implements OnInit {
   buttonActive: boolean = true;
   alertView: boolean = false;
   fileUrl;
+  itemAvailable = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    public toastCtrl : ToastController, public alertCtrl : AlertController, private localSt:LocalStorageService, private sanitizer: DomSanitizer, public network : Network,
-    public plt : Platform
+    public toastCtrl: ToastController, public alertCtrl: AlertController, private localSt: LocalStorageService, private sanitizer: DomSanitizer, public network: Network,
+    public plt: Platform
     // public notificationService: NotificationsService
-    ) {
-     if(this.plt.is('cordova')) {
-       this.network.onDisconnect().subscribe(()=>{
+  ) {
+    if (this.plt.is('cordova')) {
+      this.network.onDisconnect().subscribe(() => {
         this.presentAlt();
-       })
-     } 
+      })
+    }
   }
 
   ngOnInit() {
@@ -67,7 +69,7 @@ export class HomePage implements OnInit {
     const blob = new Blob([data], { type: 'application/octet-stream' });
     this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
 
-     this.getPromo();
+    this.getPromo();
     // this.getWishlist();
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
     //   this.myWish = res1.size;
@@ -102,12 +104,12 @@ export class HomePage implements OnInit {
           this.getWishlist();
         } else {
           this.alertView = this.localSt.retrieve('alertShowed');
-         setTimeout(() => {
-          if (this.localSt.retrieve('alertShowed') !== true) {
-            this.presentAlertConfirm1();
-          }
-        }, 2000);
-         
+          setTimeout(() => {
+            if (this.localSt.retrieve('alertShowed') !== true) {
+              this.presentAlertConfirm1();
+            }
+          }, 2000);
+
         }
       })
     }, 1000);
@@ -155,12 +157,13 @@ export class HomePage implements OnInit {
     } else if (!this.delType) {
       this.toastController('Please select delivery type');
     }
-     else {
+    else {
       let docname = 'brkn-' + Math.floor(Math.random() * 10000000);
-      this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
+      this.dbOrder.doc(docname).set({
+        product: myArr, timestamp: new Date().getTime(),
         status: 'received', userID: firebase.auth().currentUser.uid,
-         totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
-         }).then(() => {
+        totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+      }).then(() => {
         doc.forEach((id) => {
           this.dbCart.doc(id).delete();
         })
@@ -179,14 +182,14 @@ export class HomePage implements OnInit {
         }, {
           text: 'Yes, continue',
           handler: () => {
-           // console.log('Confirm Okay');
-           this.placeOrder(this.prodCart)
+            // console.log('Confirm Okay');
+            this.placeOrder(this.prodCart)
           }
         }
       ]
     });
     await alert.present();
-  } 
+  }
 
   async toastController(message) {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
@@ -222,7 +225,7 @@ export class HomePage implements OnInit {
     for (let i = 0; i < this.prodCart.length; i++) {
       let product = this.prodCart[i].data.product;
       product.forEach((item) => {
-        total = tot+100
+        total = tot + 100
       })
     }
     return total;
@@ -272,7 +275,7 @@ export class HomePage implements OnInit {
       })
     }
   }
-  gotocart(){
+  gotocart() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
@@ -280,21 +283,21 @@ export class HomePage implements OnInit {
           this.viewBackdrop = !this.viewBackdrop
           this.getCart();
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0); 
+    }, 0);
   }
 
-  getBackdrop(){
+  getBackdrop() {
     this.viewBackdrop = !this.viewBackdrop
   }
 
-  getSideMenu(){
+  getSideMenu() {
     this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
-  
+
   getProfile() {
     this.dbProfile.doc(firebase.auth().currentUser.uid).onSnapshot((doc) => {
       if (doc.exists) {
@@ -306,8 +309,12 @@ export class HomePage implements OnInit {
       }
     })
   }
-  addtoBusket(view_id, data, id) {
-    let navigationExtras: NavigationExtras = {
+  addtoBusket(view_id, data, id, avail) {
+    // console.log("Item availability ", avail);
+    if (avail==="Out of stock") {
+      this.toastController("Supplier out of stock")
+    } else {
+     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
         col: data.brand,
@@ -316,20 +323,40 @@ export class HomePage implements OnInit {
     };
     this.dbWish.doc(id).delete().then(() => {
       this.navCtrl.navigateForward(['view', view_id], navigationExtras)
-    })
+    }) 
+    } 
   }
   delete(id) {
     this.dbWish.doc(id).delete()
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
+        if (doc.data().brand === "Specials") {
+          this.dbSales.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        } else {
+          this.itemAvailable = [];
+          this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        }
         this.myWishlist.push({ info: doc.data(), id: doc.id });
       })
     })
   }
+
   reviewed() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
@@ -338,7 +365,7 @@ export class HomePage implements OnInit {
           this.viewBackdrop = !this.viewBackdrop
           this.getWishlist();
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
     }, 0);
@@ -351,10 +378,10 @@ export class HomePage implements OnInit {
         if (res) {
           this.navCtrl.navigateRoot('profile');
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0); 
+    }, 0);
   }
   getPromo() {
     this.dbSales.limit(4).onSnapshot((res) => {
@@ -399,10 +426,10 @@ export class HomePage implements OnInit {
         if (res) {
           this.navCtrl.navigateForward('basket');
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0);  
+    }, 0);
   }
   wishlist() {
     setTimeout(() => {
@@ -410,11 +437,11 @@ export class HomePage implements OnInit {
         if (res) {
           this.navCtrl.navigateForward('wishlist');
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0);  
-    
+    }, 0);
+
   }
   animateCSS(animationName, keepAnimated = false) {
     const node = this.fab.nativeElement;
@@ -486,7 +513,7 @@ export class HomePage implements OnInit {
   }
 
   goList(data) {
-    if (this.sales.length===0) {
+    if (this.sales.length === 0) {
       this.alertSample('We have no promotions so far. Check again later or continue shopping.')
       // this.toastController();
     } else {
@@ -500,7 +527,7 @@ export class HomePage implements OnInit {
       };
       //this.router.navigate(['list', data])
       this.navCtrl.navigateForward(['list', data], navigationExtras);
-    } 
+    }
   }
   async alertSample(message) {
     const alert = await this.alertCtrl.create({
@@ -515,8 +542,8 @@ export class HomePage implements OnInit {
       ]
     });
     await alert.present();
-  } 
- 
+  }
+
   switchView(state) {
     switch (state) {
       case 'd':
