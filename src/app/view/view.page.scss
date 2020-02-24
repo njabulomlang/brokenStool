@@ -163,23 +163,23 @@ ion-toolbar {
       }
     }
 
-    // .sizes {
-    //   margin: 5px;
-    //   font-size: 0.7em;
-    //   ion-button {
-    //     font-size: 1em;
-    //     width: 14vw;
-    //     color: black;
-    //     margin: 0 !important;
-    //     padding: 0 !important;
-    //     border: 0.5px solid rgb(173, 173, 173);
-    //   }
-    // }
+    .sizes {
+      margin: 5px;
+      font-size: 0.7em;
+      ion-button {
+        font-size: 1em;
+        width: 14vw;
+        color: black;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0.5px solid rgb(173, 173, 173);
+      }
+    }
 
-    .colours {
+   /*  .colours {
       display: flex;
       flex-flow: row;
-    }
+    } */
 
     .quantity {
       // position: relative;
