@@ -399,6 +399,9 @@ export class ViewPage implements OnInit {
                 color: this.color, prod_id: id
               }]
             }).then(() => {
+              this.sizeIndex = null;
+              this.colorIndex = null;
+              this.quantity = 1;
               this.toastController('Added to basket')
             })
           }
@@ -429,6 +432,9 @@ export class ViewPage implements OnInit {
                 color: this.color, prod_id: id
               }]
             }).then(() => {
+              this.sizeIndex = null;
+              this.colorIndex = null;
+              this.quantity = 1;
               this.toastController('Added to basket')
             })
           }
