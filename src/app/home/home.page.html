@@ -33,9 +33,10 @@
       </div>
 
   
-      <ion-button id="icon" (click)="gotocart()">
-        <ion-icon slot="icon-only" name="basket"></ion-icon>
-        <p id="number" *ngIf="prodCart.length>0">{{prodCart.length}}</p>
+      <ion-button id="icon" (click)="gotocart()" class="notification">
+        <ion-icon slot="icon-only" name="basket"></ion-icon> 
+        <span class="badge" *ngIf="prodCart.length>0">{{prodCart.length}}</span>
+        <!-- <p "></p> -->
       </ion-button>
 
       <ion-button (click)="profile()" class="icon2" id="icon">
@@ -47,9 +48,10 @@
       </ion-button>
       
 
-      <ion-button id="icon" (click)="reviewed()">
+      <ion-button id="icon" (click)="reviewed()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number" *ngIf="myWish>0">{{myWish}}</p>
+        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
+        <!-- <p id="number" *ngIf="myWish>0">{{myWish}}</p> -->
       </ion-button>
 
       <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
@@ -69,9 +71,9 @@
       <ion-button id="icon" (click)="search('Dankie Jesu')">
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
-      <ion-button id="icon" (click)="wishlist()" >
+      <ion-button id="icon" (click)="wishlist()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number" *ngIf="myWish>0">{{myWish}}</p>
+        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
@@ -496,7 +498,7 @@
             <div class="item_details">
               <p> {{w.info.name}} </p>
               <p>{{w.info.price | currency:'R'}}</p>
-              <p>{{itemAvailable[i] }}</p>
+              <p style="color: rgb(77, 1, 1)"><i>{{itemAvailable[i] }}</i></p>
             </div>
           </div>
 
@@ -588,8 +590,13 @@
               {{getTotal() | currency:'R'}}</i></p>
           <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total -
               {{Delivery(getTotal()) | currency:'R'}} Incl delivery</i></p>
+              <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px; color: maroon"><i>Please Note: Delivery will take up to four days
+               </i></p>
           <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total -
               {{notDelivery(getTotal()) | currency:'R'}} Excl delivery</i></p>
+
+              <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px; color: maroon"><i>Please Note: You have two days to collect your order
+               </i></p>
           <ion-button color="transparent" [disabled]="prodCart.length==0" (click)="presentAlertConfirm()">
             PLACE ORDER
           </ion-button>
@@ -702,8 +709,8 @@
   <!-- ----------------------------------- Fab buttons ----------------------------------------- -->
   <!-- --------------------- Mobile View ---------------------- -->
   <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small"
-    style=" margin: 10px; align-items: center; color: grey">
-    <ion-fab-button (click)="busket()" #cart color="transparent" style=" margin: 0 0 0 15px;">
+ >
+    <ion-fab-button (click)="busket()" #cart color="transparent" >
       <ion-icon name="basket" class="cart-icon"></ion-icon>
       <p id="number" *ngIf="prodCart.length>0">{{prodCart.length}}</p>
     </ion-fab-button>

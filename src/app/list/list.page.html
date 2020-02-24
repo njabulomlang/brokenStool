@@ -41,9 +41,9 @@
 
       </div>
 
-      <ion-button id="icon" (click)="wish()">
+      <ion-button id="icon" (click)="wish()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number">{{myWish}}</p>
+        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
       </ion-button>
 
       <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
