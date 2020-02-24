@@ -39,19 +39,22 @@ ion-toolbar {
   display: flex;
   flex-flow: column;
   align-items: center;
-  // height: 100%;
   width: 100%;
   padding: 0 !important;
   margin: 0 !important;
+
+  #welcome{
+    height: 10%;
+  }
 
   .sales {
     display: flex;
     flex-flow: column;
     position: relative;
+    height: 30%;
 
     .saleitems {
       width: 100vw;
-
       align-items: center;
       display: flex;
       overflow-x: auto;
@@ -59,7 +62,7 @@ ion-toolbar {
       .image {
         margin: 8px;
         margin-bottom: 10px;
-        min-width: 50vw;
+        min-width: 45vw;
         height: 30vh;
         width: 100%;
         align-items: center;
@@ -76,13 +79,17 @@ ion-toolbar {
 
         .percentage {
           position: absolute;
-          top: 0%;
-          right: 10px;
-          z-index: 5;
-          color: white;
+          // z-index: 10;
+          top: 1px;
+          right: 1px;
+          // margin: 5px;
+          // text-shadow: 5px 5px 10px rgb(0, 0, 0);
+  
           p {
-            font-size: 0.7em;
-            text-shadow: 2px 2px 5px black;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            background: maroon;
+            padding: 3px;
           }
         }
 
@@ -124,6 +131,7 @@ ion-toolbar {
     flex-flow: column;
     width: 100vw;
     margin: 10px 0px;
+    height: 15%;
     ion-button {
       margin: 0;
       padding: 0;
@@ -151,6 +159,7 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     position: relative;
+    height: 30%;
     .apparel {
       width: 100vw;
       // height: 65vw;
@@ -158,8 +167,8 @@ ion-toolbar {
       overflow-x: auto;
       .image {
         margin: 8px;
-        min-width: 52vw;
-        height: 35vh;
+        min-width: 45vw;
+        height: 28vh;
         border-radius: 5px;
         position: relative;
         box-shadow: 2px 2px 10px grey;
@@ -172,13 +181,17 @@ ion-toolbar {
 
         .percentage {
           position: absolute;
-          top: 0%;
-          right: 10px;
-          z-index: 5;
-          color: white;
+          // z-index: 10;
+          top: 1px;
+          right: 1px;
+          // margin: 5px;
+          // text-shadow: 5px 5px 10px rgb(0, 0, 0);
+  
           p {
-            font-size: 0.7em;
-            text-shadow: 2px 2px 5px black;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            background: maroon;
+            padding: 3px;
           }
         }
 
