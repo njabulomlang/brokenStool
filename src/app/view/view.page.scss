@@ -288,6 +288,11 @@ ion-toolbar {
     display: none;
   }
 
+  ion-header{
+    border-bottom: 2px solid rgb(0, 0, 41);
+    background: white;
+  }
+
   ion-toolbar {
     img {
       margin-left: 5%;

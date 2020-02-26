@@ -104,7 +104,7 @@ ion-toolbar {
       display: flex;
       flex-flow: column;
       margin: 5px;
-      padding: 8px;
+      padding: 5px;
       border-radius: 5px;
 
       img {
@@ -631,7 +631,13 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  // ion-header{
+  //   border-bottom: 2px solid rgb(0, 0, 41);
+  //   background: white;
+  // }
+
   ion-toolbar {
+
     img {
       margin-left: 5%;
     }
@@ -670,6 +676,11 @@ ion-toolbar {
         transition: 0.6s ease;
       }
     }
+    // div{
+    //   width: 100%;
+    //   height: 2px;
+    //   background: rgb(0, 0, 43);
+    // }
   }
 
   .web_view {

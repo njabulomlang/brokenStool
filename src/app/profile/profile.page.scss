@@ -1027,7 +1027,7 @@ ion-toolbar {
   .viewMenu {
     position: fixed;
     z-index: 150;
-    background: rgb(8, 0, 44);
+    background: rgb(201, 201, 201);
     min-width: 40%;
     height: 100%;
     top: 98px;
@@ -1072,7 +1072,7 @@ ion-toolbar {
       position: relative;
       top: 150px;
       ion-button {
-        color: rgb(255, 255, 255);
+        color: black;
         margin: 5px;
         height: 50px;
         width: 30vw;
@@ -1137,6 +1137,11 @@ ion-toolbar {
     display: none;
     width: 0 !important;
     height: 0 !important;
+  }
+
+  ion-header{
+    border-bottom: 2px solid rgb(0, 0, 41);
+    background: white;
   }
 
   ion-toolbar {

@@ -276,7 +276,7 @@
       <div class="heading">
         <p>Filter Items By:</p>
 
-        <!-- <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon> -->
+        <ion-icon slot="icon-only" name="close" (click)="reviewed()"></ion-icon>
 
       </div>
       <div class="line"></div>
@@ -340,7 +340,7 @@
             <div class="item_details">
               <p> {{w.info.name}} </p>
               <p>{{w.info.price | currency:'R'}}</p>
-              <p>{{itemAvailable[i] }}</p>
+              <p style="color: maroon;"><i>{{itemAvailable[i] }}</i></p>
             </div>
           </div>
 
