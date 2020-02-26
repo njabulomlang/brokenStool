@@ -93,7 +93,7 @@ export class PaymentPage implements OnInit {
       message: 'Thank you for shopping with us',
       buttons: [
          {
-          text: 'Ok',
+          text: 'Continue Shopping',
           handler: () => {
             this.navCtrl.navigateRoot('home');
           }
