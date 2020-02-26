@@ -59,7 +59,7 @@ export class ListPage implements OnInit {
 
     this.getAllProduct();
     this.getSales();
-    this.getWishlist();
+    // this.getWishlist();
    
   }
 
@@ -82,7 +82,7 @@ export class ListPage implements OnInit {
           })
         } else {
           this.itemAvailable = [];
-          this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+          this.dbProduct.doc(doc.id).onSnapshot((data) => {
             if (data.data().hideItem === true) {
               this.itemAvailable.push("Out of stock");
             } else {
@@ -199,7 +199,7 @@ export class ListPage implements OnInit {
      }, 1000);
   }
   getAllProduct() {
-    this.dbProduct.doc(this.col).collection(this.collectionName).where('hideItem', '==', false).onSnapshot((res) => {
+    this.dbProduct.where('hideItem', '==', false).where('category','==',this.doc_data).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
           this.myProduct.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
@@ -339,7 +339,7 @@ export class ListPage implements OnInit {
         })
       })
     } else {
-      this.dbProduct.doc(this.col).collection(this.collectionName).where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
+      this.dbProduct.where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
         this.myProduct = [];
         res.forEach((doc) => {
           this.myProduct.push({ info: doc.data(), id: doc.id });
@@ -362,7 +362,7 @@ export class ListPage implements OnInit {
       }
     } else {
       if (this.price >= 0) {
-        this.dbProduct.doc(this.col).collection(this.collectionName).where('price', '>=', param)
+        this.dbProduct.where('price', '>=', param)
           .onSnapshot((res) => {
             this.myProduct = [];
             res.forEach((doc) => {

@@ -14,6 +14,7 @@ export class CategoriesPage implements OnInit {
   colDef: string;
   // uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
+  dbProd = firebase.firestore().collection('Products');
   myWish: number;
   viewPrice = false;
   viewSideMenu = false;
@@ -21,6 +22,7 @@ export class CategoriesPage implements OnInit {
   myWishlist = [];
   alertView: boolean = false;
   itemAvailable=[];
+  prodArray = [];
   dbSales = firebase.firestore().collection("Specials");
   dbProduct = firebase.firestore().collection('Products');
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController,public alertCtrl : AlertController, 
@@ -47,8 +49,16 @@ export class CategoriesPage implements OnInit {
     }) */
     // this.getWishlist();
     this.checkUser();
+    this.getProd();
   }
-
+  getProd() {
+    this.dbProd.where('brand','==','Dankie Jesu').limit(4).onSnapshot((res)=>{
+      this.prodArray = [];
+      res.forEach((doc)=>{
+        this.prodArray.push(doc.data());
+      })
+    })
+  }
   getSideMenu(){
     this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
