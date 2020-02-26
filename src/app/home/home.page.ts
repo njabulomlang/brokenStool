@@ -31,6 +31,7 @@ export class HomePage implements OnInit {
   dbCart = firebase.firestore().collection('Cart');
   dbOrder = firebase.firestore().collection('Order');
   dbProduct = firebase.firestore().collection('Products');
+  dbProd = firebase.firestore().collection('Products');
   // uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -49,6 +50,7 @@ export class HomePage implements OnInit {
   alertView: boolean = false;
   fileUrl;
   itemAvailable = [];
+  prodArray = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     public toastCtrl: ToastController, public alertCtrl: AlertController, private localSt: LocalStorageService, private sanitizer: DomSanitizer, public network: Network,
     public plt: Platform
@@ -65,11 +67,8 @@ export class HomePage implements OnInit {
     // this.notificationService.requestPermission();
     // this.getCart();
     // this.getProfile();
-    const data = 'some text';
-    const blob = new Blob([data], { type: 'application/octet-stream' });
-    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-
     this.getPromo();
+    this.getProd();
     // this.getWishlist();
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
     //   this.myWish = res1.size;
@@ -78,6 +77,14 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.splashScreen.hide();
     }, 3000);
+  }
+  getProd() {
+    this.dbProd.where('brand','==','Dankie Jesu').limit(4).onSnapshot((res)=>{
+      this.prodArray = [];
+      res.forEach((doc)=>{
+        this.prodArray.push(doc.data());
+      })
+    })
   }
   async presentAlt() {
     const alert = await this.alertCtrl.create({
