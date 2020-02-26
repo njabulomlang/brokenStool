@@ -90,9 +90,9 @@
         <p>{{name }} &nbsp; {{ surname}} <br><span>{{email}}</span></p><br>
       </div>
       <div class="camera">
-        <ion-fab-button color="transparent" id="image" (click)="selectImage()">
-          <ion-icon name="camera"></ion-icon>
-        </ion-fab-button>
+       
+          <ion-icon name="camera" id="image" (click)="selectImage()"></ion-icon>
+    
       </div>
     </div>
 
@@ -433,9 +433,9 @@
   </div>
 <!-- ====================================== Side Menu =========================================== -->
   <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
-    <div class="heading">
+    <!-- <div class="heading">
       <ion-icon slot="icon-only" name="close"></ion-icon>
-    </div>
+    </div> -->
 
     <div class="side_buttons">
 
