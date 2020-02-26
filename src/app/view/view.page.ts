@@ -265,7 +265,7 @@ export class ViewPage implements OnInit {
     console.log('Boolean val ', c, 'index ', i);
   }
   async getProduct() {
-    await this.dbProduct.doc(this.col).collection(this.category).doc(this.doc_id).get().then((doc) => {
+    await this.dbProduct.doc(this.doc_id).get().then((doc) => {
       this.unitProduct.push({ data: doc.data(), id: doc.id })
     })
   }
