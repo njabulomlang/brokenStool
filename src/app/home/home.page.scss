@@ -162,7 +162,6 @@ ion-toolbar {
     height: 30%;
     .apparel {
       width: 100vw;
-      // height: 65vw;
       display: flex;
       overflow-x: auto;
       .image {
@@ -556,7 +555,7 @@ ion-toolbar {
     }
 
     .icon1 {
-      margin: 0 18vw 0 10vw;
+      margin: 0 15vw 0 10vw;
 
       ion-button:hover {
         border: 2px solid maroon;
@@ -1226,7 +1225,7 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        min-width: 20vw;
+        width: 45vw;
         height: 35vh;
         // border-radius: 10px;
         box-shadow: 5px 5px 10px rgb(177, 177, 177);

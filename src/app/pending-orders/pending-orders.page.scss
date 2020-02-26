@@ -123,7 +123,7 @@ ion-toolbar {
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100000000000000000000000000000000000000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,22 +136,12 @@ ion-toolbar {
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation: backgroundmover 30s linear infinite;
 
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    overflow: hidden;
-}
-
-.loader {
+  .loader {
     width: 10em;
     height: 10em;
     font-size: 25px;
     box-sizing: border-box;
-    border-top: 0.3em solid hotpink;
+    border-top: 0.3em solid rgb(58, 0, 29);
     border-radius: 50%;
     position: relative;
     animation: rotating 2s ease-in-out infinite;
@@ -170,12 +160,12 @@ ion-toolbar {
 }
 
 .loader::before {
-    border-top: 0.3em solid dodgerblue;
+    border-top: 0.3em solid rgb(0, 20, 39);
     transform: rotate(120deg);
 }
 
 .loader::after {
-    border-top: 0.3em solid gold;
+    border-top: 0.3em solid rgb(70, 70, 70);
     transform: rotate(240deg);
 }
 

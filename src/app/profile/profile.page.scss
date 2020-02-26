@@ -37,7 +37,7 @@ ion-toolbar {
       text-align: center;
       color: grey;
       font-family: "Poppins";
-      font-size: 4vw;
+      // font-size: 4vw;
       border-radius: 10px;
       // z-index: 10;
       position: absolute;
@@ -51,7 +51,7 @@ ion-toolbar {
         margin: 0 !important;
         font-weight: bold;
         span {
-          font-size: 3vw;
+          // font-size: 3vw;
           font-weight: normal;
         }
       }
@@ -59,14 +59,14 @@ ion-toolbar {
 
     .camera {
       position: absolute;
-      bottom: 0;
-      right: 10px;
+      bottom: -3px;
+      right: 1px;
       z-index: 5;
       border-radius: 50%;
-      ion-fab-button {
-        background: maroon;
+      ion-icon {
+        font-size: 30px;
         border-radius: 50%;
-        color: white;
+        color: rgb(0, 0, 39);
       }
     }
   }
@@ -266,7 +266,7 @@ ion-toolbar {
     height: 10em;
     font-size: 25px;
     box-sizing: border-box;
-    border-top: 0.3em solid hotpink;
+    border-top: 0.3em solid rgb(58, 0, 29);
     border-radius: 50%;
     position: relative;
     animation: rotating 2s ease-in-out infinite;
@@ -285,12 +285,12 @@ ion-toolbar {
   }
 
   .loader::before {
-    border-top: 0.3em solid dodgerblue;
+    border-top: 0.3em solid rgb(0, 20, 39);
     transform: rotate(120deg);
   }
 
   .loader::after {
-    border-top: 0.3em solid gold;
+    border-top: 0.3em solid rgb(70, 70, 70);
     transform: rotate(240deg);
   }
 
@@ -1034,7 +1034,7 @@ ion-toolbar {
     // bottom: 40%;
     right: 0;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     display: flex;
     flex-flow: column;
     overflow: hidden;
@@ -1072,7 +1072,7 @@ ion-toolbar {
       position: relative;
       top: 150px;
       ion-button {
-        color: rgb(82, 82, 82);
+        color: black;
         margin: 5px;
         height: 50px;
         width: 30vw;
@@ -1137,6 +1137,11 @@ ion-toolbar {
     display: none;
     width: 0 !important;
     height: 0 !important;
+  }
+
+  ion-header{
+    border-bottom: 2px solid rgb(0, 0, 41);
+    background: white;
   }
 
   ion-toolbar {
@@ -1215,7 +1220,6 @@ ion-toolbar {
         border-radius: 10px;
         // z-index: 10;
         position: absolute;
-
         bottom: 15px;
         display: grid;
         align-items: center;
@@ -1655,21 +1659,21 @@ ion-toolbar {
     z-index: 150;
     background: rgb(201, 201, 201);
     width: 25vw;
-    height:100%;
+    height: 100%;
     top: 97px;
     right: 0;
     align-items: center;
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  
+
     .heading {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
       width: 100%;
       margin: 5px;
-  
+
       ion-icon {
         color: white;
         position: relative;
@@ -1679,7 +1683,7 @@ ion-toolbar {
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-  
+
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -1688,7 +1692,7 @@ ion-toolbar {
         font-size: 1em;
       }
     }
-  
+
     .wishlist_items {
       display: flex;
       flex-flow: column;
@@ -1751,7 +1755,7 @@ ion-toolbar {
               border-radius: 5px;
             }
           }
-  
+
           .item_details {
             width: 12vw;
             margin-left: 5px;
@@ -1760,7 +1764,7 @@ ion-toolbar {
             }
           }
         }
-  
+
         .right {
           width: 3vw;
           display: flex;
@@ -1781,7 +1785,7 @@ ion-toolbar {
               font-size: 12px;
             }
           }
-  
+
           .trash_icon {
             ion-icon {
               color: rgb(148, 14, 14);
@@ -1789,7 +1793,7 @@ ion-toolbar {
           }
         }
       }
-  
+
       .add_to_basket {
         color: white;
         position: absolute;
@@ -1816,14 +1820,14 @@ ion-toolbar {
             width: 20vw;
             height: 2vw;
           }
-  
+
           .line {
             width: 20vw;
             height: 1.5px;
             background: grey;
           }
         }
-  
+
         .delivery {
           width: 50%;
           height: 100%;
@@ -1891,7 +1895,7 @@ ion-toolbar {
       }
     }
   }
-  
+
   .closecart {
     position: absolute;
     z-index: 150;

@@ -92,22 +92,57 @@
           <li > Order ready <br> for delivery </li>
           <li>Order <br> Collected</li>
         </ul> -->
-        <div class="circles-container">
-          <div id="one">1</div>
+              <!-- <div id="one">1</div>
           <div id="line1"></div>
           <div id="two">2</div>
           <div id="line2"></div>
           <div id="three">3</div>
           <div id="line3"></div>
-          <div id="four">4</div>
-        </div>
-
-        <div class="text">
-          <div id="txt">Order <br> Received</div>
-          <div id="txt">Order is <br> being processed</div>
-          <div id="txt">Order ready <br> for delivery</div>
-          <div id="txt">Order <br> Collected</div>
-
+          <div id="four">4</div> -->
+        <div class="circle-container">
+    
+          <div id="orderStatus" class="oneStat" *ngIf="status === 'received'">
+            <div>1</div>
+            <div></div>
+            <div>2</div>
+            <div></div>
+            <div>3</div>
+            <div></div>
+            <div>4</div>
+          </div>
+          <div id="orderStatus" class="twoStat" *ngIf="status === 'processed'">
+            <div>1</div>
+            <div></div>
+            <div>2</div>
+            <div></div>
+            <div>3</div>
+            <div></div>
+            <div>4</div>
+          </div>
+          <div id="orderStatus" class="threeStat" *ngIf="status === 'ready'">
+            <div>1</div>
+            <div></div>
+            <div>2</div>
+            <div></div>
+            <div>3</div>
+            <div></div>
+            <div>4</div>
+          </div>
+          <div id="orderStatus" class="fourStat" *ngIf="status === 'Delivered' || status === 'collected'">
+            <div>1</div>
+            <div></div>
+            <div>2</div>
+            <div></div>
+            <div>3</div>
+            <div></div>
+            <div>4</div>
+          </div>
+          <div id="orderStatus-labels">
+            <div>Received</div>
+            <div>In Progress</div>
+            <div style="margin-left: 20px;">Ready</div>
+            <div>Delivered</div>
+          </div>
         </div>
       </div>
     </div>
