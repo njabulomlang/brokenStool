@@ -683,12 +683,12 @@
 <ion-header no-border id="nav">
 
   <ion-toolbar>
-    <img src = "../../assets/navylogo.jpg " width="150px" height="90px">
+    <img src="../../assets/navylogo.jpg " width="150px" height="90px">
 
     <ion-buttons slot="end">
       <div class="icon1">
 
-        <ion-button id="icon" routerLink= "/home" class="active">
+        <ion-button id="icon" routerLink="/home" class="active">
           Home
         </ion-button>
 
@@ -714,9 +714,9 @@
 
       </div>
 
-  
+
       <ion-button id="icon" (click)="gotocart()" class="notification">
-        <ion-icon slot="icon-only" name="basket"></ion-icon> 
+        <ion-icon slot="icon-only" name="basket"></ion-icon>
         <span class="badge" *ngIf="prodCart.length>0">{{prodCart.length}}</span>
 
       </ion-button>
@@ -724,23 +724,23 @@
       <ion-button (click)="profile()" class="icon2" id="icon">
         <ion-icon slot="icon-only" name="person"></ion-icon>
       </ion-button>
-  
+
       <ion-button id="icon" (click)="search('Dankie Jesu')">
         <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
       </ion-button>
-      
+
 
       <ion-button id="icon" (click)="reviewed()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
         <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
-    
+
       </ion-button>
 
       <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
         <ion-icon slot="icon-only" name="menu"></ion-icon>
       </ion-button>
 
-    </ion-buttons> 
+    </ion-buttons>
 
   </ion-toolbar>
 
@@ -779,20 +779,20 @@
 
 <ion-content fullscreen>
 
-  <div id="background"> 
-    <div class="b_left"> 
-  
+  <div id="background">
+    <div class="b_left">
+
 
     </div>
 
     <div class="b_middle">
-   
+
     </div>
 
     <div class="b_right">
 
     </div>
-    
+
   </div>
   <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
 
@@ -857,7 +857,8 @@
       <div class="apparel">
 
         <div class="image">
-          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg" (click)="list('Smart Casual')">
+          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
+            (click)="list('Smart Casual')">
 
           <div class="itemname">
             <p>Smart Casual</p>
@@ -903,7 +904,7 @@
   <div class="web_view">
 
     <div class="sales">
-      <ion-item (click)="goList('sales')" >
+      <ion-item (click)="goList('sales')">
         <!-- <label>Sales & Specials</label> -->
         <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
@@ -947,50 +948,23 @@
 
     </div>
 
-    <div class="buttonz" >
-      <div class="summer_gear" >
+    <div class="buttonz">
+      <div class="summer_gear">
         <ion-item (click)="categories('summer')">
           <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
         </ion-item>
-        <div class="all_summer" *ngFor="let cat of prodArray">
-          <div class="image" *ngIf="cat.isSummer===true">
-            <img src="https://i.pinimg.com/564x/46/71/e9/4671e912bfa5bea8fd52d872d0e03b3e.jpg"
-              (click)="listDankie(cat.category)">
-            <div class="itemname">
-              <p>{{cat.category}}</p>
+        <div class="all_summer">
+          <div class="card" *ngFor="let cat of prodArray">
+            <div class="image" *ngIf="cat.isSummer===true">
+              <img src="https://i.pinimg.com/564x/46/71/e9/4671e912bfa5bea8fd52d872d0e03b3e.jpg"
+                (click)="listDankie(cat.category)">
+              <div class="itemname">
+                <p>{{cat.category}}</p>
+              </div>
             </div>
           </div>
 
-   
-
-          <!-- <div class="image">
-            <img src="https://i.pinimg.com/564x/c6/9c/60/c69c6023851a3aa9560ac006d24b88ea.jpg"
-              (click)="listDankie('Tshirts')">
-
-            <div class="itemname">
-              <p>T-shirts</p>
-            </div>
-          </div>
-
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/18/50/2d/18502da8476e0dc0253464a3f103dd55.jpg"
-              (click)="listDankie('Crop Tops')">
-
-            <div class="itemname">
-              <p>Crop Tops</p>
-            </div>
-          </div>
-
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/15/55/83/155583188fcc9072c0f22b7478bd9453.jpg"
-              (click)="listDankie('Shorts')">
-
-            <div class="itemname">
-              <p>Shorts</p>
-            </div>
-          </div> -->
-
-          <!-- <div class="image1" style="margin: 5px">
+          <div class="image1" style="margin: 5px">
             <div class="message">
               <h4> -- SUMMER GEAR</h4><br>
               <p>
@@ -998,39 +972,24 @@
                 cool in this heat, check our wide range out.</p><br>
               <p class="p">By <i>Dankie Jesu</i></p>
             </div>
-          </div> -->
-        </div>
-        <div class="image1" style="margin: 5px">
-          <div class="message">
-            <h4> -- SUMMER GEAR</h4><br>
-            <p>
-              For a wide range of summery, sunny and bright summer clothing to keep you
-              cool in this heat, check our wide range out.</p><br>
-            <p class="p">By <i>Dankie Jesu</i></p>
           </div>
         </div>
+
+
+
         <br>
       </div>
 
-      <div class="winter_gear" >
+      <div class="winter_gear">
         <ion-item (click)="categories('winter')">
-          <label slot="end" (click)="categories('winter')" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon>
+          <label slot="end" (click)="categories('winter')" style="cursor: pointer;">All <ion-icon slot="start"
+              name="arrow-forward"></ion-icon>
           </label>
         </ion-item>
 
-        <div class="image1" style="margin: 5px">
-          <div class="message">
-            <h4> WINTER GEAR -- </h4><br>
-            <p>
-              For those cold days, frosty days and the cozy days, we've got your back
-              with put range of winter gear that will have you and your loved ones nice and warm.</p><br>
-            <p class="p">By <i>Dankie Jesu</i></p>
-          </div>
-        </div>
+        <div class="all_winter">
 
-        <div class="all_winter" *ngFor="let cat of prodArray">
-
-          <!-- <div class="image1" style="margin: 5px">
+          <div class="image1" style="margin: 5px">
             <div class="message">
               <h4> WINTER GEAR -- </h4><br>
               <p>
@@ -1038,42 +997,18 @@
                 with put range of winter gear that will have you and your loved ones nice and warm.</p><br>
               <p class="p">By <i>Dankie Jesu</i></p>
             </div>
-          </div> -->
+          </div>
 
-          <div class="image" *ngIf="cat.isSummer===false">
-            <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg"
-              (click)="listDankie(cat.category)">
-            <div class="itemname">
-              <p>{{cat.category}}</p>
+          <div class="card" *ngFor="let cat of prodArray">
+            <div class="image" *ngIf="cat.isSummer===false">
+              <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg"
+                (click)="listDankie(cat.category)">
+              <div class="itemname">
+                <p>{{cat.category}}</p>
+              </div>
             </div>
           </div>
 
-          <!-- <div class="image">
-            <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg"
-              (click)="listDankie('Sweaters')">
-
-            <div class="itemname">
-              <p>Sweaters</p>
-            </div>
-          </div>
-
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/7e/82/1a/7e821a6ab104dfc0d6cfe83104bbf51e.jpg"
-              (click)="listDankie('Beanies')">
-
-            <div class="itemname">
-              <p>Beanies</p>
-            </div>
-          </div>
-
-          <div class="image">
-            <img src="https://i.pinimg.com/564x/6f/85/3e/6f853e216ad9a18302338c5c2d596ff9.jpg"
-              (click)="listDankie('Track Suits')">
-
-            <div class="itemname">
-              <p>Track suits</p>
-            </div>
-          </div> -->
 
         </div>
       </div>
@@ -1085,12 +1020,14 @@
         <label>kwanga Apparel</label>
         <label slot="end" style="cursor: pointer;">All <ion-icon slot="start" name="arrow-forward"></ion-icon></label>
       </ion-item>
-      <p style="font-size: 13px; color: rgb(168, 168, 168); font-family: 'Raleway'; margin-left: 10px;">Shop Kwanga and find your ideal
+      <p style="font-size: 13px; color: rgb(168, 168, 168); font-family: 'Raleway'; margin-left: 10px;">Shop Kwanga and
+        find your ideal
         outfit for every occasion, for every event and even just to look your best. DAILY</p>
       <div class="apparel">
 
         <div class="image">
-          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg" (click)="list('Smart Casual')">
+          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
+            (click)="list('Smart Casual')">
 
           <div class="itemname">
             <p>Smart Casual</p>
@@ -1164,7 +1101,8 @@
             </div>
 
             <div class="add_to_basket">
-              <ion-button [disabled]="itemAvailable[i]==='Out of stock'" (click)="addtoBusket(w.info.id, w.info, w.id, itemAvailable[i])" color="transparent">
+              <ion-button [disabled]="itemAvailable[i]==='Out of stock'"
+                (click)="addtoBusket(w.info.id, w.info, w.id, itemAvailable[i])" color="transparent">
                 Add<ion-icon slot="end" name="basket"></ion-icon>
               </ion-button>
             </div>
@@ -1246,13 +1184,15 @@
               {{getTotal() | currency:'R'}}</i></p>
           <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total -
               {{Delivery(getTotal()) | currency:'R'}} Incl delivery</i></p>
-              <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px; color: maroon"><i>Please Note: Delivery will take up to four days
-               </i></p>
+          <p *ngIf="delType==='Delivery'" style="width: 100%; text-align: right; font-size: 13px; color: maroon">
+            <i>Please Note: Delivery will take up to four days
+            </i></p>
           <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px;"><i>Cart Total -
               {{notDelivery(getTotal()) | currency:'R'}} Excl delivery</i></p>
 
-              <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px; color: maroon"><i>Please Note:  You can collect your items at any time
-               </i></p>
+          <p *ngIf="delType==='Collection'" style="width: 100%; text-align: right; font-size: 13px; color: maroon">
+            <i>Please Note: You can collect your items at any time
+            </i></p>
           <ion-button color="transparent" [disabled]="prodCart.length==0" (click)="presentAlertConfirm()">
             PLACE ORDER
           </ion-button>
@@ -1275,7 +1215,7 @@
       </ion-button>
 
 
-      <ion-button id="icon" routerLink= "/home" class="active" color="transparent">
+      <ion-button id="icon" routerLink="/home" class="active" color="transparent">
         Home
       </ion-button>
 
@@ -1299,7 +1239,7 @@
         About Us
       </ion-button>
 
-     
+
     </div>
   </div>
 
@@ -1318,9 +1258,9 @@
           Kagiso <br>
           MOGALE CITY <br>
           1754</p>
-          <p>Splash Screen Photo by Keagan Henman on Unsplash 
-            
-          </p>
+        <p>Splash Screen Photo by Keagan Henman on Unsplash
+
+        </p>
       </div>
 
       <div class="info">
@@ -1357,36 +1297,14 @@
       <div class="app_store">
         <img src="../../assets/android.png" alt="App Store">
       </div>
-      
+
     </div>
   </ion-footer>
 
   <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small">
-    <ion-fab-button (click)="busket()" #cart color="transparent" >
+    <ion-fab-button (click)="busket()" #cart color="transparent">
       <ion-icon name="basket" class="cart-icon"></ion-icon>
       <p id="number" *ngIf="prodCart.length>0">{{prodCart.length}}</p>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
