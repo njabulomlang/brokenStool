@@ -13,7 +13,6 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 export class ListPage implements OnInit {
   dbWishlist = firebase.firestore().collection("Wishlist");
   dbProduct = firebase.firestore().collection("Products");
-  dbPromo = firebase.firestore().collection("Specials");
   dbSales = firebase.firestore().collection("Specials");
   itemAvailable= [];
   promo = [];
@@ -27,7 +26,6 @@ export class ListPage implements OnInit {
   loaderAnimate: boolean = true;
   sortVal;
   sortSale;
-  // uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
   myWish: number;
   viewFilter = false;
@@ -40,6 +38,7 @@ export class ListPage implements OnInit {
   alertView: boolean = false;
   category = "";
   clr = "";
+  wishListed = [];
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController, public toastCtrl: ToastController,
     public alertCtrl: AlertController, private localSt: LocalStorageService, private elementRef: ElementRef) {
     this.collectionName = this.route.snapshot.paramMap.get('key');
@@ -181,48 +180,41 @@ export class ListPage implements OnInit {
  
    } */
   getSales() {
-    this.dbPromo.onSnapshot((res) => {
+    this.dbSales.onSnapshot((res) => {
       this.promo = [];
       res.forEach((doc) => {
         if (this.myWishlist.length === 0) {
           this.promo.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
-        } else {
-          this.myWishlist.forEach((item) => {
-            if (item.id === doc.id) {
-              this.clr = 'heart';
-            } else {
-              this.clr = 'heart-empty'
-            }
-            this.promo.push({ info: doc.data(), id: doc.id, wish: this.clr });
-          })
-        }
+        } 
       })
     })
+    setTimeout(() => {
+      for (let y = 0; y < this.promo.length; y++) {
+        this.dbWishlist.where('id','==',this.promo[y].id).onSnapshot((res) => {
+          for (let index = 0; index < res.docs.length; index++) {
+            this.promo[index].wish = 'heart';
+          }
+        })  
+      }
+     }, 1000);
   }
   getAllProduct() {
     this.dbProduct.doc(this.col).collection(this.collectionName).where('hideItem', '==', false).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
-        if (this.myWishlist.length === 0) {
           this.myProduct.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
-        } else {
-          this.myWishlist.forEach((item) => {
-            if (item.id === doc.id) {
-              this.clr = 'heart';
-            } else {
-              this.clr = 'heart-empty'
-            }
-            this.myProduct.push({ info: doc.data(), id: doc.id, wish: this.clr });
-          })
-        }
       })
-
     })
+    setTimeout(() => {
+      for (let y = 0; y < this.myProduct.length; y++) {
+        this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
+          for (let index = 0; index < res.docs.length; index++) {
+            this.myProduct[index].wish = 'heart';
+          }
+        })  
+      }
+     }, 1000);
   }
-  /* orderBy() {
-    this.getAllProduct(this.sortVal);
-    // this.getSales(this.sortVal);
-  } */
   sortSales() {
     this.getSales();
   }
@@ -273,7 +265,7 @@ export class ListPage implements OnInit {
         }
       })
     }, 0);
-    // }
+    // }  
   }
   wishListSale(id, data, index) {
     setTimeout(() => {
@@ -341,7 +333,7 @@ export class ListPage implements OnInit {
   colorOpt(info) {
     if (this.collectionName === 'sales') {
       this.promo = [];
-      this.dbPromo.where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
+      this.dbSales.where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
         res.forEach((doc) => {
           this.promo.push({ info: doc.data(), id: doc.id });
         })
@@ -362,7 +354,7 @@ export class ListPage implements OnInit {
     if (this.collectionName === 'sales') {
       if (this.price >= 0) {
         this.promo = [];
-        this.dbPromo.where('saleprice', '>=', param).onSnapshot((res) => {
+        this.dbSales.where('saleprice', '>=', param).onSnapshot((res) => {
           res.forEach((doc) => {
             this.promo.push({ info: doc.data(), id: doc.id });
           })
