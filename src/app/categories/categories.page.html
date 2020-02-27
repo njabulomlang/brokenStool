@@ -54,6 +54,7 @@
 
     <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
+<p id="crumbs"><i><span (click)="back()">Home</span> / Categories</i></p>
 
 </ion-header>
 <!-- <p id="crumbs"><i><span (click)="back()">Home</span> / Categories</i></p> -->
@@ -193,59 +194,28 @@
 
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
-      <div *ngFor="let cat of prodArray">
+      <div>
+        <div class="data" *ngFor="let cat of prodArray">
           <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===true">
               <img src="https://i.pinimg.com/564x/37/eb/7b/37eb7bb10c83acc2c8eded5a241c2176.jpg">
             <div class="category">{{cat.category}}</div>
           </div>
+        </div>
       </div>
       
-<!--       <div class="card" (click)="list('Shorts')">
-        <img src="https://i.pinimg.com/564x/1f/d2/e5/1fd2e5a2ccd92d25b0f5d560f08f77f2.jpg">
-        <div class="category">Shorts</div>
-      </div>
-      <div class="card" (click)="list('T-Shirts')">
-        <img src="https://i.pinimg.com/564x/ac/62/93/ac62932edd87f40fb5298ea76ebe6ba9.jpg">
-        <div class="category">T-shirts</div>
-      </div>
-      <div class="card" (click)="list('Bucket Hats')">
-        <img src="https://i.pinimg.com/564x/65/e0/fc/65e0fc8d58aab5f18731cc8cb1f703cf.jpg">
-        <div class="category">Bucket Hats</div>
-      </div>
-      <div class="card" (click)="list('Crop Tops')">
-        <img src="https://i.pinimg.com/564x/c8/1b/aa/c81baa4f14e6a9890b03b78c412c2f91.jpg">
-        <div class="category">Crop Tops</div>
-      </div>
-      <div class="card" (click)="list('Bags')">
-        <img src="https://i.pinimg.com/564x/45/e3/d2/45e3d28ac6d8241dcb85a0b8389da557.jpg">
-        <div class="category">Bags</div>
-      </div>
- -->
+
     </div>
 
     <div class="cards" *ngIf="category==='WINTER'" id="winter">
-      <div *ngFor="let cat of prodArray">
+      <div>
+        <div class="data" *ngFor="let cat of prodArray">
         <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===false">
             <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
           <div class="category">{{cat.category}}</div>
         </div>
+        </div>
     </div>
-      <!-- <div class="card" (click)="list('Hoodies')">
-        <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
-        <div class="category">Hoodies</div>
-      </div>
-      <div class="card" (click)="list('Sweaters')">
-        <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg">
-        <div class="category">Sweaters</div>
-      </div>
-      <div class="card" (click)="list('Track Suits')">
-        <img src="https://i.pinimg.com/564x/ba/a6/bb/baa6bb4a97859357928cd6b5a6dda6c5.jpg">
-        <div class="category">Track Suits</div>
-      </div>
-      <div class="card" (click)="list('Beanies')">
-        <img src="https://i.pinimg.com/564x/96/97/0c/96970c6ee2cb886eb19289a90b6bb35e.jpg">
-        <div class="category">Beanies</div>
-      </div> -->
+
 
     </div>
 
@@ -266,10 +236,7 @@
         <img src="https://i.pinimg.com/564x/97/a7/60/97a760a30c2711fad0213978e10a9a34.jpg">
         <div class="category">Sport</div>
       </div>
-      <!--  <div class="card">
-        <img src="https://i.pinimg.com/564x/1e/66/dc/1e66dca85cc2f674e098fc7579f9fbda.jpg">
-        <div class="category">Accesories</div>
-      </div> -->
+
 
     </div>
   </div>

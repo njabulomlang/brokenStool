@@ -1264,7 +1264,7 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        width: 30vw;
+        min-width: 20vw;
         height: 30vh;
         margin: 10px;
 
@@ -1312,7 +1312,7 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        width: 30vw;
+        min-width: 20vw;
         height: 30vh;
         margin: 10px;
 
