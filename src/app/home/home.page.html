@@ -174,17 +174,17 @@
       </ion-item>
 
       <div class="apparel">
-
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
-            (click)="list('Smart Casual')">
-
-          <div class="itemname">
-            <p>Smart Casual</p>
+        <div class="card" *ngFor="let cat of prodArr">
+          <div class="image">
+            <img src="{{cat.pictureLink}}"
+              (click)="listDankie(cat.name)">
+            <div class="itemname">
+              <p>{{cat.name}}</p>
+            </div>
           </div>
         </div>
 
-        <div class="image">
+        <!-- <div class="image">
           <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
 
 
@@ -209,7 +209,7 @@
           <div class="itemname">
             <p>Sport</p>
           </div>
-        </div>
+        </div> -->
 
 
       </div>
@@ -275,10 +275,10 @@
         <div class="all_summer">
           <div class="card" *ngFor="let cat of prodArray">
             <div class="image" *ngIf="cat.isSummer===true">
-              <img src="https://i.pinimg.com/564x/46/71/e9/4671e912bfa5bea8fd52d872d0e03b3e.jpg"
-                (click)="listDankie(cat.category)">
+              <img src="{{cat.pictureLink}}"
+                (click)="listDankie(cat.name)">
               <div class="itemname">
-                <p>{{cat.category}}</p>
+                <p>{{cat.name}}</p>
               </div>
             </div>
           </div>
@@ -320,10 +320,10 @@
 
           <div class="card" *ngFor="let cat of prodArray">
             <div class="image" *ngIf="cat.isSummer===false">
-              <img src="https://i.pinimg.com/564x/da/46/aa/da46aa8612c3691091c96720ff8a2985.jpg"
-                (click)="listDankie(cat.category)">
+              <img src="{{cat.pictureLink}}"
+                (click)="listDankie(cat.name)">
               <div class="itemname">
-                <p>{{cat.category}}</p>
+                <p>{{cat.name}}</p>
               </div>
             </div>
           </div>
@@ -343,17 +343,25 @@
         find your ideal
         outfit for every occasion, for every event and even just to look your best. DAILY</p>
       <div class="apparel">
-
-        <div class="image">
+        <div class="card" *ngFor="let cat of prodArr">
+          <div class="image">
+            <img src="{{cat.pictureLink}}"
+              (click)="listDankie(cat.name)">
+            <div class="itemname">
+              <p>{{cat.name}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="image">
           <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
             (click)="list('Smart Casual')">
 
           <div class="itemname">
             <p>Smart Casual</p>
           </div>
-        </div>
+        </div> -->
 
-        <div class="image">
+        <!-- <div class="image">
           <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
 
 
@@ -378,7 +386,7 @@
           <div class="itemname">
             <p>Sport</p>
           </div>
-        </div>
+        </div> -->
 
 
 

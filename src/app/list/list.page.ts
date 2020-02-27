@@ -180,7 +180,7 @@ export class ListPage implements OnInit {
  
    } */
   getSales() {
-    this.dbSales.onSnapshot((res) => {
+    this.dbProduct.where('onSale','==',true).onSnapshot((res) => {
       this.promo = [];
       res.forEach((doc) => {
         if (this.myWishlist.length === 0) {

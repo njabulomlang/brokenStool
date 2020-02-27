@@ -47,7 +47,7 @@ export class WishlistPage implements OnInit {
                 })
               } else {
                 this.itemAvailable = [];
-                this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+                this.dbProduct.doc(doc.id).onSnapshot((data) => {
                   if (data.data().hideItem === true) {
                     this.itemAvailable.push("Out of stock");
                   } else {
