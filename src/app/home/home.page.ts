@@ -455,7 +455,6 @@ export class HomePage implements OnInit {
   }
 
   categories(data) {
-    // console.log(data);
     this.router.navigate(['categories', data])
   }
   list(data) {

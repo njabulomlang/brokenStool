@@ -26,6 +26,7 @@ export class CategoriesPage implements OnInit {
   prodArray = [];
   dbSales = firebase.firestore().collection("Specials");
   prodArr = [];
+  winterArray = [];
   // dbProduct = firebase.firestore().collection('Products');
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController,public alertCtrl : AlertController, 
     private localSt:LocalStorageService) {
@@ -44,26 +45,33 @@ export class CategoriesPage implements OnInit {
       //console.log('Sales my man...');
       this.colDef = 'Sales';
     }
-    // console.log(this.colDef);
+     console.log(this.category);
 
     /* this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
       this.myWish = res1.size;
     }) */
     // this.getWishlist();
     this.checkUser();
-    this.getProdKwanga();
+    this.getProdD();
     this.getProd();
   }
   getProd() {
-    this.dbCategory.where('brand','==','Dankie Jesu').onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',false).onSnapshot((res)=>{
+      this.winterArray = [];
+      res.forEach((doc)=>{
+        this.winterArray.push(doc.data());
+      })
+    })
+  }
+  getProdSummer() {
+    this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',true).onSnapshot((res)=>{
       this.prodArray = [];
       res.forEach((doc)=>{
         this.prodArray.push(doc.data());
       })
     })
   }
-
-  getProdKwanga() {
+  getProdD() {
     this.dbCategory.where('brand','==','Kwanga').onSnapshot((res)=>{
       this.prodArr = [];
       res.forEach((doc)=>{
