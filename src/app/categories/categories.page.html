@@ -90,9 +90,9 @@
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===true">
-            <img src="https://i.pinimg.com/564x/37/eb/7b/37eb7bb10c83acc2c8eded5a241c2176.jpg">
-          <div class="category">{{cat.category}}</div>
+        <div class="card" (click)="list(cat.name)" *ngIf="cat.isSummer===true">
+            <img src="{{{{cat.pictureLink}}}}">
+          <div class="category">{{cat.name}}</div>
         </div>
     </div>
       <!-- <div class="card" (click)="list('Shorts')">
@@ -121,9 +121,9 @@
 
     <div class="cards" *ngIf="category==='WINTER'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===false">
-            <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
-          <div class="category">{{cat.category}}</div>
+        <div class="card" (click)="list(cat.name)" *ngIf="cat.isSummer===false">
+            <img src="{{cat.pictureLink}}">
+          <div class="category">{{cat.name}}</div>
         </div>
     </div>
       <!-- <div class="card" (click)="list('Sweaters')">
@@ -147,9 +147,9 @@
 
     <div class="cards" *ngIf="category==='KWANGA'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)">
-            <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
-          <div class="category">{{cat.category}}</div>
+        <div class="card" (click)="list(cat.name)">
+            <img src="{{cat.pictureLink}}">
+          <div class="category">{{cat.name}}</div>
         </div>
     </div>
       <!-- <div class="card" (click)="list('Formal')">
@@ -201,9 +201,9 @@
     <div class="cards" *ngIf="category==='SUMMER'">
       <div>
         <div class="data" *ngFor="let cat of prodArray">
-          <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===true">
-              <img src="https://i.pinimg.com/564x/37/eb/7b/37eb7bb10c83acc2c8eded5a241c2176.jpg">
-            <div class="category">{{cat.category}}</div>
+          <div class="card" (click)="list(cat.name)" *ngIf="cat.isSummer===true">
+              <img src="{{cat.pictureLink}}">
+            <div class="category">{{cat.name}}</div>
           </div>
         </div>
       </div>
@@ -214,9 +214,9 @@
     <div class="cards" *ngIf="category==='WINTER'" id="winter">
       <div>
         <div class="data" *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===false">
-            <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
-          <div class="category">{{cat.category}}</div>
+        <div class="card" (click)="list(cat.name)" *ngIf="cat.isSummer===false">
+            <img src="{{cat.pictureLink}}">
+          <div class="category">{{cat.name}}</div>
         </div>
         </div>
     </div>
@@ -226,12 +226,13 @@
 
     <div class="cards" *ngIf="category==='KWANGA'" id="kwanga">
       <div *ngFor="let cat of prodArr">
-        <div class="card" (click)="list(cat.category)">
-            <img src="https://i.pinimg.com/564x/45/60/09/4560091dba34204379150440c77cfb58.jpg">
-          <div class="category">{{cat.category}}</div>
+        <div class="card" (click)="list(cat.name)">
+            <img src="{{cat.pictureLink}}">
+          <div class="category">{{cat.name}}</div>
         </div>
     </div>
-
+  </div>
+</div>
       <!-- <div class="card" (click)="list('Traditional')">
         <img src="https://i.pinimg.com/564x/45/60/09/4560091dba34204379150440c77cfb58.jpg">
         <div class="category">Traditional</div>
@@ -337,11 +338,11 @@
      
     </div>
   </div>
-
+-->
   <ion-footer id="webview">
     <div class="footer">
       <div class="heading">
-        <!-- <h1>Dankie Jesu</h1> -->
+         <h1>Dankie Jesu</h1> 
         <img src="../../assets/NoPath - Copy.svg" alt="">
       </div>
 
