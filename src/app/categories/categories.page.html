@@ -119,7 +119,7 @@
 
     <div class="cards" *ngIf="category==='WINTER'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)">
+        <div class="card" (click)="list(cat.name)">
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
         </div>
@@ -145,7 +145,7 @@
 
     <div class="cards" *ngIf="category==='KWANGA'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)">
+        <div class="card" (click)="list(cat.name)">
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
         </div>
@@ -199,7 +199,7 @@
     <div class="cards" *ngIf="category==='SUMMER'">
       <div *ngFor="let cat of prodArray">
         <div class="data" >
-          <div class="card" (click)="list(cat.category)">
+          <div class="card" (click)="list(cat.name)">
               <img src="{{cat.pictureLink}}">
             <div class="category">{{cat.name}}</div>
           </div>
@@ -212,7 +212,7 @@
     <div class="cards" *ngIf="category==='WINTER'" id="winter">
       <div *ngFor="let cat of winterArray">
         <div class="data" >
-        <div class="card" (click)="list(cat.category)">
+        <div class="card" (click)="list(cat.name)">
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
         </div>
@@ -224,7 +224,7 @@
 
     <div class="cards" *ngIf="category==='KWANGA'" id="kwanga">
       <div *ngFor="let cat of prodArr">
-        <div class="card" (click)="list(cat.category)">
+        <div class="card" (click)="list(cat.name)">
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
         </div>
