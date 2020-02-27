@@ -231,29 +231,9 @@
           <div class="category">{{cat.category}}</div>
         </div>
     </div>
-
-      <!-- <div class="card" (click)="list('Traditional')">
-        <img src="https://i.pinimg.com/564x/45/60/09/4560091dba34204379150440c77cfb58.jpg">
-        <div class="category">Traditional</div>
-      </div>
-      <div class="card" (click)="list('Formal')">
-        <img src="https://i.pinimg.com/564x/c6/41/b6/c641b6e1559ae0f2f432576d811ff172.jpg">
-        <div class="category">Formal</div>
-      </div>
-      <div class="card" (click)="list('Casual')">
-        <img src="https://i.pinimg.com/564x/52/3c/09/523c0965f3d8b0fedcfdfd240ae9db12.jpg">
-        <div class="category">Casual</div>
-      </div>
-      <div class="card" (click)="list('Sport')">
-        <img src="https://i.pinimg.com/564x/97/a7/60/97a760a30c2711fad0213978e10a9a34.jpg">
-        <div class="category">Sport</div>
-      </div>
-
-
-    </div>
+    </div> 
   </div>
-
-
+  <div class="backdrop1" *ngIf="viewBackdrop"></div>
   <div id="wish" [ngClass]="{'viewwishlist': viewPrice, 'closewishlist': !viewPrice}">
 
     <div class="heading">
@@ -302,7 +282,7 @@
 
     </div>
   </div>
-  <div class="backdrop1" *ngIf="viewBackdrop"></div>
+
   <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
     <div class="heading">
       <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -338,10 +318,11 @@
     </div>
   </div>
 
+
   <ion-footer id="webview">
     <div class="footer">
       <div class="heading">
-        <!-- <h1>Dankie Jesu</h1> -->
+        <h1>Dankie Jesu</h1>
         <img src="../../assets/NoPath - Copy.svg" alt="">
       </div>
 
