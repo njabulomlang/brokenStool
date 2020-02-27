@@ -15,6 +15,7 @@ export class CategoriesPage implements OnInit {
   // uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
   dbProd = firebase.firestore().collection('Products');
+  dbCategory = firebase.firestore().collection('category');
   myWish: number;
   viewPrice = false;
   viewSideMenu = false;
@@ -54,7 +55,7 @@ export class CategoriesPage implements OnInit {
     this.getProd();
   }
   getProd() {
-    this.dbProd.where('brand','==','Dankie Jesu').onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Dankie Jesu').onSnapshot((res)=>{
       this.prodArray = [];
       res.forEach((doc)=>{
         this.prodArray.push(doc.data());
@@ -63,7 +64,7 @@ export class CategoriesPage implements OnInit {
   }
 
   getProdKwanga() {
-    this.dbProd.where('brand','==','Kwanga').onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Kwanga').onSnapshot((res)=>{
       this.prodArr = [];
       res.forEach((doc)=>{
         this.prodArr.push(doc.data());
