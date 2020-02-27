@@ -1225,7 +1225,7 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        width: 45vw;
+        min-width: 25vw;
         height: 35vh;
         // border-radius: 10px;
         box-shadow: 5px 5px 10px rgb(177, 177, 177);
