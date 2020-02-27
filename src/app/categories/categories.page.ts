@@ -24,7 +24,8 @@ export class CategoriesPage implements OnInit {
   itemAvailable=[];
   prodArray = [];
   dbSales = firebase.firestore().collection("Specials");
-  dbProduct = firebase.firestore().collection('Products');
+  prodArr = [];
+  // dbProduct = firebase.firestore().collection('Products');
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController,public alertCtrl : AlertController, 
     private localSt:LocalStorageService) {
     // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
@@ -49,13 +50,23 @@ export class CategoriesPage implements OnInit {
     }) */
     // this.getWishlist();
     this.checkUser();
+    this.getProdKwanga();
     this.getProd();
   }
   getProd() {
-    this.dbProd.where('brand','==','Dankie Jesu').limit(4).onSnapshot((res)=>{
+    this.dbProd.where('brand','==','Dankie Jesu').onSnapshot((res)=>{
       this.prodArray = [];
       res.forEach((doc)=>{
         this.prodArray.push(doc.data());
+      })
+    })
+  }
+
+  getProdKwanga() {
+    this.dbProd.where('brand','==','Kwanga').onSnapshot((res)=>{
+      this.prodArr = [];
+      res.forEach((doc)=>{
+        this.prodArr.push(doc.data());
       })
     })
   }
@@ -120,7 +131,7 @@ export class CategoriesPage implements OnInit {
           })
         } else {
           this.itemAvailable = [];
-          this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+          this.dbProd.doc(doc.id).onSnapshot((data) => {
             if (data.data().hideItem === true) {
               this.itemAvailable.push("Out of stock");
             } else {

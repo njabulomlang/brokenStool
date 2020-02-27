@@ -31,7 +31,7 @@ export class ViewPage implements OnInit {
   color: string = '';
   myRate: number = 0;
   dbRate = firebase.firestore().collection('productRate');
-  dbSales = firebase.firestore().collection('Specials');
+  // dbSales = firebase.firestore().collection('Specials');
   mySale = [];
   category: string = '';
   starRating = document.getElementsByClassName('ionic4-star-rating')
@@ -270,7 +270,7 @@ export class ViewPage implements OnInit {
     })
   }
   async getSpecial() {
-    await this.dbSales.doc(this.doc_id).get().then((res) => {
+    await this.dbProduct.doc(this.doc_id).get().then((res) => {
       this.mySale.push({ data: res.data(), id: res.id });
     })
   }

@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
   fileUrl;
   itemAvailable = [];
   prodArray = [];
+  prodArr = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     public toastCtrl: ToastController, public alertCtrl: AlertController, private localSt: LocalStorageService, private sanitizer: DomSanitizer, public network: Network,
     public plt: Platform
@@ -68,6 +69,7 @@ export class HomePage implements OnInit {
     // this.getCart();
     // this.getProfile();
     this.getPromo();
+    this.getProdD();
     this.getProd();
     // this.getWishlist();
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
@@ -83,6 +85,14 @@ export class HomePage implements OnInit {
       this.prodArray = [];
       res.forEach((doc)=>{
         this.prodArray.push(doc.data());
+      })
+    })
+  }
+  getProdD() {
+    this.dbProd.where('brand','==','Kwanga').limit(4).onSnapshot((res)=>{
+      this.prodArr = [];
+      res.forEach((doc)=>{
+        this.prodArr.push(doc.data());
       })
     })
   }
@@ -351,7 +361,7 @@ export class HomePage implements OnInit {
           })
         } else {
           this.itemAvailable = [];
-          this.dbProduct.doc(doc.data().brand).collection(doc.data().category).doc(doc.id).onSnapshot((data) => {
+          this.dbProduct.doc(doc.id).onSnapshot((data) => {
             if (data.data().hideItem === true) {
               this.itemAvailable.push("Out of stock");
             } else {
@@ -391,7 +401,7 @@ export class HomePage implements OnInit {
     }, 0);
   }
   getPromo() {
-    this.dbSales.limit(4).onSnapshot((res) => {
+    this.dbProd.where('onSale','==',true).limit(4).onSnapshot((res) => {
       this.sales = [];
       setTimeout(() => {
         this.loaderAnimate = false
@@ -408,25 +418,7 @@ export class HomePage implements OnInit {
   logout() {
     this.authService.logoutUser()
   }
-  addToCart(product) {
 
-    //this.uid = firebase.auth().currentUser.uid;
-    /*   if(!this.uid) {
-        console.log('Cannot read uid');
-      } else {
-        console.log('Uid found..');
-        
-      } */
-    //this.cartService.addProduct(product);
-    this.animateCSS('tada', true);
-    /*  if(this.uid==null || this.uid==undefined) {
-       this.router.navigateByUrl('login')
-     } else {
-       this.cartService.addProduct(product);
-     this.animateCSS('tada', true);
-     }
-      */
-  }
   busket() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {

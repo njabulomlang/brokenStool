@@ -855,17 +855,17 @@
       </ion-item>
 
       <div class="apparel">
-
-        <div class="image">
-          <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
-            (click)="list('Smart Casual')">
-
-          <div class="itemname">
-            <p>Smart Casual</p>
+        <div class="card" *ngFor="let cat of prodArr">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
+              (click)="listDankie(cat.category)">
+            <div class="itemname">
+              <p>{{cat.category}}</p>
+            </div>
           </div>
         </div>
 
-        <div class="image">
+        <!-- <div class="image">
           <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
 
 
@@ -890,7 +890,7 @@
           <div class="itemname">
             <p>Sport</p>
           </div>
-        </div>
+        </div> -->
 
 
       </div>
@@ -1024,17 +1024,25 @@
         find your ideal
         outfit for every occasion, for every event and even just to look your best. DAILY</p>
       <div class="apparel">
-
-        <div class="image">
+        <div class="card" *ngFor="let cat of prodArr">
+          <div class="image">
+            <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
+              (click)="listDankie(cat.category)">
+            <div class="itemname">
+              <p>{{cat.category}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="image">
           <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
             (click)="list('Smart Casual')">
 
           <div class="itemname">
             <p>Smart Casual</p>
           </div>
-        </div>
+        </div> -->
 
-        <div class="image">
+        <!-- <div class="image">
           <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
 
 
@@ -1059,7 +1067,7 @@
           <div class="itemname">
             <p>Sport</p>
           </div>
-        </div>
+        </div> -->
 
 
 
