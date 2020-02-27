@@ -54,6 +54,7 @@ export class CategoriesPage implements OnInit {
     this.checkUser();
     this.getProdD();
     this.getProd();
+    this.getProdSummer();
   }
   getProd() {
     this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',false).onSnapshot((res)=>{
