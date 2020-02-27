@@ -955,7 +955,7 @@
         </ion-item>
         <div class="all_summer">
           <div class="card" *ngFor="let cat of prodArray">
-            <div class="image" *ngIf="cat.isSummer===true">
+            <div class="image">
               <img src="{{cat.pictureLink}}"
                 (click)="listDankie(cat.name)">
               <div class="itemname">
@@ -999,8 +999,8 @@
             </div>
           </div>
 
-          <div class="card" *ngFor="let cat of prodArray">
-            <div class="image" *ngIf="cat.isSummer===false">
+          <div class="card" *ngFor="let cat of winterArray">
+            <div class="image">
               <img src="{{cat.pictureLink}}"
                 (click)="listDankie(cat.name)">
               <div class="itemname">
