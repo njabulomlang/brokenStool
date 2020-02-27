@@ -43,7 +43,7 @@ ion-toolbar {
   padding: 0 !important;
   margin: 0 !important;
 
-  #welcome{
+  #welcome {
     height: 10%;
   }
 
@@ -84,7 +84,7 @@ ion-toolbar {
           right: 1px;
           // margin: 5px;
           // text-shadow: 5px 5px 10px rgb(0, 0, 0);
-  
+
           p {
             color: rgb(255, 255, 255);
             font-size: 14px;
@@ -185,7 +185,7 @@ ion-toolbar {
           right: 1px;
           // margin: 5px;
           // text-shadow: 5px 5px 10px rgb(0, 0, 0);
-  
+
           p {
             color: rgb(255, 255, 255);
             font-size: 14px;
@@ -233,7 +233,7 @@ ion-toolbar {
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   animation: backgroundmover 30s linear infinite;
 
-.loader {
+  .loader {
     width: 10em;
     height: 10em;
     font-size: 25px;
@@ -243,30 +243,30 @@ ion-toolbar {
     position: relative;
     animation: rotating 2s ease-in-out infinite;
     --direction: 1;
-}
+  }
 
-.loader::before,
-.loader::after {
-    content: '';
+  .loader::before,
+  .loader::after {
+    content: "";
     position: absolute;
     width: inherit;
     height: inherit;
     border-radius: 50%;
     box-sizing: border-box;
     top: -0.2em;
-}
+  }
 
-.loader::before {
+  .loader::before {
     border-top: 0.3em solid rgb(0, 20, 39);
     transform: rotate(120deg);
-}
+  }
 
-.loader::after {
+  .loader::after {
     border-top: 0.3em solid rgb(70, 70, 70);
     transform: rotate(240deg);
-}
+  }
 
-.loader span {
+  .loader span {
     position: absolute;
     color: white;
     width: inherit;
@@ -276,17 +276,17 @@ ion-toolbar {
     font-family: sans-serif;
     animation: rotating 2s linear infinite;
     --direction: -1;
-}
+  }
 
-@keyframes rotating {
+  @keyframes rotating {
     50% {
-        transform: rotate(calc(180deg * var(--direction)));
+      transform: rotate(calc(180deg * var(--direction)));
     }
 
     100% {
-        transform: rotate(calc(360deg * var(--direction)));
+      transform: rotate(calc(360deg * var(--direction)));
     }
-}
+  }
 
   // .maploader {
   //   .lds-ellipsis {
@@ -447,7 +447,6 @@ ion-toolbar {
 }
 //----------------------------------- Media Queries -----------------------------------------
 @media only screen and (min-width: 1024px) {
- 
   .notification .badge {
     position: absolute;
     top: 5.5px;
@@ -458,7 +457,6 @@ ion-toolbar {
     font-size: 10px;
     color: white;
   }
-
 
   #background {
     display: flex;
@@ -492,7 +490,7 @@ ion-toolbar {
       box-shadow: 1px 1px 1px rgb(216, 216, 216);
       display: grid;
       align-items: center;
-      p{
+      p {
         width: 100%;
         text-align: center;
         color: rgb(46, 46, 46);
@@ -514,7 +512,6 @@ ion-toolbar {
       background-repeat: no-repeat;
       box-shadow: 1px 1px 1px rgb(216, 216, 216);
     }
- 
   }
 
   #welcome {
@@ -590,18 +587,18 @@ ion-toolbar {
   }
 }
 
-@media only screen and (min-width: 1025px){
-  .sidemenu{
+@media only screen and (min-width: 1025px) {
+  .sidemenu {
     display: none;
   }
 }
 
-@media only screen and (max-width: 1024px){
-  .icon2{
+@media only screen and (max-width: 1024px) {
+  .icon2 {
     display: none;
   }
 
-  .icon1{
+  .icon1 {
     display: none;
   }
 
@@ -617,14 +614,14 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  
+
     .heading {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
       width: 100%;
       margin: 5px;
-  
+
       ion-icon {
         color: white;
         position: relative;
@@ -634,7 +631,7 @@ ion-toolbar {
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-  
+
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -643,7 +640,7 @@ ion-toolbar {
         font-size: 1em;
       }
     }
-  
+
     .wishlist_items {
       display: flex;
       flex-flow: column;
@@ -704,7 +701,7 @@ ion-toolbar {
               border-radius: 5px;
             }
           }
-  
+
           .item_details {
             width: 12vw;
             p {
@@ -712,7 +709,7 @@ ion-toolbar {
             }
           }
         }
-  
+
         .right {
           width: 3vw;
           display: flex;
@@ -733,7 +730,7 @@ ion-toolbar {
               font-size: 12px;
             }
           }
-  
+
           .trash_icon {
             ion-icon {
               color: rgb(148, 14, 14);
@@ -741,7 +738,7 @@ ion-toolbar {
           }
         }
       }
-  
+
       .add_to_basket {
         color: white;
         position: absolute;
@@ -768,14 +765,14 @@ ion-toolbar {
             width: 20vw;
             height: 2vw;
           }
-  
+
           .line {
             width: 20vw;
             height: 1.5px;
             background: grey;
           }
         }
-  
+
         .delivery {
           width: 50%;
           height: 100%;
@@ -843,7 +840,7 @@ ion-toolbar {
       }
     }
   }
-  
+
   .closecart {
     position: absolute;
     z-index: 150;
@@ -874,7 +871,7 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  
+
     .heading {
       display: flex;
       flex-flow: row;
@@ -882,7 +879,7 @@ ion-toolbar {
       width: 100%;
       // text-align: center;
       margin: 5px;
-  
+
       ion-icon {
         color: white;
         position: relative;
@@ -892,7 +889,7 @@ ion-toolbar {
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-  
+
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -901,7 +898,7 @@ ion-toolbar {
         font-size: 1em;
       }
     }
-  
+
     .wishlist_items {
       display: flex;
       flex-flow: column;
@@ -910,7 +907,7 @@ ion-toolbar {
       min-width: 90%;
       height: 90%;
       overflow-y: auto;
-  
+
       #noItems {
         display: flex;
         flex-flow: column;
@@ -962,12 +959,12 @@ ion-toolbar {
               border-radius: 5px;
             }
           }
-  
+
           .item_details {
             width: 8vw;
           }
         }
-  
+
         .right {
           width: 6vw;
           display: flex;
@@ -986,7 +983,7 @@ ion-toolbar {
               font-size: 12px;
             }
           }
-  
+
           .trash_icon {
             ion-icon {
               color: rgb(148, 14, 14);
@@ -1000,7 +997,7 @@ ion-toolbar {
       }
     }
   }
-  
+
   .closereviews {
     position: absolute;
     z-index: 150;
@@ -1031,7 +1028,7 @@ ion-toolbar {
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  
+
     .heading {
       display: flex;
       flex-flow: row;
@@ -1039,7 +1036,7 @@ ion-toolbar {
       width: 100%;
       // text-align: center;
       margin: 5px;
-  
+
       ion-icon {
         color: white;
         position: relative;
@@ -1049,7 +1046,7 @@ ion-toolbar {
         background: rgb(0, 0, 0);
         border-radius: 50%;
       }
-  
+
       p {
         letter-spacing: 1px;
         margin: 5px;
@@ -1059,12 +1056,12 @@ ion-toolbar {
       }
     }
 
-    .side_buttons{
+    .side_buttons {
       display: flex;
       flex-flow: column;
       position: relative;
       top: 150px;
-      ion-button{
+      ion-button {
         color: rgb(82, 82, 82);
         margin: 5px;
         height: 50px;
@@ -1073,9 +1070,8 @@ ion-toolbar {
         border-bottom: 2px solid rgb(255, 255, 255);
       }
     }
-  
   }
-  
+
   .closeMenu {
     position: absolute;
     z-index: 150;
@@ -1225,7 +1221,7 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        min-width: 25vw;
+        width: 30vh;
         height: 35vh;
         // border-radius: 10px;
         box-shadow: 5px 5px 10px rgb(177, 177, 177);
@@ -1264,15 +1260,14 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        min-width: 20vw;
+        width:30%;
         height: 30vh;
         margin: 10px;
 
         img {
           width: 100%;
-          height: 25vh;
+          height: 25vw;
           object-fit: cover;
-          
           box-shadow: 5px 5px 10px rgb(177, 177, 177);
         }
 
@@ -1312,13 +1307,13 @@ ion-toolbar {
         display: flex;
         flex-flow: column;
         position: relative;
-        min-width: 20vw;
+        width:30%;
         height: 30vh;
         margin: 10px;
 
         img {
           width: 100%;
-          height: 25vh;
+          height: 25vw;
           object-fit: cover;
 
           box-shadow: 5px 5px 10px rgb(177, 177, 177);
@@ -1369,7 +1364,7 @@ ion-toolbar {
   z-index: 150;
   background: rgb(201, 201, 201);
   width: 22vw;
-  height:90%;
+  height: 90%;
   top: 98px;
   right: 0;
   align-items: center;
@@ -1681,7 +1676,6 @@ ion-toolbar {
       img {
         width: 5vw;
         height: 5vw;
-
       }
       p {
         text-align: center;
