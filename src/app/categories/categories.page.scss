@@ -80,15 +80,15 @@ ion-toolbar {
     width: 100%;
     text-align: left;
     padding: 10px;
-    // position: relative;
-    // bottom: 30px;
+
     h1 {
       font-size: 4vw;
     }
   }
   .cards {
     display: flex;
-    flex-wrap: wrap;
+    float: left;
+    flex-wrap: wrap !important;
     width: 100%;
     overflow-y: auto;
     // border: 1px solid red;
@@ -97,16 +97,20 @@ ion-toolbar {
     position: relative;
     bottom: 50px;
 
+
+
     .card {
-      margin: 6px;
+      margin: 10px;
       border-radius: 5px;
       position: relative;
-      // border: 1px solid green;
       box-shadow: 2px 2px 2px 2px rgb(223, 223, 223);
+      background-position: center;
+      width: 95% !important;
+      height: 55vw;
       img {
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 5px;
       }
 
@@ -114,9 +118,15 @@ ion-toolbar {
         position: absolute;
         bottom: 10px;
         right: 10px;
-        color: rgb(255, 255, 255);
-        text-shadow: 5px 5px 5px black;
+        color: rgb(0, 0, 0);
+        // font-weight: bold;
+        // text-shadow: 5px 5px 5px black;
         font-family: "Poppins";
+      }
+
+      .card:nth-child(1) {
+        width: 57vw;
+        height: 30vh;
       }
     }
   }
@@ -258,12 +268,12 @@ ion-toolbar {
       grid-template-rows: auto;
       grid-gap: 1.5rem;
       grid-template-areas:
-        "img-1 img-2 img-3 "
+        "card.nth-child(1) card.nth-child(1) card.nth-child(2) "
         "img-4 img-5 img-6";
     }
 
     .cards .card {
-      width: 100%;
+      width: 95%;
       height: 25rem;
       background-position: center;
       background-repeat: no-repeat;
@@ -273,18 +283,21 @@ ion-toolbar {
       align-items: center;
       justify-content: center;
       text-decoration: none;
+
+      img {
+        object-fit: contain;
+      }
     }
 
     .card {
       margin: 5px;
       border-radius: 5px;
       position: relative;
-      // border: 1px solid green;
       box-shadow: 2px 2px 5px rgb(170, 170, 170);
       img {
         height: 100%;
-        width: 100%;
-        object-fit: cover;
+        width: 100% !important;
+        object-fit: contain;
         border-radius: 5px;
       }
 
@@ -292,8 +305,8 @@ ion-toolbar {
         position: absolute;
         bottom: 10px;
         right: 10px;
-        color: rgb(255, 255, 255);
-        text-shadow: 5px 5px 5px black;
+        color: rgb(0, 0, 0);
+        // text-shadow: 5px 5px 5px black;
         font-family: "Poppins";
       }
     }
@@ -308,7 +321,7 @@ ion-toolbar {
           "img-1 img-2 img-3 "
           "img-4 img-5 img-6";
       }
-  
+
       .cards .card {
         width: 100%;
         height: 25rem;
@@ -318,50 +331,66 @@ ion-toolbar {
         justify-content: center;
         text-decoration: none;
       }
-  
+
       .card {
         margin: 5px;
         border-radius: 5px;
         position: relative;
-    
+
         box-shadow: 2px 2px 5px rgb(170, 170, 170);
         img {
           height: 100%;
           width: 100%;
-          object-fit: cover;
+          object-fit: contain;
           border-radius: 5px;
         }
-  
+
         .category {
           position: absolute;
           bottom: 10px;
           right: 10px;
-          color: rgb(255, 255, 255);
-          text-shadow: 5px 5px 5px black;
+          color: rgb(0, 0, 0);
+          // text-shadow: 5px 5px 5px black;
           font-family: "Poppins";
         }
       }
     }
 
     #kwanga {
-      .card:nth-child(1) {
-        width: 25%;
-        height: 40vh;
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 1.5rem;
+        grid-template-areas:
+          "img-1 img-2 img-3 "
+          "img-4 img-5 img-6";
       }
 
-      .card:nth-child(2) {
-        width: 70%;
-        height: 40vh;
+      .cards .card {
+        width: 100%;
+        height: 25rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        img {
+          object-fit: contain;
+        }
       }
 
-      .card:nth-child(3) {
-        width: 70%;
-        height: 40vh;
-      }
-
-      .card:nth-child(4) {
-        width: 25%;
-        height: 40vh;
+      .card {
+        margin: 5px;
+        border-radius: 5px;
+        position: relative;
+        box-shadow: 2px 2px 5px rgb(170, 170, 170);
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          border-radius: 5px;
+        }
       }
     }
   }
