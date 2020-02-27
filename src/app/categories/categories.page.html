@@ -199,8 +199,8 @@
 
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
-      <div>
-        <div class="data" *ngFor="let cat of prodArray">
+      <div *ngFor="let cat of prodArray">
+        <div class="data" >
           <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===true">
               <img src="https://i.pinimg.com/564x/37/eb/7b/37eb7bb10c83acc2c8eded5a241c2176.jpg">
             <div class="category">{{cat.category}}</div>
@@ -212,8 +212,8 @@
     </div>
 
     <div class="cards" *ngIf="category==='WINTER'" id="winter">
-      <div>
-        <div class="data" *ngFor="let cat of prodArray">
+      <div *ngFor="let cat of prodArray">
+        <div class="data" >
         <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===false">
             <img src="https://i.pinimg.com/564x/be/fa/2b/befa2b288a55907f9a6a17b87db718a4.jpg">
           <div class="category">{{cat.category}}</div>
@@ -333,7 +333,7 @@
       <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
         About Us
       </ion-button>
-
+-->
      
     </div>
   </div>
@@ -341,7 +341,7 @@
   <ion-footer id="webview">
     <div class="footer">
       <div class="heading">
-        <!-- <h1>Dankie Jesu</h1> -->
+         <h1>Dankie Jesu</h1> 
         <img src="../../assets/NoPath - Copy.svg" alt="">
       </div>
 
