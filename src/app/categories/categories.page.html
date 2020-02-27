@@ -90,9 +90,9 @@
     </div>
     <div class="cards" *ngIf="category==='SUMMER'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.category)" *ngIf="cat.isSummer===true">
-            <img src="https://i.pinimg.com/564x/37/eb/7b/37eb7bb10c83acc2c8eded5a241c2176.jpg">
-          <div class="category">{{cat.category}}</div>
+        <div class="card" (click)="list(cat.name)" *ngIf="cat.isSummer===true">
+            <img src="{{cat.pictureLink}}">
+          <div class="category">{{cat.name}}</div>
         </div>
     </div>
       <!-- <div class="card" (click)="list('Shorts')">
@@ -115,8 +115,6 @@
         <img src="https://i.pinimg.com/564x/45/e3/d2/45e3d28ac6d8241dcb85a0b8389da557.jpg">
         <div class="category">Bags</div>
       </div> -->
-
-
     </div>
 
     <div class="cards" *ngIf="category==='WINTER'">
