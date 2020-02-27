@@ -32,6 +32,7 @@ export class HomePage implements OnInit {
   dbOrder = firebase.firestore().collection('Order');
   dbProduct = firebase.firestore().collection('Products');
   dbProd = firebase.firestore().collection('Products');
+  dbCategory = firebase.firestore().collection('category');
   // uid = firebase.auth().currentUser.uid;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
@@ -81,7 +82,7 @@ export class HomePage implements OnInit {
     }, 3000);
   }
   getProd() {
-    this.dbProd.where('brand','==','Dankie Jesu').limit(4).onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Dankie Jesu').limit(4).onSnapshot((res)=>{
       this.prodArray = [];
       res.forEach((doc)=>{
         this.prodArray.push(doc.data());
@@ -89,7 +90,7 @@ export class HomePage implements OnInit {
     })
   }
   getProdD() {
-    this.dbProd.where('brand','==','Kwanga').limit(4).onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Kwanga').limit(4).onSnapshot((res)=>{
       this.prodArr = [];
       res.forEach((doc)=>{
         this.prodArr.push(doc.data());
@@ -441,32 +442,6 @@ export class HomePage implements OnInit {
       })
     }, 0);
 
-  }
-  animateCSS(animationName, keepAnimated = false) {
-    const node = this.fab.nativeElement;
-    node.classList.add('animated', animationName)
-
-    //https://github.com/daneden/animate.css
-    function handleAnimationEnd() {
-      if (!keepAnimated) {
-        node.classList.remove('animated', animationName);
-      }
-      node.removeEventListener('animationend', handleAnimationEnd)
-    }
-    node.addEventListener('animationend', handleAnimationEnd)
-  }
-  async openCart() {
-    this.animateCSS('bounceOutLeft', true);
-
-    let modal = await this.modalCtrl.create({
-      component: CartModalPage,
-      cssClass: 'cart-modal'
-    });
-    modal.onWillDismiss().then(() => {
-      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
-      this.animateCSS('bounceInLeft');
-    });
-    modal.present();
   }
 
   categories(data) {
