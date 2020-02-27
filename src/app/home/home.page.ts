@@ -53,6 +53,7 @@ export class HomePage implements OnInit {
   itemAvailable = [];
   prodArray = [];
   prodArr = [];
+  winterArray = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
     public toastCtrl: ToastController, public alertCtrl: AlertController, private localSt: LocalStorageService, private sanitizer: DomSanitizer, public network: Network,
     public plt: Platform
@@ -72,6 +73,7 @@ export class HomePage implements OnInit {
     this.getPromo();
     this.getProdD();
     this.getProd();
+    this.getProdSummer();
     // this.getWishlist();
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
     //   this.myWish = res1.size;
@@ -82,7 +84,15 @@ export class HomePage implements OnInit {
     }, 3000);
   }
   getProd() {
-    this.dbCategory.where('brand','==','Dankie Jesu').limit(4).onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',false).limit(4).onSnapshot((res)=>{
+      this.winterArray = [];
+      res.forEach((doc)=>{
+        this.winterArray.push(doc.data());
+      })
+    })
+  }
+  getProdSummer() {
+    this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',true).limit(4).onSnapshot((res)=>{
       this.prodArray = [];
       res.forEach((doc)=>{
         this.prodArray.push(doc.data());
