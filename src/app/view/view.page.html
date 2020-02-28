@@ -34,6 +34,11 @@
 
       <ion-buttons slot="end">
 
+        
+        <ion-button id="icon" (click)="gotocart()">
+          <ion-icon slot="start" name="basket"></ion-icon> 
+        </ion-button>
+
         <ion-button id="rate" (click)="presentPopover($event)">
           <ion-icon slot="start" name="star"></ion-icon> Rate This Product
         </ion-button>
@@ -375,7 +380,7 @@
 
         <div class="add">
           <ion-button (click)="gotocart()" color="transparent" style="background: rgb(5, 5, 29); width: 10vw;">
-            Go To Cart
+           Go to basket
           </ion-button>
           <!-- <ion-fab-button color="transparent" (click)="gotocart()">
             <ion-icon name="basket"></ion-icon>
@@ -479,7 +484,7 @@
           </ion-button>
 
           <ion-button (click)="gotocart()" color="transparent" style="background: rgb(0, 0, 37); width: 10vw">
-            Go To Basket
+            Add to Wishlist
           </ion-button>
           <!-- <ion-fab-button color="transparent" (click)="gotocart()" vertical="bottom">
             <ion-icon name="basket"></ion-icon>

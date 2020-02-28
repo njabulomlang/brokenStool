@@ -72,9 +72,9 @@
     <div class="itemcount">
       <br><br>
     </div>
-    <div class="cards" *ngIf="category==='SUMMER'">
+    <div class="cards" *ngIf="category==='SUMMER'" >
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.name)">
+        <div class="card" (click)="list(cat.name)" >
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
         </div>
@@ -107,46 +107,16 @@
           <div class="category">{{cat.name}}</div>
         </div>
     </div>
-      <!-- <div class="card" (click)="list('Sweaters')">
-        <img src="https://i.pinimg.com/564x/a3/a1/8b/a3a18b4c3a78b3187d70b456cc09ad7e.jpg">
-        <div class="category">Sweaters</div>
-      </div>
-      <div class="card" (click)="list('Track Suits')">
-        <img src="https://i.pinimg.com/564x/ba/a6/bb/baa6bb4a97859357928cd6b5a6dda6c5.jpg">
-        <div class="category">Track Suits</div>
-      </div>
-      <div class="card" (click)="list('Beanies')">
-        <img src="https://i.pinimg.com/564x/96/97/0c/96970c6ee2cb886eb19289a90b6bb35e.jpg">
-        <div class="category">Beanies</div>
-      </div> -->
-      <!-- <div class="card" (click)="list('Bags')">
-        <img src="https://i.pinimg.com/564x/9f/3d/79/9f3d79a894b214724748a155809adb5d.jpg">
-        <div class="category">Bags</div>
-      </div> -->
     </div>
     <div class="cards" *ngIf="category==='KWANGA'">
       <div *ngFor="let cat of prodArray">
-        <div class="card" (click)="list(cat.name)">
+        <div class="card" (click)="list(cat.name)" >
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
         </div>
     </div>
-      <!-- <div class="card" (click)="list('Formal')">
-        <img src="https://i.pinimg.com/564x/c6/41/b6/c641b6e1559ae0f2f432576d811ff172.jpg">
-        <div class="category">Formal</div>
-      </div>
-      <div class="card" (click)="list('Smart Casual')">
-        <img src="https://i.pinimg.com/564x/52/3c/09/523c0965f3d8b0fedcfdfd240ae9db12.jpg">
-        <div class="category">Casual</div>
-      </div>
-      <div class="card" (click)="list('Sports')">
-        <img src="https://i.pinimg.com/564x/97/a7/60/97a760a30c2711fad0213978e10a9a34.jpg">
-        <div class="category">Sport</div>
-      </div> -->
-      <!--     <div class="card">
-        <img src="https://i.pinimg.com/564x/1e/66/dc/1e66dca85cc2f674e098fc7579f9fbda.jpg">
-        <div class="category">Accesories</div>
-      </div> -->
+   
+
     </div>
   </div>
   <div class="web_view">
