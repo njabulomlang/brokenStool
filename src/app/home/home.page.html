@@ -51,7 +51,7 @@
 
       <ion-button id="icon" (click)="reviewed()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
+        <span class="badge" *ngIf="myWishlist.length>0">{{myWishlist.length}}</span>
 
       </ion-button>
 
@@ -74,7 +74,7 @@
       </ion-button>
       <ion-button id="icon" (click)="wishlist()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
+        <span class="badge" *ngIf="myWishlist.length>0">{{myWishlist.length}}</span>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
@@ -82,8 +82,7 @@
         <ion-icon slot="icon-only" name="person"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>DankieJesu
-    </ion-title>
+    <ion-title>DankieJesu</ion-title>
 
 
   </ion-toolbar>
