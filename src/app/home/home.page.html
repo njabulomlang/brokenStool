@@ -280,6 +280,22 @@
                 <p>{{cat.name}}</p>
               </div>
             </div>
+
+            <div class="image" *ngFor="let cat of prodArray">
+              <img src="{{cat.pictureLink}}"
+                (click)="listDankie(cat.name)">
+              <div class="itemname">
+                <p>{{cat.name}}</p>
+              </div>
+            </div>
+
+            <div class="image" *ngFor="let cat of prodArray">
+              <img src="{{cat.pictureLink}}"
+                (click)="listDankie(cat.name)">
+              <div class="itemname">
+                <p>{{cat.name}}</p>
+              </div>
+            </div>
     
           <div class="image1" style="margin: 5px">
             <div class="message">
@@ -323,6 +339,22 @@
                 <p>{{cat.name}}</p>
               </div>
             </div>
+
+            <div class="image" *ngFor="let cat of winterArray">
+              <img src="{{cat.pictureLink}}"
+                (click)="listDankie(cat.name)">
+              <div class="itemname">
+                <p>{{cat.name}}</p>
+              </div>
+            </div>
+
+            <div class="image" *ngFor="let cat of winterArray">
+              <img src="{{cat.pictureLink}}"
+                (click)="listDankie(cat.name)">
+              <div class="itemname">
+                <p>{{cat.name}}</p>
+              </div>
+            </div>
         </div>
       </div>
 
@@ -346,16 +378,16 @@
             </div>
           </div>
         </div>
-        <!-- <div class="image">
+        <div class="image">
           <img src="https://i.pinimg.com/564x/32/fb/62/32fb6222fbeffad7edf7f98fce091ce2.jpg"
             (click)="list('Smart Casual')">
 
           <div class="itemname">
             <p>Smart Casual</p>
           </div>
-        </div> -->
+        </div>
 
-        <!-- <div class="image">
+        <div class="image">
           <img src="https://i.pinimg.com/564x/83/bc/9e/83bc9e4b29401a6c984ee23cf530ced9.jpg" (click)="list('Formal')">
 
 
@@ -380,7 +412,7 @@
           <div class="itemname">
             <p>Sport</p>
           </div>
-        </div> -->
+        </div>
 
 
 
