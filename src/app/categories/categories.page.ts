@@ -45,12 +45,7 @@ export class CategoriesPage implements OnInit {
       //console.log('Sales my man...');
       this.colDef = 'Sales';
     }
-     console.log(this.category);
 
-    /* this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
-      this.myWish = res1.size;
-    }) */
-    // this.getWishlist();
     this.checkUser();
     this.getProdD();
     this.getProd();

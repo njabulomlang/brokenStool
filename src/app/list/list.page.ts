@@ -79,7 +79,7 @@ export class ListPage implements OnInit {
                  for (let y = 0; y < this.myProduct.length; y++) {
                    if (this.myProduct[y].id===this.myWishlist[index].id) {
                    this.myProduct[y].wish = 'heart';
-                    console.log("my wish ", this.myWishlist[index])
+                    // console.log("my wish ", this.myWishlist[index])
                    }
                     
                 }
