@@ -59,17 +59,43 @@ export class ListPage implements OnInit {
 
     this.getAllProduct();
     this.getSales();
-
+    this.getWishItems();
     // this.getWishlist();
    
   }
 
+  getWishItems() {
+    setTimeout(() => {
+      firebase.auth().onAuthStateChanged((res) => {
+        if (res) {
+          this.getWishlist();
+           setTimeout(() => {
+            // for (let y = 0; y < this.myProduct.length; y++) {
+              // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
+                // console.log("this my prods ", this.myProduct[y]);
+                
+                for (let index = 0; index < this.myWishlist.length; index++) {
+                  // console.log("my wish ", this.myWishlist[index])
+                 for (let y = 0; y < this.myProduct.length; y++) {
+                   if (this.myProduct[y].id===this.myWishlist[index].id) {
+                   this.myProduct[y].wish = 'heart';
+                    console.log("my wish ", this.myWishlist[index])
+                   }
+                    
+                }
+              // })  
+             }
+            }, 1000);
+        } 
+      })
+    }, 0);
+  }
   getSideMenu() {
     this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
@@ -167,6 +193,23 @@ export class ListPage implements OnInit {
           this.viewwish = !this.viewwish
           this.viewBackdrop = !this.viewBackdrop
           this.getWishlist();
+          setTimeout(() => {
+            // for (let y = 0; y < this.myProduct.length; y++) {
+              // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
+                // console.log("this my prods ", this.myProduct[y]);
+                
+                for (let index = 0; index < this.myWishlist.length; index++) {
+                  // console.log("my wish ", this.myWishlist[index])
+                 for (let y = 0; y < this.myProduct.length; y++) {
+                   if (this.myProduct[y].id===this.myWishlist[index].id) {
+                   this.myProduct[y].wish = 'heart';
+                    console.log("my wish ", this.myWishlist[index])
+                   }
+                    
+                }
+              // })  
+             }
+           }, 1000);
         } else {
           this.presentAlertConfirm();
         }
@@ -206,22 +249,31 @@ export class ListPage implements OnInit {
       res.forEach((doc) => {
           this.myProduct.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
       })
-      for (let y = 0; y < this.myProduct.length; y++) {
-        console.log("My data ", this.myProduct[y]);
-        for (let index = 0; index < this.myWishlist.length; index++) {
-          setTimeout(() => {
-            if (this.myWishlist[index].id === this.myProduct[y].index) {
-              this.myProduct[index].wish = 'heart';
+    })
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
+      this.myWish = res.size;
+      this.myWishlist = [];
+      res.forEach((doc) => {
+        if (doc.data().brand === "Specials") {
+          this.dbSales.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
             }
-          }, 1000);
-          
+          })
+        } else {
+          this.itemAvailable = [];
+          this.dbProduct.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
         }
-       /*  this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
-          for (let index = 0; index < res.docs.length; index++) {
-            this.myProduct[index].wish = 'heart';
-          }
-        })   */
-      }
+        this.myWishlist.push({ info: doc.data(), id: doc.id });
+      })
     })
   }
   sortSales() {

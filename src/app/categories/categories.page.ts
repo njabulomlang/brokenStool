@@ -73,7 +73,7 @@ export class CategoriesPage implements OnInit {
     })
   }
   getProdD() {
-    this.dbCategory.where('brand','==','Kwanga').onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Kwanga Apparel').onSnapshot((res)=>{
       this.prodArr = [];
       res.forEach((doc)=>{
         this.prodArr.push(doc.data());
