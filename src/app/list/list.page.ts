@@ -13,8 +13,7 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 export class ListPage implements OnInit {
   dbWishlist = firebase.firestore().collection("Wishlist");
   dbProduct = firebase.firestore().collection("Products");
-  dbSales = firebase.firestore().collection("Specials");
-  itemAvailable= [];
+  itemAvailable = [];
   promo = [];
   myProduct = [];
   collectionName: string = "";
@@ -61,7 +60,7 @@ export class ListPage implements OnInit {
     this.getSales();
     this.getWishItems();
     // this.getWishlist();
-   
+
   }
 
   getWishItems() {
@@ -69,24 +68,42 @@ export class ListPage implements OnInit {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           this.getWishlist();
-           setTimeout(() => {
+          setTimeout(() => {
             // for (let y = 0; y < this.myProduct.length; y++) {
-              // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
-                // console.log("this my prods ", this.myProduct[y]);
-                
-                for (let index = 0; index < this.myWishlist.length; index++) {
+            // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
+            // console.log("this my prods ", this.myProduct[y]);
+
+            for (let index = 0; index < this.myWishlist.length; index++) {
+              // console.log("my wish ", this.myWishlist[index])
+              for (let y = 0; y < this.myProduct.length; y++) {
+                if (this.myProduct[y].id === this.myWishlist[index].id) {
+                  this.myProduct[y].wish = 'heart';
                   // console.log("my wish ", this.myWishlist[index])
-                 for (let y = 0; y < this.myProduct.length; y++) {
-                   if (this.myProduct[y].id===this.myWishlist[index].id) {
-                   this.myProduct[y].wish = 'heart';
-                    // console.log("my wish ", this.myWishlist[index])
-                   }
-                    
                 }
+
+              }
               // })  
-             }
-            }, 1000);
-        } 
+            }
+          }, 1000);
+
+          setTimeout(() => {
+            // for (let y = 0; y < this.myProduct.length; y++) {
+            // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
+            // console.log("this my prods ", this.myProduct[y]);
+
+            for (let index = 0; index < this.myWishlist.length; index++) {
+              // console.log("my wish ", this.myWishlist[index])
+              for (let y = 0; y < this.promo.length; y++) {
+                if (this.promo[y].id === this.myWishlist[index].id) {
+                  this.promo[y].wish = 'heart';
+                  // console.log("my wish ", this.myWishlist[index])
+                }
+
+              }
+              // })  
+            }
+          }, 1000);
+        }
       })
     }, 0);
   }
@@ -100,7 +117,7 @@ export class ListPage implements OnInit {
       this.myWishlist = [];
       res.forEach((doc) => {
         if (doc.data().brand === "Specials") {
-          this.dbSales.doc(doc.id).onSnapshot((data) => {
+          this.dbProduct.doc(doc.id).onSnapshot((data) => {
             if (data.data().hideItem === true) {
               this.itemAvailable.push("Out of stock");
             } else {
@@ -195,21 +212,21 @@ export class ListPage implements OnInit {
           this.getWishlist();
           setTimeout(() => {
             // for (let y = 0; y < this.myProduct.length; y++) {
-              // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
-                // console.log("this my prods ", this.myProduct[y]);
-                
-                for (let index = 0; index < this.myWishlist.length; index++) {
+            // this.dbWishlist.where('id','==',this.myProduct[y].id).onSnapshot((res) => {
+            // console.log("this my prods ", this.myProduct[y]);
+
+            for (let index = 0; index < this.myWishlist.length; index++) {
+              // console.log("my wish ", this.myWishlist[index])
+              for (let y = 0; y < this.myProduct.length; y++) {
+                if (this.myProduct[y].id === this.myWishlist[index].id) {
+                  this.myProduct[y].wish = 'heart';
                   // console.log("my wish ", this.myWishlist[index])
-                 for (let y = 0; y < this.myProduct.length; y++) {
-                   if (this.myProduct[y].id===this.myWishlist[index].id) {
-                   this.myProduct[y].wish = 'heart';
-                    console.log("my wish ", this.myWishlist[index])
-                   }
-                    
                 }
+
+              }
               // })  
-             }
-           }, 1000);
+            }
+          }, 1000);
         } else {
           this.presentAlertConfirm();
         }
@@ -224,30 +241,30 @@ export class ListPage implements OnInit {
  
    } */
   getSales() {
-    this.dbProduct.where('onSale','==',true).onSnapshot((res) => {
+    this.dbProduct.where('onSale', '==', true).onSnapshot((res) => {
       this.promo = [];
       res.forEach((doc) => {
-        if (this.myWishlist.length === 0) {
-          this.promo.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
-        } 
+        // if (this.myWishlist.length === 0) {
+        this.promo.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
+        // } 
       })
     })
     setTimeout(() => {
       for (let y = 0; y < this.promo.length; y++) {
-        this.dbWishlist.where('id','==',this.promo[y].id).onSnapshot((res) => {
+        this.dbWishlist.where('id', '==', this.promo[y].id).onSnapshot((res) => {
           for (let index = 0; index < res.docs.length; index++) {
             this.promo[index].wish = 'heart';
           }
-        })  
+        })
       }
-     }, 1000);
+    }, 1000);
   }
   getAllProduct() {
     // console.log("category ", this.doc_data);
-    this.dbProduct.where('hideItem', '==', false).where('category','==',this.doc_data).onSnapshot((res) => {
+    this.dbProduct.where('hideItem', '==', false).where('category', '==', this.doc_data).onSnapshot((res) => {
       this.myProduct = [];
       res.forEach((doc) => {
-          this.myProduct.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
+        this.myProduct.push({ info: doc.data(), id: doc.id, wish: 'heart-empty' });
       })
     })
     this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
@@ -255,7 +272,7 @@ export class ListPage implements OnInit {
       this.myWishlist = [];
       res.forEach((doc) => {
         if (doc.data().brand === "Specials") {
-          this.dbSales.doc(doc.id).onSnapshot((data) => {
+          this.dbProduct.doc(doc.id).onSnapshot((data) => {
             if (data.data().hideItem === true) {
               this.itemAvailable.push("Out of stock");
             } else {
@@ -341,7 +358,7 @@ export class ListPage implements OnInit {
               })
             } else {
               this.dbWishlist.doc(id).set({
-                customerUID: firebase.auth().currentUser.uid, price: data.saleprice, name: data.name,
+                customerUID: firebase.auth().currentUser.uid, price: data.price, name: data.name,
                 image: data.pictureLink, id: id, category: data.category,
                 brand: data.brand
               }).then(() => {
@@ -394,13 +411,13 @@ export class ListPage implements OnInit {
   colorOpt(info) {
     if (this.collectionName === 'sales') {
       this.promo = [];
-      this.dbSales.where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
+      this.dbProduct.where('color', 'array-contains', info.path[0].innerHTML).where('onSale', '==', true).onSnapshot((res) => {
         res.forEach((doc) => {
           this.promo.push({ info: doc.data(), id: doc.id });
         })
       })
     } else {
-      this.dbProduct.where('color', 'array-contains', info.path[0].innerHTML).onSnapshot((res) => {
+      this.dbProduct.where('color', 'array-contains', info.path[0].innerHTML).where('category', '==', this.doc_data).onSnapshot((res) => {
         this.myProduct = [];
         res.forEach((doc) => {
           this.myProduct.push({ info: doc.data(), id: doc.id });
@@ -415,9 +432,11 @@ export class ListPage implements OnInit {
     if (this.collectionName === 'sales') {
       if (this.price >= 0) {
         this.promo = [];
-        this.dbSales.where('saleprice', '>=', param).onSnapshot((res) => {
+        this.dbProduct.where('onSale', '==', true).onSnapshot((res) => {
           res.forEach((doc) => {
-            this.promo.push({ info: doc.data(), id: doc.id });
+            if (doc.data().hideItem === false && (((doc.data().price)-(doc.data().price*(doc.data().discount/100))) >= param)) {
+              this.promo.push({ info: doc.data(), id: doc.id });
+            }
           })
         })
       }
@@ -427,7 +446,7 @@ export class ListPage implements OnInit {
           .onSnapshot((res) => {
             this.myProduct = [];
             res.forEach((doc) => {
-              if (doc.data().hideItem === false) {
+              if (doc.data().hideItem === false && doc.data().category === this.doc_data) {
                 this.myProduct.push({ info: doc.data(), id: doc.id });
               }
             })

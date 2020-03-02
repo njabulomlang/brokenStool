@@ -209,8 +209,8 @@
         </div>
 
         <div class="price">
-          <p style="text-decoration: line-through; font-size: 15px">{{prod.data.normalPrice | currency:'R'  }} </p>
-          <p style="font-size: 15px; color: maroon; ">{{prod.data.saleprice  | currency:'R' }}</p>
+          <p style="text-decoration: line-through; font-size: 15px">{{prod.data.price | currency:'R'  }} </p>
+          <p style="font-size: 15px; color: maroon; ">{{(prod.data.price)-(prod.data.price*(prod.data.discount/100))  | currency:'R' }}</p>
         </div>
       </div>
       <div class="add">
@@ -407,8 +407,8 @@
         </div>
 
         <div class="price">
-          <p style="text-decoration: line-through; font-size: 20px">{{prod.data.normalPrice  | currency:'R' }} </p>
-          <p style="font-size: 20px; color: maroon">{{prod.data.saleprice  | currency:'R' }}</p>
+          <p style="text-decoration: line-through; font-size: 20px">{{prod.data.price  | currency:'R' }} </p>
+          <p style="font-size: 20px; color: maroon">{{(prod.data.price)-(prod.data.price*(prod.data.discount/100))  | currency:'R' }}</p>
         </div>
       </div>
 
@@ -480,11 +480,11 @@
           <ion-button (click)="addSaleToCart(prod.id, prod.data)" color="transparent">
             <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon name="bookmark" id="book"
               style="color: maroon; font-size: 30px; position: relative; bottom: 13px;"></ion-icon>
-            {{prod.data.saleprice * quantity | currency:'R'}}
+            {{((prod.data.price)-(prod.data.price*(prod.data.discount/100))) * quantity | currency:'R'}}
           </ion-button>
 
           <ion-button (click)="gotocart()" color="transparent" style="background: rgb(0, 0, 37); width: 10vw">
-            Add to Wishlist
+            show cart
           </ion-button>
           <!-- <ion-fab-button color="transparent" (click)="gotocart()" vertical="bottom">
             <ion-icon name="basket"></ion-icon>
@@ -523,7 +523,7 @@
             <div class="item_details">
               <p> <b>{{p.product_name}} &nbsp; {{p.cost | currency:'R'}}</b><br>
                 size: {{p.size}} &nbsp; color: {{p.color}} <br>
-                jan 23, 2020</p>
+                {{c.data.timestamp | date}}</p>
 
               <p>
                 <ion-icon slot="start" name="remove-circle-outline" (click)="minuss(p, i)"></ion-icon>

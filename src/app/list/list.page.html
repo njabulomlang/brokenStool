@@ -143,7 +143,7 @@
         <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
-            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
+            <p>{{s.info.name}} <br> <span>{{(((s.info.price)-(s.info.price*(s.info.discount/100)))) | currency:'R'}}</span></p>
           </div>
           <div id="icon">
             <ion-button (click)="wishListSale(s.id, s.info, i)" color="transparent">
@@ -251,7 +251,7 @@
         <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
-            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
+            <p>{{s.info.name}} <br> <span>{{(((s.info.price)-(s.info.price*(s.info.discount/100)))) | currency:'R'}}</span></p>
           </div>
           <div id="icon">
             <ion-button (click)="wishListSale(s.id, s.info, i)" color="transparent">
