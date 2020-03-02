@@ -15,25 +15,26 @@ ion-toolbar {
   .cards {
     display: flex;
     flex-flow: column;
-    height: fit-content;
+    height: 80vh;
     overflow-y: auto;
-  height: 70vh;
+
     .card {
       display: flex;
       flex-flow: row;
       box-shadow: 5px 5px 10px rgb(211, 211, 211);
       margin: 5px;
       margin-bottom: 5px;
-      min-height: 20vh;
+      min-height: 21vh;
       .image {
         width: 45vw;
-        height: 16vh;
+        height: 14vh;
         // max-height:25vh;
         margin: 10px;
+        object-fit: contain;
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
       }
 
@@ -41,7 +42,9 @@ ion-toolbar {
         display: flex;
         flex-flow: row;
         width: 100%;
-        padding: 5px;
+        height: 16vh;
+       // object-fit: contain;
+        padding: 3px;
         justify-content: space-between;
         align-items: baseline;
 
@@ -78,7 +81,7 @@ ion-toolbar {
               font-weight: lighter;
               font-size: 6vw;
               color: maroon;
-              margin-top: 30px;
+              margin-top: 20px;
             }
           }
         }
@@ -108,8 +111,8 @@ ion-toolbar {
   }
 
   .total {
-    position: absolute;
-    bottom: 0;
+    // position: fixed;
+    // bottom: 0;
     background: white;
     display: flex;
     flex-flow: column;

@@ -698,7 +698,7 @@ ion-toolbar {
             img {
               width: 100%;
               height: 100%;
-              object-fit: cover;
+              object-fit: contain;
               border-radius: 5px;
             }
           }
@@ -920,6 +920,7 @@ ion-toolbar {
         img {
           width: 5vw;
           height: 5vw;
+          object-fit: contain;
         }
         p {
           text-align: center;
@@ -1455,7 +1456,7 @@ ion-toolbar {
           img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 5px;
           }
         }
@@ -1677,6 +1678,7 @@ ion-toolbar {
       img {
         width: 5vw;
         height: 5vw;
+        object-fit: contain;
       }
       p {
         text-align: center;

@@ -23,6 +23,8 @@ export class CategoriesPage implements OnInit {
   myWishlist = [];
   alertView: boolean = false;
   itemAvailable=[];
+  loaderMessages = 'Loading...';
+  loaderAnimate: boolean = true;
   prodArray = [];
   dbSales = firebase.firestore().collection("Specials");
   prodArr = [];
@@ -35,6 +37,11 @@ export class CategoriesPage implements OnInit {
   }
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.loaderAnimate = false
+    }, 2000);
+    
     if (this.category === 'SUMMER' || this.category === 'WINTER') {
       // console.log('This is dankie jesu brand');
       this.colDef = 'Dankie Jesu';
@@ -50,6 +57,7 @@ export class CategoriesPage implements OnInit {
     this.getProdD();
     this.getProd();
     this.getProdSummer();
+    
   }
   getProd() {
     this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',false).onSnapshot((res)=>{

@@ -63,6 +63,13 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
+  <div class="loader">
+    <span>Loading...</span>
+  </div>
+</div>
+
 <ion-content>
   <div class="container">
     <div class="pagename">
@@ -73,11 +80,12 @@
       <br><br>
     </div>
     <div class="cards" *ngIf="category==='SUMMER'" >
-      <div *ngFor="let cat of prodArray">
+      <div id="div" *ngFor="let cat of prodArray">
         <div class="card" (click)="list(cat.name)" >
             <img src="{{cat.pictureLink}}">
-          <div class="category">{{cat.name}}</div>
+            <div class="category"> {{cat.name}}</div>
         </div>
+        
     </div>
       <!-- <div class="card" (click)="list('Shorts')">
         <img src="https://i.pinimg.com/564x/1f/d2/e5/1fd2e5a2ccd92d25b0f5d560f08f77f2.jpg">
@@ -104,12 +112,12 @@
       <div *ngFor="let cat of winterArray">
         <div class="card" (click)="list(cat.name)">
             <img src="{{cat.pictureLink}}">
-          <div class="category">{{cat.name}}</div>
+          <div class="category"> {{cat.name}}</div>
         </div>
     </div>
     </div>
     <div class="cards" *ngIf="category==='KWANGA'">
-      <div *ngFor="let cat of prodArray">
+      <div id="div" *ngFor="let cat of prodArray">
         <div class="card" (click)="list(cat.name)" >
             <img src="{{cat.pictureLink}}">
           <div class="category">{{cat.name}}</div>
