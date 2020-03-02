@@ -52,12 +52,7 @@ export class CategoriesPage implements OnInit {
       //console.log('Sales my man...');
       this.colDef = 'Sales';
     }
-     console.log(this.category);
 
-    /* this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
-      this.myWish = res1.size;
-    }) */
-    // this.getWishlist();
     this.checkUser();
     this.getProdD();
     this.getProd();
@@ -81,7 +76,7 @@ export class CategoriesPage implements OnInit {
     })
   }
   getProdD() {
-    this.dbCategory.where('brand','==','Kwanga').onSnapshot((res)=>{
+    this.dbCategory.where('brand','==','Kwanga Apparel').onSnapshot((res)=>{
       this.prodArr = [];
       res.forEach((doc)=>{
         this.prodArr.push(doc.data());
