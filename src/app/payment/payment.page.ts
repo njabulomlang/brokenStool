@@ -21,6 +21,7 @@ export class PaymentPage implements OnInit {
   buttonActive: boolean = true;
   prodCart = []
   deliveryType: string;
+  delType: string;
   constructor(public route: ActivatedRoute, public router: Router, public navCtrl: NavController, public alertController: AlertController,
     public alertCtrl: AlertController, public toastCtrl : ToastController) {
     this.doc_id = this.route.snapshot.paramMap.get('docname');
@@ -76,16 +77,29 @@ export class PaymentPage implements OnInit {
         this.alertConfirm();
       })
   }
-  Delivery() {
-    // this.myOrder = [];
-    this.delCost = 100
-    this.deliveryType= "Delivery";
-  
+  Delivery(tot) {
+    let total = 0;
+    this.delCost = 100;
+    this.delType = "Delivery";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot + 100
+      })
+    }
+    return total;
   }
-  notDelivery() {
-    // this.myOrder = []
+  notDelivery(tot) {
+    let total = 0;
     this.delCost = 0;
-    this.deliveryType= "Collection"
+    this.delType = "Collection";
+    for (let i = 0; i < this.prodCart.length; i++) {
+      let product = this.prodCart[i].data.product;
+      product.forEach((item) => {
+        total = tot
+      })
+    }
+    return total;
   }
   async alertConfirm() {
     const alert = await this.alertCtrl.create({
@@ -150,11 +164,11 @@ export class PaymentPage implements OnInit {
     switch (state) {
       case 'd':
         this.buttonActive = true;
-        this.Delivery();
+        this.Delivery(this.getTotal());
         break;
       case 'c':
         this.buttonActive = false;
-        this.notDelivery();
+        this.notDelivery(this.getTotal());
         break;
     }
   }

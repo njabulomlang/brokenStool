@@ -86,7 +86,8 @@
           <!-- Cart Total- -->
           <tr>
             <th>TOTAL</th>
-            <th>{{getTotal() | currency:'R'}}</th>
+            <th *ngIf="delType==='Delivery'">{{Delivery(getTotal()) | currency:'R'}}</th>
+            <th *ngIf="delType==='Collection'">{{notDelivery(getTotal()) | currency:'R'}}</th>
           </tr>
 
         </table>
