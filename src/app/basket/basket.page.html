@@ -89,7 +89,7 @@
           <div class="left">
             <p id="item" style="font-size:3vw">{{prod.product_name}}</p>
             <p>Size: {{prod.size}} &nbsp; Color: {{prod.color}}</p>
-            <p>{{cp.data.timestamp | date: "mediumDate"}}</p>
+            <p>{{cp.data.timestamp | date}}</p>
             <!-- <p>Out of stock</p> -->
             <p style="font-size: 1em; display: flex; flex-flow: row; align-items: baseline;">
               <ion-icon name="remove-circle-outline" (click)="minus(prod, i)"></ion-icon>&nbsp; {{prod.quantity}} &nbsp;
