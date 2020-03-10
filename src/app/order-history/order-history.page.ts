@@ -46,7 +46,7 @@ export class OrderHistoryPage implements OnInit {
       saveAs(new Blob([data], {type: MIME_TYPES[EXT]}), fileName);
     })
   }
-
+  
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((res) => {
       this.userProfile.name = res.data().name;
