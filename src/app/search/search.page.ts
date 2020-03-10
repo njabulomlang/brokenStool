@@ -15,7 +15,8 @@ class Port {
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-  dbProducts = firebase.firestore().collection('Products')
+  dbProducts = firebase.firestore().collection('Products');
+  dbCategory = firebase.firestore().collection('category');
   txtSearch: string = '';
   mySearch = [];
   ports: Port[];
@@ -23,21 +24,23 @@ export class SearchPage implements OnInit {
   loaderMessages = 'Loading...';
   loaderAnimate:boolean;
   constructor(public navCtrl: NavController) { 
-    this.ports = [
-      { id: 1, name: 'Bucket Hats' },
-      { id: 2, name: 'Caps' },
-      { id: 3, name: 'Vests' },
-      { id: 4, name: 'Shorts' },
-      { id: 5, name: 'T-Shirts' },
-      { id: 6, name: 'Hoodies' }
-    ];
+    
   }
   ngOnInit() {
     //this.searchByName();
+    this.getCategory();
+  }
+  getCategory() {
+    this.dbCategory.onSnapshot((res) => {
+      this.ports = []; 
+      for (let i = 0; i < res.docs.length; i++) {
+        this.ports.push({ id:i, name: res.docs[i].data().name});
+      }
+    })
   }
   searchByName(name) {
     this.loaderAnimate = true;
-    this.dbProducts.doc('Dankie Jesu').collection(name).onSnapshot((res) => {
+    this.dbProducts.where('category','==', name).onSnapshot((res) => {
       this.mySearch = [];
       setTimeout(() => {
         this.loaderAnimate = false;
@@ -65,7 +68,7 @@ export class SearchPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
-        col: 'Dankie Jesu',
+        col: data.brand,
         category: this.txtSearch
       }
     };

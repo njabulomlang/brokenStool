@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./basket/basket.module').then( m => m.BasketPageModule)
   },
   {
-    path: 'payment/:docname',
+    path: 'payment',
     loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   },
   {

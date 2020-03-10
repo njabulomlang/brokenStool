@@ -21,6 +21,8 @@ export class ProfilePage implements OnInit {
   dbProfile = firebase.firestore().collection("userProfile");
   dbCart = firebase.firestore().collection('Cart');
   dbWish = firebase.firestore().collection('Wishlist');
+  dbSales = firebase.firestore().collection("Specials");
+  dbProduct = firebase.firestore().collection('Products');
   storage = firebase.storage().ref();
   // uid = ;
   profilePic;
@@ -35,6 +37,7 @@ export class ProfilePage implements OnInit {
   viewCart = false;
   viewBackdrop = false;
   viewSettings = false;
+  viewSideMenu = false;
   cordova: boolean;
   prodCart=[];
   delType: any;
@@ -43,6 +46,7 @@ export class ProfilePage implements OnInit {
   buttonActive: boolean = true;
   isDisabled: boolean=false;
   alertView: boolean = false;
+  itemAvailable = [];
   constructor(public modalController: ModalController, private authService: AuthService, private router: Router, public toastCtrl: ToastController, public loadingController: LoadingController, private camera: Camera,
     private actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public platform: Platform, public renderer: Renderer2,
     public alertCtrl : AlertController,private localSt:LocalStorageService) { }
@@ -253,16 +257,38 @@ export class ProfilePage implements OnInit {
 
 
   getWishlist() {
-    this.dbWish.where('customerUID', '==',firebase.auth().currentUser.uid).onSnapshot((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
+        if (doc.data().brand === "Specials") {
+          this.dbSales.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        } else {
+          this.itemAvailable = [];
+          this.dbProduct.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        }
         this.myWishlist.push({ info: doc.data(), id: doc.id });
       })
     })
   }
  
   getBackdrop() {
+    this.viewBackdrop = !this.viewBackdrop
+  }
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
     this.viewBackdrop = !this.viewBackdrop
   }
 
@@ -307,6 +333,22 @@ export class ProfilePage implements OnInit {
   settings(){
     this.viewSettings = !this.viewSettings
     this.viewBackdrop = !this.viewBackdrop
+  }
+  categories(data) {
+    // console.log(data);
+    this.router.navigate(['categories', data])
+  }
+  goList(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Specials',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
   }
 
   check(val) {

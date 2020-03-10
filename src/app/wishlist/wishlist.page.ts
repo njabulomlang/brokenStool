@@ -11,6 +11,9 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class WishlistPage implements OnInit {
   dbWishlist = firebase.firestore().collection('Wishlist');
+  dbSales = firebase.firestore().collection("Specials");
+  dbProduct = firebase.firestore().collection('Products');
+  itemAvailable = [];
   // uid = firebase.auth().currentUser.uid;
   myWish = [];
   items = false;
@@ -34,6 +37,24 @@ export class WishlistPage implements OnInit {
           this.dbWishlist.where('customerUID', '==', res.uid).onSnapshot((res) => {
             this.myWish = [];
             res.forEach((doc) => {
+              if (doc.data().brand === "Specials") {
+                this.dbSales.doc(doc.id).onSnapshot((data) => {
+                  if (data.data().hideItem === true) {
+                    this.itemAvailable.push("Out of stock");
+                  } else {
+                    this.itemAvailable.push("In stock");
+                  }
+                })
+              } else {
+                this.itemAvailable = [];
+                this.dbProduct.doc(doc.id).onSnapshot((data) => {
+                  if (data.data().hideItem === true) {
+                    this.itemAvailable.push("Out of stock");
+                  } else {
+                    this.itemAvailable.push("In stock");
+                  }
+                })
+              }
               this.myWish.push({ info: doc.data(), id: doc.id });
             })
           })

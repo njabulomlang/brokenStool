@@ -7,7 +7,7 @@
         </div>
         <div class="ratings">
             <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-                defaultColor="#aaaaaa" readonly="{{rateNow}}" rating="{{myRate}}"  fontSize="7vw"
+                defaultColor="#aaaaaa" readonly="{{rateNow}}" rating="{{myRate}}" fontSize="7vw"
                 (ratingChanged)="logRatingChange($event)">
             </ionic4-star-rating>
 
@@ -16,12 +16,17 @@
             (ratingChanged)="logRatingChange($event)">
         </ionic4-star-rating> -->
         </div>
-<br>
-        <div class="buttonz">
+        <br>
+        <div class="buttonz" *ngIf="myRate">
+            <p>You rated with {{myRate}} stars before </p>
+        </div>
+        <div class="buttonz" *ngIf="!myRate">
             <ion-button (click)="dismissPopover()" color="transparent">
                 DONE
             </ion-button>
         </div>
+
+      
     </div>
 
     <div class="web_view">
@@ -32,7 +37,7 @@
         </div>
         <div class="ratings">
             <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ff0000"
-                defaultColor="#aaaaaa" readonly="{{rateNow}}" rating="{{myRate}}"  
+                defaultColor="#aaaaaa" readonly="{{rateNow}}" rating="{{myRate}}"
                 (ratingChanged)="logRatingChange($event)">
             </ionic4-star-rating>
 
@@ -41,11 +46,15 @@
             (ratingChanged)="logRatingChange($event)">
         </ionic4-star-rating> -->
         </div>
-<br>
-        <div class="buttonz">
+        <br>
+        <div class="buttonz" *ngIf="!myRate">
             <ion-button (click)="dismissPopover()" color="transparent">
                 DONE
             </ion-button>
+        </div>
+
+        <div class="buttonz" *ngIf="myRate">
+            <p>You have rated with {{myRate}} before </p>
         </div>
     </div>
 

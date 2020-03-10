@@ -221,24 +221,33 @@ export class TrackOrdersPage implements OnInit {
     })
   }
   getOrder() {
+    
     this.dbOrder.doc(this.doc_id).onSnapshot((res) => {
       res.data().product.forEach((item) => {
         this.myArr.push(item)
-      })
-      //this.userDetails(res.data().userID);
-      // console.log('My order', res.data());
+      });
+      let status = res.data().status;
+      // this.userDetails(res.data().userID);
+      console.log('My order', res.data());
       if (res.data().status === 'received') {
-        this.toggleOne();
+        setTimeout(() => {
+          this.toggleOne();
+        }, 1000);
+
       } else if (res.data().status === 'processed') {
         this.toggleTwo();
+        
       } else if (res.data().status === 'ready') {
         this.toggleThree()
       } else if (res.data().status === 'collected') {
         setTimeout(() => {
           this.downloadPdf();
+         
           console.log('Deleting PDF');
         }, 1000);
         this.toggleFour()
+
+
       }
       this.productOrder = [];
       this.delCost = res.data().deliveryCost;
@@ -268,7 +277,9 @@ export class TrackOrdersPage implements OnInit {
     this.router.navigateByUrl("pending-orders")
   }
   toggleOne() {
-    var circleOne = document.getElementById("one").style.background = "maroon";
+    console.log("My div ", document.getElementById("one"));
+    
+    document.getElementById("one").style.background = "maroon";
     var circleOne = document.getElementById("one").style.color = "whitesmoke";
     var lineOne = document.getElementById("line1").style.border = "0.5px solid grey";
     var circleTwo = document.getElementById("two").style.border = "1px solid grey";

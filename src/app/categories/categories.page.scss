@@ -12,45 +12,6 @@ ion-toolbar {
   }
 }
 
-.card:nth-child(1) {
-  width: 57vw;
-  height: 30vh;
-}
-
-.card:nth-child(2) {
-  width: 30vw;
-  height: 30vh;
-}
-
-.card:nth-child(3) {
-  width: 30vw;
-  height: 30vh;
-}
-
-.card:nth-child(4) {
-  width: 57vw;
-  height: 30vh;
-}
-.card:nth-child(5) {
-  width: 30vw;
-  height: 25vh;
-}
-
-.card:nth-child(6) {
-  width: 57vw;
-  height: 25vh;
-}
-
-.card:nth-child(7) {
-  width: 57vw;
-  height: 25vh;
-}
-
-.card:nth-child(8) {
-  width: 89vw;
-  height: 25vh;
-}
-
 .container {
   display: flex;
   flex-flow: column;
@@ -80,49 +41,327 @@ ion-toolbar {
     width: 100%;
     text-align: left;
     padding: 10px;
-    // position: relative;
-    // bottom: 30px;
+
     h1 {
       font-size: 4vw;
     }
   }
   .cards {
     display: flex;
-    flex-wrap: wrap;
+    float: left;
+    flex-wrap: wrap !important;
     width: 100%;
-    overflow-y: auto;
-    // border: 1px solid red;
+    // overflow-y: auto;
     justify-content: space-evenly;
     justify-items: center;
     position: relative;
     bottom: 50px;
 
     .card {
-      margin: 6px;
+      margin: 3px;
       border-radius: 5px;
       position: relative;
-      // border: 1px solid green;
       box-shadow: 2px 2px 2px 2px rgb(223, 223, 223);
+      width: 98% !important;
+      // height: fit-content;
       img {
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 5px;
       }
 
       .category {
         position: absolute;
         bottom: 10px;
+        text-align: center;
+        width: 95%;
         right: 10px;
-        color: rgb(255, 255, 255);
-        text-shadow: 5px 5px 5px black;
-        font-family: "Poppins";
+        color: rgb(121, 1, 1);
+        font-weight: bold;
       }
+    }
+
+    #div {
+      display: flex;
+      justify-content: space-evenly;
+      justify-items: center;
+    }
+
+    #div:nth-child(1) {
+      width: 57vw;
+      height: 30vh;
+    }
+
+    #div:nth-child(2) {
+      width: 30vw;
+      height: 30vh;
+    }
+
+    #div:nth-child(3) {
+      width: 30vw;
+      height: 30vh;
+    }
+
+    #div:nth-child(4) {
+      width: 57vw;
+      height: 30vh;
+    }
+    #div:nth-child(5) {
+      width: 57vw;
+      height: 30vh;
+    }
+
+    #div:nth-child(6) {
+      width: 30vw;
+      height: 30vh;
+    }
+
+    #div:nth-child(7) {
+      width: 57vw;
+      height: 20vh;
+    }
+
+    #div:nth-child(8) {
+      width: 89vw;
+      height: 25vh;
     }
   }
 }
 
-@media only screen and (max-width: 1024px) {
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100000000000000000000000000000000000000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background: rgb(0, 27, 63);
+  background-repeat: repeat-x;
+  transform: scale(1);
+  overflow: hidden;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: backgroundmover 30s linear infinite;
+
+  .loader {
+    width: 10em;
+    height: 10em;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-top: 0.3em solid rgb(58, 0, 29);
+    border-radius: 50%;
+    position: relative;
+    animation: rotating 2s ease-in-out infinite;
+    --direction: 1;
+  }
+
+  .loader::before,
+  .loader::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+  }
+
+  .loader::before {
+    border-top: 0.3em solid rgb(0, 20, 39);
+    transform: rotate(120deg);
+  }
+
+  .loader::after {
+    border-top: 0.3em solid rgb(70, 70, 70);
+    transform: rotate(240deg);
+  }
+
+  .loader span {
+    position: absolute;
+    color: white;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: 10em;
+    font-family: sans-serif;
+    animation: rotating 2s linear infinite;
+    --direction: -1;
+  }
+
+  @keyframes rotating {
+    50% {
+      transform: rotate(calc(180deg * var(--direction)));
+    }
+
+    100% {
+      transform: rotate(calc(360deg * var(--direction)));
+    }
+  }
+
+  // .maploader {
+  //   .lds-ellipsis {
+  //     display: inline-block;
+  //     position: relative;
+  //     width: 80px;
+  //     height: 80px;
+  //   }
+  //   .lds-ellipsis div {
+  //     position: absolute;
+  //     top: 33px;
+  //     width: 13px;
+  //     height: 13px;
+  //     border-radius: 50%;
+  //     background: #fff;
+  //     animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  //   }
+  //   .lds-ellipsis div:nth-child(1) {
+  //     left: 8px;
+  //     animation: lds-ellipsis1 0.6s infinite;
+  //   }
+  //   .lds-ellipsis div:nth-child(2) {
+  //     left: 8px;
+  //     animation: lds-ellipsis2 0.6s infinite;
+  //   }
+  //   .lds-ellipsis div:nth-child(3) {
+  //     left: 32px;
+  //     animation: lds-ellipsis2 0.6s infinite;
+  //   }
+  //   .lds-ellipsis div:nth-child(4) {
+  //     left: 56px;
+  //     animation: lds-ellipsis3 0.6s infinite;
+  //   }
+  //   @keyframes lds-ellipsis1 {
+  //     0% {
+  //       transform: scale(0);
+  //     }
+  //     100% {
+  //       transform: scale(1);
+  //     }
+  //   }
+  //   @keyframes lds-ellipsis3 {
+  //     0% {
+  //       transform: scale(1);
+  //     }
+  //     100% {
+  //       transform: scale(0);
+  //     }
+  //   }
+  //   @keyframes lds-ellipsis2 {
+  //     0% {
+  //       transform: translate(0, 0);
+  //     }
+  //     100% {
+  //       transform: translate(24px, 0);
+  //     }
+  //   }
+  // }
+}
+.loading-text {
+  // color: yellow;
+  position: absolute;
+  bottom: 50vh;
+  left: 0px;
+  width: 100vw;
+  text-align: center;
+  // background: red;
+  height: 50vh;
+  //z-index: 90;
+  margin: auto;
+}
+.loader-hide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+  background: rgb(255, 255, 255);
+  transform: scale(0);
+  overflow: hidden;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  .maploader {
+    .lds-ellipsis {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-ellipsis div {
+      position: absolute;
+      top: 33px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #fff;
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+    .lds-ellipsis div:nth-child(1) {
+      left: 8px;
+      animation: lds-ellipsis1 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(2) {
+      left: 8px;
+      animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(3) {
+      left: 32px;
+      animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(4) {
+      left: 56px;
+      animation: lds-ellipsis3 0.6s infinite;
+    }
+    @keyframes lds-ellipsis1 {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    @keyframes lds-ellipsis3 {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0);
+      }
+    }
+    @keyframes lds-ellipsis2 {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(24px, 0);
+      }
+    }
+  }
+}
+@keyframes maploader {
+  0% {
+    // transform: rotate(0deg);
+    border-color: rgb(182, 70, 95);
+    // background: rgb(255, 192, 192);
+  }
+  50% {
+    // background: rgb(206, 206, 255);
+    // transform: rotate(360deg);
+    border-color: rgb(42, 50, 75);
+  }
+  100% {
+    border-color: rgb(250, 182, 43);
+    // background: rgb(255, 167, 167);
+    // transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 1023px) {
   .web_view {
     display: none;
     width: 0%;
@@ -144,7 +383,17 @@ ion-toolbar {
     height: 0 !important;
   }
 }
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
+  .notification .badge {
+    position: absolute;
+    top: 5.5px;
+    right: 4px;
+    padding: 3px 6px;
+    border-radius: 50%;
+    background-color: red;
+    font-size: 10px;
+    color: white;
+  }
   .container {
     display: none;
     width: 0 !important;
@@ -157,30 +406,58 @@ ion-toolbar {
     height: 0 !important;
   }
 
+  #crumbs {
+    color: grey;
+    cursor: pointer;
+    margin: 20px;
+    span {
+      color: maroon;
+    }
+  }
+
   ion-toolbar {
-    --background: rgb(255, 255, 255);
+    img {
+      margin-left: 5%;
+    }
+    --background: #000324;
     width: 100%;
     #icon {
-      color: rgb(131, 131, 131);
+      color: rgb(255, 255, 255);
+      font-size: 12.5px;
     }
     font-family: "Raleway";
     letter-spacing: 2px;
-    color: rgb(131, 131, 131);
+    color: rgb(255, 255, 255);
     #number {
-      font-size: 0.8em;
+      // font-size: 0.8em;
       position: relative;
       top: 8px;
       right: 5px;
     }
 
     .icon1 {
-      margin: 0 25vw;
+      margin: 0 20vw 0 10vw;
+
+      ion-button:hover {
+        border: 2px solid maroon;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      ion-button.active {
+        border: 2px solid maroon;
+        border-radius: 5px;
+      }
+
+      ion-button {
+        transition: 0.6s ease;
+      }
     }
   }
 
   .pagename {
     width: 100%;
-    color: rgb(221, 221, 221);
+    color: rgb(11, 1, 49);
     height: 62px;
     display: grid;
     align-items: center;
@@ -200,6 +477,12 @@ ion-toolbar {
     font-family: "Poiret One";
     color: rgb(221, 221, 221);
     font-size: 20px;
+
+    .items {
+      p {
+        color: rgb(11, 1, 49);
+      }
+    }
   }
 
   .web_view {
@@ -209,62 +492,41 @@ ion-toolbar {
     // height: 100%;
     margin-bottom: 30px;
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-gap: 1.5rem;
+      grid-template-areas:
+        "card.nth-child(1) card.nth-child(1) card.nth-child(2) "
+        "img-4 img-5 img-6";
+    }
+
+    .cards .card {
+      width: 95%;
+      height: 25rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       position: relative;
-    }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
 
-    .card:nth-child(1) {
-      width: 31.5%;
-      height: 40vh;
-    }
-
-    .card:nth-child(2) {
-      width: 31.5%;
-      height: 40vh;
-    }
-
-    .card:nth-child(3) {
-      width: 31.5%;
-      height: 40vh;
-    }
-
-    .card:nth-child(4) {
-      width: 31.5%;
-      height: 42vh;
-    }
-    .card:nth-child(5) {
-      width: 31.5%;
-      height: 42vh;
-    }
-
-    .card:nth-child(6) {
-      width: 31.5%;
-      height: 42vh;
-    }
-
-    .card:nth-child(7) {
-      width: 57vw;
-      height: 25vh;
-    }
-
-    .card:nth-child(8) {
-      width: 89vw;
-      height: 25vh;
+      img {
+        object-fit: contain;
+      }
     }
 
     .card {
       margin: 5px;
       border-radius: 5px;
       position: relative;
-      // border: 1px solid green;
-      box-shadow: 5px 5px 10px lightslategrey;
+      box-shadow: 2px 2px 5px rgb(170, 170, 170);
       img {
         height: 100%;
-        width: 100%;
-        object-fit: cover;
+        width: 100% !important;
+        object-fit: contain;
         border-radius: 5px;
       }
 
@@ -272,64 +534,115 @@ ion-toolbar {
         position: absolute;
         bottom: 10px;
         right: 10px;
-        color: rgb(255, 255, 255);
-        text-shadow: 5px 5px 5px black;
+        color: rgb(0, 0, 0);
+        // text-shadow: 5px 5px 5px black;
         font-family: "Poppins";
       }
     }
 
-    #winter{
-      .card:nth-child(1) {
-        width: 25%;
-        height: 40vh;
+    #winter {
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 1.5rem;
+        grid-template-areas:
+          "img-1 img-2 img-3 "
+          "img-4 img-5 img-6";
       }
-  
-      .card:nth-child(2) {
-        width: 70%;
-        height: 40vh;
+
+      .cards .card {
+        width: 100%;
+        height: 25rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
       }
-  
-      .card:nth-child(3) {
-        width: 70%;
-        height: 40vh;
-      }
-  
-      .card:nth-child(4) {
-        width: 25%;
-        height: 40vh;
+
+      .card {
+        margin: 5px;
+        border-radius: 5px;
+        position: relative;
+
+        box-shadow: 2px 2px 5px rgb(170, 170, 170);
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          border-radius: 5px;
+        }
+
+        .category {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          color: rgb(0, 0, 0);
+          // text-shadow: 5px 5px 5px black;
+          font-family: "Poppins";
+        }
       }
     }
 
-    #kwanga{
-      .card:nth-child(1) {
-        width: 25%;
-        height: 40vh;
+    #kwanga {
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 1.5rem;
+        grid-template-areas:
+          "img-1 img-2 img-3 "
+          "img-4 img-5 img-6";
       }
-  
-      .card:nth-child(2) {
-        width: 70%;
-        height: 40vh;
+
+      .cards .card {
+        width: 100%;
+        height: 25rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        img {
+          object-fit: contain;
+        }
       }
-  
-      .card:nth-child(3) {
-        width: 70%;
-        height: 40vh;
-      }
-  
-      .card:nth-child(4) {
-        width: 25%;
-        height: 40vh;
+
+      .card {
+        margin: 5px;
+        border-radius: 5px;
+        position: relative;
+        box-shadow: 2px 2px 5px rgb(170, 170, 170);
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          border-radius: 5px;
+        }
       }
     }
   }
 
+  .backdrop1 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+
   .viewwishlist {
-    position: absolute;
+    position: fixed;
     z-index: 150;
     background: rgb(201, 201, 201);
     width: 20vw;
-    height: 100%;
-    top: 50px;
+    height: 90vh;
+    top: 97px;
     bottom: 40%;
     right: 0;
     align-items: center;
@@ -483,6 +796,261 @@ ion-toolbar {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .icon1 {
+    display: none;
+  }
+
+  .backdrop1 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+  .viewMenu {
+    position: fixed;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    min-width: 40%;
+    height: 100vh;
+    top: 98px;
+    // bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .side_buttons {
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      top: 150px;
+      ion-button {
+        color: rgb(82, 82, 82);
+        margin: 5px;
+        height: 50px;
+        width: 30vw;
+        font-size: 15px;
+        border-bottom: 2px solid rgb(255, 255, 255);
+      }
+    }
+  }
+
+  .closeMenu {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+  }
+  .viewwishlist {
+    position: fixed;
+    z-index: 150;
+    background: rgb(201, 201, 201);
+    min-width: 40%;
+    height: 100vh;
+    top: 98px;
+    // bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+
+    .heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      // text-align: center;
+      margin: 5px;
+
+      ion-icon {
+        color: white;
+        position: relative;
+        right: 20px;
+        top: 2.2vh;
+        font-size: 1em;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+      }
+
+      p {
+        letter-spacing: 1px;
+        margin: 5px;
+        position: relative;
+        left: 2vw;
+        font-size: 1em;
+      }
+    }
+
+    .wishlist_items {
+      display: flex;
+      flex-flow: column;
+      overflow-y: auto;
+      margin: 10px;
+      min-width: 30vw;
+
+      .div {
+        height: 80vh;
+        overflow-y: auto;
+        scrollbar-width: 2px;
+        width: 100%;
+      }
+
+      #noItems {
+        display: flex;
+        flex-flow: column;
+        background: none;
+        align-items: center;
+        box-shadow: none;
+        justify-content: center;
+        margin-top: 200px;
+        img {
+          width: 5vw;
+          height: 5vw;
+        }
+        p {
+          text-align: center;
+          font-size: 15px;
+          color: grey;
+        }
+      }
+      .items {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        margin: 10px;
+        min-height: 7vh;
+        margin: 5px;
+        background: rgb(255, 255, 255);
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgb(158, 158, 158);
+        .left {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          margin: 5px;
+          .img {
+            width: 5vw;
+            height: 5.5vw;
+            margin: 3px;
+            border-radius: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+
+          .item_details {
+            width: 8vw;
+          }
+        }
+
+        .right {
+          width: 6vw;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          text-align: right;
+          margin: 5px;
+          ion-button {
+            font-size: 12px;
+            width: 4vw;
+            height: 20px;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            ion-icon {
+              font-size: 12px;
+            }
+          }
+
+          .trash_icon {
+            ion-icon {
+              color: rgb(148, 14, 14);
+            }
+          }
+          .add_to_basket {
+            background: rgb(2, 2, 37);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .closewishlist {
+    position: absolute;
+    z-index: 150;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 0vw;
+    height: 85vh;
+    top: 10%;
+    bottom: 40%;
+    right: 0;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+    .heading {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .sidemenu {
+    display: none;
+  }
+}
+
 ion-footer {
   text-align: center;
   .footer {
@@ -554,4 +1122,9 @@ ion-footer {
       }
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  background-color: maroon;
 }

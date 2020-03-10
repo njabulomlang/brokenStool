@@ -52,10 +52,13 @@
 </ion-header>
 
 <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-  <div class="maploader">
+  <!-- <div class="maploader">
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-  </div>
+  </div> -->
 
+  <div class="loader">
+    <span>Loading...</span>
+  </div>
 </div>
 
 <ion-content fullscreen id="content">
@@ -68,7 +71,7 @@
 <p style="font-family: 'Raleway'; margin: 8px; ">This is your wishlist. Save all your favourites here</p>
 
     <div class="cards" >
-      <div class="card" *ngFor="let w of myWish">
+      <div class="card" *ngFor="let w of myWish; let i = index">
           <div class="image">
             <img src="{{w.info.image}}">
           </div>
@@ -77,6 +80,7 @@
               <div class="itemz">
                 <p id="item">{{w.info.name}}</p>
               <p id="price">{{w.info.price | currency:'R'}}</p>
+              <p>{{itemAvailable[i]}}</p>
               </div>
               <div class="close"></div>
               <p><ion-icon  name="trash" (click)="delete(w.id)"></ion-icon></p>
@@ -84,7 +88,7 @@
   
             <div class="right">
               
-              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+              <ion-button [disabled]="itemAvailable[i]==='Out of stock'" (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
                 <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
               </ion-button>
             </div>

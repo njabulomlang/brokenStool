@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to left, w hite, rgba(0, 0, 0, 0.363));
+  background: linear-gradient(to left, white, rgba(0, 0, 0, 0.363));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,8 +63,10 @@
   width: 200px;
 }
 .inner-container > div:nth-child(1) {
-  background: url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.507)),
+  url("../../assets/yellow.jpg");
   background-size: cover;
+  color: white !important;
 }
 .inner-container > div:nth-child(2) {
   background: white;
@@ -77,10 +79,12 @@ ion-button {
   width:15vw;
   height: 15vw;
   margin: auto;
+  border-radius: 50%;
   img{
     width: 100%;
     height: 100%;
     object-fit:  cover;
+    border-radius: 50%;
   }
 }
 
@@ -112,15 +116,16 @@ ion-button {
     display: none;
   }
   .inner-container > div:nth-child(2) {
-    background-image: linear-gradient(rgba(190, 190, 190, 0.589), rgba(187, 187, 187, 0.514)),
-      url("https://i.pinimg.com/564x/3c/ba/9d/3cba9d4e0c240a0d87eb5ea122fe88cb.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.507)),
+    url("../../assets/yellow.jpg");
     background-position: center;
     background-size: cover;
     height: 100%;
     width: 100%;
-
+   
     .cont {
       background: transparent;
+     
 
 .everything{
 
@@ -134,12 +139,21 @@ ion-button {
       margin-top: 100px;
       ion-button{
         background-color: white;
-        color: black;
+        color: white;
         border-radius: 8px;
       }
 
       ion-input{
         color: black;
+      }
+    }
+    .form{
+      ion-item{
+        border-bottom: white !important;
+      }
+      ion-input{
+        color: white !important;
+        border-bottom: white !important;
       }
     }
   }

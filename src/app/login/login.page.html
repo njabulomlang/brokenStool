@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="container">
+  <div class="container" >
     <div class="inner-container">
       <div id="left">
         <div class="logo-container-left" style="color: black; font-weight: lighter;">
@@ -9,7 +9,7 @@
           aperiam culpa molestiae aliquam laboriosam eveniet!</p>
         </div>
       </div>
-      <div id="right">
+      <div id="right" >
         <div class="cont" id="logz">
           <div class="logo-container-right">
             <h1 style="font-size: 32px; font-weight: lighter; font-family: 'Raleway'; letter-spacing: 5px;">DANKIE JESU
@@ -24,7 +24,9 @@
             <div class="phone_login" *ngIf="showInput">
               <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" (ionInput)="phone($event)"
                 >+27 &nbsp; &nbsp;</ion-input>
-              <ion-button id="sign-in-button" color="transparent" [disabled]="myArr.length!==9" (click)="addUser()"> Sign-in with Phone</ion-button>
+              <ion-button id="sign" color="transparent" [disabled]="myArr.length!==9" (click)="addUser()"> Sign-in with Phone</ion-button>
+              <ion-button id="sign" color="transparent" (click)="showLogin()"> Cancel</ion-button>
+              
             </div>
 
             <ion-button id="sign-in-button" color="transparent" (click)="googleLogin()" *ngIf="!showInput">

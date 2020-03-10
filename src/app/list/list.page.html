@@ -1,41 +1,59 @@
 <ion-header no-border id="nav">
-
   <ion-toolbar>
+    <img src="../../assets/navylogo.jpg" routerLink="/home" width="150px" height="90px">
 
     <ion-buttons slot="end">
+
       <div class="icon1">
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
-          Terms and Privacy Policy
+        <ion-button id="icon" routerLink="/home">
+          Home
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Disclaimer">
-          Disclaimer
+        <ion-button id="icon" *ngIf="collectionName==='sales'"  class="active" >
+          Sales and Specials
+        </ion-button>
+        <ion-button id="icon" (click)="goList('sales')" *ngIf="collectionName!=='sales'">
+          Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/FAQs">
-          FAQs
+        <ion-button id="icon"  *ngIf="collectionName==='summer' || category==='summer'" class="active">
+          Summer Gear
         </ion-button>
-
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Payment%20Process">
-          Payment Process
+        <ion-button id="icon" (click)="categories('summer')" *ngIf="collectionName!=='summer' && category!=='summer'">
+          Summer Gear
         </ion-button>
-
+        <ion-button id="icon"  *ngIf="collectionName==='winter'|| category==='winter'" class="active">
+          Winter Gear
+        </ion-button>
+        <ion-button id="icon" (click)="categories('winter')" *ngIf="collectionName!=='winter' && category!=='winter'">
+          Winter Gear
+        </ion-button>
+        <ion-button id="icon"  *ngIf="collectionName==='kwanga'|| category==='kwanga'" class="active">
+          Kwanga Apparel
+        </ion-button>
+        <ion-button id="icon" (click)="categories('kwanga')" *ngIf="collectionName!=='kwanga' && category!=='kwanga'">
+          Kwanga Apparel
+        </ion-button>
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
-
-
       </div>
-      <ion-button id="icon" (click)="wish()">
+
+      <ion-button id="icon" (click)="wish()" class="notification">
         <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <p id="number">{{myWish}}</p>
+        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
+      </ion-button>
+
+      <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+     
       </ion-button>
     </ion-buttons>
-
-    <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
   </ion-toolbar>
+
+  <p id="crumbs"> <span (click)="home()"> Home</span> / <span (click)="back()"> Category</span> / List</p>
 
 </ion-header>
 
@@ -57,8 +75,9 @@
   </ion-toolbar>
 </ion-header>
 
+
 <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-  <div class="maploader">
+  <!-- <div class="maploader">
     <div class="lds-ellipsis">
       <div></div>
       <div></div>
@@ -66,6 +85,9 @@
       <div></div>
     </div>
     <p style="color:white; text-align: center;">{{loaderMessages}}</p>
+  </div> -->
+  <div class="loader">
+    <span>Loading...</span>
   </div>
 
 </div>
@@ -73,27 +95,30 @@
 <ion-content fullscreen>
 
 
+
   <div class="container">
-    <div class="top">
+    <div class="top" >
       <div class="pagename">
-        <h1 style="text-transform: uppercase; letter-spacing: 2px;"><b>{{collectionName}}</b></h1>
+        <h1 style="text-transform: uppercase; letter-spacing: 2px; font-size: 20px;"><b>{{collectionName}}</b></h1>
       </div>
       <div class="itemcount">
         <div class="items" *ngIf="collectionName!=='sales'">
-          <p>{{myProduct.length}} item(s)</p>
+          <p style="font-size: 16px">{{myProduct.length}} item(s)</p>
         </div>
         <div class="items" *ngIf="collectionName==='sales'">
-          <p>{{promo.length}} item(s)</p>
+          <p style="font-size: 16px">{{promo.length}} item(s)</p>
         </div>
         <div class="filter" style="cursor: pointer;">
-
-          <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer;">Filter <ion-icon slot="end" name="funnel">
+  
+          <p (click)="reviewed()" style="opacity: 0.5; cursor: pointer; font-size: 20px;">Filter <ion-icon slot="end"
+              name="funnel">
             </ion-icon>
           </p>
         </div>
-
+  
       </div>
     </div>
+
     <div class="cards" *ngIf="collectionName!=='sales'">
       <div class="card" *ngFor="let p of myProduct, let i=index">
         <img src="{{p.info.pictureLink}}" (click)="viewitem(p.id, p.info)">
@@ -103,7 +128,8 @@
           </div>
           <div id="icon">
             <ion-button (click)="wishList(p.id, p.info, i)" color="transparent" style="overflow: hidden;">
-              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1.2em; color: black"></ion-icon>
+              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: maroon;" *ngIf="p.wish==='heart'"></ion-icon>
+              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="p.wish!=='heart'"></ion-icon>
             </ion-button>
             <!-- <ion-icon slot="end" name="heart-empty" (click)="wishList(p.id, p.info, i)"></ion-icon>-->
           </div>
@@ -117,11 +143,12 @@
         <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
-            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
+            <p>{{s.info.name}} <br> <span>{{(((s.info.price)-(s.info.price*(s.info.discount/100)))) | currency:'R'}}</span></p>
           </div>
           <div id="icon">
-            <ion-button (click)="wishList(s.id, s.info, i)" color="transparent">
-              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1em; color: black"></ion-icon>
+            <ion-button (click)="wishListSale(s.id, s.info, i)" color="transparent">
+              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: maroon;" *ngIf="s.wish==='heart'"></ion-icon>
+              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="s.wish!=='heart'"></ion-icon>
             </ion-button>
             <!-- <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info,i)" ></ion-icon> -->
           </div>
@@ -156,6 +183,7 @@
           <p>Blue</p>
           <p>Green</p>
           <p>Orange</p>
+          <p>Yellow</p>
           <p>Pink</p>
           <p>White</p>
           <p>Black</p>
@@ -166,11 +194,11 @@
           <h4>Price</h4>
         </div>
         <div class="prices">
-          <ion-item *ngIf="viewPrice">
-            <ion-range style="width: 50%" pin="true" min="0" max="5000" step="10" color="secondary" [(ngModel)]="price"
+          <ion-item *ngIf="viewPrice" id="range">
+            <ion-range pin="true" min="0" max="2000" step="10" color="secondary" [(ngModel)]="price"
               (ionChange)="setPriceRange(price)">
               <ion-label slot="start">{{price | currency:'R'}}</ion-label>
-              <ion-label slot="end">{{5000 | currency:'R'}}</ion-label>
+              <ion-label slot="end">{{2000 | currency:'R'}}</ion-label>
             </ion-range>
           </ion-item>
         </div>
@@ -211,24 +239,26 @@
           </div>
           <div id="icon">
             <ion-button (click)="wishList(p.id, p.info, i)" color="transparent">
-              <ion-icon slot="icon-only" name="heart-empty" style="font-size: 1em; color: black"></ion-icon>
+              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: maroon;" *ngIf="p.wish==='heart'"></ion-icon>
+              <ion-icon slot="icon-only" name="{{p.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="p.wish!=='heart'"></ion-icon>
             </ion-button>
           </div>
-
         </div>
       </div>
-
     </div>
     <div class="cards" *ngIf="collectionName==='sales'">
       <div class="card" *ngFor="let s of promo;let i = index">
         <img src="{{s.info.pictureLink}}" (click)="viewitem(s.id, s.info)">
         <div class="itemdetails">
           <div class="name">
-            <p>{{s.info.name}} <br> <span>{{s.info.saleprice | currency:'R'}}</span></p>
+            <p>{{s.info.name}} <br> <span>{{(((s.info.price)-(s.info.price*(s.info.discount/100)))) | currency:'R'}}</span></p>
           </div>
           <div id="icon">
+            <ion-button (click)="wishListSale(s.id, s.info, i)" color="transparent">
+              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: maroon;" *ngIf="s.wish==='heart'"></ion-icon>
+              <ion-icon slot="icon-only" name="{{s.wish}}" style="font-size: 1em; color: rgb(0, 0, 0);" *ngIf="s.wish!=='heart'"></ion-icon>
+            </ion-button>
 
-            <ion-icon slot="end" name="heart-empty" (click)="wishListSale(s.id, s.info, i)"></ion-icon>
           </div>
           <!-- [ngClass]="{'sizeStyle':heartIndex==i}" -->
 
@@ -259,9 +289,13 @@
         <div class="colors" *ngIf="viewFilter" (click)="colorOpt($event)">
           <p>Red</p>
           <p>Blue</p>
-          <p>Orange</p>
           <p>Green</p>
-          <p>Purple</p>
+          <p>Orange</p>
+          <p>Yellow</p>
+          <p>Pink</p>
+          <p>White</p>
+          <p>Black</p>
+          <p>Brown</p>
         </div>
 
         <div class="price" (click)="priced()">
@@ -269,10 +303,10 @@
         </div>
         <div class="prices">
           <ion-item *ngIf="viewPrice">
-            <ion-range style="width: 50%" pin="true" min="0" max="1000" step="10" color="secondary" [(ngModel)]="price"
+            <ion-range style="width: 50%" pin="true" min="0" max="2000" step="10" color="secondary" [(ngModel)]="price"
               (ionChange)="setPriceRange(price)">
               <ion-label slot="start">{{price | currency:'R'}}</ion-label>
-              <ion-label slot="end">{{1000 | currency:'R'}}</ion-label>
+              <ion-label slot="end">{{2000 | currency:'R'}}</ion-label>
             </ion-range>
           </ion-item>
         </div>
@@ -297,7 +331,7 @@
 
     <div class="wishlist_items">
       <div class="div">
-        <div class="items" *ngFor="let w of myWishlist">
+        <div class="items" *ngFor="let w of myWishlist; let i = index">
           <div class="left">
             <div class="img">
               <img src="{{w.info.image}}" alt="">
@@ -306,6 +340,7 @@
             <div class="item_details">
               <p> {{w.info.name}} </p>
               <p>{{w.info.price | currency:'R'}}</p>
+              <p style="color: maroon;"><i>{{itemAvailable[i] }}</i></p>
             </div>
           </div>
 
@@ -315,20 +350,58 @@
             </div>
 
             <div class="add_to_basket">
-              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+              <ion-button [disabled]="itemAvailable[i]==='Out of stock'" (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
                 Add<ion-icon slot="end" name="basket"></ion-icon>
               </ion-button>
             </div>
           </div>
         </div>
 
-        <div class="items" id="noItems">
+        <div class="items" id="noItems" *ngIf="myWishlist.length===0">
           <p>Wishlist Empty</p>
           <img src="../../assets/sad_smile.svg" alt="">
         </div>
+
+
       </div>
+
     </div>
 
+  </div>
+
+  <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
+    <div class="heading">
+      <!-- <ion-icon slot="icon-only" name="close"></ion-icon> -->
+    </div>
+
+    <div class="side_buttons">
+
+      <ion-button id="icon" routerLink= "/home" class="active" color="transparent">
+        Home
+      </ion-button>
+
+      <ion-button id="icon" (click)="goList('sales')" color="transparent">
+        Sales and Specials
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('summer')" color="transparent">
+        Summer Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('winter')" color="transparent">
+        Winter Gear
+      </ion-button>
+
+      <ion-button id="icon" (click)="categories('kwanga')" color="transparent">
+        Kwanga Apparel
+      </ion-button>
+
+      <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company" color="transparent">
+        About Us
+      </ion-button>
+
+     
+    </div>
   </div>
 
   <ion-footer id="webview">
@@ -340,7 +413,7 @@
 
       <div class="contact_details">
         <h1>CONTACT US</h1>
-        <p>dankiejesu@gmail.com</p>
+        <p>dankiejesu@brokenstool.co.za</p>
         <p>061 446 4674</p>
         <p class="address">5630 Moilwa Drive <br>
           Kagiso <br>

@@ -24,11 +24,28 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
 @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
 
 * {
   font-family: "Poppins";
+}
+
+ion-checkbox {
+  --background: #ffffff;
+  --background-checked: #530307;
+  --border-color: #ffffff;
+  --border-color-checked: #530307;
+  --border-radius: 50%;
+  --border-style: solid;
+  --border-width: 1px;
+  --checkmark-color-width: #2e0000;
+  --checkmark-width: 5px;
+  --size: 13px;
+  margin:5px;
+  --transition: background-color 15ms maroon;
+  checkbox-icon{
+    color: black;
+  }
 }
 
 ion-button {
@@ -79,4 +96,9 @@ ion-modal {
 
 ::-webkit-scrollbar {
   width: 1px;
+}
+
+
+.cssClass {
+  color: red
 }

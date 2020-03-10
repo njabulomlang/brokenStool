@@ -1,5 +1,5 @@
 <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-  <div class="maploader">
+  <!-- <div class="maploader">
     <div class="lds-ellipsis">
       <div></div>
       <div></div>
@@ -7,10 +7,10 @@
       <div></div>
     </div>
     <p style="color:white; text-align: center;">{{loaderMessages}}</p>
-  </div>
-  <!--  <div class="loading-text">
-        <p>Loading Map</p>
-      </div> -->
+  </div> -->
+   <div class="loader">
+        <p style="color: white !important;">Loading...</p>
+      </div>
 </div>
 
 <ion-content>
@@ -39,7 +39,7 @@
 
 
       <div class="cards">
-        <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.data)">
+        <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.info)">
           <div class="image">
             <img src="{{s.info.pictureLink}}" alt="">
           </div>
@@ -85,7 +85,7 @@
 
 
       <div class="cards">
-        <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.data)">
+        <div class="list" *ngFor="let s of mySearch" (click)="viewitem(s.id, s.info)">
           <div class="image">
             <img src="{{s.info.pictureLink}}" alt="">
           </div>

@@ -14,10 +14,22 @@ export class CategoriesPage implements OnInit {
   colDef: string;
   // uid = firebase.auth().currentUser.uid;
   dbWish = firebase.firestore().collection('Wishlist');
+  dbProd = firebase.firestore().collection('Products');
+  dbCategory = firebase.firestore().collection('category');
   myWish: number;
   viewPrice = false;
+  viewSideMenu = false;
+  viewBackdrop = false;
   myWishlist = [];
   alertView: boolean = false;
+  itemAvailable=[];
+  loaderMessages = 'Loading...';
+  loaderAnimate: boolean = true;
+  prodArray = [];
+  dbSales = firebase.firestore().collection("Specials");
+  prodArr = [];
+  winterArray = [];
+  // dbProduct = firebase.firestore().collection('Products');
   constructor(public NavCtrl: NavController, public router: Router, public route: ActivatedRoute, public navCtrl: NavController,public alertCtrl : AlertController, 
     private localSt:LocalStorageService) {
     // console.log('My data', this.route.snapshot.paramMap.get('data').toUpperCase());
@@ -25,6 +37,11 @@ export class CategoriesPage implements OnInit {
   }
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.loaderAnimate = false
+    }, 2000);
+    
     if (this.category === 'SUMMER' || this.category === 'WINTER') {
       // console.log('This is dankie jesu brand');
       this.colDef = 'Dankie Jesu';
@@ -35,14 +52,42 @@ export class CategoriesPage implements OnInit {
       //console.log('Sales my man...');
       this.colDef = 'Sales';
     }
-    // console.log(this.colDef);
 
-    /* this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
-      this.myWish = res1.size;
-    }) */
-    // this.getWishlist();
     this.checkUser();
+    this.getProdD();
+    this.getProd();
+    this.getProdSummer();
+    
   }
+  getProd() {
+    this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',false).onSnapshot((res)=>{
+      this.winterArray = [];
+      res.forEach((doc)=>{
+        this.winterArray.push(doc.data());
+      })
+    })
+  }
+  getProdSummer() {
+    this.dbCategory.where('brand','==','Dankie Jesu').where('isSummer','==',true).onSnapshot((res)=>{
+      this.prodArray = [];
+      res.forEach((doc)=>{
+        this.prodArray.push(doc.data());
+      })
+    })
+  }
+  getProdD() {
+    this.dbCategory.where('brand','==','Kwanga Apparel').onSnapshot((res)=>{
+      this.prodArr = [];
+      res.forEach((doc)=>{
+        this.prodArr.push(doc.data());
+      })
+    })
+  }
+  getSideMenu(){
+    this.viewSideMenu = !this.viewSideMenu
+    this.viewBackdrop = !this.viewBackdrop
+  }
+
   checkUser() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
@@ -85,10 +130,28 @@ export class CategoriesPage implements OnInit {
     await alert.present();
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==',firebase.auth().currentUser.uid).onSnapshot((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
+        if (doc.data().brand === "Specials") {
+          this.dbSales.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        } else {
+          this.itemAvailable = [];
+          this.dbProd.doc(doc.id).onSnapshot((data) => {
+            if (data.data().hideItem === true) {
+              this.itemAvailable.push("Out of stock");
+            } else {
+              this.itemAvailable.push("In stock");
+            }
+          })
+        }
         this.myWishlist.push({ info: doc.data(), id: doc.id });
       })
     })
@@ -109,11 +172,15 @@ export class CategoriesPage implements OnInit {
   delete(id) {
     this.dbWish.doc(id).delete()
   }
+  back() {
+    this.navCtrl.pop()
+  }
   wish() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           this.viewPrice = !this.viewPrice
+          this.viewBackdrop = !this.viewBackdrop
           this.getWishlist();
         } else {
             this.presentAlertConfirm1();
@@ -121,12 +188,28 @@ export class CategoriesPage implements OnInit {
       })
     }, 0); 
   }
-
+  goList(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Specials',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
+  categories(data) {
+    // console.log(data);
+    this.router.navigate(['categories', data])
+  }
   list(data) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         data: data,
         col: this.colDef,
+        category: this.category
       }
     };
     this.navCtrl.navigateForward(['list', data], navigationExtras);

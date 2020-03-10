@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ToastController, PopoverController, NavController, AlertController, Platform } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -31,13 +31,14 @@ export class ViewPage implements OnInit {
   color: string = '';
   myRate: number = 0;
   dbRate = firebase.firestore().collection('productRate');
-  dbSales = firebase.firestore().collection('Specials');
+  // dbSales = firebase.firestore().collection('Specials');
   mySale = [];
   category: string = '';
   starRating = document.getElementsByClassName('ionic4-star-rating')
   boolCheck: boolean = false;
   viewCart = false;
   viewBackdrop = false;
+  viewSideMenu = false;
   prodCart = [];
   delCost: number;
   delType: string;
@@ -46,6 +47,8 @@ export class ViewPage implements OnInit {
   alertView: boolean = false;
   loaderMessages = 'Loading...';
   loaderAnimate: boolean = true;
+  colorArr=[];
+  myArr = [];
   // colorIndex = null;
   constructor(public router: Router, public route: ActivatedRoute, public toastCtrl: ToastController, public popoverController: PopoverController, public navCtrl: NavController,
     public render: Renderer2, public alertCtrl: AlertController, public plt: Platform, private localSt: LocalStorageService) {
@@ -59,7 +62,7 @@ export class ViewPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-     this.loaderAnimate = false; 
+      this.loaderAnimate = false;
     }, 2000);
     if (this.plt.is('cordova')) {
       this.cordova = true
@@ -67,6 +70,8 @@ export class ViewPage implements OnInit {
       this.cordova = false;
     }
     this.checkUser();
+    // console.log("My col ", this.col, "My cat ", this.category);
+    
     if (this.col === 'Specials') {
       this.getSpecial();
     } else {
@@ -82,6 +87,11 @@ export class ViewPage implements OnInit {
       }
     })
   }
+
+  getSideMenu() {
+    this.viewSideMenu = !this.viewSideMenu
+    this.viewBackdrop = !this.viewBackdrop
+  }
   checkUser() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
@@ -96,6 +106,29 @@ export class ViewPage implements OnInit {
         }
       })
     }, 0);
+  }
+  categories(data) {
+    // console.log(data);
+    this.router.navigate(['categories', data])
+  }
+  goList(data) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: data,
+        col: 'Specials',
+        //currency: JSON.stringify(currency),
+        // refresh: refresh
+      }
+    };
+    //this.router.navigate(['list', data])
+    this.navCtrl.navigateForward(['list', data], navigationExtras);
+  }
+
+  home() {
+    this.navCtrl.navigateRoot('home');
+  }
+  back() {
+    this.navCtrl.pop();
   }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
@@ -138,30 +171,31 @@ export class ViewPage implements OnInit {
     return total;
   }
   placeOrder(info) {
-      let myArr = [];
-      let doc = [];
-      for (let i = 0; i < info.length; i++) {
-        // const element = info[i].data;
-        /* myArr = info[i].data.product */
-        doc.push(info[i].id)
-        //console.log('my info ', );
-        info[i].data.product.forEach(item => {
-          myArr.push(item);
-        });
-      }
-      if (this.prodCart.length === 0) {
-        this.toastController('You cannot place order with empty basket');
-      } else {
-        let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
-        this.dbOrder.doc(docname).set({ product: myArr, timestamp: new Date().getTime(), 
-          status: 'received', userID: firebase.auth().currentUser.uid,
-           totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
-           }).then(() => {
-          doc.forEach((id) => {
-            this.dbCart.doc(id).delete();
-          })
+    let myArr = [];
+    let doc = [];
+    for (let i = 0; i < info.length; i++) {
+      // const element = info[i].data;
+      /* myArr = info[i].data.product */
+      doc.push(info[i].id)
+      //console.log('my info ', );
+      info[i].data.product.forEach(item => {
+        myArr.push(item);
+      });
+    }
+    if (this.prodCart.length === 0) {
+      this.toastController('You cannot place order with empty basket');
+    } else {
+      let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
+      this.dbOrder.doc(docname).set({
+        product: myArr, timestamp: new Date().getTime(),
+        status: 'received', userID: firebase.auth().currentUser.uid,
+        totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+      }).then(() => {
+        doc.forEach((id) => {
+          this.dbCart.doc(id).delete();
         })
-      }
+      })
+    }
   }
   getCart() {
     this.dbCart.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((info) => {
@@ -179,10 +213,10 @@ export class ViewPage implements OnInit {
           this.viewCart = !this.viewCart
           this.viewBackdrop = !this.viewBackdrop
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0); 
+    }, 0);
   }
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
@@ -231,12 +265,12 @@ export class ViewPage implements OnInit {
     console.log('Boolean val ', c, 'index ', i);
   }
   async getProduct() {
-    await this.dbProduct.doc(this.col).collection(this.category).doc(this.doc_id).get().then((doc) => {
+    await this.dbProduct.doc(this.doc_id).get().then((doc) => {
       this.unitProduct.push({ data: doc.data(), id: doc.id })
     })
   }
   async getSpecial() {
-    await this.dbSales.doc(this.doc_id).get().then((res) => {
+    await this.dbProduct.doc(this.doc_id).get().then((res) => {
       this.mySale.push({ data: res.data(), id: res.id });
     })
   }
@@ -255,29 +289,47 @@ export class ViewPage implements OnInit {
           });
           return await popover.present();
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
     }, 0);
- /*    const popover = await this.popoverController.create({
-      component: PopoverComponent,
-      event: ev,
-      translucent: true,
-      componentProps: {
-        col: this.col,
-        doc: this.doc_id
-      }
-    });
-    return await popover.present(); */
+    /*    const popover = await this.popoverController.create({
+         component: PopoverComponent,
+         event: ev,
+         translucent: true,
+         componentProps: {
+           col: this.col,
+           doc: this.doc_id
+         }
+       });
+       return await popover.present(); */
   }
-  sizeChosen(data, index) {
+  sizeChosen( data, index) {
+    // console.log("event ", ev);
+ /*    if (ev.detail.checked === true) {
+      this.myArr.push(data)
+      
+    } else {
+      this.myArr.splice(this.myArr.indexOf(data), 1);
+      
+      
+    } */
+    
     this.sizeIndex = index
     this.my_size = data;
+    console.log('MY size ', this.my_size);
   }
-
   colorChosen(color, index) {
+  /*   if (ev.detail.checked === true) {
+      this.colorArr.push(color)
+    } else {
+      this.colorArr.splice(this.colorArr.indexOf(color), 1);
+      // console.log('MY color ', ev);
+    }
+     */
     this.color = color;
     this.colorIndex = index
+    console.log('MY color ', this.color);
   }
   plus() {
     this.quantity += 1
@@ -324,10 +376,10 @@ export class ViewPage implements OnInit {
         if (res) {
           this.router.navigateByUrl('basket');
         } else {
-            this.presentAlertConfirm1();
+          this.presentAlertConfirm1();
         }
       })
-    }, 0);  
+    }, 0);
   }
   addToCart(id, details) {
     setTimeout(() => {
@@ -346,9 +398,12 @@ export class ViewPage implements OnInit {
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
                 product_name: details.name, size: this.my_size,
                 quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
-                color: this.color
+                color: this.color, prod_id: id
               }]
             }).then(() => {
+              this.sizeIndex = null;
+              this.colorIndex = null;
+              this.quantity = 1;
               this.toastController('Added to basket')
             })
           }
@@ -376,9 +431,12 @@ export class ViewPage implements OnInit {
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
                 product_name: details.name, size: this.my_size,
                 quantity: this.quantity, cost: details.saleprice, picture: details.pictureLink,
-                color: this.color
+                color: this.color, prod_id: id
               }]
             }).then(() => {
+              this.sizeIndex = null;
+              this.colorIndex = null;
+              this.quantity = 1;
               this.toastController('Added to basket')
             })
           }

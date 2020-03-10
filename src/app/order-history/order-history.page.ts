@@ -2,15 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { NavController } from '@ionic/angular';
-import { FileDownloadService } from '../services/file-download.service';
-import { saveAs } from 'file-saver';
 
-const MIME_TYPES = {
-  pdf: 'application/pdf',
-  xls: 'application/vnd.ms-excel',
-  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetxml.sheet'
-}
-
+declare var require: any
+const FileSaver = require('file-saver');
 @Component({
   selector: 'app-order-history',
   templateUrl: './order-history.page.html',
@@ -30,23 +24,24 @@ export class OrderHistoryPage implements OnInit {
     address: ''
   }
   qty: number = 0;
-  constructor(public NavCtrl: NavController, private router: Router, private service:FileDownloadService) { }
-
+  constructor(public NavCtrl: NavController, private router: Router) { }
   ngOnInit() {
 
     this.getAll();
     this.getProfile();
     //this.getTotal();
   }
-  downloadFile(fileName) {
+/*   downloadFile(fileName) {
     const EXT = fileName.substr(fileName.lastIndexOf('.') + 1);
     this.service.downloadFile({ 'fileName': fileName})
     .subscribe(data => {
       //save it on the client machine.
       saveAs(new Blob([data], {type: MIME_TYPES[EXT]}), fileName);
     })
+  } */
+  downloadPdf1(pdf){
+      FileSaver.saveAs(pdf);
   }
-  
   getProfile() {
     this.dbProfile.doc(this.uid).onSnapshot((res) => {
       this.userProfile.name = res.data().name;
@@ -71,8 +66,16 @@ export class OrderHistoryPage implements OnInit {
       })
     })
   }
-  getTotal() {
+  getTotal(i) {
     let total = 0;
+    let product = this.orderHistory[i].orders;
+    product.forEach((item) => {
+      total += item.cost * item.quantity
+    })
+    return total;
+
+
+    /* let total = 0;
     for (let i = 0; i < this.orderHistory.length; i++) {
       let product = this.orderHistory[i].orders;
       product.forEach((item) => {
@@ -80,7 +83,7 @@ export class OrderHistoryPage implements OnInit {
         this.qty += item.quantity
       })
     }
-    return total;
+    return total; */
   }
   getQuantity(i) {
     let total = 0;
