@@ -539,5 +539,4 @@ export class HomePage implements OnInit {
         break;
     }
   }
-
 }
