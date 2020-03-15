@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "704929489176",
-    "firebase_url": "https://fir-crud-11c1f.firebaseio.com",
-    "project_id": "fir-crud-11c1f",
-    "storage_bucket": "fir-crud-11c1f.appspot.com"
+    "project_number": "160738006805",
+    "firebase_url": "https://broken-stool-flat.firebaseio.com",
+    "project_id": "broken-stool-flat",
+    "storage_bucket": "broken-stool-flat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:704929489176:android:af688b90e9eb2ce18a3e6d",
+        "mobilesdk_app_id": "1:160738006805:android:a7f60224002811c1403b1c",
         "android_client_info": {
           "package_name": "com.dankie.jesu"
         }
       },
       "oauth_client": [
         {
-          "client_id": "704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com",
+          "client_id": "160738006805-66cksfoqr042ub9qb0duq63frail3154.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dankie.jesu",
+            "certificate_hash": "6e01b98ce8a95af360ae4e2cee124682f1cb2bfa"
+          }
+        },
+        {
+          "client_id": "160738006805-bpf7gfbrmk3abvd06r56pa96m8lsk4e0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA1ZPFLe-6m2eWmdHq2tDkKam2iaOZOQXk"
+          "current_key": "AIzaSyD_XEElgB8__JxzrHo93LNT7RVOzj_Ds3I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "704929489176-nkop0im085muei15k9rao6pmnfjsh0vt.apps.googleusercontent.com",
+              "client_id": "160738006805-bpf7gfbrmk3abvd06r56pa96m8lsk4e0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
