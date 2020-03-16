@@ -17,14 +17,14 @@ export const firebaseConfig = {
   appId: "1:160738006805:web:e6e0210eb8f5470d403b1c",
   measurementId: "G-JSFZR301ZQ"
 
-  /* apiKey: "AIzaSyDOthq8-7ipC4rQYCh_R8_oC9fL0F0Oz5g",
-  authDomain: "fir-crud-11c1f.firebaseapp.com",
-  databaseURL: "https://fir-crud-11c1f.firebaseio.com",
-  projectId: "fir-crud-11c1f",
-  storageBucket: "fir-crud-11c1f.appspot.com",
-  messagingSenderId: "704929489176",
-  appId: "1:704929489176:web:334d209d3679ed5d8a3e6d",
-  measurementId: "G-BYBG8HFL6W",
-  vapidKey: "BFHowuxjiDtFztqFIeWXG7LAj3zWBBknnNI3BfpMRf3otq5LgxydLaZBWzTgPgv0bXHegMsgxbACeA3fE6WsEUI" */
+  // apiKey: "AIzaSyDOthq8-7ipC4rQYCh_R8_oC9fL0F0Oz5g",
+  // authDomain: "fir-crud-11c1f.firebaseapp.com",
+  // databaseURL: "https://fir-crud-11c1f.firebaseio.com",
+  // projectId: "fir-crud-11c1f",
+  // storageBucket: "fir-crud-11c1f.appspot.com",
+  // messagingSenderId: "704929489176",
+  // appId: "1:704929489176:web:334d209d3679ed5d8a3e6d",
+  // measurementId: "G-BYBG8HFL6W",
+  // vapidKey: "BFHowuxjiDtFztqFIeWXG7LAj3zWBBknnNI3BfpMRf3otq5LgxydLaZBWzTgPgv0bXHegMsgxbACeA3fE6WsEUI"
 };
 

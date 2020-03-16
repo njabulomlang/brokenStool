@@ -358,7 +358,7 @@ export class HomePage implements OnInit {
     this.dbWish.doc(id).delete()
   }
   getWishlist() {
-    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).get().then((res) => {
+    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
