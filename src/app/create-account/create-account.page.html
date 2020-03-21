@@ -2,10 +2,11 @@
   <div class="container">
     <div class="inner-container">
       <div id="left">
-       
+
         <div class="logo-container-left">
           <img src="../../assets/Logo.png" id="logo-left" alt="">
-          <br> <h1>CREATE ACCOUNT</h1>
+          <br>
+          <h1>CREATE ACCOUNT</h1>
         </div>
       </div>
       <div id="right">
@@ -14,46 +15,55 @@
             <h1 style="width: 100%; text-align: center;">Create Account</h1>
             <br>
           </div>
-        
+
           <div class="everything">
             <div class="title">
-            
+
             </div>
             <div class="image" id="image" *ngIf="profilePic">
               <img src="{{profilePic}}" style="overflow: hidden;" (click)="selectImage()">
-        
+     
             </div>
             <div class="image" id="image" *ngIf="!profilePic">
-  
-              <img src="../../assets/user-icon-image-placeholder-300-grey.jpg" style="overflow: hidden;" (click)="selectImage()">
+              
+              <img src="../../assets/user-icon-image-placeholder-300-grey.jpg" style="overflow: hidden;"
+                (click)="selectImage()">
 
             </div>
-      
+
             <div class="form">
               <form [formGroup]="account">
-                <ion-item color="transparent">
-                  <ion-input placeholder="Name" formControlName="name" [(ngModel)]="name" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                <ion-item color="transparent" *ngIf="!plt.is('cordova')">
+                  <ion-input type="file" id="file" (change)="featuredPhotoSelected($event)"></ion-input>
                 </ion-item>
-      
+                
                 <ion-item color="transparent">
-                  <ion-input placeholder="Surname" formControlName="surname" [(ngModel)]="surname" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                  <ion-input placeholder="Name" formControlName="name" [(ngModel)]="name" (ionBlur)="check('open')"
+                    (ionFocus)="check('close')"></ion-input>
                 </ion-item>
-      
+
                 <ion-item color="transparent">
-                  <ion-input placeholder="Email" formControlName="email" [(ngModel)]="email" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                  <ion-input placeholder="Surname" formControlName="surname" [(ngModel)]="surname"
+                    (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
                 </ion-item>
-      
+
                 <ion-item color="transparent">
-                  <ion-input placeholder="Address" formControlName="address" [(ngModel)]="address" (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                  <ion-input placeholder="Email" formControlName="email" [(ngModel)]="email" (ionBlur)="check('open')"
+                    (ionFocus)="check('close')"></ion-input>
                 </ion-item>
-      
+
+                <ion-item color="transparent">
+                  <ion-input placeholder="Address" formControlName="address" [(ngModel)]="address"
+                    (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+
                 <br>
-                <ion-button (click)="createAccount()" [disabled]="!account.valid" color="transparent" >DONE
+                <ion-button (click)="createAccount()" [disabled]="!account.valid" color="transparent">DONE
                 </ion-button>
               </form>
-      
+
             </div>
-      
+
           </div>
         </div>
       </div>
