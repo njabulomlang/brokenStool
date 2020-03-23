@@ -1,4 +1,3 @@
-
 <ion-header no-border id="nav">
 
   <ion-toolbar>
@@ -10,7 +9,7 @@
 
     <ion-buttons slot="end">
       <div class="icon1">
-     
+
         <ion-button id="icon">
           Terms and Conditions
         </ion-button>
@@ -41,107 +40,115 @@
 
 
 <ion-header no-border id="mobile">
-    <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-button (click)="goBack()">
-            <ion-icon slot="icon-only" id="icon" name="arrow-back"></ion-icon>
-          </ion-button>
-          </ion-buttons>
-    
-      </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" id="icon" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
 </ion-header>
 
 <div [ngClass]="{'loader': loaderAnimate, 'loader-hide': !loaderAnimate}">
-  <!-- <div class="maploader">
-      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><p style="color:white; text-align: center;">{{loaderMessages}}</p>
-  </div> -->
-
   <div class="loader">
     <span>Loading...</span>
   </div>
 </div>
 
 <ion-content fullscreen id="content">
- 
+
   <div class="container">
     <div class="pagename" style="margin: 10px; font-family: 'Poiret One'; ">
       <h1>Wishlist ({{myWish.length}})</h1>
     </div>
 
-<p style="font-family: 'Raleway'; margin: 8px; ">This is your wishlist. Save all your favourites here</p>
+    <p style="font-family: 'Raleway'; margin: 8px; ">This is your wishlist. Save all your favourites here</p>
 
-    <div class="cards" >
+    <div class="cards">
       <div class="card" *ngFor="let w of myWish; let i = index">
-          <div class="image">
-            <img src="{{w.info.image}}">
-          </div>
-          <div class="details">
-            <div class="left">
-              <div class="itemz">
-                <p id="item">{{w.info.name}}</p>
-              <p id="price">{{w.info.price | currency:'R'}}</p>
-              <p>{{itemAvailable[i]}}</p>
-              </div>
-              <div class="close"></div>
-              <p><ion-icon  name="trash" (click)="delete(w.id)"></ion-icon></p>
-            </div>
-  
-            <div class="right">
-              
-              <ion-button [disabled]="itemAvailable[i]==='Out of stock'" (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
-                <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
-              </ion-button>
-            </div>
-  
-          </div>
+        <div class="image">
+          <img src="{{w.info.image}}">
         </div>
+        <div class="details">
+          <div class="left">
+            <div class="itemz">
+              <p id="item">{{w.info.name}}</p>
+              <p id="price">{{w.info.price | currency:'R'}} <br><span style="color: maroon;">
+                  <i>{{itemAvailable[i]}}</i></span></p>
+              <!-- <p style="color: maroon;"><i>{{itemAvailable[i]}}</i></p> -->
+            </div>
+            <div class="close"></div>
+            <p>
+              <ion-icon name="trash" (click)="delete(w.id)"></ion-icon>
+            </p>
+          </div>
 
-        <div class="card" id="msg" *ngIf="myWish.length==0">
-          <p> Oh no! Your Wishlist is empty</p>
-          <img src="../../assets/sad_smile.svg">
-      
+          <div class="right">
+
+            <ion-button [disabled]="itemAvailable[i]==='Out of stock'" (click)="addtoBusket(w.info.id, w.info, w.id)"
+              color="transparent">
+              <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book"
+                name="bookmark"></ion-icon>
+            </ion-button>
+          </div>
+
         </div>
+      </div>
+
+      <div class="card" id="msg" *ngIf="myWish.length==0">
+        <p> Oh no! Your Wishlist is empty</p>
+        <img src="../../assets/sad_smile.svg">
+
+      </div>
     </div>
 
   </div>
 
   <div class="web_view">
-    <div class="pagename" >
-      <h1 style="margin: 10px; font-family: 'Poiret One'; width: 100%; text-align: center; color: rgb(173, 173, 173); font-size: 30px;">Wishlist ({{myWish.length}})</h1>
+    <div class="pagename">
+      <h1
+        style="margin: 10px; font-family: 'Poiret One'; width: 100%; text-align: center; color: rgb(173, 173, 173); font-size: 30px;">
+        Wishlist ({{myWish.length}})</h1>
     </div>
 
-<p style="font-family: 'Poppins'; margin: 8px; width: 100%; text-align: center; color: rgb(173, 173, 173); font-size: 15px;">This is your wishlist. Save all your favourites here</p>
+    <p
+      style="font-family: 'Poppins'; margin: 8px; width: 100%; text-align: center; color: rgb(173, 173, 173); font-size: 15px;">
+      This is your wishlist. Save all your favourites here</p>
 
-    <div class="cards" >
+    <div class="cards">
       <div class="card" *ngFor="let w of myWish">
-          <div class="image">
-            <img src="{{w.info.image}}">
-          </div>
-          <div class="details">
-            <div class="left">
-              <div class="itemz">
-                <p id="item">{{w.info.name}}</p>
+        <div class="image">
+          <img src="{{w.info.image}}">
+        </div>
+        <div class="details">
+          <div class="left">
+            <div class="itemz">
+              <p id="item">{{w.info.name}}</p>
               <p id="price">{{w.info.price | currency:'R'}}</p>
-              </div>
-              <div class="close"></div>
-              <p><ion-icon  name="trash" (click)="delete(w.id)"></ion-icon></p>
             </div>
-  
-            <div class="right">
-              
-              <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
-                <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book" name="bookmark"></ion-icon>
-              </ion-button>
-            </div>
-  
+            <div class="close"></div>
+            <p>
+              <ion-icon name="trash" (click)="delete(w.id)"></ion-icon>
+            </p>
           </div>
-        </div>
 
-        <div class="card" id="msg" *ngIf="myWish.length==0">
-          <p> Oh no! Your Wishlist is empty</p>
-          <img src="../../assets/sad_smile.svg">
-      
+          <div class="right">
+
+            <ion-button (click)="addtoBusket(w.info.id, w.info, w.id)" color="transparent">
+              <ion-icon slot="start" name="basket"></ion-icon> Add to basket <ion-icon slot="end" id="book"
+                name="bookmark"></ion-icon>
+            </ion-button>
+          </div>
+
         </div>
+      </div>
+
+      <div class="card" id="msg" *ngIf="myWish.length==0">
+        <p> Oh no! Your Wishlist is empty</p>
+        <img src="../../assets/sad_smile.svg">
+
+      </div>
     </div>
 
   </div>
