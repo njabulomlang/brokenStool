@@ -91,6 +91,7 @@ export class CreateAccountPage implements OnInit {
       }).then((res) => {
         this.router.navigateByUrl('home');
       }).catch((err) => {
+        console.log(err);
         this.alert('Profile not created', 'Please try again..');
       })
     }

@@ -22,9 +22,11 @@
               <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone
             </ion-button>
             <div class="phone_login" *ngIf="showInput">
-              <ion-input placeholder="Phone Number" [(ngModel)]="number" type="number" (ionInput)="phone($event)"
-                >+27 &nbsp; &nbsp;</ion-input>
-              <ion-button id="sign" color="transparent" [disabled]="myArr.length!==9" (click)="addUser()"> Sign-in with Phone</ion-button>
+              <ion-input placeholder="e.g 0712345678" [(ngModel)]="number" type="number" (ionInput)="phone($event)"
+                >
+                &nbsp; &nbsp;&nbsp; &nbsp;
+              </ion-input>
+              <ion-button id="sign" color="transparent" [disabled]="myArr.length!==10" (click)="addUser()"> Sign-in with Phone</ion-button>
               <ion-button id="sign" color="transparent" (click)="showLogin()"> Cancel</ion-button>
               
             </div>

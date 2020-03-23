@@ -78,7 +78,10 @@ export class HomePage implements OnInit {
     // this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res1) => {
     //   this.myWish = res1.size;
     // }
-    this.checkUser();
+    setTimeout(() => {
+      this.checkUser();
+    }, 1000);
+    
     setTimeout(() => {
       this.splashScreen.hide();
     }, 3000);
@@ -120,16 +123,15 @@ export class HomePage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
   checkUser() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
-          this.getCart();
-          this.getProfile();
-          this.getWishlist();
+          this.getCart(res.uid);
+          this.getProfile(res.uid);
+          this.getWishlist(res.uid);
         } else {
           this.alertView = this.localSt.retrieve('alertShowed');
           setTimeout(() => {
@@ -223,8 +225,8 @@ export class HomePage implements OnInit {
     let toast = await this.toastCtrl.create({ message: message, duration: 2000 });
     return toast.present();
   }
-  getCart() {
-    this.dbCart.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((info) => {
+  getCart(uid) {
+    this.dbCart.where('customerUID', '==', uid).onSnapshot((info) => {
       this.prodCart = [];
       // this.totalCost = 0;
       info.forEach((doc) => {
@@ -309,7 +311,7 @@ export class HomePage implements OnInit {
         if (res) {
           this.viewCart = !this.viewCart
           this.viewBackdrop = !this.viewBackdrop
-          this.getCart();
+          this.getCart(res.uid);
         } else {
           this.presentAlertConfirm1();
         }
@@ -326,8 +328,8 @@ export class HomePage implements OnInit {
     this.viewBackdrop = !this.viewBackdrop
   }
 
-  getProfile() {
-    this.dbProfile.doc(firebase.auth().currentUser.uid).onSnapshot((doc) => {
+  getProfile(uid) {
+    this.dbProfile.doc(uid).onSnapshot((doc) => {
       if (doc.exists) {
         this.name = doc.data().name;
         this.surname = doc.data().surname;
@@ -357,8 +359,8 @@ export class HomePage implements OnInit {
   delete(id) {
     this.dbWish.doc(id).delete()
   }
-  getWishlist() {
-    this.dbWish.where('customerUID', '==', firebase.auth().currentUser.uid).onSnapshot((res) => {
+  getWishlist(uid) {
+    this.dbWish.where('customerUID', '==', uid).onSnapshot((res) => {
       this.myWish = res.size;
       this.myWishlist = [];
       res.forEach((doc) => {
@@ -391,7 +393,7 @@ export class HomePage implements OnInit {
         if (res) {
           this.viewReviews = !this.viewReviews
           this.viewBackdrop = !this.viewBackdrop
-          this.getWishlist();
+          this.getWishlist(res.uid);
         } else {
           this.presentAlertConfirm1();
         }

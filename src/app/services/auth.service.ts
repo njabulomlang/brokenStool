@@ -64,7 +64,12 @@ export class AuthService {
   requestLogin(number, appVerifier) {
     // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     // .then(()=> {
-    return firebase.auth().signInWithPhoneNumber('+27' + number, appVerifier).then(confirmationResult => {
+    
+    let country = '+27';
+    if (String(number).substring(0,1)==='0') {
+      country= '+27';
+    } 
+    return firebase.auth().signInWithPhoneNumber(country + number, appVerifier).then(confirmationResult => {
       window.confirmationResult = confirmationResult;
       this.confirm = confirmationResult;
       let result = { success: true, result: confirmationResult }
