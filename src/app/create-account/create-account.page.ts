@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertController, ActionSheetController } from '@ionic/angular';
+import { AlertController, ActionSheetController, Platform } from '@ionic/angular';
 import { mergeAnalyzedFiles } from '@angular/compiler';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -26,7 +26,7 @@ export class CreateAccountPage implements OnInit {
   account: FormGroup;
   
   constructor(public router: Router, public alertCtrl: AlertController, private actionSheetCtrl: ActionSheetController, public route: ActivatedRoute,
-    public camera: Camera, public formBuilder: FormBuilder) {
+    public camera: Camera, public formBuilder: FormBuilder,public plt : Platform) {
     this.account = formBuilder.group({
       name: [this.name, Validators.compose([Validators.required, Validators.maxLength(250)])],
       surname: [this.surname, Validators.compose([Validators.required, Validators.maxLength(250)])],
@@ -97,7 +97,8 @@ export class CreateAccountPage implements OnInit {
 
   }
   async selectImage() {
-    const actionSheet = await this.actionSheetCtrl.create({
+    if (this.plt.is('cordova')) {
+      const actionSheet = await this.actionSheetCtrl.create({
       header: "Select image",
       buttons: [{
         icon: 'images',
@@ -122,6 +123,24 @@ export class CreateAccountPage implements OnInit {
       ]
     });
     await actionSheet.present();
+    } 
+    
+  }
+  featuredPhotoSelected(event: any) {
+    const i = event.target.files[0];
+    const upload = this.storage.child('HomeOwner-Profile/'+i.name).put(i);
+    upload.on('state_changed', snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('upload is: ', progress, '% done.');
+    }, err => {
+    }, () => {
+      upload.snapshot.ref.getDownloadURL().then(dwnURL => {
+        // console.log('File avail at: ', dwnURL);
+        this.profilePic = dwnURL;
+        this.dbProfile.doc(firebase.auth().currentUser.uid).update({profilePic: this.profilePic})
+      });
+    });
+   // console.log("My pic is ", this.profilePic);
   }
   async takePicture(sourcetype: PictureSourceType) {
     const options: CameraOptions = {
