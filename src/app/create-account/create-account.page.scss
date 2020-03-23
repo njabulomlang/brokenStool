@@ -63,8 +63,7 @@
   width: 200px;
 }
 .inner-container > div:nth-child(1) {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.507)),
-  url("../../assets/yellow.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.507)), url("../../assets/yellow.jpg");
   background-size: cover;
   color: white !important;
 }
@@ -75,22 +74,22 @@ ion-button {
   text-transform: capitalize;
 }
 
-.image{
-  width:15vw;
+.image {
+  width: 15vw;
   height: 15vw;
   margin: auto;
   border-radius: 50%;
-  img{
+  img {
     width: 100%;
     height: 100%;
-    object-fit:  cover;
+    object-fit: cover;
     border-radius: 50%;
   }
 }
 
-.form{
-  font-family: 'Poppins';
-  ion-button{
+.form {
+  font-family: "Poppins";
+  ion-button {
     width: 100%;
     background: rgb(0, 0, 36);
   }
@@ -116,42 +115,39 @@ ion-button {
     display: none;
   }
   .inner-container > div:nth-child(2) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.507)),
-    url("../../assets/yellow.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.507)), url("../../assets/yellow.jpg");
     background-position: center;
     background-size: cover;
     height: 100%;
     width: 100%;
-   
+
     .cont {
       background: transparent;
-     
 
-.everything{
-
-  .image{
- width: 40vw;
- height: 40vw;
-  }
-}    
+      .everything {
+        .image {
+          width: 200px;
+          height: 200px;
+        }
+      }
     }
-    .login{
+    .login {
       margin-top: 100px;
-      ion-button{
+      ion-button {
         background-color: white;
         color: white;
         border-radius: 8px;
       }
 
-      ion-input{
+      ion-input {
         color: black;
       }
     }
-    .form{
-      ion-item{
+    .form {
+      ion-item {
         border-bottom: white !important;
       }
-      ion-input{
+      ion-input {
         color: white !important;
         border-bottom: white !important;
       }
@@ -182,119 +178,14 @@ ion-button {
   }
 }
 
-// @import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
-// .container {
-//   display: flex;
-//   flex-flow: column;
-//   width: 100%;
-//   height: 100vh;
-//   align-items: center;
-//   position: absolute;
-//   background: url("https://images.unsplash.com/photo-1530834395125-2a7eb8848ac0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1164&q=80i");
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
+@media screen and (max-width: 1200px) {
+  #web {
+    display: none !important;
+  }
+}
 
-//   .blur {
-//     width: 100vw;
-//     height: 101vh;
-//     object-fit: cover;
-//     overflow: hidden;
-//     position: absolute;
-//     -webkit-transform: translate3d(0, 0, 0);
-//     left: -15vw;
-//     border: 3px solid rgba(204, 204, 204, 0.199);
-//     border-top-right-radius: 20px;
-//     border-bottom-right-radius: 20px;
-//     margin: -5px;
-
-//     img {
-//       width: 100%;
-//       height: 100%;
-//       object-fit: cover;
-//       filter: blur(15px);
-//       -webkit-filter: blur(15px);
-//       -moz-filter: blur(15px);
-//       -o-filter: blur(15px);
-//       -ms-filter: blur(15px);
-//       margin: -5px -10px -10px -5px;
-//       border-top-right-radius: 20px;
-//       border-bottom-right-radius: 20px;
-//       transform: scale(1.06);
-//     }
-//   }
-
-//   .everything {
-//     position: absolute;
-//     bottom: 20px;
-//     left: 10%;
-//     display: flex;
-//     flex-flow: column;
-//     justify-content: center;
-//     height: 100%;
-
-//     .title {
-//       position: relative;
-//       left: -10%;
-//       font-family: "Poppins";
-//       letter-spacing: 3px;
-//       color: white;
-//       font-size: 8vw;
-//     }
-
-//     .image {
-//       width: 70vw;
-//       height: 60vw;
-//     //   background: grey;
-//       display: flex;
-//       flex-flow: column;
-//       position: relative;
-//       left: -5%;
-// overflow: hidden;
-//       img{
-//         width: 100%;
-//         height: 100%;
-//         object-fit: cover;
-//         overflow: hidden;
-//         border: none;
-//         box-shadow: 5px 5px 10px rgb(204, 204, 204);
-//       }
-
-//       ion-button {
-//         font-family: "Poppins";
-//         letter-spacing: 3px;
-//         position: absolute;
-//         bottom: 20px;
-//         width: 60vw;
-//         left: 5%;
-//         outline: none !important;
-//       }
-//     }
-
-//     .form {
-//       width: 100%;
-//       padding: 10px;
-//       position: relative;
-//       left: -15%;
-
-//       ion-item {
-//         color: white;
-//       }
-
-//       ion-button {
-//         width: 60vw;
-//         position: absolute;
-//         // bottom: 10px;
-//         left: 20%;
-//         font-size: 0.8em;
-//         font-family: "Poppins";
-//         letter-spacing: 3px;
-//         color: black;
-//         border-radius: 20px;
-//         background: rgba(255, 255, 255, 0.795);
-//         overflow: hidden;
-//         box-shadow: 5px 5px 10px grey;
-//       }
-//     }
-//   }
-// }
+@media screen and (min-width: 1201px) {
+  #mobile {
+    display: none !important;
+  }
+}

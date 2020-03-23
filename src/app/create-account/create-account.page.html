@@ -16,19 +16,63 @@
             <br>
           </div>
 
-          <div class="everything">
-            <div class="title">
+          <div class="everything" id="mobile">
+            <div class="title"></div>
 
-            </div>
             <div class="image" id="image" *ngIf="profilePic">
               <img src="{{profilePic}}" style="overflow: hidden;" (click)="selectImage()">
-     
             </div>
+            
             <div class="image" id="image" *ngIf="!profilePic">
-              
               <img src="../../assets/user-icon-image-placeholder-300-grey.jpg" style="overflow: hidden;"
                 (click)="selectImage()">
+            </div>
 
+            <div class="form">
+              <form [formGroup]="account">
+                <ion-item color="transparent" *ngIf="!plt.is('cordova')">
+                  <ion-input type="file" id="file" (change)="featuredPhotoSelected($event)"></ion-input>
+                </ion-item>
+                
+                <ion-item color="transparent">
+                  <ion-input placeholder="Name" formControlName="name" [(ngModel)]="name" (ionBlur)="check('open')"
+                    (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+
+                <ion-item color="transparent">
+                  <ion-input placeholder="Surname" formControlName="surname" [(ngModel)]="surname"
+                    (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+
+                <ion-item color="transparent">
+                  <ion-input placeholder="Email" formControlName="email" [(ngModel)]="email" (ionBlur)="check('open')"
+                    (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+
+                <ion-item color="transparent">
+                  <ion-input placeholder="Address" formControlName="address" [(ngModel)]="address"
+                    (ionBlur)="check('open')" (ionFocus)="check('close')"></ion-input>
+                </ion-item>
+
+                <br>
+                <ion-button (click)="createAccount()" [disabled]="!account.valid" color="transparent">DONE
+                </ion-button>
+              </form>
+
+            </div>
+
+          </div>
+
+          <div class="everything" id="web">
+            <div class="title"></div>
+
+            <div class="image" id="image" *ngIf="profilePic">
+              <img src="{{profilePic}}" style="overflow: hidden;" (click)="selectImage()">
+            </div>
+
+            <div class="image" id="image" *ngIf="!profilePic">
+              <img src="../../assets/user-icon-image-placeholder-300-grey.jpg" style="overflow: hidden;"
+                (click)="selectImage()">
             </div>
 
             <div class="form">

@@ -1146,8 +1146,9 @@ ion-toolbar {
     display: flex;
     flex-flow: row;
     width: 100%;
-    height: 43vh;
+    height: fit-content;
     margin: 10px;
+    margin-bottom: 30px;
 
     .image1 {
       width: 35vw;
