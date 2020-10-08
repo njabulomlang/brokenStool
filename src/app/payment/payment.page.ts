@@ -68,8 +68,38 @@ export class PaymentPage implements OnInit {
   }
   placeOrder() {
       let docname = 'ZXY' + Math.floor(Math.random() * 10000000);
+      let discCategory = 'Quy2vdltNAn0iTs34blQ';
+      let tCount: number = 0 // tshirt count
+      let discount: number = 0
+      let tPrice: number = 0 // tshirt price
+      let sPrice: number = 0
+      let discPerc: number = 10
+      this.myOrder.forEach(item => {
+        
+      })
+      for (let i = 0; i < this.prodCart.length; i++) {
+        let product = this.prodCart[i].data.product;
+        try {
+          console.log(this.prodCart)
+          if(this.prodCart.length >= 10) {
+              for(let j in this.prodCart[i].data.product) {
+                if(product[j].category === discCategory) {
+                  tCount += product[j].quantity
+                  tPrice += (product[j].cost * product[j].quantity)
+                  sPrice = tPrice/100 * discPerc
+                }
+              }
+              if(tCount >= 10) {
+                let total = this.getTotal()
+                 total = total - sPrice
+              }
+          }
+        } catch (error) {
+          console.warn(error); 
+        }
+      }
       this.dbOrder.doc(docname).set({ product: this.myOrder, timestamp: new Date().getTime(), status: 'received', userID: firebase.auth().currentUser.uid, totalPrice: this.getTotal(),
-      deliveryType: this.delType, deliveryCost : this.delCost }).then(() => {
+      deliveryType: this.delType, deliveryCost : this.delCost, tshirtCount: tCount }).then(() => {
         this.prodCart.forEach((i) => {
           this.dbCart.doc(i.id).delete().then(()=>{
           });

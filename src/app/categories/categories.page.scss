@@ -434,16 +434,23 @@ ion-toolbar {
       top: 8px;
       right: 5px;
     }
+    // erratic
 
     .icon1 {
       margin: 0 20vw 0 10vw;
-
+      border: 2px solid transparent;
+      padding: 5px;
+      ion-button {
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        padding: 5px;
+      }
       ion-button:hover {
+        position: relative;
         border: 2px solid maroon;
         border-radius: 5px;
         padding: 5px;
       }
-
       ion-button.active {
         border: 2px solid maroon;
         border-radius: 5px;
@@ -1045,6 +1052,61 @@ ion-toolbar {
   }
 }
 
+@media screen and (min-width: 1321px) {
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+    ion-buttons {
+      // border: 1px solid red;
+      width: 80%; display: flex;
+      padding-left: 0;
+      justify-content: space-between;
+      .icon1 {
+        width: 90%;
+        // border: 1px solid green;
+        margin: 0;
+        #icon{
+          min-width: 150px;
+          margin: 0;
+          // border: 1px solid green;
+        }
+      }
+      .icon-items {
+        width: 10%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1320px) {
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+
+    ion-buttons {
+      // border: 1px solid red;
+
+      width: 90%; display: flex;
+      justify-content: space-between;
+      .icon1 {
+        width: 100%;
+        margin: 0;
+        // border: 1px solid green;
+        #icon {
+          min-width: 150px;
+          margin: 0;
+          // border: 1px solid green;
+        }
+        .hidden-icon {
+          display: none;
+        }
+      }
+      .icon-items {
+        // border: 1px solid red;
+        width: 10%;
+      }
+    }
+  }
+}
 @media only screen and (min-width: 1025px) {
   .sidemenu {
     display: none;

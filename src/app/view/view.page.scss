@@ -306,11 +306,17 @@ ion-toolbar {
       top: 8px;
       right: 5px;
     }
-
+    // erratic
     .icon1 {
       margin: 0 20vw 0 10vw;
 
+      ion-button {
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        padding: 5px;
+      }
       ion-button:hover {
+        position: relative;
         border: 2px solid maroon;
         border-radius: 5px;
         padding: 5px;

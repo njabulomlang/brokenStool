@@ -46,6 +46,7 @@ export class BasketPage implements OnInit {
             this.cartCount = info.size;
             this.prodCart = [];
             this.totalCost = 0;
+            let size: number = 0;
             info.forEach((doc) => {
               this.prodCart.push({ data: doc.data(), id: doc.id });
             })
@@ -90,16 +91,51 @@ export class BasketPage implements OnInit {
     this.viewCart = !this.viewCart
     this.viewBackdrop = !this.viewBackdrop
   }
+  tshirtSale: boolean = true
   getTotal() {
     let total = 0;
+    let cartQuantity: number = 0;
     for (let i = 0; i < this.prodCart.length; i++) {
       let product = this.prodCart[i].data.product;
       // console.log(product);
       product.forEach((item) => {
         total += (item.cost * item.quantity);
+        cartQuantity += item.quantity
       })
       //
     }
+    let discCategory = 'Quy2vdltNAn0iTs34blQ';
+    let discPerc = 10;          
+    let tCount : number = 0; let tPrice : number = 0; let sPrice : number = 0;
+    // item discount
+    // if(this.tshirtSale) {
+    //   if(cartQuantity > 9) {
+    //     for (let i = 0; i < this.prodCart.length; i++) {
+    //       let product = this.prodCart[i].data.product;
+    //       try {
+    //         console.log(this.prodCart)
+    //         if(this.prodCart.length >= 10) {
+    //             for(let j in this.prodCart[i].data.product) {
+    //               if(product[j].category === discCategory) {
+    //                 tCount += product[j].quantity
+    //                 tPrice += (product[j].cost * product[j].quantity)
+    //                 sPrice = tPrice/100 * discPerc
+    //               }
+    //             }
+    //             if(tCount >= 10) {
+    //               total = total - sPrice
+    //             }
+    //         }
+    //       } catch (error) {
+    //         console.warn(error); 
+    //       }
+    //     }
+    //   }      
+    // }
+
+
+
+
     //console.log('My tot ', total);
 
     return total;

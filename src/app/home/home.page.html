@@ -1,12 +1,12 @@
 <ion-header no-border id="nav">
 
-  <ion-toolbar>
-    <img src="../../assets/navylogo.jpg " width="150px" height="90px">
+  <ion-toolbar style="display: flex; justify-content: space-between;">
+    <img src="../../assets/navylogo.jpg " width="100px" height="60px">
 
     <ion-buttons slot="end">
       <div class="icon1">
 
-        <ion-button id="icon" routerLink="/home" class="active">
+        <ion-button id="icon" routerLink="/home" class="active hidden-icon">
           Home
         </ion-button>
 
@@ -26,37 +26,38 @@
           Kwanga Apparel
         </ion-button>
 
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
+        <ion-button id="icon" class="hidden-icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
 
       </div>
+      <div class="icon-items">
+        <ion-button id="icon" (click)="gotocart()" class="notification">
+          <ion-icon slot="icon-only" name="basket"></ion-icon>
+          <span class="badge" *ngIf="prodCart.length>0">{{prodCart.length}}</span>
+  
+        </ion-button>
+  
+        <ion-button (click)="profile()" class="icon2" id="icon">
+          <ion-icon slot="icon-only" name="person"></ion-icon>
+        </ion-button>
+  
+        <ion-button id="icon" (click)="search('Dankie Jesu')">
+          <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
+        </ion-button>
+  
+  
+        <ion-button id="icon" (click)="reviewed()" class="notification">
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+          <span class="badge" *ngIf="myWishlist.length>0">{{myWishlist.length}}</span>
+  
+        </ion-button>
+  
+        <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </div>
 
-
-      <ion-button id="icon" (click)="gotocart()" class="notification">
-        <ion-icon slot="icon-only" name="basket"></ion-icon>
-        <span class="badge" *ngIf="prodCart.length>0">{{prodCart.length}}</span>
-
-      </ion-button>
-
-      <ion-button (click)="profile()" class="icon2" id="icon">
-        <ion-icon slot="icon-only" name="person"></ion-icon>
-      </ion-button>
-
-      <ion-button id="icon" (click)="search('Dankie Jesu')">
-        <ion-icon slot="icon-only" name="search" id="search1"></ion-icon>
-      </ion-button>
-
-
-      <ion-button id="icon" (click)="reviewed()" class="notification">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <span class="badge" *ngIf="myWishlist.length>0">{{myWishlist.length}}</span>
-
-      </ion-button>
-
-      <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
 
     </ion-buttons>
 
@@ -94,7 +95,7 @@
   </div>
 </div>
 
-<ion-content fullscreen>
+<ion-content fullscreen id="main">
 
   <div id="background">
     <div class="b_left">

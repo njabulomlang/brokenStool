@@ -96,11 +96,14 @@ ion-toolbar {
         .itemname {
           position: absolute;
           bottom: 0;
-          right: 5px;
+          right: 0;
+          width: 100%;
+          background-color: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
           color: white;
           p {
             font-size: 0.7em;
             text-align: right;
+            padding-right: 5px;
             text-shadow: 2px 2px 5px black;
             span {
               font-size: 0.5em;
@@ -202,7 +205,9 @@ ion-toolbar {
           p {
             font-size: 0.7em;
             text-align: right;
-            text-shadow: 2px 2px 5px black;
+            // text-shadow: 2px 2px 5px black;
+            background-color: rgba(0, 0, 0, 0.418);
+            padding-right: 5px;
             span {
               font-size: 0.5em;
             }
@@ -446,6 +451,45 @@ ion-toolbar {
   }
 }
 //----------------------------------- Media Queries -----------------------------------------
+
+@media screen and (min-width: 1321px) {
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+    ion-buttons {
+      // border: 1px solid red;
+      width: 80%; display: flex;
+      justify-content: space-between;
+      .icon1 {
+        width: 80%
+      }
+      .icon-items {
+        width: 20%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1320px) {
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+
+    ion-buttons {
+      // border: 1px solid red;
+      width: 90%; display: flex;
+      justify-content: space-between;
+      .icon1 {
+        width: 75%;
+        .hidden-icon {
+          display: none;
+        }
+      }
+      .icon-items {
+        width: 25%;
+      }
+    }
+  }
+}
 @media only screen and (min-width: 1024px) {
   .notification .badge {
     position: absolute;
@@ -553,9 +597,21 @@ ion-toolbar {
     }
 
     .icon1 {
-      margin: 0 15vw 0 10vw;
-
+      // border: 1px solid white;
+      position: relative;
+      // @media screen and (min-width: 1740px) {
+      //   margin: 0 15vw 0 10vw;
+      // }
+      // @media screen and (min-width: 1420px) {
+      //   margin: 0 5vw 0 5vw;
+      // }
+      ion-button {
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        padding: 5px;
+      }
       ion-button:hover {
+        position: relative;
         border: 2px solid maroon;
         border-radius: 5px;
         padding: 5px;

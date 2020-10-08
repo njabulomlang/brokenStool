@@ -1,9 +1,9 @@
 <ion-header no-border id="nav">
   <ion-toolbar>
-    <img src="../../assets/Logo.png" width="150px" height="90px" routerLink="/home">
+    <img src="../../assets/Logo.png" width="100px" height="50px" routerLink="/home">
     <ion-buttons slot="end">
       <div class="icon1">
-        <ion-button id="icon" routerLink="/home">
+        <ion-button id="icon" class="hidden-icon" routerLink="/home">
           Home
         </ion-button>
         <ion-button id="icon" *ngIf="category==='sales'" class="active">
@@ -30,18 +30,19 @@
         <ion-button id="icon" (click)="categories('kwanga')" routerLink="/view" *ngIf="category!=='KWANGA'">
           Kwanga Apparel
         </ion-button>
-        <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
+        <ion-button id="icon" class="hidden-icon" href="https://broken-stool.firebaseapp.com/home/About%20Company">
           About Us
         </ion-button>
       </div>
-     
-      <ion-button id="icon" (click)="wish()" class="notification">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
-        <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
-      </ion-button>
-      <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
+      <div class="icon-items">
+        <ion-button id="icon" (click)="wish()" class="notification">
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+          <span class="badge" *ngIf="myWish>0">{{myWish}}</span>
+        </ion-button>
+        <ion-button id="icon" (click)="getSideMenu()" class="sidemenu">
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </div>
     </ion-buttons>
     <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
   </ion-toolbar>
