@@ -414,6 +414,8 @@ export class HomePage implements OnInit {
   profile() {
     setTimeout(() => {
       firebase.auth().onAuthStateChanged((res) => {
+        console.log(res);
+        
         if (res) {
           this.navCtrl.navigateRoot('profile');
         } else {
