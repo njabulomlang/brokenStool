@@ -95,9 +95,10 @@
   </div>
 </div>
 
-<ion-content fullscreen id="main">
+<ion-content fullscreen>
 
-  <div id="background">
+  <div id="main">
+      <!-- <div id="background">
     <div class="b_left">
 
 
@@ -111,7 +112,7 @@
 
     </div>
 
-  </div>
+  </div> -->
   <p style="margin: 10px ; font-family: 'Poppins'" id="welcome">Welcome <i>{{name}} {{surname}}</i></p>
 
   <div class="container" no-padding>
@@ -487,7 +488,7 @@
     </div>
   </div>
 
-  <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
+  <!-- <div id="sidezzz" [ngClass]="{'viewMenu': viewSideMenu, 'closeMenu': !viewSideMenu}">
     <div class="heading">
       <ion-icon slot="icon-only" name="close"></ion-icon>
     </div>
@@ -525,7 +526,7 @@
 
 
     </div>
-  </div>
+  </div> -->
 
 
   <ion-footer id="webview">
@@ -585,6 +586,8 @@
     </div>
   </ion-footer>
 
+
+  </div>
   <ion-fab id="mobile1" vertical="bottom" horizontal="end" slot="fixed" size="small">
     <ion-fab-button (click)="busket()" #cart color="transparent">
       <ion-icon name="basket" class="cart-icon"></ion-icon>

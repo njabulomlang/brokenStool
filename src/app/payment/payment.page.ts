@@ -66,8 +66,30 @@ export class PaymentPage implements OnInit {
     //console.log('My tot ', total);
     return total;
   }
+  async placeOrderPrompt() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Place order now?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Yes, continue',
+          handler: () => {
+            // console.log('Confirm Okay');
+            this.placeOrder()
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  ref
   placeOrder() {
       let docname = 'ZXY' + Math.floor(Math.random() * 10000000);
+      this.ref = docname
       let discCategory = 'Quy2vdltNAn0iTs34blQ';
       let tCount: number = 0 // tshirt count
       let discount: number = 0
@@ -134,7 +156,7 @@ export class PaymentPage implements OnInit {
   async alertConfirm() {
     const alert = await this.alertCtrl.create({
       header: 'Order placed',
-      message: 'Thank you for shopping with us',
+      message: `Thank you for shopping with us. Your reference is ${this.ref}, please use it when depositing.`,
       buttons: [
          {
           text: 'Continue Shopping',

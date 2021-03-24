@@ -127,25 +127,15 @@ export class AuthService {
     });
   }
   //Adding new users to the database
-  register(email, password) {
+  register(user: object) {
 
-    return firebase.auth().createUserWithEmailAndPassword(email, password).then(data => {
-      // this.setCurrentSession(firebase.auth())
-      // this.checkingAuthState()
-      let userEmail = email;
-      let userName = name;
+    return firebase.auth().createUserWithEmailAndPassword(user['email'], user['password']).then(data => {
       let userID = data.user.uid;
       //let now = moment().format('LLLL')
       console.log(userID)
-      firebase.firestore().collection('Users/').doc(userID).set({
-        email: userEmail,
-        name: userName,
-        role: 'Admin',
-        hasProfilePic: false,
-        hasRequestedLink: false,          //when the user has requested to link his/her account with someone else
-        hasReceivedLinkRequest: false,    //when the user has received a link request from another user
-        //registeredAt: now
-      })
+      console.log(user);
+      delete user['password'];
+      firebase.firestore().collection('userProfile').doc(userID).set(user);
       return data
     }).catch((error) => {
       // Handle Errors here.
@@ -156,6 +146,17 @@ export class AuthService {
       return error
     })
   }
+  loginWithEmail(email: string, password: string) {
+    return firebase.auth().signInWithEmailAndPassword(email, password).then((result)=>{
+      // this.setCurrentSession(firebase.auth())
+      // this.checkingAuthState()
+       return result
+      }).catch((error) => {
+        var errorMessage = error.message;
+          console.log(errorMessage)
+      return error
+      });
+  } 
   //Allowing users to reset their password
   passwordReset(emailAddress) {
     firebase.auth().sendPasswordResetEmail(emailAddress).then(() => {
@@ -172,7 +173,7 @@ export class AuthService {
       firebase.auth().signOut().then(() => {
         // Sign-out successful.
 
-        resolve()
+        resolve(true)
         this.checkingAuthState().then(data => {
           console.log(data);
         });
@@ -212,6 +213,17 @@ export class AuthService {
         }
       })
     })
+  }
+  checkingAuthStateBoolean() : Promise<boolean> {
+    return new Promise ((resolve,reject)=>{
+      return firebase.auth().onAuthStateChanged((user:firebase.User)=>{
+        if (user) {
+          resolve(true);
+           } else{
+            resolve(false);
+          }
+      });
+    });
   }
 
   savePic(image) {
@@ -269,7 +281,7 @@ export class AuthService {
           // An error happened.
         });
       }
-      resolve()
+      resolve(true)
     })
   }
 }

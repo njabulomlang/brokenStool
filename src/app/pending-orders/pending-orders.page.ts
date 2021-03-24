@@ -92,6 +92,8 @@ export class PendingOrdersPage implements OnInit {
       res.forEach((doc) => {
         this.myOrder.push({ info: doc.data(), id: doc.id });
       })
+      console.log(this.myOrder);
+      
     })
   }
   goBack(){

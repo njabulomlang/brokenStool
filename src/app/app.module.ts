@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -33,6 +33,7 @@ import { Network } from '@ionic-native/network/ngx'
   ],
   entryComponents: [],
   imports: [BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,IonicSelectableModule, IonicModule.forRoot(), AppRoutingModule,
      CartModalPageModule, 

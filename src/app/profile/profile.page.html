@@ -11,19 +11,19 @@
           Home
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/home">
+        <ion-button id="icon" (click)="goList('sales')">
           Sales and Specials
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/categories">
+        <ion-button id="icon" (click)="categories('summer')">
           Summer Gear
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/list">
+        <ion-button id="icon" (click)="categories('winter')">
           Winter Gear
         </ion-button>
 
-        <ion-button id="icon" routerLink= "/view">
+        <ion-button id="icon" (click)="categories('kwanga')">
           Kwanga Apparel
         </ion-button>
 
@@ -184,7 +184,7 @@
       
         <div class="edit" *ngIf="editprofile">
           <div class="inputs">
-
+<div style="width: 100%; border: 1px solid grey;"></div>
             <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
 
             <ion-input [(ngModel)]="surname" placeholder="Surname"></ion-input>

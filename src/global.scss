@@ -24,10 +24,25 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
-
+@import url("https://fonts.googleapis.com/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat|Roboto");
+@font-face {   
+  font-family: 'Poppins Light';    //This is what we are going to call
+  src: url('./assets/fonts/Poppins-ExtraLight.ttf');
+}
+@font-face {   
+  font-family: 'Poppins';    //This is what we are going to call
+  src: url('./assets/fonts/Poppins-Light.ttf');
+}
+@font-face {   
+  font-family: 'Roboto Light';    //This is what we are going to call
+  src: url('./assets/fonts/Roboto-Light.ttf');
+}
+@font-face {   
+  font-family: 'Roboto';    //This is what we are going to call
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
 * {
-  font-family: "Poppins";
+  font-family: 'Roboto',"Poppins",  sans-serif;
 }
 
 ion-checkbox {

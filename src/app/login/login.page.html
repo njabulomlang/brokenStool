@@ -5,8 +5,7 @@
         <div class="logo-container-left" style="color: black; font-weight: lighter;">
           <img src="../../assets/NoPath - Copy.svg" id="logo-left" alt="">
           <!--    -->
-          <br> <p style="margin: 10px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quo porro laborum illo suscipit
-          aperiam culpa molestiae aliquam laboriosam eveniet!</p>
+
         </div>
       </div>
       <div id="right" >
@@ -18,8 +17,31 @@
             <br>
           </div>
           <div class="login">
+            <div class="email">
+              <form [formGroup]="loginForm">
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="text" formControlName="email" id="email" name="email">
+                    <label for="email" class="html-label">Email</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="password" formControlName="password" id="password" name="password">
+                    <label for="password" class="html-label">Password</label>
+                  </div>
+                </div>
+
+                <ion-button color="transparent" (click)="emailLogin()" [disabled]="!loginForm.valid"> Sign-In</ion-button>
+              </form>
+            </div>
+            <div class="text">
+              <div class="reg-switch-text">No account? <span (click)="signUp()">Sign up</span></div>
+              <div class="or-text">OR</div>
+            </div>
+<!-- <hr> -->
             <ion-button id="sign-in-button" color="transparent" (click)="showLogin()" *ngIf="!showInput">
-              <ion-icon slot="end" name="call"></ion-icon> Sign-in with Phone
+              <ion-icon slot="start" name="call"></ion-icon> Sign-in with Phone
             </ion-button>
             <div class="phone_login" *ngIf="showInput">
               <ion-input placeholder="e.g 0712345678" [(ngModel)]="number" type="number" (ionInput)="phone($event)"
@@ -32,26 +54,16 @@
             </div>
 
             <ion-button id="sign-in-button" color="transparent" (click)="googleLogin()" *ngIf="!showInput">
-              <ion-icon slot="end" name="logo-google"></ion-icon> Sign-in with Google
+              <ion-icon slot="start" name="logo-google"></ion-icon> Sign-in with Google
             </ion-button>
             <ion-button id="sign-in-button" color="transparent" (click)="Explore()" *ngIf="!showInput">
-              <ion-icon slot="end" name="search"></ion-icon>Explore
+              <ion-icon slot="start" name="search"></ion-icon>Explore
             </ion-button>
+            <!-- <ion-button id="sign-in-button" color="transparent" (click)="loginwithemail()" *ngIf="!showInput">
+              <ion-icon slot="end" name="mail"></ion-icon>Sign-in with Email
+            </ion-button> -->
             <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
-            <div class="emails" *ngIf="log">
-              <form>
-                <ion-item lines="null">
-                  <ion-label position="floating">Email</ion-label>
-                  <ion-input type="email"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label position="floating">Password</ion-label>
-                  <ion-input type="password"></ion-input>
-                </ion-item>
-                <ion-button color="transparent"> Sign-In</ion-button>
 
-              </form>
-            </div>
           </div>
           <div id="recaptcha-container"></div>
         </div>

@@ -46,6 +46,10 @@ ion-toolbar {
       font-size: 4vw;
     }
   }
+  .mobile-cards {
+    position: relative;
+    // top: 0px;
+  }
   .cards {
     display: flex;
     float: left;
@@ -376,7 +380,9 @@ ion-toolbar {
     width: 0 !important;
     height: 0 !important;
   }
-
+  .crumbs {
+    display: none;
+  }
   #wish {
     display: none;
     width: 0 !important;

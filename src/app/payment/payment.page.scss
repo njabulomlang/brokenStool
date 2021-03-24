@@ -1,12 +1,26 @@
 @import url("https://fonts.googleapis.c om/css?family=Abel|Poiret+One|Open+Sans+Condensed|Jura|Manjari|Poppins|Raleway|Montserrat ");
+:host {
+  // border: 1px solid green;
+  height: 100vh;
+}
+ion-content {
+  // border: 1px solid blue;
+  --padding-bottom: 0;
+}
+.ion-back {
+  --color: maroon;
+}
 .container {
+  position: relative;;
   display: flex;
   flex-flow: column;
   height: 100%;
+  overflow: hidden;
+  margin: 0;
   // align-items: center;
   // justify-content: space-evenly;
   // justify-content: space-evenly;
-
+  // border: 1px solid black;
   .list {
     position: absolute;
     left: 15%;
@@ -58,7 +72,13 @@
     font-family: "Poppins";
     font-size: 0.8em;
   }
-
+  .order-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 0;
+    // border: 1px solid red;
+  }
   .btnz {
     position: fixed;
     bottom: 5px;
@@ -173,7 +193,13 @@
     }
   }
 }
-
+.order-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  // border: 1px solid red;
+}
 @media only screen and (min-width: 1330px) {
   .container {
     display: none;

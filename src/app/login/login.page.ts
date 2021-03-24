@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import { IonSlides, AlertController, ToastController, Platform, NavController } from '@ionic/angular';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import {Location} from '@angular/common';
+import { FormBuilder, Validators } from '@angular/forms';
 declare var window;
 
 @Component({
@@ -27,11 +28,22 @@ export class LoginPage implements OnInit {
   showInput = false;
   userProfile = firebase.firestore().collection('userProfile');
   myArr=[];
+  loginForm
+  // emailPattern : string = "[a-zA-Z0-9-_.+#$!=%^&*/?]+[@][a-zA-Z0-9-]+[.][a-zA-Z0-9]+"
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService,
     public toastCtrl: ToastController, public plt : Platform,private gplus: GooglePlus, public navCtrl : NavController,
-    public location:Location
+    public location:Location, private formBuilder: FormBuilder
     // public fb: Facebook
   ) {
+    this.loginForm = this.formBuilder.group({
+    
+      email: [this.email, Validators.compose(
+        [Validators.required]
+      )],
+      password: [this.password, Validators.compose(
+        [Validators.required]
+      )]
+    })
 
   }
 
@@ -207,5 +219,31 @@ export class LoginPage implements OnInit {
   loginwithemail(){
     this.log = !this.log
   }
+  emailLogin() {
+    let user: object = this.loginForm.value
+    let email: string = this.loginForm.value.email
+    let password: string = this.loginForm.value.password
+    return this.authService.loginWithEmail(email, password).then( (result) => {
+      console.log(result);
+      
+    if(result.operationType === "signIn"){
+      let link = "home"
+      this.router.navigate([link])
+    }else{
+      this.invalidPassword(result)
+    }
+  })
+}
 
+  async invalidPassword(result) {
+    const alert = await this.alertController.create({
+      header: "Alert",
+      message: result,
+      buttons: ['OK']
+    })
+    await alert.present()
+  }
+  signUp() {
+    this.router.navigate(['sign-up'])
+  }
 }

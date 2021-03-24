@@ -3,7 +3,7 @@
   <ion-toolbar>
 
     <ion-buttons slot="end">
-      <div class="icon1">
+      <!-- <div class="icon1">
 
         <ion-button id="icon" href="https://broken-stool.firebaseapp.com/home/Terms%20and%20Privacy%20Policy">
           Terms and Privacy Policy
@@ -26,13 +26,22 @@
         </ion-button>
 
 
-      </div>
+      </div> -->
 
     </ion-buttons>
+
 
     <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title>
   </ion-toolbar>
 
+</ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref='/home' class="ion-back"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title style="font-family: 'Poiret One'; font-size: 20px; letter-spacing: 2px;">DankieJesu</ion-title> -->
+  </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
@@ -113,23 +122,26 @@
       <div class="note">
         <p>Please Note, Delivery to your door is R100</p>
       </div>
+
     </div>
 
    
 
   </div>
-
-  <div class="btnz">
+  <div class="order-button">
+    <ion-button (click)="placeOrderPrompt()" expand="full">Place Order</ion-button>
+  </div>
+  <!-- <div class="btnz">
     <ion-button (click)="goHome()" color="transparent">
       DONE
     </ion-button>
-  </div>
+  </div> -->
 
    <!-- <div class="pagename">
       <p>CHECKOUT</p>
     </div> -->
 
-  <div class="web_view">
+  <!-- <div class="web_view">
 
     <div class="cards">
       <div class="card">
@@ -203,7 +215,7 @@
       Branch Number: 47100
     </p>
   </div>
-
+  <ion-button (click)="placeOrder()" expand="full">Place Order</ion-button>
   <div class="buttonz">
     <ion-button (click)="goHome()" color="transparent">
       DONE
@@ -213,12 +225,11 @@
 
     
 
-  </div>
+  </div> -->
 
-  <ion-footer id="webview">
+  <!-- <ion-footer id="webview">
     <div class="footer">
       <div class="heading">
-        <!-- <h1>Dankie Jesu</h1> -->
         <img src="../../assets/NoPath - Copy.svg" alt="">
       </div>
 
@@ -267,6 +278,6 @@
         <img src="../../assets/android.png" alt="App Store">
       </div>
     </div>
-  </ion-footer>
+  </ion-footer> -->
 
 </ion-content>

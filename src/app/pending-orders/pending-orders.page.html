@@ -120,10 +120,12 @@
 
           <div class="tracks">
             <div class="circles-container">
-              <div id="one" style="font-size: 13px;">Order Received - 12 January 2020</div>
-              <div id="two" style="font-size: 13px;">Order is being processed - 13 January 2020</div>
-              <div id="three" style="font-size: 13px;">Order ready for delivery - 15 January 2020</div>
-              <div id="four" style="font-size: 13px;">Order Collected - 16 January 2020</div>
+              <div id="one" style="font-size: 13px;">Order Received - {{o.info.timestamp | date:"medium"}}</div>
+              <div id="two" style="font-size: 13px;" *ngIf="!o.info.time">Order last updated - {{o.info.timestamp | date:"medium"}}</div>
+              <div id="two" style="font-size: 13px;" *ngIf="o.info.time">Order last updated - {{o.info.time | date:"medium"}}</div>
+              <!-- <div id="two" style="font-size: 13px;">Order is being processed - 13 January 2020</div> -->
+              <!-- <div id="three" style="font-size: 13px;">Order ready for delivery - 15 January 2020</div> -->
+              <!-- <div id="four" style="font-size: 13px;">Order Collected - 16 January 2020</div> -->
             </div>
 
             <!-- <div class="text">

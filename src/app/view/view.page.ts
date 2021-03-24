@@ -185,11 +185,37 @@ export class ViewPage implements OnInit {
     if (this.prodCart.length === 0) {
       this.toastController('You cannot place order with empty basket');
     } else {
+      let tCount : number = 0
+      let discountPrice: number = 0
+      let totalTPrice: number = 0
+      const discountPerc: number = 0.10
+      console.log(this.prodCart);
+      for(let key in this.prodCart) {
+        console.log(this.prodCart[key]['data']['product']);
+        this.prodCart[key]['data']['product'].forEach(item => {
+          console.log(item);
+            if(item.productCategory == "T-Shirts") {
+            tCount = tCount + Number(item.quantity)
+            console.log(tCount);
+            
+            totalTPrice = totalTPrice + (Number(item.cost) * Number(item.quantity))
+            console.log(totalTPrice);
+            
+          }
+        })
+      }
+      if(tCount > 9) {
+        discountPrice = (Number(totalTPrice) * Number(discountPerc))
+        console.log(discountPrice);
+        
+      }
       let docname = 'BrokenStool' + Math.floor(Math.random() * 10000000);
       this.dbOrder.doc(docname).set({
         product: myArr, timestamp: new Date().getTime(),
         status: 'received', userID: firebase.auth().currentUser.uid,
-        totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType
+        totalPrice: this.getTotal(), deliveryCost: this.delCost, deliveryType: this.delType,
+        tShirtCount: tCount,
+        discountPrice: discountPrice
       }).then(() => {
         doc.forEach((id) => {
           this.dbCart.doc(id).delete();
@@ -383,6 +409,8 @@ export class ViewPage implements OnInit {
   }
   addToCart(id, details) {
     setTimeout(() => {
+      console.log(details);
+      
       firebase.auth().onAuthStateChanged((res) => {
         if (res) {
           let descr = "";
@@ -396,7 +424,7 @@ export class ViewPage implements OnInit {
           } else {
             this.dbCart.add({
               customerUID: firebase.auth().currentUser.uid, timestamp: new Date().getTime(), product: [{
-                product_name: details.name, size: this.my_size,
+                product_name: details.name, size: this.my_size, productCategory: details.category,
                 quantity: this.quantity, cost: details.price, unitCost: details.price, picture: details.pictureLink,
                 color: this.color, prod_id: id
               }]

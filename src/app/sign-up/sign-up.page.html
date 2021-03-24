@@ -1,9 +1,148 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>SignUp</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="container" >
+    <div class="inner-container">
+      <div id="left">
+        <div class="logo-container-left" style="color: black; font-weight: lighter;">
+          <img src="../../assets/NoPath - Copy.svg" id="logo-left" alt="">
+          <!--    -->
 
+        </div>
+      </div>
+      <div id="right" >
+        <div class="cont" id="logz">
+          <div class="logo-container-right">
+            <h1 style="font-size: 24px; font-weight: lighter; font-family: 'Raleway'; letter-spacing: 5px;">DANKIE JESU
+              <br> <span style="font-size: 12px;"> & <br>KWANGA APPAREL</span></h1>
+            <!-- <img src="../../assets/Logo.png" id="logo" alt=""> -->
+            <br>
+          </div>
+          <div class="login">
+            <div class="email">
+              <form [formGroup]="signUpForm">
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="text" id="name" name="name" formControlName="name">
+                    <label class="html-label" for="name">Name</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="text" id="surname" name="surname" formControlName="surname">
+                    <label class="html-label" for="surname">Surname</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="text" id="number" name="number" formControlName="cellPhone">
+                    <label class="html-label" for="number">Number</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="text" id="email" name="email" formControlName="email">
+                    <label class="html-label" for="email">Email</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="text" id="address" name="address" formControlName="address">
+                    <label class="html-label" for="address">Address</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="password" id="password" name="password" formControlName="password">
+                    <label class="html-label" for="password">Password</label>
+                  </div>
+                </div>
+                <div class="ion-item-cont">
+                  <div class="input-cont">
+                    <input class="html-input" required type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+                    <label class="html-label" for="confirmPassword">Confirm password</label>
+                  </div>
+                </div>
+                <!-- <div class="ion-item-cont">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Name</ion-label>
+                    <ion-input type="email" class="input" formControlName="name"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="ion-item-cont">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Surname</ion-label>
+                    <ion-input type="email" class="input" formControlName="surname"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="ion-item-cont">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Number</ion-label>
+                    <ion-input type="email" class="input" formControlName="cellPhone"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="ion-item-cont">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input type="email" class="input" formControlName="email"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="ion-item-cont">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Address</ion-label>
+                    <ion-input type="email" class="input" formControlName="address"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="ion-item-cont password">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="password" class="input"  formControlName="password"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="ion-item-cont">
+                  <ion-item class="item" lines="none">
+                    <ion-label position="floating">Confirm password</ion-label>
+                    <ion-input type="email" class="input" formControlName="confirmPassword"></ion-input>
+                  </ion-item>
+                </div> -->
+
+                <ion-button color="transparent" (click)="signUp()" [disabled]="!signUpForm.valid"> Sign up</ion-button>
+              </form>
+            </div>
+            <div class="text">
+              <div class="reg-switch-text">Already registered? <span (click)="login()">Sign in</span></div>
+              <!-- <div class="or-text">OR</div> -->
+            </div>
+<!-- <hr> -->
+            <!-- <ion-button id="sign-in-button" color="transparent" (click)="showLogin()" *ngIf="!showInput">
+              <ion-icon slot="start" name="call"></ion-icon> Sign-in with Phone
+            </ion-button>
+            <div class="phone_login" *ngIf="showInput">
+              <ion-input placeholder="e.g 0712345678" [(ngModel)]="number" type="number" (ionInput)="phone($event)"
+                >
+                &nbsp; &nbsp;&nbsp; &nbsp;
+              </ion-input>
+              <ion-button id="sign" color="transparent" [disabled]="myArr.length!==10" (click)="addUser()"> Sign-in with Phone</ion-button>
+              <ion-button id="sign" color="transparent" (click)="showLogin()"> Cancel</ion-button>
+              
+            </div>
+
+            <ion-button id="sign-in-button" color="transparent" (click)="googleLogin()" *ngIf="!showInput">
+              <ion-icon slot="start" name="logo-google"></ion-icon> Sign-in with Google
+            </ion-button>
+            <ion-button id="sign-in-button" color="transparent" (click)="Explore()" *ngIf="!showInput">
+              <ion-icon slot="start" name="search"></ion-icon>Explore
+            </ion-button> -->
+            <!-- <ion-button id="sign-in-button" color="transparent" (click)="loginwithemail()" *ngIf="!showInput">
+              <ion-icon slot="end" name="mail"></ion-icon>Sign-in with Email
+            </ion-button> -->
+            <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+
+          </div>
+          <!-- <div id="recaptcha-container"></div> -->
+        </div>
+
+   
+
+      </div>
+    </div>
+  </div>
 </ion-content>

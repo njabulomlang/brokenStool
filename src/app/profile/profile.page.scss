@@ -74,8 +74,9 @@ ion-toolbar {
   .btnz {
     display: flex;
     flex-flow: column;
-    width: 100vw;
+    width: 100%;
     margin: 5px 0px;
+    // padding-right: 10px;
     ion-button {
       margin: 0;
       padding: 0;
@@ -101,10 +102,14 @@ ion-toolbar {
 
     .edit {
       width: 100%;
-      padding: 5px;
-      margin: auto;
-      ion-input {
-        width: 93vw;
+      // padding: 5px;
+      // margin: auto;
+      // border: 1px solid red;
+      .inputs {
+        // border: 1px solid green;
+      }
+      ion-input { //remove
+        width: calc(100% - 10px);
         border: 1px solid rgb(255, 255, 255);
         margin: 5px;
         padding: 3px;
@@ -118,16 +123,23 @@ ion-toolbar {
         display: flex;
         flex-flow: row;
         margin: 10px auto;
+        max-height: 100px;
         #cancel {
-          width: 45vw;
+          width: calc(50% - 10px);
           background: rgb(0, 0, 36);
-          border-radius: 8px;
+          border-radius: 8px !important;
+          border: 1px solid rgb(0, 0, 36);
+          margin: 0 5px;
+          max-height: 48px;
         }
 
         #update {
-          width: 45vw;
+          width: calc(50% - 10px);
           background: maroon;
-          border-radius: 8px;
+          border-radius: 8px !important;
+          border: 1px solid maroon;
+          margin: 0 5px;
+          max-height: 48px;
         }
         ion-button {
           font-size: 0.8em;
@@ -1146,7 +1158,14 @@ ion-toolbar {
 
   ion-toolbar {
     img {
-      margin-left: 5%;
+      margin-left: 5%; width: 100px; min-height: 60px; height: 60px;
+    }
+    ion-buttons { //remove
+      // border: 1px solid green;
+      width: calc(100% - 105px);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
     --background: #000324;
     width: 100%;
@@ -1165,8 +1184,12 @@ ion-toolbar {
     }
     // erratic
     .icon1 {
-      margin: 0 18vw 0 10vw;
-
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 90%;
+      // border: 1px solid white;
       ion-button {
         box-sizing: border-box;
         border: 2px solid transparent;
@@ -1355,9 +1378,14 @@ ion-toolbar {
 
       .edit {
         // width: 100%;
-        padding: 5px;
+        // padding: 5px;
+        // border: 1px solid purple;
+        .inputs {
+          // border: 1px solid green;
+          padding: 0;
+        }
         ion-input {
-          // width: 100%;
+          width: calc(100% - 10px);
           border: 1px solid rgb(255, 255, 255);
           margin: 5px;
           padding: 3px;
@@ -1371,21 +1399,24 @@ ion-toolbar {
           display: flex;
           flex-flow: row;
           #cancel {
-            width: 45vw;
+            width: calc(50% - 10px);
             background: red;
-            border-radius: 8px;
+            border-radius: 8px !important;
+            margin: 0 5px;
           }
 
           #update {
-            width: 45vw;
+            width: calc(50% - 10px);
             background: green;
-            border-radius: 8px;
+            border-radius: 8px !important;
+            // border: 1px solid maroon;
+            margin: 0 5px;
           }
           ion-button {
             // font-size: 0.8em;
             margin: 5px;
             // height: 10vw;
-            border-radius: 10px;
+            border-radius: 10px !important;
             color: white;
             font-family: "Poppins";
             letter-spacing: 2px;

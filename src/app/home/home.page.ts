@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { ModalController, NavController, ToastController, AlertController, Platform } from '@ionic/angular';
+import { ModalController, NavController, ToastController, AlertController, Platform, IonRouterOutlet } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { Router, NavigationExtras } from '@angular/router';
@@ -11,7 +11,6 @@ import { NotificationsService } from '../services/notifications.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Network } from '@ionic-native/network/ngx';
-
 
 @Component({
   selector: 'app-home',
@@ -55,17 +54,27 @@ export class HomePage implements OnInit {
   prodArr = [];
   winterArray = [];
   constructor(private splashScreen: SplashScreen, private authService: AuthService, private modalCtrl: ModalController, public router: Router, public navCtrl: NavController,
-    public toastCtrl: ToastController, public alertCtrl: AlertController, private localSt: LocalStorageService, private sanitizer: DomSanitizer, public network: Network,
+    public toastCtrl: ToastController, public alertCtrl: AlertController, private localSt: LocalStorageService, private sanitizer: DomSanitizer, public network: Network, private routerOutlet: IonRouterOutlet,
     public plt: Platform
     // public notificationService: NotificationsService
   ) {
+
     if (this.plt.is('cordova')) {
       this.network.onDisconnect().subscribe(() => {
         this.presentAlt();
       })
     }
   }
+  subscription
+  ionViewDidEnter(){
+    this.subscription = this.plt.backButton.subscribe(()=>{
+        navigator['app'].exitApp();
+    });
+  }
 
+  ionViewWillLeave(){
+      this.subscription.unsubscribe();
+  }
   ngOnInit() {
     // this.notificationService.requestPermission();
     // this.getCart();
@@ -146,8 +155,8 @@ export class HomePage implements OnInit {
   }
   async presentAlertConfirm1() {
     const alert = await this.alertCtrl.create({
-      header: 'Message',
-      message: 'Please Sign-in',
+      header: 'Sign in',
+      message: 'User related actions require a signed in user.',
       buttons: [
         {
           text: 'Cancel',
@@ -541,4 +550,5 @@ export class HomePage implements OnInit {
         break;
     }
   }
+
 }
